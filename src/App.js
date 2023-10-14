@@ -1,9 +1,19 @@
 import './App.css';
-import Button from 'react-bootstrap/Button';
+import PoliNavbar from './components/Navbar';
+import Libretto from './pages/Libretto';
+import Tesi from './pages/Tesi';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <Button variant="primary">Hello World</Button>
+    <>
+    <PoliNavbar />
+    <Routes>
+      <Route path='/' element={<Libretto />}></Route>
+      <Route path='/libretto' element={<Libretto />}></Route>
+      <Route path='/tesi' element={<Tesi />}></Route>
+    </Routes>
+    </>
   );
 }
 
