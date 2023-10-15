@@ -98,7 +98,7 @@ export default function Tesi() {
                 <h1 style={{ marginLeft: '8px' }}>Elenco proposte di Tesi</h1>
             </div>
             <div className="p-3 ">
-                <Table bordered responsive="sm">
+                <Table bordered responsive="sm" hover="primary">
                     <thead>
                         <tr>
                             <th style={{backgroundColor : 'azure'}}>Titolo</th>
@@ -114,8 +114,8 @@ export default function Tesi() {
                                     <td>{element.titolo}</td>
                                     <td>{element.relatore}</td>
                                     <td>{element.corelatore}</td>
-                                    <td>{element.estero ? <GlobeAmericas /> : ""}</td>
-                                    <td>{element.inAzienda ? <Building /> : ""}</td>
+                                    <td style={{textAlign : 'center'}}>{element.estero ? <GlobeAmericas /> : ""}</td>
+                                    <td style={{textAlign : 'center'}}>{element.inAzienda ? <Building /> : ""}</td>
                                 </tr>
                             ))}
                         </tbody>
