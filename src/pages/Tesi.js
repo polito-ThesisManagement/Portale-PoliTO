@@ -8,7 +8,7 @@ import { Mortarboard, GlobeAmericas, Building } from "react-bootstrap-icons";
 //filtri azienda, estero, 
 export default function Tesi() {
 
-    const [thesis, setTHesis] = useState([
+    const [thesis, setThesis] = useState([
         {
             titolo: "Sviluppo di un Framework JavaScript per la Gestione di Grandi Dati",
             relatore: "Alessandro Verdi",
@@ -93,7 +93,7 @@ export default function Tesi() {
     //to be added searchbar, filter and rounded border
     return (
         <Container className="my-5 mx-5">
-            <div className="d-flex justify-content-start ">
+            <div className="d-flex justify-content-start">
                 <Mortarboard size={40} />
                 <h1 style={{ marginLeft: '8px' }}>Elenco proposte di Tesi</h1>
             </div>
@@ -114,8 +114,8 @@ export default function Tesi() {
                                     <td>{element.titolo}</td>
                                     <td>{element.relatore}</td>
                                     <td>{element.corelatore}</td>
-                                    <td style={{textAlign : 'center'}}>{element.estero ? <GlobeAmericas /> : ""}</td>
                                     <td style={{textAlign : 'center'}}>{element.inAzienda ? <Building /> : ""}</td>
+                                    <td style={{textAlign : 'center'}}>{element.estero ? <GlobeAmericas /> : ""}</td>
                                 </tr>
                             ))}
                         </tbody>
