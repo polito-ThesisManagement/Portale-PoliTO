@@ -95,17 +95,17 @@ export default function Tesi() {
         <Container className="my-5 mx-5">
             <div className="d-flex justify-content-start">
                 <Mortarboard size={40} />
-                <h1 style={{ marginLeft: '8px' }}>Elenco proposte di Tesi</h1>
+                <h1 style={{ marginLeft: '8px', fontFamily: 'Helvetica'}}>Elenco proposte di Tesi</h1>
             </div>
             <div className="p-3 ">
-                <Table bordered responsive="sm" hover="primary">
+                <Table striped responsive="sm" hover="primary">
                     <thead>
                         <tr>
-                            <th style={{backgroundColor : 'azure'}}>Titolo</th>
-                            <th style={{backgroundColor : 'azure'}}>Relatore</th>
-                            <th style={{backgroundColor : 'azure'}}>Corelatore</th>
-                            <th style={{backgroundColor : 'azure'}}>In Azienda</th>
-                            <th style={{backgroundColor : 'azure'}}>Estero</th>
+                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Titolo</th>
+                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Relatore</th>
+                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Corelatore</th>
+                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>In Azienda</th>
+                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Estero</th>
                         </tr>
                         </thead>
                         <tbody>

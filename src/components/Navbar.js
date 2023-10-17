@@ -14,12 +14,6 @@ import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
 //Ovviamente deve essere cambiata al momento è utile per testare la navigazione in react e cambiare le pagina
 //TODO: cambiare navigazione click su logo, deve andare in home e su icone
 
-/*<Nav.Link href="#action1"><Envelope size={30}/></Nav.Link>
-<Nav.Link href="#action2"><Bell size={30}/></Nav.Link>
-<Nav.Link href="#" disabled>
-    Link
-</Nav.Link>
-*/
 export default function PoliNavbar() {
     return (
         <Navbar expand="lg" bg='wight' style={{ borderBottom: '1px solid orange' }}>
