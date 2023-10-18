@@ -40,7 +40,7 @@ export default function Searchbar(props) {
             {
                 filteredData.length !== 0 &&
                 <ListGroup style={{ position: 'absolute', width: '300px', marginTop: '40px' }}>
-                    {filteredData.map(service => {
+                    {filteredData.slice(0,3).map(service => {
                         return (
                             <ListGroup.Item action as={Link} to={service.link} key={service.id}
                                 variant="light" style={{ fontSize: '12px', color: '#1d3b55' }}>
