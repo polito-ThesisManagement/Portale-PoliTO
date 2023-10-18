@@ -1,0 +1,23 @@
+[
+    {
+        "id" : 1,
+        "pageName": "tesi",
+        "link": "/tesi"
+
+    },
+    {
+        "id" : 2,
+        "pageName": "libretto",
+        "link": "/libretto"
+    },
+    {
+        "id" : 3,
+        "pageName": "esami",
+        "link": "/esami"
+    },
+    {
+        "id" : 4,
+        "pageName": "home",
+        "link": "/home"
+    }
+]

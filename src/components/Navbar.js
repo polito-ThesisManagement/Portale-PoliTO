@@ -1,12 +1,11 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Searchbar from './Searchbar';
 
 
 import Logo from '../assets/logo_polito.jpg';
+import Services from '../Data.json'
 
 import { Link } from 'react-router-dom';
 import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
@@ -34,18 +33,7 @@ export default function PoliNavbar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Form className="d-flex me-3 mt-1">
-                            <Form.Control
-                                type="search"
-                                placeholder="Ricerca attravreso parole chiave"
-                                className="me-2"
-                                aria-label="Search"
-                                size="md"
-                                style={{ flex: '1', width: '300px', height: '80%' }}
-                                color='primary'
-                            />
-                            <Button variant="outline-primary" style={{ height: '80%' }}>Cerca</Button>
-                        </Form>
+                        <Searchbar services={Services} />
                         <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px' }}><Envelope size={28} color='#1d3b55'/></Nav.Link>
                         <Nav.Link as={Link} to="/tesi" style={{ marginRight: '5px' }}><Bell size={28} color='#1d3b55'/></Nav.Link>
                         <Navbar.Text style={{ fontWeight: '600', fontSize: '11px', color: '#1d3b55', marginRight: '5px' }}>
