@@ -1,4 +1,3 @@
-import './App.css';
 import PoliNavbar from './components/Navbar';
 import Esami from './pages/Esami';
 import Libretto from './pages/Libretto';

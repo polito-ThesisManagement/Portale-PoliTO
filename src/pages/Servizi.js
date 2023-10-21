@@ -48,10 +48,10 @@ export default function Servizi() {
                 </Row>
                 <Row className='my-5'>
                     <Col>
-                        {MyCard(<Book></Book>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
+                        {MyCard(<Book></Book>, 'Modifica', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
                     </Col>
                     <Col>
-                        {MyCard(<JournalAlbum></JournalAlbum>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
+                        {MyCard(<JournalAlbum></JournalAlbum>, 'Ciao', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
                     </Col>
                     <Col>
                         {MyCard(<Globe></Globe>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
