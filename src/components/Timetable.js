@@ -12,12 +12,12 @@ const orari = ['8:30', '10:00', '11:30', '13:00', '14:30', '16:00', '17:30', '19
 export default function Timetable() {
     return (
         <Container className='my-5'>
-            <Table responsive size='md' borderless>
+            <Table responsive striped size='md' borderless>
                 <thead>
                     <tr>
                         <th></th>
                         {giorniSettimana.map((giorno) => {
-                            return (<th style={{backgroundColor : '#03577A', color: '#fff'}} key={giorno}>{giorno}</th>)
+                            return (<th style={{backgroundColor : '#03577A', color: '#fff', textAlign: 'center', width: '50px'}} key={giorno}>{giorno}</th>)
                         })}
                     </tr>
                 </thead>
@@ -38,7 +38,7 @@ export default function Timetable() {
                                         );
                                     });
                                     return (
-                                        <td key={indice}>
+                                        <td key={indice} style={{border: '2px ridge'}}>
                                             <Container style={{display: 'flex', position: 'relative'}}>
                                                     {filteredCourses.map((corso, courseIndex) => (
                                                         <Col md={2 /* si puù aumentare numero corso sovrapponibili */} key={courseIndex}
