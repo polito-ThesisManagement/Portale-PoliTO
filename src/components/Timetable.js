@@ -1,17 +1,47 @@
+import { useState } from 'react';
+
+import '../App.css'
 import Courses from '../Courses.json'
 
 import Table from 'react-bootstrap/Table';
-
-import '../App.css'
+import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
+
 
 const giorniSettimana = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì'];
 const orari = ['8:30', '10:00', '11:30', '13:00', '14:30', '16:00', '17:30', '19:00'];
 
+
 export default function Timetable() {
+
+    const [checkboxes, setCheckboxes] = useState({});
+
+    // Gestisci la selezione/deselezione della checkbox
+    const handleCheckboxChange = (corso) => {
+        setCheckboxes((prevCheckboxes) => ({
+            ...prevCheckboxes,
+            [corso.codice]: !prevCheckboxes[corso.codice],
+        }));
+    };
+
+    const myFilteredCourses = Courses.filter((corso) => checkboxes[corso.codice]);
+
     return (
-        <Container className='my-5'>
+        <Container className='my-3'>
+            <Container className='mb-4'>
+                <h2>Orario Lezioni</h2>
+                   { Courses.map( (corso) => {
+                        return (
+                            <Form.Check key={corso.codice} 
+                                        aria-label={`corso ${corso.nome}`}
+                                        label={<div className={`text-${corso.colore}`}>{corso.nome}</div>}
+                                        checked={checkboxes[corso.codice] || false} 
+                                        onChange={() => handleCheckboxChange(corso)}
+                                        />
+                        )
+                   })}
+            </Container>
             <Table responsive striped size='md' borderless>
                 <thead>
                     <tr>
@@ -29,7 +59,7 @@ export default function Timetable() {
                                     {orario}
                                 </td>
                                 {giorniSettimana.map((giorno, indice) => {
-                                    const filteredCourses = Courses.filter((corso) => {
+                                    const filteredCourses = myFilteredCourses.filter((corso) => {
                                         return (
                                             corso.orarioSettimanale.some(obj =>
                                                 obj.giorno === giorniSettimana[indice] && obj.orario.substring(0, 5).includes(orario))

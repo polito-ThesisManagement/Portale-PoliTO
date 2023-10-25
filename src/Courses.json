@@ -26,7 +26,7 @@
         "nome" : "Chimica",
         "codice" : "CHM101",
         "docente" : "Prof. Verdi",
-        "colore" : "info",
+        "colore" : "danger",
         "orarioSettimanale" : [
             { "giorno" : "Lunedì", "orario" : "14:30-16:00" },
             { "giorno" : "Mercoledì", "orario" : "17:30-19:00" }
