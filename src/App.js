@@ -1,11 +1,13 @@
-import './App.css';
 import PoliNavbar from './components/Navbar';
+import Esami from './pages/Esami';
 import Libretto from './pages/Libretto';
+import Servizi from './pages/Servizi';
 import Tesi from './pages/Tesi';
 import Home from './pages/Home';
-import { Row, Col } from 'react-bootstrap';
+import Help from './pages/Help';
 import { Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import './App.css';
 
 function App() {
   return (

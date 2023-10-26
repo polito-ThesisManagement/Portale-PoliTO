@@ -1,9 +1,11 @@
-import Sidebar from "../components/Sidebar";
+import Timetable from "../components/Timetable";
 
-export default function Home(){
-    return(
+export default function Esami() {
+
+    return (
         <>
-        Home
+            <Timetable />
         </>
-    )
+    );  
+
 }

@@ -1,0 +1,35 @@
+[
+    {
+      "nome": "Informatica I",
+      "codice": "INF101",
+      "docente": "Prof. Rossi",
+      "colore" : "primary",
+      "orarioSettimanale": [
+        { "giorno": "Lunedì", "orario": "08:30-10:00" },
+        { "giorno": "Mercoledì", "orario": "11:30-13:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+      "nome": "Analisi I",
+      "codice": "MAT202",
+      "docente": "Prof. Bianchi",
+      "colore" : "success",
+      "orarioSettimanale": [
+        { "giorno": "Martedì", "orario": "13:00-14:30" },
+        { "giorno": "Martedì", "orario": "14:30-16:00" },
+        { "giorno": "Giovedì", "orario": "17:30-19:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+        "nome" : "Chimica",
+        "codice" : "CHM101",
+        "docente" : "Prof. Verdi",
+        "colore" : "danger",
+        "orarioSettimanale" : [
+            { "giorno" : "Lunedì", "orario" : "14:30-16:00" },
+            { "giorno" : "Mercoledì", "orario" : "17:30-19:00" }
+        ] 
+    }
+  ]
