@@ -1,3 +1,4 @@
+import { Row, Col } from 'react-bootstrap';
 import PoliNavbar from './components/Navbar';
 import Esami from './pages/Esami';
 import Libretto from './pages/Libretto';
