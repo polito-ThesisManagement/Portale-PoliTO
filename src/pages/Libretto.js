@@ -1,42 +1,7 @@
 import { useState } from 'react';
-
+import data from '../data';
 import { Container, ProgressBar } from 'react-bootstrap';
 import { Row, Col, Table } from 'react-bootstrap';
-
-var array = [
-    {
-        codice: "01PFPOV",
-        nome: "Mobile Application Development",
-        cfu: 6,
-        voto: 28,
-        anno: 2,
-        data: "2022-07-12"
-    },
-    {
-        codice: "01PDWOV",
-        nome: "Information Systems",
-        cfu: 6,
-        voto: 26,
-        anno: 1,
-        data: "2022-02-12"
-    },
-    {
-        codice: "02GOLOV",
-        nome: "Archittetura dei sistemi di elaborazione",
-        cfu: 10,
-        voto: 30,
-        anno: 1,
-        data: "2022-02-20"
-    },
-    {
-        codice: "01QYDOV",
-        nome: "Data Science",
-        cfu: 8,
-        voto: 26,
-        anno: 1,
-        data: "2022-02-28",
-    }
-]
 
 let theadStyle = {
     backgroundColor: '#03577A',
@@ -46,7 +11,7 @@ let theadStyle = {
 export default function Libretto() {
  
 
-    const [courses, setCourses] = useState(array);
+    const [courses, setCourses] = useState(data.valutazioni);
 
     return (
         <>
