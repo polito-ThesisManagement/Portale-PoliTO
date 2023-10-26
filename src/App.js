@@ -4,6 +4,7 @@ import Libretto from './pages/Libretto';
 import Servizi from './pages/Servizi';
 import Tesi from './pages/Tesi';
 import Home from './pages/Home';
+import Help from './pages/Help';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path='/tesi' element={<Tesi />}></Route>
       <Route path='/esami' element={<Esami />}></Route>
       <Route path='/servizi' element={<Servizi />}></Route>
+      <Route path='/help' element={<Help />}></Route>
     </Routes>
     </>
   );
