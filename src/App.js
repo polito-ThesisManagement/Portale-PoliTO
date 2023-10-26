@@ -18,10 +18,10 @@ function App() {
         <Sidebar/>
         <Col md={10}>
           <Routes>
-            <Route path='/' element={<Libretto />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/libretto' element={<Libretto />} />
             <Route path='/tesi' element={<Tesi />} />
-            <Route path='/home' element={<Home />} />
             <Route path='/servizi' element={<Servizi/>}/>
             <Route path='/help' element={<Help/>} />
           </Routes>

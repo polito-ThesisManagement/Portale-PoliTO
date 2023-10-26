@@ -119,7 +119,7 @@ export default function Tesi() {
 
     //to be added searchbar, filter and rounded border
     return (
-        <Container className="my-5 mx-5">
+        <Container className='mt-5'>
             <div className="d-flex justify-content-start">
                 <Mortarboard size={40} />
                 <h1 style={{ marginLeft: '8px', fontFamily: 'Helvetica'}}>Elenco proposte di Tesi</h1>
