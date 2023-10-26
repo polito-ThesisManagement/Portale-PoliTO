@@ -22,6 +22,8 @@ function App() {
             <Route path='/libretto' element={<Libretto />} />
             <Route path='/tesi' element={<Tesi />} />
             <Route path='/home' element={<Home />} />
+            <Route path='/servizi' element={<Servizi/>}/>
+            <Route path='/help' element={<Help/>} />
           </Routes>
         </Col>
       </Row>
