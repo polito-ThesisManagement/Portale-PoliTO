@@ -18,6 +18,16 @@
     {
         "id" : 4,
         "pageName": "home",
-        "link": "/home"
+        "link": "/"
+    },
+    {
+        "id" : 5,
+        "pageName": "servizi",
+        "link": "/servizi"
+    }, 
+    {
+        "id" : 6,
+        "pageName": "help",
+        "link": "/help"
     }
 ]

@@ -1,11 +1,14 @@
-import './App.css';
+import { Row, Col } from 'react-bootstrap';
 import PoliNavbar from './components/Navbar';
+import Esami from './pages/Esami';
 import Libretto from './pages/Libretto';
+import Servizi from './pages/Servizi';
 import Tesi from './pages/Tesi';
 import Home from './pages/Home';
-import { Row, Col } from 'react-bootstrap';
+import Help from './pages/Help';
 import { Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import './App.css';
 
 function App() {
   return (
@@ -15,10 +18,12 @@ function App() {
         <Sidebar/>
         <Col md={10}>
           <Routes>
-            <Route path='/' element={<Libretto />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/libretto' element={<Libretto />} />
             <Route path='/tesi' element={<Tesi />} />
-            <Route path='/home' element={<Home />} />
+            <Route path='/servizi' element={<Servizi/>}/>
+            <Route path='/help' element={<Help/>} />
           </Routes>
         </Col>
       </Row>

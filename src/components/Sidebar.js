@@ -19,6 +19,12 @@ export default function Sidebar() {
         <Nav.Item>
           <Link to="/esami" className="nav-link">Esami</Link>
         </Nav.Item>
+        <Nav.Item>
+          <Link to="/servizi" className="nav-link">Servizi</Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Link to="/help" className="nav-link">Help</Link>
+        </Nav.Item>
       </Nav>
     </Col>
   );
