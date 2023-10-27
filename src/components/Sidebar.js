@@ -8,7 +8,7 @@ export default function Sidebar() {
     <Col className="col-md-2 d-none d-md-block bg-light custom-sidebar">
       <Nav defaultActiveKey="/home" className="flex-column">
         <Nav.Item>
-          <Link to="/home" className="nav-link">Home</Link>
+          <Link to="/" className="nav-link">Home</Link>
         </Nav.Item>
         <Nav.Item>
           <Link to="/libretto" className="nav-link">Libretto</Link>
