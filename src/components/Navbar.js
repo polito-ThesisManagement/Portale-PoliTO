@@ -11,13 +11,13 @@ import { Link } from 'react-router-dom';
 import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
 
 //Ovviamente deve essere cambiata al momento è utile per testare la navigazione in react e cambiare le pagina
-//TODO: cambiare navigazione click su logo, deve andare in home e su icone
+//TODO: cambiare navigazione click su icone
 
 export default function PoliNavbar() {
     return (
         <Navbar expand="lg" bg='wight' style={{ borderBottom: '1px solid orange' }}>
             <Container fluid>
-                <Navbar.Brand as={Link} to="/tesi">
+                <Navbar.Brand as={Link} to="/">
                     <img
                         src={Logo}
                         alt="Logo PoliTo"
