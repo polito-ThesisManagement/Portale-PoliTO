@@ -8,6 +8,7 @@ import Help from './pages/Help';
 import Timetable from './components/Timetable'
 import { Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import CoursePage from './pages/CoursePage';
 import './App.css';
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path='/servizi' element={<Servizi/>}/>
             <Route path='/help' element={<Help/>} />
             <Route path='/orario' element={<Timetable />} />
+            <Route path="/didattica/:nome" element={<CoursePage />} />
           </Routes>
         </Col>
       </Row>
