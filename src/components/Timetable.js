@@ -28,7 +28,7 @@ export default function Timetable() {
     const myFilteredCourses = Courses.filter((corso) => checkboxes[corso.codice]);
 
     return (
-        <Container className='my-3'>
+        <Container className='my-3 me-3'>
             <Container className='mb-4'>
                 <h2>Orario Lezioni</h2>
                 {Courses.map((corso) => {

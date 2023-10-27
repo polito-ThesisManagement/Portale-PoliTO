@@ -15,7 +15,7 @@ const thesis = [
         estero: false
     },
     {
-        titolo: "Ottimizzazione delle Prestazioni delle Applicazioni Web Utilizzando le Nuove Caratteristiche di ECMAScript 2023",
+        titolo: "Ottimizzazione delle Prestazioni delle Applicazioni Web Utilizzando ECMAScript 2023",
         relatore: "Laura Bianchi",
         corelatore: "Giuseppe Russo",
         inAzienda: false,
@@ -119,7 +119,7 @@ export default function Tesi() {
 
     //to be added searchbar, filter and rounded border
     return (
-        <Container className='mt-5'>
+        <Container className='mt-5 me-3'>
             <div className="d-flex justify-content-start">
                 <Mortarboard size={40} />
                 <h1 style={{ marginLeft: '8px', fontFamily: 'Helvetica'}}>Elenco proposte di Tesi</h1>
