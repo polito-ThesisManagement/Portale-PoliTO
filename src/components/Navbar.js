@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Searchbar from './Searchbar';
 
 
-import Logo from '../assets/logo_polito.jpg';
+import Logo from '../assets/logo_polito2.svg';
 import Services from '../Data.json'
 
 import { Link } from 'react-router-dom';
@@ -15,14 +15,14 @@ import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
 
 export default function PoliNavbar() {
     return (
-        <Navbar expand="lg" bg='wight' style={{ borderBottom: '1px solid orange' }}>
+        <Navbar expand="lg" bg='wight' style={{ borderBottom: '2px solid orange' }}>
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">
                     <img
                         src={Logo}
                         alt="Logo PoliTo"
-                        width="100"
-                        height="100%"
+                        width="70%"
+                        height="70%"
                         className="d-inline-block align-top"
                     />
                 </Navbar.Brand>
