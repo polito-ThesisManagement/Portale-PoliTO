@@ -22,7 +22,7 @@ const thesis = [
         estero: false
     },
     {
-        titolo: "Implementazione di un Sistema di Intelligenza Artificiale in JavaScript per Applicazioni Aziendali",
+        titolo: "Implementazione di un Sistema di Intelligenza Artificiale in JavaScript per Applicazioni",
         relatore: "Marco Neri",
         corelatore: "Dott. Sofia Ferrari",
         inAzienda: true,
