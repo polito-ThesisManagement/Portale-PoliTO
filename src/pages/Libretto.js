@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import data from '../data';
+import valutazioni from '../data';
 import { Container, ProgressBar } from 'react-bootstrap';
 import { Row, Col, Table } from 'react-bootstrap';
 
@@ -10,8 +10,9 @@ let theadStyle = {
 
 export default function Libretto() {
  
-
-    const [courses, setCourses] = useState(data.valutazioni);
+    /*probabilemnte non c'è bisogno di usare uno stato perchè difficilmente faremo vedere cosa succede quando viene inserito una 
+    nuova valutazione nel libretto */
+    const [courses, setCourses] = useState(valutazioni);
 
     return (
         <>

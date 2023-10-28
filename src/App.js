@@ -1,15 +1,18 @@
 import { Row, Col } from 'react-bootstrap';
 import PoliNavbar from './components/Navbar';
-import Esami from './pages/Esami';
 import Libretto from './pages/Libretto';
 import Servizi from './pages/Servizi';
 import Tesi from './pages/Tesi';
 import Home from './pages/Home';
 import Help from './pages/Help';
+import Timetable from './components/Timetable'
 import { Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import CoursePage from './pages/CoursePage';
 import './App.css';
 
+
+//metterei il path di Home solo con "/"
 function App() {
   return (
     <>
@@ -24,6 +27,8 @@ function App() {
             <Route path='/tesi' element={<Tesi />} />
             <Route path='/servizi' element={<Servizi/>}/>
             <Route path='/help' element={<Help/>} />
+            <Route path='/orario' element={<Timetable />} />
+            <Route path="/didattica/:nome" element={<CoursePage />} />
           </Routes>
         </Col>
       </Row>

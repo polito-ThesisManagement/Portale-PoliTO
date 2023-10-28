@@ -4,6 +4,8 @@
       "codice": "INF101",
       "docente": "Prof. Rossi",
       "colore" : "primary",
+      "periodo" : 1,
+      "crediti" : 8,
       "orarioSettimanale": [
         { "giorno": "Lunedì", "orario": "08:30-10:00" },
         { "giorno": "Mercoledì", "orario": "11:30-13:00" },
@@ -15,6 +17,8 @@
       "codice": "MAT202",
       "docente": "Prof. Bianchi",
       "colore" : "success",
+      "periodo" : 1,
+      "crediti" : 10,
       "orarioSettimanale": [
         { "giorno": "Martedì", "orario": "13:00-14:30" },
         { "giorno": "Martedì", "orario": "14:30-16:00" },
@@ -27,6 +31,8 @@
         "codice" : "CHM101",
         "docente" : "Prof. Verdi",
         "colore" : "danger",
+        "periodo" : 1,
+        "crediti" : 10,
         "orarioSettimanale" : [
             { "giorno" : "Lunedì", "orario" : "14:30-16:00" },
             { "giorno" : "Mercoledì", "orario" : "17:30-19:00" }
