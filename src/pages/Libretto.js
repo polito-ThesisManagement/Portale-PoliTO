@@ -12,7 +12,7 @@ export default function Libretto() {
  
     /*probabilemnte non c'è bisogno di usare uno stato perchè difficilmente faremo vedere cosa succede quando viene inserito una 
     nuova valutazione nel libretto */
-    const [courses, setCourses] = useState(valutazioni);
+    const [courses] = useState(valutazioni); //rember to chenge it if you need to change the state
 
     return (
         <>
@@ -21,7 +21,7 @@ export default function Libretto() {
                     <Col>
                         <ProgressBar
                             variant='info'
-                            now={courses.reduce((acc, course) => acc + course.cfu, 0)}
+                            now={courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}
                             max={120}
                             style={{ width: '100px', height: '100px', borderRadius: '50%' }}
                         />
@@ -45,7 +45,7 @@ export default function Libretto() {
                             </tr>
                         </thead>
                         <tbody>
-                            {courses.map(course => (
+                            {courses.valutazioni.map(course => (
                                 <tr key={course.codice}>
                                     <td>{course.codice}</td>
                                     <td>{course.nome}</td>
