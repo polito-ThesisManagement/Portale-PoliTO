@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-
 import { Link } from 'react-router-dom';
 
 export default function Searchbar(props) {
@@ -33,9 +31,10 @@ export default function Searchbar(props) {
                 className="me-2"
                 aria-label="Search"
                 size="md"
-                style={{ flex: '1', width: '300px', height: '80%' }}
+                style={{ flex: '1', width: '300px', height: '80%'}}
                 color='primary'
                 onChange={handleChange}
+                
             />
             {
                 filteredData.length !== 0 &&
@@ -50,7 +49,6 @@ export default function Searchbar(props) {
                     })}
                 </ListGroup>
             }
-            <Button variant="outline-primary" style={{ height: '80%' }}>Cerca</Button>
         </Form>
     );
 }
