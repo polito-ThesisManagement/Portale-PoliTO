@@ -4,15 +4,17 @@
 }
 
 .custom-sidebar .nav-link {
-    color: #000
+    color: #000;
+    border-radius: 8px;
 }
 
 .custom-sidebar .nav-link:hover {
-  background-color: #555; /* Cambia il colore al passaggio del mouse */
-  color: #fff
-}
+    background-color: #555;
+    color: #fff;
+    
+  }
 
 .custom-sidebar .nav-link.active {
-    background-color: #007BFF; /* Colore per la sezione attiva */
-    color: #fff; /* Colore del testo per la sezione attiva */
+    background-color: #007BFF;
+    color: #fff;
 }
