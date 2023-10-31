@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { Container, ListGroup, Row, Col } from "react-bootstrap";
 import CourseSummary from "../components/CourseSummary";
 
-import Courses from '../Courses.json'
+import Courses from '../data/Courses.json'
 
 export default function Home() {
 

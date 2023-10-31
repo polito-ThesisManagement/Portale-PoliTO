@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import '../App.css'
-import Courses from '../Courses.json'
+import Courses from '../data/Courses.json'
 
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
