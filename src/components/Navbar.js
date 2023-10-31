@@ -4,10 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Searchbar from './Searchbar';
 
 
-import Logo from '../assets/logo_polito.jpg';
 import Services from '../data/Data.json';
 import Logo from '../assets/logo_polito2.svg';
-import Services from '../Data.json'
 
 import { Link } from 'react-router-dom';
 import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
