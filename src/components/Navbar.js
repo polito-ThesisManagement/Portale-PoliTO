@@ -41,7 +41,7 @@ export default function PoliNavbar() {
                         <Navbar.Text style={{ fontWeight: '600', fontSize: '11px', color: '#1d3b55', marginRight: '5px' }}>
                             Matr: 123456<br></br>Mario Rossi
                         </Navbar.Text>
-                        <Nav.Link as={Link} to="/tesi" ><PersonCircle size={36} color='#1d3b55'/></Nav.Link>
+                        <Nav.Link as={Link} to="/area_personale" ><PersonCircle size={36} color='#1d3b55'/></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
