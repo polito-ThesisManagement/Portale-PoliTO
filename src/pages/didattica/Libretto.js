@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import valutazioni from '../data';
+import valutazioni from '../../data';
 import { Container, ProgressBar } from 'react-bootstrap';
 import { Row, Col, Table } from 'react-bootstrap';
 

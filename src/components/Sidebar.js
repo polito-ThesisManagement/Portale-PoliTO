@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav, Col, Container} from 'react-bootstrap';
+import {Nav, Col} from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import "../styles/Sidebar.css"
 
@@ -13,13 +13,13 @@ export default function Sidebar() {
           <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/libretto" className={`nav-link ${location.pathname === '/libretto' ? 'active' : ''}`}>Libretto</Link>
+          <Link to="/didattica" className={`nav-link ${location.pathname === '/didattica' ? 'active' : ''}`}>Didattica</Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/tesi" className={`nav-link ${location.pathname === '/tesi' ? 'active' : ''}`}>Tesi</Link>
+          <Link to="/carriera" className={`nav-link ${location.pathname === '/carriera' ? 'active' : ''}`}>Carriera</Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/esami" className={`nav-link ${location.pathname === '/esami' ? 'active' : ''}`}>Esami</Link>
+          <Link to="/opportunita" className={`nav-link ${location.pathname === '/opportunita' ? 'active' : ''}`}>Opportunità</Link>
         </Nav.Item>
         <Nav.Item>
           <Link to="/servizi" className={`nav-link ${location.pathname === '/servizi' ? 'active' : ''}`}>Servizi</Link>
