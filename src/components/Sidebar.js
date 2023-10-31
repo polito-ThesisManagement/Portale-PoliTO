@@ -10,7 +10,7 @@ export default function Sidebar() {
     <Col className="col-md-2 d-none d-md-block bg-light custom-sidebar px-4 py-1">
       <Nav defaultActiveKey="/home" className="flex-column">
         <Nav.Item>
-          <Link to="/" className={`nav-link ${location.pathname === '/home' ? 'active' : ''}`}>Home</Link>
+          <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
         </Nav.Item>
         <Nav.Item>
           <Link to="/libretto" className={`nav-link ${location.pathname === '/libretto' ? 'active' : ''}`}>Libretto</Link>

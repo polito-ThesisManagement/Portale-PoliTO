@@ -6,6 +6,8 @@ import Searchbar from './Searchbar';
 
 import Logo from '../assets/logo_polito.jpg';
 import Services from '../data/Data.json';
+import Logo from '../assets/logo_polito2.svg';
+import Services from '../Data.json'
 
 import { Link } from 'react-router-dom';
 import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
@@ -15,14 +17,14 @@ import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
 
 export default function PoliNavbar() {
     return (
-        <Navbar expand="lg" bg='wight' style={{ borderBottom: '1px solid orange' }}>
+        <Navbar expand="lg" bg='wight' style={{ borderBottom: '2px solid orange' }}>
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">
                     <img
                         src={Logo}
                         alt="Logo PoliTo"
-                        width="100"
-                        height="100%"
+                        width="70%"
+                        height="70%"
                         className="d-inline-block align-top"
                     />
                 </Navbar.Brand>
@@ -39,7 +41,7 @@ export default function PoliNavbar() {
                         <Navbar.Text style={{ fontWeight: '600', fontSize: '11px', color: '#1d3b55', marginRight: '5px' }}>
                             Matr: 123456<br></br>Mario Rossi
                         </Navbar.Text>
-                        <Nav.Link as={Link} to="/tesi" ><PersonCircle size={28} color='#1d3b55'/></Nav.Link>
+                        <Nav.Link as={Link} to="/tesi" ><PersonCircle size={36} color='#1d3b55'/></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

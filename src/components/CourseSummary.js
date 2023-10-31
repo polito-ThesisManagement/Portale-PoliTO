@@ -26,8 +26,8 @@ export default function CourseSummary(props) {
                         {props.crediti}
                     </Col>
                     <Col>
-                        <Bell className='me-2'></Bell>
-                        <ClockFill></ClockFill>
+                        <Bell className='me-2'/>
+                        <ClockFill/>
                     </Col>
                 </Row>
             </Container>

@@ -23,10 +23,10 @@ export default function Home() {
                         </ListGroup>
                     </div>
                 </Row>
-                <Row className="mt-2">
-                    <Col><Button variant="primary" as={Link} to="/orario">Orario Lezioni</Button></Col>
-                    <Col><Button variant="primary" as={Link} to="/esami" disabled>Esami</Button></Col>
-                    <Col><Button variant="primary" as={Link} to="/libretto" disabled>Libretto</Button></Col>
+                <Row className="mt-2 justify-content-between">
+                    <Col><Button className="custom-button" as={Link} to="/orario">Orario Lezioni</Button></Col>
+                    <Col><Button className="custom-button" as={Link} to="/esami" disabled>Esami</Button></Col>
+                    <Col><Button className="custom-button" as={Link} to="/libretto" disabled>Libretto</Button></Col>
                 </Row>
             </Container>
         </>

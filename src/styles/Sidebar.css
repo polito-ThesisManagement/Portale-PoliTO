@@ -9,12 +9,12 @@
 }
 
 .custom-sidebar .nav-link:hover {
-    background-color: #555;
+    background-color: #666;
     color: #fff;
     
   }
 
 .custom-sidebar .nav-link.active {
-    background-color: #007BFF;
+    background-color: #1d3b55;
     color: #fff;
 }
