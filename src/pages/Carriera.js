@@ -1,4 +1,4 @@
-import { PersonFillUp, CreditCard, Heart, Book, JournalAlbum, Globe, PeopleFill, PcDisplayHorizontal } from 'react-bootstrap-icons';
+import { CardChecklist, PersonFillUp, CreditCard, PersonGear, Mortarboard, SaveFill } from 'react-bootstrap-icons';
 import MyCard from '../components/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,43 +14,32 @@ export default function Carriera() {
                 <Row>
                     <Col className='d-flex'>
                         <PersonFillUp size={40} />
-                        <h1 className='ms-3'>Carriera</h1> 
+                        <h1 className='ms-3'>Carriera</h1>
                     </Col>
                 </Row>
                 <Row className='mt-4'>
                     <Col>
-                        {MyCard(<CreditCard></CreditCard>, 'Tasse', 'Utilizza questo servizio per effettuare il pagamento delle tasse')}
+                        {MyCard(<CardChecklist />, 'Piano Carriera', 'Utilizza questo servizio per compilare il tuo piano carriera, il tuo carico didattico oppure iscriverti al nuovo anno accademico', 'Piano Carriera')}
                     </Col>
                     <Col>
-                        {MyCard(<CreditCard></CreditCard>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più ')}
+                        {MyCard(<CreditCard />, 'Contribuzione e Agevolazioni', 'Clicca su pagamento tasse per effettuare il pagamento delle tasse o su richiesta riduzioni per chiederne una riduzione', 'Contribuzione e Agevolazioni')}
                     </Col>
                     <Col>
-                        {MyCard(<Heart></Heart>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
+                        {MyCard(<PersonGear />, 'Apply', 'Accedi al servizio apply per verificare lo stato della tua iscrizione e visualizzare comunicazioni realitie ad essa', 'Apply')}
                     </Col>
                 </Row>
                 <Row className='my-5'>
                     <Col>
-                        {MyCard(<Book></Book>, 'Modifica', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
+                        {MyCard(<Mortarboard />, 'Laurea', 'Accedi ai diversi servizi per visionare proposte di tesi, ottenere informaioni sulla prova finale ed effettuare la domanda di Laurea', 'Laurea')}
                     </Col>
                     <Col>
-                        {MyCard(<JournalAlbum></JournalAlbum>, 'Ciao', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
+                        {MyCard(<SaveFill />, 'Gestione Carriera', 'Accedi ai diversi servizi per gestire la tua carriera universitaria', 'Gestione Carriera')}
                     </Col>
                     <Col>
-                        {MyCard(<Globe></Globe>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
+                        {/*Fake solo per layout in attesa di soluzione migliore*/}
+                        {MyCard(<SaveFill />, 'Gestione Carriera', 'Accedi ai diversi servizi per gestire la tua carriera universitaria')}
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        {MyCard(<PeopleFill></PeopleFill>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
-                    </Col>
-                    <Col>
-                        {MyCard(<CreditCard></CreditCard>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
-                    </Col>
-                    <Col>
-                        {MyCard(<CreditCard></CreditCard>, 'prova', 'Descrizione di prova più lunga per avere una card più bella poco poco di più')}
-                    </Col>
-                </Row>
-
             </Container>
         </>
     );
