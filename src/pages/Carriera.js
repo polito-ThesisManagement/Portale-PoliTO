@@ -1,4 +1,4 @@
-import { CreditCard, Heart, Book, JournalAlbum, Globe, PeopleFill, PcDisplayHorizontal } from 'react-bootstrap-icons';
+import { PersonFillUp, CreditCard, Heart, Book, JournalAlbum, Globe, PeopleFill, PcDisplayHorizontal } from 'react-bootstrap-icons';
 import MyCard from '../components/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -13,8 +13,8 @@ export default function Carriera() {
             <Container className='mt-5'>
                 <Row>
                     <Col className='d-flex'>
-                        <PcDisplayHorizontal size={40} />
-                        <h1 className='ms-3'>Elenco Servizi</h1> 
+                        <PersonFillUp size={40} />
+                        <h1 className='ms-3'>Carriera</h1> 
                     </Col>
                 </Row>
                 <Row className='mt-4'>
