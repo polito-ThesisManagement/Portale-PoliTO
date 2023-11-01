@@ -19,6 +19,7 @@ import Opportunita from './pages/Opportunita';
 import Libretto from './pages/didattica/Libretto';
 import Timetable from './components/Timetable' //si può fare proprio una pagina con dentro la timetable che è un componente 
 import Lingue from './pages/didattica/Lingue';
+import Corsi from './pages/didattica/Corsi';
 
 
 
@@ -35,6 +36,7 @@ function App() {
             <Route path='/area_personale' element={<AreaPersonale/>}/>
             <Route path='/home' element={<Home />} />
             <Route path='/didattica' element={<Didattica/>}>
+              <Route path='' element={<Corsi />} />
               <Route path='libretto' element={<Libretto/>} />
               <Route path='orario' element={<Timetable/>} />
               <Route path='lingue' element={<Lingue/>} />

@@ -11,9 +11,8 @@ export default function Home() {
         <>
             <Container className="mt-5">
                 <Row>
-                    <h2>Carico Didattico</h2>
                     <div className="mx-2">
-                        <h4>I miei corsi</h4>
+                        <h4>Carico Didattico</h4>
                         <ListGroup className="me-2">
                             {Courses.map((corso) => {
                                 return (

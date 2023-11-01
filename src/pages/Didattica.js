@@ -6,6 +6,7 @@ import { Book, JournalCheck, ClockFill, Translate, ListTask } from 'react-bootst
 import Button from 'react-bootstrap/Button';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
+
 //TODO: modificare font in bottone per ora c'è solo colore del poli
 export default function Didattica() {
 
@@ -14,7 +15,7 @@ export default function Didattica() {
 
     return (
         <>
-            <Container className='my-3'>
+            <Container fluid className='my-3'>
                 <div style={{ display: 'flex' }}>
                     <Book size={50} className='me-2' />
                     <h1>Didattica</h1>
@@ -46,8 +47,12 @@ export default function Didattica() {
                     </Button>
                 </div>
             </Container>
+
             <Outlet />
+
+
         </>
     );
+
 
 }
