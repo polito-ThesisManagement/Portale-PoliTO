@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 
 import { Container } from "react-bootstrap";
 import { Table, Form } from "react-bootstrap";
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
-import { Mortarboard, GlobeAmericas, Building } from "react-bootstrap-icons";
+import { Mortarboard, GlobeAmericas, Building, ArrowRightShort } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 
 const thesis = [
@@ -99,11 +101,11 @@ export default function Tesi() {
 
     useEffect(() => {
         const filteredThesis = thesis.filter(element => {
-            if(inAzienda && estero) {
+            if (inAzienda && estero) {
                 return element.inAzienda && element.estero;
-            } else if(inAzienda && !estero) {
+            } else if (inAzienda && !estero) {
                 return element.inAzienda;
-            } else if(estero && !inAzienda) {
+            } else if (estero && !inAzienda) {
                 return element.estero;
             } else {
                 return true;
@@ -112,32 +114,47 @@ export default function Tesi() {
         })
 
         setThesis(filteredThesis);
-        
+
     }, [inAzienda, estero]);
 
-  
+    /*
+        <Link to='/'>Home</Link>
+        <Link to='/carriera'>Carriera</Link>
+        */
 
     //to be added searchbar, filter and rounded border
     return (
-        <Container className='mt-5 me-3'>
-            <div className="d-flex justify-content-start">
-                <Mortarboard size={40} />
-                <h1 style={{ marginLeft: '8px', fontFamily: 'Helvetica'}}>Elenco proposte di Tesi</h1>
-                <Form.Check label="In Azienda" aria-label="option 1" style={{paddingTop : '15px', paddingRight : '20px', marginLeft: '10px'}}
-                value={inAzienda} onChange={() => inAzienda ? setInAzienda(false) : setInAzienda(true)} />
-                <Form.Check label="Estero" aria-label="option 2" style={{paddingTop: '15px'}}
-                value={estero} onChange={() => estero ? setEstero(false) : setEstero(true)}/>
+        <>
+            <div className="d-flex mt-3 mx-3">
+                <div>
+                    <Link to='/'>Home</Link>
+                    <span className="mx-2"><ArrowRightShort /></span>
+                </div>
+                <div>
+                    <Link to='/carriera'>Carriera</Link>
+                    <span className="mx-2"><ArrowRightShort /></span>
+                </div>
+                <span style={{color: '#808080'}}>Tesi</span>
             </div>
-            <div className="p-3 ">
-                <Table striped responsive="sm" hover="primary">
-                    <thead>
-                        <tr>
-                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Titolo</th>
-                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Relatore</th>
-                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Corelatore</th>
-                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>In Azienda</th>
-                            <th style={{backgroundColor : '#03577A', color: '#fff'}}>Estero</th>
-                        </tr>
+            <Container className='mt-5 me-3'>
+                <div className="d-flex justify-content-start">
+                    <Mortarboard size={40} />
+                    <h1 style={{ marginLeft: '8px', fontFamily: 'Helvetica' }}>Elenco proposte di Tesi</h1>
+                    <Form.Check label="In Azienda" aria-label="option 1" style={{ paddingTop: '15px', paddingRight: '20px', marginLeft: '10px' }}
+                        value={inAzienda} onChange={() => inAzienda ? setInAzienda(false) : setInAzienda(true)} />
+                    <Form.Check label="Estero" aria-label="option 2" style={{ paddingTop: '15px' }}
+                        value={estero} onChange={() => estero ? setEstero(false) : setEstero(true)} />
+                </div>
+                <div className="p-3 ">
+                    <Table striped responsive="sm" hover="primary">
+                        <thead>
+                            <tr>
+                                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Titolo</th>
+                                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Relatore</th>
+                                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Corelatore</th>
+                                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>In Azienda</th>
+                                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Estero</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {filtered.map(element => (
@@ -145,13 +162,14 @@ export default function Tesi() {
                                     <td>{element.titolo}</td>
                                     <td>{element.relatore}</td>
                                     <td>{element.corelatore}</td>
-                                    <td style={{textAlign : 'center'}}>{element.inAzienda ? <Building /> : ""}</td>
-                                    <td style={{textAlign : 'center'}}>{element.estero ? <GlobeAmericas /> : ""}</td>
+                                    <td style={{ textAlign: 'center' }}>{element.inAzienda ? <Building /> : ""}</td>
+                                    <td style={{ textAlign: 'center' }}>{element.estero ? <GlobeAmericas /> : ""}</td>
                                 </tr>
                             ))}
                         </tbody>
-                </Table>
-            </div>
-        </Container>
+                    </Table>
+                </div>
+            </Container>
+        </>
     );
 }

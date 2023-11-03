@@ -210,7 +210,7 @@ export default function MyCard(icon, title, description, carrerService) {
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='/carriera' className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link} to='/carriera/tesi' className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Tesi di Laurea 
                         </Card.Link>

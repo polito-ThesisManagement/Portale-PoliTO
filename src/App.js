@@ -20,6 +20,7 @@ import Libretto from './pages/didattica/Libretto';
 import Timetable from './components/Timetable' //si può fare proprio una pagina con dentro la timetable che è un componente 
 import Lingue from './pages/didattica/Lingue';
 import Corsi from './pages/didattica/Corsi';
+import Tesi from './pages/carriera/Tesi';
 
 
 
@@ -29,21 +30,22 @@ function App() {
     <>
       <PoliNavbar />
       <Row>
-        <Sidebar/>
+        <Sidebar />
         <Col md={10}>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/area_personale' element={<AreaPersonale/>}/>
+            <Route path='/area_personale' element={<AreaPersonale />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/didattica' element={<Didattica/>}>
+            <Route path='/didattica' element={<Didattica />}>
               <Route path='' element={<Corsi />} />
-              <Route path='libretto' element={<Libretto/>} />
-              <Route path='orario' element={<Timetable/>} />
-              <Route path='lingue' element={<Lingue/>} />
+              <Route path='libretto' element={<Libretto />} />
+              <Route path='orario' element={<Timetable />} />
+              <Route path='lingue' element={<Lingue />} />
             </Route>
             <Route path='/carriera' element={<Carriera />} />
-            <Route path='/opportunita' element={<Opportunita/>}/>
-            <Route path='/servizi' element={<Servizi/>} />
+            <Route path='carriera/tesi' element={<Tesi />} />
+            <Route path='/opportunita' element={<Opportunita />} />
+            <Route path='/servizi' element={<Servizi />} />
             <Route path='/help' element={<Help />} />
             <Route path="/didattica/:nome" element={<CoursePage />}>
               <Route path="materiale" element={<Materiale />} />
