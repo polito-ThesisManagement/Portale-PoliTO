@@ -1,0 +1,164 @@
+[
+    {
+        "id" : 1,
+        "azienda" : "General motors",
+        "curriculare" : true, 
+        "durata" : 6, 
+        "luogo" : "Torino (TO)",
+        "oggetto" : "Gestione impianto produzione",
+        "scadenza" : "2024-05-30"
+    }, 
+    {
+        "id": 2,
+        "azienda": "Microsoft",
+        "curriculare": false,
+        "durata": 12,
+        "luogo": "Milano (MI)",
+        "oggetto": "Implementazione di soluzioni innovative per la sicurezza informatica",
+        "scadenza": "2024-07-15"
+    },
+    {
+        "id": 3,
+        "azienda": "Tesla",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Roma (RM)",
+        "oggetto": "Progettazione e sviluppo di sistemi avanzati per veicoli elettrici",
+        "scadenza": "2024-06-28"
+    },
+    {
+        "id": 4,
+        "azienda": "IBM",
+        "curriculare": false,
+        "durata": 3,
+        "luogo": "Napoli (NA)",
+        "oggetto": "Analisi e ottimizzazione di processi aziendali mediante l'uso di intelligenza artificiale",
+        "scadenza": "2024-08-10"
+    }, 
+    {
+        "id": 5,
+        "azienda": "Fiat Chrysler Automobiles",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Torino (TO)",
+        "oggetto": "Ricerca e sviluppo di nuove tecnologie per veicoli autonomi",
+        "scadenza": "2024-09-12"
+    },
+    {
+        "id": 6,
+        "azienda": "Oracle",
+        "curriculare": false,
+        "durata": 3,
+        "luogo": "Milano (MI)",
+        "oggetto": "Implementazione di soluzioni cloud per la gestione dati",
+        "scadenza": "2024-07-20"
+    },
+    {
+        "id": 7,
+        "azienda": "Amazon",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Roma (RM)",
+        "oggetto": "Sviluppo di un sistema di gestione per la logistica",
+        "scadenza": "2024-06-30"
+    },
+    {
+        "id": 8,
+        "azienda": "Apple",
+        "curriculare": false,
+        "durata": 12,
+        "luogo": "Napoli (NA)",
+        "oggetto": "Sviluppo software per dispositivi mobili",
+        "scadenza": "2024-08-10"
+    },
+    {
+        "id": 9,
+        "azienda": "Google",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Torino (TO)",
+        "oggetto": "Big data analysis",
+        "scadenza": "2024-09-12"
+    },
+    {
+        "id": 10,
+        "azienda": "NBA",
+        "curriculare": false,
+        "durata": 3,
+        "luogo": "Milano (MI)",
+        "oggetto": "Betting analysis",
+        "scadenza": "2024-07-20"
+    },
+    {
+        "id": 11,
+        "azienda": "Twitter",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Roma (RM)",
+        "oggetto": "Sviluppo di un sistema di gestione per la logistica",
+        "scadenza": "2024-06-30"
+    },
+    {
+        "id": 12,
+        "azienda": "Linkedin",
+        "curriculare": false,
+        "durata": 12,
+        "luogo": "Napoli (NA)",
+        "oggetto": "Gestione Impresa",
+        "scadenza": "2024-08-10"
+    },
+    {
+        "id": 13,
+        "azienda": "Instagram",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Torino (TO)",
+        "oggetto": "Sviluppo di nuove tecnlogie per il feed",
+        "scadenza": "2024-09-12"
+    },
+    {
+        "id": 14,
+        "azienda": "Lavazza",
+        "curriculare": false,
+        "durata": 3,
+        "luogo": "Milano (MI)",
+        "oggetto": "Studio di nuove miscele di caffè",
+        "scadenza": "2024-07-20"
+    },
+    {
+        "id": 15,
+        "azienda": "Intesa San Paolo",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Roma (RM)",
+        "oggetto": "Analisi dei rendimenti di investimento",
+        "scadenza": "2024-06-30"
+    },
+    {
+        "id": 16,
+        "azienda": "Michelin",
+        "curriculare": false,
+        "durata": 12,
+        "luogo": "Napoli (NA)",
+        "oggetto": "Analisi degrado pneumatici",
+        "scadenza": "2024-08-10"
+    },
+    {
+        "id": 17,
+        "azienda": "Reddit",
+        "curriculare": true,
+        "durata": 6,
+        "luogo": "Torino (TO)",
+        "oggetto": "Sviluppo di un sistema di gestione per la logistica",
+        "scadenza": "2024-09-12"
+    },
+    {
+        "id": 18,
+        "azienda": "Ferrari",
+        "curriculare": false,
+        "durata": 3,
+        "luogo": "Milano (MI)",
+        "oggetto": "Soluzioni innovative degrado pneumatici",
+        "scadenza": "2024-07-20"
+    }
+]

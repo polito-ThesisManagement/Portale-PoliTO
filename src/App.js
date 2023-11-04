@@ -22,6 +22,7 @@ import Lingue from './pages/didattica/Lingue';
 import Corsi from './pages/didattica/Corsi';
 import Tesi from './pages/carriera/Tesi';
 import Job from './pages/opportunita/Job';
+import Tirocinio from './pages/opportunita/Tirocini';
 
 
 
@@ -47,6 +48,7 @@ function App() {
             <Route path='carriera/tesi' element={<Tesi />} />
             <Route path='/opportunita' element={<Opportunita />} />
             <Route path='/opportunita/job' element={<Job />} />
+            <Route path='/opportunita/tirocinio' element={<Tirocinio />} />
             <Route path='/servizi' element={<Servizi />} />
             <Route path='/help' element={<Help />} />
             <Route path="/didattica/:nome" element={<CoursePage />}>

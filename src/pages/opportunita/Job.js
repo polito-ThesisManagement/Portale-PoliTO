@@ -12,6 +12,7 @@ function getRandomNumber(min, max) {
     return Math.random() * (max - min) + min;
   }
 
+//cliccando sul lavoro dovrebbe aprire una pagina con i dettagli del lavoro
 export default function Job() {
     
     const [jobs, setJobs] = useState(Jobs);
