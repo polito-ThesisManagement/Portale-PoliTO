@@ -1,0 +1,281 @@
+[
+    {
+        "azienda": "compagnia a",
+        "lavoro": "software engineer",
+        "sede": "Torino(TO)",
+        "data_ins": "08/11/2034",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Informatica"
+        ]
+    },
+    {
+        "azienda": "pippo srl",
+        "lavoro": "project manager",
+        "sede": "Milano(MI), Brescia(BS)",
+        "data_ins": "10/11/2023",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Informatica",
+            "Ingegneria Gestionale",
+            "Ingegneria Meccanica",
+            "Ingneria fisica"
+        ]
+    },
+    {
+        "azienda": "paperino spa",
+        "lavoro": "data scientist",
+        "sede": "Torino(TO)",
+        "data_ins": "30/10/2023",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria fisica",
+            "Ingegneria Informatica",
+            "Ingegneria Gestionale",
+            "Ingegneria matematica"
+        ]
+    },
+    {
+        "azienda": "tecnologia spa",
+        "lavoro": "data engineer",
+        "sede": "Roma(RM), Napoli(NA)",
+        "data_ins": "15/12/2023",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Informatica",
+            "Ingegneria Elettronica",
+            "Ingegneria delle Telecomunicazioni"
+        ]
+    },
+    {
+        "azienda": "innovazione srl",
+        "lavoro": "software developer",
+        "sede": "Firenze(FI), Pisa(PI)",
+        "data_ins": "22/01/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Informatica",
+            "Scienze dell'Informazione"
+        ]
+    },
+    {
+        "azienda": "costruzioni elettriche spa",
+        "lavoro": "electrical engineer",
+        "sede": "Genova(GE), La Spezia(SP)",
+        "data_ins": "05/02/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Elettrica",
+            "Ingegneria Elettronica"
+        ]
+    },
+    {
+        "azienda": "logistica srl",
+        "lavoro": "supply chain analyst",
+        "sede": "Bologna(BO), Modena(MO)",
+        "data_ins": "18/03/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Gestionale",
+            "Economia"
+        ]
+    },
+    {
+        "azienda": "energia pulita spa",
+        "lavoro": "environmental engineer",
+        "sede": "Verona(VR), Vicenza(VI)",
+        "data_ins": "07/04/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Ambientale",
+            "Scienze Ambientali"
+        ]
+    },
+    {
+        "azienda": "fabbrica di idee srl",
+        "lavoro": "innovation consultant",
+        "sede": "Palermo(PA), Catania(CT)",
+        "data_ins": "14/05/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Gestionale",
+            "Scienze Cognitive"
+        ]
+    },
+    {
+        "azienda": "architettura innovativa spa",
+        "lavoro": "architect",
+        "sede": "Cagliari(CA), Sassari(SS)",
+        "data_ins": "29/06/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Architettura",
+            "Ingegneria Edile"
+        ]
+    },
+    {
+        "azienda": "cybersecurity srl",
+        "lavoro": "cybersecurity analyst",
+        "sede": "Ancona(AN), Pesaro(PU)",
+        "data_ins": "08/08/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Informatica",
+            "Sicurezza Informatica"
+        ]
+    },
+    {
+        "azienda": "biotecnologie spa",
+        "lavoro": "biomedical engineer",
+        "sede": "Trieste(TS), Udine(UD)",
+        "data_ins": "17/09/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Biomedica",
+            "Biologia"
+        ]
+    },
+    {
+        "azienda": "intelligenza artificiale srl",
+        "lavoro": "machine learning engineer",
+        "sede": "Perugia(PG), Terni(TR)",
+        "data_ins": "25/10/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Informatica",
+            "Scienze dell'Informazione"
+        ]
+    },
+    {
+        "azienda": "telecomunicazioni spa",
+        "lavoro": "telecommunications engineer",
+        "sede": "Bari(BA), Foggia(FG)",
+        "data_ins": "12/11/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria delle Telecomunicazioni",
+            "Elettronica"
+        ]
+    },
+    {
+        "azienda": "robotica srl",
+        "lavoro": "robotics engineer",
+        "sede": "Cosenza(CS), Reggio Calabria(RC)",
+        "data_ins": "20/12/2024",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Meccanica",
+            "Ingegneria Elettronica"
+        ]
+    },
+    {
+        "azienda": "gestione risorse umane spa",
+        "lavoro": "human resources manager",
+        "sede": "Varese(VA), Como(CO)",
+        "data_ins": "05/01/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Psicologia",
+            "Scienze delle Risorse Umane"
+        ]
+    },
+    {
+        "azienda": "sviluppo software srl",
+        "lavoro": "software tester",
+        "sede": "Reggio Emilia(RE), Parma(PR)",
+        "data_ins": "14/02/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Informatica",
+            "Scienze dell'Informazione"
+        ]
+    },
+    {
+        "azienda": "automazione industriale spa",
+        "lavoro": "industrial automation engineer",
+        "sede": "Brindisi(BR), Taranto(TA)",
+        "data_ins": "27/03/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Meccanica",
+            "Automazione Industriale"
+        ]
+    },
+    {
+        "azienda": "finanza e controllo srl",
+        "lavoro": "financial analyst",
+        "sede": "Potenza(PZ), Matera(MT)",
+        "data_ins": "10/04/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Economia",
+            "Finanza"
+        ]
+    },
+    {
+        "azienda": "fisica avanzata srl",
+        "lavoro": "physicist",
+        "sede": "Catanzaro(CZ), Crotone(KR)",
+        "data_ins": "02/06/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Fisica",
+            "Ingegneria Fisica"
+        ]
+    },
+    {
+        "azienda": "energia sostenibile spa",
+        "lavoro": "energy engineer",
+        "sede": "Enna(EN), Ragusa(RG)",
+        "data_ins": "15/07/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Energetica",
+            "Energia Rinnovabile"
+        ]
+    },
+    {
+        "azienda": "elettronica evoluta srl",
+        "lavoro": "electrical designer",
+        "sede": "Viterbo(VT), Rieti(RI)",
+        "data_ins": "28/08/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Elettrica",
+            "Elettronica"
+        ]
+    },
+    {
+        "azienda": "ambiente pulito srl",
+        "lavoro": "environmental consultant",
+        "sede": "Siracusa(SR), Trapani(TP)",
+        "data_ins": "09/09/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Ambientale",
+            "Scienze Ambientali"
+        ]
+    },
+    {
+        "azienda": "creatività design spa",
+        "lavoro": "graphic designer",
+        "sede": "Brindisi(BR), Lecce(LE)",
+        "data_ins": "22/10/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Design Grafico",
+            "Comunicazione Visiva"
+        ]
+    },
+    {
+        "azienda": "gestione aziendale srl",
+        "lavoro": "business analyst",
+        "sede": "Bari(BA), Barletta-Andria-Trani(BT)",
+        "data_ins": "05/11/2025",
+        "invia_cv": true,
+        "corsi": [
+            "Ingegneria Gestionale",
+            "Economia"
+        ]
+    }
+]

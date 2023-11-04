@@ -21,6 +21,7 @@ import Timetable from './components/Timetable' //si può fare proprio una pagina
 import Lingue from './pages/didattica/Lingue';
 import Corsi from './pages/didattica/Corsi';
 import Tesi from './pages/carriera/Tesi';
+import Job from './pages/opportunita/Job';
 
 
 
@@ -45,6 +46,7 @@ function App() {
             <Route path='/carriera' element={<Carriera />} />
             <Route path='carriera/tesi' element={<Tesi />} />
             <Route path='/opportunita' element={<Opportunita />} />
+            <Route path='/opportunita/job' element={<Job />} />
             <Route path='/servizi' element={<Servizi />} />
             <Route path='/help' element={<Help />} />
             <Route path="/didattica/:nome" element={<CoursePage />}>
