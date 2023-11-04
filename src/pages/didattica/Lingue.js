@@ -1,9 +1,17 @@
-export default function Lingue() {
+import { Container } from "react-bootstrap";
 
-    //non presente nella nuova architettura, se elimi la pagina elimina anche il tutto su Data.json 
+import { Translate } from "react-bootstrap-icons";
+
+export default function Lingue() {
+ 
     return (
         <>
-            <h1>Lingue</h1>
+             <Container className='my-3'>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Translate size={25} className='me-2' />
+                    <h1>Lingue</h1>
+                </div>
+            </Container>
         </>
     );  
 
