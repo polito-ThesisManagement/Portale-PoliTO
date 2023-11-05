@@ -9,15 +9,19 @@ export default function CourseSummary(props) {
 
     const { codice, nome, periodo, crediti } = props;
 
+    //si possono rivedere i colori
     return (
-        <ListGroup.Item className='mb-2 rounded' style={{border: '1px solid orange'}}>
+        <ListGroup.Item className='mb-2 rounded' style={{backgroundColor: '#004C81', color: '#FFFFFF', font: 'semi-bold'}}>
             <Container>
                 <Row>
                     <Col xs={2}>
                         {props.codice}
                     </Col>
                     <Col xs={7}>
-                        <Link to={`/didattica/${props.nome}`} state={{codice, nome, periodo, crediti}}>{props.nome}</Link>
+                        <Link
+                         to={`/didattica/${props.nome}`}
+                          state={{codice, nome, periodo, crediti}}
+                          style={{color: '#FFFFFF', font: 'bold'}} >{props.nome}</Link>
                     </Col>
                     <Col>
                         {props.periodo}

@@ -1,7 +1,7 @@
 [
     {
       "nome": "Informatica I",
-      "codice": "INF101",
+      "codice": "INF10",
       "docente": "Prof. Rossi",
       "colore" : "primary",
       "periodo" : 1,
@@ -14,7 +14,7 @@
     },
     {
       "nome": "Analisi I",
-      "codice": "MAT202",
+      "codice": "MAT20",
       "docente": "Prof. Bianchi",
       "colore" : "success",
       "periodo" : 1,
@@ -28,11 +28,11 @@
     },
     {
         "nome" : "Chimica",
-        "codice" : "CHM101",
+        "codice" : "CHM10",
         "docente" : "Prof. Verdi",
         "colore" : "danger",
         "periodo" : 1,
-        "crediti" : 10,
+        "crediti" : 6,
         "orarioSettimanale" : [
             { "giorno" : "Lunedì", "orario" : "14:30-16:00" },
             { "giorno" : "Mercoledì", "orario" : "17:30-19:00" }
