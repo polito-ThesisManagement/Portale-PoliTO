@@ -1,6 +1,6 @@
 export default function OrarioCorso() {
 
-    //non presente nella nuova architettura, se elimi la pagina elimina anche il tutto su Data.json 
+    //abbastanza simile a timetable, probabilemente si può utilizzare lo stesso componente passando come props il corso 
     return (
         <>
             <h1>Orario Corso</h1>

@@ -1,6 +1,6 @@
 export default function Appelli() {
 
-    //non presente nella nuova architettura, se elimi la pagina elimina anche il tutto su Data.json 
+    //Potremo anche accorparla nella guida ad esempio, comuque è una semplice tabella con prenota appello, annulla prenotazione 
     return (
         <>
             <h1>Appelli</h1>

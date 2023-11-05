@@ -11,7 +11,7 @@ export default function Materiale() {
                     barre navigazione
                 </Row>
                 <Row>
-                    <Col>Scaletta Materiale</Col>
+                    <Col>Scaletta Materiale {/** Potrebbe aiutare https://www.youtube.com/watch?v=rvKCsHS590o */}</Col>
                     <Col xs={9}> Cartelle e Materiale</Col>
                 </Row>
 

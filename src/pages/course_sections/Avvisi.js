@@ -1,6 +1,6 @@
 export default function Avvisi() {
 
-    //non presente nella nuova architettura, se elimi la pagina elimina anche il tutto su Data.json 
+    //Userei il componente Tabs su React-Bootstrap per distinguerli, ma siamo nel corso e non è necessario probabilmente
     return (
         <>
             <h1>Avvisi</h1>
