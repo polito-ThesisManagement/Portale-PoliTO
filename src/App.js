@@ -10,8 +10,12 @@ import Help from './pages/Help';
 import Sidebar from './components/Sidebar';
 import CoursePage from './pages/didattica/CoursePage';
 import Materiale from './pages/course_sections/Materiale';
+import OrarioCorso from './pages/course_sections/OrarioCorso';
+import Guida from './pages/course_sections/Guida';
+import Elaborati from './pages/course_sections/Elaborati';
+import Appelli from './pages/course_sections/Appelli';
 import Avvisi from './pages/course_sections/Avvisi';
-import CPD from './pages/course_sections/CPD';
+import VirtualClassroom from './pages/course_sections/VirtualClassrom'; //sbagliato a scrivere room
 import Didattica from './pages/Didattica';
 import AreaPersonale from './pages/AreaPersonale';
 import Carriera from './pages/Carriera';
@@ -54,7 +58,11 @@ function App() {
             <Route path="/didattica/:nome" element={<CoursePage />}>
               <Route path="materiale" element={<Materiale />} />
               <Route path="avvisi" element={<Avvisi />} />
-              <Route path="cpd" element={<CPD />} />
+              <Route path="orario" element={<OrarioCorso />} />
+              <Route path="guida" element={<Guida />} />
+              <Route path="elaborati" element={<Elaborati />} />
+              <Route path="appelli" element={<Appelli />} />
+              <Route path="vclassrom" element={<VirtualClassroom />} />
             </Route>
           </Routes>
         </Col>
