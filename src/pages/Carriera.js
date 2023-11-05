@@ -1,8 +1,11 @@
 import { CardChecklist, PersonFillUp, CreditCard, PersonGear, Mortarboard, SaveFill } from 'react-bootstrap-icons';
+
 import MyCard from '../components/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import '../App.css';
 
 export default function Carriera() {
 
@@ -14,7 +17,7 @@ export default function Carriera() {
                 <Row>
                     <Col className='d-flex'>
                         <PersonFillUp size={40} />
-                        <h1 className='ms-3'>Carriera</h1>
+                        <h1 className='text-style ms-3'>Carriera</h1>
                     </Col>
                 </Row>
                 <Row className='mt-4'>

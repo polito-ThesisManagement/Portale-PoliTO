@@ -41,7 +41,10 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='/opportunita/job' className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link 
+                        as={Link} 
+                        to='/opportunita/job'
+                        className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza offerte di lavoro
                         </Card.Link>
@@ -102,8 +105,11 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/borse-di-studio' 
-                        className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link} 
+                        to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/borse-di-studio' 
+                        target='_blank'
+                        className="mt-auto"
+                        style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza informazioni sulle borse di studio disponibili 
                         </Card.Link>
@@ -139,8 +145,12 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/collaborazioni-part-time' 
-                        className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link 
+                        as={Link} 
+                        to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/collaborazioni-part-time' 
+                        target="_blank"
+                        className="mt-auto" 
+                        style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza informazioni sulle collaborazioni disponibili 
                         </Card.Link>
@@ -176,8 +186,11 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/associazioni-studentesche'
-                         className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link}
+                         to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/associazioni-studentesche'
+                         target='_blank'
+                         className="mt-auto"
+                         style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                              Visualizza informazioni sulle associazioni studentesche presenti nel Politencico di Torino
                         </Card.Link>
@@ -207,8 +220,11 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/team-e-progetti-studenteschi' 
-                        className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link}
+                        to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/team-e-progetti-studenteschi' 
+                        target='_blank'
+                        className="mt-auto"
+                        style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza informazioni sui team studenteschi presenti nel Politencico di Torino 
                         </Card.Link>
@@ -238,8 +254,11 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/sport' 
-                        className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link} 
+                        to='https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/sport' 
+                        target='_blank'
+                        className="mt-auto"
+                        style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza informazioni sulla vita sportiva del nostro Ateneo
                         </Card.Link>
@@ -269,7 +288,12 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='https://www.polito.it/didattica/iscriversi-studiare-laurearsi/studiare-all-estero/iniziative-di-mobilita' className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link 
+                        as={Link} 
+                        to='https://www.polito.it/didattica/iscriversi-studiare-laurearsi/studiare-all-estero/iniziative-di-mobilita'
+                        target='_blank'
+                        className="mt-auto"
+                        style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza possibili bandi erasmus
                         </Card.Link>

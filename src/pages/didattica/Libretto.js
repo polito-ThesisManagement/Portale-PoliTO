@@ -6,6 +6,8 @@ import { Row, Col, Table } from 'react-bootstrap';
 
 import { JournalCheck } from 'react-bootstrap-icons';
 
+import '../../App.css';
+
 let theadStyle = {
     backgroundColor: '#002B49',
     color: '#FFF'
@@ -22,7 +24,7 @@ export default function Libretto() {
             <Container className='my-3'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <JournalCheck size={25} className='me-2' />
-                    <h1>Libretto</h1>
+                    <h1 className='text-style'>Libretto</h1>
                 </div>
                 <h4 className='pb-2' style={{ color: '#B75E00', fontFamily: 'Helvetica'}}>La tua carriera</h4>
                 <Row className='mt-4'>
@@ -34,8 +36,8 @@ export default function Libretto() {
                             striped
                             style={{ backgroundColor: '#004C81'}}
                         />
-                         <h5 style={{ paddingTop: '15px' }}>Media ponderata: 27.7</h5>
-                         <h5>Voto Laurea: 101.56</h5>
+                         <h5 style={{ paddingTop: '15px' }} className='text-style'>Media ponderata: 27.7</h5>
+                         <h5 className='text-style'>Voto Laurea: 101.56</h5>
                     </Col>
                     <Col>
                         <ProgressBar
@@ -45,8 +47,8 @@ export default function Libretto() {
                             label={`${courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}%`}
                             style={{ backgroundColor: '#004C81'}}
                         />
-                        <h5 style={{ paddingTop: '15px' }}>Crediti ottenuti: {courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}</h5>
-                        <h5>Crediti Frequentati: 120</h5>
+                        <h5 style={{ paddingTop: '15px' }} className='text-style'>Crediti ottenuti: {courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}</h5>
+                        <h5 className='text-style'>Crediti Frequentati: 120</h5>
                     </Col>
                     <Col>
                         <ProgressBar
@@ -56,13 +58,13 @@ export default function Libretto() {
                             label={`21%`}
                             style={{ backgroundColor: '#004C81'}}
                         />
-                           <h5 style={{ paddingTop: '15px' }}>Crediti ottenuti quest'anno: 6</h5>
-                        <h5>Crediti Frequentati quest'anno: 28</h5>
+                        <h5 style={{ paddingTop: '15px' }} className='text-style'>Crediti ottenuti quest'anno: 6</h5>
+                        <h5 className='text-style'>Crediti Frequentati quest'anno: 28</h5>
                     </Col>
                 </Row>
                 <Row className='mt-3'>
                     <Col>
-                        <h4 className='pb-3' style={{ color: '#B75E00', fontFamily: 'Helvetica' }}>Valutazioni</h4>
+                        <h4 className='pb-3 text-style' style={{ color: '#B75E00'}}>Valutazioni</h4>
                         <Table striped>
                             <thead>
                                 <tr>

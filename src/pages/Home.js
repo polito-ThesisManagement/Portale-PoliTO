@@ -11,13 +11,15 @@ import { ListTask, ClockFill, BellFill, StarFill, JournalBookmarkFill, HouseFill
 
 import Courses from '../data/Courses.json'
 
+import '../App.css';
+
 export default function Home() {
 
     return (
         <>
             <div className="d-flex align-items-center mb-2 mt-3">
                 <HouseFill className="me-1 pb-2" size={30} />
-                <h1 style={{ fontFamily: 'Montserrat' }}>Homepage</h1>
+                <h1 className="text-style">Homepage</h1>
             </div>
             <Container className="mt-3">
                 <Row>
@@ -25,7 +27,7 @@ export default function Home() {
                         <div className="mx-2">
                             <div className="d-flex align-items-center mb-2">
                                 <ListTask className="me-2 pb-2" size={30} />
-                                <h4 style={{ fontFamily: 'Montserrat' }}>Carico Didattico</h4>
+                                <h4 className="text-style">Carico Didattico</h4>
                             </div>
                             <div className="text-center">
                                 <Button style={{ backgroundColor: '#002B48' }} >
@@ -47,7 +49,7 @@ export default function Home() {
                         <Row style={{ height: '50vm' }}>
                             <div className="d-flex align-items-center mb-2">
                                 <BellFill className="me-1 pb-2" size={30} />
-                                <h4 style={{ fontFamily: 'Montserrat' }}>Avvisi</h4>
+                                <h4 className="text-style">Avvisi</h4>
                             </div>
                             <Tabs
                                 defaultActiveKey="generali"
@@ -72,14 +74,14 @@ export default function Home() {
                         <Row className="mt-3">
                             <div className="d-flex align-items-center mb-2">
                                 <StarFill className="me-1 pb-2" size={30} />
-                                <h4 style={{ fontFamily: 'Montserrat' }}>Preferiti</h4>
+                                <h4 className="text-style">Preferiti</h4>
                             </div>
                         </Row>
                     </Col>
                     <Col>
                         <div className="d-flex align-items-center mb-2">
                             <JournalBookmarkFill className="me-1 pb-2" size={30} />
-                            <h4 style={{ fontFamily: 'Montserrat' }}>Agenda</h4>
+                            <h4 className="text-style">Agenda</h4>
                         </div>
                     </Col>
                 </Row>

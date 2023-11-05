@@ -1,8 +1,12 @@
 import { AirplaneEnginesFill, PersonWorkspace, BagFill, WalletFill, PeopleFill, PersonAdd, PersonUp, AirplaneFill } from 'react-bootstrap-icons';
+
 import CardOpportunita from '../components/CardOpportunita';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import '../App.css';
 
 export default function Carriera() {
 
@@ -14,7 +18,7 @@ export default function Carriera() {
                 <Row>
                     <Col className='d-flex'>
                         <AirplaneEnginesFill size={40} />
-                        <h1 className='ms-3'>Opportunità</h1>
+                        <h1 className='text-style ms-3'>Opportunità</h1>
                     </Col>
                 </Row>
                 <Row className='mt-4'>

@@ -30,7 +30,7 @@ export default function Timetable() {
     return (
         <Container className='my-3 me-3'>
             <Container className='mb-4'>
-                <h2>Orario Lezioni</h2>
+                <h2 className='text-style'>Orario Lezioni</h2>
                 {Courses.map((corso) => {
                     return (
                         <Form.Check key={corso.codice}
