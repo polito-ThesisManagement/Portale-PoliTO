@@ -1,11 +1,13 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import Image from 'react-bootstrap/Image';
 import Navbar from 'react-bootstrap/Navbar';
 import Searchbar from './Searchbar';
 
-
 import Services from '../data/Data.json';
-import Logo from '../assets/logo_polito2.svg';
+import Logo from '../assets/logo_polito.svg';
+import '../styles/Navbar.css'
+import '../styles/Utilities.css'
 
 import { Link } from 'react-router-dom';
 import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
@@ -15,17 +17,16 @@ import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
 
 export default function PoliNavbar() {
     return (
-        <Navbar expand="lg" bg='wight' style={{ borderBottom: '2px solid orange' }}>
+        <Navbar className="custom-navbar">
             <Container fluid>
-                <Navbar.Brand as={Link} to="/">
-                    <img
+                <Navbar.Brand as={Link} to="/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight:'40px' }}>
+                    <Image
                         src={Logo}
                         alt="Logo PoliTo"
-                        width="70%"
-                        height="70%"
-                        className="d-inline-block align-top"
+                        style={{ width: '100%', height: '100%' }}
                     />
                 </Navbar.Brand>
+                <Searchbar services={Services}/>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-end'>
                     <Nav
@@ -33,13 +34,14 @@ export default function PoliNavbar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Searchbar services={Services} />
-                        <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px' }}><Envelope size={28} color='#1d3b55'/></Nav.Link>
-                        <Nav.Link as={Link} to="/tesi" style={{ marginRight: '5px' }}><Bell size={28} color='#1d3b55'/></Nav.Link>
-                        <Navbar.Text style={{ fontWeight: '600', fontSize: '11px', color: '#1d3b55', marginRight: '5px' }}>
-                            Matr: 123456<br></br>Mario Rossi
+                        <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px', marginTop: '7px' }}><Envelope  size={24} color='#fff'/></Nav.Link>
+                        <Nav.Link as={Link} to="/tesi" style={{ marginRight: '5px', marginTop:'7px' }}><Bell size={24} color='#fff'/></Nav.Link>
+                        <Navbar.Text className ="text-style" style={{ fontWeight: '500', fontSize: '13px', color: '#fff', marginRight: '5px', marginTop:'3px' }}>
+                            s123456
+                            <br/>
+                            Mario Rossi
                         </Navbar.Text>
-                        <Nav.Link as={Link} to="/area_personale" ><PersonCircle size={36} color='#1d3b55'/></Nav.Link>
+                        <Nav.Link as={Link} to="/area_personale" ><PersonCircle size={42} color='#fff'/></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

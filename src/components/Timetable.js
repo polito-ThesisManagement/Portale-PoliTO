@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import '../App.css'
+import '../styles/App.css'
 import Courses from '../data/Courses.json'
 
 import Table from 'react-bootstrap/Table';

@@ -4,7 +4,7 @@ import { ListUl, JournalText, Upload } from 'react-bootstrap-icons';
 import Courses from '../../data/Courses.json'
 import CourseSummary from '../../components/CourseSummary';
 
-import '../../App.css';
+import '../../styles/App.css';
 
 export default function Corsi() {
     //occhio alla navigazione dentro i corsi, per il momento in altri e in carico didattico ci sono gli stessi corsi

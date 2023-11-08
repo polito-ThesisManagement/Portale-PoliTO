@@ -1,7 +1,7 @@
 import { Row, Col } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 
-import './App.css';
+import './styles/Utilities.css';
 
 import PoliNavbar from './components/Navbar';
 import Servizi from './pages/Servizi';
@@ -34,10 +34,15 @@ import Tirocinio from './pages/opportunita/Tirocini';
 function App() {
   return (
     <>
+      <head>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+        </style>
+      </head>
       <PoliNavbar />
       <Row>
         <Sidebar />
-        <Col md={10}>
+        <Col className='content'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/area_personale' element={<AreaPersonale />} />

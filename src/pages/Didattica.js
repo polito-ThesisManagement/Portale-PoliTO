@@ -1,4 +1,4 @@
-import '../App.css'
+import '../styles/App.css'
 
 import { Container } from 'react-bootstrap';
 import { Book, JournalCheck, ClockFill, Translate, ListTask } from 'react-bootstrap-icons';

@@ -24,15 +24,14 @@ export default function Searchbar(props) {
     }
 
     return (
-        <Form className="d-flex me-3 mt-1">
+        <Form className="d-flex me-3">
             <Form.Control
                 type="search"
                 placeholder="Ricerca attravreso parole chiave"
                 className="me-2"
                 aria-label="Search"
                 size="md"
-                style={{ flex: '1', width: '300px', height: '80%'}}
-                color='primary'
+                style={{ flex: '1', width: '400px', height: '40px'}}
                 onChange={handleChange}
                 
             />

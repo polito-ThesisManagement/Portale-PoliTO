@@ -6,7 +6,7 @@ import { Row, Col, Table } from 'react-bootstrap';
 
 import { JournalCheck } from 'react-bootstrap-icons';
 
-import '../../App.css';
+import '../../styles/App.css';
 
 let theadStyle = {
     backgroundColor: '#002B49',

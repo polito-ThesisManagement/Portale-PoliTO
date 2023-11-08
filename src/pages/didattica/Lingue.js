@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 
 import { Translate } from "react-bootstrap-icons";
 
-import '../../App.css';
+import '../../styles/App.css';
 
 export default function Lingue() {
  

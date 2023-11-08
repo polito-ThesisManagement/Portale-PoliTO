@@ -1,0 +1,15 @@
+.text-style {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.section-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.subsection-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+}

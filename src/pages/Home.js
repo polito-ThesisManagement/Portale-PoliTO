@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import Button from 'react-bootstrap/Button';
 import { Container, ListGroup, Row, Col } from "react-bootstrap";
 import Tab from 'react-bootstrap/Tab';
@@ -11,28 +9,30 @@ import { ListTask, ClockFill, BellFill, StarFill, JournalBookmarkFill, HouseFill
 
 import Courses from '../data/Courses.json'
 
-import '../App.css';
+import '../styles/App.css';
+import '../styles/Text.css'
+import { HiHome } from 'react-icons/hi';
+import { FaList } from 'react-icons/fa';
 
 export default function Home() {
 
     return (
         <>
-            <div className="d-flex align-items-center mb-2 mt-3">
-                <HouseFill className="me-1 pb-2" size={30} />
-                <h1 className="text-style">Homepage</h1>
+            <div className="d-flex align-items-center mx-2 mt-3">
+                <HiHome size={28} />
+                <span className="section-title" style={{marginLeft:'5px', marginTop:'3px'}}>Homepage</span>
             </div>
             <Container className="mt-3">
                 <Row>
                     <Col>
-                        <div className="mx-2">
-                            <div className="d-flex align-items-center mb-2">
-                                <ListTask className="me-2 pb-2" size={30} />
-                                <h4 className="text-style">Carico Didattico</h4>
+                            <div className="d-flex align-items-center">
+                                <FaList size={20}/>
+                                <span className="subsection-title" style={{marginLeft:'10px'}}>Carico Didattico</span>
                             </div>
                             <div className="text-center">
-                                <Button style={{ backgroundColor: '#002B48' }} >
+                                <Button className='custom-button' >
                                     <ClockFill className="me-2" />
-                                    Orario Lezioni
+                                    Orario lezioni
                                 </Button>
                             </div>
                             <ListGroup className="mt-2">
@@ -42,7 +42,6 @@ export default function Home() {
                                     )
                                 })}
                             </ListGroup>
-                        </div>
                     </Col>
                     <Col>
                         {/** Si può provare con un container quì */}

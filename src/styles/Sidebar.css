@@ -1,20 +1,38 @@
 .custom-sidebar {
-    background-color: #333;
+    background-color: #002B49;
     color: #fff;
+    width: 80px;
+    height: 100vh;
+    z-index: 2;
+    position: absolute;
 }
 
 .custom-sidebar .nav-link {
-    color: #000;
+    color: #fff;
     border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+}
+.custom-sidebar .nav-link:hover {
+    background-color: #143959;
+    color: #fff;
 }
 
-.custom-sidebar .nav-link:hover {
-    background-color: #666;
-    color: #fff;
-    
-  }
-
 .custom-sidebar .nav-link.active {
-    background-color: #1d3b55;
+    background-color: #EF7B00;
     color: #fff;
+}
+
+.custom-sidebar:hover{
+    width: 224px;
+}
+
+.sidebar-text{
+    padding-left: 10px;
+    font-weight: 500;
+    display: none;
+}
+
+.custom-sidebar:hover .sidebar-text {
+    display: block;
 }

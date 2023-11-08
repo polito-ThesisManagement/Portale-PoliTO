@@ -1,5 +1,16 @@
 .custom-button {
-    background-color: #1d3b55;
-    color: #fff;
-    border-color: #fff
-  }
+  background-color: #1a415c;
+  color: #fff;
+  border-color: #fff
+}
+
+.content {
+  margin-left: 80px;
+  position: relative;
+  height: 100vh;
+  background-color: #f0f3f5;
+}
+
+.text-style{
+  font-family: 'Montserrat', sans-serif;
+}
