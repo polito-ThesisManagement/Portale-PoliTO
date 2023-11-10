@@ -1,16 +1,20 @@
 .custom-sidebar {
     background-color: #002B49;
     color: #fff;
-    width: 80px;
-    height: 100vh;
     z-index: 2;
+    width: 224px;
+    padding: 0;
+    height: 100vh;
     position: absolute;
 }
 
 .custom-sidebar .nav-link {
     color: #fff;
+    padding-right: 0;
+    margin-left: 16px;
     border-radius: 8px;
     margin-bottom: 10px;
+    margin-right: 8px;
     display: flex;
 }
 .custom-sidebar .nav-link:hover {
@@ -23,16 +27,18 @@
     color: #fff;
 }
 
-.custom-sidebar:hover{
-    width: 224px;
-}
-
 .sidebar-text{
     padding-left: 10px;
     font-weight: 500;
-    display: none;
+    /*display: none;*/
 }
 
+
+/* Sidebar espandibile
 .custom-sidebar:hover .sidebar-text {
     display: block;
 }
+.custom-sidebar:hover{
+    width: 224px;
+}
+*/

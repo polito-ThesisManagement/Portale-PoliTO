@@ -19,7 +19,7 @@ export default function PoliNavbar() {
     return (
         <Navbar className="custom-navbar">
             <Container fluid>
-                <Navbar.Brand as={Link} to="/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight:'40px' }}>
+                <Navbar.Brand as={Link} to="/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight:'36px' }}>
                     <Image
                         src={Logo}
                         alt="Logo PoliTo"
@@ -34,14 +34,14 @@ export default function PoliNavbar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px', marginTop: '7px' }}><Envelope  size={24} color='#fff'/></Nav.Link>
-                        <Nav.Link as={Link} to="/tesi" style={{ marginRight: '5px', marginTop:'7px' }}><Bell size={24} color='#fff'/></Nav.Link>
-                        <Navbar.Text className ="text-style" style={{ fontWeight: '500', fontSize: '13px', color: '#fff', marginRight: '5px', marginTop:'3px' }}>
+                        <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px', marginTop: '7px' }}><Envelope  size={28} color='#fff'/></Nav.Link>
+                        <Nav.Link as={Link} to="/tesi" style={{ marginRight: '12px', marginTop:'7px' }}><Bell size={28} color='#fff'/></Nav.Link>
+                        <Navbar.Text className ="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#fff', marginRight: '12px'}}>
                             s123456
                             <br/>
                             Mario Rossi
                         </Navbar.Text>
-                        <Nav.Link as={Link} to="/area_personale" ><PersonCircle size={42} color='#fff'/></Nav.Link>
+                        <Nav.Link as={Link} to="/area_personale" ><PersonCircle size={48} color='#fff'/></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

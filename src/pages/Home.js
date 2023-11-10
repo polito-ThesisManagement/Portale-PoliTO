@@ -29,14 +29,10 @@ export default function Home() {
                     <Col sm={4}>
                         <Container className='custom-container'>
                             <div className="subsection">
-                                <FaList size={20}/>
-                                <span className="subsection-title">Carico didattico</span>
-                            </div>
-                            <div className="text-center">
-                                <Button className='custom-button'>
-                                    <ClockFill className="me-2 mb-1"/>
-                                    <span className='button-text'>Orario lezioni</span>
-                                </Button>
+                                <span className="subsection-title">
+                                    <FaList size={20} className='subsection-icon'/>
+                                    Carico didattico
+                                </span>
                             </div>
                             <ListGroup className="mt-2">
                                 {Courses.map((corso) => {
@@ -52,8 +48,10 @@ export default function Home() {
                             <Container className='custom-container'>
                                 <Row>
                                     <div className="subsection">
-                                        <StarFill size={20} style={{marginLeft:'11px', marginBottom:'5px'}}/>
-                                        <span className="subsection-title">Preferiti</span>
+                                        <span className="subsection-title">
+                                            <StarFill size={20} className='subsection-icon' style={{marginLeft:'11px', marginBottom:'5px'}}/>
+                                            Preferiti
+                                        </span>
                                     </div>
                                 </Row>
                             </Container>
@@ -61,8 +59,10 @@ export default function Home() {
                         <Row className='mt-3'>
                             <Container className='custom-container'>
                                 <div className="subsection">
-                                    <BellFill size={20} />
-                                    <span className="subsection-title">Avvisi</span>
+                                    <span className="subsection-title">
+                                        <BellFill size={20} className='subsection-icon'/>
+                                        Avvisi
+                                    </span>
                                 </div>
                                 <Tabs
                                     defaultActiveKey="generali"
@@ -90,8 +90,10 @@ export default function Home() {
                     <Col sm={4}>
                         <Container className='custom-container'>
                             <div className="subsection">
-                                <BsFillCalendarFill size={20} style={{marginBottom:'3px'}}/>
-                                <span className="subsection-title">Agenda</span>
+                                <span className="subsection-title">
+                                    <BsFillCalendarFill size={20} className='subsection-icon' style={{marginBottom:'3px'}}/>
+                                    Agenda
+                                </span>
                             </div>
                             
                         </Container>
