@@ -1,7 +1,8 @@
 .custom-button {
   background-color: #1a415c;
   color: #fff;
-  border-color: #fff
+  border-color: #fff;
+  padding-bottom: 6px;
 }
 
 .content {
@@ -13,4 +14,26 @@
 
 .text-style{
   font-family: 'Montserrat', sans-serif;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  padding-left: 10px;
+}
+
+.subsection{
+  padding:8px
+}
+
+.custom-container{
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.course-summary{
+  background-color: #1a415c;
+  color: #fff;
+  border-radius: 6px;
 }

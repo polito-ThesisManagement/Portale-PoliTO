@@ -2,6 +2,12 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.button-text{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+
 .section-title{
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -12,4 +18,21 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 15px;
+    margin-left: 10px;
+}
+
+.detail{
+    font-weight: 100;
+    font-size: 11px;
+}
+
+.course-detail{
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tab{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
 }

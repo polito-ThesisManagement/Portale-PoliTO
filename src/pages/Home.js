@@ -5,34 +5,37 @@ import Tabs from 'react-bootstrap/Tabs';
 
 import CourseSummary from "../components/CourseSummary";
 
-import { ListTask, ClockFill, BellFill, StarFill, JournalBookmarkFill, HouseFill } from "react-bootstrap-icons";
+import {ClockFill, BellFill, StarFill } from "react-bootstrap-icons";
 
 import Courses from '../data/Courses.json'
 
 import '../styles/App.css';
-import '../styles/Text.css'
+import '../styles/Text.css';
+import '../styles/Utilities.css'
 import { HiHome } from 'react-icons/hi';
 import { FaList } from 'react-icons/fa';
+import { BsFillCalendarFill } from 'react-icons/bs';
 
 export default function Home() {
 
     return (
         <>
-            <div className="d-flex align-items-center mx-2 mt-3">
+            <div className="title">
                 <HiHome size={28} />
                 <span className="section-title" style={{marginLeft:'5px', marginTop:'3px'}}>Homepage</span>
             </div>
-            <Container className="mt-3">
-                <Row>
-                    <Col>
-                            <div className="d-flex align-items-center">
+                
+                <Row>   
+                    <Col sm={4}>
+                        <Container className='custom-container'>
+                            <div className="subsection">
                                 <FaList size={20}/>
-                                <span className="subsection-title" style={{marginLeft:'10px'}}>Carico Didattico</span>
+                                <span className="subsection-title">Carico didattico</span>
                             </div>
                             <div className="text-center">
-                                <Button className='custom-button' >
-                                    <ClockFill className="me-2" />
-                                    Orario lezioni
+                                <Button className='custom-button'>
+                                    <ClockFill className="me-2 mb-1"/>
+                                    <span className='button-text'>Orario lezioni</span>
                                 </Button>
                             </div>
                             <ListGroup className="mt-2">
@@ -42,50 +45,58 @@ export default function Home() {
                                     )
                                 })}
                             </ListGroup>
+                        </Container>
                     </Col>
-                    <Col>
-                        {/** Si può provare con un container quì */}
-                        <Row style={{ height: '50vm' }}>
-                            <div className="d-flex align-items-center mb-2">
-                                <BellFill className="me-1 pb-2" size={30} />
-                                <h4 className="text-style">Avvisi</h4>
-                            </div>
-                            <Tabs
-                                defaultActiveKey="generali"
-                                transition={false}
-                                id="tab-avvisi"
-                                className="mb-3"
-                            >
-                                <Tab eventKey="generali" title="Avvisi Generali">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                </Tab>
-                                <Tab eventKey="corsi" title="Avvisi Corsi">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                </Tab>
-                            </Tabs>
+                    <Col sm={4}>
+                        <Row>
+                            <Container className='custom-container'>
+                                <Row>
+                                    <div className="subsection">
+                                        <StarFill size={20} style={{marginLeft:'11px', marginBottom:'5px'}}/>
+                                        <span className="subsection-title">Preferiti</span>
+                                    </div>
+                                </Row>
+                            </Container>
                         </Row>
-                        <Row className="mt-3">
-                            <div className="d-flex align-items-center mb-2">
-                                <StarFill className="me-1 pb-2" size={30} />
-                                <h4 className="text-style">Preferiti</h4>
-                            </div>
-                        </Row>
+                        <Row className='mt-3'>
+                            <Container className='custom-container'>
+                                <div className="subsection">
+                                    <BellFill size={20} />
+                                    <span className="subsection-title">Avvisi</span>
+                                </div>
+                                <Tabs
+                                    defaultActiveKey="generali"
+                                    transition={false}
+                                    id="tab-avvisi"
+                                    className="mb-2 tab"
+                                >
+                                    <Tab eventKey="generali" title="Avvisi generali">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                    </Tab>
+                                    <Tab eventKey="corsi" title="Avvisi corsi">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                    </Tab>
+                                </Tabs>
+                            </Container>
+                            
+                        </Row>    
                     </Col>
-                    <Col>
-                        <div className="d-flex align-items-center mb-2">
-                            <JournalBookmarkFill className="me-1 pb-2" size={30} />
-                            <h4 className="text-style">Agenda</h4>
-                        </div>
+                    <Col sm={4}>
+                        <Container className='custom-container'>
+                            <div className="subsection">
+                                <BsFillCalendarFill size={20} style={{marginBottom:'3px'}}/>
+                                <span className="subsection-title">Agenda</span>
+                            </div>
+                            
+                        </Container>
                     </Col>
                 </Row>
-
-            </Container>
         </>
     );
 
