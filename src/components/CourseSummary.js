@@ -17,18 +17,17 @@ export default function CourseSummary(props) {
                     <Col xs={2} className='course-detail'>
                         {props.codice}
                     </Col>
-                    <Col xs={7} className='course-detail' style={{marginLeft:'8px'}}>
+                    <Col xs={7} className='course-detail p-0' style={{marginLeft:'8px'}}>
                         <Link
                          to={`/didattica/${props.nome}`}
                           state={{codice, nome, periodo, crediti}}
                           style={{color: '#FFFFFF', font: 'bold'}} >{props.nome}</Link>
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={2} className='p-0'>
                         {props.crediti} CFU
                     </Col>
                     <Col className='p-0'>
-                        
-                        <ClockFill style={{marginBottom:'2px'}}/>
+                        <Bell size={20}/>
                     </Col>
                 </Row>
             </Container>

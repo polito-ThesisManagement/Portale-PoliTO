@@ -28,37 +28,37 @@ export default function Sidebar() {
           </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/didattica" className={`nav-link text-style ${location.pathname === '/didattica' ? 'active' : ''}`}>
+          <Link to="/didattica" className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}>
             <HiMiniBookOpen size={28}/>
             <span className='sidebar-text' style={{marginTop:'2px'}}>Didattica</span>
           </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/area_personale" className={`nav-link text-style ${location.pathname === '/area_personale' ? 'active' : ''}`}>
+          <Link to="/area_personale" className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}>
             <BiSolidUser size={28}/>
             <span className='sidebar-text' style={{marginTop:'2px'}}>Area personale</span>
           </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/carriera" className={`nav-link text-style ${location.pathname === '/carriera' ? 'active' : ''}`}>
+          <Link to="/carriera" className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}>
             <PiStudent size={28}/>
             <span className='sidebar-text' style={{marginTop:'3px'}}>Carriera</span>
             </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/opportunita" className={`nav-link text-style ${location.pathname === '/opportunita' ? 'active' : ''}`}>
+          <Link to="/opportunita" className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}>
             <FaSuitcase size={25} style={{marginLeft:'1px'}}/>
             <span className='sidebar-text'style={{marginTop:'1px'}}>Opportunità</span>
             </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/servizi" className={`nav-link text-style ${location.pathname === '/servizi' ? 'active' : ''}`}>
+          <Link to="/servizi" className={`nav-link text-style ${location.pathname.includes('/servizi') ? 'active' : ''}`}>
             <MdApps size={28} style={{marginLeft:'-1px'}}/>
             <span className='sidebar-text' style={{marginTop:'3px'}}>Servizi</span>
             </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/help" className={`nav-link text-style ${location.pathname === '/help' ? 'active' : ''}`}>
+          <Link to="/help" className={`nav-link text-style ${location.pathname.includes('/help') ? 'active' : ''}`}>
             <FaInfoCircle size={28} style={{marginLeft:'-1px'}}/>
             <span className='sidebar-text' style={{marginTop:'3px'}}>Help</span>
           </Link>
