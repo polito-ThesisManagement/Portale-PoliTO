@@ -70,3 +70,10 @@ body{
   background-color: #EF7B00;
   border-color: #EF7B00;
 }
+
+.accordion-button {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #004C81;
+  color: #ffffff;
+}
