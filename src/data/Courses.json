@@ -37,5 +37,70 @@
             { "giorno" : "Lunedì", "orario" : "14:30-16:00" },
             { "giorno" : "Mercoledì", "orario" : "17:30-19:00" }
         ] 
+    },
+    {
+      "nome": "Human computer interaction",
+      "codice": "02JSKOV",
+      "docente": "Prof. Rossi",
+      "colore" : "primary",
+      "periodo" : 1,
+      "crediti" : 8,
+      "orarioSettimanale": [
+        { "giorno": "Lunedì", "orario": "08:30-10:00" },
+        { "giorno": "Mercoledì", "orario": "11:30-13:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+      "nome": "Human computer interaction",
+      "codice": "02JSKOV",
+      "docente": "Prof. Rossi",
+      "colore" : "primary",
+      "periodo" : 1,
+      "crediti" : 8,
+      "orarioSettimanale": [
+        { "giorno": "Lunedì", "orario": "08:30-10:00" },
+        { "giorno": "Mercoledì", "orario": "11:30-13:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+      "nome": "Human computer interaction",
+      "codice": "02JSKOV",
+      "docente": "Prof. Rossi",
+      "colore" : "primary",
+      "periodo" : 1,
+      "crediti" : 8,
+      "orarioSettimanale": [
+        { "giorno": "Lunedì", "orario": "08:30-10:00" },
+        { "giorno": "Mercoledì", "orario": "11:30-13:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+      "nome": "Human computer interaction",
+      "codice": "02JSKOV",
+      "docente": "Prof. Rossi",
+      "colore" : "primary",
+      "periodo" : 1,
+      "crediti" : 8,
+      "orarioSettimanale": [
+        { "giorno": "Lunedì", "orario": "08:30-10:00" },
+        { "giorno": "Mercoledì", "orario": "11:30-13:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+      "nome": "Human computer interaction",
+      "codice": "02JSKOV",
+      "docente": "Prof. Rossi",
+      "colore" : "primary",
+      "periodo" : 1,
+      "crediti" : 8,
+      "orarioSettimanale": [
+        { "giorno": "Lunedì", "orario": "08:30-10:00" },
+        { "giorno": "Mercoledì", "orario": "11:30-13:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
     }
   ]
