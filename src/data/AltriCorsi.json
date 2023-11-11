@@ -1,0 +1,41 @@
+[
+    {
+      "nome": "Information Systems",
+      "codice": "01PDWOV",
+      "docente": "Maurizio Morisio",
+      "colore" : "primary",
+      "periodo" : 1,
+      "crediti" : 8,
+      "orarioSettimanale": [
+        { "giorno": "Lunedì", "orario": "08:30-10:00" },
+        { "giorno": "Mercoledì", "orario": "11:30-13:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+      "nome": "Realtà virtuale",
+      "codice": "02KQEOV",
+      "docente": "Andrea Bottino",
+      "colore" : "success",
+      "periodo" : 1,
+      "crediti" : 10,
+      "orarioSettimanale": [
+        { "giorno": "Martedì", "orario": "13:00-14:30" },
+        { "giorno": "Martedì", "orario": "14:30-16:00" },
+        { "giorno": "Giovedì", "orario": "17:30-19:00" },
+        { "giorno": "Venerdì", "orario": "17:30-19:00" }
+      ]
+    },
+    {
+        "nome" : "Web Application II",
+        "codice" : "01TXSOV",
+        "docente" : "Giovanni Malnati",
+        "colore" : "danger",
+        "periodo" : 1,
+        "crediti" : 6,
+        "orarioSettimanale" : [
+            { "giorno" : "Lunedì", "orario" : "14:30-16:00" },
+            { "giorno" : "Mercoledì", "orario" : "17:30-19:00" }
+        ] 
+    }
+]
