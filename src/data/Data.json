@@ -1,33 +1,93 @@
 [
     {
         "id" : 1,
-        "pageName": "tesi",
-        "link": "/tesi"
+        "pageName": "libretto",
+        "link": "/didattica/libretto"
 
     },
     {
         "id" : 2,
-        "pageName": "libretto",
-        "link": "/libretto"
+        "pageName": "orario",
+        "link": "/didattica/orario"
     },
     {
         "id" : 3,
-        "pageName": "esami",
-        "link": "/esami"
+        "pageName": "lingue",
+        "link": "/didattica/lingue"
     },
     {
         "id" : 4,
-        "pageName": "home",
-        "link": "/"
+        "pageName": "tesi",
+        "link": "/carriera/tesi"
     },
     {
         "id" : 5,
-        "pageName": "servizi",
-        "link": "/servizi"
+        "pageName": "job",
+        "link": "/opportunita/job"
     }, 
     {
         "id" : 6,
-        "pageName": "help",
+        "pageName": "lavoro",
+        "link": "/opportunita/job"
+    },
+    {
+        "id" : 7,
+        "pageName": "tirocinio",
+        "link": "/opportunita/tirocinio"
+    },
+    {
+        "id" : 8,
+        "pageName": "stage",
+        "link": "/opportunita/tirocinio"
+    },
+    {
+        "id" : 9,
+        "pageName": "aule libere",
+        "link": "/servizi"
+    },
+    {
+        "id" : 10,
+        "pageName": "biblioteca",
+        "link": "/servizi"
+    },
+    {
+        "id" : 11,
+        "pageName": "erasmus",
+        "link": "/opportunita"
+    },
+    {
+        "id" : 12,
+        "pageName": "studiare all'estero",
+        "link": "/opportunita"
+    },
+    {
+        "id" : 13,
+        "pageName": "Borsa di studio",
+        "link": "/opportunita"
+    },
+    {
+        "id" : 14,
+        "pageName": "ticket",
         "link": "/help"
+    },
+    {
+        "id" : 15,
+        "pageName": "team studenti",
+        "link": "/opportunita"
+    },
+    {
+        "id" : 15,
+        "pageName": "associazioni studentesche",
+        "link": "/opportunita"
+    },
+    {
+        "id" : 16,
+        "pageName": "curriculum",
+        "link": "/area_personale"
+    }, 
+    {
+        "id" : 17,
+        "pageName": "prenotazioni",
+        "link": "/area_personale"
     }
 ]
