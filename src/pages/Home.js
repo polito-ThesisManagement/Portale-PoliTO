@@ -90,7 +90,6 @@ export default function Home() {
                         </Container>  
                     </Col>
                 </Row>
-            </Container>
         </>
     );
 
