@@ -38,3 +38,10 @@
   border-color: #fff;
   padding-bottom: 6px;
 }
+
+.accordion-button {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #004C81;
+  color: #ffffff;
+}
