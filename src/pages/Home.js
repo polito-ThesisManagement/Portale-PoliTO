@@ -5,7 +5,7 @@ import Tabs from 'react-bootstrap/Tabs';
 
 import CourseSummary from "../components/CourseSummary";
 
-import {ClockFill, BellFill, StarFill } from "react-bootstrap-icons";
+import { ClockFill, BellFill, StarFill } from "react-bootstrap-icons";
 
 import Courses from '../data/Courses.json'
 
@@ -22,7 +22,7 @@ export default function Home() {
         <>
             <div className="title">
                 <HiHome size={28} />
-                <span className="section-title" style={{marginLeft:'5px', marginTop:'3px'}}>Homepage</span>
+                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Homepage</span>
             </div>
                 
                 <Row>   
@@ -30,7 +30,7 @@ export default function Home() {
                         <Container className='custom-container'>
                             <div className="subsection">
                                 <span className="subsection-title">
-                                    <FaList size={20} className='subsection-icon'/>
+                                    <FaList size={20} className='subsection-icon' />
                                     Carico didattico
                                 </span>
                             </div>
@@ -90,6 +90,7 @@ export default function Home() {
                         </Container>  
                     </Col>
                 </Row>
+            </Container>
         </>
     );
 
