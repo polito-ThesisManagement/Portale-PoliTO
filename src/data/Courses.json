@@ -1,7 +1,7 @@
 [
     {
-      "nome": "Human computer interaction",
-      "codice": "02JSKOV",
+      "nome": "Informatica I",
+      "codice": "14BHDOA",
       "docente": "Prof. Rossi",
       "colore" : "primary",
       "periodo" : 1,
@@ -13,8 +13,8 @@
       ]
     },
     {
-      "nome": "Analisi I",
-      "codice": "MAT20",
+      "nome": "Chimica",
+      "codice": "15AHMOA",
       "docente": "Prof. Bianchi",
       "colore" : "success",
       "periodo" : 1,
@@ -27,8 +27,8 @@
       ]
     },
     {
-        "nome" : "Chimica",
-        "codice" : "CHM10",
+        "nome" : "Algoritmi e strutture dati",
+        "codice" : "03AAXOA",
         "docente" : "Prof. Verdi",
         "colore" : "danger",
         "periodo" : 1,
@@ -39,8 +39,8 @@
         ] 
     },
     {
-      "nome": "Human computer interaction",
-      "codice": "02JSKOV",
+      "nome": "Analisi matematica II",
+      "codice": "26ACIOA",
       "docente": "Prof. Rossi",
       "colore" : "primary",
       "periodo" : 1,
@@ -52,8 +52,8 @@
       ]
     },
     {
-      "nome": "Human computer interaction",
-      "codice": "02JSKOV",
+      "nome": "Basi di dati",
+      "codice": "14AFQOA",
       "docente": "Prof. Rossi",
       "colore" : "primary",
       "periodo" : 1,
@@ -65,8 +65,8 @@
       ]
     },
     {
-      "nome": "Human computer interaction",
-      "codice": "02JSKOV",
+      "nome": "Calcolatori elettronici",
+      "codice": "12AGAOA",
       "docente": "Prof. Rossi",
       "colore" : "primary",
       "periodo" : 1,
@@ -78,8 +78,8 @@
       ]
     },
     {
-      "nome": "Human computer interaction",
-      "codice": "02JSKOV",
+      "nome": "Programmazione a oggetti",
+      "codice": "04JEYOA",
       "docente": "Prof. Rossi",
       "colore" : "primary",
       "periodo" : 1,
@@ -91,9 +91,9 @@
       ]
     },
     {
-      "nome": "Human computer interaction",
+      "nome": "Human Computer Interaction",
       "codice": "02JSKOV",
-      "docente": "Prof. Rossi",
+      "docente": "Luigi De Russis",
       "colore" : "primary",
       "periodo" : 1,
       "crediti" : 8,

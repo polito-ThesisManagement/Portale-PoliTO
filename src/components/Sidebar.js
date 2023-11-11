@@ -8,8 +8,7 @@ import "../styles/Utilities.css"
 import { BiSolidUser } from 'react-icons/bi'
 import { HiHome } from 'react-icons/hi'
 import { HiMiniBookOpen } from 'react-icons/hi2'
-import { PiStudent } from 'react-icons/pi'
-import { FaInfoCircle, FaSuitcase } from 'react-icons/fa'
+import { FaInfoCircle, FaSuitcase, FaUserGraduate } from 'react-icons/fa'
 import { MdApps } from 'react-icons/md'
 
 export default function Sidebar() {
@@ -41,7 +40,7 @@ export default function Sidebar() {
         </Nav.Item>
         <Nav.Item>
           <Link to="/carriera" className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}>
-            <PiStudent size={28}/>
+            <FaUserGraduate size={25} style={{marginLeft:'1px'}}/>
             <span className='sidebar-text' style={{marginTop:'3px'}}>Carriera</span>
             </Link>
         </Nav.Item>
