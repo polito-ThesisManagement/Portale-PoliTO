@@ -3,7 +3,7 @@
   margin-top: 80px;
   height: 100vh;
   background-color: #f0f3f5;
-  margin-right: 16px;
+  margin-right: 8px;
 }
 
 body{
@@ -37,9 +37,32 @@ body{
   border-radius: 6px;
 }
 
+.course-bar {
+  margin-top: 5px;
+  height: 90px;
+  width: 30px;
+  border-radius: 5px;
+  position: absolute;
+}
+
 .custom-button {
-  background-color: #1a415c;
+  height: 40px;
+  background-color: #002B49;
   color: #fff;
-  border-color: #fff;
-  padding-bottom: 6px;
+  border-color: #002B49;
+  padding-top: 7px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.custom-button:hover {
+  background-color: #004C81;
+  transform: scale(1.02);
+}
+
+.custom-button.active  {
+  background-color: #EF7B00;
+  border-color: #EF7B00;
 }
