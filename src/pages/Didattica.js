@@ -15,11 +15,10 @@ export default function Didattica() {
 
     return (
         <>
-            <Container fluid className='my-3'>
-                <div style={{ display: 'flex' }}>
-                    <Book size={50} className='me-2' />
-                    <h1 className='text-style'>Didattica</h1>
-                </div>
+            <div className="title">
+                <Book size={28} />
+                <span className="section-title" style={{marginLeft:'5px', marginTop:'3px'}}>Didattica</span>
+            </div>
                 <div className='my-3'>
                     <Button
                         className={`didattica-button ${currentPath === '/didattica' ? 'active' : ''} text-style`}
@@ -46,7 +45,6 @@ export default function Didattica() {
                         <Translate /> Lingue
                     </Button>
                 </div>
-            </Container>
 
             <Outlet />
 

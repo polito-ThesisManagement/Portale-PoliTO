@@ -1,12 +1,6 @@
-.custom-button {
-  background-color: #1a415c;
-  color: #fff;
-  border-color: #fff;
-  padding-bottom: 6px;
-}
-
 .content {
   margin-left: 224px;
+  margin-top: 80px;
   position: relative;
   height: 100vh;
   background-color: #f0f3f5;
@@ -36,4 +30,11 @@
   background-color: #1a415c;
   color: #fff;
   border-radius: 6px;
+}
+
+.custom-button {
+  background-color: #1a415c;
+  color: #fff;
+  border-color: #fff;
+  padding-bottom: 6px;
 }

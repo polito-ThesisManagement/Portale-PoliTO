@@ -11,20 +11,23 @@ export default function CourseSummary(props) {
 
     //si possono rivedere i colori
     return (
-        <ListGroup.Item className='mb-2 course-summary'>
+        <ListGroup.Item className='course-summary'style={{marginBottom:'8px'}}>
             <Container className='p-0'>
                 <Row>
                     <Col xs={2} className='course-detail'>
                         {props.codice}
                     </Col>
-                    <Col xs={8} className='course-detail' style={{marginLeft:'8px'}}>
+                    <Col xs={7} className='course-detail' style={{marginLeft:'8px'}}>
                         <Link
                          to={`/didattica/${props.nome}`}
                           state={{codice, nome, periodo, crediti}}
                           style={{color: '#FFFFFF', font: 'bold'}} >{props.nome}</Link>
                     </Col>
+                    <Col xs={2}>
+                        {props.crediti} CFU
+                    </Col>
                     <Col className='p-0'>
-                        <Bell style={{marginRight:'10px', marginBottom:'2px'}}/>
+                        
                         <ClockFill style={{marginBottom:'2px'}}/>
                     </Col>
                 </Row>

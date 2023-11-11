@@ -8,13 +8,10 @@ import { PersonCircle, CardText, BarChartFill, JournalBookmarkFill, Calendar2Che
 export default function AreaPersonale() {
     return (
         <>
-            <Container className='mt-5'>
-                <Row>
-                    <Col className='d-flex'>
-                        <PersonCircle size={40} />
-                        <h1 className='ms-3'>Area Personale</h1>
-                    </Col>
-                </Row>
+            <div className="title">
+                <PersonCircle size={28} />
+                <span className="section-title" style={{marginLeft:'5px', marginTop:'3px'}}>Area personale</span>
+            </div>
                 <Row className='mt-4'>
                     <Col>
                         {CardAreaPersonale(<BarChartFill />, 'Dati Personali', 'Accedi e modifica i tuoi dati personali', 'Dati Personali')}
@@ -37,7 +34,6 @@ export default function AreaPersonale() {
                         {CardAreaPersonale(<GearFill />, 'Impostazioni Utente', 'Modifica la lingua, lo zoom e altro', 'Impostazioni Utente')}
                     </Col>
                 </Row>
-            </Container>
         </>
     );
 
