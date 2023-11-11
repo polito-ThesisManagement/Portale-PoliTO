@@ -26,7 +26,7 @@ export default function Home() {
             </div>
                 
                 <Row>   
-                    <Col sm={4}>
+                    <Col sm={5}>
                         <Container className='custom-container'>
                             <div className="subsection">
                                 <span className="subsection-title">
@@ -42,52 +42,16 @@ export default function Home() {
                                 })}
                             </ListGroup>
                         </Container>
+                        <Container className='custom-container'>
+                            <div className="subsection">
+                                <span className="subsection-title">
+                                    <StarFill size={20} className='subsection-icon' style={{marginBottom:'5px'}}/>
+                                    Preferiti
+                                </span>
+                            </div>
+                        </Container>
                     </Col>
-                    <Col sm={4}>
-                        <Row>
-                            <Container className='custom-container'>
-                                <Row>
-                                    <div className="subsection">
-                                        <span className="subsection-title">
-                                            <StarFill size={20} className='subsection-icon' style={{marginLeft:'11px', marginBottom:'5px'}}/>
-                                            Preferiti
-                                        </span>
-                                    </div>
-                                </Row>
-                            </Container>
-                        </Row>
-                        <Row className='mt-3'>
-                            <Container className='custom-container'>
-                                <div className="subsection">
-                                    <span className="subsection-title">
-                                        <BellFill size={20} className='subsection-icon'/>
-                                        Avvisi
-                                    </span>
-                                </div>
-                                <Tabs
-                                    defaultActiveKey="generali"
-                                    transition={false}
-                                    id="tab-avvisi"
-                                    className="mb-2 tab"
-                                >
-                                    <Tab eventKey="generali" title="Avvisi generali">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    </Tab>
-                                    <Tab eventKey="corsi" title="Avvisi corsi">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    </Tab>
-                                </Tabs>
-                            </Container>
-                            
-                        </Row>    
-                    </Col>
-                    <Col sm={4}>
+                    <Col sm={7}>
                         <Container className='custom-container'>
                             <div className="subsection">
                                 <span className="subsection-title">
@@ -97,6 +61,33 @@ export default function Home() {
                             </div>
                             
                         </Container>
+                        <Container className='custom-container'>
+                            <div className="subsection">
+                                <span className="subsection-title">
+                                    <BellFill size={20} className='subsection-icon'/>
+                                    Avvisi
+                                </span>
+                            </div>
+                            <Tabs
+                                defaultActiveKey="generali"
+                                transition={false}
+                                id="tab-avvisi"
+                                className="mb-2 tab"
+                            >
+                                <Tab eventKey="generali" title="Avvisi generali">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                </Tab>
+                                <Tab eventKey="corsi" title="Avvisi corsi">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                </Tab>
+                            </Tabs>
+                        </Container>  
                     </Col>
                 </Row>
         </>

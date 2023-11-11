@@ -39,10 +39,10 @@ function App() {
           @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
         </style>
       </head>
-      <PoliNavbar />
+      <PoliNavbar/>
       <Row>
         <Sidebar />
-        <Col className='content'>
+        <Col className='custom-content'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/area_personale' element={<AreaPersonale />} />

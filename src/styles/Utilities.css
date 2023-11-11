@@ -1,9 +1,13 @@
-.content {
+.custom-content {
   margin-left: 224px;
   margin-top: 80px;
-  position: relative;
   height: 100vh;
   background-color: #f0f3f5;
+  margin-right: 16px;
+}
+
+body{
+  overflow-x: hidden;
 }
 
 .title{
@@ -24,6 +28,7 @@
 .custom-container{
   background-color: #fff;
   border-radius: 10px;
+  margin-bottom: 16px;
 }
 
 .course-summary{
