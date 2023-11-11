@@ -1,22 +1,111 @@
+import React from "react";
+
+import '../styles/Utilities.css'
+
 import { Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+
+import { InfoCircleFill, TicketDetailedFill, Journals, CaretRightFill, TicketPerforatedFill } from 'react-bootstrap-icons';
+
+import Guide from "../data/Guide.json";
+
+import { Link } from "react-router-dom";
+
 
 export default function Help() {
+    const categories = ["Accesso Corsi di Studio(Laurea e Laurea Magistrale)", "Esame di stato per l'abilitazione professionale",
+        "Honours Schools", "La formazione Linguistica", "Master e formazione permanente", "Mobilità in entrata", "Mobilità verso l'estero",
+        "Norme, Carriera Studenti", "Scuola di Dottorato", "Sistemi informativi", "Special needs", "Tasse e agevolazioni economiche", "Tirocini e Carrer service", "Varie ed Eventi"];
 
     return (
         <>
-            <Container className="mt-5">
-                <Row className="mb-2">
-                    <h1>Guida dello studente embedded</h1>
-                </Row>
-                <Row className="justify-content center">
-                <iframe src="https://didattica.polito.it/guida/2024/it/homepage?cds=18&sdu=37"
-                    title="Guida dello Studente"
-                    width={1000}
-                    height={800}>
-                </iframe>
-                </Row>
-            </Container>
+            <div className="title">
+                <InfoCircleFill size={28} />
+                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Help</span>
+            </div>
+
+            <Row>
+                <Col sm={9}>
+                    <Container className='custom-container'>
+                        <div className="subsection">
+                            <span className="subsection-title">
+                                <TicketDetailedFill size={20} className='subsection-icon' />
+                                Ticket
+                            </span>
+                        </div>
+                        <ListGroup>
+                            {categories.map((cat) => {
+                                return (
+                                    <ListGroup.Item
+                                        key={cat}
+                                        className="course-summary"
+                                        style={{ marginBottom: '5px', width: '50%' }}>{cat}
+                                    </ListGroup.Item>
+                                )
+                            })}
+                        </ListGroup>
+                    </Container>
+                </Col>
+                <Col>
+                    <Container className='custom-container'>
+                        <div className="subsection">
+                            <span className="subsection-title">
+                                <Journals size={20} className='subsection-icon' />
+                                Guide
+                            </span>
+                        </div>
+                        <ListGroup>
+                            {Guide.map(guida => {
+                                return (
+                                    <ListGroup.Item key={guida.guida} style={{ border: "hidden" }} >
+                                        <Link to={guida.link}
+                                            target='_blank'
+                                            className="mb-auto"
+                                            style={{ color: "#000000" }}> <CaretRightFill className='me-1' />
+                                            {guida.guida}</Link>
+                                    </ListGroup.Item>
+                                )
+                            })}
+                        </ListGroup>
+                    </Container>
+
+                    <Container className='custom-container'>
+                        <div className="subsection">
+                            <span className="subsection-title">
+                                <TicketPerforatedFill size={20} className='subsection-icon' />
+                                I tuoi ticket
+                            </span>
+                        </div>
+                        <ListGroup>
+                            <ListGroup.Item
+                                className="course-summary"
+                                style={{ marginBottom: '5px' }}>
+                                    Oggetto ticket 1 <br></br> - Chiuso
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                className="course-summary"
+                                style={{ marginBottom: '5px' }}>
+                                    Oggetto ticket 2 <br></br> 
+                                    - Chiuso
+                            </ListGroup.Item>
+                            <ListGroup.Item
+                                className="course-summary"
+                                style={{ marginBottom: '5px' }}>
+                                    Oggetto ticket 3 <br></br>
+                                    - Aperto
+                            </ListGroup.Item>
+
+                        </ListGroup>
+                        <div className="text-center">
+                        <Button className="custom-button mt-2">Consulta tutti i tuoi ticket</Button>
+                        </div>
+                    </Container>
+                </Col>
+            </Row>
+
         </>
     );
 

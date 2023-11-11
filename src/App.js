@@ -30,7 +30,7 @@ import Tirocinio from './pages/opportunita/Tirocini';
 
 
 
-//metterei il path di Home solo con "/"
+//metterei il path di Home solo con "/" PROBABILMENTE VA RIMOSSO HEAD
 function App() {
   return (
     <>
