@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { ClockFill, Translate, ListTask } from 'react-bootstrap-icons';
+import { ClockFill, Translate } from 'react-bootstrap-icons';
 import { HiMiniBookOpen } from 'react-icons/hi2'
 import { ImBooks } from 'react-icons/im'
 import { IoIosJournal } from 'react-icons/io'

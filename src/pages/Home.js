@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import { Container, ListGroup, Row, Col } from "react-bootstrap";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -15,6 +14,7 @@ import '../styles/Utilities.css'
 import { HiHome } from 'react-icons/hi';
 import { FaList } from 'react-icons/fa';
 import { BsFillCalendarFill } from 'react-icons/bs';
+import AgendaCalendar from "../components/AgendaCalendar";
 
 export default function Home() {
 
@@ -58,6 +58,7 @@ export default function Home() {
                                     <BsFillCalendarFill size={20} className='subsection-icon' style={{marginBottom:'3px'}}/>
                                     Agenda
                                 </span>
+                                <AgendaCalendar/>
                             </div>
                             
                         </Container>
