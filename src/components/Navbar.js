@@ -36,8 +36,8 @@ export default function PoliNavbar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px', marginTop: '7px' }}><Envelope size={28} color='#fff' /></Nav.Link>
-                        <Nav.Link as={Link} to="/tesi" style={{ marginRight: '12px', marginTop: '7px' }}><Bell size={28} color='#fff' /></Nav.Link>
+                        <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#fff' /></Nav.Link>
+                        <Nav.Link as={Link} to="/tesi" style={{ marginRight: '12px', marginTop: '9px' }}><Bell size={28} color='#fff' /></Nav.Link>
                         <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#fff', marginRight: '12px' }}>
                             s123456
                             <br />
