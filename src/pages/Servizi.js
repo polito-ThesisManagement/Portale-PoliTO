@@ -1,9 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { MdApps, MdMapsHomeWork } from 'react-icons/md'
-import { Link45deg, CaretRightFill, List } from "react-bootstrap-icons";
+import { Link45deg, CaretRightFill } from "react-bootstrap-icons";
 
 import { ListGroup } from "react-bootstrap";
-import { Card } from "react-bootstrap";
 
 
 import '../styles/Utilities.css'
