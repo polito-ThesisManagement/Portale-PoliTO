@@ -60,7 +60,7 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         <Card.Link 
                         as={Link} 
                         to='/opportunita/job'
-                        className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        className="mt-auto" style={{ color: '#FFFFFF', textDecoration: 'none' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza offerte di lavoro
                         </Card.Link>
@@ -91,7 +91,8 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         {description}
                     </Card.Text>
                     <Row>
-                        <Card.Link as={Link} to='/opportunita/tirocinio' className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link} to='/opportunita/tirocinio' className="mt-auto" 
+                        style={{ color: '#FFFFFF', textDecoration: 'none' }} >
                             <CaretRightFill className='me-1' />
                             Visualizza proposte di tirocinio
                         </Card.Link>
@@ -127,11 +128,11 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         className="mt-auto"
                         style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Visualizza informazioni sulle borse di studio disponibili 
+                            Informazioni sulle borse di studio disponibili 
                         </Card.Link>
                     </Row>
                     <Row>
-                        <Card.Link as={Link} to='/opportunita' className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link} to='/opportunita' className="mt-auto" style={{ color: '#FFFFFF', textDecoration: 'none' }} >
                             <CaretRightFill className='me-1' />
                             Accedi a procedura di richiesta
                         </Card.Link>
@@ -168,11 +169,11 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         className="mt-auto" 
                         style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Visualizza informazioni sulle collaborazioni disponibili 
+                            Informazioni sulle collaborazioni disponibili 
                         </Card.Link>
                     </Row>
                     <Row>
-                        <Card.Link as={Link} to='/opportunita' className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link} to='/opportunita' className="mt-auto" style={{ color: '#FFFFFF', textDecoration: 'none' }} >
                             <CaretRightFill className='me-1' />
                             Accedi a procedura di richiesta
                         </Card.Link>
@@ -315,7 +316,7 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         </Card.Link>
                     </Row>
                     <Row>
-                        <Card.Link as={Link} to='/opportunita' className="mt-auto" style={{ color: '#FFFFFF' }} >
+                        <Card.Link as={Link} to='/opportunita' className="mt-auto" style={{ color: '#FFFFFF', textDecoration: 'none' }} >
                             <CaretRightFill className='me-1' />
                             Accedi a procedura per effetuare richiesta
                         </Card.Link>
