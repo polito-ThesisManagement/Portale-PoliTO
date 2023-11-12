@@ -21,21 +21,21 @@ export default function Carriera() {
                     </Col>
                 </Row>
                 <Row className='mt-4'>
-                    <Col>
+                    <Col xxl={4} className='mb-2'>
                         {MyCard(<CardChecklist />, 'Piano Carriera', 'Utilizza questo servizio per compilare il tuo piano carriera, il tuo carico didattico oppure iscriverti al nuovo anno accademico', 'Piano Carriera')}
                     </Col>
-                    <Col>
+                    <Col xxl={4} className='mb-2'>
                         {MyCard(<CreditCard />, 'Contribuzione e Agevolazioni', 'Clicca su pagamento tasse per effettuare il pagamento delle tasse o su richiesta riduzioni per chiederne una riduzione', 'Contribuzione e Agevolazioni')}
                     </Col>
-                    <Col>
+                    <Col xxl={4}>
                         {MyCard(<PersonGear />, 'Apply', 'Accedi al servizio apply per verificare lo stato della tua iscrizione e visualizzare comunicazioni realitie ad essa', 'Apply')}
                     </Col>
                 </Row>
                 <Row className='my-5'>
-                    <Col>
+                    <Col xxl={4} className='mb-2'>
                         {MyCard(<Mortarboard />, 'Laurea', 'Accedi ai diversi servizi per visionare proposte di tesi, ottenere informaioni sulla prova finale ed effettuare la domanda di Laurea', 'Laurea')}
                     </Col>
-                    <Col>
+                    <Col xxl={4} className='mb-2'>
                         {MyCard(<SaveFill />, 'Gestione Carriera', 'Accedi ai diversi servizi per gestire la tua carriera universitaria', 'Gestione Carriera')}
                     </Col>
                     <Col>
