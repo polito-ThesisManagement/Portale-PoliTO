@@ -1,3 +1,6 @@
+import React, { useContext } from "react";
+import { FavoritesContext } from "../App";
+
 import { Container, ListGroup, Row, Col } from "react-bootstrap";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -17,6 +20,7 @@ import { BsFillCalendarFill } from 'react-icons/bs';
 import AgendaCalendar from "../components/AgendaCalendar";
 
 export default function Home() {
+    const { favorites, setFavorites } = useContext(FavoritesContext);
 
     return (
         <>
@@ -49,6 +53,14 @@ export default function Home() {
                                     Preferiti
                                 </span>
                             </div>
+                            <ListGroup>
+                                {favorites ? favorites.map((fav) => {
+                                    return (
+                                            <ListGroup.Item>{fav}</ListGroup.Item>
+                                    )
+                                }
+                                ) : <p>Non hai ancora aggiunto preferiti</p>}
+                            </ListGroup>
                         </Container>
                     </Col>
                     <Col sm={7}>

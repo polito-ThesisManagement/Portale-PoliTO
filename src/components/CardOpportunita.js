@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+
+import { FavoritesContext } from '../App';
 
 import Card from 'react-bootstrap/Card';
 import { Star, StarFill, CaretRightFill } from 'react-bootstrap-icons';
@@ -9,15 +11,29 @@ import Row from 'react-bootstrap/Row';
 //otherwise, descriptions must be at most 4 lines long
 //here we should handle different navigation bath based on the card clicked 
 export default function CardOpportunita(icon, title, description, carrerService) {
-    const [starClicked, setStarClicked] = useState(false);
+
+    const { favorites, setFavorites } = useContext(FavoritesContext);
+
+    //const [starClicked, setStarClicked] = useState(false);
+
+    const [starClicked, setStarClicked] = useState(() => {
+        const isStarred = localStorage.getItem(carrerService) === 'true';
+        return isStarred;
+      });
+    
+      // Aggiorna localStorage quando lo stato della stella cambia
+      useEffect(() => {
+        localStorage.setItem(carrerService, starClicked.toString());
+      }, [carrerService, starClicked]);
 
     const handleStarClick = () => {
         setStarClicked(!starClicked);
-        /* Dovremo aggiungere a vettore la stella 
         if (!starClicked) {
-          
+          setFavorites([...favorites, carrerService]);
+        } else {
+            setFavorites(favorites.filter((fav) => fav !== carrerService));
         }
-        */
+        
     };
 
     if (carrerService === 'Job') {
