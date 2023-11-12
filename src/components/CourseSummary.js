@@ -14,16 +14,16 @@ export default function CourseSummary(props) {
         <ListGroup.Item className='course-summary'style={{marginBottom:'8px'}}>
             <Container className='p-0'>
                 <Row>
-                    <Col xs={2} className='course-detail'>
+                    <Col lg={2} className='course-detail'>
                         {props.codice}
                     </Col>
-                    <Col xs={7} className='course-detail p-0' style={{marginLeft:'8px'}}>
+                    <Col lg={7} className='course-detail p-0' style={{marginLeft:'8px'}}>
                         <Link
                          to={`/didattica/${props.nome}`}
                           state={{codice, nome, periodo, crediti, linkGuida}}
                           style={{color: '#FFFFFF', font: 'bold'}} >{props.nome}</Link>
                     </Col>
-                    <Col xs={2} className='p-0'>
+                    <Col lg={2} className='p-0'>
                         {props.crediti} CFU
                     </Col>
                     <Col className='p-0'>
