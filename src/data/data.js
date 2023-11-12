@@ -1,4 +1,4 @@
-//Lo farei Json come gli altri file che ho usato, possiamo anche metterli tutti in una cartella 
+
 const valutazioni = [
     {
         codice: "01PFPOV",
@@ -34,4 +34,4 @@ const valutazioni = [
     }
 ]
 
-export default { valutazioni };
+export default  valutazioni ;

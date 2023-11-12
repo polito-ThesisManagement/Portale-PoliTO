@@ -1,0 +1,40 @@
+.rbc-header,
+.rbc-header + .rbc-header {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rbc-event-label {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rbc-row {}
+
+.rbc-toolbar button {
+    background-color: #002B49;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+.rbc-toolbar button:hover {
+    background-color: #004C81;
+    color: #FFFFFF;
+    transform: scale(1.02);
+}
+
+.rbc-toolbar .rbc-button.active{
+    background-color: #EF7B00;
+    color: #fff;
+}
+
+
+.rbc-toolbar {
+    font-weight: 600;
+}
+
+.rbc-label {
+    font-weight: 500;
+}
+
+.rbc-button-link {
+    font-weight: 500;
+}

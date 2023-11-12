@@ -3,8 +3,8 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import CourseSummary from "../components/CourseSummary";
-
-import { ClockFill, BellFill, StarFill } from "react-bootstrap-icons";
+import WidgetCalendar from "../components/WidgetCalendar";
+import { BellFill, StarFill } from "react-bootstrap-icons";
 
 import Courses from '../data/Courses.json'
 
@@ -14,7 +14,6 @@ import '../styles/Utilities.css'
 import { HiHome } from 'react-icons/hi';
 import { FaList } from 'react-icons/fa';
 import { BsFillCalendarFill } from 'react-icons/bs';
-import AgendaCalendar from "../components/AgendaCalendar";
 
 export default function Home() {
 
@@ -58,7 +57,7 @@ export default function Home() {
                                     <BsFillCalendarFill size={20} className='subsection-icon' style={{marginBottom:'3px'}}/>
                                     Agenda
                                 </span>
-                                <AgendaCalendar/>
+                                <WidgetCalendar/>
                             </div>
                             
                         </Container>

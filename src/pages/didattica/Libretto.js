@@ -15,10 +15,6 @@ let theadStyle = {
 
 export default function Libretto() {
 
-    /*probabilemnte non c'è bisogno di usare uno stato perchè difficilmente faremo vedere cosa succede quando viene inserito una 
-    nuova valutazione nel libretto */
-    const [courses] = useState(valutazioni); //rember to chenge it if you need to change the state
-
     return (
         <>
             <Container className='my-3'>
@@ -31,7 +27,7 @@ export default function Libretto() {
                     <Col>
                         <ProgressBar
                             variant='primary'
-                            now={courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}
+                            now={valutazioni.reduce((acc, course) => acc + course.cfu, 0)}
                             max={120}
                             striped
                             style={{ backgroundColor: '#004C81'}}
@@ -42,12 +38,12 @@ export default function Libretto() {
                     <Col>
                         <ProgressBar
                             variant='primary'
-                            now={courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}
+                            now={valutazioni.reduce((acc, course) => acc + course.cfu, 0)}
                             max={120}
-                            label={`${courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}%`}
+                            label={`${valutazioni.reduce((acc, course) => acc + course.cfu, 0)}%`}
                             style={{ backgroundColor: '#004C81'}}
                         />
-                        <h5 style={{ paddingTop: '15px' }} className='text-style'>Crediti ottenuti: {courses.valutazioni.reduce((acc, course) => acc + course.cfu, 0)}</h5>
+                        <h5 style={{ paddingTop: '15px' }} className='text-style'>Crediti ottenuti: {valutazioni.reduce((acc, course) => acc + course.cfu, 0)}</h5>
                         <h5 className='text-style'>Crediti Frequentati: 120</h5>
                     </Col>
                     <Col>
@@ -77,7 +73,7 @@ export default function Libretto() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {courses.valutazioni.map(course => (
+                                {valutazioni.map(course => (
                                     <tr key={course.codice}>
                                         <td>{course.codice}</td>
                                         <td>{course.nome}</td>
