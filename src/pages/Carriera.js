@@ -1,7 +1,6 @@
 import { CardChecklist, PersonFillUp, CreditCard, PersonGear, Mortarboard, SaveFill } from 'react-bootstrap-icons';
 
 import MyCard from '../components/Card';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -13,13 +12,10 @@ export default function Carriera() {
 
     return (
         <>
-            <Container className='mt-5'>
-                <Row>
-                    <Col className='d-flex'>
-                        <PersonFillUp size={40} />
-                        <h1 className='text-style ms-3'>Carriera</h1>
-                    </Col>
-                </Row>
+                <div className="title">
+                    <PersonFillUp size={28} />
+                    <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Carriera</span>
+                </div>
                 <Row className='mt-4'>
                     <Col xxl={4} className='mb-2'>
                         {MyCard(<CardChecklist />, 'Piano Carriera', 'Utilizza questo servizio per compilare il tuo piano carriera, il tuo carico didattico oppure iscriverti al nuovo anno accademico', 'Piano Carriera')}
@@ -43,7 +39,7 @@ export default function Carriera() {
                         {MyCard(<SaveFill />, 'Gestione Carriera', 'Accedi ai diversi servizi per gestire la tua carriera universitaria')}
                     </Col>
                 </Row>
-            </Container>
+           
         </>
     );
 }
