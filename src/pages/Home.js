@@ -88,7 +88,7 @@ export default function Home() {
                                 <BsFillCalendarFill size={20} className='subsection-icon' style={{ marginBottom: '3px' }} />
                                 Agenda
                             </span>
-                            <AgendaCalendar />
+                            <WidgetCalendar />
                         </div>
 
                     </Container>
