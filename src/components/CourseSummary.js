@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function CourseSummary(props) {
 
-    const { codice, nome, periodo, crediti } = props;
+    const { codice, nome, periodo, crediti, linkGuida } = props;
 
     //si possono rivedere i colori
     return (
@@ -20,7 +20,7 @@ export default function CourseSummary(props) {
                     <Col xs={7} className='course-detail p-0' style={{marginLeft:'8px'}}>
                         <Link
                          to={`/didattica/${props.nome}`}
-                          state={{codice, nome, periodo, crediti}}
+                          state={{codice, nome, periodo, crediti, linkGuida}}
                           style={{color: '#FFFFFF', font: 'bold'}} >{props.nome}</Link>
                     </Col>
                     <Col xs={2} className='p-0'>

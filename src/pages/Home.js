@@ -36,7 +36,10 @@ export default function Home() {
                             <ListGroup>
                                 {Courses.map((corso) => {
                                     return (
-                                        <CourseSummary key={corso.codice} codice={corso.codice} nome={corso.nome} periodo={corso.periodo} crediti={corso.crediti} />
+                                        <CourseSummary key={corso.codice} 
+                                        codice={corso.codice} nome={corso.nome} 
+                                        periodo={corso.periodo} crediti={corso.crediti} 
+                                        linkGuida={corso.linkGuida} />
                                     )
                                 })}
                             </ListGroup>

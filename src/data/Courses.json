@@ -6,6 +6,7 @@
       "colore" : "primary",
       "periodo" : 1,
       "crediti" : 8,
+      "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=14BHDOA&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
       "orarioSettimanale": [
         { "giorno": "Lunedì", "orario": "08:30-10:00" },
         { "giorno": "Mercoledì", "orario": "11:30-13:00" },
@@ -19,6 +20,7 @@
       "colore" : "success",
       "periodo" : 1,
       "crediti" : 10,
+      "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=15AHMOA&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
       "orarioSettimanale": [
         { "giorno": "Martedì", "orario": "13:00-14:30" },
         { "giorno": "Martedì", "orario": "14:30-16:00" },
@@ -33,6 +35,7 @@
         "colore" : "danger",
         "periodo" : 1,
         "crediti" : 6,
+        "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=03AAXOA&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
         "orarioSettimanale" : [
             { "giorno" : "Lunedì", "orario" : "14:30-16:00" },
             { "giorno" : "Mercoledì", "orario" : "17:30-19:00" }
@@ -45,6 +48,7 @@
       "colore" : "primary",
       "periodo" : 1,
       "crediti" : 8,
+      "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=22ACILZ&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
       "orarioSettimanale": [
         { "giorno": "Lunedì", "orario": "08:30-10:00" },
         { "giorno": "Mercoledì", "orario": "11:30-13:00" },
@@ -58,6 +62,7 @@
       "colore" : "primary",
       "periodo" : 1,
       "crediti" : 8,
+      "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=14AFQOA&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
       "orarioSettimanale": [
         { "giorno": "Lunedì", "orario": "08:30-10:00" },
         { "giorno": "Mercoledì", "orario": "11:30-13:00" },
@@ -71,6 +76,7 @@
       "colore" : "primary",
       "periodo" : 1,
       "crediti" : 8,
+      "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=12AGAOA&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
       "orarioSettimanale": [
         { "giorno": "Lunedì", "orario": "08:30-10:00" },
         { "giorno": "Mercoledì", "orario": "11:30-13:00" },
@@ -84,6 +90,7 @@
       "colore" : "primary",
       "periodo" : 1,
       "crediti" : 8,
+      "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=09CBIOA&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
       "orarioSettimanale": [
         { "giorno": "Lunedì", "orario": "08:30-10:00" },
         { "giorno": "Mercoledì", "orario": "11:30-13:00" },
@@ -97,6 +104,7 @@
       "colore" : "primary",
       "periodo" : 1,
       "crediti" : 8,
+      "linkGuida" : "https://didattica.polito.it/pls/portal30/gap.pkg_guide.viewGap?p_cod_ins=02JSKOV&p_a_acc=2024&p_header=S&p_lang=IT&multi=N",
       "orarioSettimanale": [
         { "giorno": "Lunedì", "orario": "08:30-10:00" },
         { "giorno": "Mercoledì", "orario": "11:30-13:00" },
