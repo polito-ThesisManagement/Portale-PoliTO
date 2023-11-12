@@ -41,7 +41,9 @@ export default function Searchbar(props) {
                     {filteredData.slice(0,3).map(service => {
                         return (
                             <ListGroup.Item action as={Link} to={service.link} key={service.id}
-                                variant="light" style={{ fontSize: '12px', color: '#1d3b55' }}>
+                                variant="light" 
+                                onClick={() => setFilteredData([])}
+                                style={{ fontSize: '12px', color: '#1d3b55' }}>
                                 {service.pageName}
                             </ListGroup.Item>
                         )
