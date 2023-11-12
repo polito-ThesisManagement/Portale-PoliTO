@@ -16,9 +16,22 @@ import { Link } from "react-router-dom";
 
 
 export default function Help() {
-    const categories = ["Accesso Corsi di Studio(Laurea e Laurea Magistrale)", "Esame di stato per l'abilitazione professionale",
-        "Honours Schools", "La formazione Linguistica", "Master e formazione permanente", "Mobilità in entrata", "Mobilità verso l'estero",
-        "Norme, Carriera Studenti", "Scuola di Dottorato", "Sistemi informativi", "Special needs", "Tasse e agevolazioni economiche", "Tirocini e Carrer service", "Varie ed Eventi"];
+    const categories = [
+        "Accesso corsi di studio (Laurea e Laurea Magistrale)",
+        "Esame di stato per l'abilitazione professionale",
+        "Honours School",
+        "La formazione linguistica",
+        "Master e formazione permanente",
+        "Mobilità in entrata",
+        "Mobilità verso l'estero",
+        "Norme e carriera studenti",
+        "Scuola di dottorato",
+        "Sistemi informativi",
+        "Special Needs",
+        "Tasse e agevolazioni economiche",
+        "Tirocini e carrer services",
+        "Varie ed eventi"
+    ];
 
     return (
         <>

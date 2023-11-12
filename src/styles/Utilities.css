@@ -74,6 +74,11 @@ body{
 .accordion-button {
   border-radius: 5px;
   margin-bottom: 10px;
-  background-color: #004C81;
-  color: #ffffff;
+  font-family: 'Montserrat', 'sans-serif';
+  font-weight: 600;
+}
+
+.custom-accordion {
+  margin-left: 8px;
+  border:hidden;
 }

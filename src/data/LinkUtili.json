@@ -16,15 +16,15 @@
         "link": "https://www.polito.it/contatti/contatti-per-studenti"
     },
     {
-        "servizio": "Mappe politencnico",
+        "servizio": "Mappa del Politecnico",
         "link": "https://www.polito.it/ateneo/chi-siamo/sedi-e-mappe"
     },
     {
-        "servizio": "Rappresentati studenti",
+        "servizio": "Rappresentati degli studenti",
         "link": "https://didattica.polito.it/pls/portal30/sviluppo.rappr_stud"
     },
     {
-        "servizio": "Aule e Sale Studio",
+        "servizio": "Aule e sale Studio",
         "link": "https://www.polito.it/didattica/servizi-e-vita-al-politecnico/servizi/aule-e-sale-studio"
     },
     {
@@ -36,7 +36,7 @@
         "link": "https://www.polito.it/didattica/servizi-e-vita-al-politecnico/servizi/residenze"
     },
     {
-        "servizio": "Scheda Pericoli Occupazionali",
+        "servizio": "Scheda Individuale Ricognizione Pericoli Occupazionali - SIR",
         "link": "https://prevenzione.polito.it/Home.aspx"
     }
 ]

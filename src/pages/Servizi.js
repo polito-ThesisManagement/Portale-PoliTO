@@ -24,17 +24,17 @@ export default function Servizi() {
                         <div className="subsection">
                             <span className="subsection-title">
                                 <MdMapsHomeWork size={20} className='subsection-icon' />
-                                Aule Libere
+                                Aule libere
                             </span>
                         </div>
                     </Container>
                 </Col>
-                <Col md={3} className="me-2">
+                <Col md={3}>
                     <Container className="custom-container">
                         <div className="subsection">
                             <span className="subsection-title">
                                 <Link45deg size={20} className='subsection-icon' />
-                                Link Utili
+                                Link utili
                             </span>
                         </div>
                         <ListGroup>
@@ -43,9 +43,10 @@ export default function Servizi() {
                                     <ListGroup.Item key={link.servizio} style={{border: "hidden"}} >
                                         <Link to={link.link}
                                             target='_blank'
-                                            className="mb-auto"
-                                            style={{color: "#000000"}}> <CaretRightFill className='me-1' />
-                                            {link.servizio}</Link>
+                                            style={{color: "#000000"}}>
+                                                <CaretRightFill className='me-1' />
+                                                {link.servizio}
+                                        </Link>
                                     </ListGroup.Item>
                                 )
                             })}

@@ -16,27 +16,21 @@ export default function Lingue() {
 
     return (
         <>
-            <Container className='custom-container'>
-                <div className="subsection">
-                    <span className="subsection-title">
-                        <Translate size={20} className='subsection-icon' />
-                        Lingue
-                    </span>
-                </div>
+            
                 <Accordion className="mt-2">
-                    <Accordion.Item eventKey="0" style={{ border: 'hidden' }}>
+                    <Accordion.Item eventKey="0" className="custom-accordion">
                         <Accordion.Header>
                             <FileEarmarkRichtextFill size={20} className='subsection-icon' />
-                            Certificazioni di Lingua
+                            Certificazioni di lingua
                         </Accordion.Header>
                         <Accordion.Body>
                             <Row>
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Visualizza Certificazioni</Card.Title>
+                                            <Card.Title>Visualizza certificazioni</Card.Title>
                                             <Card.Text>
-                                                Visualizza le Certificazioni ottenute o di cui hai effetuato l'upload
+                                                Visualizza le certificazioni ottenute o di cui hai effetuato l'upload
                                             </Card.Text>
                                             <Button className="custom-button">Visualizza Certificazioni</Button>
                                         </Card.Body>
@@ -48,9 +42,9 @@ export default function Lingue() {
                                         <Card.Body>
                                             <Card.Title>Effetua l'upload di una certificazione</Card.Title>
                                             <Card.Text>
-                                                Effettua l'upload di una certificazione di lingua, può essere utilizzate per compilare il curriculum o ottenere il superamento si un esame
+                                                Effettua l'upload di una certificazione di lingua, può essere utilizzate per compilare il curriculum o ottenere il superamento di un esame
                                             </Card.Text>
-                                            <Button className="custom-button">Upload Certificazione</Button>
+                                            <Button className="custom-button">Upload certificazione</Button>
                                         </Card.Body>
                                     </Card>
 
@@ -58,10 +52,10 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="1" style={{ border: 'hidden' }}>
+                    <Accordion.Item eventKey="1" className="custom-accordion">
                         <Accordion.Header>
                             <FlagFill size={20} className='subsection-icon' />
-                            Lingua Inglese
+                            Lingua inglese
                         </Accordion.Header>
                         <Accordion.Body>
                             <Row>
@@ -102,19 +96,19 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="2" style={{ border: 'hidden' }}>
+                    <Accordion.Item eventKey="2" className="custom-accordion">
                         <Accordion.Header>
                             <Flag size={20} className='subsection-icon' />
-                            Lingua Italiana
+                            Lingua italiana
                         </Accordion.Header>
                         <Accordion.Body>
                             <Row>
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Verifica Livello di preparazion inglese</Card.Title>
+                                            <Card.Title>Verifica livello di preparazione inglese</Card.Title>
                                             <Card.Text>
-                                                Verifica il tuo livello di prerazione tramite test: wrting, listening, reading, speaking
+                                                Verifica il tuo livello di prerazione tramite test: writing, listening, reading, speaking
                                             </Card.Text>
                                             <Button className="custom-button">Accedi al test</Button>
                                         </Card.Body>
@@ -146,10 +140,10 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="3" style={{ border: 'hidden' }}>
+                    <Accordion.Item eventKey="3" className="custom-accordion">
                         <Accordion.Header>
                             <Globe size={20} className='subsection-icon' />
-                            Altre Lingue
+                            Altre lingue
                         </Accordion.Header>
                         <Accordion.Body>
                             <Row>
@@ -191,9 +185,6 @@ export default function Lingue() {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-
-
-            </Container>
         </>
     );
 
