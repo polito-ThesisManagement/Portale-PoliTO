@@ -6,6 +6,14 @@
   margin-right: 8px;
 }
 
+.custom-navbar {
+  background-color: #002B49;
+  color: #fff;
+  z-index: 2;
+  width: 100%;
+  position: fixed;
+}
+
 body{
   overflow-x: hidden;
   margin: 0;
@@ -33,12 +41,13 @@ body{
   background-color: #fff;
   border-radius: 10px;
   margin-bottom: 16px;
+  padding-bottom: 8px;
 }
 
 .course-summary{
   background-color: #1a415c;
   color: #fff;
-  border-radius: 6px;
+  border-radius: 16px;
 }
 
 .course-bar {
@@ -81,4 +90,10 @@ body{
 .custom-accordion {
   margin-left: 8px;
   border:hidden;
+}
+
+.custom-table .centered-th {
+  color: #EF7B00;
+  position: relative;
+  left: -16px;
 }

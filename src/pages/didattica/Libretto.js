@@ -1,93 +1,140 @@
-import { useState } from 'react';
-import valutazioni from '../../data/data';
-
-import { Container, ProgressBar } from 'react-bootstrap';
+import { Container, ListGroup, ProgressBar } from 'react-bootstrap';
 import { Row, Col, Table } from 'react-bootstrap';
 
-import { JournalCheck } from 'react-bootstrap-icons';
+import valutazioni from '../../data/Valutazioni.json'
+import valutazioniProvvisorie from '../../data/ValutazioniProvvisorie.json'
+import DoughnutChart from '../../components/DoughnutChart';
 
-import '../../styles/App.css';
 
-let theadStyle = {
-    backgroundColor: '#002B49',
-    color: '#FFF'
-}
+import { FaList } from 'react-icons/fa';
+import { BsGraphUp } from 'react-icons/bs'
+import { VscGraph } from 'react-icons/vsc'
+import { PiListChecksBold } from 'react-icons/pi';
+import ProvisionalGrade from '../../components/ProvisionalGrade';
 
 export default function Libretto() {
 
     return (
         <>
-            <Container className='my-3'>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <JournalCheck size={25} className='me-2' />
-                    <h1 className='text-style'>Libretto</h1>
-                </div>
-                <h4 className='pb-2' style={{ color: '#B75E00', fontFamily: 'Helvetica'}}>La tua carriera</h4>
-                <Row className='mt-4'>
-                    <Col>
-                        <ProgressBar
-                            variant='primary'
-                            now={valutazioni.reduce((acc, course) => acc + course.cfu, 0)}
-                            max={120}
-                            striped
-                            style={{ backgroundColor: '#004C81'}}
-                        />
-                         <h5 style={{ paddingTop: '15px' }} className='text-style'>Media ponderata: 27.7</h5>
-                         <h5 className='text-style'>Voto Laurea: 101.56</h5>
-                    </Col>
-                    <Col>
-                        <ProgressBar
-                            variant='primary'
-                            now={valutazioni.reduce((acc, course) => acc + course.cfu, 0)}
-                            max={120}
-                            label={`${valutazioni.reduce((acc, course) => acc + course.cfu, 0)}%`}
-                            style={{ backgroundColor: '#004C81'}}
-                        />
-                        <h5 style={{ paddingTop: '15px' }} className='text-style'>Crediti ottenuti: {valutazioni.reduce((acc, course) => acc + course.cfu, 0)}</h5>
-                        <h5 className='text-style'>Crediti Frequentati: 120</h5>
-                    </Col>
-                    <Col>
-                        <ProgressBar
-                            variant='primary'
-                            now={21}
-                            max={120}
-                            label={`21%`}
-                            style={{ backgroundColor: '#004C81'}}
-                        />
-                        <h5 style={{ paddingTop: '15px' }} className='text-style'>Crediti ottenuti quest'anno: 6</h5>
-                        <h5 className='text-style'>Crediti Frequentati quest'anno: 28</h5>
-                    </Col>
-                </Row>
-                <Row className='mt-3'>
-                    <Col>
-                        <h4 className='pb-3 text-style' style={{ color: '#B75E00'}}>Valutazioni</h4>
-                        <Table striped>
-                            <thead>
-                                <tr>
-                                    <th style={theadStyle}>Codice</th>
-                                    <th style={theadStyle}>Nome</th>
-                                    <th style={theadStyle}>Anno</th>
-                                    <th style={theadStyle}>Crediti</th>
-                                    <th style={theadStyle}>Voto</th>
-                                    <th style={theadStyle}>Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {valutazioni.map(course => (
-                                    <tr key={course.codice}>
-                                        <td>{course.codice}</td>
-                                        <td>{course.nome}</td>
-                                        <td>{course.anno}</td>
-                                        <td>{course.cfu}</td>
-                                        <td>{course.voto}</td>
-                                        <td>{course.data}</td>
+            <Row>
+                <Col sm={7}>
+                    <Container className='custom-container'>
+                        <div className="subsection">
+                            <span className="subsection-title">
+                                <PiListChecksBold  size={28} className='subsection-icon'/>
+                                Valutazioni
+                            </span>
+                            <Table striped className='custom-table'>
+                                <thead style={{fontFamily:'Montserrat, sans-serif'}}>
+                                    <tr>
+                                        <th>Codice</th>
+                                        <th>Nome</th>
+                                        <th style={{position: 'relative', left: -18}}>Anno</th>
+                                        <th style={{position: 'relative', left: -24}}>Crediti</th>
+                                        <th style={{position: 'relative', left: -10}}>Voto</th>
+                                        <th>Data</th>
                                     </tr>
-                                ))}
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                    {valutazioni.map(course => (
+                                        <tr key={course.codice}>
+                                            <td style={{fontWeight:500}}>{course.codice}</td>
+                                            <td style={{fontWeight:500}}>{course.nome}</td>
+                                            <td>{course.anno}</td>
+                                            <td>{course.cfu}</td>
+                                            <td style={{fontWeight:500}}>{course.voto}</td>
+                                            <td>{course.data}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
                         </Table>
-                    </Col>
-                </Row>
-            </Container>
+                        </div>
+                    </Container>
+                </Col>
+                <Col sm={5}>
+                    <Container className='custom-container'>
+                        <div className="subsection">
+                            <span className="subsection-title">
+                                <FaList size={20} className='subsection-icon' />
+                                Valutazioni provvisorie
+                            </span>
+                        </div>
+                        <ListGroup style={{borderRadius:'16px'}}>
+                            {valutazioniProvvisorie.map((val) => {
+                                    return (
+                                        <ProvisionalGrade key={val.nome} nome={val.nome} esito={val.esito} data={val.data} />
+                                    )
+                            })}
+                        </ListGroup>
+                    </Container>
+                    <Container className='custom-container'>
+                        <div className="subsection">
+                            <span className="subsection-title">
+                                <BsGraphUp size={20} className='subsection-icon' />
+                                Media e voti
+                            </span>
+                            <Row className='mt-2'>
+                                <Col>
+                                <span className='detail'>Media ponderata</span>
+                                <br/>
+                                <span className='important-detail'>28</span>
+                                </Col>
+                                <Col>
+                                <span className='detail'>Voto di laurea</span>
+                                <br/>
+                                <span className='important-detail'>102.67</span>
+                                </Col>
+                            </Row>
+                        </div>
+                    </Container>
+                        <Row>
+                            <Col>
+                                <Container className='custom-container'>
+                                    <div className="subsection">
+                                        <span className="subsection-title">
+                                            <VscGraph size={20} className='subsection-icon' />
+                                            La tua carriera
+                                        </span>
+                                        <Row className='mt-2'>
+                                            <span className='detail'>Crediti acquisiti</span>
+                                            <br/>
+                                            <span className='important-detail'>90/120 CFU</span>
+                                        </Row>
+                                        <Row className='mt-1'>
+                                            <span className='detail'>Crediti frequentati</span>
+                                            <br/>
+                                            <span className='important-detail'>120/120 CFU</span>
+                                        </Row>
+                                    </div>
+                                    <DoughnutChart values={[90,30]}/>
+                                </Container>
+                            </Col>
+                            <Col>
+                                <Container className='custom-container'>
+                                    <div className="subsection">
+                                        <span className="subsection-title">
+                                            <VscGraph size={20} className='subsection-icon' />
+                                            Questo anno accademico
+                                        </span>
+                                        <Row className='mt-2'>
+                                            <span className='detail'>Crediti acquisiti</span>
+                                            <br/>
+                                            <span className='important-detail'>52/82 CFU</span>
+                                        </Row>
+                                        <Row className='mt-1'>
+                                            <span className='detail'>Crediti frequentati</span>
+                                            <br/>
+                                            <span className='important-detail'>82/82 CFU</span>
+                                        </Row>
+                                    </div>
+                                    <DoughnutChart values={[52,30]}/>
+                            </Container>
+                            </Col>
+                    
+                        </Row>
+                    
+                </Col>
+            </Row>
         </>
     );
 }
