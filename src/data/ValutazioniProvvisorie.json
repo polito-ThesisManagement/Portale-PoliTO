@@ -1,0 +1,26 @@
+[
+    {
+        "codice": "01DUFOV",
+        "nome": "Applicazioni Web I",
+        "cfu": 6,
+        "esito": 27,
+        "anno": 1,
+        "data": "2022-06-23"
+    },
+    {
+        "codice": "05BIDOV",
+        "nome": "Ingegneria del software",
+        "cfu": 8,
+        "esito": 28,
+        "anno": 1,
+        "data": "2022-01-23"
+    },
+    {
+        "codice": "01URUOV",
+        "nome": "Game Design",
+        "cfu": 10,
+        "esito": 30,
+        "anno": 1,
+        "data": "2022-02-20"
+    }
+]

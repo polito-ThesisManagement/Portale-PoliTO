@@ -8,7 +8,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 import Services from '../data/Data.json';
 import Logo from '../assets/logo_polito.svg';
-import '../styles/Navbar.css'
 import '../styles/Utilities.css'
 
 import { Link } from 'react-router-dom';

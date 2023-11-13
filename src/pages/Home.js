@@ -45,7 +45,7 @@ export default function Home() {
                                 Carico didattico
                             </span>
                         </div>
-                        <ListGroup>
+                        <ListGroup style={{borderRadius:'16px'}}>
                             {Courses.map((corso) => {
                                 return (
                                     <CourseSummary key={corso.codice} codice={corso.codice} nome={corso.nome} periodo={corso.periodo} crediti={corso.crediti} />
