@@ -1,7 +1,7 @@
 .custom-sidebar {
     background-color: #002B49;
     color: #fff;
-    z-index: 2;
+    z-index: 3;
     width: 224px;
     padding: 0;
     margin-top: 80px;
@@ -9,7 +9,7 @@
     position: fixed;
 }
 
-.custom-sidebar .nav-link {
+.nav-link {
     color: #fff;
     padding-right: 0;
     margin-left: 16px;
@@ -18,12 +18,12 @@
     margin-right: 8px;
     display: flex;
 }
-.custom-sidebar .nav-link:hover {
+.nav-link:hover {
     background-color: #004C81;
     color: #fff;
 }
 
-.custom-sidebar .nav-link.active {
+.nav-link.active {
     background-color: #EF7B00;
     color: #fff;
 }
@@ -32,6 +32,21 @@
     padding-left: 10px;
     font-weight: 500;
     /*display: none;*/
+}
+
+.custom-sidebar-reduced {
+    background-color: #002B49;
+    color: #fff;
+    z-index: 3;
+    width: 84px;
+    padding: 0;
+    margin-top: 80px;
+    height: 100vh;
+    position: fixed;
+}
+
+.custom-sidebar-reduced .sidebar-text{
+    display: none;
 }
 
 

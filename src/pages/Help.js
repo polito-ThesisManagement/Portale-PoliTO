@@ -49,7 +49,7 @@ export default function Help() {
                                 Ticket
                             </span>
                         </div>
-                        <ListGroup>
+                        <ListGroup style={{borderRadius:'16px'}}>
                             {categories.map((cat) => {
                                 return (
                                     <ListGroup.Item
@@ -92,7 +92,7 @@ export default function Help() {
                                 I tuoi ticket
                             </span>
                         </div>
-                        <ListGroup>
+                        <ListGroup style={{borderRadius:'16px'}}>
                             <ListGroup.Item
                                 className="course-summary"
                                 style={{ marginBottom: '5px' }}>

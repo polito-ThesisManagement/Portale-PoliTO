@@ -16,9 +16,7 @@ export default function Sidebar() {
 
   return (
     <>
-    <Col
-    className={`col-md-1 d-none d-md-block custom-sidebar py-2`}
-    >
+    <Col className={`col-md-1 d-none d-md-block custom-sidebar-reduced py-2`}>
       <Nav defaultActiveKey="/home" className="flex-column">
         <Nav.Item>
           <Link to="/" className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}>

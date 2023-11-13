@@ -6,10 +6,18 @@
   margin-right: 8px;
 }
 
+.lg-margin{
+  margin-left: 224px !important;
+}
+
+.md-margin{
+  margin-left: 84px !important;
+}
+
 .custom-navbar {
   background-color: #002B49;
   color: #fff;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   position: fixed;
 }
