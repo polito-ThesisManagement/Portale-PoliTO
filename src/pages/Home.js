@@ -6,10 +6,12 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import Button from 'react-bootstrap/Button';
 
 import CourseSummary from "../components/CourseSummary";
 import WidgetCalendar from "../components/WidgetCalendar";
 import { BellFill, StarFill } from "react-bootstrap-icons";
+
 
 import Courses from '../data/Courses.json'
 
@@ -19,6 +21,7 @@ import '../styles/Utilities.css'
 import { HiHome } from 'react-icons/hi';
 import { FaList } from 'react-icons/fa';
 import { BsFillCalendarFill } from 'react-icons/bs';
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const { favorites, setFavorites } = useContext(FavoritesContext);
@@ -63,17 +66,18 @@ export default function Home() {
                         <Row>
                             {favorites ? favorites.map((fav, index) => {
                                 return (
-                                    <Col lg={4} className="mb-2">
-                                        <ListGroup>
+                                    <Col lg={4} key={index} className="mb-2">
                                             <OverlayTrigger
                                                 placement="right"
                                                 delay={{ show: 250, hide: 400 }}
-                                                overlay={renderTooltip(fav)}>
-                                                <ListGroup.Item key={index} className="me-5" style={{ overflow: 'hidden', textOverflow: 'ellipsis', height: '40px' }}>
-                                                    {fav}
-                                                </ListGroup.Item>
+                                                overlay={renderTooltip(JSON.parse(fav).carrerService)}>
+                                                <Button 
+                                                className="me-5 custom-button" 
+                                                style={{ overflow: 'hidden', textOverflow: 'ellipsis', height: '35px', width: '140px' }}
+                                                as={Link} to={JSON.parse(fav).link}>
+                                                    {JSON.parse(fav).carrerService}
+                                                </Button>
                                             </OverlayTrigger>
-                                        </ListGroup>
                                     </Col>
                                 )
                             }

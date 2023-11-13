@@ -29,12 +29,38 @@ export default function CardOpportunita(icon, title, description, carrerService)
     const handleStarClick = () => {
         setStarClicked(!starClicked);
         if (!starClicked) {
-          setFavorites([...favorites, carrerService]);
+          const link = getLinkFromCarrerService(carrerService);
+          const obj = { carrerService, link };
+          const favorite = JSON.stringify(obj);
+          setFavorites([...favorites, favorite]);
         } else {
-            setFavorites(favorites.filter((fav) => fav !== carrerService));
+            setFavorites(favorites.filter((fav) => fav.carrerService !== carrerService));
         }
         
     };
+
+    const getLinkFromCarrerService = (carrerService) => {
+        switch (carrerService) {
+            case 'Job':
+                return '/opportunita/job';
+            case 'Tirocinio':
+                return '/opportunita/tirocinio';
+            case 'Borsa di Studio':
+                return 'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/borse-di-studio';
+            case 'Collaborazioni Studentesche':
+                return 'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/collaborazioni-part-time';
+            case 'Associazioni Studentesche':
+                return 'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/associazioni-studentesche';
+            case 'Team Studenteschi':
+                return 'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/team-e-progetti-studenteschi';
+            case 'Sport':
+                return 'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/sport';
+            case 'Studiare all estero':
+                return 'https://www.polito.it/didattica/iscriversi-studiare-laurearsi/studiare-all-estero/iniziative-di-mobilita';
+            default:
+                return '/opportunita';
+        }
+    }
 
     if (carrerService === 'Job') {
 
