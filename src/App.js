@@ -30,6 +30,7 @@ import Tesi from './pages/carriera/Tesi';
 import Job from './pages/opportunita/Job';
 import Tirocinio from './pages/opportunita/Tirocini';
 import OrarioLezioni from './pages/didattica/OrarioLezioni';
+import Moodle from './pages/course_sections/Moodle';
 
 
 export const FavoritesContext = createContext(null);
@@ -75,9 +76,10 @@ function App() {
                 <Route path="avvisi" element={<Avvisi />} />
                 <Route path="orario" element={<OrarioCorso />} />
                 <Route path="guida" element={<Guida />} />
+                <Route path="moodle" element={<Moodle />} />
                 <Route path="elaborati" element={<Elaborati />} />
                 <Route path="appelli" element={<Appelli />} />
-                <Route path="vclassrom" element={<VirtualClassroom />} />
+                <Route path="vc" element={<VirtualClassroom />} />
               </Route>
             </Routes>
           </Col>

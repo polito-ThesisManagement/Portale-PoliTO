@@ -6,17 +6,18 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 import { useState } from 'react';
 
 import { ArrowRightShort } from 'react-bootstrap-icons';
 
+
 export default function CoursePage() {
     const location = useLocation();
     const { codice, nome, periodo, crediti, linkGuida } = location.state;
 
-    const [activeButton, setActiveButton] = useState(null);
+    const [activeButton, setActiveButton] = useState('Materiale');
 
     const handleButtonClick = (buttonName) => {
         setActiveButton(buttonName);
@@ -26,85 +27,132 @@ export default function CoursePage() {
     //outlet permette di creare sotto la navbar
     return (
         <>
-            {console.log(linkGuida)}
-            <div className="d-flex mt-3 mx-3">
-                <div>
-                    <Link to='/' className='text-style'>Home</Link>
-                    <span className="mx-2"><ArrowRightShort /></span>
-                </div>
+            <div className="d-flex my-3 mx-3">
                 <div>
                     <Link to='/didattica' className='text-style'>Didattica</Link>
                     <span className="mx-2"><ArrowRightShort /></span>
                 </div>
                 <span className='text-style' style={{ color: '#808080' }}>{nome}</span>
             </div>
-            <Container className='mt-3'>
-                <Row>
-                    <div className="d-flex mx-3">
-                        <span className='section-title'>{nome}</span>
-                        <Dropdown >
-                            <Dropdown.Toggle className=' ms-3' style={{ backgroundColor: '#B75E00' }} id="dropdown-basic">
-                                2023/2024
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>2022/2023</Dropdown.Item>
-                                <Dropdown.Item>2021/2022</Dropdown.Item>
-                                <Dropdown.Item>2020/2021</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
 
-                    </div>
-                </Row>
-                {/* Potremo personalizzare lo state ad esempio in materiale non serve linkGuida */}
-                <ButtonGroup className='my-3 mx-3' aria-label="Course Section">
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'materiale' ? 'active' : ''}`}
-                        as={Link} to={`/didattica/${nome}/materiale`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }}
-                        onClick={() => handleButtonClick('materiale')}>
-                        Materiale
-                    </Button>
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'avvisi' ? 'active' : ''}`}
-                        as={Link} to={`/didattica/${nome}/avvisi`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }}
-                        onClick={() => handleButtonClick('avvisi')}>
-                        Avvisi
-                    </Button>
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'orario' ? 'active' : ''}`}
-                        as={Link} to={`/didattica/${nome}/orario`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }}
-                        onClick={() => handleButtonClick('orario')}>
-                        Orario Corso
-                    </Button>
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'guida' ? 'active' : ''}`}
-                        as={Link} to={`/didattica/${nome}/guida`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }}
-                        onClick={() => handleButtonClick('guida')}>Guida</Button>
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'moodle' ? 'active' : ''}`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }} disabled
-                        onClick={() => handleButtonClick('moodle')}>
-                        Moodle
-                    </Button>
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'elaborati' ? 'active' : ''}`}
-                        as={Link} to={`/didattica/${nome}/elaborati`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }}
-                        onClick={() => handleButtonClick('elaborati')}>
-                        Elaborati
-                    </Button>
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'appelli' ? 'active' : ''}`}
-                        as={Link} to={`/didattica/${nome}/appelli`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }}
-                        onClick={() => handleButtonClick('appelli')}>
-                        Appelli
-                    </Button>
-                    <Button className={`custom-button me-2 rounded ${activeButton === 'virtualClassrom' ? 'active' : ''}`}
-                        as={Link} to={`/didattica/${nome}/vclassrom`}
-                        state={{ codice, nome, periodo, crediti, linkGuida }}
-                        onClick={() => handleButtonClick('virtualClassrom')}>
-                        Virtual Classrom
-                    </Button>
-                    {/* c'è spazio anche far apparire Cpd*/}
-                </ButtonGroup>
-            </Container>
+            <Row>
+                <div className="d-flex align-items-center mx-3">
+                    <span className='section-title'>{nome}</span>
+                    <Dropdown style={{fontSize: '15px', fontFamily: 'Montserrat, sans-serif'}}>
+                        <Dropdown.Toggle className='ms-4 py-1' style={{ backgroundColor: '#1A415A', borderColor: '#1A415A'}} id="dropdown-year">
+                            <span className='p-4'>2023/2024</span>
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className='px-4'>
+                            <Dropdown.Item>2023/2024</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown className='course-menu-reduced' style={{ fontSize: '15px', fontFamily: 'Montserrat, sans-serif', fontWeight:'500'}}>
+                        <Dropdown.Toggle className='dropdown-toggle-custom ms-3 py-1' style={{width:'200px', backgroundColor: '#EF7B00', borderColor: '#EF7B00'}} id="dropdown-section">
+                            <span style={{ display: 'inline-block' }}>{activeButton}</span>
+                            
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/materiale`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('Materiale')}>
+                                Materiale
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/avvisi`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('Avvisi')}>
+                                Avvisi
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/orario`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('Orario')}>
+                                Orario
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/guida`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('Guida')}>
+                                Guida
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/moodle`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('Moodle')}>
+                                Moodle
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/elaborati`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('Elaborati')}>
+                                Elaborati
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/appelli`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('Appelli')}>
+                                Appelli
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                as={Link} to={`/didattica/${nome}/vc`}
+                                state={{ codice, nome, periodo, crediti, linkGuida }}
+                                onClick={() => handleButtonClick('VC')}>
+                                VC
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
+            </Row>
+
+            <ButtonGroup className='d-flex my-3 mx-2 course-menu' aria-label="course section">
+                <Button className={`custom-button course-menu-button ${activeButton === 'Materiale' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/materiale`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('Materiale')}>
+                    Materiale
+                </Button>
+                <Button className={`custom-button course-menu-button ${activeButton === 'Avvisi' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/avvisi`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('Avvisi')}>
+                    Avvisi
+                </Button>
+                <Button className={`custom-button course-menu-button ${activeButton === 'Orario' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/orario`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('Orario')}>
+                    Orario
+                </Button>
+                <Button className={`custom-button course-menu-button ${activeButton === 'Guida' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/guida`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('Guida')}>Guida</Button>
+                <Button className={`custom-button course-menu-button ${activeButton === 'Moodle' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/moodle`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('Moodle')}>
+                    Moodle
+                </Button>
+                <Button className={`custom-button course-menu-button ${activeButton === 'Elaborati' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/elaborati`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('Elaborati')}>
+                    Elaborati
+                </Button>
+                <Button className={`custom-button course-menu-button ${activeButton === 'Appelli' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/appelli`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('Appelli')}>
+                    Appelli
+                </Button>
+                <Button className={`custom-button course-menu-button ${activeButton === 'VC' ? 'active' : ''}`}
+                    as={Link} to={`/didattica/${nome}/vc`}
+                    state={{ codice, nome, periodo, crediti, linkGuida }}
+                    onClick={() => handleButtonClick('VC')}>
+                    VC
+                </Button>
+            </ButtonGroup>
 
             <Outlet />
         </>
