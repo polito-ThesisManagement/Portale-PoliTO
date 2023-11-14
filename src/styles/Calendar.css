@@ -51,10 +51,6 @@
     margin-bottom: 8px;
 }
 
-.rbc-time-content {
-    overflow-y: scroll;
-}
-
 .rbc-time-content::-webkit-scrollbar {
     display: none;
 }
@@ -70,4 +66,8 @@
 .rbc-row-segment {
     position: relative;
     top: -20px;
+}
+
+.timetable {
+    justify-content: flex-start;
 }

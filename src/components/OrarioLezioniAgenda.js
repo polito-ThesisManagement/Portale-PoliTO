@@ -5,6 +5,7 @@ import 'moment/locale/it';
 import events from '../data/Events';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../styles/Calendar.css'
+import '../styles/Timetable.css'
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 
@@ -30,13 +31,8 @@ const CustomToolbar = (toolbar) => {
     toolbar.onView('week');
   };
 
-  const goToMonthView = () => {
-    setMonthView(true);
-    toolbar.onView('month');
-  };
-
   return (
-    <div className="custom-rbc-toolbar">
+    <div className="custom-rbc-toolbar timetable">
 
       <span className="rbc-btn-group">
         <Button onClick={goToBack}>
@@ -50,22 +46,7 @@ const CustomToolbar = (toolbar) => {
         </Button>
       </span>
 
-      <span className="rbc-toolbar-label">{toolbar.label}</span>
-
-      <span className="rbc-btn-group">
-          <Button
-          onClick={goToWeekView}
-          className={`view-button ${isMonthView ? '' : 'active'}`}
-          >
-              Settimana
-          </Button>
-          <Button
-          onClick={goToMonthView}
-          className={`view-button ${isMonthView ? 'active' : ''}`}
-          > 
-              Mese
-          </Button>
-      </span>
+      <span className="rbc-toolbar-label px-4">{toolbar.label}</span>
     </div>
   );
 };
@@ -83,17 +64,17 @@ const formats = {
     localizer.format(date, 'MMMM YYYY', culture).replace(/^\w/, (c) =>c.toUpperCase()),
 
   dayRangeHeaderFormat: ({ start, end }, culture, localizer) =>
-    localizer.format(start, 'DD MMMM', culture).replace(/(?:^|\s)\w/g, (match) => match.toUpperCase()) +
+    localizer.format(start, 'DD MMMM', culture).replace(/^\w/, (c) =>c.toUpperCase()) +
     ' - ' +
     localizer.format(end, 'DD MMMM', culture).replace(/(?:^|\s)\w/g, (match) => match.toUpperCase()),
   
   dayFormat: (date, culture, localizer) =>
-    localizer.format(date, 'ddd', culture).replace(/^\w/, (c) =>c.toUpperCase()),
+    localizer.format(date, 'ddd', culture).replace(/(?:^|\s)\w/g, (match) => match.toUpperCase()),
 
   
 };
 
-export default function WidgetCalendar() {
+export default function OrarioLezioniAgenda() {
   const localizer = momentLocalizer(moment);
 
   return (
@@ -102,12 +83,13 @@ export default function WidgetCalendar() {
       className='custom-calendar'
       localizer={localizer}
       events={events}
+      view='week'
       startAccessor="start"
       endAccessor="end"
       min={new Date(2023, 10, 12, 8, 0)} 
       max={new Date(2023, 10, 12, 20, 0)}
       defaultDate={new Date(2023, 10, 12)}
-      style={{ height: '400px', fontFamily:'Montserrat, sans-serif', marginTop:'16px' }}
+      style={{ fontFamily:'Montserrat, sans-serif', marginTop:'16px' }}
       formats={formats}
       components={{
           toolbar: CustomToolbar,

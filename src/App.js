@@ -29,6 +29,7 @@ import Corsi from './pages/didattica/Corsi';
 import Tesi from './pages/carriera/Tesi';
 import Job from './pages/opportunita/Job';
 import Tirocinio from './pages/opportunita/Tirocini';
+import OrarioLezioni from './pages/didattica/OrarioLezioni';
 
 
 export const FavoritesContext = createContext(null);
@@ -59,7 +60,7 @@ function App() {
               <Route path='/didattica' element={<Didattica />}>
                 <Route path='' element={<Corsi />} />
                 <Route path='libretto' element={<Libretto />} />
-                <Route path='orario' element={<Timetable />} />
+                <Route path='orario' element={<OrarioLezioni />} />
                 <Route path='lingue' element={<Lingue />} />
               </Route>
               <Route path='/carriera' element={<Carriera />} />
