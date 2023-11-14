@@ -57,10 +57,9 @@ export default function PoliNavbar() {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu style={{right: 'auto', left: '-70px'}}>
-                                    <Dropdown.Item>s123456</Dropdown.Item>
-                                    <Dropdown.Item>Mario Rossi</Dropdown.Item>
-                                    <Dropdown.Item>Imposta Lingua</Dropdown.Item>
-                                    <Dropdown.Item>Impostazioni</Dropdown.Item>
+                                    <Dropdown.Item>Dati utente</Dropdown.Item>
+                                    <Dropdown.Item>Cambia lingua</Dropdown.Item>
+                                    <Dropdown.Item>Impostazioni account</Dropdown.Item>
                                     <Dropdown.Item>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
 
