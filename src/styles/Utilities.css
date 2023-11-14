@@ -6,18 +6,17 @@
   margin-right: 8px;
 }
 
-.lg-margin{
-  margin-left: 224px !important;
-}
+@media (max-width: 991px) {
 
-.md-margin{
-  margin-left: 84px !important;
+  .custom-content.reduced {
+      margin-left: 84px;
+  }
 }
 
 .custom-navbar {
   background-color: #002B49;
   color: #fff;
-  z-index: 3;
+  z-index: 5;
   width: 100%;
   position: fixed;
 }
@@ -52,7 +51,7 @@ body{
   padding-bottom: 8px;
 }
 
-.course-summary{
+.summary{
   background-color: #1a415c;
   color: #fff;
   border-radius: 16px;

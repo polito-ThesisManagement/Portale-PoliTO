@@ -51,7 +51,7 @@ function App() {
         <PoliNavbar />
         <Row>
           <Sidebar />
-          <Col className={`custom-content ${window.innerWidth > 768? 'md-margin' : ''}`}>
+          <Col className={'custom-content reduced'}>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/area_personale' element={<AreaPersonale />} />

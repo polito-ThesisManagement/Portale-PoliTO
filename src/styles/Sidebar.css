@@ -1,15 +1,31 @@
 .custom-sidebar {
     background-color: #002B49;
     color: #fff;
-    z-index: 3;
+    z-index: 4;
     width: 224px;
     padding: 0;
     margin-top: 80px;
     height: 100vh;
     position: fixed;
+    overflow-y: auto;
 }
 
-.nav-link {
+.custom-sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 991px) {
+
+    .custom-sidebar.reduced {
+        width: 84px;
+    }
+
+    .sidebar-text{
+        display: none;
+    }
+}
+
+.custom-sidebar .nav-link {
     color: #fff;
     padding-right: 0;
     margin-left: 16px;
@@ -18,12 +34,12 @@
     margin-right: 8px;
     display: flex;
 }
-.nav-link:hover {
+.custom-sidebar .nav-link:hover {
     background-color: #004C81;
     color: #fff;
 }
 
-.nav-link.active {
+.custom-sidebar .nav-link.active {
     background-color: #EF7B00;
     color: #fff;
 }
@@ -31,30 +47,4 @@
 .sidebar-text{
     padding-left: 10px;
     font-weight: 500;
-    /*display: none;*/
 }
-
-.custom-sidebar-reduced {
-    background-color: #002B49;
-    color: #fff;
-    z-index: 3;
-    width: 84px;
-    padding: 0;
-    margin-top: 80px;
-    height: 100vh;
-    position: fixed;
-}
-
-.custom-sidebar-reduced .sidebar-text{
-    display: none;
-}
-
-
-/* Sidebar espandibile
-.custom-sidebar:hover .sidebar-text {
-    display: block;
-}
-.custom-sidebar:hover{
-    width: 224px;
-}
-*/

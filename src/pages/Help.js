@@ -41,7 +41,7 @@ export default function Help() {
             </div>
 
             <Row>
-                <Col sm={9}>
+                <Col md={12} lg={9}>
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
@@ -54,7 +54,7 @@ export default function Help() {
                                 return (
                                     <ListGroup.Item
                                         key={cat}
-                                        className="course-summary"
+                                        className="summary"
                                         style={{ marginBottom: '5px', width: '50%' }}>{cat}
                                     </ListGroup.Item>
                                 )
@@ -62,7 +62,7 @@ export default function Help() {
                         </ListGroup>
                     </Container>
                 </Col>
-                <Col>
+                <Col md={12} lg={3}>
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
@@ -94,18 +94,18 @@ export default function Help() {
                         </div>
                         <ListGroup style={{borderRadius:'16px'}}>
                             <ListGroup.Item
-                                className="course-summary"
+                                className="summary"
                                 style={{ marginBottom: '5px' }}>
                                     Oggetto ticket 1 <br></br> - Chiuso
                             </ListGroup.Item>
                             <ListGroup.Item
-                                className="course-summary"
+                                className="summary"
                                 style={{ marginBottom: '5px' }}>
                                     Oggetto ticket 2 <br></br> 
                                     - Chiuso
                             </ListGroup.Item>
                             <ListGroup.Item
-                                className="course-summary"
+                                className="summary"
                                 style={{ marginBottom: '5px' }}>
                                     Oggetto ticket 3 <br></br>
                                     - Aperto

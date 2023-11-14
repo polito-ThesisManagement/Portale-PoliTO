@@ -17,7 +17,7 @@ export default function Libretto() {
     return (
         <>
             <Row>
-                <Col sm={7}>
+                <Col md={12} lg={7}>
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
@@ -51,7 +51,7 @@ export default function Libretto() {
                         </div>
                     </Container>
                 </Col>
-                <Col sm={5}>
+                <Col md={12} lg={5}>
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">

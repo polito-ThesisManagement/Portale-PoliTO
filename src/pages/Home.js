@@ -31,7 +31,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="title">
+            <div className="title reduced">
                 <HiHome size={28} />
                 <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Homepage</span>
             </div>

@@ -21,9 +21,19 @@
     margin-bottom: 16px;
 }
 
+.truncated-link {
+    margin-left: 0px;
+    color: #FFFFFF;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
 .detail{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .important-detail{
@@ -33,6 +43,7 @@
 
 .course-detail{
     font-weight: 500;
+    font-size: 15px;
 }
 
 .tab{
