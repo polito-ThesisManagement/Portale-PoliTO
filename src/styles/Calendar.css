@@ -34,12 +34,10 @@
 }
 
 .custom-rbc-toolbar .view-button{
-    width: 112px;
     font-weight: 400;
 }
 
 .custom-rbc-toolbar .view-button.active{
-    width: 112px;
     background-color: #EF7B00;
     border-color: #FFFFFF;
     font-weight: 500;
@@ -57,12 +55,16 @@
     overflow-y: scroll;
 }
 
-.rbc-time-header-content .rbc-allday-cell{
+.rbc-time-content::-webkit-scrollbar {
     display: none;
 }
 
-.rbc-date-cell{
-    z-index: 2;
+.rbc-time-header.rbc-overflowing {
+    margin-right: 0 !important;
+}
+
+.rbc-time-header-content .rbc-allday-cell{
+    display: none;
 }
 
 .rbc-row-segment {

@@ -14,7 +14,7 @@ export default function Corsi() {
     return (
         <>
             <Row>   
-                <Col sm={6}>
+                <Col md={12} lg={6}>
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
@@ -46,7 +46,7 @@ export default function Corsi() {
                         </ListGroup>
                     </Container>
                 </Col> 
-                <Col sm={6}>
+                <Col md={12} lg={6}>
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">

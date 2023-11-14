@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { Nav, Col } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -16,9 +16,7 @@ export default function Sidebar() {
 
   return (
     <>
-    <Col
-    className={`col-md-1 d-none d-md-block custom-sidebar py-2`}
-    >
+    <Col className={`col-md-1 custom-sidebar py-2 reduced`}>
       <Nav defaultActiveKey="/home" className="flex-column">
         <Nav.Item>
           <Link to="/" className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}>

@@ -20,7 +20,7 @@ export default function PoliNavbar() {
     return (
         <Navbar className="custom-navbar">
             <Container fluid>
-                <Navbar.Brand as={Link} to="/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '36px' }}>
+                <Navbar.Brand className="d-none d-lg-block"as={Link} to="/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '36px' }}>
                     <Image
                         src={Logo}
                         alt="Logo PoliTo"
@@ -31,16 +31,18 @@ export default function PoliNavbar() {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-end'>
                     <Nav
-                        className="my-2 my-lg-0"
+                        className="my-0 my-lg-0"
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link as={Link} to="/libretto" style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#fff' /></Nav.Link>
-                        <Nav.Link as={Link} to="/tesi" style={{ marginRight: '12px', marginTop: '9px' }}><Bell size={28} color='#fff' /></Nav.Link>
+                        <Nav.Link as={Link} to="/" style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#fff' /></Nav.Link>
+                        <Nav.Link as={Link} to="/" style={{ marginRight: '12px', marginTop: '9px' }}><Bell size={28} color='#fff' /></Nav.Link>
                         <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#fff', marginRight: '12px' }}>
+                            <div className='d-none d-md-block'>
                             s123456
                             <br />
-                            Mario Rossi
+                            <span>Mario Rossi</span>
+                            </div>
                         </Navbar.Text>
                         <Navbar.Brand>
                             <Dropdown>

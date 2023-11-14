@@ -19,7 +19,7 @@ export default function Servizi() {
                 <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Servizi</span>
             </div>
             <Row>
-                <Col>
+                <Col md={12} lg={9}>
                     <Container className="custom-container">
                         <div className="subsection">
                             <span className="subsection-title">
@@ -29,7 +29,7 @@ export default function Servizi() {
                         </div>
                     </Container>
                 </Col>
-                <Col md={3}>
+                <Col md={12} lg={3}>
                     <Container className="custom-container">
                         <div className="subsection">
                             <span className="subsection-title">

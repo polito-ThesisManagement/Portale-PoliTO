@@ -6,10 +6,17 @@
   margin-right: 8px;
 }
 
+@media (max-width: 991px) {
+
+  .custom-content.reduced {
+      margin-left: 84px;
+  }
+}
+
 .custom-navbar {
   background-color: #002B49;
   color: #fff;
-  z-index: 2;
+  z-index: 5;
   width: 100%;
   position: fixed;
 }
@@ -44,7 +51,7 @@ body{
   padding-bottom: 8px;
 }
 
-.course-summary{
+.summary{
   background-color: #1a415c;
   color: #fff;
   border-radius: 16px;

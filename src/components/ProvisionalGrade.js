@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 export default function ProvisionalGrade(props) {
 
     return (
-        <ListGroup.Item className='course-summary'style={{marginBottom:'8px'}}>
+        <ListGroup.Item className='summary'style={{marginBottom:'8px'}}>
             <Container className='p-0'>
                 <Row>
                     <Col xs={7} className='course-detail p-0' style={{marginLeft:'8px'}}>
