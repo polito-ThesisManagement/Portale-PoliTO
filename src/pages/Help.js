@@ -73,11 +73,12 @@ export default function Help() {
                         <ListGroup>
                             {Guide.map(guida => {
                                 return (
-                                    <ListGroup.Item key={guida.guida} style={{ border: "hidden" }} >
+                                    <ListGroup.Item key={guida.guida} className="px-1" style={{ border: "hidden" }} >
                                         <Link to={guida.link}
                                             target='_blank'
                                             className="mb-auto"
-                                            style={{ color: "#000000" }}> <CaretRightFill className='me-1' />
+                                            style={{ color: "#000000" }}>
+                                            <CaretRightFill className='me-1' style={{marginBottom:'2px'}} />
                                             {guida.guida}</Link>
                                     </ListGroup.Item>
                                 )

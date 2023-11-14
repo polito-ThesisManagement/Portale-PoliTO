@@ -40,11 +40,11 @@ export default function Servizi() {
                         <ListGroup>
                             {LinkUtili.map(link => {
                                 return (
-                                    <ListGroup.Item key={link.servizio} style={{border: "hidden"}} >
+                                    <ListGroup.Item key={link.servizio} className='px-1'style={{border: "hidden"}} >
                                         <Link to={link.link}
                                             target='_blank'
                                             style={{color: "#000000"}}>
-                                                <CaretRightFill className='me-1' />
+                                                <CaretRightFill className='me-1' style={{marginBottom:'2px'}} />
                                                 {link.servizio}
                                         </Link>
                                     </ListGroup.Item>

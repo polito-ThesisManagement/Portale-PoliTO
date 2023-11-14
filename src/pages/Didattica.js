@@ -19,10 +19,10 @@ export default function Didattica() {
                 <span className="section-title" style={{marginLeft:'10px', marginTop:'3px'}}>Didattica</span>
             </div>
 
-            <Row style={{marginLeft:'8px', marginBottom:'16px'}}>
+            <Row style={{marginLeft:'8px', marginBottom:'8px'}}>
                 <Button
                     className={`custom-button ${currentPath === '/didattica' ? 'active' : ''}`}
-                    style={{ width: '200px', marginRight: '36px', display: 'flex', alignItems: 'center' }}
+                    style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica"
                 >
@@ -31,7 +31,7 @@ export default function Didattica() {
                 </Button>
                 <Button
                     className={`custom-button ${currentPath === '/didattica/orario' ? 'active' : ''}`}
-                    style={{ width: '200px', marginRight: '36px', display: 'flex', alignItems: 'center' }}
+                    style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica/orario"
                 >
@@ -40,7 +40,7 @@ export default function Didattica() {
                 </Button>
                 <Button
                     className={`custom-button ${currentPath === '/didattica/libretto' ? 'active' : ''}`}
-                    style={{ width: '200px', marginRight: '36px', display: 'flex', alignItems: 'center' }}
+                    style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica/libretto"
                 >
@@ -49,7 +49,7 @@ export default function Didattica() {
                 </Button>
                 <Button
                     className={`custom-button ${currentPath === '/didattica/lingue' ? 'active' : ''}`}
-                    style={{ width: '200px', marginRight: '36px', display: 'flex', alignItems: 'center' }}
+                    style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica/lingue"
                 >
