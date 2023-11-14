@@ -18,7 +18,7 @@ export default function CourseSummary(props) {
                     </Col>
                     <Col xs={6} className='course-detail'>
                         <Link
-                            to={`/didattica/${props.nome}`}
+                            to={`/didattica/${props.nome}/materiale`}
                             state={{codice, nome, periodo, crediti, linkGuida}}
                             className='truncated-link'
                         >

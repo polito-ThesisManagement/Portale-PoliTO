@@ -5,7 +5,6 @@ import 'moment/locale/it';
 import events from '../data/Events';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../styles/Calendar.css'
-import '../styles/Timetable.css'
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 

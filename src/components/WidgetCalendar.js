@@ -11,7 +11,7 @@ import { Button } from 'react-bootstrap';
 
 const CustomToolbar = (toolbar) => {
 
-  const [isMonthView, setMonthView] = useState(true);
+  const [isMonthView, setMonthView] = useState(false);
 
   const goToBack = () => {
     toolbar.onNavigate('PREV');
@@ -102,6 +102,7 @@ export default function WidgetCalendar() {
       className='custom-calendar'
       localizer={localizer}
       events={events}
+      view='week'
       startAccessor="start"
       endAccessor="end"
       min={new Date(2023, 10, 12, 8, 0)} 
