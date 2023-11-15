@@ -1,19 +1,16 @@
-import { CardChecklist, PersonFillUp, CreditCard, PersonGear, Mortarboard, SaveFill } from 'react-bootstrap-icons';
-
+import { CardChecklist, CreditCard, PersonGear, Mortarboard, SaveFill } from 'react-bootstrap-icons';
+import { FaUserGraduate } from 'react-icons/fa';
 import MyCard from '../components/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from 'react-bootstrap';
 
 import '../styles/App.css'
 
 export default function Carriera() {
 
-    //href changed according to specific service and we should use Link 
-
     return (
         <>
                 <div className="title">
-                    <PersonFillUp size={28} />
+                    <FaUserGraduate size={28} />
                     <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Carriera</span>
                 </div>
                 <Row className='mt-4'>

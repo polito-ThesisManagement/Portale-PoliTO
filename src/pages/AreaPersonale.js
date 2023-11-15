@@ -1,14 +1,13 @@
 import CardAreaPersonale from '../components/CardAreaPersonale';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import { PersonCircle, CardText, BarChartFill, JournalBookmarkFill, Calendar2Check, GearFill, FileRichtextFill } from 'react-bootstrap-icons';
+import { Row, Col } from 'react-bootstrap';
+import { BiSolidUser } from 'react-icons/bi';
+import { CardText, BarChartFill, JournalBookmarkFill, Calendar2Check, GearFill, FileRichtextFill } from 'react-bootstrap-icons';
 
 export default function AreaPersonale() {
     return (
         <>
             <div className="title">
-                <PersonCircle size={28} />
+                <BiSolidUser size={28} />
                 <span className="section-title" style={{marginLeft:'5px', marginTop:'3px'}}>Area personale</span>
             </div>
                 <Row className='mt-4'>

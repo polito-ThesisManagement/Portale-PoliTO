@@ -1,17 +1,16 @@
 import React from "react";
 
-import '../styles/Utilities.css'
+import Guide from "../data/Guide.json";
+import '../styles/Utilities.css';
 
-import { Container } from "react-bootstrap";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Container, Row, Col } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 
-import { InfoCircleFill, TicketDetailedFill, Journals, CaretRightFill, TicketPerforatedFill } from 'react-bootstrap-icons';
-
-import Guide from "../data/Guide.json";
-
+import { Journals, CaretRightFill, TicketPerforatedFill } from 'react-bootstrap-icons';
+import { FaInfoCircle, FaBook } from 'react-icons/fa';
+import { FaTicketSimple } from "react-icons/fa6";
+import { HiMiniTicket } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
 
@@ -36,7 +35,7 @@ export default function Help() {
     return (
         <>
             <div className="title">
-                <InfoCircleFill size={28} />
+                <FaInfoCircle size={28} />
                 <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Help</span>
             </div>
 
@@ -45,7 +44,7 @@ export default function Help() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <TicketDetailedFill size={20} className='subsection-icon' />
+                                <FaTicketSimple size={20} className='subsection-icon' />
                                 Ticket
                             </span>
                         </div>
@@ -66,7 +65,7 @@ export default function Help() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <Journals size={20} className='subsection-icon' />
+                                <FaBook size={20} className='subsection-icon' />
                                 Guide
                             </span>
                         </div>
@@ -89,7 +88,7 @@ export default function Help() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <TicketPerforatedFill size={20} className='subsection-icon' />
+                                <HiMiniTicket size={20} className='subsection-icon' />
                                 I tuoi ticket
                             </span>
                         </div>
@@ -114,7 +113,7 @@ export default function Help() {
 
                         </ListGroup>
                         <div className="text-center">
-                        <Button className="custom-button mt-2">Consulta tutti i tuoi ticket</Button>
+                        <Button className="custom-button mt-2">Consulta i tuoi ticket</Button>
                         </div>
                     </Container>
                 </Col>

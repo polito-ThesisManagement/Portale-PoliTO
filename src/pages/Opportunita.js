@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 
 import '../styles/App.css';
 
+import { FaSuitcase } from 'react-icons/fa';
+
 export default function Carriera() {
 
     //href changed according to specific service and we should use Link 
@@ -14,7 +16,7 @@ export default function Carriera() {
     return (
         <>
             <div className="title">
-                <AirplaneEnginesFill size={28} />
+                <FaSuitcase size={28} />
                 <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Opportunità</span>
             </div>
             <Row className='mt-4'>
