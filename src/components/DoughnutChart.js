@@ -26,7 +26,7 @@ class DoughnutChart extends React.Component {
     };
 
     return (
-      <div>
+      <div style={{}}>
         <Doughnut data={data} options={options} />
       </div>
     );

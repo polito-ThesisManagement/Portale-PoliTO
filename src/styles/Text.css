@@ -31,6 +31,14 @@
     display: block;
 }
 
+.truncated {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
 .detail{
     font-size: 14px;
     font-weight: 400;

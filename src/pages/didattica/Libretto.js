@@ -1,4 +1,4 @@
-import { Container, ListGroup, ProgressBar } from 'react-bootstrap';
+import { Container, ListGroup, ProgressBar, Tab } from 'react-bootstrap';
 import { Row, Col, Table } from 'react-bootstrap';
 
 import valutazioni from '../../data/Valutazioni.json'
@@ -18,7 +18,7 @@ export default function Libretto() {
         <>
             <Row>
                 <Col md={12} lg={7}>
-                    <Container className='custom-container'>
+                    <Container className='custom-container' style={{ maxWidth: '100%', overflowX: 'auto' }}>
                         <div className="subsection">
                             <span className="subsection-title">
                                 <PiListChecksBold  size={28} className='subsection-icon'/>
@@ -47,7 +47,7 @@ export default function Libretto() {
                                         </tr>
                                     ))}
                                 </tbody>
-                        </Table>
+                            </Table>
                         </div>
                     </Container>
                 </Col>
@@ -58,6 +58,12 @@ export default function Libretto() {
                                 <FaList size={20} className='subsection-icon' />
                                 Valutazioni provvisorie
                             </span>
+                                        <Row className='pt-2' style={{fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>
+                                            <Col xs={7}>Nome</Col>
+                                            <Col xs={2} style={{marginLeft:'-18px'}}>Esito</Col>
+                                            <Col style={{marginLeft:'10px'}}>Data</Col>
+                                        </Row>
+                                    
                         </div>
                         <ListGroup style={{borderRadius:'16px'}}>
                             {valutazioniProvvisorie.map((val) => {
@@ -88,9 +94,9 @@ export default function Libretto() {
                         </div>
                     </Container>
                         <Row>
-                            <Col>
+                            <Col md={12} lg={6}>
                                 <Container className='custom-container'>
-                                    <div className="subsection">
+                                    <div className="subsection truncated">
                                         <span className="subsection-title">
                                             <VscGraph size={20} className='subsection-icon' />
                                             La tua carriera
@@ -109,12 +115,12 @@ export default function Libretto() {
                                     <DoughnutChart values={[90,30]}/>
                                 </Container>
                             </Col>
-                            <Col>
+                            <Col md={12} lg={6}>
                                 <Container className='custom-container'>
-                                    <div className="subsection">
+                                    <div className="subsection truncated">
                                         <span className="subsection-title">
                                             <VscGraph size={20} className='subsection-icon' />
-                                            Questo anno accademico
+                                            Questo anno
                                         </span>
                                         <Row className='mt-2'>
                                             <span className='detail'>Crediti acquisiti</span>
@@ -129,8 +135,7 @@ export default function Libretto() {
                                     </div>
                                     <DoughnutChart values={[52,30]}/>
                             </Container>
-                            </Col>
-                    
+                            </Col>    
                         </Row>
                     
                 </Col>
