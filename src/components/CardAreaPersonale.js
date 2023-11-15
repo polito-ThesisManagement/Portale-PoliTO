@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 
 ///////// IMPORTANTE //////////
-// MODIFICARE TUTTI I LINK 
+// MODIFICARE TUTTI I LINK AGGIUNGERE LO STAR CLICKED
 export default function CardAreaPersonale(icon, title, description, service) {
 
     const [starClicked, setStarClicked] = useState(false);

@@ -14,25 +14,11 @@ import Guide from "../data/Guide.json";
 
 import { Link } from "react-router-dom";
 
+import TicketCategories from "../data/TicketCategories.json"
+
 
 export default function Help() {
-    const categories = [
-        "Accesso corsi di studio (Laurea e Laurea Magistrale)",
-        "Esame di stato per l'abilitazione professionale",
-        "Honours School",
-        "La formazione linguistica",
-        "Master e formazione permanente",
-        "Mobilità in entrata",
-        "Mobilità verso l'estero",
-        "Norme e carriera studenti",
-        "Scuola di dottorato",
-        "Sistemi informativi",
-        "Special Needs",
-        "Tasse e agevolazioni economiche",
-        "Tirocini e carrer services",
-        "Varie ed eventi"
-    ];
-
+   
     return (
         <>
             <div className="title">
@@ -50,12 +36,13 @@ export default function Help() {
                             </span>
                         </div>
                         <ListGroup style={{borderRadius:'16px'}}>
-                            {categories.map((cat) => {
+                            {TicketCategories.map((cat) => {
                                 return (
                                     <ListGroup.Item
-                                        key={cat}
+                                        key={cat.key}
                                         className="summary"
-                                        style={{ marginBottom: '5px', width: '50%' }}>{cat}
+                                        style={{ marginBottom: '5px', width: '50%' }}>
+                                            {cat.category}
                                     </ListGroup.Item>
                                 )
                             })}
