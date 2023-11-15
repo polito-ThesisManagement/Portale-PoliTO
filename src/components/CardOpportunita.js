@@ -17,7 +17,7 @@ export default function CardOpportunita(icon, title, description, carrerService)
     //const [starClicked, setStarClicked] = useState(false);
 
     const [starClicked, setStarClicked] = useState(() => {
-        const isStarred = localStorage.getItem(carrerService) === 'true';
+        const isStarred = localStorage.getItem(carrerService) === 'true' && favorites.length > 0;
         return isStarred;
       });
     
@@ -34,7 +34,7 @@ export default function CardOpportunita(icon, title, description, carrerService)
           const favorite = JSON.stringify(obj);
           setFavorites([...favorites, favorite]);
         } else {
-            setFavorites(favorites.filter((fav) => fav.carrerService !== carrerService));
+            setFavorites(favorites.filter((fav) => JSON.parse(fav).carrerService !== carrerService));
         }
         
     };

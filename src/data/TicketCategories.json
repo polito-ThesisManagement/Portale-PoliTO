@@ -1,0 +1,59 @@
+[
+    {
+        "key": "_accesso_corsi_di_studio_laurea_e_laurea_magistrale_",
+        "category": "Accesso corsi di studio (Laurea e Laurea Magistrale)"
+    },
+    {
+        "key": "_esame_di_stato_",
+        "category" : "Esame di stato per l'abilitazione professionale"
+    }, 
+    {
+        "key" : "_honours_school_",
+        "category" : "Honours School"
+    },
+    {
+        "key" : "_la_formazione_linguistica_",
+        "category" : "La formazione linguistica"
+    },
+    {
+        "key" : "_master_e_formazione_permanente_",
+        "category" : "Master e formazione permanente"
+    },
+    {
+        "key" : "_mobilita_in_entrata_",
+        "category" : "Mobilità in entrata"
+    },
+    {
+        "key" : "_mobilita_in_uscita_",
+        "category" : "Mobilità verso l'estero"
+    },
+    {
+        "key" : "_norme_e_carriera_studenti_",
+        "category" : "Norme e carriera studenti"
+    },
+    {
+        "key" : "_dottorato_",
+        "category" : "Scuola di dottorato"
+    },
+    {
+        "key" : "_sistemi_informativi_",
+        "category" : "Sistemi informativi"
+    },
+    {
+        "key" : "_special_needs_",
+        "category" : "Special Needs"
+    }, 
+    {
+        "key" : "_tasse_e_agevolazioni_economiche_",
+        "category" : "Tasse e agevolazioni economiche"
+    },
+    {
+        "key" : "_tirocini_e_carrer_services_",
+        "category" : "Tirocini e carrer services"
+    },
+    {
+        "key" : "_varie_ed_eventi_",
+        "category" : "Varie ed eventi"
+    }
+
+]

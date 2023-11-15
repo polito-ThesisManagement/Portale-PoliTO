@@ -11,27 +11,47 @@ import Row from 'react-bootstrap/Row';
 export default function MyCard(icon, title, description, carrerService) {
     const { favorites, setFavorites } = useContext(FavoritesContext);
 
-    //const [starClicked, setStarClicked] = useState(false);
 
     const [starClicked, setStarClicked] = useState(() => {
-        const isStarred = localStorage.getItem(carrerService) === 'true';
+        const isStarred = localStorage.getItem(carrerService) === 'true' && favorites.length > 0;
         return isStarred;
-      });
-    
-      // Aggiorna localStorage quando lo stato della stella cambia
-      useEffect(() => {
+    });
+
+    useEffect(() => {
         localStorage.setItem(carrerService, starClicked.toString());
-      }, [carrerService, starClicked]);
+    }, [carrerService, starClicked]);
 
     const handleStarClick = () => {
         setStarClicked(!starClicked);
         if (!starClicked) {
-          setFavorites([...favorites, carrerService]);
+            const link = getLinkFromCarrerService(carrerService);
+            const obj = { carrerService, link };
+            const favorite = JSON.stringify(obj);
+            setFavorites([...favorites, favorite]);
         } else {
-            setFavorites(favorites.filter((fav) => fav !== carrerService));
+            setFavorites(favorites.filter((fav) => JSON.parse(fav).carrerService !== carrerService));
         }
-        
+
     };
+
+
+    const getLinkFromCarrerService = (carrerService) => {
+        switch (carrerService) {
+            case 'Piano Carriera':
+                return '/carriera';
+            case 'Contribuzione e Agevolazioni':
+                return '/carriera';
+            case 'Apply':
+                return '/carriera';
+            case 'Gestione Carriera':
+                return '/carriera';
+            case 'Laurea':
+                return '/carriera/tesi';
+            default:
+                return '/carriera';
+        }
+
+    }
 
     if (carrerService === 'Piano Carriera') {
 
@@ -111,7 +131,7 @@ export default function MyCard(icon, title, description, carrerService) {
                 </Card.Body>
             </Card>
         );
- 
+
     } else if (carrerService === 'Apply') {
 
         return (
@@ -135,7 +155,7 @@ export default function MyCard(icon, title, description, carrerService) {
                     <Row>
                         <Card.Link as={Link} to='/carriera' className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Accedi 
+                            Accedi
                         </Card.Link>
                     </Row>
                 </Card.Body>
@@ -165,7 +185,7 @@ export default function MyCard(icon, title, description, carrerService) {
                     <Row>
                         <Card.Link as={Link} to='/carriera' className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Accedi alla sospensione 
+                            Accedi alla sospensione
                         </Card.Link>
                     </Row>
                     <Row>
@@ -177,7 +197,7 @@ export default function MyCard(icon, title, description, carrerService) {
                     <Row>
                         <Card.Link as={Link} to='/carriera' className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Accedi per effettuare la rinuncia del proseguimento degli studi 
+                            Accedi per effettuare la rinuncia del proseguimento degli studi
                         </Card.Link>
                     </Row>
                     <Row>
@@ -189,7 +209,7 @@ export default function MyCard(icon, title, description, carrerService) {
                     <Row>
                         <Card.Link as={Link} to='/carriera' className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Accedi per richiedere abbreviazione carriera 
+                            Accedi per richiedere abbreviazione carriera
                         </Card.Link>
                     </Row>
                     <Row>
@@ -225,7 +245,7 @@ export default function MyCard(icon, title, description, carrerService) {
                     <Row>
                         <Card.Link as={Link} to='/carriera/tesi' className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Tesi di Laurea 
+                            Tesi di Laurea
                         </Card.Link>
                     </Row>
                     <Row>
@@ -237,7 +257,7 @@ export default function MyCard(icon, title, description, carrerService) {
                     <Row>
                         <Card.Link as={Link} to='/carriera' className="mt-auto" style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
-                            Domanda di Laurea 
+                            Domanda di Laurea
                         </Card.Link>
                     </Row>
                 </Card.Body>
