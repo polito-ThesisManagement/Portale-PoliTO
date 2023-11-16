@@ -1,0 +1,44 @@
+.custom-card{
+    background-color: #1A415A;
+    color: white;
+    border-radius: 32px;
+    margin-bottom: 16px;
+    padding-top: 12px;
+    padding-left: 20px;
+    padding-bottom: 8px;
+    height: 240px;
+}
+
+.card-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.card-icon{
+    margin-right: 20px;
+    margin-bottom: 2px;
+}
+
+.card-button {
+    height: 40px;
+    background-color: #002B49;
+    color: #fff;
+    border-color: #002B49;
+    padding-top: 7px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: end;
+}
+
+.card-link {
+    font-weight: 300;
+    color: white;
+    margin-top: 4px;
+}

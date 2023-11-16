@@ -15,7 +15,6 @@ import { BellFill, StarFill } from "react-bootstrap-icons";
 
 import Courses from '../data/Courses.json'
 
-import '../styles/App.css';
 import '../styles/Text.css';
 import '../styles/Utilities.css'
 import { HiHome } from 'react-icons/hi';
@@ -70,12 +69,12 @@ export default function Home() {
                                             <OverlayTrigger
                                                 placement="right"
                                                 delay={{ show: 250, hide: 400 }}
-                                                overlay={renderTooltip(JSON.parse(fav).carrerService)}>
+                                                overlay={renderTooltip(JSON.parse(fav).service)}>
                                                 <Button 
                                                 className="me-5 custom-button" 
                                                 style={{ overflow: 'hidden', textOverflow: 'ellipsis', height: '35px', width: '140px' }}
-                                                as={Link} to={JSON.parse(fav).link}>
-                                                    {JSON.parse(fav).carrerService}
+                                                as={Link} to={JSON.parse(fav).path}>
+                                                    {JSON.parse(fav).service}
                                                 </Button>
                                             </OverlayTrigger>
                                     </Col>

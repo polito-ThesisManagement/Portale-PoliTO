@@ -1,42 +1,49 @@
-import { CardChecklist, CreditCard, PersonGear, Mortarboard, SaveFill } from 'react-bootstrap-icons';
 import { FaUserGraduate } from 'react-icons/fa';
-import MyCard from '../components/Card';
-import { Row, Col } from 'react-bootstrap';
-
-import '../styles/App.css'
+import { Row, Container } from 'react-bootstrap';
+import BaseCard from '../components/BaseCard';
 
 export default function Carriera() {
 
     return (
         <>
-                <div className="title">
-                    <FaUserGraduate size={28} />
-                    <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Carriera</span>
-                </div>
-                <Row className='mt-4'>
-                    <Col xxl={4} className='mb-2'>
-                        {MyCard(<CardChecklist />, 'Piano Carriera', 'Utilizza questo servizio per compilare il tuo piano carriera, il tuo carico didattico oppure iscriverti al nuovo anno accademico', 'Piano Carriera')}
-                    </Col>
-                    <Col xxl={4} className='mb-2'>
-                        {MyCard(<CreditCard />, 'Contribuzione e Agevolazioni', 'Clicca su pagamento tasse per effettuare il pagamento delle tasse o su richiesta riduzioni per chiederne una riduzione', 'Contribuzione e Agevolazioni')}
-                    </Col>
-                    <Col xxl={4}>
-                        {MyCard(<PersonGear />, 'Apply', 'Accedi al servizio apply per verificare lo stato della tua iscrizione e visualizzare comunicazioni realitie ad essa', 'Apply')}
-                    </Col>
+            <div className="title">
+                <FaUserGraduate size={28} />
+                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Carriera</span>
+            </div>
+            <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>
+                <Row>
+                    <BaseCard
+                        icon={null}
+                        service={"Tasse e agevolazioni"}
+                        description={'Servizio che permette il pagamento e la richiesta di riduzione tasse.'}
+                        servicePath={'/didattica'}
+                    />
+                    <BaseCard
+                        icon={null}
+                        service={"Piano carriera"}
+                        description={'Servizio che permette la compilazione o la modifica del piano carriera e/o del carico didattico e l’iscrizione al nuovo accademico.'}
+                        servicePath={'/didattica'}
+                    />
+                    <BaseCard
+                        icon={null}
+                        service={"Gestione carriera"}
+                        description={'Accedi per richiedere approvazione di attività esterne e modificare lo stato della tua carriera.'}
+                        servicePath={'/didattica'}
+                    />
+                    <BaseCard
+                        icon={null}
+                        service={"Apply"}
+                        description={'Accedi al servizio apply@polito per verificare lo stato della tua iscrizione e per visualizzare eventuali comunicazioni relative ad essa.'}
+                        servicePath={'/didattica'}
+                    />
+                    <BaseCard
+                        icon={null}
+                        service={"Laurea"}
+                        description={'Sezione che permette di visualizzare lo stato della propria tesi, visualizzare l’elenco delle tesi proposte ed effettuare l’iscrizione all’esame finale.'}
+                        servicePath={'/didattica'}
+                    />
                 </Row>
-                <Row className='my-5'>
-                    <Col xxl={4} className='mb-2'>
-                        {MyCard(<Mortarboard />, 'Laurea', 'Accedi ai diversi servizi per visionare proposte di tesi, ottenere informaioni sulla prova finale ed effettuare la domanda di Laurea', 'Laurea')}
-                    </Col>
-                    <Col xxl={4} className='mb-2'>
-                        {MyCard(<SaveFill />, 'Gestione Carriera', 'Accedi ai diversi servizi per gestire la tua carriera universitaria', 'Gestione Carriera')}
-                    </Col>
-                    <Col>
-                        {/*Fake solo per layout in attesa di soluzione migliore*/}
-                        {MyCard(<SaveFill />, 'Gestione Carriera', 'Accedi ai diversi servizi per gestire la tua carriera universitaria')}
-                    </Col>
-                </Row>
-           
+            </Container>
         </>
     );
 }
