@@ -42,8 +42,8 @@ export default function BaseCard (props) {
             <Container className="custom-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span className="card-title">
-                        <PiUserListFill size="48" className='card-icon' />
-                        {props.service}
+                        {props.icon? props.icon : <PiUserListFill size="48" className='card-icon' />}
+                        <div style={{maxWidth: '170px'}}>{props.service}</div>
                     </span>
                     {
                         starClicked ?

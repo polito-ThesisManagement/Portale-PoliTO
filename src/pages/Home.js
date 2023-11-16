@@ -65,18 +65,13 @@ export default function Home() {
                         <Row>
                             {favorites ? favorites.map((fav, index) => {
                                 return (
-                                    <Col lg={4} key={index} className="mb-2">
-                                            <OverlayTrigger
-                                                placement="right"
-                                                delay={{ show: 250, hide: 400 }}
-                                                overlay={renderTooltip(JSON.parse(fav).service)}>
-                                                <Button 
-                                                className="me-5 custom-button" 
-                                                style={{ overflow: 'hidden', textOverflow: 'ellipsis', height: '35px', width: '140px' }}
-                                                as={Link} to={JSON.parse(fav).path}>
-                                                    {JSON.parse(fav).service}
-                                                </Button>
-                                            </OverlayTrigger>
+                                    <Col xs={6} key={index} className="mb-2">
+                                        <Button 
+                                        className="custom-button w-100" 
+                                        style={{ overflow: 'hidden', textOverflow: 'ellipsis'}}
+                                        as={Link} to={JSON.parse(fav).path}>
+                                            {JSON.parse(fav).service}
+                                        </Button>
                                     </Col>
                                 )
                             }
