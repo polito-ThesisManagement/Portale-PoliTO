@@ -52,7 +52,7 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="1" className="custom-accordion">
+                    <Accordion.Item eventKey="1" className="custom-accordion mt-2">
                         <Accordion.Header>
                             <FlagFill size={20} className='subsection-icon' />
                             Lingua inglese
@@ -96,7 +96,7 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="2" className="custom-accordion">
+                    <Accordion.Item eventKey="2" className="custom-accordion mt-2">
                         <Accordion.Header>
                             <Flag size={20} className='subsection-icon' />
                             Lingua italiana
@@ -140,7 +140,7 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="3" className="custom-accordion">
+                    <Accordion.Item eventKey="3" className="custom-accordion mt-2">
                         <Accordion.Header>
                             <Globe size={20} className='subsection-icon' />
                             Altre lingue
