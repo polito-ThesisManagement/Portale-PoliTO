@@ -1,7 +1,7 @@
 import { BiSolidUser } from 'react-icons/bi';
 import { Row, Container } from 'react-bootstrap';
 import BaseCard from '../components/BaseCard';
-
+import Title from '../components/Title';
 import { PiUserListFill } from "react-icons/pi";
 import { BsCalendarFill } from "react-icons/bs";
 import { BsCalendar2WeekFill } from "react-icons/bs";
@@ -13,10 +13,10 @@ export default function AreaPersonale() {
 
     return (
         <>
-            <div className="title">
-                <BiSolidUser size={28} />
-                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Area personale</span>
-            </div>
+            <Title
+                icon={<BiSolidUser size={28} />}
+                sectionName='Area personale'
+            />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>
                 <Row>
                     <BaseCard

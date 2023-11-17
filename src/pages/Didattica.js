@@ -1,6 +1,7 @@
 import { Row, Button } from 'react-bootstrap';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ClockFill, Translate } from 'react-bootstrap-icons';
+import Title from '../components/Title';
 import { HiMiniBookOpen } from 'react-icons/hi2'
 import { ImBooks } from 'react-icons/im'
 import { IoIosJournal } from 'react-icons/io'
@@ -13,11 +14,10 @@ export default function Didattica() {
     const currentPath = location.pathname;
     return (
         <>
-            <div className="title">
-                <HiMiniBookOpen size={28} />
-                <span className="section-title" style={{marginLeft:'10px', marginTop:'3px'}}>Didattica</span>
-            </div>
-
+            <Title
+                icon={<HiMiniBookOpen size={28} />}
+                sectionName='Didattica'
+            />
             <Row style={{marginLeft:'8px', marginBottom:'8px'}}>
                 <Button
                     className={`custom-button ${currentPath === '/didattica' ? 'active' : ''}`}

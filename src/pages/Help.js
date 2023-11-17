@@ -3,12 +3,12 @@ import React, {useState} from "react";
 import Guide from "../data/Guide.json";
 import '../styles/Utilities.css';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Accordion } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-
+import Title from "../components/Title";
 import { CaretRightFill, Search } from 'react-bootstrap-icons';
 import { FaInfoCircle, FaBook } from 'react-icons/fa';
 import { FaTicketSimple } from "react-icons/fa6";
@@ -45,10 +45,10 @@ export default function Help() {
 
     return (
         <>
-            <div className="title">
-                <FaInfoCircle size={28} />
-                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Help</span>
-            </div>
+            <Title
+                icon={<FaInfoCircle size={28} />}
+                sectionName='Help'
+            />
             <Row>
                 <Col md={12} lg={5}>
                     <Container className='custom-container'>
@@ -75,7 +75,7 @@ export default function Help() {
                                 return (
                                     <ListGroup.Item
                                         key={cat.key}
-                                        className="summary"
+                                        className="ticket-category"
                                         style={{ marginBottom: '5px' }}
                                         action onClick={() => handleCategorieClick(cat)}>
                                         {cat.category}
@@ -89,16 +89,48 @@ export default function Help() {
                     {showCategory && 
                     <Container className='custom-container'>
                         <ListGroup style={{ borderRadius: '16px'}}>
-                            <ListGroup.Item className="summary my-3">{clickedCategory}</ListGroup.Item>
+                            <ListGroup.Item className="my-3" style={{backgroundColor:'#EF7B00',color:'white'}}>{clickedCategory}</ListGroup.Item>
                         </ListGroup>
 
-                        <ListGroup className='mt-5' style={{ borderRadius: '16px'}}>
-                            <ListGroup.Item className="summary mb-2">Risposta Possibile Domanda 1</ListGroup.Item>
-                            <ListGroup.Item className="summary mb-2">Risposta Possibile Domanda 2</ListGroup.Item>
-                            <ListGroup.Item className="summary mb-2">Risposta Possibile Domanda 3</ListGroup.Item>
-                        </ListGroup>
+                        <Accordion>
+                        <Accordion.Item eventKey="0" className="ticket-accordion">
+                            <Accordion.Header>
+                                Domanda 1
+                            </Accordion.Header>
+                            <Accordion.Body>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1" className="ticket-accordion">
+                            <Accordion.Header>
+                                Domanda 2
+                            </Accordion.Header>
+                            <Accordion.Body>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2" className="ticket-accordion">
+                            <Accordion.Header>
+                                Domanda 3
+                            </Accordion.Header>
+                            <Accordion.Body>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        </Accordion>
+                        
+                        
 
-                        <div className="text-center my-5">
+                        <div className="text-center mt-5 mb-2">
                             <h5 className="text-style">Non hai trovato quello che cerchi?</h5>
                             <Button className="custom-button mt-2">Apri un ticket</Button>
                         </div>
@@ -134,7 +166,7 @@ export default function Help() {
                         <div className="subsection">
                             <span className="subsection-title">
                                 <HiMiniTicket size={20} className='subsection-icon' />
-                                I tuoi ticket
+                                I tuoi ticket recenti
                             </span>
                         </div>
                         <ListGroup style={{ borderRadius: '16px' }}>

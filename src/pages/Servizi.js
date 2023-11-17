@@ -3,7 +3,7 @@ import { MdApps, MdMapsHomeWork } from 'react-icons/md'
 import { Link45deg, CaretRightFill } from "react-bootstrap-icons";
 
 import { ListGroup } from "react-bootstrap";
-
+import Title from "../components/Title";
 
 import '../styles/Utilities.css'
 import LinkUtili from "../data/LinkUtili.json";
@@ -14,10 +14,10 @@ import { Link } from "react-router-dom";
 export default function Servizi() {
     return (
         <>
-            <div className="title">
-                <MdApps size={28} />
-                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Servizi</span>
-            </div>
+            <Title
+                icon={<MdApps size={28} />}
+                sectionName='Servizi'
+            />
             <Row>
                 <Col md={12} lg={9}>
                     <Container className="custom-container">

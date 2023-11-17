@@ -16,7 +16,7 @@ export default function CourseSummary(props) {
                     <Col xs={3} className='course-detail'>
                         {props.codice}
                     </Col>
-                    <Col xs={6} className='course-detail'>
+                    <Col xs={6} className='course-detail pe-2'>
                         <Link
                             to={`/didattica/${props.nome}/materiale`}
                             state={{codice, nome, periodo, crediti, linkGuida}}

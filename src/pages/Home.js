@@ -35,8 +35,8 @@ export default function Home() {
     return (
         <>
            <Title
-           icon={<HiHome size={28} />}
-           sectionName='Homepage'
+            icon={<HiHome size={28} />}
+            sectionName='Homepage'
            />
 
             <Row>

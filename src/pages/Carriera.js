@@ -1,7 +1,7 @@
 import { FaUserGraduate } from 'react-icons/fa';
 import { Row, Container } from 'react-bootstrap';
 import BaseCard from '../components/BaseCard';
-
+import Title from '../components/Title';
 import { BsCreditCard2BackFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
 import { MdEditDocument } from "react-icons/md";
@@ -13,10 +13,10 @@ export default function Carriera() {
 
     return (
         <>
-            <div className="title">
-                <FaUserGraduate size={28} />
-                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Carriera</span>
-            </div>
+            <Title
+                icon={<FaUserGraduate size={28} />}
+                sectionName='Carriera'
+            />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>
                 <Row>
                     <BaseCard
