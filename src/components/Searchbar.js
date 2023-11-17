@@ -27,21 +27,20 @@ export default function Searchbar(props) {
     }
 
     return (
-        <Form className="d-flex me-3">
-            <InputGroup>
-                <Form.Control
-                    type="search"
-                    placeholder="Ricerca attravreso parole chiave"
-                    aria-label="Search"
-                    size="md"
-                    style={{ width: '400px', height: '40px' }}
-                    onChange={handleChange}
-
-                />
-                <InputGroup.Text>
-                    <Search />
-                </InputGroup.Text>
-            </InputGroup>
+        <Form className="d-flex me-3 w-100" style={{maxWidth:'400px'}}>
+                <InputGroup className="flex-nowrap w-100">
+                    <Form.Control
+                        type="search"
+                        placeholder="Ricerca attraverso parole chiave"
+                        aria-label="Search"
+                        size="md"
+                        style={{ height: '40px', backgroundColor: '#F2F5F7' }}
+                        onChange={handleChange}
+                    />
+                    <InputGroup.Text>
+                        <Search />
+                    </InputGroup.Text>
+                </InputGroup>
             {
                 filteredData.length !== 0 &&
                 <ListGroup style={{ position: 'absolute', width: '300px', marginTop: '40px' }}>

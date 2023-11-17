@@ -21,6 +21,7 @@ import { HiHome } from 'react-icons/hi';
 import { FaList } from 'react-icons/fa';
 import { BsFillCalendarFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
+import Title from "../components/Title";
 
 export default function Home() {
     const { favorites } = useContext(FavoritesContext);
@@ -33,10 +34,10 @@ export default function Home() {
 
     return (
         <>
-            <div className="title reduced">
-                <HiHome size={28} />
-                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Homepage</span>
-            </div>
+           <Title
+           icon={<HiHome size={28} />}
+           sectionName='Homepage'
+           />
 
             <Row>
                 <Col md={12} lg={5}>
