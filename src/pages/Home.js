@@ -23,7 +23,7 @@ import { BsFillCalendarFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
 
 export default function Home() {
-    const { favorites, setFavorites } = useContext(FavoritesContext);
+    const { favorites } = useContext(FavoritesContext);
 
     const renderTooltip = (service) => (
         <Tooltip id="button-tooltip">

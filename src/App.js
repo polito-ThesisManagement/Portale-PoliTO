@@ -17,13 +17,12 @@ import Guida from './pages/course_sections/Guida';
 import Elaborati from './pages/course_sections/Elaborati';
 import Appelli from './pages/course_sections/Appelli';
 import Avvisi from './pages/course_sections/Avvisi';
-import VirtualClassroom from './pages/course_sections/VirtualClassrom'; //sbagliato a scrivere room
+import VirtualClassroom from './pages/course_sections/VirtualClassroom';
 import Didattica from './pages/Didattica';
 import AreaPersonale from './pages/AreaPersonale';
 import Carriera from './pages/Carriera';
 import Opportunita from './pages/Opportunita';
 import Libretto from './pages/didattica/Libretto';
-import Timetable from './components/Timetable' //si può fare proprio una pagina con dentro la timetable che è un componente 
 import Lingue from './pages/didattica/Lingue';
 import Corsi from './pages/didattica/Corsi';
 import Tesi from './pages/carriera/Tesi';
@@ -35,17 +34,14 @@ import Moodle from './pages/course_sections/Moodle';
 
 export const FavoritesContext = createContext(null);
 
-//metterei il path di Home solo con "/" PROBABILMENTE VA RIMOSSO HEAD
 function App() {
   const [favorites, setFavorites] = useState([]);
 
   return (
     <>
-      <head>
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
-        </style>
-      </head>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+      </style>
       <FavoritesContext.Provider value={{
         favorites,
         setFavorites
