@@ -132,3 +132,9 @@ body{
   right: 16px;
   top:14px;
 }
+
+.form-control:focus {
+  border-color: #EF7B00;
+  border-width: 2px;
+  box-shadow: none;
+}

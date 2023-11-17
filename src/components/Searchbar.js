@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { InputGroup } from 'react-bootstrap';
+
+import { Search } from 'react-bootstrap-icons';
 
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -25,23 +28,27 @@ export default function Searchbar(props) {
 
     return (
         <Form className="d-flex me-3">
-            <Form.Control
-                type="search"
-                placeholder="Ricerca attravreso parole chiave"
-                className="me-2"
-                aria-label="Search"
-                size="md"
-                style={{ flex: '1', width: '400px', height: '40px'}}
-                onChange={handleChange}
-                
-            />
+            <InputGroup>
+                <Form.Control
+                    type="search"
+                    placeholder="Ricerca attravreso parole chiave"
+                    aria-label="Search"
+                    size="md"
+                    style={{ width: '400px', height: '40px' }}
+                    onChange={handleChange}
+
+                />
+                <InputGroup.Text>
+                    <Search />
+                </InputGroup.Text>
+            </InputGroup>
             {
                 filteredData.length !== 0 &&
                 <ListGroup style={{ position: 'absolute', width: '300px', marginTop: '40px' }}>
-                    {filteredData.slice(0,3).map(service => {
+                    {filteredData.slice(0, 3).map(service => {
                         return (
                             <ListGroup.Item action as={Link} to={service.link} key={service.id}
-                                variant="light" 
+                                variant="light"
                                 onClick={() => setFilteredData([])}
                                 style={{ fontSize: '12px', color: '#1d3b55' }}>
                                 {service.pageName}
