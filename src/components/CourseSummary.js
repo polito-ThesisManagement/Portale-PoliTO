@@ -1,6 +1,6 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Bell, ClockFill } from 'react-bootstrap-icons';
+import { Bell } from 'react-bootstrap-icons';
 
 import { Link } from 'react-router-dom';
 
