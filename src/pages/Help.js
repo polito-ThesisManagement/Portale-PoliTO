@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 
-import { Journals, CaretRightFill, TicketPerforatedFill } from 'react-bootstrap-icons';
+import { CaretRightFill } from 'react-bootstrap-icons';
 import { FaInfoCircle, FaBook } from 'react-icons/fa';
 import { FaTicketSimple } from "react-icons/fa6";
 import { HiMiniTicket } from "react-icons/hi2";

@@ -1,16 +1,13 @@
-import { Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Accordion from 'react-bootstrap/Accordion';
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
-import { Translate, FileEarmarkRichtextFill, FlagFill, Globe, Flag } from "react-bootstrap-icons";
+import { FileEarmarkRichtextFill, FlagFill, Globe, Flag } from "react-bootstrap-icons";
 
 import '../../styles/Utilities.css';
-
-/////////// IMPORTANTE /////////// 
-//////// LE CARD IN ITALIANO E GLOBALE SONO LE STESSE DI LINGUA INGLESE, DA CAMBIARE, SOLO SCOPO ILLUSTRATIVO /////////
 
 export default function Lingue() {
 

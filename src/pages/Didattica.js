@@ -1,5 +1,4 @@
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+import { Row, Button } from 'react-bootstrap';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ClockFill, Translate } from 'react-bootstrap-icons';
 import { HiMiniBookOpen } from 'react-icons/hi2'

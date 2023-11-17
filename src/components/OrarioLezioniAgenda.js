@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/it';
@@ -11,8 +10,6 @@ import { Button } from 'react-bootstrap';
 
 const CustomToolbar = (toolbar) => {
 
-  const [isMonthView, setMonthView] = useState(true);
-
   const goToBack = () => {
     toolbar.onNavigate('PREV');
   };
@@ -23,11 +20,6 @@ const CustomToolbar = (toolbar) => {
 
   const goToToday = () => {
     toolbar.onNavigate('TODAY');
-  };
-
-  const goToWeekView = () => {
-    setMonthView(false);
-    toolbar.onView('week');
   };
 
   return (
@@ -82,7 +74,7 @@ export default function OrarioLezioniAgenda() {
       className='custom-calendar'
       localizer={localizer}
       events={events}
-      view='week'
+      defaultView = 'week'
       startAccessor="start"
       endAccessor="end"
       min={new Date(2023, 10, 12, 8, 0)} 
