@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-import { CaretRightFill, List, Search } from 'react-bootstrap-icons';
+import { CaretRightFill, Search } from 'react-bootstrap-icons';
 import { FaInfoCircle, FaBook } from 'react-icons/fa';
 import { FaTicketSimple } from "react-icons/fa6";
 import { HiMiniTicket } from "react-icons/hi2";
