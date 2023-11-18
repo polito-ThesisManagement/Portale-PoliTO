@@ -57,11 +57,27 @@ body{
   border-radius: 16px;
 }
 
-
 .summary-video{
   background-color: #B75E00;
   color: #fff;
   border-radius: 16px;
+}
+
+.summary-other{
+  background-color: #1A415A;
+  color: #fff;
+  border-radius: 16px;
+  margin-bottom: 8px;
+}
+
+.summary-other.list-group-item:first-child {
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
+.summary-other.list-group-item:last-child {
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
 }
 
 .ticket-category{
@@ -170,4 +186,9 @@ body{
   border-color: #EF7B00;
   border-width: 2px;
   box-shadow: none;
+}
+
+.modal-body-scrollable {
+  max-height: 400px; 
+  overflow-y: auto; 
 }

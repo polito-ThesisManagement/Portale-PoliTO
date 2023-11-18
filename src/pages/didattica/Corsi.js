@@ -1,19 +1,42 @@
+import React, { useState } from 'react';
+
 import { Row, Col, Container, ListGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 import Courses from '../../data/Courses.json'
 import AltriCorsi from '../../data/AltriCorsi.json'
+import MaterialeCondiviso from '../../data/MaterialeCondiviso.json'
 import CourseSummary from '../../components/CourseSummary';
 
 import { FaList } from 'react-icons/fa';
 import { PiListPlusFill, PiVideoCameraFill } from 'react-icons/pi'
 import { BsCalendarCheckFill } from 'react-icons/bs'
 import { ImFolderUpload } from 'react-icons/im'
-import { X, CameraReels } from 'react-bootstrap-icons';
+import { X, CameraReels, PlusSquare } from 'react-bootstrap-icons';
 
 
 export default function Corsi() {
+
     const recentVirtualClassroom = ['Informatica', 'Analisi Matematica II'];
+
+    const [show, setShow] = useState(false);
+    const [otherCourses, setOtherCourses] = useState([]);
+
+    const handleCourseSelection = (course) => {
+        const isSelected = otherCourses.some((selectedCourse) => selectedCourse.codice === course.codice);
+
+        if (isSelected) {
+            const updatedCourses = otherCourses.filter((selectedCourse) => selectedCourse.codice !== course.codice);
+            setOtherCourses(updatedCourses);
+        } else {
+            setOtherCourses((prevCourses) => [...prevCourses, course]);
+        }
+    };
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <>
             <Row>
@@ -101,8 +124,8 @@ export default function Corsi() {
                             </span>
                             <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
                                 <Col >Nome</Col>
-                                <Col style={{marginLeft: '50px'}}>Data Pubblicazione</Col>
-                                <Col style={{marginLeft: '12px'}}>Vai a videolezione</Col>
+                                <Col style={{ marginLeft: '50px' }}>Data Pubblicazione</Col>
+                                <Col style={{ marginLeft: '12px' }}>Vai a videolezione</Col>
                             </Row>
                         </div>
 
@@ -134,6 +157,55 @@ export default function Corsi() {
                                 Materiale condiviso
                             </span>
                         </div>
+                        <ListGroup style={{ borderRadius: '16px' }}>
+                            {otherCourses.map((course) => {
+                                return (
+                                    <CourseSummary key={course.codice} codice={course.codice} nome={course.nome} periodo={course.periodo} crediti={course.crediti} />
+                                )
+                            })}
+                        </ListGroup>
+                        <div className="text-end mt-2 mb-2">
+                            <Button className="custom-button mt-2" onClick={handleShow}>
+                                Aggiungi Corsi <PlusSquare size={20} className='ms-1' />
+                            </Button>
+                        </div>
+
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title className='text-style'>Aggiungi Corsi</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className={`text-style modal-body-scrollable`}>
+                                <h6>Seleziona corsi dei quali altri docenti hanno scelto di condividere il materiale</h6>
+                                <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
+                                    <Col style={{ marginLeft: '8px' }}>Codice</Col>
+                                    <Col>Nome</Col>
+                                    <Col>Docente</Col>
+                                </Row>
+                                <ListGroup className='mt-2 p-0'>
+                                    {MaterialeCondiviso.map((corso) => {
+                                        return (
+                                            <ListGroup.Item key={corso.codice} className='summary-other'>
+                                                <Container >
+                                                    <Row>
+                                                        <Col className='course-detail'>
+                                                            {corso.codice}
+                                                        </Col>
+                                                        <Col className='course-detail'>
+                                                            {corso.nome}
+                                                        </Col>
+                                                        <Col className='course-detail'>
+                                                            {corso.docente}
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                            </ListGroup.Item>
+                                        )
+
+                                    })}
+                                </ListGroup>
+
+                            </Modal.Body>
+                        </Modal>
 
                     </Container>
                 </Col>
