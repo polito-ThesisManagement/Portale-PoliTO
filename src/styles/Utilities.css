@@ -63,6 +63,11 @@ body{
   border-radius: 16px;
 }
 
+.ticket-category.active {
+  background-color: #EF7B00;
+  border-color: #EF7B00;
+}
+
 .list-group-item-action:hover {
   background-color: #004C81;
   transform: scale(1.02);

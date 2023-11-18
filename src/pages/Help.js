@@ -75,7 +75,7 @@ export default function Help() {
                                 return (
                                     <ListGroup.Item
                                         key={cat.key}
-                                        className="ticket-category"
+                                        className={`ticket-category  ${cat.category === clickedCategory ? 'active' : ''}`}
                                         style={{ marginBottom: '5px' }}
                                         action onClick={() => handleCategorieClick(cat)}>
                                         {cat.category}
@@ -104,7 +104,7 @@ export default function Help() {
                                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                             </Accordion.Body>
                         </Accordion.Item>
-                        <Accordion.Item eventKey="1" className="ticket-accordion">
+                        <Accordion.Item eventKey="1" className="ticket-accordion mt-2">
                             <Accordion.Header>
                                 Domanda 2
                             </Accordion.Header>
@@ -115,7 +115,7 @@ export default function Help() {
                                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                             </Accordion.Body>
                         </Accordion.Item>
-                        <Accordion.Item eventKey="2" className="ticket-accordion">
+                        <Accordion.Item eventKey="2" className="ticket-accordion mt-2">
                             <Accordion.Header>
                                 Domanda 3
                             </Accordion.Header>
