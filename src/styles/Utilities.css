@@ -57,6 +57,13 @@ body{
   border-radius: 16px;
 }
 
+
+.summary-video{
+  background-color: #B75E00;
+  color: #fff;
+  border-radius: 16px;
+}
+
 .ticket-category{
   background-color: #1A415A;
   color: #fff;
