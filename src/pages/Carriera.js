@@ -22,31 +22,31 @@ export default function Carriera() {
                     <BaseCard
                         icon={<BsCreditCard2BackFill size="42" className='card-icon' />}
                         service={"Tasse e agevolazioni"}
-                        description={'Servizio che permette il pagamento e la richiesta di riduzione tasse.'}
+                        description={'Pagamento tasse, Richiesta riduzione tasse, Modalità pagamento compensi.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<IoIosListBox size="42" className='card-icon' />}
                         service={"Piano carriera"}
-                        description={'Servizio che permette la compilazione o la modifica del piano carriera e/o del carico didattico e l’iscrizione al nuovo accademico.'}
+                        description={'Compila il tuo piano carriera, modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<MdEditDocument size="42" className='card-icon' />}
                         service={"Gestione carriera"}
-                        description={'Accedi per richiedere approvazione di attività esterne e modificare lo stato della tua carriera.'}
+                        description={'Richiesta approvazione di attività esterne e modifica stato della tua carriera.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<FaUserEdit size="42" className='card-icon' />}
                         service={"Apply"}
-                        description={'Accedi al servizio apply@polito per verificare lo stato della tua iscrizione e per visualizzare eventuali comunicazioni relative ad essa.'}
+                        description={'Verifica lo stato della tua iscrizione e per visualizza eventuali comunicazioni relative ad essa.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<IoSchool size="42" className='card-icon' />}
                         service={"Laurea"}
-                        description={'Sezione che permette di visualizzare lo stato della propria tesi, visualizzare l’elenco delle tesi proposte ed effettuare l’iscrizione all’esame finale.'}
+                        description={'Visualizza lo stato della tua tesi,  l’elenco delle tesi proposte ed effettua l’iscrizione all’esame finale.'}
                         servicePath={'/carriera'}
                     />
                 </Row>

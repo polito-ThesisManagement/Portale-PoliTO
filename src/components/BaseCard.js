@@ -1,14 +1,14 @@
 import { Container, Col, Button } from "react-bootstrap";
 import { useState, useContext, useEffect } from 'react';
 import { FavoritesContext } from '../App';
-import { Star, StarFill } from 'react-bootstrap-icons';
+import { Star, StarFill, BoxArrowRight } from 'react-bootstrap-icons';
 import '../styles/Card.css'
 
 import { PiUserListFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 
-export default function BaseCard (props) {
+export default function BaseCard(props) {
 
     const { favorites, setFavorites } = useContext(FavoritesContext);
 
@@ -38,33 +38,35 @@ export default function BaseCard (props) {
     };
 
     return (
-        <Col sm={6} md= {6} lg={6} xl={4} className="px-4 py-2">
+        <Col sm={6} md={6} lg={6} xl={4} className="px-4 py-2">
             <Container className="custom-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span className="card-title">
-                        {props.icon? props.icon : <PiUserListFill size="48" className='card-icon' />}
-                        <div style={{maxWidth: '170px'}}>{props.service}</div>
+                        {props.icon ? props.icon : <PiUserListFill size="48" className='card-icon' />}
+                        <div style={{ maxWidth: '170px' }}>{props.service}</div>
                     </span>
                     {
                         starClicked ?
-                        (<StarFill size="24px" style={{ color: '#EF7B00',  marginRight:'16px', marginBottom:'8px' }} onClick={handleStarClick} />) 
-                        :
-                        (<Star size="24px" style={{ color: '#FFFFFF', marginRight:'16px', marginBottom:'8px' }} onClick={handleStarClick} />)
+                            (<StarFill size="24px" style={{ color: '#EF7B00', marginRight: '16px', marginBottom: '8px' }} onClick={handleStarClick} />)
+                            :
+                            (<Star size="24px" style={{ color: '#FFFFFF', marginRight: '16px', marginBottom: '8px' }} onClick={handleStarClick} />)
                     }
                 </div>
                 <div>
-                {props.description}
+                    {props.description}
                 </div>
                 {
-                    (props.link && props.linkText)?
-                    (<Link className="card-link truncated" to={props.link}>{props.linkText}</Link>) 
-                    :
-                    null
+                    (props.link && props.linkText) ?
+                        (<Link className="card-link truncated" target='_blank' to={props.link}>
+                            {props.linkText} <BoxArrowRight className="ms-2" />
+                        </Link>)
+                        :
+                        null
                 }
                 <div style={{ marginTop: 'auto', marginLeft: 'auto', marginBottom: '8px', marginRight: '8px' }}>
-                <Button className="card-button" >Accedi</Button>  
-                </div>  
-                
+                    <Button className="card-button" >Accedi</Button>
+                </div>
+
             </Container>
         </Col>
     )

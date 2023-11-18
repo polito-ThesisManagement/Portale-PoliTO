@@ -22,37 +22,37 @@ export default function AreaPersonale() {
                     <BaseCard
                         icon={<PiUserListFill size="48" className='card-icon' />}
                         service={"Dati utente"}
-                        description={'Accedi per visualizzare e modificare i dati relativi alla matricola 123456.'}
+                        description={'Visualizza o aggiorna i dati relativi alla matricola 123456.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<BsCalendarFill size="42" className='card-icon' />}
                         service={"Agenda"}
-                        description={'Accedi per visualizzare prenotazioni, scadenze, appelli e lezioni.'}
+                        description={'Visualizzare le tue prenotazioni, scadenze, appelli e lezioni.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<BsCalendar2WeekFill size="42" className='card-icon'/>}
                         service={"Prenotazioni"}
-                        description={'Accedi per visualizzare le tue prenotazioni ed effettuarne di nuove.'}
+                        description={'Effetua prenotazioni per acceso in segreteria, aule, laboratori o eventi.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<RiFileUserFill size="42" className='card-icon'/>}
                         service={"Curriculum"}
-                        description={'Accedi per visualizzare e modificare il tuo curriculum.'}
+                        description={'Visualizzare, modifica oppure effetua caricamento del tuo curriculum.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<TbCertificate size="42" className='card-icon'/>}
                         service={"Certificati"}
-                        description={'Attraverso queste sottosezioni potrai stampare certificati ufficiali riguardanti la tua carriera universitaria.'}
+                        description={'Stampa certificati ufficiali riguardanti la tua carriera universitaria.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<FaUserCog size="42" className='card-icon'/>}
                         service={"Impostazioni account"}
-                        description={'Accedi per modificare le impostazioni relative al tuo account.'}
+                        description={'Modifica impostazioni relative al tuo account.'}
                         servicePath={'/area_personale'}
                     />
                 </Row>

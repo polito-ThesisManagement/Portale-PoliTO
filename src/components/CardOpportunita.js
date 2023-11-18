@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from 'react';
 import { FavoritesContext } from '../App';
 
 import Card from 'react-bootstrap/Card';
-import { Star, StarFill, CaretRightFill } from 'react-bootstrap-icons';
+import { Star, StarFill, CaretRightFill, BoxArrowRight } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 
@@ -155,6 +155,7 @@ export default function CardOpportunita(icon, title, description, carrerService)
                         style={{ color: '#FFFFFF' }} >
                             <CaretRightFill className='me-1' />
                             Informazioni sulle borse di studio disponibili 
+                            <BoxArrowRight className='ms-1' />
                         </Card.Link>
                     </Row>
                     <Row>
