@@ -57,6 +57,23 @@ body{
   border-radius: 16px;
 }
 
+.ticket-category{
+  background-color: #1A415A;
+  color: #fff;
+  border-radius: 16px;
+}
+
+.list-group-item-action:hover {
+  background-color: #004C81;
+  transform: scale(1.02);
+  color: #fff
+}
+
+
+.list-group-item-action:focus{
+  background-color: #EF7B00;
+  color: #fff;
+}
 .course-bar {
   margin-top: 5px;
   height: 90px;
@@ -104,6 +121,10 @@ body{
 .custom-accordion {
   margin-left: 8px;
   border:hidden;
+}
+
+.ticket-accordion {
+  border: hidden;
 }
 
 .custom-table .centered-th {

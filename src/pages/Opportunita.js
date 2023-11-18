@@ -1,7 +1,7 @@
 import { FaSuitcase } from 'react-icons/fa';
 import { Row, Container } from 'react-bootstrap';
 import BaseCard from '../components/BaseCard';
-
+import Title from '../components/Title';
 import { MdWorkHistory } from "react-icons/md";
 import { FaHelmetSafety } from "react-icons/fa6";
 import { HiMiniClipboardDocumentCheck } from "react-icons/hi2";
@@ -16,10 +16,10 @@ export default function Opportunita() {
 
     return (
         <>
-            <div className="title">
-                <FaSuitcase size={28} />
-                <span className="section-title" style={{ marginLeft: '5px', marginTop: '3px' }}>Opportunità</span>
-            </div>
+            <Title
+                icon={<FaSuitcase size={28} />}
+                sectionName='Opportunità'
+            />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>
                 <Row>
                 <BaseCard

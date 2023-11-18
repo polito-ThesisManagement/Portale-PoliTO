@@ -8,23 +8,28 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 import Services from '../data/Data.json';
 import Logo from '../assets/logo_polito.svg';
+import Logo2 from '../assets/logo_polito_reduced.svg'
 import '../styles/Utilities.css'
 
 import { Link } from 'react-router-dom';
 import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
 
-//Ovviamente deve essere cambiata al momento è utile per testare la navigazione in react e cambiare le pagina
-//TODO: cambiare navigazione click su icone
-
 export default function PoliNavbar() {
     return (
         <Navbar className="custom-navbar">
             <Container fluid>
-                <Navbar.Brand className="d-none d-lg-block"as={Link} to="/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '36px' }}>
+                <Navbar.Brand className="d-none d-lg-block" as={Link} to="https://www.polito.it/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '36px' }}>
                     <Image
                         src={Logo}
                         alt="Logo PoliTo"
                         style={{ width: '100%', height: '100%' }}
+                    />
+                </Navbar.Brand>
+                <Navbar.Brand className="d-block d-lg-none" as={Link} to="https://www.polito.it/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '12px' }}>
+                    <Image
+                        src={Logo2}
+                        alt="Logo PoliTo"
+                        style={{ width: '51.44px', height: '100%' }}
                     />
                 </Navbar.Brand>
                 <Searchbar services={Services} />
@@ -41,7 +46,7 @@ export default function PoliNavbar() {
                             <div className='d-none d-md-block'>
                             s123456
                             <br />
-                            <span>Mario Rossi</span>
+                            <span className='truncated'>Mario Rossi</span>
                             </div>
                         </Navbar.Text>
                         <Navbar.Brand>
@@ -56,11 +61,11 @@ export default function PoliNavbar() {
                                     <PersonCircle size={48} color='#fff' />
                                 </Dropdown.Toggle>
 
-                                <Dropdown.Menu style={{right: 'auto', left: '-70px'}}>
-                                    <Dropdown.Item>Dati utente</Dropdown.Item>
-                                    <Dropdown.Item>Cambia lingua</Dropdown.Item>
-                                    <Dropdown.Item>Impostazioni account</Dropdown.Item>
-                                    <Dropdown.Item>Logout</Dropdown.Item>
+                                <Dropdown.Menu style={{right: 'auto', left: '-120px', fontFamily:'Montserrat, sans-serif',}}>
+                                    <Dropdown.Item style={{fontWeight:'500'}}>Dati utente</Dropdown.Item>
+                                    <Dropdown.Item style={{fontWeight:'500'}}>Cambia lingua</Dropdown.Item>
+                                    <Dropdown.Item style={{fontWeight:'500'}}>Impostazioni account</Dropdown.Item>
+                                    <Dropdown.Item style={{fontWeight:'500'}}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
 
                             </Dropdown>

@@ -1,4 +1,4 @@
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import OrarioLezioniAgenda from "../../components/OrarioLezioniAgenda";
 
 export default function OrarioLezioni() {

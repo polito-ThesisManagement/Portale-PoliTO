@@ -1,6 +1,6 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Bell, ClockFill } from 'react-bootstrap-icons';
+import { Bell } from 'react-bootstrap-icons';
 
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ export default function CourseSummary(props) {
                     <Col xs={3} className='course-detail'>
                         {props.codice}
                     </Col>
-                    <Col xs={6} className='course-detail'>
+                    <Col xs={6} className='course-detail pe-2'>
                         <Link
                             to={`/didattica/${props.nome}/materiale`}
                             state={{codice, nome, periodo, crediti, linkGuida}}
