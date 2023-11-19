@@ -56,6 +56,20 @@
     margin-bottom: 8px;
 }
 
+.toolbar-reduced {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    .toolbar-reduced {
+      display: block;
+    }
+    .toolbar-expanded{
+        display: none;
+    }
+  }
+
 .rbc-time-content::-webkit-scrollbar {
     display: none;
 }
