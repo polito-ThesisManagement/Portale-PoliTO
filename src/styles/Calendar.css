@@ -17,6 +17,11 @@
 
 .rbc-button-link {
     font-weight: 500;
+    
+}
+
+.rbc-date-cell {
+    z-index: 3;
 }
 
 .custom-rbc-toolbar button {
