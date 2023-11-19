@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
-import { ArrowLeft, ArrowRight, Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox } from 'react-bootstrap-icons';
+import { ArrowLeft, ArrowRight, Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox, FilePdf } from 'react-bootstrap-icons';
 
 export default function Materiale() {
 
@@ -82,6 +82,10 @@ export default function Materiale() {
 
                 <Col lg={9}>
                     <Container className='custom-container'>
+                        <div className='pt-2'>
+                            <FilePdf className='ms-1' size={30} />
+                            <h6 className='text-style' style={{fontSize: '10px'}}>Lab Text</h6>
+                        </div>
 
 
                     </Container>
