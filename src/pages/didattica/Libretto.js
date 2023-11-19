@@ -58,11 +58,11 @@ export default function Libretto() {
                                 <FaList size={20} className='subsection-icon' />
                                 Valutazioni provvisorie
                             </span>
-                                        <Row className='pt-2' style={{fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>
-                                            <Col xs={7}>Nome</Col>
-                                            <Col xs={2} style={{marginLeft:'-18px'}}>Esito</Col>
-                                            <Col style={{marginLeft:'10px'}}>Data</Col>
-                                        </Row>
+                                <Row className='pt-2' style={{fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>
+                                    <Col xs={7}>Nome</Col>
+                                    <Col xs={2} style={{marginLeft:'-18px'}}>Esito</Col>
+                                    <Col style={{marginLeft:'10px'}}>Data</Col>
+                                </Row>
                                     
                         </div>
                         <ListGroup style={{borderRadius:'16px'}}>
