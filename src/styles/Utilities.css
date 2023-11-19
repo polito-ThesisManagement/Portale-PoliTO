@@ -192,6 +192,17 @@ body{
   box-shadow: none;
 }
 
+.form-control-materiale {
+  border-color: black;
+  border-width: 2px;
+}
+
+.form-control-materiale:focus {
+  border-color: black;
+  border-width: 2px;
+  box-shadow: none;
+}
+
 .modal-body-scrollable {
   max-height: 400px; 
   overflow-y: auto; 
