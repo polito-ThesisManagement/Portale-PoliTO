@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Row, Col, Container, ListGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -8,6 +9,7 @@ import Courses from '../../data/Courses.json'
 import AltriCorsi from '../../data/AltriCorsi.json'
 import MaterialeCondiviso from '../../data/MaterialeCondiviso.json'
 import CourseSummary from '../../components/CourseSummary';
+
 
 import { FaList } from 'react-icons/fa';
 import { PiListPlusFill, PiVideoCameraFill } from 'react-icons/pi'
@@ -160,7 +162,27 @@ export default function Corsi() {
                         <ListGroup style={{ borderRadius: '16px' }}>
                             {otherCourses.map((course) => {
                                 return (
-                                    <CourseSummary key={course.codice} codice={course.codice} nome={course.nome} periodo={course.periodo} crediti={course.crediti} />
+                                    <ListGroup.Item className='summary-other' key={course.codice}>
+                                        <Container className='p-0'>
+                                            <Row>
+                                                <Col xs={3} className='course-detail'>
+                                                    {course.codice}
+                                                </Col>
+                                                <Col xs={5} className='course-detail pe-2'>
+                                                    <Link
+                                                        //to={`/didattica/${props.nome}/materiale`}
+                                                        //state={{ codice, nome, periodo, crediti, linkGuida }}
+                                                        className='truncated-link'
+                                                    >
+                                                        {course.nome}
+                                                    </Link>
+                                                </Col>
+                                               <Col xs={4} className='detail px-0'>
+                                                {course.docente}
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </ListGroup.Item>
                                 )
                             })}
                         </ListGroup>
@@ -184,7 +206,9 @@ export default function Corsi() {
                                 <ListGroup className='mt-2 p-0'>
                                     {MaterialeCondiviso.map((corso) => {
                                         return (
-                                            <ListGroup.Item key={corso.codice} className='summary-other'>
+                                            <ListGroup.Item key={corso.codice}
+                                                className={`summary-other ${otherCourses.includes(corso) ? 'selected' : ''}`}
+                                                onClick={() => handleCourseSelection(corso)}>
                                                 <Container >
                                                     <Row>
                                                         <Col className='course-detail'>
