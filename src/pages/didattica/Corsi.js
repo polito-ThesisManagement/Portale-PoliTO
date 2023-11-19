@@ -82,7 +82,7 @@ export default function Corsi() {
                             <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
                                 <Col xs={2}>Codice</Col>
                                 <Col xs={3}>Nome</Col>
-                                <Col xs={4} style={{ marginLeft: '40px' }}>Data Esame</Col>
+                                <Col xs={4} style={{ marginLeft: '40px' }}>Data</Col>
                                 <Col>Annulla</Col>
                             </Row>
                         </div>
@@ -112,7 +112,7 @@ export default function Corsi() {
                         </ListGroup>
 
                         <div className="text-center mt-2 mb-2">
-                            <Button className="custom-button mt-2">Prenotazione Esami</Button>
+                            <Button className="custom-button mt-2">Prenotazione appelli</Button>
                         </div>
                     </Container>
 
@@ -124,7 +124,7 @@ export default function Corsi() {
                             </span>
                             <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
                                 <Col >Nome</Col>
-                                <Col style={{ marginLeft: '50px' }}>Data Pubblicazione</Col>
+                                <Col style={{ marginLeft: '50px' }}>Data</Col>
                                 <Col style={{ marginLeft: '12px' }}>Vai a videolezione</Col>
                             </Row>
                         </div>
@@ -164,15 +164,15 @@ export default function Corsi() {
                                 )
                             })}
                         </ListGroup>
-                        <div className="text-end mt-2 mb-2">
+                        <div className="text-center mt-2 mb-2">
                             <Button className="custom-button mt-2" onClick={handleShow}>
-                                Aggiungi Corsi <PlusSquare size={20} className='ms-1' />
+                                Ricerca nel materiale condiviso <PlusSquare size={20} className='ms-1' />
                             </Button>
                         </div>
 
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
-                                <Modal.Title className='text-style'>Aggiungi Corsi</Modal.Title>
+                                <Modal.Title className='text-style'>Aggiungi corsi</Modal.Title>
                             </Modal.Header>
                             <Modal.Body className={`text-style modal-body-scrollable`}>
                                 <h6>Seleziona corsi dei quali altri docenti hanno scelto di condividere il materiale</h6>
