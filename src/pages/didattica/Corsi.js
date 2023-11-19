@@ -82,10 +82,10 @@ export default function Corsi() {
                                 Appelli prenotati
                             </span>
                             <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
-                                <Col xs={2}>Codice</Col>
-                                <Col xs={3}>Nome</Col>
-                                <Col xs={4} style={{ marginLeft: '40px' }}>Data</Col>
-                                <Col>Annulla</Col>
+                                <Col xs={3}>Codice</Col>
+                                <Col xs={5}>Nome</Col>
+                                <Col xs={3} style={{ marginLeft: '10px' }}>Data</Col>
+
                             </Row>
                         </div>
                         <ListGroup style={{ borderRadius: '16px' }}>
@@ -94,17 +94,17 @@ export default function Corsi() {
                                     <ListGroup.Item key={val.codice} className='summary' style={{ marginBottom: '8px' }}>
                                         <Container className='p-0'>
                                             <Row>
-                                                <Col xs={2} className='course-detail p-0' style={{ marginLeft: '8px' }}>
+                                                <Col xs={3} className='course-detail p-0' style={{ marginLeft: '8px' }}>
                                                     {val.codice}
                                                 </Col>
-                                                <Col xs={4} className='course-detail p-0'>
-                                                    {val.nome}
+                                                <Col xs={5} className='course-detail p-0'>
+                                                    <span className='truncated'>{val.nome}</span>
                                                 </Col>
-                                                <Col xs={4} className='p-0'>
+                                                <Col xs={3} className='p-0'>
                                                     {val.dataEsame}
                                                 </Col>
-                                                <Col>
-                                                    <X size={28} />
+                                                <Col className='p-0'>
+                                                    <X size={24} />
                                                 </Col>
                                             </Row>
                                         </Container>
@@ -125,9 +125,9 @@ export default function Corsi() {
                                 Virtual classroom recenti
                             </span>
                             <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
-                                <Col >Nome</Col>
-                                <Col style={{ marginLeft: '50px' }}>Data</Col>
-                                <Col style={{ marginLeft: '12px' }}>Vai a videolezione</Col>
+                                <Col xs={5}>Corso</Col>
+                                <Col xs={3}style={{ marginLeft: '70px' }}>Data</Col>
+                                <Col style={{ marginLeft: '5px' }}>Vai a videolezione</Col>
                             </Row>
                         </div>
 
@@ -136,11 +136,13 @@ export default function Corsi() {
                                 <ListGroup.Item key={index} className='summary-video' style={{ marginBottom: '8px' }}>
                                     <Container className='p-0'>
                                         <Row>
-                                            <Col className='course-detail p-0' style={{ marginLeft: '8px' }}>
+                                            <Col xs={5}className='course-detail p-0' style={{ marginLeft: '8px' }}>
                                                 {rec}
                                             </Col>
-                                            <Col className='course-detail p-0 text-center'>
-                                                10/05/2022
+                                            <Col xs={3} className='text-center p-0'>
+                                                <span className='course-detail'>10/05/2022</span>
+                                            </Col>
+                                            <Col xs={1} className='p-0'>
                                             </Col>
                                             <Col className='p-0 text-center'>
                                                 <CameraReels size={20} />
