@@ -1,7 +1,8 @@
 import { Container, Col, Button } from "react-bootstrap";
 import { useState, useContext, useEffect } from 'react';
 import { FavoritesContext } from '../App';
-import { Star, StarFill, BoxArrowRight } from 'react-bootstrap-icons';
+import { Star, StarFill } from 'react-bootstrap-icons';
+import { FaExternalLinkAlt } from "react-icons/fa";
 import '../styles/Card.css'
 
 import { PiUserListFill } from "react-icons/pi";
@@ -57,9 +58,12 @@ export default function BaseCard(props) {
                 </div>
                 {
                     (props.link && props.linkText) ?
-                        (<Link className="card-link truncated" target='_blank' to={props.link}>
-                            {props.linkText} <BoxArrowRight className="ms-2" />
-                        </Link>)
+                        (<div style={{ display: 'flex', alignItems: 'center' }}>
+                        <Link className="card-link truncated" target='_blank' to={props.link}>
+                          {props.linkText}
+                        </Link>
+                        <FaExternalLinkAlt className="mx-2 mt-1" />
+                      </div>)
                         :
                         null
                 }
