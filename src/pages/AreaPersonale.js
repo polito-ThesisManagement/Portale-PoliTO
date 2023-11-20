@@ -7,7 +7,8 @@ import { BsCalendarFill } from "react-icons/bs";
 import { BsCalendar2WeekFill } from "react-icons/bs";
 import { RiFileUserFill } from "react-icons/ri";
 import { TbCertificate } from "react-icons/tb";
-import { FaUserCog } from "react-icons/fa";
+import { FaUserCog, FaDownload } from "react-icons/fa";
+
 
 export default function AreaPersonale() {
 
@@ -47,6 +48,12 @@ export default function AreaPersonale() {
                         icon={<TbCertificate size="42" className='card-icon'/>}
                         service={"Certificati"}
                         description={'Stampa certificati ufficiali riguardanti la tua carriera universitaria.'}
+                        servicePath={'/area_personale'}
+                    />
+                    <BaseCard
+                        icon={<FaDownload size="42" className='card-icon'/>}
+                        service={"Licenze"}
+                        description={'Accedi alle licenze offerte dal Politecnico.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
