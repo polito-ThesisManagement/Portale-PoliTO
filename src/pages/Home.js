@@ -13,7 +13,9 @@ import WidgetCalendar from "../components/WidgetCalendar";
 import { BellFill, StarFill } from "react-bootstrap-icons";
 
 
-import Courses from '../data/Courses.json'
+import Courses from '../data/Courses.json';
+import CourseNotices from '../data/CourseNotices.json';
+import GeneralNotices from '../data/GeneralNotices.json'
 
 import '../styles/Text.css';
 import '../styles/Utilities.css'
@@ -23,6 +25,7 @@ import { BsFillCalendarFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
 import Title from "../components/Title";
 import CourseNotice from "../components/CourseNotice";
+import GeneralNotice from "../components/GeneralNotice";
 
 export default function Home() {
     const { favorites } = useContext(FavoritesContext);
@@ -109,13 +112,18 @@ export default function Home() {
                             className="mb-2 tab"
                         >
                             <Tab eventKey="generali" title="Avvisi generali">
-                                <CourseNotice/>
-                                <CourseNotice/>
-                                <CourseNotice/>
+                                {GeneralNotices.map((notice) => {
+                                    return (
+                                        <GeneralNotice data={notice.data} sender={notice.sender} title={notice.title} body={notice.body}  />
+                                    )
+                                })}
                             </Tab>
                             <Tab eventKey="corsi" title="Avvisi corsi">
-                                <CourseNotice/>
-                                <CourseNotice/>
+                                {CourseNotices.map((notice) => {
+                                    return (
+                                        <CourseNotice data={notice.data} course={notice.course} sender={notice.sender} title={notice.title} body={notice.body}  />
+                                    )
+                                })}
                             </Tab>
                         </Tabs>
                     </Container>
