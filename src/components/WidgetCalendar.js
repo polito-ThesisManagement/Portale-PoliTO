@@ -36,7 +36,8 @@ const CustomToolbar = (toolbar) => {
   };
 
   return (
-    <div className="custom-rbc-toolbar">
+    <>
+    <div className="custom-rbc-toolbar toolbar-expanded">
 
       <span className="rbc-btn-group">
         <Button onClick={goToBack}>
@@ -67,6 +68,40 @@ const CustomToolbar = (toolbar) => {
           </Button>
       </span>
     </div>
+    <div className="custom-rbc-toolbar toolbar-reduced">
+
+      <span className="rbc-btn-group">
+        <Button onClick={goToBack}>
+          <BsChevronLeft />
+        </Button>
+        <Button type="button" onClick={goToToday}>
+          Oggi
+        </Button>
+        <Button type="button" onClick={goToNext}>
+          <BsChevronRight />
+        </Button>
+      </span>
+
+      <span className="rbc-btn-group" style={{marginLeft:"0px", marginTop:'6px', marginBottom:'6px'}}>
+          <Button
+          onClick={goToWeekView}
+          className={`view-button ${isMonthView ? '' : 'active'}`}
+          >
+              Settimana
+          </Button>
+          <Button
+          onClick={goToMonthView}
+          className={`view-button ${isMonthView ? 'active' : ''}`}
+          > 
+              Mese
+          </Button>
+      </span>
+      
+      <br/>
+
+      <span className="rbc-toolbar-label">{toolbar.label}</span>
+    </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Container, ListGroup, ProgressBar, Tab } from 'react-bootstrap';
+import { Container, ListGroup } from 'react-bootstrap';
 import { Row, Col, Table } from 'react-bootstrap';
 
 import valutazioni from '../../data/Valutazioni.json'

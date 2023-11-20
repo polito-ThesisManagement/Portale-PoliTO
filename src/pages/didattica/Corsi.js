@@ -16,6 +16,7 @@ import { PiListPlusFill, PiVideoCameraFill } from 'react-icons/pi'
 import { BsCalendarCheckFill } from 'react-icons/bs'
 import { ImFolderUpload } from 'react-icons/im'
 import { X, CameraReels, PlusSquare } from 'react-bootstrap-icons';
+import { FaArrowRight } from "react-icons/fa6";
 
 
 export default function Corsi() {
@@ -126,8 +127,8 @@ export default function Corsi() {
                             </span>
                             <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
                                 <Col xs={5}>Corso</Col>
-                                <Col xs={3}style={{ marginLeft: '70px' }}>Data</Col>
-                                <Col style={{ marginLeft: '5px' }}>Vai a videolezione</Col>
+                                <Col xs={3} style={{position: 'relative', left: 74}}>Data</Col>
+                                <Col></Col>
                             </Row>
                         </div>
 
@@ -136,16 +137,17 @@ export default function Corsi() {
                                 <ListGroup.Item key={index} className='summary-video' style={{ marginBottom: '8px' }}>
                                     <Container className='p-0'>
                                         <Row>
-                                            <Col xs={5}className='course-detail p-0' style={{ marginLeft: '8px' }}>
+                                            <Col xs={5}className='course-detail truncated p-0' style={{ marginLeft: '8px' }}>
                                                 {rec}
                                             </Col>
-                                            <Col xs={3} className='text-center p-0'>
-                                                <span className='course-detail'>10/05/2022</span>
+                                            <Col xs={3} className='detail text-center p-0'>
+                                                10/05/2022
                                             </Col>
-                                            <Col xs={1} className='p-0'>
+                                            <Col xs={2} className='p-0'>
                                             </Col>
                                             <Col className='p-0 text-center'>
-                                                <CameraReels size={20} />
+                                                <CameraReels size={20} style={{marginTop:'-8px'}}/>
+                                                <FaArrowRight size={20} style={{marginTop:'-6px', marginLeft:'5px'}}/>
                                             </Col>
                                         </Row>
                                     </Container>
@@ -190,7 +192,7 @@ export default function Corsi() {
                         </ListGroup>
                         <div className="text-center mt-2 mb-2">
                             <Button className="custom-button mt-2" onClick={handleShow}>
-                                Ricerca nel materiale condiviso <PlusSquare size={20} className='ms-1' />
+                                Ricerca nel materiale condiviso <PlusSquare size={20} style={{marginLeft:'4px', marginTop:'-4px'}} />
                             </Button>
                         </div>
 
@@ -199,7 +201,7 @@ export default function Corsi() {
                                 <Modal.Title className='text-style'>Aggiungi corsi</Modal.Title>
                             </Modal.Header>
                             <Modal.Body className={`text-style modal-body-scrollable`}>
-                                <h6>Seleziona corsi dei quali altri docenti hanno scelto di condividere il materiale</h6>
+                                <h6>Seleziona il materiale condiviso dai docenti</h6>
                                 <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
                                     <Col style={{ marginLeft: '8px' }}>Codice</Col>
                                     <Col>Nome</Col>

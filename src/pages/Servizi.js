@@ -20,7 +20,7 @@ export default function Servizi() {
             />
             <Row>
                 <Col md={12} lg={9}>
-                    <Container className="custom-container">
+                    <Container className="custom-container" style={{height: '476px'}}>
                         <div className="subsection">
                             <span className="subsection-title">
                                 <MdMapsHomeWork size={20} className='subsection-icon' />
