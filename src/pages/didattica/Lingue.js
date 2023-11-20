@@ -27,7 +27,7 @@ export default function Lingue() {
                                         <Card.Body>
                                             <Card.Title>Visualizza certificazioni</Card.Title>
                                             <Card.Text>
-                                                Visualizza le certificazioni ottenute o di cui hai effetuato l'upload
+                                                Visualizza le certificazioni ottenute o di cui hai effetuato l'upload precedentemente
                                             </Card.Text>
                                             <Button className="custom-button">Visualizza Certificazioni</Button>
                                         </Card.Body>
@@ -49,7 +49,7 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="1" className="custom-accordion mt-2">
+                    <Accordion.Item eventKey="1" className="custom-accordion my-2">
                         <Accordion.Header>
                             <FlagFill size={20} className='subsection-icon' />
                             Lingua inglese
@@ -59,7 +59,7 @@ export default function Lingue() {
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Verifica Livello di preparazion inglese</Card.Title>
+                                            <Card.Title>Verifica Livello di preparazione inglese</Card.Title>
                                             <Card.Text>
                                                 Verifica il tuo livello di prerazione tramite test: wrting, listening, reading, speaking
                                             </Card.Text>
@@ -93,7 +93,7 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="2" className="custom-accordion mt-2">
+                    <Accordion.Item eventKey="2" className="custom-accordion my-2">
                         <Accordion.Header>
                             <Flag size={20} className='subsection-icon' />
                             Lingua italiana
@@ -103,11 +103,11 @@ export default function Lingue() {
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Verifica livello di preparazione inglese</Card.Title>
+                                            <Card.Title>Verifica livello di preparazione italiano</Card.Title>
                                             <Card.Text>
-                                                Verifica il tuo livello di prerazione tramite test: writing, listening, reading, speaking
+                                                Verifica il tuo livello di prerazione tramite test: ascolto, lettura, scrittura, grammatica
                                             </Card.Text>
-                                            <Button className="custom-button">Accedi al test</Button>
+                                            <Button className="custom-button">Test Italiano</Button>
                                         </Card.Body>
                                     </Card>
 
@@ -115,11 +115,11 @@ export default function Lingue() {
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Ielts</Card.Title>
+                                            <Card.Title>CELI</Card.Title>
                                             <Card.Text>
-                                                Preparati all'esame Ielts o iscriviti all'esame tramite il portale
+                                                Preparati all'esame CELI o iscriviti all'esame tramite il portale
                                             </Card.Text>
-                                            <Button className="custom-button">Accedi a Ielts</Button>
+                                            <Button className="custom-button">CELI</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -128,7 +128,7 @@ export default function Lingue() {
                                         <Card.Body>
                                             <Card.Title>Cla</Card.Title>
                                             <Card.Text>
-                                                Per ulteriori informazioni a proposito della lingua inglese contatta il Centro linguistico dell'ateneo
+                                                Per ulteriori informazioni a proposito della lingua italiana contatta il Centro linguistico dell'ateneo
                                             </Card.Text>
                                             <Button className="custom-button">Contatta Cla</Button>
                                         </Card.Body>
@@ -137,7 +137,7 @@ export default function Lingue() {
                             </Row>
                         </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey="3" className="custom-accordion mt-2">
+                    <Accordion.Item eventKey="3" className="custom-accordion my-2">
                         <Accordion.Header>
                             <Globe size={20} className='subsection-icon' />
                             Altre lingue
@@ -147,11 +147,11 @@ export default function Lingue() {
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Verifica Livello di preparazion inglese</Card.Title>
+                                            <Card.Title>Verifica Livello di preparazione lingue</Card.Title>
                                             <Card.Text>
-                                                Verifica il tuo livello di prerazione tramite test: wrting, listening, reading, speaking
+                                                Verifica il tuo livello di prerazione lingua: francese, spagnolo, tedesco, russo
                                             </Card.Text>
-                                            <Button className="custom-button">Accedi al test</Button>
+                                            <Button className="custom-button">Test Lingue</Button>
                                         </Card.Body>
                                     </Card>
 
@@ -159,11 +159,11 @@ export default function Lingue() {
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Ielts</Card.Title>
+                                            <Card.Title>Certificazioni</Card.Title>
                                             <Card.Text>
-                                                Preparati all'esame Ielts o iscriviti all'esame tramite il portale
+                                                Scopri le diverse certificazioni disponibili per le lingue
                                             </Card.Text>
-                                            <Button className="custom-button">Accedi a Ielts</Button>
+                                            <Button className="custom-button">Certificazioni</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -172,7 +172,7 @@ export default function Lingue() {
                                         <Card.Body>
                                             <Card.Title>Cla</Card.Title>
                                             <Card.Text>
-                                                Per ulteriori informazioni a proposito della lingua inglese contatta il Centro linguistico dell'ateneo
+                                                Per ulteriori informazioni sullo studio delle lingue contatta il Centro linguistico dell'ateneo
                                             </Card.Text>
                                             <Button className="custom-button">Contatta Cla</Button>
                                         </Card.Body>
