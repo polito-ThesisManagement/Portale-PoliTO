@@ -40,7 +40,7 @@ export default function PoliNavbar() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link as={Link} to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX" style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#fff' /></Nav.Link>
+                        <Nav.Link as={Link} to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX" target='_blank' style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#fff' /></Nav.Link>
                         <Nav.Link as={Link} to="/" style={{ marginRight: '12px', marginTop: '9px' }}><Bell size={28} color='#fff' /></Nav.Link>
                         <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#fff', marginRight: '12px' }}>
                             <div className='d-none d-md-block'>
