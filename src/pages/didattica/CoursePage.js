@@ -16,15 +16,17 @@ import { ArrowRightShort } from 'react-bootstrap-icons';
 export default function CoursePage() {
     const location = useLocation();
     const { codice, nome, periodo, crediti, linkGuida } = location.state;
+    const section = location.pathname.replace(/.*\//, '');
+    const sectionName = section.charAt(0).toUpperCase() +  section.slice(1);
+    console.log(sectionName);
 
-    const [activeButton, setActiveButton] = useState('Materiale');
+    const [activeButton, setActiveButton] = useState(sectionName);
 
     const handleButtonClick = (buttonName) => {
         setActiveButton(buttonName);
     };
 
 
-    //outlet permette di creare sotto la navbar
     return (
         <>
             <div className="d-flex my-3 mx-3">

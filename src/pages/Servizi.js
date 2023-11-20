@@ -1,9 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { MdApps, MdMapsHomeWork } from 'react-icons/md'
-import { Link45deg, CaretRightFill } from "react-bootstrap-icons";
-
+import { Link45deg } from "react-bootstrap-icons";
 import { ListGroup } from "react-bootstrap";
 import Title from "../components/Title";
+import { TiArrowForward } from "react-icons/ti";
 
 import '../styles/Utilities.css'
 import LinkUtili from "../data/LinkUtili.json";
@@ -43,8 +43,8 @@ export default function Servizi() {
                                     <ListGroup.Item key={link.servizio} className='px-1'style={{border: "hidden"}} >
                                         <Link to={link.link}
                                             target='_blank'
-                                            style={{color: "#000000"}}>
-                                                <CaretRightFill className='me-1' style={{marginBottom:'2px'}} />
+                                            style={{textDecoration:'none'}}>
+                                                <TiArrowForward className='me-1' style={{marginBottom:'2px'}} />
                                                 {link.servizio}
                                         </Link>
                                     </ListGroup.Item>

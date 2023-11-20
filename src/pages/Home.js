@@ -114,14 +114,14 @@ export default function Home() {
                             <Tab eventKey="generali" title="Avvisi generali">
                                 {GeneralNotices.map((notice) => {
                                     return (
-                                        <GeneralNotice data={notice.data} sender={notice.sender} title={notice.title} body={notice.body}  />
+                                        <GeneralNotice  key={notice.data+" "+notice.title} data={notice.data} sender={notice.sender} title={notice.title} body={notice.body}  />
                                     )
                                 })}
                             </Tab>
                             <Tab eventKey="corsi" title="Avvisi corsi">
                                 {CourseNotices.map((notice) => {
                                     return (
-                                        <CourseNotice data={notice.data} course={notice.course} sender={notice.sender} title={notice.title} body={notice.body}  />
+                                        <CourseNotice key={notice.data+" "+notice.title} data={notice.data} course={notice.course} sender={notice.sender} title={notice.title} body={notice.body}  />
                                     )
                                 })}
                             </Tab>

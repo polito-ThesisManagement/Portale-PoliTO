@@ -1,8 +1,8 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Bell } from 'react-bootstrap-icons';
-
 import { Link } from 'react-router-dom';
+
 
 
 export default function CourseSummary(props) {
@@ -11,24 +11,24 @@ export default function CourseSummary(props) {
 
     return (
         <ListGroup.Item className='summary'style={{marginBottom:'8px'}}>
-            <Container className='p-0'>
+            <Container className='link-container p-0'
+            as={Link}
+            to={`/didattica/${props.nome}/materiale`}
+            state={{codice, nome, periodo, crediti, linkGuida}}
+            >
                 <Row>
                     <Col xs={3} className='course-detail'>
                         {props.codice}
                     </Col>
                     <Col xs={6} className='course-detail ps-3 pe-2'>
-                        <Link
-                            to={`/didattica/${props.nome}/materiale`}
-                            state={{codice, nome, periodo, crediti, linkGuida}}
-                            className='truncated-link'
-                        >
+                        <span className='truncated'>
                         {props.nome}
-                        </Link>
+                        </span>
                     </Col>
                     <Col xs={2} className='detail px-0'>
                         {props.crediti} CFU
                     </Col>
-                    <Col className='p-0'>
+                    <Col className='link-container p-0'>
                         <Bell size={20}/>
                     </Col>
                 </Row>

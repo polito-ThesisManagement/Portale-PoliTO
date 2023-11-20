@@ -106,6 +106,7 @@ body{
   background-color: #EF7B00;
   color: #fff;
 }
+
 .course-bar {
   margin-top: 5px;
   height: 90px;
@@ -217,4 +218,9 @@ body{
   border-radius: 10px;
   margin-bottom: 16px;
   padding-bottom: 8px;
+}
+
+.link-container {
+  color: #FFFFFF;
+  text-decoration: none;
 }

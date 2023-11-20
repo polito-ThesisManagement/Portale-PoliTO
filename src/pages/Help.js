@@ -9,10 +9,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Title from "../components/Title";
-import { CaretRightFill, Search } from 'react-bootstrap-icons';
+import { Search } from 'react-bootstrap-icons';
 import { FaInfoCircle, FaBook } from 'react-icons/fa';
 import { FaTicketSimple } from "react-icons/fa6";
 import { HiMiniTicket } from "react-icons/hi2";
+import { TiArrowForward } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
 import TicketCategories from "../data/TicketCategories.json"
@@ -61,7 +62,7 @@ export default function Help() {
                         <InputGroup className="my-3">
                             <Form.Control
                                 placeholder="Cerca tra le FAQ..."
-                                aria-label="FAQ Searct"
+                                aria-label="FAQ Search"
                                 aria-describedby="basic-addon2"
                                 value={search}
                                 onChange={handleSearch}
@@ -153,8 +154,8 @@ export default function Help() {
                                         <Link to={guida.link}
                                             target='_blank'
                                             className="mb-auto"
-                                            style={{ color: "#000000" }}>
-                                            <CaretRightFill className='me-1' style={{ marginBottom: '2px' }} />
+                                            style={{textDecoration:'none'}}>
+                                            <TiArrowForward className='me-1' style={{ marginBottom: '2px' }} />
                                             {guida.guida}</Link>
                                     </ListGroup.Item>
                                 )
@@ -172,18 +173,18 @@ export default function Help() {
                         <ListGroup style={{ borderRadius: '16px' }}>
                             <ListGroup.Item
                                 className="summary"
-                                style={{ marginBottom: '5px' }}>
+                                style={{ marginBottom: '4px' }}>
                                 Oggetto ticket 1 <br></br> - Chiuso
                             </ListGroup.Item>
                             <ListGroup.Item
                                 className="summary"
-                                style={{ marginBottom: '5px' }}>
+                                style={{ marginBottom: '4px' }}>
                                 Oggetto ticket 2 <br></br>
                                 - Chiuso
                             </ListGroup.Item>
                             <ListGroup.Item
                                 className="summary"
-                                style={{ marginBottom: '5px' }}>
+                                style={{ marginBottom: '4px' }}>
                                 Oggetto ticket 3 <br></br>
                                 - Aperto
                             </ListGroup.Item>

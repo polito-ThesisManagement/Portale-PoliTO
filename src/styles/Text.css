@@ -20,17 +20,6 @@
     font-size: 18px;
     margin-bottom: 16px;
 }
-
-.truncated-link {
-    margin-left: 0px;
-    color: #FFFFFF;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    display: block;
-}
-
 .truncated {
     overflow: hidden;
     white-space: nowrap;
