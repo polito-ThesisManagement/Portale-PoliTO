@@ -17,7 +17,31 @@ export default function Libretto() {
     return (
         <>
             <Row>
-                <Col md={12} lg={7}>
+                <Col md={12} lg={8}>
+                    <Container className='custom-container'>
+                        <div className="subsection">
+                            <span className="subsection-title">
+                                <FaList size={20} className='subsection-icon' />
+                                Valutazioni provvisorie
+                            </span>
+                                <Row className='pt-2' style={{fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>
+                                        <Col xs={2} style={{position: 'relative', left: 4}}>Codice</Col>
+                                        <Col xs={4} style={{position: 'relative', left: 26}}>Nome</Col>
+                                        <Col xs={1} style={{position: 'relative', left: -4}}>Anno</Col>
+                                        <Col xs={1} style={{position: 'relative', left: 0}}>Crediti</Col>
+                                        <Col xs={1} style={{position: 'relative', left: 20}}>Esito</Col>
+                                        <Col xs={2} style={{position: 'relative', left: 30}}>Data</Col>
+                                </Row>
+                                    
+                        </div>
+                        <ListGroup style={{borderRadius:'16px'}}>
+                            {valutazioniProvvisorie.map((val) => {
+                                    return (
+                                        <ProvisionalGrade key={val.codice} codice={val.codice} nome={val.nome} anno={val.anno} cfu={val.cfu} esito={val.esito} data={val.data} />
+                                    )
+                            })}
+                        </ListGroup>
+                    </Container>
                     <Container className='custom-container' style={{ maxWidth: '100%', overflowX: 'auto' }}>
                         <div className="subsection">
                             <span className="subsection-title">
@@ -51,28 +75,7 @@ export default function Libretto() {
                         </div>
                     </Container>
                 </Col>
-                <Col md={12} lg={5}>
-                    <Container className='custom-container'>
-                        <div className="subsection">
-                            <span className="subsection-title">
-                                <FaList size={20} className='subsection-icon' />
-                                Valutazioni provvisorie
-                            </span>
-                                <Row className='pt-2' style={{fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>
-                                    <Col xs={7}>Nome</Col>
-                                    <Col xs={2} style={{marginLeft:'-18px'}}>Esito</Col>
-                                    <Col style={{marginLeft:'10px'}}>Data</Col>
-                                </Row>
-                                    
-                        </div>
-                        <ListGroup style={{borderRadius:'16px'}}>
-                            {valutazioniProvvisorie.map((val) => {
-                                    return (
-                                        <ProvisionalGrade key={val.nome} nome={val.nome} esito={val.esito} data={val.data} />
-                                    )
-                            })}
-                        </ListGroup>
-                    </Container>
+                <Col md={12} lg={4}>
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
