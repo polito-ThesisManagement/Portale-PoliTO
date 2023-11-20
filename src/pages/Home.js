@@ -22,6 +22,7 @@ import { FaList } from 'react-icons/fa';
 import { BsFillCalendarFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
 import Title from "../components/Title";
+import CourseNotice from "../components/CourseNotice";
 
 export default function Home() {
     const { favorites } = useContext(FavoritesContext);
@@ -98,7 +99,7 @@ export default function Home() {
                         <div className="subsection">
                             <span className="subsection-title">
                                 <BellFill size={20} className='subsection-icon' />
-                                Avvisi
+                                Avvisi recenti
                             </span>
                         </div>
                         <Tabs
@@ -108,16 +109,13 @@ export default function Home() {
                             className="mb-2 tab"
                         >
                             <Tab eventKey="generali" title="Avvisi generali">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                <CourseNotice/>
+                                <CourseNotice/>
+                                <CourseNotice/>
                             </Tab>
                             <Tab eventKey="corsi" title="Avvisi corsi">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                <CourseNotice/>
+                                <CourseNotice/>
                             </Tab>
                         </Tabs>
                     </Container>
