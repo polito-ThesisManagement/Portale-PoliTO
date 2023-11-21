@@ -89,11 +89,7 @@ export default function Help() {
                 <Col lg={4}>
                     {showCategory && 
                     <Container className='custom-container'>
-                        <ListGroup style={{ borderRadius: '16px'}}>
-                            <ListGroup.Item className="my-3" style={{backgroundColor:'#EF7B00',color:'white'}}>{clickedCategory}</ListGroup.Item>
-                        </ListGroup>
-
-                        <Accordion>
+                        <Accordion className="py-3">
                         <Accordion.Item eventKey="0" className="ticket-accordion">
                             <Accordion.Header>
                                 Domanda 1
@@ -131,7 +127,7 @@ export default function Help() {
                         
                         
 
-                        <div className="text-center mt-5 mb-2">
+                        <div className="text-center mt-3 mb-2">
                             <h5 className="text-style">Non hai trovato quello che cerchi?</h5>
                             <Button className="custom-button mt-2">Apri un ticket</Button>
                         </div>

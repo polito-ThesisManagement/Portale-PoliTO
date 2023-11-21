@@ -31,7 +31,7 @@ export default function Searchbar(props) {
                 <InputGroup className="flex-nowrap w-100">
                     <Form.Control
                         type="search"
-                        placeholder="Ricerca attraverso parole chiave"
+                        placeholder="Ricerca nel portale"
                         aria-label="Search"
                         size="md"
                         style={{ height: '40px', backgroundColor: '#F2F5F7' }}

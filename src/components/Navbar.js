@@ -15,26 +15,39 @@ import { Link } from 'react-router-dom';
 import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
 
 export default function PoliNavbar() {
+    
     return (
         <Navbar className="custom-navbar">
             <Container fluid>
-                <Navbar.Brand className="d-none d-lg-block" as={Link} to="https://www.polito.it/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '36px' }}>
+                <Navbar.Brand className="d-none d-lg-block" as={Link} target='_blank' to="https://www.polito.it/" style={{ width: 'auto', minWidth:'166.3px', height: '57px', marginLeft: '-3px', marginRight: '36px' }}>
                     <Image
                         src={Logo}
                         alt="Logo PoliTo"
                         style={{ width: '100%', height: '100%' }}
                     />
                 </Navbar.Brand>
-                <Navbar.Brand className="d-block d-lg-none" as={Link} to="https://www.polito.it/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '12px' }}>
+                <Navbar.Brand className="d-block d-lg-none" as={Link} target='_blank' to="https://www.polito.it/" style={{ width: 'auto', height: '57px', marginLeft: '-3px', marginRight: '12px' }}>
                     <Image
                         src={Logo2}
                         alt="Logo PoliTo"
                         style={{ width: '51.44px', height: '100%' }}
                     />
                 </Navbar.Brand>
-                <Searchbar services={Services} />
+                <Navbar.Brand className="d-none d-lg-block">
+                <span
+                style={{
+                    color: '#FFFFFF',
+                    fontFamily: 'Montserrat, sans-serif',
+                    display: 'inline-block',
+                    fontSize: '22px',
+                  }}
+                >
+                Portale della didattica
+                </span>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className='justify-content-end'>
+                <Searchbar  services={Services} />
                     <Nav
                         className="my-0 my-lg-0"
                         style={{ maxHeight: '100px' }}
