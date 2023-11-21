@@ -89,7 +89,7 @@ export default function Libretto() {
                                 <span className='important-detail'>28</span>
                                 </Col>
                                 <Col>
-                                <span className='detail'>Voto di laurea</span>
+                                <span className='detail'>Voto di accesso</span>
                                 <br/>
                                 <span className='important-detail'>102.67</span>
                                 </Col>
