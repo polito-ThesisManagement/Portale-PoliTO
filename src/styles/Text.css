@@ -44,8 +44,32 @@
     font-size: 15px;
 }
 
-.tab{
+.custom-tab{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 16px;
+    color: #002B49;
 }
+
+.custom-tab .nav-link{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #002B49;
+}
+
+.custom-tab .active{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #002B49;
+}
+
+.custom-link {
+    color: #002B49;
+    text-decoration: none;
+  }
+  
+  .custom-link:hover {
+    color: #006DB9;
+  }

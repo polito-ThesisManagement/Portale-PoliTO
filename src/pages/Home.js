@@ -109,7 +109,7 @@ export default function Home() {
                             defaultActiveKey="generali"
                             transition={false}
                             id="tab-avvisi"
-                            className="mb-2 tab"
+                            className="mb-2 custom-tab"
                         >
                             <Tab eventKey="generali" title="Avvisi generali">
                                 {GeneralNotices.map((notice) => {

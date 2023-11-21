@@ -43,7 +43,7 @@ export default function Servizi() {
                                     <ListGroup.Item key={link.servizio} className='px-1'style={{border: "hidden"}} >
                                         <Link to={link.link}
                                             target='_blank'
-                                            style={{textDecoration:'none'}}>
+                                            className="custom-link">
                                                 <TiArrowForward className='me-1' style={{marginBottom:'2px'}} />
                                                 {link.servizio}
                                         </Link>
