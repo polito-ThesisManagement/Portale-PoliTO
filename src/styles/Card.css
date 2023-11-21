@@ -1,6 +1,6 @@
 .custom-card{
-    background-color: #1A415A;
-    color: white;
+    background-color: #FFFFFF;
+    color: #002B49;
     border-radius: 32px;
     margin-bottom: 16px;
     padding-top: 20px;
@@ -39,8 +39,13 @@
     text-align: end;
 }
 
+.card-button:hover {
+    border-color: #006DB9;
+    background-color: #006DB9;
+}
+
 .card-link {
     font-weight: 300;
-    color: white;
+    color: #002B49;
     margin-top: 4px;
 }

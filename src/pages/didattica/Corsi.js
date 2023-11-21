@@ -134,7 +134,7 @@ export default function Corsi() {
 
                         <ListGroup style={{ borderRadius: '16px' }}>
                             {recentVirtualClassroom.map((rec, index) => (
-                                <ListGroup.Item key={index} className='summary-video' style={{ marginBottom: '8px' }}>
+                                <ListGroup.Item key={index} className='summary' style={{ marginBottom: '8px' }}>
                                     <Container className='p-0'>
                                         <Row>
                                             <Col xs={5}className='course-detail truncated p-0' style={{ marginLeft: '8px' }}>
@@ -166,7 +166,7 @@ export default function Corsi() {
                         <ListGroup style={{ borderRadius: '16px' }}>
                             {otherCourses.map((course) => {
                                 return (
-                                    <ListGroup.Item className='summary-other' key={course.codice}>
+                                    <ListGroup.Item className='summary mb-2' key={course.codice}>
                                         <Container className='p-0'>
                                             <Row>
                                                 <Col xs={3} className='course-detail'>
@@ -211,7 +211,8 @@ export default function Corsi() {
                                     {MaterialeCondiviso.map((corso) => {
                                         return (
                                             <ListGroup.Item key={corso.codice}
-                                                className={`summary-other ${otherCourses.includes(corso) ? 'selected' : ''}`}
+                                                className={`summary mb-2 ${otherCourses.includes(corso) ? 'selected' : ''}`}
+                                                style={{ borderRadius: '16px' }}
                                                 onClick={() => handleCourseSelection(corso)}>
                                                 <Container >
                                                     <Row>

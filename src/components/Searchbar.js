@@ -34,7 +34,7 @@ export default function Searchbar(props) {
                         placeholder="Ricerca nel portale"
                         aria-label="Search"
                         size="md"
-                        style={{ height: '40px', backgroundColor: '#F2F5F7' }}
+                        style={{ height: '40px', backgroundColor: '#F0F3F5', color:'#002B49' }}
                         onChange={handleChange}
                     />
                     <InputGroup.Text>

@@ -1,6 +1,6 @@
 .custom-sidebar {
-    background-color: #002B49;
-    color: #fff;
+    background-color: #FFFFFF;
+    color: #002B49;
     z-index: 4;
     width: 224px;
     padding: 0;
@@ -26,7 +26,7 @@
 }
 
 .custom-sidebar .nav-link {
-    color: #fff;
+    color: #002B49;
     padding-right: 0;
     margin-left: 16px;
     border-radius: 8px;
@@ -35,12 +35,12 @@
     display: flex;
 }
 .custom-sidebar .nav-link:hover {
-    background-color: #004C81;
+    background-color: #006DB9;
     color: #fff;
 }
 
 .custom-sidebar .nav-link.active {
-    background-color: #EF7B00;
+    background-color: #002B49;
     color: #fff;
 }
 
