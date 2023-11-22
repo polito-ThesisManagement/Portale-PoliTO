@@ -22,31 +22,31 @@ export default function Carriera() {
                     <BaseCard
                         icon={<BsCreditCard2BackFill size="42" className='card-icon' />}
                         service={"Tasse e agevolazioni"}
-                        description={'Pagamento tasse, Richiesta riduzione tasse, Modalità pagamento compensi.'}
+                        description={'Pagamento e richiesta riduzione tasse.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<IoIosListBox size="42" className='card-icon' />}
                         service={"Piano carriera"}
-                        description={'Compila il tuo piano carriera, modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico.'}
+                        description={'Compilazione o modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<MdEditDocument size="42" className='card-icon' />}
                         service={"Gestione carriera"}
-                        description={'Richiesta approvazione di attività esterne e modifica stato della tua carriera.'}
+                        description={'Richiesta approvazione di attività esterne e modifica stato carriera.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<FaUserEdit size="42" className='card-icon' />}
                         service={"Apply"}
-                        description={'Verifica lo stato della tua iscrizione e per visualizza eventuali comunicazioni relative ad essa.'}
+                        description={'Visuallizazione e verifica stato della tua carriera.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
                         icon={<IoSchool size="42" className='card-icon' />}
                         service={"Laurea"}
-                        description={'Visualizza lo stato della tua tesi,  l’elenco delle tesi proposte ed effettua l’iscrizione all’esame finale.'}
+                        description={'Visualizzazione stato della tesi ed elenco delle tesi proposte. Iscrizione all’esame finale.'}
                         servicePath={'/carriera'}
                     />
                 </Row>

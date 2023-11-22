@@ -11,7 +11,7 @@
 
 .card-title{
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 18px;
     padding-left: 6px;
     display: flex;
@@ -45,7 +45,6 @@
 }
 
 .card-link {
-    font-weight: 300;
-    color: #002B49;
-    margin-top: 4px;
+    font-weight: 400;
+    margin-top: 8px;
 }

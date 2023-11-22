@@ -23,25 +23,25 @@ export default function AreaPersonale() {
                     <BaseCard
                         icon={<PiUserListFill size="48" className='card-icon' />}
                         service={"Dati utente"}
-                        description={'Visualizza o aggiorna i dati relativi alla matricola 123456.'}
+                        description={'Visualizzazione e aggiornamento dei tuoi dati.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<BsCalendarFill size="42" className='card-icon' />}
                         service={"Agenda"}
-                        description={'Visualizzare le tue prenotazioni, scadenze, appelli e lezioni.'}
+                        description={'Visualizzazione prenotazioni, scadenze, appelli e lezioni.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<BsCalendar2WeekFill size="42" className='card-icon'/>}
                         service={"Prenotazioni"}
-                        description={'Effetua prenotazioni per acceso in segreteria, aule, laboratori o eventi.'}
+                        description={'Visualizzazione e richiesta prenotazioni per accesso in segreteria, aule o eventi.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
                         icon={<RiFileUserFill size="42" className='card-icon'/>}
                         service={"Curriculum"}
-                        description={'Visualizzare, modifica oppure effetua caricamento del tuo curriculum.'}
+                        description={'Visualizzazione e modifica del tuo curriculum.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard
@@ -53,7 +53,7 @@ export default function AreaPersonale() {
                     <BaseCard
                         icon={<FaDownload size="42" className='card-icon'/>}
                         service={"Licenze"}
-                        description={'Accedi alle licenze offerte dal Politecnico.'}
+                        description={'Visualizzazione licenze offerte dal Politecnico.'}
                         servicePath={'/area_personale'}
                     />
                     <BaseCard

@@ -50,16 +50,16 @@ export default function BaseCard(props) {
                         starClicked ?
                             (<StarFill size="24px" style={{ color: '#EF7B00', marginRight: '16px', marginBottom: '8px' }} onClick={handleStarClick} />)
                             :
-                            (<Star size="24px" style={{ color: '#FFFFFF', marginRight: '16px', marginBottom: '8px' }} onClick={handleStarClick} />)
+                            (<Star size="24px" style={{ color: '#002B49', marginRight: '16px', marginBottom: '8px' }} onClick={handleStarClick} />)
                     }
                 </div>
-                <div>
+                <div style={{color:'#000000'}}>
                     {props.description}
                 </div>
                 {
                     (props.link && props.linkText) ?
                         (<div style={{ display: 'flex', alignItems: 'center' }}>
-                        <Link className="card-link truncated" target='_blank' to={props.link}>
+                        <Link className="card-link custom-link truncated" target='_blank' to={props.link}>
                           {props.linkText}
                         </Link>
                         <FaExternalLinkAlt className="mx-2 mt-1" />

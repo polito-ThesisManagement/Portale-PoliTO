@@ -64,6 +64,7 @@ export default function Help() {
                                 placeholder="Cerca tra le FAQ..."
                                 aria-label="FAQ Search"
                                 aria-describedby="basic-addon2"
+                                style={{ backgroundColor: '#F0F3F5', color:'#002B49' }}
                                 value={search}
                                 onChange={handleSearch}
                             />
