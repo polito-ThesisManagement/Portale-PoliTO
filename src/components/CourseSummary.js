@@ -17,15 +17,15 @@ export default function CourseSummary(props) {
             state={{codice, nome, periodo, crediti, linkGuida}}
             >
                 <Row>
-                    <Col xs={3} className='course-detail'>
+                    <Col xs={3} className='course-detail ps-2'>
                         {props.codice}
                     </Col>
-                    <Col xs={6} className='course-detail ps-3 pe-2'>
+                    <Col xs={6} className='course-detail ps-3'>
                         <span className='truncated'>
                         {props.nome}
                         </span>
                     </Col>
-                    <Col xs={2} className='detail px-0'>
+                    <Col xs={2} className='detail truncated px-0'>
                         {props.crediti} CFU
                     </Col>
                     <Col className='link-container p-0'>

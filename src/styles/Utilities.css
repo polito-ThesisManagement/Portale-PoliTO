@@ -57,9 +57,11 @@ body{
   background-color: #F0F3F5;
   color: #000000;
   border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
-/*.summary:hover {
+.summary:hover {
   border: #B7E1FF;
   background-color: #B7E1FF;
 }
@@ -68,7 +70,7 @@ body{
   background-color: #002B49;
   border-color: #002B49;
   color: #FFFFFF; 
-}*/
+}
 
 .ticket-category {
   border: rgba(183, 225, 255, 0.4);
