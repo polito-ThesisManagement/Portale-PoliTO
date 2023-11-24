@@ -20,7 +20,7 @@ export default function Didattica() {
             />
             <Row style={{marginLeft:'8px', marginBottom:'8px'}}>
                 <Button
-                    className={`custom-button ${currentPath === '/didattica' ? 'active' : ''}`}
+                    className={`custom-pill-button ${currentPath === '/didattica' ? 'active' : ''}`}
                     style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica"
@@ -29,7 +29,7 @@ export default function Didattica() {
                     <span style={{ flex: '1', textAlign: 'center', marginLeft:'-8px' }}>Corsi</span>
                 </Button>
                 <Button
-                    className={`custom-button ${currentPath === '/didattica/orario' ? 'active' : ''}`}
+                    className={`custom-pill-button ${currentPath === '/didattica/orario' ? 'active' : ''}`}
                     style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica/orario"
@@ -38,7 +38,7 @@ export default function Didattica() {
                     <span style={{ flex: '1', textAlign: 'center' }}>Orario lezioni</span>
                 </Button>
                 <Button
-                    className={`custom-button ${currentPath === '/didattica/libretto' ? 'active' : ''}`}
+                    className={`custom-pill-button ${currentPath === '/didattica/libretto' ? 'active' : ''}`}
                     style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica/libretto"
@@ -47,7 +47,7 @@ export default function Didattica() {
                 <span style={{ flex: '1', textAlign: 'center' }}>Libretto</span>
                 </Button>
                 <Button
-                    className={`custom-button ${currentPath === '/didattica/lingue' ? 'active' : ''}`}
+                    className={`custom-pill-button ${currentPath === '/didattica/lingue' ? 'active' : ''}`}
                     style={{ width: '200px', marginRight: '36px', marginBottom:'8px', display: 'flex', alignItems: 'center' }}
                     as={Link}
                     to="/didattica/lingue"

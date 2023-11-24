@@ -27,8 +27,8 @@
 
 .card-button {
     height: 40px;
-    background-color: #002B49;
-    color: #fff;
+    background-color: #FFFFFF;
+    color: #002B49;
     border-color: #002B49;
     padding-top: 7px;
     font-family: 'Montserrat', sans-serif;
@@ -40,11 +40,21 @@
 }
 
 .card-button:hover {
-    border-color: #006DB9;
-    background-color: #006DB9;
+    border-color: #002B49;
+    background-color: #002B49;
 }
 
 .card-link {
     font-weight: 400;
     margin-top: 8px;
+}
+
+.star {
+    margin-right: 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.star:hover {
+    transform: scale(1.2);
 }

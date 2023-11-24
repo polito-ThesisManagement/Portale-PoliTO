@@ -75,7 +75,7 @@ export default function Home() {
                                                 delay={{ show: 250, hide: 400 }}
                                                 overlay={renderTooltip(JSON.parse(fav).service)}>
                                                 <Button 
-                                                className="custom-button truncated w-100" 
+                                                className="custom-pill-button truncated w-100" 
                                                 as={Link} to={JSON.parse(fav).path}>
                                                     {JSON.parse(fav).service}
                                                 </Button>

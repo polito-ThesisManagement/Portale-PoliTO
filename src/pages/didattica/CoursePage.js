@@ -29,12 +29,10 @@ export default function CoursePage() {
 
     return (
         <>
-            <div className="d-flex my-3 mx-3">
-                <div>
-                    <Link to='/didattica' className='text-style'>Didattica</Link>
-                    <span className="mx-2"><ArrowRightShort /></span>
-                </div>
-                <span className='text-style' style={{ color: '#808080' }}>{nome}</span>
+            <div className="d-flex mt-4 mx-3">
+                    <Link to='/didattica' className='breadcrumb-link'>Didattica</Link>
+                    <span className="mx-2" style={{marginTop:'-2px'}}><ArrowRightShort /></span>
+                    <span className='breadcrumb'>{nome}</span>
             </div>
 
             <Row>
@@ -108,47 +106,47 @@ export default function CoursePage() {
             </Row>
 
             <ButtonGroup className='d-flex my-3 mx-2 course-menu' aria-label="course section">
-                <Button className={`custom-button course-menu-button ${activeButton === 'Materiale' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'Materiale' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/materiale`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('Materiale')}>
                     Materiale
                 </Button>
-                <Button className={`custom-button course-menu-button ${activeButton === 'Avvisi' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'Avvisi' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/avvisi`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('Avvisi')}>
                     Avvisi
                 </Button>
-                <Button className={`custom-button course-menu-button ${activeButton === 'Orario' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'Orario' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/orario`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('Orario')}>
                     Orario
                 </Button>
-                <Button className={`custom-button course-menu-button ${activeButton === 'Guida' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'Guida' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/guida`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('Guida')}>Guida</Button>
-                <Button className={`custom-button course-menu-button ${activeButton === 'Moodle' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'Moodle' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/moodle`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('Moodle')}>
                     Moodle
                 </Button>
-                <Button className={`custom-button course-menu-button ${activeButton === 'Elaborati' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'Elaborati' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/elaborati`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('Elaborati')}>
                     Elaborati
                 </Button>
-                <Button className={`custom-button course-menu-button ${activeButton === 'Appelli' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'Appelli' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/appelli`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('Appelli')}>
                     Appelli
                 </Button>
-                <Button className={`custom-button course-menu-button ${activeButton === 'VC' ? 'active' : ''}`}
+                <Button className={`custom-pill-button course-menu-button ${activeButton === 'VC' ? 'active' : ''}`}
                     as={Link} to={`/didattica/${nome}/vc`}
                     state={{ codice, nome, periodo, crediti, linkGuida }}
                     onClick={() => handleButtonClick('VC')}>

@@ -73,9 +73,9 @@ body{
 }
 
 .ticket-category {
-  border: rgba(183, 225, 255, 0.4);
-  background-color: rgba(183, 225, 255, 0.4);
-  color: #004C81;
+  border: #F0F3F5;
+  background-color: #F0F3F5;
+  color: #000000;
   border-radius: 16px;
 }
 
@@ -85,8 +85,8 @@ body{
 }
 
 .ticket-category.active {
-  background-color: #002B49;
-  border-color: #002B49;
+  background-color: #006DB9;
+  border-color: #006DB9;
   color: white;
 }
 
@@ -99,7 +99,7 @@ body{
 
 
 .list-group-item-action:focus{
-  background-color: #002B49;
+  background-color: #006DB9;
   color: #fff;
 }
 
@@ -114,6 +114,32 @@ body{
 
 .custom-button {
   height: 40px;
+  color: #002B49;
+  border-color: #002B49;
+  background-color: #FFFFFF;
+  padding-top: 7px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.custom-button:hover {
+  border: #002B49;
+  background-color: #002B49;
+  color: #FFFFFF;
+  transform: scale(1.02);
+}
+
+.custom-button.active  {
+  background-color: #002B49;
+  border-color: #002B49;
+  color: white;
+}
+
+.custom-pill-button {
+  height: 40px;
   border: rgba(183, 225, 255, 0.4);
   background-color: rgba(183, 225, 255, 0.4);
   color: #004C81;
@@ -125,22 +151,16 @@ body{
   overflow: hidden;
 }
 
-.custom-button:hover {
+.custom-pill-button:hover {
   border: #B7E1FF;
   background-color: #B7E1FF;
   color: #004C81;
   transform: scale(1.02);
 }
 
-.custom-button:focus {
-  border-color: #002B49;
-  background-color: #002B49;
-  color: #fff;
-}
-
-.custom-button.active  {
-  background-color: #002B49;
-  border-color: #002B49;
+.custom-pill-button.active  {
+  background-color: #006DB9;
+  border-color: #006DB9;
   color: white;
 }
 

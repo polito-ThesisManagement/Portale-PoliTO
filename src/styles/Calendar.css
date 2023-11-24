@@ -25,15 +25,15 @@
 }
 
 .custom-rbc-toolbar button {
-    background-color: #002B49;
-    border-color: #FFFFFF;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    border-color: #002B49;
+    color: #002B49;
     font-weight: 500;
 }
 
 .custom-rbc-toolbar button:hover {
-    background-color: #006DB9;
-    border-color: #006DB9;
+    background-color: #002B49;
+    border-color: #002B49;
     color: #FFFFFF;
     transform: scale(1.02);
 }
@@ -43,8 +43,8 @@
 }
 
 .custom-rbc-toolbar .view-button.active{
-    background-color: #EF7B00;
-    border-color: #FFFFFF;
+    background-color: #002B49;
+    border-color: #002B49;
     font-weight: 500;
 }
 

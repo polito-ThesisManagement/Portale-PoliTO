@@ -39,7 +39,7 @@ export default function BaseCard(props) {
     };
 
     return (
-        <Col sm={6} md={6} lg={6} xl={4} className="px-4 py-2">
+        <Col sm={6} md={6} lg={6} xl={4} className="px-4 pb-4">
             <Container className="custom-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span className="card-title">
@@ -48,9 +48,9 @@ export default function BaseCard(props) {
                     </span>
                     {
                         starClicked ?
-                            (<StarFill size="24px" style={{ color: '#EF7B00', marginRight: '16px', marginBottom: '8px' }} onClick={handleStarClick} />)
+                            (<StarFill size="24px" className="star" style={{ color: '#EF7B00'}} onClick={handleStarClick} />)
                             :
-                            (<Star size="24px" style={{ color: '#002B49', marginRight: '16px', marginBottom: '8px' }} onClick={handleStarClick} />)
+                            (<Star size="24px" className="star" style={{ color: '#002B49'}} onClick={handleStarClick} />)
                     }
                 </div>
                 <div style={{color:'#000000'}}>

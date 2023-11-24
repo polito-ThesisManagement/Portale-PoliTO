@@ -1,4 +1,4 @@
-import { Container, Row, Col } from 'react-bootstrap';
+/*import { Container, Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
@@ -6,12 +6,15 @@ import Button from 'react-bootstrap/Button';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
-import { ArrowLeft, ArrowRight, Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox, FilePdf } from 'react-bootstrap-icons';
+import { ArrowLeft, ArrowRight, Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox, FilePdf } from 'react-bootstrap-icons';*/
 
 export default function Materiale() {
 
     return (
         <>
+            <h1>Materiale</h1>
+        </>
+        /*<>
             <Row className='my-4'>
                 <Col lg={1}>
                     <ArrowLeft size={28} />
@@ -92,7 +95,7 @@ export default function Materiale() {
                 </Col>
             </Row>
 
-        </>
+        </>*/
     );
 
 }

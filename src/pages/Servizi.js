@@ -3,6 +3,7 @@ import { MdApps, MdMapsHomeWork } from 'react-icons/md'
 import { Link45deg } from "react-bootstrap-icons";
 import { ListGroup } from "react-bootstrap";
 import Title from "../components/Title";
+import BaseCard from "../components/BaseCard";
 import { TiArrowForward } from "react-icons/ti";
 
 import '../styles/Utilities.css'
@@ -18,16 +19,16 @@ export default function Servizi() {
                 icon={<MdApps size={28} />}
                 sectionName='Servizi'
             />
-            <Row>
+            <Row >
                 <Col md={12} lg={9}>
-                    <Container className="custom-container" style={{height: '476px'}}>
-                        <div className="subsection">
-                            <span className="subsection-title">
-                                <MdMapsHomeWork size={20} className='subsection-icon' />
-                                Aule libere
-                            </span>
-                        </div>
-                    </Container>
+                    <Row className="p-0">
+                    <BaseCard
+                        icon={<MdMapsHomeWork size="42" className='card-icon' />}
+                        service={"Aule libere"}
+                        description={'Ricerca aule libere per fascia oraria.'}
+                        servicePath={'/servizi'}
+                    />
+                    </Row>
                 </Col>
                 <Col md={12} lg={3}>
                     <Container className="custom-container">

@@ -68,8 +68,24 @@
 .custom-link {
     color: #002B49;
     text-decoration: none;
-  }
+}
   
-  .custom-link:hover {
+.custom-link:hover {
     color: #006DB9;
-  }
+}
+
+.breadcrumb {
+    font-family: 'Montserrat', sans-serif;
+    color: #415462;
+}
+
+.breadcrumb-link {
+    font-family: 'Montserrat', sans-serif;
+    color: #415462;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+    color: #33424D;
+}
