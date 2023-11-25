@@ -77,8 +77,6 @@ export default function PoliNavbar() {
 
                                 <Dropdown.Menu style={{right: 'auto', left: '-120px', fontFamily:'Montserrat, sans-serif',}}>
                                     <Dropdown.Item style={{fontWeight:'500'}}>Dati utente</Dropdown.Item>
-                                    <Dropdown.Item style={{fontWeight:'500'}}>Cambia lingua</Dropdown.Item>
-                                    <Dropdown.Item style={{fontWeight:'500'}}>Impostazioni account</Dropdown.Item>
                                     <Dropdown.Item style={{fontWeight:'500'}}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
 
