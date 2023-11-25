@@ -48,7 +48,7 @@ export default function Libretto() {
                                 <PiListChecksBold  size={28} className='subsection-icon'/>
                                 Valutazioni
                             </span>
-                            <Table striped className='custom-table'>
+                            <Table striped className='custom-table' style={{ fontFamily: 'Montserrat, sans-serif'}}>
                                 <thead style={{fontFamily:'Montserrat, sans-serif'}}>
                                     <tr>
                                         <th>Codice</th>
