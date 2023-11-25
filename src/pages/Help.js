@@ -56,7 +56,7 @@ export default function Help() {
                         <div className="subsection">
                             <span className="subsection-title">
                                 <FaTicketSimple size={20} className='subsection-icon' />
-                                Ticket
+                                Ticketing
                             </span>
                         </div>
                         <InputGroup className="my-3">
