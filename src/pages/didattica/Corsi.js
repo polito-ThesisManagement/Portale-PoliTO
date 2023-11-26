@@ -83,9 +83,9 @@ export default function Corsi() {
                                 Appelli prenotati
                             </span>
                             <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
-                                <Col xs={3}>Codice</Col>
+                                {/*<Col xs={3}>Codice</Col>
                                 <Col xs={5}>Nome</Col>
-                                <Col xs={3} style={{ marginLeft: '10px' }}>Data</Col>
+                                <Col xs={3} style={{ marginLeft: '10px' }}>Data</Col>*/}
 
                             </Row>
                         </div>
@@ -98,13 +98,15 @@ export default function Corsi() {
                                                 <Col xs={3} className='course-detail p-0' style={{ marginLeft: '8px' }}>
                                                     {val.codice}
                                                 </Col>
-                                                <Col xs={5} className='course-detail p-0'>
+                                                <Col xs={5} className='course-detail p-0' style={{position:'relative', left:'-4px'}}>
                                                     <span className='truncated'>{val.nome}</span>
                                                 </Col>
-                                                <Col xs={3} className='p-0' style={{marginRight:'-6px'}}>
+                                                <Col xs={3} className='p-0' style={{marginRight:'-6px', position:'relative', top:'1px', left:'-4px'}}>
                                                     {val.dataEsame}
                                                 </Col>
                                                 <Col className='p-0'>
+                                                </Col>
+                                                <Col className='p-0' style={{position:'relative', left:'-8px', bottom:'1px'}}>
                                                     <X size={24} />
                                                 </Col>
                                             </Row>
@@ -125,11 +127,11 @@ export default function Corsi() {
                                 <PiVideoCameraFill size={20} className='subsection-icon' />
                                 Virtual classroom recenti
                             </span>
-                            <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
+                            {/*<Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
                                 <Col xs={5}>Corso</Col>
                                 <Col xs={3} style={{position: 'relative', left: 10}}>Data</Col>
                                 <Col xs={4}className='p-0'></Col>
-                            </Row>
+                            </Row>*/}
                         </div>
 
                         <ListGroup style={{ borderRadius: '16px' }}>
@@ -137,15 +139,15 @@ export default function Corsi() {
                                 <ListGroup.Item key={index} className='summary' style={{ marginBottom: '8px' }}>
                                     <Container className='p-0'>
                                         <Row>
-                                            <Col xs={5}className='course-detail truncated p-0' style={{ marginLeft: '8px' }}>
+                                            <Col xs={8}className='course-detail truncated p-0' style={{ marginLeft: '8px' }}>
                                                 {rec}
                                             </Col>
-                                            <Col xs={3} className='detail p-0' style={{marginRight:'-4px'}}>
+                                            <Col xs={3} className='detail p-0' style={{marginRight:'-4px', position:'relative', left:'-4px', top:'1px'}}>
                                                 10/05/2022
                                             </Col>
-                                            <Col xs={3} className='p-0'>
-                                            </Col>
                                             <Col className='p-0'>
+                                            </Col>
+                                            <Col className='p-0' style={{position:'relative', left:'-8px'}}>
                                                 <FaArrowRight size={20} className='p-0'/>
                                             </Col>
                                         </Row>

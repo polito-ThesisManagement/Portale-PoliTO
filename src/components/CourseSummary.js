@@ -28,7 +28,8 @@ export default function CourseSummary(props) {
                     <Col xs={2} className='detail truncated px-0'>
                         {props.crediti} CFU
                     </Col>
-                    <Col className='link-container p-0'>
+                    <Col className='p-0'/>
+                    <Col className='link-container p-0' style={{position:'relative', left:'-8px'}}>
                         <Bell size={20}/>
                     </Col>
                 </Row>
