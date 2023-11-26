@@ -1,6 +1,7 @@
 import { FaUserGraduate } from 'react-icons/fa';
 import { Row, Container } from 'react-bootstrap';
 import BaseCard from '../components/BaseCard';
+import ExpandibleCard from '../components/ExpandibleCard';
 import Title from '../components/Title';
 import { BsCreditCard2BackFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
@@ -19,13 +20,13 @@ export default function Carriera() {
             />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>
                 <Row>
-                    <BaseCard
+                    <ExpandibleCard
                         icon={<BsCreditCard2BackFill size="42" className='card-icon' />}
                         service={"Tasse e agevolazioni"}
                         description={'Pagamento e richiesta riduzione tasse.'}
                         servicePath={'/carriera'}
                     />
-                    <BaseCard
+                    <ExpandibleCard
                         icon={<IoIosListBox size="42" className='card-icon' />}
                         service={"Piano carriera"}
                         description={'Compilazione o modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico.'}
@@ -43,7 +44,7 @@ export default function Carriera() {
                         description={'Visuallizazione e verifica stato della tua carriera.'}
                         servicePath={'/carriera'}
                     />
-                    <BaseCard
+                    <ExpandibleCard
                         icon={<IoSchool size="42" className='card-icon' />}
                         service={"Laurea"}
                         description={'Visualizzazione stato della tesi ed elenco delle tesi proposte. Iscrizione all’esame finale.'}

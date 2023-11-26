@@ -12,7 +12,7 @@ class DoughnutChart extends React.Component {
     const data = {
       datasets: [{
         data: values,
-        backgroundColor: ['#FF8F19', '#008EF1'],
+        backgroundColor: ['#EF7B00', '#006DB9'],
       }]
     };
 
