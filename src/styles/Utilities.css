@@ -171,6 +171,7 @@ body{
 }
 
 .accordion-button {
+  color: #002B49;
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: 'Montserrat', 'sans-serif';

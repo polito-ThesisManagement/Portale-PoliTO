@@ -29,7 +29,7 @@ export default function Lingue() {
                                             <Card.Text>
                                                 Visualizza le certificazioni ottenute o di cui hai effetuato l'upload precedentemente
                                             </Card.Text>
-                                            <Button className="custom-button">Visualizza Certificazioni</Button>
+                                            <Button className="custom-button">Visualizza certificazioni</Button>
                                         </Card.Body>
                                     </Card>
 
@@ -143,42 +143,45 @@ export default function Lingue() {
                             Altre lingue
                         </Accordion.Header>
                         <Accordion.Body>
-                            <Row>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Verifica Livello di preparazione lingue</Card.Title>
-                                            <Card.Text>
-                                                Verifica il tuo livello di prerazione lingua: francese, spagnolo, tedesco, russo
-                                            </Card.Text>
-                                            <Button className="custom-button">Test Lingue</Button>
-                                        </Card.Body>
-                                    </Card>
-
-                                </Col>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Certificazioni</Card.Title>
-                                            <Card.Text>
-                                                Scopri le diverse certificazioni disponibili per le lingue
-                                            </Card.Text>
-                                            <Button className="custom-button">Certificazioni</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Cla</Card.Title>
-                                            <Card.Text>
-                                                Per ulteriori informazioni sullo studio delle lingue contatta il Centro linguistico dell'ateneo
-                                            </Card.Text>
-                                            <Button className="custom-button">Contatta Cla</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            </Row>
+                            <Col>
+                                <Row className="mb-3 mx-1">
+                                Questi test di livello per le lingue francese, portoghese, spagnolo e tedesco sono accessibili in qualsiasi momento. Sono eseguibili in modalità remota da tutti gli studenti del Politecnico di Torino. Se sei uno studente selezionato nell'ambito dei Bandi di Concorso per la mobilità ERASMUS+ ed Extra-UE/NON ERASMUS+ del Politecnico di Torino, ti invitiamo a leggere le istruzioni a questa pagina: https://didattica.polito.it/cla/it/corsi_studenti_mobilita_verso_estero (sezione Test di livello della conoscenza della lingua straniera).
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Card>
+                                            <Card.Body className="text-center">
+                                                <Card.Title className="mx-auto mb-3">Test di livello - Francese</Card.Title>
+                                                <Button className="custom-button">Inizia la prova</Button>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col>
+                                        <Card>
+                                            <Card.Body className="text-center">
+                                                <Card.Title className="mx-auto mb-3">Test di livello - Spagnolo</Card.Title>
+                                                <Button className="custom-button">Inizia la prova</Button>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col>
+                                        <Card>
+                                            <Card.Body className="text-center">
+                                                <Card.Title className="mx-auto mb-3">Test di livello - Tedesco</Card.Title>
+                                                <Button className="custom-button">Inizia la prova</Button>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col>
+                                        <Card>
+                                            <Card.Body className="text-center">
+                                                <Card.Title className="mx-auto mb-3">Test di livello - Portoghese</Card.Title>
+                                                <Button className="custom-button">Inizia la prova</Button>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                </Row>
+                            </Col>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
