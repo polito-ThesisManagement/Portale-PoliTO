@@ -1,15 +1,15 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { MdApps, MdMapsHomeWork } from 'react-icons/md'
-import { Link45deg } from "react-bootstrap-icons";
+import { FaLink } from "react-icons/fa6";
 import { ListGroup } from "react-bootstrap";
 import Title from "../components/Title";
-import BaseCard from "../components/BaseCard";
 import { TiArrowForward } from "react-icons/ti";
 
 import '../styles/Utilities.css'
 import LinkUtili from "../data/LinkUtili.json";
 
 import { Link } from "react-router-dom";
+import ServiziCard from "../components/ServiziCard";
 
 
 export default function Servizi() {
@@ -19,22 +19,35 @@ export default function Servizi() {
                 icon={<MdApps size={28} />}
                 sectionName='Servizi'
             />
-            <Row >
-                <Col md={12} lg={9}>
+            <Row>
+                <Col lg={9} xl={8} style={{marginLeft:'0px', maxWidth:'1416px'}}>
                     <Row className="p-0">
-                    <BaseCard
+                    <ServiziCard
                         icon={<MdMapsHomeWork size="42" className='card-icon' />}
                         service={"Aule libere"}
                         description={'Ricerca aule libere per fascia oraria.'}
                         servicePath={'/servizi'}
                     />
+                    <ServiziCard
+                        icon={<MdMapsHomeWork size="42" className='card-icon' />}
+                        service={"Aule libere"}
+                        description={'Ricerca aule libere per fascia oraria.'}
+                        servicePath={'/servizi'}
+                    />
+                    <ServiziCard
+                        icon={<MdMapsHomeWork size="42" className='card-icon' />}
+                        service={"Aule libere"}
+                        description={'Ricerca aule libere per fascia oraria.'}
+                        servicePath={'/servizi'}
+                    />
+                    
                     </Row>
                 </Col>
-                <Col md={12} lg={3}>
+                <Col lg={3} xl={3} className="ms-auto">
                     <Container className="custom-container">
                         <div className="subsection">
                             <span className="subsection-title">
-                                <Link45deg size={20} className='subsection-icon' />
+                                <FaLink size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}}/>
                                 Link utili
                             </span>
                         </div>

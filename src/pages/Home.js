@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 
 import CourseSummary from "../components/CourseSummary";
 import WidgetCalendar from "../components/WidgetCalendar";
-import { BellFill, StarFill } from "react-bootstrap-icons";
+import { StarFill } from "react-bootstrap-icons";
 
 
 import Courses from '../data/Courses.json';
@@ -22,6 +22,7 @@ import '../styles/Utilities.css'
 import { HiHome } from 'react-icons/hi';
 import { FaList } from 'react-icons/fa';
 import { BsFillCalendarFill } from 'react-icons/bs';
+import { FaClipboard } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Title from "../components/Title";
 import CourseNotice from "../components/CourseNotice";
@@ -48,7 +49,7 @@ export default function Home() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <FaList size={20} className='subsection-icon' />
+                                <FaList size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Carico didattico
                             </span>
                         </div>
@@ -63,7 +64,7 @@ export default function Home() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <StarFill size={20} className='subsection-icon' style={{ marginBottom: '5px' }} />
+                                <StarFill size={20} className='subsection-icon' style={{position:'relative', bottom:'2px'}}/>
                                 Preferiti
                             </span>
                         </div>
@@ -91,7 +92,7 @@ export default function Home() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <BsFillCalendarFill size={20} className='subsection-icon' style={{ marginBottom: '3px' }} />
+                                <BsFillCalendarFill size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Agenda
                             </span>
                             <WidgetCalendar />
@@ -101,7 +102,7 @@ export default function Home() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <BellFill size={20} className='subsection-icon' />
+                                <FaClipboard size={20} className='subsection-icon' style={{position:'relative', bottom:'2px'}} />
                                 Avvisi recenti
                             </span>
                         </div>

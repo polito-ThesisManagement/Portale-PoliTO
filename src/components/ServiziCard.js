@@ -9,7 +9,7 @@ import { PiUserListFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 
-export default function BaseCard(props) {
+export default function ServiziCard(props) {
 
     const { favorites, setFavorites } = useContext(FavoritesContext);
 
@@ -39,7 +39,7 @@ export default function BaseCard(props) {
     };
 
     return (
-        <Col sm={6} md={6} lg={6} xl={4} className="px-4 pb-4">
+        <Col sm={6} className="px-4 pb-4">
             <Container className="custom-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span className="card-title">

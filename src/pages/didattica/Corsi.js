@@ -47,7 +47,7 @@ export default function Corsi() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <FaList size={20} className='subsection-icon' />
+                                <FaList size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Carico didattico
                             </span>
                         </div>
@@ -62,7 +62,7 @@ export default function Corsi() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <PiListPlusFill size={20} className='subsection-icon' />
+                                <PiListPlusFill size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Altri corsi
                             </span>
                         </div>
@@ -79,10 +79,10 @@ export default function Corsi() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <BsCalendarCheckFill size={20} className='subsection-icon' />
+                                <BsCalendarCheckFill size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Appelli prenotati
                             </span>
-                            <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
+                            <Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600'}}>
                                 {/*<Col xs={3}>Codice</Col>
                                 <Col xs={5}>Nome</Col>
                                 <Col xs={3} style={{ marginLeft: '10px' }}>Data</Col>*/}
@@ -124,7 +124,7 @@ export default function Corsi() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <PiVideoCameraFill size={20} className='subsection-icon' />
+                                <PiVideoCameraFill size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Virtual classroom recenti
                             </span>
                             {/*<Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
@@ -160,7 +160,7 @@ export default function Corsi() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <ImFolderUpload size={20} className='subsection-icon' />
+                                <ImFolderUpload size={20} className='subsection-icon' style={{position:'relative', bottom:'2px'}} />
                                 Materiale condiviso
                             </span>
                         </div>

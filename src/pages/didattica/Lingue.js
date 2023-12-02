@@ -6,8 +6,10 @@ import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
 import { FileEarmarkRichtextFill, FlagFill, Globe, Flag } from "react-bootstrap-icons";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 import '../../styles/Utilities.css';
+import { Link } from "react-router-dom";
 
 export default function Lingue() {
 
@@ -23,28 +25,8 @@ export default function Lingue() {
                         <Accordion.Body>
                             <Row>
                                 <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Visualizza certificazioni</Card.Title>
-                                            <Card.Text>
-                                                Visualizza le certificazioni ottenute o di cui hai effetuato l'upload precedentemente
-                                            </Card.Text>
-                                            <Button className="custom-button">Visualizza certificazioni</Button>
-                                        </Card.Body>
-                                    </Card>
-
                                 </Col>
                                 <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Effetua l'upload di una certificazione</Card.Title>
-                                            <Card.Text>
-                                                Effettua l'upload di una certificazione di lingua, può essere utilizzate per compilare il curriculum o ottenere il superamento di un esame
-                                            </Card.Text>
-                                            <Button className="custom-button">Upload certificazione</Button>
-                                        </Card.Body>
-                                    </Card>
-
                                 </Col>
                             </Row>
                         </Accordion.Body>
@@ -55,38 +37,40 @@ export default function Lingue() {
                             Lingua inglese
                         </Accordion.Header>
                         <Accordion.Body>
+                            <Row className="mb-3 mx-1">
+                                <div className="px-0" style={{ display: 'flex', alignItems: 'center' }}>    
+                                    <Link className="custom-link truncated" target='_blank' to='https://didattica.polito.it/clapdf/it-vlaib-sito.pdf'>
+                                    Verifica il tuo livello di conoscenza attuale tramite vLAIB&nbsp;
+                                    <FaExternalLinkAlt style={{position:'relative', bottom:'2px'}}/>
+                                    </Link>
+                                    
+                                </div>
+                                <div className="px-0"  style={{ display: 'flex', alignItems: 'center' }}>    
+                                    <Link className="custom-link truncated" target='_blank' to='https://didattica.polito.it/cla/it/esame_ielts_poli'>
+                                    Ulteriori informazioni - sito CLA&nbsp;
+                                    <FaExternalLinkAlt style={{position:'relative', bottom:'2px'}}/>
+                                    </Link>
+                                    
+                                </div>
+                            </Row>
                             <Row>
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Verifica Livello di preparazione inglese</Card.Title>
+                                            <Card.Title>Preparazione all'IELTS</Card.Title>
                                             <Card.Text>
-                                                Verifica il tuo livello di prerazione tramite test: wrting, listening, reading, speaking
                                             </Card.Text>
                                             <Button className="custom-button">Accedi al test</Button>
                                         </Card.Body>
                                     </Card>
-
                                 </Col>
                                 <Col>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Ielts</Card.Title>
+                                            <Card.Title>Esito esame IELTS</Card.Title>
                                             <Card.Text>
-                                                Preparati all'esame Ielts o iscriviti all'esame tramite il portale
                                             </Card.Text>
-                                            <Button className="custom-button">Accedi a Ielts</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Cla</Card.Title>
-                                            <Card.Text>
-                                                Per ulteriori informazioni a proposito della lingua inglese contatta il Centro linguistico dell'ateneo
-                                            </Card.Text>
-                                            <Button className="custom-button">Contatta Cla</Button>
+                                            <Button className="custom-button">Accedi al test</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -101,38 +85,6 @@ export default function Lingue() {
                         <Accordion.Body>
                             <Row>
                                 <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Verifica livello di preparazione italiano</Card.Title>
-                                            <Card.Text>
-                                                Verifica il tuo livello di prerazione tramite test: ascolto, lettura, scrittura, grammatica
-                                            </Card.Text>
-                                            <Button className="custom-button">Test Italiano</Button>
-                                        </Card.Body>
-                                    </Card>
-
-                                </Col>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>CELI</Card.Title>
-                                            <Card.Text>
-                                                Preparati all'esame CELI o iscriviti all'esame tramite il portale
-                                            </Card.Text>
-                                            <Button className="custom-button">CELI</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Cla</Card.Title>
-                                            <Card.Text>
-                                                Per ulteriori informazioni a proposito della lingua italiana contatta il Centro linguistico dell'ateneo
-                                            </Card.Text>
-                                            <Button className="custom-button">Contatta Cla</Button>
-                                        </Card.Body>
-                                    </Card>
                                 </Col>
                             </Row>
                         </Accordion.Body>
@@ -143,12 +95,17 @@ export default function Lingue() {
                             Altre lingue
                         </Accordion.Header>
                         <Accordion.Body>
-                            <Col>
-                                <Row className="mb-3 mx-1">
-                                Questi test di livello per le lingue francese, portoghese, spagnolo e tedesco sono accessibili in qualsiasi momento. Sono eseguibili in modalità remota da tutti gli studenti del Politecnico di Torino. Se sei uno studente selezionato nell'ambito dei Bandi di Concorso per la mobilità ERASMUS+ ed Extra-UE/NON ERASMUS+ del Politecnico di Torino, ti invitiamo a leggere le istruzioni a questa pagina: https://didattica.polito.it/cla/it/corsi_studenti_mobilita_verso_estero (sezione Test di livello della conoscenza della lingua straniera).
-                                </Row>
+                                <div className="mb-3 mx-1" style={{ display: 'inline-block' }}> 
+                                Questi test di livello per le lingue francese, portoghese, spagnolo e tedesco sono accessibili in qualsiasi momento. Sono eseguibili in modalità remota da tutti gli studenti del Politecnico di Torino. Se sei uno studente selezionato nell'ambito dei Bandi di Concorso per la mobilità ERASMUS+ ed Extra-UE/NON ERASMUS+ del Politecnico di Torino, ti invitiamo a leggere le istruzioni a&nbsp;
+                                    <Link className="custom-link" target='_blank' to='https://didattica.polito.it/cla/it/corsi_studenti_mobilita_verso_estero'>
+                                        questa pagina&nbsp;
+                                        <FaExternalLinkAlt style={{position:'relative', bottom:'2px'}}/>
+                                    </Link>
+                                    
+                                    &nbsp;(sezione test di livello della conoscenza della lingua straniera).
+                                </div>
                                 <Row>
-                                    <Col>
+                                    <Col sm={6} lg={3}>
                                         <Card>
                                             <Card.Body className="text-center">
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Francese</Card.Title>
@@ -156,7 +113,7 @@ export default function Lingue() {
                                             </Card.Body>
                                         </Card>
                                     </Col>
-                                    <Col>
+                                    <Col md={6} lg={3}>
                                         <Card>
                                             <Card.Body className="text-center">
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Spagnolo</Card.Title>
@@ -164,7 +121,7 @@ export default function Lingue() {
                                             </Card.Body>
                                         </Card>
                                     </Col>
-                                    <Col>
+                                    <Col md={6} lg={3}>
                                         <Card>
                                             <Card.Body className="text-center">
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Tedesco</Card.Title>
@@ -172,7 +129,7 @@ export default function Lingue() {
                                             </Card.Body>
                                         </Card>
                                     </Col>
-                                    <Col>
+                                    <Col md={6} lg={3}>
                                         <Card>
                                             <Card.Body className="text-center">
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Portoghese</Card.Title>
@@ -181,7 +138,6 @@ export default function Lingue() {
                                         </Card>
                                     </Col>
                                 </Row>
-                            </Col>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

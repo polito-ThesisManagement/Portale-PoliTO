@@ -55,7 +55,7 @@ export default function Help() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <FaTicketSimple size={20} className='subsection-icon' />
+                                <FaTicketSimple size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Ticketing
                             </span>
                         </div>
@@ -140,7 +140,7 @@ export default function Help() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <FaBook size={20} className='subsection-icon' />
+                                <FaBook size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}} />
                                 Guide
                             </span>
                         </div>
@@ -162,7 +162,7 @@ export default function Help() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <HiMiniTicket size={20} className='subsection-icon' />
+                                <HiMiniTicket size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}}  />
                                 I tuoi ticket recenti
                             </span>
                         </div>
