@@ -1,3 +1,6 @@
+import React, { useContext } from 'react';
+import { AvvisiContext } from '../App';
+
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Image from 'react-bootstrap/Image';
@@ -12,9 +15,12 @@ import Logo2 from '../assets/logo_polito_reduced.svg'
 import '../styles/Utilities.css'
 
 import { Link } from 'react-router-dom';
-import { Bell, Envelope, PersonCircle } from 'react-bootstrap-icons';
+import { Bell, Envelope, PersonCircle, BellFill } from 'react-bootstrap-icons';
+
 
 export default function PoliNavbar() {
+
+    const { avvisi, setAvvisi } = useContext(AvvisiContext);
     
     return (
         <Navbar className="custom-navbar">
@@ -55,7 +61,9 @@ export default function PoliNavbar() {
                         navbarScroll
                     >
                         <Nav.Link as={Link} to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX" target='_blank' style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#002B49' /></Nav.Link>
-                        <Nav.Link as={Link} to="/" style={{ marginRight: '12px', marginTop: '9px' }}><Bell size={28} color='#002B49' /></Nav.Link>
+                        <Nav.Link as={Link} to="/" style={{ marginRight: '12px', marginTop: '9px' }}>
+                            {avvisi[0].length === 0 ?  <Bell size={28} color='#002B49' /> : <BellFill size={28} color='#002B49' />}
+                        </Nav.Link>
                         <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#002B49', marginRight: '12px' }}>
                             <div className='d-none d-md-block'>
                             s123456

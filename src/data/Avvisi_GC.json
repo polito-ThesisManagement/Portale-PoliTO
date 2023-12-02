@@ -1,11 +1,5 @@
 [
-    {
-        "id" : 1,
-        "tipologia": "Generali",
-        "nome" : "Avviso Generale",
-        "title": "Titolo Avviso Generale",
-        "body": "Testo dell'avviso generale di prova."
-    }, 
+    
     {
         "id" : 2, 
         "tipologia": "Corsi",
