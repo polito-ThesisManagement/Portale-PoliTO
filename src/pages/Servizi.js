@@ -9,7 +9,7 @@ import '../styles/Utilities.css'
 import LinkUtili from "../data/LinkUtili.json";
 
 import { Link } from "react-router-dom";
-import ServiziCard from "../components/ServiziCard";
+import BaseCard from "../components/BaseCard";
 
 
 export default function Servizi() {
@@ -19,55 +19,40 @@ export default function Servizi() {
                 icon={<MdApps size={28} />}
                 sectionName='Servizi'
             />
-            <Row>
-                <Col lg={9} xl={8} style={{marginLeft:'0px', maxWidth:'1416px'}}>
+            <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>
                     <Row className="p-0">
-                    <ServiziCard
+                    <BaseCard
                         icon={<MdMapsHomeWork size="42" className='card-icon' />}
                         service={"Aule libere"}
                         description={'Ricerca aule libere per fascia oraria.'}
                         servicePath={'/servizi'}
                     />
-                    <ServiziCard
-                        icon={<MdMapsHomeWork size="42" className='card-icon' />}
-                        service={"Aule libere"}
-                        description={'Ricerca aule libere per fascia oraria.'}
-                        servicePath={'/servizi'}
-                    />
-                    <ServiziCard
-                        icon={<MdMapsHomeWork size="42" className='card-icon' />}
-                        service={"Aule libere"}
-                        description={'Ricerca aule libere per fascia oraria.'}
-                        servicePath={'/servizi'}
-                    />
-                    
+                    <Col lg={4} className="ms-auto">
+                        <Container className="custom-container">
+                            <div className="subsection">
+                                <span className="subsection-title">
+                                    <FaLink size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}}/>
+                                    Link utili
+                                </span>
+                            </div>
+                            <ListGroup>
+                                {LinkUtili.map(link => {
+                                    return (
+                                        <ListGroup.Item key={link.servizio} className='px-1'style={{border: "hidden"}} >
+                                            <Link to={link.link}
+                                                target='_blank'
+                                                className="custom-link">
+                                                    <TiArrowForward className='me-1' style={{marginBottom:'2px'}} />
+                                                    {link.servizio}
+                                            </Link>
+                                        </ListGroup.Item>
+                                    )
+                                })}
+                            </ListGroup>
+                        </Container>
+                    </Col>
                     </Row>
-                </Col>
-                <Col lg={3} xl={3} className="ms-auto">
-                    <Container className="custom-container">
-                        <div className="subsection">
-                            <span className="subsection-title">
-                                <FaLink size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}}/>
-                                Link utili
-                            </span>
-                        </div>
-                        <ListGroup>
-                            {LinkUtili.map(link => {
-                                return (
-                                    <ListGroup.Item key={link.servizio} className='px-1'style={{border: "hidden"}} >
-                                        <Link to={link.link}
-                                            target='_blank'
-                                            className="custom-link">
-                                                <TiArrowForward className='me-1' style={{marginBottom:'2px'}} />
-                                                {link.servizio}
-                                        </Link>
-                                    </ListGroup.Item>
-                                )
-                            })}
-                        </ListGroup>
-                    </Container>
-                </Col>
-            </Row>
+            </Container>
         </>
     );
 
