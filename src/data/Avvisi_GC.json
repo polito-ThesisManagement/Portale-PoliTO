@@ -1,0 +1,23 @@
+[
+    {
+        "id" : 1,
+        "tipologia": "Generali",
+        "nome" : "Avviso Generale",
+        "title": "Titolo Avviso Generale",
+        "body": "Testo dell'avviso generale di prova."
+    }, 
+    {
+        "id" : 2, 
+        "tipologia": "Corsi",
+        "nome" : "Informatica I",
+        "title": "20/11/2023 - Informatica I(Prof. Rossi)",
+        "body": "La lezione di oggi è stata annullata."
+    },
+    {
+        "id" : 3, 
+        "tipologia": "Corsi",
+        "nome" : "Chimica",
+        "title": "20/11/2023 - Chimica (Prof. Bianchi)",
+        "body": "La lezione di oggi si terminerà con mezz'ora d'anticipo."
+    }
+]

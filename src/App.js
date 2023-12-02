@@ -31,11 +31,16 @@ import Tirocinio from './pages/opportunita/Tirocini';
 import OrarioLezioni from './pages/didattica/OrarioLezioni';
 import Moodle from './pages/course_sections/Moodle';
 
+import Avvisi_GC from './data/Avvisi_GC.json';
+
 
 export const FavoritesContext = createContext(null);
+export const AvvisiContext = createContext(null);
 
 function App() {
+
   const [favorites, setFavorites] = useState([]);
+  const [avvisi, setAvvisi] = useState([Avvisi_GC]);
 
   return (
     <>
@@ -46,7 +51,11 @@ function App() {
         favorites,
         setFavorites
       }}>
-        <PoliNavbar />
+       <AvvisiContext.Provider value={{
+        avvisi,
+        setAvvisi
+      }}>
+        <PoliNavbar avvisi={avvisi} setAvvisi={setAvvisi} />
         <Row>
           <Sidebar />
           <Col className={'custom-content reduced'}>
@@ -80,6 +89,7 @@ function App() {
             </Routes>
           </Col>
         </Row>
+        </AvvisiContext.Provider>
       </FavoritesContext.Provider>
     </>
   );
