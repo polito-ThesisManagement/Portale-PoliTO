@@ -277,3 +277,7 @@ body{
 .custom-popover {
   width: 1000px !important;
 }
+
+.zooming-icon:hover {
+  transform: scale(1.2);
+}

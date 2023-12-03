@@ -53,9 +53,9 @@ export default function CourseSummary(props) {
                     <Col className='p-0' />
                     <Col className='link-container p-0' style={{ position: 'relative', left: '-8px' }}>
                         {avvisi[0].some(obj => {
-                            return obj.nome === props.nome;
-                        }) ? <BellFill size={20}
-                            onClick={handleBellClick} /> : <Bell size={20} />}
+                            return obj.course === props.nome;
+                        }) ? <BellFill className='zooming-icon' size={20} onClick={handleBellClick} style={{}} />
+                            : <Bell className='zooming-icon' size={20} onClick={handleBellClick} style={{}}/>}
                     </Col>
                 </Row>
             </Container>
