@@ -55,7 +55,7 @@ body{
 }
 
 .summary {
-  border: #F0F3F5;
+  border-color: #F0F3F5;
   background-color: #F0F3F5;
   color: #000000;
   border-radius: 16px;
@@ -64,7 +64,7 @@ body{
 }
 
 .summary:hover {
-  border: #B7E1FF;
+  border-color: #B7E1FF;
   background-color: #B7E1FF;
 }
 
@@ -75,14 +75,14 @@ body{
 }
 
 .ticket-category {
-  border: #F0F3F5;
+  border-color: #F0F3F5;
   background-color: #F0F3F5;
   color: #000000;
   border-radius: 16px;
 }
 
 .ticket-category:hover {
-  border: #B7E1FF;
+  border-color: #B7E1FF;
   background-color: #B7E1FF;
 }
 
@@ -126,7 +126,7 @@ body{
 }
 
 .custom-button:hover {
-  border: #002B49;
+  border-color: #002B49;
   background-color: #002B49;
   color: #FFFFFF;
   transform: scale(1.02);
@@ -140,7 +140,7 @@ body{
 
 .custom-pill-button {
   height: 40px;
-  border: rgba(183, 225, 255, 0.4);
+  border-color: rgba(183, 225, 255, 0.4);
   background-color: rgba(183, 225, 255, 0.4);
   color: #004C81;
   padding-top: 7px;
