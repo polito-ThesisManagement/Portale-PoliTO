@@ -1,6 +1,20 @@
 [
     {
-        "data" : "19/11/2023",
+        "data": "12/12/2023",
+        "course" : "Informatica I",
+        "sender": "Giuseppe Verdi",
+        "title": "Lezione annullata",
+        "body": "La lezione di oggi è stata annullata."
+    },
+    {
+        "data": "12/12/2023",
+        "course" : "Chimica",
+        "sender": "Giulia Ferraris",
+        "title": "Anticipo fine lezione",
+        "body": "La lezione di oggi terminerà con mezz'ora d'anticipo."
+    },
+    {
+        "data" : "08/11/2023",
         "course": "Analisi Matematica II",
         "sender": "Zanini Chiara",
         "title": "Materiale 3 - Integrali tripli",
@@ -8,11 +22,12 @@
 
     },
     {
-        "data" : "20/11/2023",
+        "data" : "07/11/2023",
         "course": "Human Computer Interaction",
         "sender": "Luigi De Russis",
         "title": "Assignment 3",
         "body": "Sul materiale è stato caricato il testo dell' Assignment 3, la consegna è prevista per lunedì 27/11/2023."
 
-    }   
+    }
+    
 ]
