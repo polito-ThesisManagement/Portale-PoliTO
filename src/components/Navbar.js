@@ -37,7 +37,7 @@ export default function PoliNavbar() {
                     <div key={notifica.id} 
                     onClick={() => handleNotificationClick(notifica)}
                     className='mb-2'>
-                        <h6 className='text-style'>{notifica.title}</h6>
+                        <h6 className='text-style' style={{fontSize: '13px'}}>{notifica.title}</h6>
                         <span className='click-notifica'>{notifica.body}</span>
                     </div>
                 ))}
