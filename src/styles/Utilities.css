@@ -51,7 +51,6 @@ body{
   margin: 0px;
   margin-bottom: 16px;
   padding-bottom: 8px;
-  
 }
 
 .summary {
@@ -280,4 +279,17 @@ body{
 
 .zooming-icon:hover {
   transform: scale(1.2);
+}
+
+.file-container{
+  background-color: #F0F3F5;
+  border-radius: 10px;
+  margin: 0px;
+  padding-bottom: 8px;
+}
+
+.file-element {
+  background-color: #F0F3F5;
+  border: hidden;
+  font-family: 'Montserrat', sans-serif;
 }

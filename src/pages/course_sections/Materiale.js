@@ -2,21 +2,20 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
-import { ArrowLeft, ArrowRight, Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox, FilePdf } from 'react-bootstrap-icons';
-
+import { Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox, FilePdf } from 'react-bootstrap-icons';
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 export default function Materiale() {
 
     return (
         <>
-            <h3 className='text-style mt-3'>Materiale</h3>
-            <Row className='my-4'>
-                <Col lg={2} xs={3} md={3}>
-                    <ArrowLeft size={28} />
-                    <ArrowRight size={28} className='ms-2' />
+            <Container className='custom-container py-2'>
+            <Row>
+                <Col lg={2} xs={3} md={3} className='mt-1'>
+                    <FaArrowLeft size={20} className='ms-2' />
+                    <FaArrowRight size={20} className='ms-3' />
                 </Col>
                 <Col lg={5} md={7} xs={7}>
                     <Form.Control className="form-control-materiale mb-2" type="text" placeholder="Materiale didattico/Lab1" readOnly />
@@ -40,41 +39,41 @@ export default function Materiale() {
                     </Button>
                 </Col>
             </Row>
-            <Row>
+            <Row className='mb-2'>
                 <Col lg={3} md={4} sm={6} xs={7}>
-                    <Container className='custom-container'>
+                    <Container className='file-container'>
                         <ListGroup>
-                            <ListGroupItem style={{border: 'hidden'}}>
+                            <ListGroupItem className='file-element mt-1'>
                                 <FolderSymlinkFill size={25} />
-                                <span className='ms-2 text-style' style={{fontWeight: 'bold'}}>Materiale didattico</span>
+                                <span className='ms-2' style={{fontWeight: 'bold'}}>Materiale didattico</span>
                             </ListGroupItem>
-                            <ListGroupItem className='ms-2' style={{border: 'hidden'}}>
+                            <ListGroupItem className='file-element ms-2'>
                                 <FolderFill size={20} />
-                                <span className='ms-2 text-style'>Casi studio</span>
+                                <span className='ms-2'>Casi studio</span>
                             </ListGroupItem>
-                            <ListGroupItem className='ms-2' style={{border: 'hidden'}}>
+                            <ListGroupItem className='file-element ms-2'>
                                 <Folder2Open size={20} />
-                                <span className='ms-2 text-style'>Labs</span>
+                                <span className='ms-2'>Labs</span>
                             </ListGroupItem>
-                            <ListGroupItem className='ms-4' style={{border: 'hidden', backgroundColor: '#EF7B00', maxWidth: '100px', borderRadius: '10px'}}>
+                            <ListGroupItem className='file-element ms-4' style={{backgroundColor: '#006DB9', maxWidth: '100px', borderRadius: '10px', color:'white'}}>
+                                <Folder2Open size={20} />
+                                <span className='ms-2'>Lab1</span>
+                            </ListGroupItem>
+                            <ListGroupItem className='file-element ms-4'>
                                 <FolderFill size={20} />
-                                <span className='ms-2 text-style'>Lab1</span>
+                                <span className='ms-2'>Lab2</span>
                             </ListGroupItem>
-                            <ListGroupItem className='ms-4' style={{border: 'hidden'}}>
+                            <ListGroupItem className='file-element ms-2'>
                                 <FolderFill size={20} />
-                                <span className='ms-2 text-style'>Lab2</span>
+                                <span className='ms-2'>Lezioni</span>
                             </ListGroupItem>
-                            <ListGroupItem className='ms-2' style={{border: 'hidden'}}>
+                            <ListGroupItem className='file-element ms-2'>
                                 <FolderFill size={20} />
-                                <span className='ms-2 text-style'>Lezioni</span>
+                                <span className='ms-2'>Progetti</span>
                             </ListGroupItem>
-                            <ListGroupItem className='ms-2' style={{border: 'hidden'}}>
-                                <FolderFill size={20} />
-                                <span className='ms-2 text-style'>Progetti</span>
-                            </ListGroupItem>
-                            <ListGroupItem style={{border: 'hidden'}}>
+                            <ListGroupItem className='file-element'>
                                 <Dropbox size={25} />
-                                <span className='ms-2 text-style' style={{fontWeight: 'bold'}}>Dropbox</span>
+                                <span className='ms-2' style={{fontWeight: 'bold'}}>Dropbox</span>
                             </ListGroupItem>
                         </ListGroup>
 
@@ -82,7 +81,7 @@ export default function Materiale() {
                 </Col>
 
                 <Col lg={9} md={8} sm={6} xs={3}>
-                    <Container className='custom-container'>
+                    <Container className='file-container'>
                         <div className='pt-2'>
                             <FilePdf className='ms-1' size={30} />
                             <h6 className='text-style' style={{fontSize: '10px'}}>Lab Text</h6>
@@ -92,6 +91,9 @@ export default function Materiale() {
                     </Container>
                 </Col>
             </Row>
+
+            </Container>
+            
 
         </>
     );
