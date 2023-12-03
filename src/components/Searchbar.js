@@ -95,7 +95,7 @@ export default function Searchbar(props) {
                         onClick={() => {setSearchWord('')}}
                         style={{ fontSize: '12px'}}
                     >
-                        Cerca <span style={{fontWeight:'500'}}>{searchWord}</span> sul sito...
+                        Cerca <span style={{fontWeight:'500'}}>{searchWord}</span> su polito.it...
                     </ListGroup.Item>               
                 </ListGroup>
                 
