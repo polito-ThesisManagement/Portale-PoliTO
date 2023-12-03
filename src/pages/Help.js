@@ -64,13 +64,24 @@ export default function Help() {
                                 placeholder="Cerca tra le FAQ..."
                                 aria-label="FAQ Search"
                                 aria-describedby="basic-addon2"
-                                style={{ backgroundColor: '#F0F3F5', color:'#002B49' }}
+                                style={{
+                                    height: '40px',
+                                    backgroundColor: '#F0F3F5',
+                                    color: '#002B49',
+                                    borderRadius: '8px',
+                                }}
                                 value={search}
                                 onChange={handleSearch}
                             />
-                                <InputGroup.Text id="basic-addon2">
-                                    <Search className="search-icon" />
-                                </InputGroup.Text>
+                            <Search
+                                style={{
+                                    marginRight:'-14px',
+                                    position: 'relative',
+                                    zIndex: '3',
+                                    right: '28',
+                                    top: '12',
+                                }}
+                            />
                         </InputGroup>
                         <ListGroup style={{ borderRadius: '16px' }}>
                             {filteredCategories.map((cat) => {
@@ -187,7 +198,7 @@ export default function Help() {
 
                         </ListGroup>
                         <div className="text-center">
-                            <Button className="custom-button mt-2">Consulta i tuoi ticket</Button>
+                            <Button className="custom-button mt-2 btn-sm" style={{height:'auto'}}>Consulta i tuoi ticket</Button>
                         </div>
                     </Container>
                 </Col>

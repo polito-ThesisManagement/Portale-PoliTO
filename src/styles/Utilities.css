@@ -48,8 +48,10 @@ body{
 .custom-container{
   background-color: #fff;
   border-radius: 10px;
+  margin: 0px;
   margin-bottom: 16px;
   padding-bottom: 8px;
+  
 }
 
 .summary {
@@ -90,11 +92,9 @@ body{
   color: white;
 }
 
-.list-group-item-action:hover {
-  border: #B7E1FF;
+.list-group-item-action:hover{
+  border-color: #B7E1FF;
   background-color: #B7E1FF;
-  color: #004C81;
-  transform: scale(1.02);
 }
 
 
@@ -178,9 +178,11 @@ body{
   font-weight: 600;
 }
 
+
 .custom-accordion {
   margin-left: 8px;
   border:hidden;
+  border-radius: 5px;
 }
 
 .ticket-accordion {
@@ -250,4 +252,11 @@ body{
 .link-container {
   color: #000000;
   text-decoration: none;
+}
+
+
+@media (max-width: 461px) {
+  .search-input::placeholder {
+      visibility: hidden;
+  }
 }

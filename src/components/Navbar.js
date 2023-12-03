@@ -55,9 +55,9 @@ export default function PoliNavbar() {
                         navbarScroll
                     >
                         <Nav.Link as={Link} to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX" target='_blank' style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#002B49' /></Nav.Link>
-                        <Nav.Link as={Link} to="/" style={{ marginRight: '12px', marginTop: '9px' }}><Bell size={28} color='#002B49' /></Nav.Link>
-                        <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#002B49', marginRight: '12px' }}>
-                            <div className='d-none d-md-block'>
+                        <Nav.Link as={Link} to="/" style={{ marginRight: '0px', marginTop: '9px' }}><Bell size={28} color='#002B49' /></Nav.Link>
+                        <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#002B49' }}>
+                            <div className='d-none d-md-block' style={{marginLeft:'12px', marginRight: '12px'}}>
                             s123456
                             <br />
                             <span className='truncated'>Mario Rossi</span>
@@ -75,7 +75,7 @@ export default function PoliNavbar() {
                                     <PersonCircle size={48} color='#002B49' />
                                 </Dropdown.Toggle>
 
-                                <Dropdown.Menu style={{right: 'auto', left: '-120px', fontFamily:'Montserrat, sans-serif',}}>
+                                <Dropdown.Menu style={{right: 'auto', left: '-100px', fontFamily:'Montserrat, sans-serif',}}>
                                     <Dropdown.Item style={{fontWeight:'500'}}>Dati utente</Dropdown.Item>
                                     <Dropdown.Item style={{fontWeight:'500'}}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>

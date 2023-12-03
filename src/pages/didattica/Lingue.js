@@ -37,7 +37,7 @@ export default function Lingue() {
                             Lingua inglese
                         </Accordion.Header>
                         <Accordion.Body>
-                            <Row className="mb-3 mx-1">
+                            <Row className="mb- mx-1">
                                 <div className="px-0" style={{ display: 'flex', alignItems: 'center' }}>    
                                     <Link className="custom-link truncated" target='_blank' to='https://didattica.polito.it/clapdf/it-vlaib-sito.pdf'>
                                     Verifica il tuo livello di conoscenza attuale tramite vLAIB&nbsp;
@@ -50,27 +50,59 @@ export default function Lingue() {
                                     Ulteriori informazioni - sito CLA&nbsp;
                                     <FaExternalLinkAlt style={{position:'relative', bottom:'2px'}}/>
                                     </Link>
-                                    
+                                </div>
+                                <div className='px-0 my-2' style={{fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>
+                                    Preparazione all'IELTS
                                 </div>
                             </Row>
                             <Row>
-                                <Col>
+                                <Col sm={6} md={4} className="mb-4">
                                     <Card>
-                                        <Card.Body>
-                                            <Card.Title>Preparazione all'IELTS</Card.Title>
+                                        <Card.Body className="text-center">
+                                            <Card.Title className="mb-4">IELTS Speaking tutorials</Card.Title>
                                             <Card.Text>
                                             </Card.Text>
-                                            <Button className="custom-button">Accedi al test</Button>
+                                            <Button className="custom-button btn-sm">Prenotazione lezioni</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
-                                <Col>
+                                <Col sm={6} md={4} className="mb-4">
                                     <Card>
-                                        <Card.Body>
-                                            <Card.Title>Esito esame IELTS</Card.Title>
+                                        <Card.Body className="text-center">
+                                            <Card.Title className="mb-4">IELTS Grammar tutorials</Card.Title>
                                             <Card.Text>
                                             </Card.Text>
-                                            <Button className="custom-button">Accedi al test</Button>
+                                            <Button className="custom-button btn-sm">Prenotazione lezioni</Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col sm={6} md={4} className="mb-4">
+                                    <Card>
+                                        <Card.Body className="text-center">
+                                            <Card.Title className="mb-4">IELTS Listening tutorials</Card.Title>
+                                            <Card.Text>
+                                            </Card.Text>
+                                            <Button className="custom-button btn-sm">Prenotazione lezioni</Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col sm={6} md={4} className="mb-4">
+                                    <Card>
+                                        <Card.Body className="text-center">
+                                            <Card.Title className="mb-4">IELTS Reading tutorials</Card.Title>
+                                            <Card.Text>
+                                            </Card.Text>
+                                            <Button className="custom-button btn-sm">Prenotazione lezioni</Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col sm={6} md={4} className="mb-4">
+                                    <Card>
+                                        <Card.Body className="text-center">
+                                            <Card.Title className="mb-4">IELTS Speaking tutorials</Card.Title>
+                                            <Card.Text>
+                                            </Card.Text>
+                                            <Button className="custom-button btn-sm">Prenotazione lezioni</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -107,7 +139,7 @@ export default function Lingue() {
                                 <Row>
                                     <Col sm={6} lg={3}>
                                         <Card>
-                                            <Card.Body className="text-center">
+                                            <Card.Body>
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Francese</Card.Title>
                                                 <Button className="custom-button">Inizia la prova</Button>
                                             </Card.Body>
@@ -115,7 +147,7 @@ export default function Lingue() {
                                     </Col>
                                     <Col md={6} lg={3}>
                                         <Card>
-                                            <Card.Body className="text-center">
+                                            <Card.Body>
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Spagnolo</Card.Title>
                                                 <Button className="custom-button">Inizia la prova</Button>
                                             </Card.Body>
@@ -123,7 +155,7 @@ export default function Lingue() {
                                     </Col>
                                     <Col md={6} lg={3}>
                                         <Card>
-                                            <Card.Body className="text-center">
+                                            <Card.Body>
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Tedesco</Card.Title>
                                                 <Button className="custom-button">Inizia la prova</Button>
                                             </Card.Body>
@@ -131,7 +163,7 @@ export default function Lingue() {
                                     </Col>
                                     <Col md={6} lg={3}>
                                         <Card>
-                                            <Card.Body className="text-center">
+                                            <Card.Body className="">
                                                 <Card.Title className="mx-auto mb-3">Test di livello - Portoghese</Card.Title>
                                                 <Button className="custom-button">Inizia la prova</Button>
                                             </Card.Body>
