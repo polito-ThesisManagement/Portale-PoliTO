@@ -1,4 +1,4 @@
-/*import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
@@ -6,44 +6,42 @@ import Button from 'react-bootstrap/Button';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
-import { ArrowLeft, ArrowRight, Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox, FilePdf } from 'react-bootstrap-icons';*/
+import { ArrowLeft, ArrowRight, Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox, FilePdf } from 'react-bootstrap-icons';
 
 export default function Materiale() {
 
     return (
         <>
-            <h1>Materiale</h1>
-        </>
-        /*<>
+            <h3 className='text-style mt-3'>Materiale</h3>
             <Row className='my-4'>
-                <Col lg={1}>
+                <Col lg={2} xs={3} md={3}>
                     <ArrowLeft size={28} />
                     <ArrowRight size={28} className='ms-2' />
                 </Col>
-                <Col lg={5}>
-                    <Form.Control className="form-control-materiale" type="text" placeholder="Materiale didattico/Lab1" readOnly />
+                <Col lg={5} md={7} xs={7}>
+                    <Form.Control className="form-control-materiale mb-2" type="text" placeholder="Materiale didattico/Lab1" readOnly />
                 </Col>
-                <Col lg={4}>
+                <Col lg={4} xs={7}>
                     <InputGroup>
                         <Form.Control
                             placeholder="Cerca all'interno del materiale..."
                             aria-label="Cerca Materiale"
                             aria-describedby="basic-addon2"
-                            className='form-control-materiale'
+                            className='form-control-materiale mb-2'
                         />
                         <InputGroup.Text id="basic-addon2" style={{ border: '2px', borderColor: 'black' }} >
                             <Search />
                         </InputGroup.Text>
                     </InputGroup>
                 </Col>
-                <Col lg={2}>
-                    <Button variant='secondary'>
+                <Col lg={1}>
+                    <Button className='mb-2' variant='secondary'>
                         <Grid size={28} />
                     </Button>
                 </Col>
             </Row>
             <Row>
-                <Col lg={3}>
+                <Col lg={3} md={4} sm={6}>
                     <Container className='custom-container'>
                         <ListGroup>
                             <ListGroupItem style={{border: 'hidden'}}>
@@ -83,7 +81,7 @@ export default function Materiale() {
                     </Container>
                 </Col>
 
-                <Col lg={9}>
+                <Col lg={9} md={8} sm={6}>
                     <Container className='custom-container'>
                         <div className='pt-2'>
                             <FilePdf className='ms-1' size={30} />
@@ -95,7 +93,7 @@ export default function Materiale() {
                 </Col>
             </Row>
 
-        </>*/
+        </>
     );
 
 }

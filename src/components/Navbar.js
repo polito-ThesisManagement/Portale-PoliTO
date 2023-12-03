@@ -106,7 +106,7 @@ export default function PoliNavbar() {
                         navbarScroll
                     >
                         <Nav.Link as={Link} to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX" target='_blank' style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#002B49' /></Nav.Link>
-                        <Nav.Link as={Link} style={{ marginRight: '0px', marginTop: '9px' }}>
+                        <Nav.Link  style={{ marginRight: '0px', marginTop: '9px' }}>
                             {avvisi[0].length === 0 ? <Bell size={28} color='#002B49' /> :
                                 <OverlayTrigger 
                                 show={showPopover}
