@@ -63,7 +63,7 @@ export default function BaseCard(props) {
                           {props.linkText}
                         </Link>
                         <FaExternalLinkAlt className="mx-2 mt-1" />
-                      </div>)
+                        </div>)
                         :
                         null
                 }

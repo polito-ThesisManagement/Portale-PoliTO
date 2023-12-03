@@ -1,93 +1,37 @@
 [
-    {
-        "id" : 1,
-        "pageName": "libretto",
-        "link": "/didattica/libretto"
-
-    },
-    {
-        "id" : 2,
-        "pageName": "orario",
-        "link": "/didattica/orario"
-    },
-    {
-        "id" : 3,
-        "pageName": "lingue",
-        "link": "/didattica/lingue"
-    },
-    {
-        "id" : 4,
-        "pageName": "tesi",
-        "link": "/carriera/tesi"
-    },
-    {
-        "id" : 5,
-        "pageName": "job",
-        "link": "/opportunita/job"
-    }, 
-    {
-        "id" : 6,
-        "pageName": "lavoro",
-        "link": "/opportunita/job"
-    },
-    {
-        "id" : 7,
-        "pageName": "tirocinio",
-        "link": "/opportunita/tirocinio"
-    },
-    {
-        "id" : 8,
-        "pageName": "stage",
-        "link": "/opportunita/tirocinio"
-    },
-    {
-        "id" : 9,
-        "pageName": "aule libere",
-        "link": "/servizi"
-    },
-    {
-        "id" : 10,
-        "pageName": "biblioteca",
-        "link": "/servizi"
-    },
-    {
-        "id" : 11,
-        "pageName": "erasmus",
-        "link": "/opportunita"
-    },
-    {
-        "id" : 12,
-        "pageName": "studiare all'estero",
-        "link": "/opportunita"
-    },
-    {
-        "id" : 13,
-        "pageName": "Borsa di studio",
-        "link": "/opportunita"
-    },
-    {
-        "id" : 14,
-        "pageName": "ticket",
-        "link": "/help"
-    },
-    {
-        "id" : 15,
-        "pageName": "team studenti",
-        "link": "/opportunita"
-    },
-    {
-        "id" : 15,
-        "pageName": "associazioni studentesche",
-        "link": "/opportunita"
-    },
-    {
-        "id" : 16,
-        "pageName": "curriculum",
-        "link": "/area_personale"
-    }, 
-    {
-        "id" : 17,
-        "pageName": "prenotazioni",
-        "link": "/area_personale"
-    }
+    { "id": 1, "pageName": "Homepage", "link": "/" },
+    { "id": 2, "pageName": "Didattica", "link": "/didattica" },
+    { "id": 3, "pageName": "Corsi", "link": "/didattica" },
+    { "id": 4, "pageName": "Orario lezioni", "link": "/didattica/orario" },
+    { "id": 5, "pageName": "Libretto", "link": "/didattica/libretto" },
+    { "id": 6, "pageName": "Lingue", "link": "/didattica/lingue" },
+    { "id": 7, "pageName": "Area personale", "link": "/area_personale" },
+    { "id": 8, "pageName": "Dati utente", "link": "/area_personale" },
+    { "id": 9, "pageName": "Agenda", "link": "/area_personale" },
+    { "id": 10, "pageName": "Prenotazioni", "link": "/area_personale" },
+    { "id": 11, "pageName": "Curriculum", "link": "/area_personale" },
+    { "id": 12, "pageName": "Certificati", "link": "/area_personale" },
+    { "id": 13, "pageName": "Licenze", "link": "/area_personale" },
+    { "id": 14, "pageName": "Impostazioni account", "link": "/area_personale" },
+    { "id": 15, "pageName": "Carriera", "link": "/carriera" },
+    { "id": 16, "pageName": "Tasse e agevolazioni", "link": "/carriera" },
+    { "id": 17, "pageName": "Piano carriera", "link": "/carriera" },
+    { "id": 18, "pageName": "Gestione carriera", "link": "/carriera" },
+    { "id": 19, "pageName": "Apply", "link": "/carriera" },
+    { "id": 20, "pageName": "Laurea", "link": "/carriera" },
+    { "id": 21, "pageName": "Opportunità", "link": "/carriera" },
+    { "id": 22, "pageName": "Tirocinio", "link": "/opportunita" },
+    { "id": 23, "pageName": "Job", "link": "/opportunita" },
+    { "id": 24, "pageName": "Borse di studio", "link": "/opportunita" },
+    { "id": 25, "pageName": "Studiare all'estero", "link": "/opportunita" },
+    { "id": 26, "pageName": "Collaborazioni studentesche", "link": "/opportunita" },
+    { "id": 27, "pageName": "Team studenteschi", "link": "/opportunita" },
+    { "id": 28, "pageName": "Associazioni studentesche", "link": "/opportunita" },
+    { "id": 29, "pageName": "Sport", "link": "/opportunita" },
+    { "id": 30, "pageName": "Servizi", "link": "/servizi" },
+    { "id": 31, "pageName": "Aule libere", "link": "/servizi" },
+    { "id": 32, "pageName": "Link utili", "link": "/servizi" },
+    { "id": 33, "pageName": "Help", "link": "/help" },
+    { "id": 34, "pageName": "Ticketing", "link": "/help" },
+    { "id": 35, "pageName": "Guide", "link": "/help" }
 ]
