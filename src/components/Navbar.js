@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { AvvisiContext } from '../App';
 
 import Container from 'react-bootstrap/Container';
@@ -21,10 +21,32 @@ import { Bell, Envelope, PersonCircle, BellFill } from 'react-bootstrap-icons';
 
 
 export default function PoliNavbar() {
+    const [showPopover, setShowPopover] = useState(false);
+    const targetRef = useRef(null);
 
     const { avvisi, setAvvisi } = useContext(AvvisiContext);
 
-    const handleNotificationClick = (notifica) => {
+    const handleClickOutside = (event) => {
+        if (targetRef.current && !targetRef.current.contains(event.target)) {
+          setShowPopover(false);
+        }
+      };
+
+      useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+    
+        return () => {
+          document.removeEventListener('click', handleClickOutside);
+        };
+      }, []);
+
+      const handleBellClick = () => {
+        setShowPopover(!showPopover);
+      };
+
+    const handleNotificationClick = (e, notifica) => {
+        e.stopPropagation();
+
         const updatedAvvisi = avvisi[0].filter((n) => n !== notifica);
         setAvvisi([updatedAvvisi]);
     }
@@ -35,7 +57,7 @@ export default function PoliNavbar() {
             <Popover.Body>
                 {avvisi[0].map((notifica) => (
                     <div key={notifica.id} 
-                    onClick={() => handleNotificationClick(notifica)}
+                    onClick={(e) => handleNotificationClick(e,notifica)}
                     className='mb-2'>
                         <h6 className='text-style' style={{fontSize: '13px'}}>{notifica.title}</h6>
                         <span className='click-notifica'>{notifica.body}</span>
@@ -84,10 +106,17 @@ export default function PoliNavbar() {
                         navbarScroll
                     >
                         <Nav.Link as={Link} to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX" target='_blank' style={{ marginRight: '5px', marginTop: '9px' }}><Envelope size={28} color='#002B49' /></Nav.Link>
-                        <Nav.Link as={Link} to="/" style={{ marginRight: '12px', marginTop: '9px' }}>
+                        <Nav.Link as={Link} style={{ marginRight: '12px', marginTop: '9px' }}>
                             {avvisi[0].length === 0 ? <Bell size={28} color='#002B49' /> :
-                                <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-                                    <BellFill size={28} color='#002B49' />
+                                <OverlayTrigger 
+                                show={showPopover}
+                                target={targetRef.current}
+                                trigger="click" 
+                                placement="bottom" 
+                                overlay={popover}>
+                                    <span ref={targetRef}>
+                                    <BellFill size={28} color='#002B49' onClick={handleBellClick}/>
+                                    </span>
                                 </OverlayTrigger>
                             }
                         </Nav.Link>
