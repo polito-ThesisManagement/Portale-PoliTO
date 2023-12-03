@@ -41,7 +41,7 @@ export default function Materiale() {
                 </Col>
             </Row>
             <Row>
-                <Col lg={3} md={4} sm={6}>
+                <Col lg={3} md={4} sm={6} xs={7}>
                     <Container className='custom-container'>
                         <ListGroup>
                             <ListGroupItem style={{border: 'hidden'}}>
@@ -81,7 +81,7 @@ export default function Materiale() {
                     </Container>
                 </Col>
 
-                <Col lg={9} md={8} sm={6}>
+                <Col lg={9} md={8} sm={6} xs={3}>
                     <Container className='custom-container'>
                         <div className='pt-2'>
                             <FilePdf className='ms-1' size={30} />
