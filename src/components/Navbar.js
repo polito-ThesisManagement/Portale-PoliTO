@@ -52,15 +52,26 @@ export default function PoliNavbar() {
     }
 
     const popover = (
-        <Popover id="popover-basic">
-            <Popover.Header as="h3">Ultime notifiche</Popover.Header>
-            <Popover.Body>
+        <Popover id="popover-basic" className='custom-popover'>
+            <Popover.Header style={{fontSize:'16px',fontWeight:'600'}}>Ultime notifiche</Popover.Header>
+            <Popover.Body className='pb-0 px-2'>
                 {avvisi[0].map((notifica) => (
-                    <div key={notifica.id} 
+                    <div key={notifica.id}
                     onClick={(e) => handleNotificationClick(e,notifica)}
-                    className='mb-2'>
-                        <h6 className='text-style' style={{fontSize: '13px'}}>{notifica.title}</h6>
-                        <span className='click-notifica'>{notifica.body}</span>
+                    style={{borderRadius:'5px'}}
+                    className='click-notifica mb-2 py-1 px-2'>
+                        <span className='d-flex' style={{fontSize:'15px'}}>
+                            <div style={{marginRight:'6px', fontWeight:'500'}}>
+                                {notifica.data} -
+                            </div>
+                            <div style={{marginRight:'4px', fontWeight:'600'}}>
+                                {notifica.course}
+                            </div>
+                        </span>
+                        <div style={{ fontWeight:'500', fontSize:'14px'}}>
+                                ({notifica.sender})
+                        </div>
+                        <span style={{fontSize:'15px'}}>{notifica.body}</span>
                     </div>
                 ))}
             </Popover.Body>

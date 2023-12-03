@@ -257,7 +257,6 @@ body{
 .click-notifica {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  text-decoration: underline;
 }
 
 .click-notifica:hover {
@@ -265,11 +264,16 @@ body{
 }
 
 .click-notifica:active {
-  background-color: #E0E0E0;
+  background-color: #006DB9;
+  color: white;
 }
 
 @media (max-width: 461px) {
   .search-input::placeholder {
       visibility: hidden;
   }
+}
+
+.custom-popover {
+  width: 1000px !important;
 }

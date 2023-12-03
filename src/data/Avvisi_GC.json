@@ -1,17 +1,20 @@
 [
     
     {
-        "id" : 2, 
+        "id" : 0, 
         "tipologia": "Corsi",
-        "nome" : "Informatica I",
-        "title": "20/11/2023 - Informatica I(Prof. Rossi)",
+        "data": "12/12/2023",
+        "course" : "Informatica I",
+        "sender": "Giuseppe Verdi",
+        "title": "Lezione annullata",
         "body": "La lezione di oggi è stata annullata."
     },
     {
-        "id" : 3, 
-        "tipologia": "Corsi",
-        "nome" : "Chimica",
-        "title": "20/11/2023 - Chimica (Prof. Bianchi)",
-        "body": "La lezione di oggi si terminerà con mezz'ora d'anticipo."
+        "id" : 1,
+        "data": "12/12/2023",
+        "course" : "Chimica",
+        "sender": "Giulia Ferraris",
+        "title": "Anticipo fine lezione",
+        "body": "La lezione di oggi terminerà con mezz'ora d'anticipo."
     }
 ]
