@@ -119,7 +119,7 @@ export default function Corsi() {
                         </ListGroup>
 
                         <div className="text-center mt-2 mb-2">
-                            <Button className="custom-button mt-2">Prenotazione appelli</Button>
+                            <Button className="custom-button mt-2 btn-sm" style={{height:'auto'}} >Prenotazione appelli</Button>
                         </div>
                     </Container>
 
@@ -197,7 +197,7 @@ export default function Corsi() {
                             })}
                         </ListGroup>
                         <div className="text-center mt-2 mb-2">
-                            <Button className="custom-button mt-2">
+                            <Button className="custom-button mt-2 btn-sm" style={{height:'auto'}}>
                                 Ricerca nel materiale condiviso
                             </Button>
                         </div>
