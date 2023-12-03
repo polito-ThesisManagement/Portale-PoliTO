@@ -1,20 +1,42 @@
+import React, { useContext } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Bell } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Bell, BellFill } from 'react-bootstrap-icons';
+import { Link, useNavigate } from 'react-router-dom';
+import { AvvisiContext } from '../App';
 
 
 
 export default function CourseSummary(props) {
+    const navigate = useNavigate();
 
     const { codice, nome, periodo, crediti, linkGuida } = props;
 
+    const { avvisi, setAvvisi } = useContext(AvvisiContext);
+
+    const handleBellClick = (e) => {
+        e.preventDefault();
+
+        const codice = props.codice;
+        const clicked = props.nome;
+        const periodo = props.periodo;
+        const crediti = props.crediti;
+        const linkGuida = props.linkGuida;
+        const newAvvisi = avvisi[0].filter(obj => { return obj.nome !== clicked });
+
+        setAvvisi([newAvvisi]);
+
+        navigate(`/didattica/${clicked}/avvisi`, { state: { codice, clicked, periodo, crediti, linkGuida } });
+
+
+    }
+
     return (
-        <ListGroup.Item className='summary clickable'style={{marginBottom:'8px'}}>
+        <ListGroup.Item className='summary clickable' style={{ marginBottom: '8px' }}>
             <Container className='link-container p-0'
-            as={Link}
-            to={`/didattica/${props.nome}/materiale`}
-            state={{codice, nome, periodo, crediti, linkGuida}}
+                as={Link}
+                to={`/didattica/${props.nome}/materiale`}
+                state={{ codice, nome, periodo, crediti, linkGuida }}
             >
                 <Row>
                     <Col xs={3} className='course-detail ps-2'>
@@ -22,15 +44,18 @@ export default function CourseSummary(props) {
                     </Col>
                     <Col xs={6} className='course-detail ps-3'>
                         <span className='truncated'>
-                        {props.nome}
+                            {props.nome}
                         </span>
                     </Col>
                     <Col xs={2} className='detail truncated px-0'>
                         {props.crediti} CFU
                     </Col>
-                    <Col className='p-0'/>
-                    <Col className='link-container p-0' style={{position:'relative', left:'-8px'}}>
-                        <Bell size={20}/>
+                    <Col className='p-0' />
+                    <Col className='link-container p-0' style={{ position: 'relative', left: '-8px' }}>
+                        {avvisi[0].some(obj => {
+                            return obj.nome === props.nome;
+                        }) ? <BellFill size={20}
+                            onClick={handleBellClick} /> : <Bell size={20} />}
                     </Col>
                 </Row>
             </Container>

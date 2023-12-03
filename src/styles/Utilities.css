@@ -254,6 +254,20 @@ body{
   text-decoration: none;
 }
 
+.click-notifica {
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  text-decoration: underline;
+}
+
+.click-notifica:hover {
+  background-color: #B7E1FF;
+}
+
+.click-notifica:active {
+  background-color: #E0E0E0;
+}
+
 
 @media (max-width: 461px) {
   .search-input::placeholder {
