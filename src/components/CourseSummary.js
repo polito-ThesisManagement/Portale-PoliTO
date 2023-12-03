@@ -18,15 +18,15 @@ export default function CourseSummary(props) {
         e.preventDefault();
 
         const codice = props.codice;
-        const clicked = props.nome;
+        const nome = props.nome;
         const periodo = props.periodo;
         const crediti = props.crediti;
         const linkGuida = props.linkGuida;
-        const newAvvisi = avvisi[0].filter(obj => { return obj.nome !== clicked });
+        const newAvvisi = avvisi[0].filter(obj => { return obj.nome !== nome });
 
         setAvvisi([newAvvisi]);
 
-        navigate(`/didattica/${clicked}/avvisi`, { state: { codice, clicked, periodo, crediti, linkGuida } });
+        navigate(`/didattica/${nome}/avvisi`, { state: { codice, nome, periodo, crediti, linkGuida } });
 
 
     }
