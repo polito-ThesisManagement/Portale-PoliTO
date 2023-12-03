@@ -22,7 +22,7 @@ export default function CourseSummary(props) {
         const periodo = props.periodo;
         const crediti = props.crediti;
         const linkGuida = props.linkGuida;
-        const newAvvisi = avvisi[0].filter(obj => { return obj.nome !== nome });
+        const newAvvisi = avvisi[0].filter(obj => { return obj.course !== nome });
 
         setAvvisi([newAvvisi]);
 
