@@ -18,6 +18,8 @@ import { ImFolderUpload } from 'react-icons/im'
 import { X } from 'react-bootstrap-icons';
 import { FaArrowRight } from "react-icons/fa6";
 
+import PoliTooltip from  '../../components/Tooltip';
+
 
 export default function Corsi() {
 
@@ -159,10 +161,13 @@ export default function Corsi() {
                     </Container>
                     <Container className='custom-container'>
                         <div className="subsection">
-                            <span className="subsection-title">
-                                <ImFolderUpload size={20} className='subsection-icon' style={{position:'relative', bottom:'2px'}} />
-                                Materiale condiviso
-                            </span>
+                            <div className='d-flex justify-content-between'>
+                                <span className="subsection-title">
+                                    <ImFolderUpload size={20} className='subsection-icon' style={{ position: 'relative', bottom: '2px' }} />
+                                    Materiale condiviso
+                                </span>
+                                <PoliTooltip text='Aggiungi corsi' className='ml-auto'/>
+                            </div>
                         </div>
                         <ListGroup style={{ borderRadius: '16px' }}>
                             {otherCourses.map((course) => {
