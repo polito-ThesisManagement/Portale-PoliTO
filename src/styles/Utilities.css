@@ -267,12 +267,6 @@ body{
   color: white;
 }
 
-@media (max-width: 461px) {
-  .search-input::placeholder {
-      visibility: hidden;
-  }
-}
-
 .custom-popover {
   width: 1000px !important;
 }
@@ -285,11 +279,19 @@ body{
   background-color: #F0F3F5;
   border-radius: 10px;
   margin: 0px;
+  padding-left: 0px;
   padding-bottom: 8px;
+  height: 400px;
 }
 
 .file-element {
   background-color: #F0F3F5;
   border: hidden;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
 }

@@ -35,7 +35,7 @@ export default function CoursePage() {
                     <span className='breadcrumb'>{nome}</span>
             </div>
 
-            <Row>
+            <Row className='mb-3'>
                 <div className="d-flex align-items-center mx-3">
                     <span className='section-title'>{nome}</span>
                     <Dropdown style={{fontSize: '15px', fontFamily: 'Montserrat, sans-serif'}}>

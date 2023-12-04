@@ -41,9 +41,9 @@ export default function Searchbar(props) {
         <Form className="d-flex me-3 w-100" style={{ maxWidth: '400px' }}>
             <InputGroup className="flex-nowrap w-100">
                 <Form.Control
-                    className='search-input'
+                    className='truncated'
                     type="search"
-                    placeholder="Ricerca nel portale"
+                    placeholder="Ricerca nel portale..."
                     aria-label="Search"
                     size="md"
                     style={{
