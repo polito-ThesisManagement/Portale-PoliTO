@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/Button';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
-import { Search, Grid, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox } from 'react-bootstrap-icons';
+import { Search, FolderFill, Folder2Open, FolderSymlinkFill, Dropbox } from 'react-bootstrap-icons';
+import { FaList } from "react-icons/fa";
 import { FaArrowLeft, FaArrowRight, FaFilePdf } from "react-icons/fa";
 export default function Materiale() {
 
@@ -42,8 +43,8 @@ export default function Materiale() {
                                 }}
                             />
                         </InputGroup>
-                        <Button className='mb-2 px-2 pb-1' style={{position:'relative', bottom:'1px'}}>
-                            <Grid size={24} style={{position:'relative', bottom:'3px'}} />
+                        <Button className='custom-button mb-2 px-2 pb-1' style={{position:'relative', bottom:'1px', borderWidth:'2px'}}>
+                            <FaList size={24} style={{position:'relative', bottom:'2px', right:'1px'}} />
                         </Button>
                     </Col>
                 </Row>
