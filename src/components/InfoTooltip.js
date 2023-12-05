@@ -1,7 +1,7 @@
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
-import { QuestionCircle } from 'react-bootstrap-icons';
+import { QuestionCircleFill } from 'react-bootstrap-icons';
 
 function TriggerExample(props) {
 
@@ -19,10 +19,13 @@ function TriggerExample(props) {
     return (
         <OverlayTrigger
             placement="bottom"
-            delay={{ show: 250, hide: 400 }}
+            delay={{ show: 150, hide: 400 }}
             overlay={renderTooltip}
         >
-            <QuestionCircle> </QuestionCircle>
+            <QuestionCircleFill
+            className='zooming-icon'
+            size={24}
+            color='#002B49'/>
         </OverlayTrigger>
     );
 }
