@@ -13,7 +13,7 @@ import { FaList } from 'react-icons/fa';
 import { PiListPlusFill, PiVideoCameraFill } from 'react-icons/pi'
 import { BsCalendarCheckFill } from 'react-icons/bs'
 import { ImFolderUpload } from 'react-icons/im'
-import { X } from 'react-bootstrap-icons';
+import { IoClose } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa6";
 
 
@@ -77,7 +77,7 @@ export default function Corsi() {
                         <ListGroup style={{ borderRadius: '16px' }}>
                             {Courses.map((val) => (
                                 val.prenotatoEsame ? (
-                                    <ListGroup.Item key={val.codice} className='summary' style={{ marginBottom: '8px' }}>
+                                    <ListGroup.Item key={val.codice} className='summary-static' style={{ marginBottom: '8px' }}>
                                         <Container className='p-0'>
                                             <Row>
                                                 <Col xs={3} className='course-detail p-0' style={{ marginLeft: '8px' }}>
@@ -91,8 +91,8 @@ export default function Corsi() {
                                                 </Col>
                                                 <Col className='p-0'>
                                                 </Col>
-                                                <Col className='p-0' style={{position:'relative', left:'-8px', bottom:'1px'}}>
-                                                    <X size={24} />
+                                                <Col className='zooming-icon p-0' style={{position:'relative', left:'-8px', bottom:'1px', cursor:'pointer'}}>
+                                                    <IoClose size={20} style={{ strokeWidth: '10', position:'relative', top:'1px' }} />
                                                 </Col>
                                             </Row>
                                         </Container>
@@ -101,7 +101,7 @@ export default function Corsi() {
                             ))}
                         </ListGroup>
 
-                        <div className="text-center mt-2 mb-2">
+                        <div className="text-center my-2">
                             <Button className="custom-button mt-2 btn-sm" style={{height:'auto'}} >Prenotazione appelli</Button>
                         </div>
                     </Container>
@@ -117,7 +117,7 @@ export default function Corsi() {
 
                         <ListGroup style={{ borderRadius: '16px' }}>
                             {recentVirtualClassroom.map((rec, index) => (
-                                <ListGroup.Item key={index} className='summary' style={{ marginBottom: '8px' }}>
+                                <ListGroup.Item key={index} className='summary' style={{ marginBottom: '8px', cursor:'pointer' }}>
                                     <Container className='p-0'>
                                         <Row>
                                             <Col xs={8}className='course-detail truncated p-0' style={{ marginLeft: '8px' }}>
@@ -129,7 +129,7 @@ export default function Corsi() {
                                             <Col className='p-0'>
                                             </Col>
                                             <Col className='p-0' style={{position:'relative', left:'-8px'}}>
-                                                <FaArrowRight size={20} className='p-0'/>
+                                                <FaArrowRight className='p-0' size={20}/>
                                             </Col>
                                         </Row>
                                     </Container>
@@ -147,7 +147,9 @@ export default function Corsi() {
                                 </span>
                                 <InfoTooltip text='Questo servizio permette di accedere al materiale pubblicato dai docenti, reso disponibile a tutti gli studenti'/>
                         </div>
-                        <div className="text-center mt-2 mb-2">
+                        <p className="mb-2 px-2" style={{fontFamily:'Montserrat, sans-serif'}}>Nessun materiale didattico selezionato. È possibile aggiungere nuovo materiale a questa sezione, cercandolo tra quello condiviso pubblicamente attraverso "Ricerca nel materiale condiviso".</p>
+                        <div className="text-center my-2">
+                            
                             <Button className="custom-button mt-2 btn-sm" style={{height:'auto'}}>
                                 Ricerca nel materiale condiviso
                             </Button>

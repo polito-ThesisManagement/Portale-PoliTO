@@ -1,7 +1,7 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 import { Row, Col } from 'react-bootstrap';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import './styles/Utilities.css';
 
@@ -41,6 +41,11 @@ function App() {
 
   const [favorites, setFavorites] = useState([]);
   const [avvisi, setAvvisi] = useState([Avvisi_GC]);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [location]);
 
   return (
     <>

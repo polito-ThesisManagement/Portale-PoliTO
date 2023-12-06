@@ -173,7 +173,7 @@ export default function Help() {
                     <Container className='custom-container'>
                         <div className="subsection">
                             <span className="subsection-title">
-                                <HiMiniTicket size={20} className='subsection-icon' style={{position:'relative', bottom:'1px'}}  />
+                                <HiMiniTicket size={20} className='subsection-icon' style={{position:'relative', bottom:'1px', cursor:'pointer'}}  />
                                 I tuoi ticket recenti
                             </span>
                         </div>
@@ -197,8 +197,8 @@ export default function Help() {
                             </ListGroup.Item>
 
                         </ListGroup>
-                        <div className="text-center">
-                            <Button className="custom-button mt-2 btn-sm" style={{height:'auto'}}>Consulta i tuoi ticket</Button>
+                        <div className="text-center my-2">
+                            <Button className="custom-button btn-sm" style={{height:'auto'}}>Consulta i tuoi ticket</Button>
                         </div>
                     </Container>
                 </Col>

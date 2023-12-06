@@ -1,4 +1,4 @@
-import { Container, ListGroup } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Row, Col, Table } from 'react-bootstrap';
 
 import valutazioni from '../../data/Valutazioni.json'
@@ -10,7 +10,6 @@ import { FaList } from 'react-icons/fa';
 import { BsGraphUp } from 'react-icons/bs'
 import { VscGraph } from 'react-icons/vsc'
 import { PiListChecksBold } from 'react-icons/pi';
-import ProvisionalGrade from '../../components/ProvisionalGrade';
 
 export default function Libretto() {
 
@@ -24,23 +23,31 @@ export default function Libretto() {
                                 <FaList size={20} className='subsection-icon' />
                                 Valutazioni provvisorie
                             </span>
-                                <Row className='pt-2' style={{fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>
-                                        <Col xs={2} style={{position: 'relative', left: 4}}>Codice</Col>
-                                        <Col xs={4} style={{position: 'relative', left: 26}}>Nome</Col>
-                                        <Col xs={1} style={{position: 'relative', left: -4}}>Anno</Col>
-                                        <Col xs={1} style={{position: 'relative', left: 0}}>Crediti</Col>
-                                        <Col xs={1} style={{position: 'relative', left: 20}}>Esito</Col>
-                                        <Col xs={2} style={{position: 'relative', left: 30}}>Data</Col>
-                                </Row>
-                                    
+                            <Table striped className='custom-table' style={{ fontFamily: 'Montserrat, sans-serif'}}>
+                                <thead style={{fontFamily:'Montserrat, sans-serif'}}>
+                                    <tr>
+                                        <th>Codice</th>
+                                        <th>Nome</th>
+                                        <th style={{position: 'relative', left: -18}}>Anno</th>
+                                        <th style={{position: 'relative', left: -24}}>Crediti</th>
+                                        <th style={{position: 'relative', left: -10}}>Esito</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {valutazioniProvvisorie.map(course => (
+                                        <tr key={course.codice}>
+                                            <td style={{fontWeight:500}}>{course.codice}</td>
+                                            <td style={{fontWeight:500}}>{course.nome}</td>
+                                            <td>{course.anno}</td>
+                                            <td>{course.cfu}</td>
+                                            <td style={{fontWeight:500}}>{course.esito}</td>
+                                            <td>{course.data}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
                         </div>
-                        <ListGroup style={{borderRadius:'16px'}}>
-                            {valutazioniProvvisorie.map((val) => {
-                                    return (
-                                        <ProvisionalGrade key={val.codice} codice={val.codice} nome={val.nome} anno={val.anno} cfu={val.cfu} esito={val.esito} data={val.data} />
-                                    )
-                            })}
-                        </ListGroup>
                     </Container>
                     <Container className='custom-container' style={{ maxWidth: '100%', overflowX: 'auto' }}>
                         <div className="subsection">

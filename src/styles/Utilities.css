@@ -73,6 +73,15 @@ body{
   color: #FFFFFF; 
 }
 
+.summary-static {
+  border-color: #F0F3F5;
+  background-color: #F0F3F5;
+  color: #000000;
+  border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
 .ticket-category {
   border-color: #F0F3F5;
   background-color: #F0F3F5;

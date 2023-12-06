@@ -72,7 +72,7 @@ export default function Home() {
                             <InfoTooltip text='I servizi selezionati come preferiti (attraverso icona ★) compariranno qui'/>
                         </div>
                         <Row>
-                            {favorites ? favorites.map((fav, index) => {
+                            {favorites.length > 0 ? favorites.map((fav, index) => {
                                 return (
                                     <Col xs={6} key={index} className="mb-2">
                                             <OverlayTrigger
@@ -87,7 +87,7 @@ export default function Home() {
                                     </Col>
                                 )
                             }
-                            ) : <p>Non hai ancora aggiunto preferiti</p>}
+                            ) : <p className="mb-2 px-3" style={{fontFamily:'Montserrat, sans-serif'}}>Nessun servizio selezionato tra i preferiti</p>}
                         </Row>
                     </Container>
                 </Col>

@@ -32,7 +32,7 @@ export default function CourseSummary(props) {
     }
 
     return (
-        <ListGroup.Item className='summary clickable' style={{ marginBottom: '8px' }}>
+        <ListGroup.Item className='summary' style={{ marginBottom: '8px' }}>
             <Container className='link-container p-0'
                 as={Link}
                 to={`/didattica/${props.nome}/materiale`}

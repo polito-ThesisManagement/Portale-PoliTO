@@ -8,8 +8,8 @@
         "data": "12/07/2022"
     },
     {
-        "codice": "01PDWOV",
-        "nome": "Information Systems",
+        "codice": "02KPNOV",
+        "nome": "Tecnologie e servizi di rete",
         "cfu": 6,
         "voto": 26,
         "anno": 1,
@@ -24,8 +24,8 @@
         "data": "20/02/2022"
     },
     {
-        "codice": "01QYDOV",
-        "nome": "Data science and Database Technology",
+        "codice": "05BIDOV",
+        "nome": "Ingegneria del software",
         "cfu": 8,
         "voto": 26,
         "anno": 1,
