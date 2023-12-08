@@ -18,7 +18,7 @@ export default function CoursePage() {
     const { codice, nome, periodo, crediti, linkGuida } = location.state;
     const section = location.pathname.replace(/.*\//, '');
     const sectionName = section.charAt(0).toUpperCase() +  section.slice(1);
-    console.log(sectionName);
+  
 
     const [activeButton, setActiveButton] = useState(sectionName);
 
