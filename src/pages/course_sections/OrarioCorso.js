@@ -1,8 +1,15 @@
+import { Container } from "react-bootstrap";
+import OrarioLezioniAgenda from "../../components/OrarioLezioniAgenda";
+
 export default function OrarioCorso() {
     
     return (
         <>
-            <h1>Orario Corso</h1>
+            <Container className="custom-container m-0">
+                <div className="subsection"> 
+                        <OrarioLezioniAgenda/>
+                </div>
+            </Container>
         </>
     );  
 

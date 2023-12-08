@@ -1,7 +1,7 @@
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/it';
-import events from '../data/Events';
+//import events from '../data/Events';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../styles/Calendar.css'
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
@@ -73,7 +73,6 @@ export default function OrarioLezioniAgenda() {
       allDayAccessor={false}
       className='custom-calendar'
       localizer={localizer}
-      events={events}
       defaultView = 'week'
       startAccessor="start"
       endAccessor="end"
