@@ -12,8 +12,6 @@ export default function Avvisi() {
 
     const avvisi = Avvisi_GC;
 
-    console.log(nome);
-
     return (
         <>
             <Container className="custom-container m-0">
@@ -21,7 +19,6 @@ export default function Avvisi() {
                     {avvisi
                         .filter((avviso) => avviso.course === nome)
                         .map((avviso) => (
-                            console.log(avviso),
                             <div key={avviso.id} className="avviso">
                                 <div>
                                     <span className="text-style" style={{fontWeight: '600'}}>{avviso.data}</span>
