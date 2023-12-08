@@ -19,7 +19,7 @@ export default function Materiale() {
                         <FaArrowRight size={20} className='ms-4' />
                         <Form.Control
                             className="form-control-materiale ms-4 truncated"
-                            style={{position:'relative', bottom:'9px', height:'40px'}}
+                            style={{position:'relative', bottom:'9px', height:'40px', cursor:'default'}}
                             type="text"
                             placeholder="Materiale didattico/Labs/Lab1"
                             readOnly />
@@ -64,7 +64,7 @@ export default function Materiale() {
                                     <Folder2Open size={20} />
                                     <span className='ms-2'>Labs</span>
                                 </ListGroupItem>
-                                <ListGroupItem className='file-element ms-5' style={{backgroundColor: '#006DB9', maxWidth: '100px', borderRadius: '10px', color:'white'}}>
+                                <ListGroupItem className='file-element ms-5' style={{backgroundColor: '#006DB9', width: '', borderRadius: '10px', color:'white'}}>
                                     <Folder2Open size={20} />
                                     <span className='ms-2'>Lab1</span>
                                 </ListGroupItem>

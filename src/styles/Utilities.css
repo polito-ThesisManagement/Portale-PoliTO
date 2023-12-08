@@ -301,6 +301,13 @@ body{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 100%;
+  width: fit-content;
   display: block;
+  cursor: pointer;
+}
+
+.file-element:hover{
+  background-color: #B7E1FF;
+  border-radius: 10px;
+  
 }

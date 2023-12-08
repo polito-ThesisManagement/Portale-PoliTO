@@ -16,7 +16,7 @@ export default function Servizi() {
     return (
         <>
             <Title
-                icon={<MdApps size={28} />}
+                icon={<MdApps size={28} style={{position:'relative', bottom:'1px'}}/>}
                 sectionName='Servizi'
             />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>

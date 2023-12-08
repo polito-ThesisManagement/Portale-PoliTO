@@ -17,7 +17,7 @@ export default function Opportunita() {
     return (
         <>
             <Title
-                icon={<FaSuitcase size={28} />}
+                icon={<FaSuitcase size={28} style={{position:'relative', bottom:'2px'}}/>}
                 sectionName='Opportunità'
             />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>
