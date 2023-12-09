@@ -15,7 +15,7 @@ export default function Carriera() {
     return (
         <>
             <Title
-                icon={<FaUserGraduate size={28} />}
+                icon={<FaUserGraduate size={28} style={{position:'relative', bottom:'1px'}}/>}
                 sectionName='Carriera'
             />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>

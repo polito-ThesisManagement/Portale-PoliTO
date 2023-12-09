@@ -47,7 +47,7 @@ export default function Help() {
     return (
         <>
             <Title
-                icon={<FaInfoCircle size={28} />}
+                icon={<FaInfoCircle size={28} style={{position:'relative', bottom:'1px'}}/>}
                 sectionName='Help'
             />
             <Row>

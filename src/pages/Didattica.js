@@ -15,7 +15,7 @@ export default function Didattica() {
     return (
         <>
             <Title
-                icon={<HiMiniBookOpen size={28} />}
+                icon={<HiMiniBookOpen size={28} style={{position:'relative', bottom:'0px'}}/>}
                 sectionName='Didattica'
             />
             <Row style={{marginLeft:'8px', marginBottom:'8px'}}>

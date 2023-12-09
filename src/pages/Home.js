@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <>
            <Title
-            icon={<HiHome size={28} />}
+            icon={<HiHome size={28} style={{position:'relative', bottom:'2px'}} /> }
             sectionName='Homepage'
            />
 
