@@ -17,7 +17,7 @@ export default function Libretto() {
         <>
             <Row>
                 <Col md={12} lg={8}>
-                    <Container className='custom-container'>
+                    <Container className='custom-container'  style={{ overflowX: 'auto' }}>
                         <div className="subsection">
                             <span className="subsection-title">
                                 <FaList size={20} className='subsection-icon' />
@@ -49,7 +49,7 @@ export default function Libretto() {
                             </Table>
                         </div>
                     </Container>
-                    <Container className='custom-container' style={{ maxWidth: '100%', overflowX: 'auto' }}>
+                    <Container className='custom-container' style={{ overflowX: 'auto' }}>
                         <div className="subsection">
                             <span className="subsection-title">
                                 <PiListChecksBold  size={28} className='subsection-icon'/>

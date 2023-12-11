@@ -8,6 +8,8 @@ import AltriCorsi from '../../data/AltriCorsi.json'
 import CourseSummary from '../../components/CourseSummary';
 import InfoTooltip from '../../components/InfoTooltip';
 
+import recentVirtualClassroom from '../../data/RegistrazioniRecenti.json';
+
 
 import { FaList } from 'react-icons/fa';
 import { PiListPlusFill, PiVideoCameraFill } from 'react-icons/pi'
@@ -18,8 +20,6 @@ import { FaArrowRight } from "react-icons/fa6";
 
 
 export default function Corsi() {
-
-    const recentVirtualClassroom = ['Informatica', 'Analisi Matematica II'];
 
     return (
         <>
@@ -80,17 +80,16 @@ export default function Corsi() {
                                     <ListGroup.Item key={val.codice} className='summary-static' style={{ marginBottom: '8px' }}>
                                         <Container className='p-0'>
                                             <Row>
-                                                <Col xs={3} className='course-detail p-0' style={{ marginLeft: '8px' }}>
+                                                <Col xs={4} sm={3} className='course-detail ps-2'>
                                                     {val.codice}
                                                 </Col>
-                                                <Col xs={5} className='course-detail p-0' style={{position:'relative', left:'-4px'}}>
+                                                <Col xs={8} sm={5} className='course-detail ps-4'>
                                                     <span className='truncated'>{val.nome}</span>
                                                 </Col>
-                                                <Col xs={3} className='p-0' style={{marginRight:'-6px', position:'relative', top:'1px', left:'-4px'}}>
+                                                <Col xs={10} sm={3} className='' style={{ position:'relative', top:'1px', left:'-4px'}}>
                                                     {val.dataEsame}
                                                 </Col>
-                                                <Col className='p-0'>
-                                                </Col>
+                                                <Col className='p-0'/>
                                                 <Col className='zooming-icon p-0' style={{position:'relative', left:'-8px', bottom:'1px', cursor:'pointer'}}>
                                                     <IoClose size={20} style={{ strokeWidth: '10', position:'relative', top:'1px' }} />
                                                 </Col>
@@ -116,15 +115,15 @@ export default function Corsi() {
                         </div>
 
                         <ListGroup style={{ borderRadius: '16px' }}>
-                            {recentVirtualClassroom.map((rec, index) => (
-                                <ListGroup.Item key={index} className='summary' style={{ marginBottom: '8px', cursor:'pointer' }}>
+                            {recentVirtualClassroom.map((rec) => (
+                                <ListGroup.Item key={rec.corso +" "+rec.data} className='summary' style={{ marginBottom: '8px', cursor:'pointer' }}>
                                     <Container className='p-0'>
                                         <Row>
-                                            <Col xs={8}className='course-detail truncated p-0' style={{ marginLeft: '8px' }}>
-                                                {rec}
+                                            <Col xs={12} sm={8}className='course-detail truncated ps-2' >
+                                                {rec.corso}
                                             </Col>
-                                            <Col xs={3} className='detail p-0' style={{marginRight:'-4px', position:'relative', left:'-4px', top:'1px'}}>
-                                                10/05/2022
+                                            <Col xs= {10}sm={3} className='detail ps-2' style={{ position:'relative', top:'1px'}}>
+                                                {rec.data}
                                             </Col>
                                             <Col className='p-0'>
                                             </Col>
