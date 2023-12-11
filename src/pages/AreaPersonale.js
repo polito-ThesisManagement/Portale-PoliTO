@@ -8,7 +8,6 @@ import { BsCalendar2WeekFill } from "react-icons/bs";
 import { RiFileUserFill } from "react-icons/ri";
 import { TbCertificate } from "react-icons/tb";
 import { FaUserCog, FaDownload } from "react-icons/fa";
-import ExpandibleCard from '../components/ExpandibleCard';
 
 
 export default function AreaPersonale() {
@@ -45,7 +44,7 @@ export default function AreaPersonale() {
                         description={'Visualizzazione e modifica del tuo curriculum.'}
                         servicePath={'/area_personale'}
                     />
-                    <ExpandibleCard
+                    <BaseCard
                         icon={<TbCertificate size="42" className='card-icon'/>}
                         service={"Certificati"}
                         description={'Stampa certificati ufficiali riguardanti la tua carriera universitaria.'}
