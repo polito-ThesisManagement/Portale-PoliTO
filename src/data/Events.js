@@ -1,24 +1,29 @@
 const events = [
     {
-      title: 'Lezione 1',
-      start: new Date(2023, 10, 15, 8, 0),
-      end: new Date(2023, 10, 15, 12, 0),
+      title: 'Chimica',
+      start: new Date(2023, 11, 12, 10, 0),
+      end: new Date(2023, 11, 12, 13, 0),
     },
     {
-      title: 'Lezione 2',
-      start: new Date(2023, 10, 15, 13, 0),
-      end: new Date(2023, 10, 15, 16, 0),
+      title: 'Basi di dati',
+      start: new Date(2023, 11, 12, 16, 0),
+      end: new Date(2023, 11, 12, 19, 0),
     },
     {
-      title: 'Lezione 3',
-      start: new Date(2023, 10, 16, 8, 0),
-      end: new Date(2023, 10, 16, 10, 30),
+      title: 'Informatica',
+      start: new Date(2023, 11, 14, 14, 30),
+      end: new Date(2023, 11, 14, 17, 30),
     },
     {
-      title: 'Lezione 4',
-      start: new Date(2023, 10, 17, 13, 0),
-      end: new Date(2023, 10, 17, 14, 30),
+      title: 'Informatica',
+      start: new Date(2023, 11, 15, 11, 30),
+      end: new Date(2023, 11, 15, 13, 0),
     },
+    {
+      title: 'Basi di dati',
+      start: new Date(2023, 11, 15, 14, 30),
+      end: new Date(2023, 11, 15, 17, 30),
+    }
   ];
 
 export default events;

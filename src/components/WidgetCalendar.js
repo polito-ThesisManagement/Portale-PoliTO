@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/it';
-import events from '../data/Events';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../styles/Calendar.css'
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
@@ -136,13 +135,12 @@ export default function WidgetCalendar() {
       allDayAccessor={false}
       className='custom-calendar'
       localizer={localizer}
-      events={events}
       defaultView='month'
       startAccessor="start"
       endAccessor="end"
       min={new Date(2023, 10, 12, 8, 0)} 
       max={new Date(2023, 10, 12, 20, 0)}
-      defaultDate={new Date(2023, 10, 12)}
+      defaultDate={new Date(2023, 11, 12)}
       style={{ height: '400px', fontFamily:'Montserrat, sans-serif', marginTop:'16px' }}
       formats={formats}
       components={{

@@ -90,3 +90,8 @@
 .timetable {
     justify-content: flex-start;
 }
+
+.rbc-current-time-indicator {
+    color: #002B49;
+    background-color: #002B49;
+}
