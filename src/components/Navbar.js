@@ -147,7 +147,7 @@ export default function PoliNavbar() {
                                         border: 'none',
                                         boxShadow: 'none',
                                     }}>
-                                    <PersonCircle size={48} color='#002B49' />
+                                    <PersonCircle height={48} width={46} color='#002B49' />
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu style={{right: 'auto', left: '-100px', fontFamily:'Montserrat, sans-serif',}}>

@@ -2,7 +2,7 @@ import { Row, Button } from 'react-bootstrap';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ClockFill, Translate } from 'react-bootstrap-icons';
 import Title from '../components/Title';
-import { HiMiniBookOpen } from 'react-icons/hi2'
+import { FaBookOpen } from 'react-icons/fa6';
 import { ImBooks } from 'react-icons/im'
 import { IoIosJournal } from 'react-icons/io'
 
@@ -15,7 +15,7 @@ export default function Didattica() {
     return (
         <>
             <Title
-                icon={<HiMiniBookOpen size={28} style={{position:'relative', bottom:'0px'}}/>}
+                icon={<FaBookOpen size={28} style={{position:'relative', bottom:'0px'}}/>}
                 sectionName='Didattica'
             />
             <Row style={{marginLeft:'8px', marginBottom:'8px'}}>

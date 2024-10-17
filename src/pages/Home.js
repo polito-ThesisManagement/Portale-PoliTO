@@ -22,7 +22,7 @@ import '../styles/Text.css';
 import '../styles/Utilities.css'
 
 import { StarFill } from "react-bootstrap-icons";
-import { HiHome } from 'react-icons/hi';
+import { FaHouse } from 'react-icons/fa6';
 import { FaList } from 'react-icons/fa';
 import { BsFillCalendarFill } from 'react-icons/bs';
 import { FaClipboard } from "react-icons/fa";
@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <>
            <Title
-            icon={<HiHome size={28} style={{position:'relative', bottom:'2px'}} /> }
+            icon={<FaHouse size={28} style={{position:'relative', bottom:'2px'}} /> }
             sectionName='Homepage'
            />
 

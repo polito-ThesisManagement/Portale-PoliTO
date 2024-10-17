@@ -1,4 +1,4 @@
-import { FaSuitcase } from 'react-icons/fa';
+import { FaBriefcase } from 'react-icons/fa6';
 import { Row, Container } from 'react-bootstrap';
 import BaseCard from '../components/BaseCard';
 import Title from '../components/Title';
@@ -17,7 +17,7 @@ export default function Opportunita() {
     return (
         <>
             <Title
-                icon={<FaSuitcase size={28} style={{position:'relative', bottom:'2px'}}/>}
+                icon={<FaBriefcase size={28} style={{position:'relative', bottom:'2px'}}/>}
                 sectionName='Opportunità'
             />
             <Container style={{marginLeft:'0px', maxWidth:'1416px'}}>

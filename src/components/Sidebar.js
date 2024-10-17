@@ -5,10 +5,8 @@ import { Link, useLocation } from 'react-router-dom';
 import "../styles/Sidebar.css"
 import "../styles/Utilities.css"
 
-import { BiSolidUser } from 'react-icons/bi'
-import { HiHome } from 'react-icons/hi'
-import { HiMiniBookOpen } from 'react-icons/hi2'
-import { FaInfoCircle, FaSuitcase, FaUserGraduate } from 'react-icons/fa'
+import { FaInfoCircle } from 'react-icons/fa';
+import { FaHouse, FaBookOpen, FaBriefcase, FaUser, FaUserGraduate} from 'react-icons/fa6';
 import { MdApps } from 'react-icons/md'
 
 export default function Sidebar() {
@@ -20,19 +18,19 @@ export default function Sidebar() {
       <Nav defaultActiveKey="/home" className="flex-column">
         <Nav.Item>
           <Link to="/" className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}>
-            <HiHome size={28}/>
+            <FaHouse size={28}/>
             <span className='sidebar-text' style={{marginTop:'3px'}}>Homepage</span>
           </Link>
         </Nav.Item>
         <Nav.Item>
           <Link to="/didattica" className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}>
-            <HiMiniBookOpen size={28}/>
+            <FaBookOpen size={28}/>
             <span className='sidebar-text' style={{marginTop:'2px'}}>Didattica</span>
           </Link>
         </Nav.Item>
         <Nav.Item>
           <Link to="/area_personale" className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}>
-            <BiSolidUser size={28}/>
+            <FaUser size={28}/>
             <span className='sidebar-text' style={{marginTop:'2px'}}>Area personale</span>
           </Link>
         </Nav.Item>
@@ -44,7 +42,7 @@ export default function Sidebar() {
         </Nav.Item>
         <Nav.Item>
           <Link to="/opportunita" className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}>
-            <FaSuitcase size={25} style={{marginLeft:'1px'}}/>
+            <FaBriefcase size={25} style={{marginLeft:'1px'}}/>
             <span className='sidebar-text'style={{marginTop:'1px'}}>Opportunità</span>
             </Link>
         </Nav.Item>
