@@ -162,31 +162,31 @@ export default function Tesi() {
 
     }, [inAzienda, estero]);
 
-    const [theses, setTheses] = useState([]);
+    const [thesesProposals, setThesesProposals] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchTheses = async () => {
+        const fetchThesesProposals = async () => {
             const lang = "IT"; // IT or EN
             try {
-                const thesesArray = await Promise.all(
+                const thesesProposalsArray = await Promise.all(
                     researchGroups.map(async (grp) => {
-                        const response = await axios.get(`http://localhost:5000/api/theses`, {
+                        const response = await axios.get(`http://localhost:5000/api/thesesProposals`, {
                             params: { grp, lang }
                         });
                         return response.data.thesis;
                     })
                 );
-                const allTheses = thesesArray.flat();
-                setTheses(allTheses);
-                console.log("Theses final:", allTheses);
+                const allThesesProposals = thesesProposalsArray.flat();
+                setThesesProposals(allThesesProposals);
+                console.log("Theses proposals count:", allThesesProposals.length);
             } catch (error) {
-                console.error('Error fetching theses:', error);
+                console.error('Error fetching theses proposals:', error);
             }
         };
     
-        fetchTheses();
+        fetchThesesProposals();
     }, []);
 
     /*

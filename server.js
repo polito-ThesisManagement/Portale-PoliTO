@@ -6,7 +6,7 @@ const PORT = 5000;
 
 app.use(cors()); // usa il middleware CORS
 
-app.get('/api/theses', async (req, res) => {
+app.get('/api/thesesProposals', async (req, res) => {
   const { grp, lang } = req.query; // ricevi i parametri dalla richiesta
 
   try {
