@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 import { Container } from "react-bootstrap";
 import { Table, Form } from "react-bootstrap";
@@ -88,6 +89,51 @@ const thesis = [
     }
 ]
 
+const researchGroups = [
+    "04-Automazione e Robotica",
+    "08- Dinamica, controllo e simulazione del volo",
+    "11 - LAQ AerMec per componenti di turbine e compressori",
+    "14-Meccatronica e servosistemi",
+    "21-Progetto di velivoli e strutture aerospaziali in materiale composito",
+    "AA - Glasses, Ceramics and Composites",
+    "AA - MOLE (Molecular Engineering Lab)",
+    "AA - Materials and Processes for Micro and Nano Technologies",
+    "AA - Polymeric Materials",
+    "AA - Quantum phases and dynamics of bosonic lattice systems",
+    "Analisi non lineare e calcolo delle variazioni",
+    "Applied Electromagnetics",
+    "COMPUTER NETWORKS GROUP - NETGROUP",
+    "Carbon Group",
+    "Construction History CHG",
+    "DAUIN - GR-03 - COMPUTER NETWORKS GROUP - NETGROUP",
+    "DAUIN - GR-06 - ELECTRONIC DESIGN AUTOMATION - EDA",
+    "EDA Group",
+    "ELECTRONIC DESIGN AUTOMATION - EDA",
+    "ESSENTIAL",
+    "Energy Center Lab",
+    "GR-03 - COMPUTER NETWORKS GROUP - NETGROUP",
+    "GR-06 - ELECTRONIC DESIGN AUTOMATION - EDA",
+    "GR-09 - GRAphics and INtelligent Systems - GRAINS",
+    "ICT4SS - ICT FOR SMART SOCIETIES",
+    "ICTA @UPV (https://icta.webs.upv.es/en/)",
+    "Ingegneria degli acquiferi / Groundwater engineering",
+    "Laboratory for Engineering of the Neuromuscular System (LISiN)",
+    "Materials - Enviroment Interaction",
+    "Meccanica del Veicolo",
+    "Metodi e modelli matematici per sistemi complessi",
+    "MiNES (Micro&Nano Electronic Systems)",
+    "Microwaves and Optoelectronics Group",
+    "NETGROUP",
+    "Pianificazione e politiche urbane e territoriali",
+    "TEBE",
+    "VLSILAB (VLSI theory, design and applications)",
+    "https://areeweb.polito.it/drsil/",
+    "https://peer.berkeley.edu/",
+    "https://staff.polito.it/gianpaolo.cimellaro/index.html",
+    "https://www.eucentre.it/fondazione-eucentre-pavia/filiatrault-andre/",
+    "microelettronica"
+]
+
 
 
 //filtri azienda, estero, 
@@ -115,6 +161,33 @@ export default function Tesi() {
         setThesis(filteredThesis);
 
     }, [inAzienda, estero]);
+
+    const [theses, setTheses] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchTheses = async () => {
+            const lang = "IT"; // IT or EN
+            try {
+                const thesesArray = await Promise.all(
+                    researchGroups.map(async (grp) => {
+                        const response = await axios.get(`http://localhost:5000/api/theses`, {
+                            params: { grp, lang }
+                        });
+                        return response.data.thesis;
+                    })
+                );
+                const allTheses = thesesArray.flat();
+                setTheses(allTheses);
+                console.log("Theses final:", allTheses);
+            } catch (error) {
+                console.error('Error fetching theses:', error);
+            }
+        };
+    
+        fetchTheses();
+    }, []);
 
     /*
         <Link to='/'>Home</Link>

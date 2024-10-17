@@ -75,7 +75,7 @@ function App() {
                 <Route path='lingue' element={<Lingue />} />
               </Route>
               <Route path='/carriera' element={<Carriera />} />
-              <Route path='carriera/tesi' element={<Tesi />} />
+              <Route path='/carriera/tesi' element={<Tesi />} />
               <Route path='/opportunita' element={<Opportunita />} />
               <Route path='/opportunita/job' element={<Job />} />
               <Route path='/opportunita/tirocinio' element={<Tirocinio />} />

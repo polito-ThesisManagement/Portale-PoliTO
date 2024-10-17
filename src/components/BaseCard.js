@@ -68,7 +68,9 @@ export default function BaseCard(props) {
                         null
                 }
                 <div style={{ marginTop: 'auto', marginLeft: 'auto', marginBottom: '8px', marginRight: '8px' }}>
-                    <Button className="card-button" >Accedi</Button>
+                    <Link to={props.servicePath}>
+                        <Button className="card-button">Accedi</Button>
+                    </Link>
                 </div>
 
             </Container>

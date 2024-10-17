@@ -1,4 +1,3 @@
-import { FaUserGraduate } from 'react-icons/fa';
 import { Row, Container } from 'react-bootstrap';
 import BaseCard from '../components/BaseCard';
 import Title from '../components/Title';
@@ -6,7 +5,8 @@ import { BsCreditCard2BackFill } from "react-icons/bs";
 import { IoIosListBox } from "react-icons/io";
 import { MdEditDocument } from "react-icons/md";
 import { FaUserEdit } from "react-icons/fa";
-import { IoSchool } from "react-icons/io5";
+import { FaGraduationCap, FaUserGraduate } from 'react-icons/fa6';
+import { HiLightBulb } from 'react-icons/hi';
 
 
 export default function Carriera() {
@@ -40,14 +40,20 @@ export default function Carriera() {
                     <BaseCard
                         icon={<FaUserEdit size="42" className='card-icon' />}
                         service={"Apply"}
-                        description={'Visuallizazione e verifica stato della tua carriera.'}
+                        description={'Visualizzazione e verifica stato della tua carriera.'}
                         servicePath={'/carriera'}
                     />
                     <BaseCard
-                        icon={<IoSchool size="42" className='card-icon' />}
+                        icon={<FaGraduationCap size="42" className='card-icon' />}
                         service={"Laurea"}
                         description={'Visualizzazione stato della tesi ed elenco delle tesi proposte. Iscrizione all’esame finale.'}
                         servicePath={'/carriera'}
+                    />
+                    <BaseCard
+                        icon={<HiLightBulb size="42" className='card-icon' />}
+                        service={"Tesi"}
+                        description={'Visualizzazione stato della tesi ed elenco delle proposte di tesi'}
+                        servicePath={'/carriera/tesi'}
                     />
                 </Row>
             </Container>
