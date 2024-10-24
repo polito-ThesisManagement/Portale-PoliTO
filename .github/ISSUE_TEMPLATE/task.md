@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 ## Task Description
-- Describe the new feature or technical work to be done here.
+- TBD
 
 ## Linked User Story (-ies)
 - Link user story (-ies) to this task here.
