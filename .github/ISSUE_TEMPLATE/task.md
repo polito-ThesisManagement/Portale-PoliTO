@@ -1,7 +1,7 @@
 ---
 name: Task
 about: A template that should be used when creating tasks in GitHub Issues.
-title: ''
+title: "[TASK]"
 labels: "✅ task"
 assignees: ''
 
@@ -13,6 +13,4 @@ assignees: ''
 # Linked User Story (-ies)
 - Link user story (-ies) to this task here.
 
-# Subtasks
-- [ ] List subtasks here.
-- [ ] Make use of checkbox for easy progress tracking.
+# Notes (optional)
