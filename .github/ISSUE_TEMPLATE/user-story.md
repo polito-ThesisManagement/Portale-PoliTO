@@ -2,7 +2,7 @@
 name: User story
 about: A template that should be used when creating user stories in GitHub Issues.
 title: ''
-labels: user story
+labels: ''
 assignees: ''
 
 ---

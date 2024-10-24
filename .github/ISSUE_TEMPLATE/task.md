@@ -2,7 +2,7 @@
 name: Task
 about: A template that should be used when creating tasks in GitHub Issues.
 title: ''
-labels: task
+labels: "✅ task"
 assignees: ''
 
 ---
