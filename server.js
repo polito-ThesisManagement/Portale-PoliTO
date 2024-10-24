@@ -1,13 +1,13 @@
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors'); // importa il pacchetto cors
+const cors = require('cors'); 
 const app = express();
 const PORT = 5000;
 
-app.use(cors()); // usa il middleware CORS
+app.use(cors()); 
 
-app.get('/api/thesesProposals', async (req, res) => {
-  const { grp, lang } = req.query; // ricevi i parametri dalla richiesta
+app.get('/api/thesisProposals', async (req, res) => {
+  const { grp, lang } = req.query; 
 
   try {
     const response = await axios.get(`https://didattica.polito.it/pls/portal30/sviluppo.tesiv.jsn`, {
@@ -16,9 +16,9 @@ app.get('/api/thesesProposals', async (req, res) => {
         lang: lang,
       },
     });
-    res.json(response.data); // rispondi con i dati dell'API
+    res.json(response.data); 
   } catch (error) {
-    res.status(error.response ? error.response.status : 500).send('Errore durante il fetch delle tesi');
+    res.status(error.response ? error.response.status : 500).send('Error during thesis proposals fetching');
   }
 });
 
