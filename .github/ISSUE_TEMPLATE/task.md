@@ -1,8 +1,8 @@
 ---
 name: Task
 about: A template that should be used when creating tasks in GitHub Issues.
-title: "[TASK]"
-labels: "✅ task"
+title: "[TASK] "
+labels: "✅ task, \U0001F9D1\U0001F3FB‍\U0001F393 user story"
 assignees: ''
 
 ---

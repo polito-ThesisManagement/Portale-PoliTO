@@ -1,7 +1,7 @@
 ---
 name: User story
 about: A template that should be used when creating user stories in GitHub Issues.
-title: "[US]"
+title: "[US] "
 labels: "\U0001F9D1\U0001F3FB‍\U0001F393 user story"
 assignees: ''
 
