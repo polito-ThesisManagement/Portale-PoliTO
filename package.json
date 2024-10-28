@@ -52,6 +52,19 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "husky": "^9.1.6"
+    "eslint": "^8.57.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.jsx": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
