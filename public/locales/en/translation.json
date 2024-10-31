@@ -1,0 +1,13 @@
+{
+    "navbar": {
+        "profilo_utente": "User Profile",
+        "cambio_password": "Change Password"
+    },
+    "sidebar": {
+        "didattica": "Education",
+        "area_personale": "Personal Area",
+        "carriera": "Career",
+        "opportunità": "Opportunities",
+        "servizi": "Services"
+    }
+}

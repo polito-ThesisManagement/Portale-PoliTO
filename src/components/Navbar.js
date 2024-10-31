@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { AvvisiContext } from "../App";
 
 import Container from "react-bootstrap/Container";
@@ -24,9 +25,23 @@ import { FaSignOutAlt } from "react-icons/fa";
 
 export default function PoliNavbar() {
   const [showPopover, setShowPopover] = useState(false);
+  const [showSubmenu, setShowSubmenu] = useState(false);
   const targetRef = useRef(null);
 
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
+
+  const { t, i18n } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+
+  const languageOptions = {
+    it: { flag: "flag-it", label: "Italiano" },
+    en: { flag: "flag-us", label: "English" },
+  };
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setSelectedLanguage(lng);
+  };
 
   const handleClickOutside = (event) => {
     if (targetRef.current && !targetRef.current.contains(event.target)) {
@@ -208,10 +223,10 @@ export default function PoliNavbar() {
                   }}
                 >
                   <Dropdown.Item style={{ fontWeight: "500" }}>
-                    <FaUser /> Profilo utente
+                    <FaUser /> {t("navbar.profilo_utente")}
                   </Dropdown.Item>
                   <Dropdown.Item style={{ fontWeight: "500" }}>
-                    <FaKey /> Cambio password
+                    <FaKey /> {t("navbar.cambio_password")}
                   </Dropdown.Item>
                   <Dropdown.Item style={{ fontWeight: "500" }}>
                     <FaSignOutAlt /> Logout
@@ -219,10 +234,15 @@ export default function PoliNavbar() {
                   <Dropdown.Item
                     style={{ fontWeight: "500" }}
                     className="dropdown-submenu"
+                    onMouseEnter={() => setShowSubmenu(true)}
+                    onMouseLeave={() => setShowSubmenu(false)}
                   >
-                    <Dropdown drop="bottom">
+                    <Dropdown drop="bottom" show={showSubmenu}>
                       <Dropdown.Toggle as="div" style={{ fontWeight: "500" }}>
-                        <span className="flag flag-it" /> Italiano
+                        <span
+                          className={`flag ${languageOptions[selectedLanguage].flag}`}
+                        />{" "}
+                        {languageOptions[selectedLanguage].label}
                       </Dropdown.Toggle>
                       <Dropdown.Menu
                         style={{
@@ -233,10 +253,16 @@ export default function PoliNavbar() {
                         }}
                         className="submenu"
                       >
-                        <Dropdown.Item style={{ fontWeight: "500" }}>
+                        <Dropdown.Item
+                          style={{ fontWeight: "500" }}
+                          onClick={() => changeLanguage("it")}
+                        >
                           <span className="flag flag-it" /> Italiano
                         </Dropdown.Item>
-                        <Dropdown.Item style={{ fontWeight: "500" }}>
+                        <Dropdown.Item
+                          style={{ fontWeight: "500" }}
+                          onClick={() => changeLanguage("en")}
+                        >
                           <span className="flag flag-us" /> English
                         </Dropdown.Item>
                       </Dropdown.Menu>
