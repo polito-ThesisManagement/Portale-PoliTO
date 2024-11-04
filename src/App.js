@@ -49,8 +49,7 @@ function App() {
   return (
     <>
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
       </style>
       <FavoritesContext.Provider
         value={{
@@ -79,14 +78,8 @@ function App() {
                   <Route path="lingue" element={<Lingue />} />
                 </Route>
                 <Route path="/carriera" element={<Carriera />} />
-                <Route
-                  path="/carriera/proposte_di_tesi"
-                  element={<ProposteDiTesi />}
-                />
-                <Route
-                  path="/carriera/laurea_ed_esame_finale"
-                  element={<LaureaEdEsameFinale />}
-                />
+                <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
                 <Route path="/opportunita" element={<Opportunita />} />
                 <Route path="/opportunita/job" element={<Job />} />
                 <Route path="/opportunita/tirocinio" element={<Tirocinio />} />

@@ -12,12 +12,7 @@ export default function Carriera() {
   return (
     <>
       <Title
-        icon={
-          <FaUserGraduate
-            size={28}
-            style={{ position: "relative", bottom: "1px" }}
-          />
-        }
+        icon={ <FaUserGraduate size={28} style={{ position: "relative", bottom: "1px" }} />}
         sectionName="Carriera"
       />
       <Container style={{ marginLeft: "0px", maxWidth: "1416px" }}>
@@ -31,17 +26,13 @@ export default function Carriera() {
           <BaseCard
             icon={<IoIosListBox size="42" className="card-icon" />}
             service={"Piano carriera"}
-            description={
-              "Compilazione o modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico."
-            }
+            description={"Compilazione o modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico."}
             servicePath={"/carriera"}
           />
           <BaseCard
             icon={<MdEditDocument size="42" className="card-icon" />}
             service={"Gestione carriera"}
-            description={
-              "Richiesta approvazione di attività esterne e modifica stato carriera."
-            }
+            description={"Richiesta approvazione di attività esterne e modifica stato carriera."}
             servicePath={"/carriera"}
           />
           <BaseCard
@@ -53,9 +44,7 @@ export default function Carriera() {
           <BaseCard
             icon={<FaGraduationCap size="42" className="card-icon" />}
             service={"Laurea ed Esame Finale"}
-            description={
-              "Visualizzazione stato della tesi e degli step per conseguire il titolo."
-            }
+            description={"Visualizzazione stato della tesi e degli step per conseguire il titolo."}
             servicePath={"/carriera/laurea_ed_esame_finale"}
           />
           <BaseCard
