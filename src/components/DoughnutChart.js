@@ -1,19 +1,21 @@
-import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import React from 'react';
+
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 class DoughnutChart extends React.Component {
   render() {
-
     const { values } = this.props;
-    
+
     const data = {
-      datasets: [{
-        data: values,
-        backgroundColor: ['#EF7B00', '#006DB9'],
-      }]
+      datasets: [
+        {
+          data: values,
+          backgroundColor: ['#EF7B00', '#006DB9'],
+        },
+      ],
     };
 
     const options = {

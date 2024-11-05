@@ -1,81 +1,83 @@
-import React, { useState, useEffect } from "react";
-import { InputGroup } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
 
-import { Search } from "react-bootstrap-icons";
+import { Link } from 'react-router-dom';
 
-import Form from "react-bootstrap/Form";
-import ListGroup from "react-bootstrap/ListGroup";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { InputGroup } from 'react-bootstrap';
+
+import { Search } from 'react-bootstrap-icons';
+
+import Form from 'react-bootstrap/Form';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { useTranslation } from 'react-i18next';
 
 export default function Searchbar(props) {
   const [filteredData, setFilteredData] = useState([]);
-  const [searchWord, setSearchWord] = useState("");
+  const [searchWord, setSearchWord] = useState('');
   const { t } = useTranslation();
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const word = event.target.value;
     setSearchWord(word);
 
-    const newFilter = props.services.filter((service) => {
+    const newFilter = props.services.filter(service => {
       return service.pageName.toLowerCase().includes(word.toLowerCase());
     });
 
     setFilteredData(newFilter);
   };
 
-  const handleClickOutside = (event) => {
-    const isSearchbar = event.target.closest(".w-100");
+  const handleClickOutside = event => {
+    const isSearchbar = event.target.closest('.w-100');
     if (!isSearchbar) {
-      setSearchWord("");
+      setSearchWord('');
       setFilteredData([]);
     }
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
   return (
-    <Form className="d-flex me-3 w-100" style={{ maxWidth: "400px" }}>
+    <Form className="d-flex me-3 w-100" style={{ maxWidth: '400px' }}>
       <InputGroup className="flex-nowrap w-100">
         <Form.Control
           className="truncated"
           type="search"
-          placeholder={t("navbar.ricerca_nel_portale")}
+          placeholder={t('navbar.ricerca_nel_portale')}
           aria-label="Search"
           size="md"
           style={{
-            height: "40px",
-            backgroundColor: "#F0F3F5",
-            color: "#002B49",
-            borderRadius: "8px",
+            height: '40px',
+            backgroundColor: '#F0F3F5',
+            color: '#002B49',
+            borderRadius: '8px',
           }}
           value={searchWord}
           onChange={handleChange}
         />
         <Search
           style={{
-            position: "relative",
-            zIndex: "3",
-            right: "28",
-            top: "12",
+            position: 'relative',
+            zIndex: '3',
+            right: '28',
+            top: '12',
           }}
         />
       </InputGroup>
-      {searchWord !== "" && (
+      {searchWord !== '' && (
         <ListGroup
           className="w-100"
           style={{
-            position: "absolute",
-            maxWidth: "370px",
-            marginTop: "40px",
+            position: 'absolute',
+            maxWidth: '370px',
+            marginTop: '40px',
           }}
         >
-          {filteredData.slice(0, 3).map((service) => (
+          {filteredData.slice(0, 3).map(service => (
             <ListGroup.Item
               action
               as={Link}
@@ -84,9 +86,9 @@ export default function Searchbar(props) {
               variant="light"
               onClick={() => {
                 setFilteredData([]);
-                setSearchWord("");
+                setSearchWord('');
               }}
-              style={{ fontSize: "12px", fontWeight: "500" }}
+              style={{ fontSize: '12px', fontWeight: '500' }}
             >
               {service.pageName}
             </ListGroup.Item>
@@ -94,16 +96,15 @@ export default function Searchbar(props) {
           <ListGroup.Item
             action
             as={Link}
-            to={"https://www.polito.it/en/search?q=+" + searchWord + "&lang=it"}
+            to={'https://www.polito.it/en/search?q=+' + searchWord + '&lang=it'}
             target="_blank"
             variant="light"
             onClick={() => {
-              setSearchWord("");
+              setSearchWord('');
             }}
-            style={{ fontSize: "12px" }}
+            style={{ fontSize: '12px' }}
           >
-            Cerca <span style={{ fontWeight: "500" }}>{searchWord}</span> su
-            polito.it...
+            Cerca <span style={{ fontWeight: '500' }}>{searchWord}</span> su polito.it...
           </ListGroup.Item>
         </ListGroup>
       )}

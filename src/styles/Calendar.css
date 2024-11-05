@@ -4,94 +4,92 @@
 }
 
 .rbc-event-label {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .rbc-label {
-    font-weight: 500;
+  font-weight: 500;
 }
 
-.rbc-events-container{
-    margin-right: 0px !important;
+.rbc-events-container {
+  margin-right: 0px !important;
 }
 
 .rbc-button-link {
-    font-weight: 500;
-    
+  font-weight: 500;
 }
 
 .rbc-date-cell {
-    z-index: 3;
+  z-index: 3;
 }
 
 .custom-rbc-toolbar button {
-    background-color: #FFFFFF;
-    border-color: #002B49;
-    color: #002B49;
-    font-weight: 500;
+  background-color: #ffffff;
+  border-color: #002b49;
+  color: #002b49;
+  font-weight: 500;
 }
 
 .custom-rbc-toolbar button:hover {
-    background-color: #002B49;
-    border-color: #002B49;
-    color: #FFFFFF;
-    transform: scale(1.02);
+  background-color: #002b49;
+  border-color: #002b49;
+  color: #ffffff;
+  transform: scale(1.02);
 }
 
-.custom-rbc-toolbar .view-button{
-    font-weight: 400;
+.custom-rbc-toolbar .view-button {
+  font-weight: 400;
 }
 
-.custom-rbc-toolbar .view-button.active{
-    background-color: #002B49;
-    border-color: #002B49;
-    font-weight: 500;
+.custom-rbc-toolbar .view-button.active {
+  background-color: #002b49;
+  border-color: #002b49;
+  font-weight: 500;
 }
 
 .custom-rbc-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 .toolbar-reduced {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 600px) {
-
-    .toolbar-reduced {
-      display: block;
-    }
-    .toolbar-expanded{
-        display: none;
-    }
+  .toolbar-reduced {
+    display: block;
   }
+  .toolbar-expanded {
+    display: none;
+  }
+}
 
 .rbc-time-content::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .rbc-time-header.rbc-overflowing {
-    margin-right: 0 !important;
+  margin-right: 0 !important;
 }
 
-.rbc-time-header-content .rbc-allday-cell{
-    display: none;
+.rbc-time-header-content .rbc-allday-cell {
+  display: none;
 }
 
 .rbc-row-segment {
-    position: relative;
-    top: -20px;
+  position: relative;
+  top: -20px;
 }
 
 .timetable {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .rbc-current-time-indicator {
-    color: #002B49;
-    background-color: #002B49;
+  color: #002b49;
+  background-color: #002b49;
 }
