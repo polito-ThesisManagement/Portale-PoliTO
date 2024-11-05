@@ -1,19 +1,22 @@
-import { Container, Col, Button } from "react-bootstrap";
-import { useState, useContext, useEffect } from "react";
-import { FavoritesContext } from "../App";
-import { Star, StarFill } from "react-bootstrap-icons";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import "../styles/Card.css";
+import { useContext, useEffect, useState } from 'react';
 
-import { PiUserListFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+import { Button, Col, Container } from 'react-bootstrap';
+
+import { Star, StarFill } from 'react-bootstrap-icons';
+
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { PiUserListFill } from 'react-icons/pi';
+
+import { FavoritesContext } from '../App';
+import '../styles/Card.css';
 
 export default function BaseCard(props) {
   const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const [starClicked, setStarClicked] = useState(() => {
-    const isStarred =
-      localStorage.getItem(props.service) === "true" && favorites.length > 0;
+    const isStarred = localStorage.getItem(props.service) === 'true' && favorites.length > 0;
     return isStarred;
   });
 
@@ -31,64 +34,42 @@ export default function BaseCard(props) {
       const favorite = JSON.stringify(obj);
       setFavorites([...favorites, favorite]);
     } else {
-      setFavorites(
-        favorites.filter((fav) => JSON.parse(fav).service !== props.service),
-      );
+      setFavorites(favorites.filter(fav => JSON.parse(fav).service !== props.service));
     }
   };
 
   return (
     <Col sm={6} md={6} lg={6} xl={4} className="px-3 pb-3">
-      <Container
-        className="custom-card"
-        style={{ display: "flex", flexDirection: "column" }}
-      >
+      <Container className="custom-card" style={{ display: 'flex', flexDirection: 'column' }}>
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <span className="section-title col-10">
-            {props.icon ? (
-              props.icon
-            ) : (
-              <PiUserListFill size="48" className="card-icon" />
-            )}
-            <span
-              className="section-title position-relative"
-              style={{ maxWidth: "170px" }}
-            >
+            {props.icon ? props.icon : <PiUserListFill size="48" className="card-icon" />}
+            <span className="section-title position-relative" style={{ maxWidth: '170px' }}>
               {props.service}
             </span>
           </span>
           <div className="col d-flex justify-content-end">
             {starClicked ? (
-              <StarFill
-                size="24px"
-                className="star"
-                style={{ color: "#EF7B00" }}
-                onClick={handleStarClick}
-              />
+              <StarFill size="24px" className="star" style={{ color: '#EF7B00' }} onClick={handleStarClick} />
             ) : (
-              <Star
-                size="24px"
-                className="star"
-                style={{ color: "#002B49" }}
-                onClick={handleStarClick}
-              />
+              <Star size="24px" className="star" style={{ color: '#002B49' }} onClick={handleStarClick} />
             )}
           </div>
         </div>
-        <div style={{ color: "#000000" }}>{props.description}</div>
+        <div style={{ color: '#000000' }}>{props.description}</div>
         {props.link && props.linkText ? (
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link
               className="card-link custom-link truncated"
               target="_blank"
               to={props.link}
-              style={{ whiteSpace: "normal" }}
+              style={{ whiteSpace: 'normal' }}
             >
               {props.linkText}
             </Link>
@@ -97,10 +78,10 @@ export default function BaseCard(props) {
         ) : null}
         <div
           style={{
-            marginTop: "auto",
-            marginLeft: "auto",
-            marginBottom: "8px",
-            marginRight: "8px",
+            marginTop: 'auto',
+            marginLeft: 'auto',
+            marginBottom: '8px',
+            marginRight: '8px',
           }}
         >
           <Link to={props.servicePath}>

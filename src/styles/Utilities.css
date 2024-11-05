@@ -2,50 +2,49 @@
   margin-left: 224px;
   margin-top: 80px;
   height: 100vh;
-  background-color: #F0F3F5;
+  background-color: #f0f3f5;
   margin-right: 8px;
 }
 
 @media (max-width: 991px) {
-
   .custom-content.reduced {
-      margin-left: 84px;
+    margin-left: 84px;
   }
 }
 
 .custom-navbar {
-  background-color: #FFFFFF;
-  color: #002B49;
+  background-color: #ffffff;
+  color: #002b49;
   z-index: 5;
   width: 100%;
   position: fixed;
 }
 
-body{
+body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #F0F3F5;
+  background-color: #f0f3f5;
 }
 
-.title{
-  color: #002B49;
+.title {
+  color: #002b49;
   display: flex;
   align-items: center;
   padding: 14px;
   padding-left: 10px;
 }
 
-.subsection{
+.subsection {
   padding: 8px;
 }
 
-.subsection-icon{
+.subsection-icon {
   margin-right: 10px;
 }
 
-.custom-container{
+.custom-container {
   background-color: #fff;
   border-radius: 10px;
   margin: 0px;
@@ -54,8 +53,8 @@ body{
 }
 
 .summary {
-  border-color: #F0F3F5;
-  background-color: #F0F3F5;
+  border-color: #f0f3f5;
+  background-color: #f0f3f5;
   color: #000000;
   border-radius: 16px;
   font-family: 'Montserrat', sans-serif;
@@ -63,19 +62,19 @@ body{
 }
 
 .summary:hover {
-  border-color: #B7E1FF;
-  background-color: #B7E1FF;
+  border-color: #b7e1ff;
+  background-color: #b7e1ff;
 }
 
 .summary.selected {
-  background-color: #002B49;
-  border-color: #002B49;
-  color: #FFFFFF; 
+  background-color: #002b49;
+  border-color: #002b49;
+  color: #ffffff;
 }
 
 .summary-static {
-  border-color: #F0F3F5;
-  background-color: #F0F3F5;
+  border-color: #f0f3f5;
+  background-color: #f0f3f5;
   color: #000000;
   border-radius: 16px;
   font-family: 'Montserrat', sans-serif;
@@ -83,31 +82,30 @@ body{
 }
 
 .ticket-category {
-  border-color: #F0F3F5;
-  background-color: #F0F3F5;
+  border-color: #f0f3f5;
+  background-color: #f0f3f5;
   color: #000000;
   border-radius: 16px;
 }
 
 .ticket-category:hover {
-  border-color: #B7E1FF;
-  background-color: #B7E1FF;
+  border-color: #b7e1ff;
+  background-color: #b7e1ff;
 }
 
 .ticket-category.active {
-  background-color: #006DB9;
-  border-color: #006DB9;
+  background-color: #006db9;
+  border-color: #006db9;
   color: white;
 }
 
-.list-group-item-action:hover{
-  border-color: #B7E1FF;
-  background-color: #B7E1FF;
+.list-group-item-action:hover {
+  border-color: #b7e1ff;
+  background-color: #b7e1ff;
 }
 
-
-.list-group-item-action:focus{
-  background-color: #006DB9;
+.list-group-item-action:focus {
+  background-color: #006db9;
   color: #fff;
 }
 
@@ -119,12 +117,11 @@ body{
   position: absolute;
 }
 
-
 .custom-button {
   height: 40px;
-  color: #002B49;
-  border-color: #002B49;
-  background-color: #FFFFFF;
+  color: #002b49;
+  border-color: #002b49;
+  background-color: #ffffff;
   padding-top: 7px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -134,15 +131,15 @@ body{
 }
 
 .custom-button:hover {
-  border-color: #002B49;
-  background-color: #002B49;
-  color: #FFFFFF;
+  border-color: #002b49;
+  background-color: #002b49;
+  color: #ffffff;
   transform: scale(1.02);
 }
 
-.custom-button.active  {
-  background-color: #002B49;
-  border-color: #002B49;
+.custom-button.active {
+  background-color: #002b49;
+  border-color: #002b49;
   color: white;
 }
 
@@ -150,7 +147,7 @@ body{
   height: 40px;
   border-color: rgba(183, 225, 255, 0.4);
   background-color: rgba(183, 225, 255, 0.4);
-  color: #004C81;
+  color: #004c81;
   padding-top: 7px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -160,15 +157,15 @@ body{
 }
 
 .custom-pill-button:hover {
-  border: #B7E1FF;
-  background-color: #B7E1FF;
-  color: #004C81;
+  border: #b7e1ff;
+  background-color: #b7e1ff;
+  color: #004c81;
   transform: scale(1.02);
 }
 
-.custom-pill-button.active  {
-  background-color: #006DB9;
-  border-color: #006DB9;
+.custom-pill-button.active {
+  background-color: #006db9;
+  border-color: #006db9;
   color: white;
 }
 
@@ -179,17 +176,16 @@ body{
 }
 
 .accordion-button {
-  color: #002B49;
+  color: #002b49;
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: 'Montserrat', 'sans-serif';
   font-weight: 600;
 }
 
-
 .custom-accordion {
   margin-left: 8px;
-  border:hidden;
+  border: hidden;
   border-radius: 5px;
 }
 
@@ -198,34 +194,33 @@ body{
 }
 
 .custom-table .centered-th {
-  color: #EF7B00;
+  color: #ef7b00;
   position: relative;
   left: -16px;
 }
 
-.course-menu-reduced{
+.course-menu-reduced {
   display: none;
 }
 
 @media (max-width: 991px) {
-
   .course-menu {
-      display: none !important;
+    display: none !important;
   }
 
   .course-menu-reduced {
-      display: block;
+    display: block;
   }
 }
 
 .dropdown-toggle-custom::after {
   position: absolute;
   right: 16px;
-  top:14px;
+  top: 14px;
 }
 
 .form-control:focus {
-  border-color: #002B49;
+  border-color: #002b49;
   border-width: 2px;
   box-shadow: none;
 }
@@ -242,8 +237,8 @@ body{
 }
 
 .modal-body-scrollable {
-  max-height: 400px; 
-  overflow-y: auto; 
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .modal-body-scrollable::-webkit-scrollbar {
@@ -251,7 +246,7 @@ body{
 }
 
 .notice-container {
-  background-color: #F0F3F5;
+  background-color: #f0f3f5;
   border-radius: 10px;
   margin-bottom: 16px;
   padding-bottom: 8px;
@@ -268,11 +263,11 @@ body{
 }
 
 .click-notifica:hover {
-  background-color: #B7E1FF;
+  background-color: #b7e1ff;
 }
 
 .click-notifica:active {
-  background-color: #006DB9;
+  background-color: #006db9;
   color: white;
 }
 
@@ -284,8 +279,8 @@ body{
   transform: scale(1.2);
 }
 
-.file-container{
-  background-color: #F0F3F5;
+.file-container {
+  background-color: #f0f3f5;
   border-radius: 10px;
   margin: 0px;
   padding-left: 0px;
@@ -294,7 +289,7 @@ body{
 }
 
 .file-element {
-  background-color: #F0F3F5;
+  background-color: #f0f3f5;
   border: hidden;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -306,8 +301,7 @@ body{
   cursor: pointer;
 }
 
-.file-element:hover{
-  background-color: #B7E1FF;
+.file-element:hover {
+  background-color: #b7e1ff;
   border-radius: 10px;
-  
 }

@@ -1,64 +1,64 @@
-.custom-card{
-    background-color: #FFFFFF;
-    color: #002B49;
-    border-radius: 32px;
-    margin-bottom: 16px;
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-bottom: 8px;
-    min-height: 200px;
-    height: 100%;
+.custom-card {
+  background-color: #ffffff;
+  color: #002b49;
+  border-radius: 32px;
+  margin-bottom: 16px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 8px;
+  min-height: 200px;
+  height: 100%;
 }
 
-.card-title{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    padding-left: 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-items: center;
-    word-wrap: break-word;
-    margin-bottom: 8px;
-    width: 100%;
+.card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  padding-left: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-items: center;
+  word-wrap: break-word;
+  margin-bottom: 8px;
+  width: 100%;
 }
 
-.card-icon{
-    margin-right: 20px;
-    margin-bottom: 2px;
+.card-icon {
+  margin-right: 20px;
+  margin-bottom: 2px;
 }
 
 .card-button {
-    height: 40px;
-    background-color: #FFFFFF;
-    color: #002B49;
-    border-color: #002B49;
-    padding-top: 7px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: end;
+  height: 40px;
+  background-color: #ffffff;
+  color: #002b49;
+  border-color: #002b49;
+  padding-top: 7px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: end;
 }
 
 .card-button:hover {
-    border-color: #002B49;
-    background-color: #002B49;
+  border-color: #002b49;
+  background-color: #002b49;
 }
 
 .card-link {
-    font-weight: 400;
-    margin-top: 8px;
+  font-weight: 400;
+  margin-top: 8px;
 }
 
 .star {
-    margin-right: 16px;
-    margin-bottom: 8px;
-    cursor: pointer;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .star:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
