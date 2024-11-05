@@ -1,5 +1,7 @@
 {
     "navbar": {
+        "portale_della_didattica": "Portale della Didattica",
+        "ricerca_nel_portale": "Ricerca nel portale...",
         "profilo_utente": "Profilo utente",
         "cambio_password": "Cambio password"
     },
@@ -9,5 +11,31 @@
         "carriera": "Carriera",
         "opportunità": "Opportunità",
         "servizi": "Servizi"
+    },
+    "career": {
+        "tasse_e_agevolazioni": {
+            "title": "Tasse e Agevolazioni",
+            "description": "Pagamento e richiesta riduzione tasse."
+        },
+        "piano_carriera": {
+            "title": "Piano Carriera",
+            "description": "Compilazione o modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico."
+        },
+        "gestione_carriera": {
+            "title": "Gestione Carriera",
+            "description": "Richiesta approvazione di attività esterne e modifica stato carriera."
+        },
+        "apply": {
+            "title": "Apply@polito",
+            "description": "Visualizzazione e verifica stato della tua carriera."
+        },
+        "laurea_ed_esame_finale": {
+            "title": "Laurea ed Esame Finale",
+            "description": "Visualizzazione stato della tesi e degli step per conseguire il titolo."
+        },
+        "proposte_di_tesi": {
+            "title": "Proposte di Tesi",
+            "description": "Elenco delle proposte di tesi."
+        }
     }
 }

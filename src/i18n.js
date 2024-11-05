@@ -8,6 +8,7 @@ i18next
   .use(LanguageDetector)
   .use(HTTPApi)
   .init({
+    lng: "it",
     fallbackLng: "it",
     interpolation: {
       escapeValue: false,

@@ -35,7 +35,7 @@ export default function PoliNavbar() {
 
   const languageOptions = {
     it: { flag: "flag-it", label: "Italiano" },
-    en: { flag: "flag-us", label: "English" },
+    en: { flag: "flag-gb", label: "English" },
   };
 
   const changeLanguage = (lng) => {
@@ -149,7 +149,7 @@ export default function PoliNavbar() {
               fontSize: "22px",
             }}
           >
-            Portale della didattica
+            {t("navbar.portale_della_didattica")}
           </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -263,7 +263,7 @@ export default function PoliNavbar() {
                           style={{ fontWeight: "500" }}
                           onClick={() => changeLanguage("en")}
                         >
-                          <span className="flag flag-us" /> English
+                          <span className="flag flag-gb" /> English
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

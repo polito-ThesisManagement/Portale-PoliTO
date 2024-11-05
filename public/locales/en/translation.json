@@ -1,5 +1,7 @@
 {
     "navbar": {
+        "portale_della_didattica": "Teaching Portal",
+        "ricerca_nel_portale": "Search in the portal...",
         "profilo_utente": "User Profile",
         "cambio_password": "Change Password"
     },
@@ -9,5 +11,31 @@
         "carriera": "Career",
         "opportunità": "Opportunities",
         "servizi": "Services"
+    },
+    "career": {
+        "tasse_e_agevolazioni": {
+            "title": "Taxes and Benefits",
+            "description": "Payment and request for tax reduction."
+        },
+        "piano_carriera": {
+            "title": "Career Plan",
+            "description": "Completion or modification of the career plan and/or the teaching load, enrollment in the new academic year."
+        },
+        "gestione_carriera": {
+            "title": "Career Management",
+            "description": "Request for approval of external activities and modification of career status."
+        },
+        "apply": {
+            "title": "Apply@polito",
+            "description": "View and check the status of your career."
+        },
+        "laurea_ed_esame_finale": {
+            "title": "Degree and Final Examination",
+            "description": "View the status of the thesis and the steps to obtain the title."
+        },
+        "proposte_di_tesi": {
+            "title": "Thesis Proposals",
+            "description": "List of thesis proposals."
+        }
     }
 }

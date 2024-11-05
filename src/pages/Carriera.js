@@ -7,8 +7,10 @@ import { MdEditDocument } from "react-icons/md";
 import { FaUserEdit } from "react-icons/fa";
 import { FaGraduationCap, FaUserGraduate } from "react-icons/fa6";
 import { HiLightBulb } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 
 export default function Carriera() {
+  const { t } = useTranslation();
   return (
     <>
       <Title
@@ -24,44 +26,38 @@ export default function Carriera() {
         <Row>
           <BaseCard
             icon={<BsCreditCard2BackFill size="42" className="card-icon" />}
-            service={"Tasse e agevolazioni"}
-            description={"Pagamento e richiesta riduzione tasse."}
+            service={t("career.tasse_e_agevolazioni.title")}
+            description={t("career.tasse_e_agevolazioni.description")}
             servicePath={"/carriera"}
           />
           <BaseCard
             icon={<IoIosListBox size="42" className="card-icon" />}
-            service={"Piano carriera"}
-            description={
-              "Compilazione o modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico."
-            }
+            service={t("career.piano_carriera.title")}
+            description={t("career.piano_carriera.description")}
             servicePath={"/carriera"}
           />
           <BaseCard
             icon={<MdEditDocument size="42" className="card-icon" />}
-            service={"Gestione carriera"}
-            description={
-              "Richiesta approvazione di attività esterne e modifica stato carriera."
-            }
+            service={t("career.gestione_carriera.title")}
+            description={t("career.gestione_carriera.description")}
             servicePath={"/carriera"}
           />
           <BaseCard
             icon={<FaUserEdit size="42" className="card-icon" />}
-            service={"Apply"}
-            description={"Visualizzazione e verifica stato della tua carriera."}
+            service={t("career.apply.title")}
+            description={t("career.apply.description")}
             servicePath={"/carriera"}
           />
           <BaseCard
             icon={<FaGraduationCap size="42" className="card-icon" />}
-            service={"Laurea ed Esame Finale"}
-            description={
-              "Visualizzazione stato della tesi e degli step per conseguire il titolo."
-            }
+            service={t("career.laurea_ed_esame_finale.title")}
+            description={t("career.laurea_ed_esame_finale.description")}
             servicePath={"/carriera/laurea_ed_esame_finale"}
           />
           <BaseCard
             icon={<HiLightBulb size="42" className="card-icon" />}
-            service={"Proposte di tesi"}
-            description={"Elenco delle proposte di tesi."}
+            service={t("career.proposte_di_tesi.title")}
+            description={t("career.proposte_di_tesi.description")}
             servicePath={"/carriera/proposte_di_tesi"}
           />
         </Row>
