@@ -1,90 +1,90 @@
 .text-style {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .button-text {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .section-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .subsection-title {
-    color: #002B49;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
+  color: #002b49;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
 }
 .truncated {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
 }
 
-.detail{
-    font-size: 14px;
-    font-weight: 400;
+.detail {
+  font-size: 14px;
+  font-weight: 400;
 }
 
-.important-detail{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+.important-detail {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
-.course-detail{
-    font-weight: 500;
-    font-size: 15px;
+.course-detail {
+  font-weight: 500;
+  font-size: 15px;
 }
 
-.custom-tab{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #002B49;
+.custom-tab {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #002b49;
 }
 
-.custom-tab .nav-link{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #002B49;
+.custom-tab .nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #002b49;
 }
 
-.custom-tab .active{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #002B49;
+.custom-tab .active {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #002b49;
 }
 
 .custom-link {
-    color: #002B49;
-    text-decoration: none;
+  color: #002b49;
+  text-decoration: none;
 }
-  
+
 .custom-link:hover {
-    color: #006DB9;
+  color: #006db9;
 }
 
 .breadcrumb {
-    font-family: 'Montserrat', sans-serif;
-    color: #415462;
+  font-family: 'Montserrat', sans-serif;
+  color: #415462;
 }
 
 .breadcrumb-link {
-    font-family: 'Montserrat', sans-serif;
-    color: #415462;
-    font-weight: 500;
-    text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  color: #415462;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .breadcrumb-link:hover {
-    color: #33424D;
+  color: #33424d;
 }
