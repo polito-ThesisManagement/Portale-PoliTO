@@ -9,11 +9,14 @@ import { ArrowRightShort } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useTranslation } from 'react-i18next';
 
 import '../../styles/Text.css';
 import '../../styles/Utilities.css';
 
 export default function CoursePage() {
+  const { t } = useTranslation();
+
   const location = useLocation();
   const { codice, nome, periodo, crediti, linkGuida } = location.state;
   const section = location.pathname.replace(/.*\//, '');
@@ -29,7 +32,7 @@ export default function CoursePage() {
     <>
       <div className="d-flex mt-4 mx-3">
         <Link to="/didattica" className="breadcrumb-link">
-          Didattica
+          {t('sidebar.didattica')}
         </Link>
         <span className="mx-2" style={{ marginTop: '-2px' }}>
           <ArrowRightShort />
@@ -70,7 +73,7 @@ export default function CoursePage() {
                 state={{ codice, nome, periodo, crediti, linkGuida }}
                 onClick={() => handleButtonClick('Materiale')}
               >
-                Materiale
+                {t('didattica.corso.materiale')}
               </Dropdown.Item>
               <Dropdown.Item
                 as={Link}
@@ -78,7 +81,7 @@ export default function CoursePage() {
                 state={{ codice, nome, periodo, crediti, linkGuida }}
                 onClick={() => handleButtonClick('Avvisi')}
               >
-                Avvisi
+                {t('didattica.corso.avvisi')}
               </Dropdown.Item>
               <Dropdown.Item
                 as={Link}
@@ -86,7 +89,7 @@ export default function CoursePage() {
                 state={{ codice, nome, periodo, crediti, linkGuida }}
                 onClick={() => handleButtonClick('Orario')}
               >
-                Orario
+                {t('didattica.corso.orario')}
               </Dropdown.Item>
               <Dropdown.Item
                 as={Link}
@@ -94,7 +97,7 @@ export default function CoursePage() {
                 state={{ codice, nome, periodo, crediti, linkGuida }}
                 onClick={() => handleButtonClick('Guida')}
               >
-                Guida
+                {t('didattica.corso.guida')}
               </Dropdown.Item>
               <Dropdown.Item
                 as={Link}
@@ -110,7 +113,7 @@ export default function CoursePage() {
                 state={{ codice, nome, periodo, crediti, linkGuida }}
                 onClick={() => handleButtonClick('Elaborati')}
               >
-                Elaborati
+                {t('didattica.corso.elaborati')}
               </Dropdown.Item>
               <Dropdown.Item
                 as={Link}
@@ -118,7 +121,7 @@ export default function CoursePage() {
                 state={{ codice, nome, periodo, crediti, linkGuida }}
                 onClick={() => handleButtonClick('Appelli')}
               >
-                Appelli
+                {t('didattica.corso.appelli')}
               </Dropdown.Item>
               <Dropdown.Item
                 as={Link}
@@ -141,7 +144,7 @@ export default function CoursePage() {
           state={{ codice, nome, periodo, crediti, linkGuida }}
           onClick={() => handleButtonClick('Materiale')}
         >
-          Materiale
+          {t('didattica.corso.materiale')}
         </Button>
         <Button
           className={`custom-pill-button course-menu-button ${activeButton === 'Avvisi' ? 'active' : ''}`}
@@ -150,7 +153,7 @@ export default function CoursePage() {
           state={{ codice, nome, periodo, crediti, linkGuida }}
           onClick={() => handleButtonClick('Avvisi')}
         >
-          Avvisi
+          {t('didattica.corso.avvisi')}
         </Button>
         <Button
           className={`custom-pill-button course-menu-button ${activeButton === 'Orario' ? 'active' : ''}`}
@@ -159,7 +162,7 @@ export default function CoursePage() {
           state={{ codice, nome, periodo, crediti, linkGuida }}
           onClick={() => handleButtonClick('Orario')}
         >
-          Orario
+          {t('didattica.corso.orario')}
         </Button>
         <Button
           className={`custom-pill-button course-menu-button ${activeButton === 'Guida' ? 'active' : ''}`}
@@ -168,7 +171,7 @@ export default function CoursePage() {
           state={{ codice, nome, periodo, crediti, linkGuida }}
           onClick={() => handleButtonClick('Guida')}
         >
-          Guida
+          {t('didattica.corso.guida')}
         </Button>
         <Button
           className={`custom-pill-button course-menu-button ${activeButton === 'Moodle' ? 'active' : ''}`}
@@ -186,7 +189,7 @@ export default function CoursePage() {
           state={{ codice, nome, periodo, crediti, linkGuida }}
           onClick={() => handleButtonClick('Elaborati')}
         >
-          Elaborati
+          {t('didattica.corso.elaborati')}
         </Button>
         <Button
           className={`custom-pill-button course-menu-button ${activeButton === 'Appelli' ? 'active' : ''}`}
@@ -195,7 +198,7 @@ export default function CoursePage() {
           state={{ codice, nome, periodo, crediti, linkGuida }}
           onClick={() => handleButtonClick('Appelli')}
         >
-          Appelli
+          {t('didattica.corso.appelli')}
         </Button>
         <Button
           className={`custom-pill-button course-menu-button ${activeButton === 'VC' ? 'active' : ''}`}

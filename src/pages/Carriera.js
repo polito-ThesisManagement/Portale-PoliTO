@@ -24,38 +24,38 @@ export default function Carriera() {
         <Row>
           <BaseCard
             icon={<BsCreditCard2BackFill size="42" className="card-icon" />}
-            service={t('career.tasse_e_agevolazioni.title')}
-            description={t('career.tasse_e_agevolazioni.description')}
+            service={t('carriera.tasse_e_agevolazioni.title')}
+            description={t('carriera.tasse_e_agevolazioni.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
             icon={<IoIosListBox size="42" className="card-icon" />}
-            service={t('career.piano_carriera.title')}
-            description={t('career.piano_carriera.description')}
+            service={t('carriera.piano_carriera.title')}
+            description={t('carriera.piano_carriera.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
             icon={<MdEditDocument size="42" className="card-icon" />}
-            service={t('career.gestione_carriera.title')}
-            description={t('career.gestione_carriera.description')}
+            service={t('carriera.gestione_carriera.title')}
+            description={t('carriera.gestione_carriera.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
             icon={<FaUserEdit size="42" className="card-icon" />}
-            service={t('career.apply.title')}
-            description={t('career.apply.description')}
+            service={t('carriera.apply.title')}
+            description={t('carriera.apply.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
             icon={<FaGraduationCap size="42" className="card-icon" />}
-            service={t('career.laurea_ed_esame_finale.title')}
-            description={t('career.laurea_ed_esame_finale.description')}
+            service={t('carriera.laurea_ed_esame_finale.title')}
+            description={t('carriera.laurea_ed_esame_finale.description')}
             servicePath={'/carriera/laurea_ed_esame_finale'}
           />
           <BaseCard
             icon={<HiLightBulb size="42" className="card-icon" />}
-            service={t('career.proposte_di_tesi.title')}
-            description={t('career.proposte_di_tesi.description')}
+            service={t('carriera.proposte_di_tesi.title')}
+            description={t('carriera.proposte_di_tesi.description')}
             servicePath={'/carriera/proposte_di_tesi'}
           />
         </Row>

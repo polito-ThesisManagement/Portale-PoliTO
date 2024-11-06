@@ -71,7 +71,7 @@ export default function PoliNavbar() {
 
   const popover = (
     <Popover id="popover-basic" className="custom-popover">
-      <Popover.Header style={{ fontSize: '16px', fontWeight: '600' }}>Ultime notifiche</Popover.Header>
+      <Popover.Header style={{ fontSize: '16px', fontWeight: '600' }}>{t('navbar.ultime_notifiche')}</Popover.Header>
       <Popover.Body className="pb-0 px-2">
         {avvisi[0].map(notifica => (
           <div

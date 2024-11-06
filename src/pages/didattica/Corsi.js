@@ -10,6 +10,7 @@ import { IoClose } from 'react-icons/io5';
 import { PiListPlusFill, PiVideoCameraFill } from 'react-icons/pi';
 
 import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
 
 import CourseSummary from '../../components/CourseSummary';
 import InfoTooltip from '../../components/InfoTooltip';
@@ -18,6 +19,7 @@ import Courses from '../../data/Courses.json';
 import recentVirtualClassroom from '../../data/RegistrazioniRecenti.json';
 
 export default function Corsi() {
+  const { t } = useTranslation();
   return (
     <>
       <Row>
@@ -26,9 +28,9 @@ export default function Corsi() {
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
                 <FaList size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
-                Carico didattico
+                {t('homepage.carico_didattico')}
               </span>
-              <InfoTooltip text="Attraverso il carico didattico è possibile accedere alle pagine dei singoli corsi" />
+              <InfoTooltip text={t('homepage.cd_tooltip')} />
             </div>
             <ListGroup style={{ borderRadius: '16px' }}>
               {Courses.map(corso => {
@@ -48,9 +50,9 @@ export default function Corsi() {
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
                 <PiListPlusFill size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
-                Altri corsi
+                {t('didattica.altri_corsi')}
               </span>
-              <InfoTooltip text="Servizio che permette l'accesso alle pagine del corsi non presenti all'interno del carico didattico, mediante permesso straordinario" />
+              <InfoTooltip text={t('didattica.altri_corsi_tooltip')} />
             </div>
             <ListGroup style={{ borderRadius: '16px' }}>
               {AltriCorsi.map(corso => {
@@ -76,9 +78,9 @@ export default function Corsi() {
                   className="subsection-icon"
                   style={{ position: 'relative', bottom: '1px' }}
                 />
-                Appelli prenotati
+                {t('didattica.appelli_prenotati')}
               </span>
-              <InfoTooltip text="Visualizzazione e gestione prenotazioni agli appelli d'esame disponibili" />
+              <InfoTooltip text={t('didattica.appelli_prenotati_tooltip')} />
               {/*<Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600'}}>
                                 <Col xs={3}>Codice</Col>
                                 <Col xs={5}>Nome</Col>
@@ -117,7 +119,7 @@ export default function Corsi() {
 
             <div className="text-center my-2">
               <Button className="custom-button mt-2 btn-sm" style={{ height: 'auto' }}>
-                Prenotazione appelli
+                {t('didattica.prenotazione_appelli')}
               </Button>
             </div>
           </Container>
@@ -130,9 +132,9 @@ export default function Corsi() {
                   className="subsection-icon"
                   style={{ position: 'relative', bottom: '1px' }}
                 />
-                Virtual classroom recenti
+                {t('didattica.virtual_classroom_recenti')}
               </span>
-              <InfoTooltip text="Elenco che permette di accedere alle virtual classroom recenti, registrate dai docenti" />
+              <InfoTooltip text={t('didattica.vc_tooltip')} />
             </div>
 
             <ListGroup style={{ borderRadius: '16px' }}>
@@ -165,17 +167,16 @@ export default function Corsi() {
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
                 <ImFolderUpload size={20} className="subsection-icon" style={{ position: 'relative', bottom: '2px' }} />
-                Materiale condiviso
+                {t('didattica.materiale_condiviso')}
               </span>
-              <InfoTooltip text="Questo servizio permette di accedere al materiale pubblicato dai docenti, reso disponibile a tutti gli studenti" />
+              <InfoTooltip text={t('didattica.materiale_condiviso_tooltip')} />
             </div>
             <p className="mb-2 px-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Nessun materiale didattico selezionato. È possibile aggiungere nuovo materiale a questa sezione,
-              cercandolo tra quello condiviso pubblicamente attraverso "Ricerca nel materiale condiviso".
+              {t('didattica.materiale_condiviso_descrizione')}
             </p>
             <div className="text-center my-2">
               <Button className="custom-button mt-2 btn-sm" style={{ height: 'auto' }}>
-                Ricerca nel materiale condiviso
+                {t('didattica.ricerca_nel_mc')}
               </Button>
             </div>
           </Container>

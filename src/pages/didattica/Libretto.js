@@ -6,11 +6,14 @@ import { FaList } from 'react-icons/fa';
 import { PiListChecksBold } from 'react-icons/pi';
 import { VscGraph } from 'react-icons/vsc';
 
+import { useTranslation } from 'react-i18next';
+
 import DoughnutChart from '../../components/DoughnutChart';
 import valutazioni from '../../data/Valutazioni.json';
 import valutazioniProvvisorie from '../../data/ValutazioniProvvisorie.json';
 
 export default function Libretto() {
+  const { t } = useTranslation();
   return (
     <>
       <Row>
@@ -19,17 +22,17 @@ export default function Libretto() {
             <div className="subsection">
               <span className="subsection-title">
                 <FaList size={20} className="subsection-icon" />
-                Valutazioni provvisorie
+                {t('didattica.valutazioni_provvisorie')}
               </span>
               <Table striped className="custom-table" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 <thead style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   <tr>
-                    <th>Codice</th>
-                    <th>Nome</th>
-                    <th style={{ position: 'relative', left: -18 }}>Anno</th>
-                    <th style={{ position: 'relative', left: -24 }}>Crediti</th>
-                    <th style={{ position: 'relative', left: -10 }}>Esito</th>
-                    <th>Data</th>
+                    <th>{t('didattica.codice')}</th>
+                    <th>{t('didattica.nome')}</th>
+                    <th style={{ position: 'relative', left: -18 }}>{t('didattica.anno')}</th>
+                    <th style={{ position: 'relative', left: -24 }}>{t('didattica.crediti')}</th>
+                    <th style={{ position: 'relative', left: -10 }}>{t('didattica.esito')}</th>
+                    <th>{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,17 +54,17 @@ export default function Libretto() {
             <div className="subsection">
               <span className="subsection-title">
                 <PiListChecksBold size={28} className="subsection-icon" />
-                Valutazioni
+                {t('didattica.valutazioni')}
               </span>
               <Table striped className="custom-table" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 <thead style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   <tr>
-                    <th>Codice</th>
-                    <th>Nome</th>
-                    <th style={{ position: 'relative', left: -18 }}>Anno</th>
-                    <th style={{ position: 'relative', left: -24 }}>Crediti</th>
-                    <th style={{ position: 'relative', left: -10 }}>Voto</th>
-                    <th>Data</th>
+                    <th>{t('didattica.codice')}</th>
+                    <th>{t('didattica.nome')}</th>
+                    <th style={{ position: 'relative', left: -18 }}>{t('didattica.anno')}</th>
+                    <th style={{ position: 'relative', left: -24 }}>{t('didattica.crediti')}</th>
+                    <th style={{ position: 'relative', left: -10 }}>{t('didattica.esito')}</th>
+                    <th>{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -85,16 +88,16 @@ export default function Libretto() {
             <div className="subsection">
               <span className="subsection-title">
                 <BsGraphUp size={20} className="subsection-icon" />
-                Media e voti
+                {t('didattica.media_e_voti')}
               </span>
               <Row className="mt-2">
                 <Col>
-                  <span className="detail">Media ponderata</span>
+                  <span className="detail">{t('didattica.media_ponderata')}</span>
                   <br />
                   <span className="important-detail">28</span>
                 </Col>
                 <Col>
-                  <span className="detail">Media di laurea</span>
+                  <span className="detail">{t('didattica.media_di_laurea')}</span>
                   <br />
                   <span className="important-detail">102.67</span>
                 </Col>
@@ -107,15 +110,15 @@ export default function Libretto() {
                 <div className="subsection truncated">
                   <span className="subsection-title">
                     <VscGraph size={20} className="subsection-icon" />
-                    La tua carriera
+                    {t('didattica.la_tua_carriera')}
                   </span>
                   <Row className="mt-2">
-                    <span className="detail">Crediti acquisiti</span>
+                    <span className="detail">{t('didattica.crediti_acquisiti')}</span>
                     <br />
                     <span className="important-detail">90/120 CFU</span>
                   </Row>
                   <Row className="mt-1">
-                    <span className="detail">Crediti frequentati</span>
+                    <span className="detail">{t('didattica.crediti_frequentati')}</span>
                     <br />
                     <span className="important-detail">120/120 CFU</span>
                   </Row>
@@ -128,15 +131,15 @@ export default function Libretto() {
                 <div className="subsection truncated">
                   <span className="subsection-title">
                     <VscGraph size={20} className="subsection-icon" />
-                    Questo anno
+                    {t('didattica.questo_anno')}
                   </span>
                   <Row className="mt-2">
-                    <span className="detail">Crediti acquisiti</span>
+                    <span className="detail">{t('didattica.crediti_acquisiti')}</span>
                     <br />
                     <span className="important-detail">52/82 CFU</span>
                   </Row>
                   <Row className="mt-1">
-                    <span className="detail">Crediti frequentati</span>
+                    <span className="detail">{t('didattica.crediti_frequentati')}</span>
                     <br />
                     <span className="important-detail">82/82 CFU</span>
                   </Row>

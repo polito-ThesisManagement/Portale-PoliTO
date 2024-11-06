@@ -9,8 +9,10 @@ import { FaArrowLeft, FaArrowRight, FaFilePdf } from 'react-icons/fa';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useTranslation } from 'react-i18next';
 
 export default function Materiale() {
+  const { t } = useTranslation();
   return (
     <>
       <Container className="custom-container pt-3 pb-2">
@@ -22,7 +24,7 @@ export default function Materiale() {
               className="form-control-materiale ms-4 truncated"
               style={{ position: 'relative', bottom: '9px', height: '40px', cursor: 'default' }}
               type="text"
-              placeholder="Materiale didattico/Labs/Lab1"
+              placeholder={t('didattica.corso.materiale_didattico') + '/Labs/Lab1'}
               readOnly
             />
           </Col>
@@ -30,7 +32,7 @@ export default function Materiale() {
           <Col md={5} className="d-flex">
             <InputGroup>
               <Form.Control
-                placeholder="Cerca all'interno del materiale..."
+                placeholder={t('didattica.corso.cerca_materiale')}
                 aria-label="Cerca Materiale"
                 aria-describedby="basic-addon2"
                 style={{ borderRadius: '8px', position: 'relative', bottom: '1px' }}
@@ -60,7 +62,7 @@ export default function Materiale() {
                 <ListGroupItem className="file-element mt-1">
                   <FolderSymlinkFill size={25} />
                   <span className="ms-2" style={{ fontWeight: 'bold' }}>
-                    Materiale didattico
+                    {t('didattica.corso.materiale_didattico')}
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className="file-element ms-3">

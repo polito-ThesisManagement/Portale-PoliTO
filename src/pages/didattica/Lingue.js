@@ -11,32 +11,32 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Flag from 'react-flagkit';
+import { useTranslation } from 'react-i18next';
 
 import '../../styles/Utilities.css';
 
 export default function Lingue() {
+  const { t } = useTranslation();
   return (
     <>
       <Accordion className="mt-2">
         <Accordion.Item eventKey="0" className="custom-accordion">
           <Accordion.Header>
             <FileEarmarkRichtextFill size={20} className="subsection-icon" />
-            Certificazioni di lingua
+            {t('didattica.certificazioni_di_lingua')}
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
             <div className="mb-3 mx-1" style={{ display: 'inline-block' }}>
-              Sezione dedicata esclusivamente al caricamento e alla verifica delle certificazioni linguistiche richieste
-              dal corso di studi. Per il riconoscimento di ulteriori conoscenze linguistiche utilizzare il servizio
-              "Approvazione attività esterne" all'interno della sezione "Gestione carriera".
+              {t('didattica.cdl_descrizione')}
             </div>
             <Row>
               <Col sm={6} className="mb-4">
                 <Card>
                   <Card.Body className="text-center">
-                    <Card.Title className="mb-3">Caricamento certificazioni lingua</Card.Title>
+                    <Card.Title className="mb-3">{t('didattica.caricamento_cdl')}</Card.Title>
                     <Card.Text></Card.Text>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Accedi
+                      {t('Accedi')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -47,7 +47,7 @@ export default function Lingue() {
         <Accordion.Item eventKey="1" className="custom-accordion my-2">
           <Accordion.Header>
             <Flag size={20} country="GB" className="subsection-icon" />
-            Lingua inglese
+            {t('didattica.lingua_inglese')}
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
             <Row className="mx-1">
@@ -57,7 +57,7 @@ export default function Lingue() {
                   target="_blank"
                   to="https://didattica.polito.it/clapdf/it-vlaib-sito.pdf"
                 >
-                  Verifica il tuo livello di conoscenza attuale tramite vLAIB&nbsp;
+                  {t('didattica.verifica_lingua_inglese')}&nbsp;
                   <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
                 </Link>
               </div>
@@ -67,12 +67,12 @@ export default function Lingue() {
                   target="_blank"
                   to="https://didattica.polito.it/cla/it/esame_ielts_poli"
                 >
-                  Ulteriori informazioni - sito CLA&nbsp;
+                  {t('didattica.ulteriori_informazioni')}&nbsp;
                   <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
                 </Link>
               </div>
               <div className="px-0 my-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
-                Preparazione all'IELTS
+                {t('didattica.preparazione_ielts')}
               </div>
             </Row>
             <Row>
@@ -82,7 +82,7 @@ export default function Lingue() {
                     <Card.Title className="mb-3">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Prenotazione lezioni
+                      {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -93,7 +93,7 @@ export default function Lingue() {
                     <Card.Title className="mb-3">IELTS Grammar tutorials</Card.Title>
                     <Card.Text></Card.Text>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Prenotazione lezioni
+                      {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -104,7 +104,7 @@ export default function Lingue() {
                     <Card.Title className="mb-4">IELTS Listening tutorials</Card.Title>
                     <Card.Text></Card.Text>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Prenotazione lezioni
+                      {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -115,7 +115,7 @@ export default function Lingue() {
                     <Card.Title className="mb-4">IELTS Reading tutorials</Card.Title>
                     <Card.Text></Card.Text>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Prenotazione lezioni
+                      {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -126,7 +126,7 @@ export default function Lingue() {
                     <Card.Title className="mb-4">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Prenotazione lezioni
+                      {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -137,20 +137,20 @@ export default function Lingue() {
         <Accordion.Item eventKey="2" className="custom-accordion my-2">
           <Accordion.Header>
             <Flag country="IT" size={20} className="subsection-icon" />
-            Lingua italiana
+            {t('didattica.lingua_italiana')}
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
             <Row className="mx-1">
               <div className="px-0 mb-1" style={{ display: 'inline-block' }}>
-                Prima di iscriverti all'esame PLIDA, leggi queste istruzioni:&nbsp;
+                {t('didattica.lingua_italiana_descrizione')}&nbsp;
                 <Link className="custom-link" target="_blank" to="https://didattica.polito.it/clapdf/it-vlaib-sito.pdf">
-                  La mia iscrizione al PLIDA è completata con successo?&nbsp;
+                  {t('didattica.lingua_italiana_descrizione_link')}&nbsp;
                   <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
                 </Link>
               </div>
               <div className="px-0 mb-3" style={{ display: 'flex', alignItems: 'center' }}>
                 <Link className="custom-link truncated" target="_blank" to="https://didattica.polito.it/cla/it/plida">
-                  Ulteriori informazioni - sito CLA&nbsp;
+                  {t('didattica.ulteriori_informazioni')}&nbsp;
                   <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
                 </Link>
               </div>
@@ -159,10 +159,10 @@ export default function Lingue() {
               <Col sm={6} className="mb-4">
                 <Card>
                   <Card.Body className="text-center">
-                    <Card.Title className="mb-3">Esame PLIDA in presenza</Card.Title>
+                    <Card.Title className="mb-3">{t('didattica.esame_plida')}</Card.Title>
                     <Card.Text></Card.Text>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Accedi
+                      {t('Accedi')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -177,27 +177,26 @@ export default function Lingue() {
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
             <div className="mb-3 mx-1" style={{ display: 'inline-block' }}>
-              Questi test di livello per le lingue francese, portoghese, spagnolo e tedesco sono accessibili in
-              qualsiasi momento. Sono eseguibili in modalità remota da tutti gli studenti del Politecnico di Torino. Se
-              sei uno studente selezionato nell'ambito dei Bandi di Concorso per la mobilità ERASMUS+ ed Extra-UE/NON
-              ERASMUS+ del Politecnico di Torino, ti invitiamo a leggere le istruzioni a&nbsp;
+              {t('didattica.altre_lingue_descrizione')}&nbsp;
               <Link
                 className="custom-link"
                 target="_blank"
                 to="https://didattica.polito.it/cla/it/corsi_studenti_mobilita_verso_estero"
               >
-                questa pagina&nbsp;
+                {t('didattica.questa_pagina')}&nbsp;
                 <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
               </Link>
-              &nbsp;(sezione test di livello della conoscenza della lingua straniera).
+              &nbsp;{t('didattica.sezione_tdl')}
             </div>
             <Row>
               <Col sm={6} lg={3} className="mb-4 text-center">
                 <Card>
                   <Card.Body>
-                    <Card.Title className="mx-auto mb-3">Test di livello - Francese</Card.Title>
+                    <Card.Title className="mx-auto mb-3">
+                      {t('didattica.tdl')} - {t('didattica.francese')}
+                    </Card.Title>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Inizia la prova
+                      {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -205,9 +204,11 @@ export default function Lingue() {
               <Col md={6} lg={3} className="mb-4 text-center">
                 <Card>
                   <Card.Body>
-                    <Card.Title className="mx-auto mb-3">Test di livello - Spagnolo</Card.Title>
+                    <Card.Title className="mx-auto mb-3">
+                      {t('didattica.tdl')} - {t('didattica.spagnolo')}
+                    </Card.Title>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Inizia la prova
+                      {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -215,9 +216,11 @@ export default function Lingue() {
               <Col md={6} lg={3} className="mb-4 text-center">
                 <Card>
                   <Card.Body>
-                    <Card.Title className="mx-auto mb-3">Test di livello - Tedesco</Card.Title>
+                    <Card.Title className="mx-auto mb-3">
+                      {t('didattica.tdl')} - {t('didattica.tedesco')}
+                    </Card.Title>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Inizia la prova
+                      {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>
                 </Card>
@@ -225,9 +228,11 @@ export default function Lingue() {
               <Col md={6} lg={3} className="mb-4 text-center">
                 <Card>
                   <Card.Body>
-                    <Card.Title className="mx-auto mb-3">Test di livello - Portoghese</Card.Title>
+                    <Card.Title className="mx-auto mb-3">
+                      {t('didattica.tdl')} - {t('didattica.portoghese')}
+                    </Card.Title>
                     <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                      Inizia la prova
+                      {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>
                 </Card>
