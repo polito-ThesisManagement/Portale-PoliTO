@@ -8,7 +8,7 @@ export default function Guida() {
       <Container className="custom-container m-0">
         <Row className="my-3 pt-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Anno accademico di inizio valdità
             </h6>
           </Col>
@@ -18,7 +18,7 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Presentazione
             </h6>
           </Col>
@@ -37,7 +37,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Risultati attesi
             </h6>
           </Col>
@@ -53,7 +53,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Prerequisiti
             </h6>
           </Col>
@@ -63,7 +63,7 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Programma del corso
             </h6>
           </Col>
@@ -107,7 +107,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Sustainable development goals
             </h6>
           </Col>
@@ -117,7 +117,7 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Organizzazione dell'insegnamento
             </h6>
           </Col>
@@ -156,7 +156,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Bibliografia
             </h6>
           </Col>
@@ -177,7 +177,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Materiale di supporto allo studio
             </h6>
           </Col>
@@ -189,7 +189,7 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: '600' }}>
+            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
               Criteri, regole e procedure per l'esame esclusivamente IN PRESENZA
             </h6>
           </Col>

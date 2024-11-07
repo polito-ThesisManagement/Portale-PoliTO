@@ -1,24 +1,24 @@
 .text-style {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .button-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
 }
 
 .section-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
 }
 
 .subsection-title {
   color: var(--dark-navy);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
 }
 .truncated {
   overflow: hidden;
@@ -29,38 +29,38 @@
 }
 
 .detail {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
 }
 
 .important-detail {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .course-detail {
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
 }
 
 .custom-tab {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   color: var(--dark-navy);
 }
 
 .custom-tab .nav-link {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   color: var(--dark-navy);
 }
 
 .custom-tab .active {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
   color: var(--dark-navy);
 }
 
@@ -74,14 +74,14 @@
 }
 
 .breadcrumb {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-primary);
   color: var(--medium-gray);
 }
 
 .breadcrumb-link {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-primary);
   color: var(--medium-gray);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
 }
 

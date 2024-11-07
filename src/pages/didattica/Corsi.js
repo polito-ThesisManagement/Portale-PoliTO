@@ -81,7 +81,7 @@ export default function Corsi() {
                 {t('didattica.appelli_prenotati')}
               </span>
               <InfoTooltip text={t('didattica.appelli_prenotati_tooltip')} />
-              {/*<Row className='pt-2' style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600'}}>
+              {/*<Row className='pt-2' style={{ fontFamily: 'var(--font-primary)', fontWeight: 'var(--font-weight-semibold)'}}>
                                 <Col xs={3}>Codice</Col>
                                 <Col xs={5}>Nome</Col>
                                 <Col xs={3} style={{ marginLeft: '10px' }}>Data</Col>
@@ -171,7 +171,7 @@ export default function Corsi() {
               </span>
               <InfoTooltip text={t('didattica.materiale_condiviso_tooltip')} />
             </div>
-            <p className="mb-2 px-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="mb-2 px-2" style={{ fontFamily: 'var(--font-primary)' }}>
               {t('didattica.materiale_condiviso_descrizione')}
             </p>
             <div className="text-center my-2">

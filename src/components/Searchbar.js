@@ -88,7 +88,7 @@ export default function Searchbar(props) {
                 setFilteredData([]);
                 setSearchWord('');
               }}
-              style={{ fontSize: '12px', fontWeight: '500' }}
+              style={{ fontSize: 'var(--font-size-xs)', fontWeight: 'var(--font-weight-medium)' }}
             >
               {service.pageName}
             </ListGroup.Item>
@@ -102,9 +102,9 @@ export default function Searchbar(props) {
             onClick={() => {
               setSearchWord('');
             }}
-            style={{ fontSize: '12px' }}
+            style={{ fontSize: 'var(--font-size-xs)' }}
           >
-            Cerca <span style={{ fontWeight: '500' }}>{searchWord}</span> su polito.it...
+            Cerca <span style={{ fontWeight: 'var(--font-weight-medium)' }}>{searchWord}</span> su polito.it...
           </ListGroup.Item>
         </ListGroup>
       )}

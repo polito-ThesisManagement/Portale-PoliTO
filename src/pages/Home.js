@@ -88,7 +88,7 @@ export default function Home() {
                   );
                 })
               ) : (
-                <p className="mb-2 px-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className="mb-2 px-3" style={{ fontFamily: 'var(--font-primary)' }}>
                   {t('homepage.nessun_servizio')}
                 </p>
               )}

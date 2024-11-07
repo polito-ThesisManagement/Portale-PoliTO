@@ -54,11 +54,11 @@ body {
 
 .summary {
   border-color: var(--background-light);
-  background-color: var(---background-light);
+  background-color: var(--background-light);
   color: var(--black);
   border-radius: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
 }
 
 .summary:hover {
@@ -77,8 +77,8 @@ body {
   background-color: var(--background-light);
   color: var(--black);
   border-radius: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
 }
 
 .ticket-category {
@@ -123,9 +123,9 @@ body {
   border-color: var(--dark-navy);
   background-color: var(--white);
   padding-top: 7px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -149,9 +149,9 @@ body {
   background-color: var(--light-navy-transparent);
   color: var(--medium-navy);
   padding-top: 7px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -179,8 +179,8 @@ body {
   color: var(--dark-navy);
   border-radius: 5px;
   margin-bottom: 10px;
-  font-family: 'Montserrat', 'sans-serif';
-  font-weight: 600;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .custom-accordion {
@@ -291,8 +291,8 @@ body {
 .file-element {
   background-color: var(--background-light);
   border: hidden;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

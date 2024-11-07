@@ -24,8 +24,8 @@ export default function Libretto() {
                 <FaList size={20} className="subsection-icon" />
                 {t('didattica.valutazioni_provvisorie')}
               </span>
-              <Table striped className="custom-table" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <thead style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <Table striped className="custom-table" style={{ fontFamily: 'var(--font-primary)' }}>
+                <thead style={{ fontFamily: 'var(--font-primary)' }}>
                   <tr>
                     <th>{t('didattica.codice')}</th>
                     <th>{t('didattica.nome')}</th>
@@ -38,11 +38,11 @@ export default function Libretto() {
                 <tbody>
                   {valutazioniProvvisorie.map(course => (
                     <tr key={course.codice}>
-                      <td style={{ fontWeight: 500 }}>{course.codice}</td>
-                      <td style={{ fontWeight: 500 }}>{course.nome}</td>
+                      <td style={{ fontWeight: 'var(--font-weight-medium)' }}>{course.codice}</td>
+                      <td style={{ fontWeight: 'var(--font-weight-medium)' }}>{course.nome}</td>
                       <td>{course.anno}</td>
                       <td>{course.cfu}</td>
-                      <td style={{ fontWeight: 500 }}>{course.esito}</td>
+                      <td style={{ fontWeight: 'var(--font-weight-medium)' }}>{course.esito}</td>
                       <td>{course.data}</td>
                     </tr>
                   ))}
@@ -56,8 +56,8 @@ export default function Libretto() {
                 <PiListChecksBold size={28} className="subsection-icon" />
                 {t('didattica.valutazioni')}
               </span>
-              <Table striped className="custom-table" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <thead style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <Table striped className="custom-table" style={{ fontFamily: 'var(--font-primary)' }}>
+                <thead style={{ fontFamily: 'var(--font-primary)' }}>
                   <tr>
                     <th>{t('didattica.codice')}</th>
                     <th>{t('didattica.nome')}</th>
@@ -70,11 +70,11 @@ export default function Libretto() {
                 <tbody>
                   {valutazioni.map(course => (
                     <tr key={course.codice}>
-                      <td style={{ fontWeight: 500 }}>{course.codice}</td>
-                      <td style={{ fontWeight: 500 }}>{course.nome}</td>
+                      <td style={{ fontWeight: 'var(--font-weight-medium)' }}>{course.codice}</td>
+                      <td style={{ fontWeight: 'var(--font-weight-medium)' }}>{course.nome}</td>
                       <td>{course.anno}</td>
                       <td>{course.cfu}</td>
-                      <td style={{ fontWeight: 500 }}>{course.voto}</td>
+                      <td style={{ fontWeight: 'var(--font-weight-medium)' }}>{course.voto}</td>
                       <td>{course.data}</td>
                     </tr>
                   ))}

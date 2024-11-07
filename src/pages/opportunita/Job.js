@@ -54,7 +54,7 @@ export default function Job() {
       <Container className="mt-3 me-3">
         <div className="d-flex justify-content-start">
           <ListStars size={40} />
-          <h1 style={{ marginLeft: '8px', fontFamily: 'Montserrat' }}>Elenco offerte lavoro</h1>
+          <h1 style={{ marginLeft: '8px', fontFamily: 'var(--font-primary)' }}>Elenco offerte lavoro</h1>
         </div>
         <Form className="d-flex me-3 mt-1">
           <Form.Control

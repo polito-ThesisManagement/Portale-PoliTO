@@ -72,7 +72,7 @@ export default function Timetable() {
                     height: '70px',
                     backgroundColor: 'var(--light-orange)',
                     color: 'var(--white)',
-                    fontWeight: 'bold',
+                    fontWeight: 'var(--font-weight-bold)',
                     textAlign: 'center',
                   }}
                 >

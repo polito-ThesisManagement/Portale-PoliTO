@@ -61,7 +61,7 @@ export default function Materiale() {
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
                   <FolderSymlinkFill size={25} />
-                  <span className="ms-2" style={{ fontWeight: 'bold' }}>
+                  <span className="ms-2" style={{ fontWeight: 'var(--font-weight-bold)' }}>
                     {t('didattica.corso.materiale_didattico')}
                   </span>
                 </ListGroupItem>
@@ -94,7 +94,7 @@ export default function Materiale() {
                 </ListGroupItem>
                 <ListGroupItem className="file-element">
                   <Dropbox size={25} />
-                  <span className="ms-2" style={{ fontWeight: 'bold' }}>
+                  <span className="ms-2" style={{ fontWeight: 'var(--font-weight-bold)' }}>
                     Dropbox
                   </span>
                 </ListGroupItem>
@@ -105,7 +105,7 @@ export default function Materiale() {
             <Container className="file-container">
               <div className="pt-3 px-3">
                 <FaFilePdf size={30} style={{ position: 'relative', left: '13' }} />
-                <div className="mt-1" style={{ fontSize: '15px' }}>
+                <div className="mt-1" style={{ fontSize: 'var(--font-size-md)' }}>
                   Lab1.pdf
                 </div>
               </div>

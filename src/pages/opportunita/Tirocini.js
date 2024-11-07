@@ -70,7 +70,7 @@ export default function Tirocini() {
       <Container className="mt-3 me-3">
         <div className="d-flex justify-content-start">
           <List size={40} />
-          <h1 style={{ marginLeft: '8px', fontFamily: 'Montserrat' }}>Elenco Proposte Tirocinio </h1>
+          <h1 style={{ marginLeft: '8px', fontFamily: 'var(--font-primary)' }}>Elenco Proposte Tirocinio </h1>
         </div>
         <Button style={{ backgroundColor: 'var(--navy)', alignSelf: 'baseline' }} onClick={handleShow}>
           <FilterCircleFill /> Filtra le proposte
@@ -111,7 +111,7 @@ export default function Tirocini() {
         </Modal.Header>
         <Modal.Body>
           <div>
-            <label style={{ fontFamily: 'Montserrat', marginBottom: '2px' }}>Durata:</label>
+            <label style={{ fontFamily: 'var(--font-primary)', marginBottom: '2px' }}>Durata:</label>
             <Form.Select onChange={e => setDurata(e.target.value)}>
               <option value="">Tutte</option>
               <option value="3">3 mesi</option>
@@ -120,7 +120,7 @@ export default function Tirocini() {
             </Form.Select>
           </div>
           <div className="my-2">
-            <label style={{ fontFamily: 'Montserrat', marginBottom: '2px' }}>Tipo:</label>
+            <label style={{ fontFamily: 'var(--font-primary)', marginBottom: '2px' }}>Tipo:</label>
             <Form.Select onChange={e => setCurriculare(e.target.value === 'true')}>
               <option value="">Tutti</option>
               <option value="true">Curriculare</option>
@@ -128,15 +128,18 @@ export default function Tirocini() {
             </Form.Select>
           </div>
           <div>
-            <label style={{ fontFamily: 'Montserrat', marginBottom: '2px' }}>Scadenza entro:</label>
+            <label style={{ fontFamily: 'var(--font-primary)', marginBottom: '2px' }}>Scadenza entro:</label>
             <Form.Control type="date" onChange={e => setScadenza(e.target.value)} />
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button style={{ fontFamily: 'Montserrat' }} variant="danger" onClick={handleClose}>
+          <Button style={{ fontFamily: 'var(--font-primary)' }} variant="danger" onClick={handleClose}>
             Annulla
           </Button>
-          <Button style={{ backgroundColor: 'var(--medium-navy)', fontFamily: 'Montserrat' }} onClick={filterStages}>
+          <Button
+            style={{ backgroundColor: 'var(--medium-navy)', fontFamily: 'var(--font-primary)' }}
+            onClick={filterStages}
+          >
             Salva Cambiamenti
           </Button>
         </Modal.Footer>

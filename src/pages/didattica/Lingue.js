@@ -71,7 +71,10 @@ export default function Lingue() {
                   <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
                 </Link>
               </div>
-              <div className="px-0 my-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>
+              <div
+                className="px-0 my-2"
+                style={{ fontFamily: 'var(--font-primary)', fontWeight: 'var(--font-weight-semibold)' }}
+              >
                 {t('didattica.preparazione_ielts')}
               </div>
             </Row>

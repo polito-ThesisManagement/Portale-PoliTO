@@ -71,7 +71,9 @@ export default function PoliNavbar() {
 
   const popover = (
     <Popover id="popover-basic" className="custom-popover">
-      <Popover.Header style={{ fontSize: '16px', fontWeight: '600' }}>{t('navbar.ultime_notifiche')}</Popover.Header>
+      <Popover.Header style={{ fontSize: 'var(--font-size-base)', fontWeight: 'var(--font-weight-semibold)' }}>
+        {t('navbar.ultime_notifiche')}
+      </Popover.Header>
       <Popover.Body className="pb-0 px-2">
         {avvisi[0].map(notifica => (
           <div
@@ -80,12 +82,14 @@ export default function PoliNavbar() {
             style={{ borderRadius: '5px' }}
             className="click-notifica mb-2 py-1 px-2"
           >
-            <span className="d-flex" style={{ fontSize: '15px' }}>
-              <div style={{ marginRight: '6px', fontWeight: '500' }}>{notifica.data} -</div>
-              <div style={{ marginRight: '4px', fontWeight: '600' }}>{notifica.course}</div>
+            <span className="d-flex" style={{ fontSize: 'var(--font-size-md)' }}>
+              <div style={{ marginRight: '6px', fontWeight: 'var(--font-weight-medium)' }}>{notifica.data} -</div>
+              <div style={{ marginRight: '4px', fontWeight: 'var(--font-weight-semibold)' }}>{notifica.course}</div>
             </span>
-            <div style={{ fontWeight: '500', fontSize: '14px' }}>({notifica.sender})</div>
-            <span style={{ fontSize: '15px' }}>{notifica.body}</span>
+            <div style={{ fontWeight: 'var(--font-weight-medium)', fontSize: 'var(--font-size-sm)' }}>
+              ({notifica.sender})
+            </div>
+            <span style={{ fontSize: 'var(--font-size-md)' }}>{notifica.body}</span>
           </div>
         ))}
       </Popover.Body>
@@ -128,10 +132,10 @@ export default function PoliNavbar() {
           <span
             style={{
               color: 'var(--dark-navy)',
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: '600',
+              fontFamily: 'var(--font-primary)',
+              fontWeight: 'var(--font-weight-semibold)',
               display: 'inline-block',
-              fontSize: '22px',
+              fontSize: 'var(--font-size-xxl)',
             }}
           >
             {t('navbar.portale_della_didattica')}
@@ -168,7 +172,11 @@ export default function PoliNavbar() {
             </Nav.Link>
             <Navbar.Text
               className="text-style"
-              style={{ fontWeight: '500', fontSize: '16px', color: 'var(--dark-navy)' }}
+              style={{
+                fontWeight: 'var(--font-weight-medium)',
+                fontSize: 'var(--font-size-base)',
+                color: 'var(--dark-navy)',
+              }}
             >
               <div className="d-none d-md-block" style={{ marginLeft: '12px', marginRight: '12px' }}>
                 s123456
@@ -193,26 +201,26 @@ export default function PoliNavbar() {
                   style={{
                     right: 'auto',
                     left: '-130px',
-                    fontFamily: 'Montserrat, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                   }}
                 >
-                  <Dropdown.Item style={{ fontWeight: '500' }}>
+                  <Dropdown.Item style={{ fontWeight: 'var(--font-weight-medium)' }}>
                     <FaUser /> {t('navbar.profilo_utente')}
                   </Dropdown.Item>
-                  <Dropdown.Item style={{ fontWeight: '500' }}>
+                  <Dropdown.Item style={{ fontWeight: 'var(--font-weight-medium)' }}>
                     <FaKey /> {t('navbar.cambio_password')}
                   </Dropdown.Item>
-                  <Dropdown.Item style={{ fontWeight: '500' }}>
+                  <Dropdown.Item style={{ fontWeight: 'var(--font-weight-medium)' }}>
                     <FaSignOutAlt /> Logout
                   </Dropdown.Item>
                   <Dropdown.Item
-                    style={{ fontWeight: '500' }}
+                    style={{ fontWeight: 'var(--font-weight-medium)' }}
                     className="dropdown-submenu"
                     onMouseEnter={() => setShowSubmenu(true)}
                     onMouseLeave={() => setShowSubmenu(false)}
                   >
                     <Dropdown drop="bottom" show={showSubmenu}>
-                      <Dropdown.Toggle as="div" style={{ fontWeight: '500' }}>
+                      <Dropdown.Toggle as="div" style={{ fontWeight: 'var(--font-weight-medium)' }}>
                         <span className={`flag ${languageOptions[selectedLanguage].flag}`} />{' '}
                         {languageOptions[selectedLanguage].label}
                       </Dropdown.Toggle>
@@ -221,14 +229,22 @@ export default function PoliNavbar() {
                           right: 'auto',
                           left: '0',
                           marginTop: '30px',
-                          fontFamily: 'Montserrat, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                         }}
                         className="submenu"
                       >
-                        <Dropdown.Item as="div" style={{ fontWeight: '500' }} onClick={() => changeLanguage('it')}>
+                        <Dropdown.Item
+                          as="div"
+                          style={{ fontWeight: 'var(--font-weight-medium)' }}
+                          onClick={() => changeLanguage('it')}
+                        >
                           <span className="flag flag-it" /> Italiano
                         </Dropdown.Item>
-                        <Dropdown.Item as="div" style={{ fontWeight: '500' }} onClick={() => changeLanguage('en')}>
+                        <Dropdown.Item
+                          as="div"
+                          style={{ fontWeight: 'var(--font-weight-medium)' }}
+                          onClick={() => changeLanguage('en')}
+                        >
                           <span className="flag flag-gb" /> English
                         </Dropdown.Item>
                       </Dropdown.Menu>

@@ -7,7 +7,7 @@ export default function Elaborati() {
     <>
       <Container className="custom-container m-0 d-flex flex-column align-items-center justify-content-center">
         <div className="text-start my-3">
-          <h6 className="text-style" style={{ fontWeight: '500' }}>
+          <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-medium)' }}>
             Tramite questo strumento è possibile consegnare file da parte degli studenti ai docenti del corso in
             oggetto. Una volta caricato, il file sarà visibile solo al docente ed allo studente che ha eseguito il
             caricamento e non sarà possibile eliminarlo, ma solo richiedere la cancellazione dei propri elaborati al
@@ -16,7 +16,7 @@ export default function Elaborati() {
         </div>
         <Container
           className="custom-container d-flex flex-column align-items-center justify-content-center"
-          style={{ backgroundColor: 'var(--background.light)' }}
+          style={{ backgroundColor: 'var(--background-light)' }}
         >
           <Form.Label htmlFor="inputPassword5" className="text-style mt-2">
             Descrizione elaborato:

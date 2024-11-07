@@ -43,7 +43,7 @@ export default function CoursePage() {
       <Row className="mb-3">
         <div className="d-flex align-items-center mx-3">
           <span className="section-title">{nome}</span>
-          <Dropdown style={{ fontSize: '15px', fontFamily: 'Montserrat, sans-serif' }}>
+          <Dropdown style={{ fontSize: 'var(--font-size-md)', fontFamily: 'var(--font-primary)' }}>
             <Dropdown.Toggle
               className="ms-4 py-1"
               style={{ backgroundColor: 'var(--dark-navy)', borderColor: 'var(--dark-navy)' }}
@@ -57,7 +57,11 @@ export default function CoursePage() {
           </Dropdown>
           <Dropdown
             className="course-menu-reduced"
-            style={{ fontSize: '15px', fontFamily: 'Montserrat, sans-serif', fontWeight: '500' }}
+            style={{
+              fontSize: 'var(--font-size-md)',
+              fontFamily: 'var(--font-primary)',
+              fontWeight: 'var(--font-weight-medium)',
+            }}
           >
             <Dropdown.Toggle
               className="dropdown-toggle-custom ms-3 py-1"
