@@ -225,10 +225,10 @@ export default function PoliNavbar() {
                         }}
                         className="submenu"
                       >
-                        <Dropdown.Item style={{ fontWeight: '500' }} onClick={() => changeLanguage('it')}>
+                        <Dropdown.Item as="div" style={{ fontWeight: '500' }} onClick={() => changeLanguage('it')}>
                           <span className="flag flag-it" /> Italiano
                         </Dropdown.Item>
-                        <Dropdown.Item style={{ fontWeight: '500' }} onClick={() => changeLanguage('en')}>
+                        <Dropdown.Item as="div" style={{ fontWeight: '500' }} onClick={() => changeLanguage('en')}>
                           <span className="flag flag-gb" /> English
                         </Dropdown.Item>
                       </Dropdown.Menu>
