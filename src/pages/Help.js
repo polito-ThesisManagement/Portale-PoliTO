@@ -65,8 +65,8 @@ export default function Help() {
                 aria-describedby="basic-addon2"
                 style={{
                   height: '40px',
-                  backgroundColor: '#F0F3F5',
-                  color: '#002B49',
+                  backgroundColor: 'var(--background-light)',
+                  color: 'var(--dark-navy)',
                   borderRadius: '8px',
                 }}
                 value={search}

@@ -48,7 +48,12 @@ export default function Timetable() {
             {giorniSettimana.map(giorno => {
               return (
                 <th
-                  style={{ backgroundColor: '#03577A', color: '#fff', textAlign: 'center', width: '50px' }}
+                  style={{
+                    backgroundColor: 'var(--medium-navy)',
+                    color: 'var(--white)',
+                    textAlign: 'center',
+                    width: '50px',
+                  }}
                   key={giorno}
                 >
                   {giorno}
@@ -65,8 +70,8 @@ export default function Timetable() {
                   style={{
                     width: '5%',
                     height: '70px',
-                    backgroundColor: '#FFC300',
-                    color: '#fff',
+                    backgroundColor: 'var(--light-orange)',
+                    color: 'var(--white)',
                     fontWeight: 'bold',
                     textAlign: 'center',
                   }}

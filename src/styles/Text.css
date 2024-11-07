@@ -15,7 +15,7 @@
 }
 
 .subsection-title {
-  color: #002b49;
+  color: var(--dark-navy);
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -47,44 +47,44 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: #002b49;
+  color: var(--dark-navy);
 }
 
 .custom-tab .nav-link {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: #002b49;
+  color: var(--dark-navy);
 }
 
 .custom-tab .active {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: #002b49;
+  color: var(--dark-navy);
 }
 
 .custom-link {
-  color: #002b49;
+  color: var(--dark-navy);
   text-decoration: none;
 }
 
 .custom-link:hover {
-  color: #006db9;
+  color: var(--navy);
 }
 
 .breadcrumb {
   font-family: 'Montserrat', sans-serif;
-  color: #415462;
+  color: var(--medium-gray);
 }
 
 .breadcrumb-link {
   font-family: 'Montserrat', sans-serif;
-  color: #415462;
+  color: var(--medium-gray);
   font-weight: 500;
   text-decoration: none;
 }
 
 .breadcrumb-link:hover {
-  color: #33424d;
+  color: var(--dark-gray);
 }

@@ -27,8 +27,8 @@ export default function OrarioLezioni() {
               style={{
                 height: '40px',
                 maxWidth: '500px',
-                backgroundColor: '#F0F3F5',
-                color: '#002B49',
+                backgroundColor: 'var(--background-light)',
+                color: 'var(--dark-navy)',
                 borderRadius: '8px',
               }}
             />

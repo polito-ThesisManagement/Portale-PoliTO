@@ -14,7 +14,7 @@ function TriggerExample(props) {
 
   return (
     <OverlayTrigger placement="bottom" delay={{ show: 150, hide: 400 }} overlay={renderTooltip}>
-      <QuestionCircleFill className="zooming-icon" size={24} color="#002B49" />
+      <QuestionCircleFill className="zooming-icon" size={24} color="var(--dark-navy)" />
     </OverlayTrigger>
   );
 }

@@ -1,6 +1,6 @@
 .custom-card {
-  background-color: #ffffff;
-  color: #002b49;
+  background-color: var(--white);
+  color: var(--dark-navy);
   border-radius: 32px;
   margin-bottom: 16px;
   padding-top: 20px;
@@ -31,9 +31,9 @@
 
 .card-button {
   height: 40px;
-  background-color: #ffffff;
-  color: #002b49;
-  border-color: #002b49;
+  background-color: var(--white);
+  color: var(--dark-navy);
+  border-color: var(--dark-navy);
   padding-top: 7px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -44,8 +44,8 @@
 }
 
 .card-button:hover {
-  border-color: #002b49;
-  background-color: #002b49;
+  border-color: var(--dark-navy);
+  background-color: var(--dark-navy);
 }
 
 .card-link {

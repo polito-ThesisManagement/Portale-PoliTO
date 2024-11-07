@@ -65,26 +65,26 @@ export default function Tirocini() {
             <ArrowRightShort />
           </span>
         </div>
-        <span style={{ color: '#808080' }}>Tirocini</span>
+        <span style={{ color: 'var(--trueGray)' }}>Tirocinio</span>
       </div>
       <Container className="mt-3 me-3">
         <div className="d-flex justify-content-start">
           <List size={40} />
           <h1 style={{ marginLeft: '8px', fontFamily: 'Montserrat' }}>Elenco Proposte Tirocinio </h1>
         </div>
-        <Button style={{ backgroundColor: '#B75E00', alignSelf: 'baseline' }} onClick={handleShow}>
+        <Button style={{ backgroundColor: 'var(--navy)', alignSelf: 'baseline' }} onClick={handleShow}>
           <FilterCircleFill /> Filtra le proposte
         </Button>
         <div className="p-3 ">
           <Table striped responsive="sm" hover="primary">
             <thead>
               <tr>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Azienda</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Incarico</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Sede/i</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Durata</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Scadenza</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Invia CV</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Azienda</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Incarico</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Sede/i</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Durata</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Scadenza</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Invia CV</th>
               </tr>
             </thead>
             <tbody>
@@ -136,7 +136,7 @@ export default function Tirocini() {
           <Button style={{ fontFamily: 'Montserrat' }} variant="danger" onClick={handleClose}>
             Annulla
           </Button>
-          <Button style={{ backgroundColor: '#004C81', fontFamily: 'Montserrat' }} onClick={filterStages}>
+          <Button style={{ backgroundColor: 'var(--medium-navy)', fontFamily: 'Montserrat' }} onClick={filterStages}>
             Salva Cambiamenti
           </Button>
         </Modal.Footer>

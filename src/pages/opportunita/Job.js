@@ -49,7 +49,7 @@ export default function Job() {
             <ArrowRightShort />
           </span>
         </div>
-        <span style={{ color: '#808080' }}>Job</span>
+        <span style={{ color: 'var(--trueGray)' }}>Job</span>
       </div>
       <Container className="mt-3 me-3">
         <div className="d-flex justify-content-start">
@@ -73,11 +73,11 @@ export default function Job() {
           <Table striped responsive="sm" hover="primary">
             <thead>
               <tr>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Azienda</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Incarico</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>sede/i</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Inserzione</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Invia CV</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Azienda</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Incarico</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>sede/i</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Inserzione</th>
+                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Invia CV</th>
               </tr>
             </thead>
             <tbody>

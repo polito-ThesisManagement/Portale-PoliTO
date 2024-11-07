@@ -29,13 +29,13 @@ export default function Opportunita() {
             icon={<MdWorkHistory size="42" className="card-icon" />}
             service={t('opportunità.tirocinio')}
             description={t('opportunità.tirocinio_descrizione')}
-            servicePath={'/opportunita'}
+            servicePath={'/opportunita/tirocinio'}
           />
           <BaseCard
             icon={<FaHelmetSafety size="42" className="card-icon" />}
             service={'Job'}
             description={t('opportunità.job_descrizione')}
-            servicePath={'/opportunita'}
+            servicePath={'/opportunita/job'}
           />
           <BaseCard
             icon={<HiMiniClipboardDocumentCheck size="42" className="card-icon" />}

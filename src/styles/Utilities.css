@@ -2,7 +2,7 @@
   margin-left: 224px;
   margin-top: 80px;
   height: 100vh;
-  background-color: #f0f3f5;
+  background-color: var(--background-light);
   margin-right: 8px;
 }
 
@@ -13,8 +13,8 @@
 }
 
 .custom-navbar {
-  background-color: #ffffff;
-  color: #002b49;
+  background-color: var(--white);
+  color: var(--dark-navy);
   z-index: 5;
   width: 100%;
   position: fixed;
@@ -25,11 +25,11 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #f0f3f5;
+  background-color: var(--background-light);
 }
 
 .title {
-  color: #002b49;
+  color: var(--dark-navy);
   display: flex;
   align-items: center;
   padding: 14px;
@@ -45,7 +45,7 @@ body {
 }
 
 .custom-container {
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 10px;
   margin: 0px;
   margin-bottom: 16px;
@@ -53,60 +53,60 @@ body {
 }
 
 .summary {
-  border-color: #f0f3f5;
-  background-color: #f0f3f5;
-  color: #000000;
+  border-color: var(--background-light);
+  background-color: var(---background-light);
+  color: var(--black);
   border-radius: 16px;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
 }
 
 .summary:hover {
-  border-color: #b7e1ff;
-  background-color: #b7e1ff;
+  border-color: var(--light-navy);
+  background-color: var(--light-navy);
 }
 
 .summary.selected {
-  background-color: #002b49;
-  border-color: #002b49;
-  color: #ffffff;
+  background-color: var(--dark-navy);
+  border-color: var(--dark-navy);
+  color: var(--white);
 }
 
 .summary-static {
-  border-color: #f0f3f5;
-  background-color: #f0f3f5;
-  color: #000000;
+  border-color: var(--background-light);
+  background-color: var(--background-light);
+  color: var(--black);
   border-radius: 16px;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
 }
 
 .ticket-category {
-  border-color: #f0f3f5;
-  background-color: #f0f3f5;
-  color: #000000;
+  border-color: var(--background-light);
+  background-color: var(--background-light);
+  color: var(--black);
   border-radius: 16px;
 }
 
 .ticket-category:hover {
-  border-color: #b7e1ff;
-  background-color: #b7e1ff;
+  border-color: var(--light-navy);
+  background-color: var(--light-navy);
 }
 
 .ticket-category.active {
-  background-color: #006db9;
-  border-color: #006db9;
-  color: white;
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
 }
 
 .list-group-item-action:hover {
-  border-color: #b7e1ff;
-  background-color: #b7e1ff;
+  border-color: var(--light-navy);
+  background-color: var(--light-navy);
 }
 
 .list-group-item-action:focus {
-  background-color: #006db9;
-  color: #fff;
+  background-color: var(--navy);
+  color: var(--white);
 }
 
 .course-bar {
@@ -119,9 +119,9 @@ body {
 
 .custom-button {
   height: 40px;
-  color: #002b49;
-  border-color: #002b49;
-  background-color: #ffffff;
+  color: var(--dark-navy);
+  border-color: var(--dark-navy);
+  background-color: var(--white);
   padding-top: 7px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -131,23 +131,23 @@ body {
 }
 
 .custom-button:hover {
-  border-color: #002b49;
-  background-color: #002b49;
-  color: #ffffff;
+  border-color: var(--dark-navy);
+  background-color: var(--dark-navy);
+  color: var(--white);
   transform: scale(1.02);
 }
 
 .custom-button.active {
-  background-color: #002b49;
-  border-color: #002b49;
-  color: white;
+  background-color: var(--dark-navy);
+  border-color: var(--dark-navy);
+  color: var(--white);
 }
 
 .custom-pill-button {
   height: 40px;
-  border-color: rgba(183, 225, 255, 0.4);
-  background-color: rgba(183, 225, 255, 0.4);
-  color: #004c81;
+  border-color: var(--light-navy-transparent);
+  background-color: var(--light-navy-transparent);
+  color: var(--medium-navy);
   padding-top: 7px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -157,16 +157,16 @@ body {
 }
 
 .custom-pill-button:hover {
-  border: #b7e1ff;
-  background-color: #b7e1ff;
-  color: #004c81;
+  border: var(--light-navy);
+  background-color: var(--light-navy);
+  color: var(--medium-navy);
   transform: scale(1.02);
 }
 
 .custom-pill-button.active {
-  background-color: #006db9;
-  border-color: #006db9;
-  color: white;
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
 }
 
 .course-menu-button {
@@ -176,7 +176,7 @@ body {
 }
 
 .accordion-button {
-  color: #002b49;
+  color: var(--dark-navy);
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: 'Montserrat', 'sans-serif';
@@ -194,7 +194,7 @@ body {
 }
 
 .custom-table .centered-th {
-  color: #ef7b00;
+  color: var(--medium-orange);
   position: relative;
   left: -16px;
 }
@@ -220,18 +220,18 @@ body {
 }
 
 .form-control:focus {
-  border-color: #002b49;
+  border-color: var(--dark-navy);
   border-width: 2px;
   box-shadow: none;
 }
 
 .form-control-materiale {
-  border-color: black;
+  border-color: var(--black);
   border-width: 2px;
 }
 
 .form-control-materiale:focus {
-  border-color: black;
+  border-color: var(--black);
   border-width: 2px;
   box-shadow: none;
 }
@@ -246,14 +246,14 @@ body {
 }
 
 .notice-container {
-  background-color: #f0f3f5;
+  background-color: var(--background-light);
   border-radius: 10px;
   margin-bottom: 16px;
   padding-bottom: 8px;
 }
 
 .link-container {
-  color: #000000;
+  color: var(--black);
   text-decoration: none;
 }
 
@@ -263,12 +263,12 @@ body {
 }
 
 .click-notifica:hover {
-  background-color: #b7e1ff;
+  background-color: var(--light-navy);
 }
 
 .click-notifica:active {
-  background-color: #006db9;
-  color: white;
+  background-color: var(--navy);
+  color: var(--white);
 }
 
 .custom-popover {
@@ -280,7 +280,7 @@ body {
 }
 
 .file-container {
-  background-color: #f0f3f5;
+  background-color: var(--background-light);
   border-radius: 10px;
   margin: 0px;
   padding-left: 0px;
@@ -289,7 +289,7 @@ body {
 }
 
 .file-element {
-  background-color: #f0f3f5;
+  background-color: var(--background-light);
   border: hidden;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -302,6 +302,6 @@ body {
 }
 
 .file-element:hover {
-  background-color: #b7e1ff;
+  background-color: var(--light-navy);
   border-radius: 10px;
 }

@@ -46,7 +46,7 @@ export default function CoursePage() {
           <Dropdown style={{ fontSize: '15px', fontFamily: 'Montserrat, sans-serif' }}>
             <Dropdown.Toggle
               className="ms-4 py-1"
-              style={{ backgroundColor: '#1A415A', borderColor: '#1A415A' }}
+              style={{ backgroundColor: 'var(--dark-navy)', borderColor: 'var(--dark-navy)' }}
               id="dropdown-year"
             >
               <span className="p-4">2023/2024</span>
@@ -61,7 +61,7 @@ export default function CoursePage() {
           >
             <Dropdown.Toggle
               className="dropdown-toggle-custom ms-3 py-1"
-              style={{ width: '200px', backgroundColor: '#EF7B00', borderColor: '#EF7B00' }}
+              style={{ width: '200px', backgroundColor: 'var(--medium-orange)', borderColor: 'var(--medium-orange)' }}
               id="dropdown-section"
             >
               <span style={{ display: 'inline-block' }}>{activeButton}</span>

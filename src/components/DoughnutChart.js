@@ -9,11 +9,15 @@ class DoughnutChart extends React.Component {
   render() {
     const { values } = this.props;
 
+    // Retrieve CSS variable values
+    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-orange').trim();
+    const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--navy').trim();
+
     const data = {
       datasets: [
         {
           data: values,
-          backgroundColor: ['#EF7B00', '#006DB9'],
+          backgroundColor: [primaryColor, secondaryColor],
         },
       ],
     };
@@ -23,7 +27,7 @@ class DoughnutChart extends React.Component {
       maintainAspectRatio: false,
       title: {
         display: true,
-        text: 'Douughnut chart',
+        text: 'Doughnut chart',
       },
     };
 

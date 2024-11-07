@@ -60,13 +60,18 @@ export default function BaseCard(props) {
           </span>
           <div className="col d-flex justify-content-end">
             {starClicked ? (
-              <StarFill size="24px" className="star" style={{ color: '#EF7B00' }} onClick={handleStarClick} />
+              <StarFill
+                size="24px"
+                className="star"
+                style={{ color: 'var(--medium-orange)' }}
+                onClick={handleStarClick}
+              />
             ) : (
-              <Star size="24px" className="star" style={{ color: '#002B49' }} onClick={handleStarClick} />
+              <Star size="24px" className="star" style={{ color: 'var(--dark-navy)' }} onClick={handleStarClick} />
             )}
           </div>
         </div>
-        <div style={{ color: '#000000' }}>{props.description}</div>
+        <div style={{ color: 'var(--black)' }}>{props.description}</div>
         {props.link && props.linkText ? (
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link

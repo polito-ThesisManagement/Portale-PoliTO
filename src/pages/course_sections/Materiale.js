@@ -75,7 +75,7 @@ export default function Materiale() {
                 </ListGroupItem>
                 <ListGroupItem
                   className="file-element ms-5"
-                  style={{ backgroundColor: '#006DB9', width: '', borderRadius: '10px', color: 'white' }}
+                  style={{ backgroundColor: 'var(--navy)', width: '', borderRadius: '10px', color: 'white' }}
                 >
                   <Folder2Open size={20} />
                   <span className="ms-2">Lab1</span>

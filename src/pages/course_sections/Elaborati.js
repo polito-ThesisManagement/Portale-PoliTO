@@ -16,7 +16,7 @@ export default function Elaborati() {
         </div>
         <Container
           className="custom-container d-flex flex-column align-items-center justify-content-center"
-          style={{ backgroundColor: '#F0F3F5' }}
+          style={{ backgroundColor: 'var(--background.light)' }}
         >
           <Form.Label htmlFor="inputPassword5" className="text-style mt-2">
             Descrizione elaborato:

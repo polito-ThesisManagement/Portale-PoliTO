@@ -127,7 +127,7 @@ export default function PoliNavbar() {
         <Navbar.Brand className="d-none d-lg-block">
           <span
             style={{
-              color: '#002B49',
+              color: 'var(--dark-navy)',
               fontFamily: 'Montserrat, sans-serif',
               fontWeight: '600',
               display: 'inline-block',
@@ -147,11 +147,11 @@ export default function PoliNavbar() {
               target="_blank"
               style={{ marginRight: '5px', marginTop: '9px' }}
             >
-              <Envelope size={28} color="#002B49" />
+              <Envelope size={28} color="var(--dark-navy)" />
             </Nav.Link>
             <Nav.Link style={{ marginRight: '0px', marginTop: '9px' }}>
               {avvisi[0].length === 0 ? (
-                <Bell size={28} color="#002B49" />
+                <Bell size={28} color="var(--dark-navy)" />
               ) : (
                 <OverlayTrigger
                   show={showPopover}
@@ -161,12 +161,15 @@ export default function PoliNavbar() {
                   overlay={popover}
                 >
                   <span ref={targetRef}>
-                    <BellFill size={28} color="#002B49" onClick={handleBellClick} />
+                    <BellFill size={28} color="var(--dark-navy)" onClick={handleBellClick} />
                   </span>
                 </OverlayTrigger>
               )}
             </Nav.Link>
-            <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#002B49' }}>
+            <Navbar.Text
+              className="text-style"
+              style={{ fontWeight: '500', fontSize: '16px', color: 'var(--dark-navy)' }}
+            >
               <div className="d-none d-md-block" style={{ marginLeft: '12px', marginRight: '12px' }}>
                 s123456
                 <br />
@@ -184,7 +187,7 @@ export default function PoliNavbar() {
                     boxShadow: 'none',
                   }}
                 >
-                  <PersonCircle height={48} width={46} color="#002B49" />
+                  <PersonCircle height={48} width={46} color="var(--dark-navy)" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu
                   style={{

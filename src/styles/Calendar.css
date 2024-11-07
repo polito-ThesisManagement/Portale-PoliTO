@@ -24,16 +24,16 @@
 }
 
 .custom-rbc-toolbar button {
-  background-color: #ffffff;
-  border-color: #002b49;
-  color: #002b49;
+  background-color: var(--white);
+  border-color: var(--dark-navy);
+  color: var(--dark-navy);
   font-weight: 500;
 }
 
 .custom-rbc-toolbar button:hover {
-  background-color: #002b49;
-  border-color: #002b49;
-  color: #ffffff;
+  background-color: var(--dark-navy);
+  border-color: var(--dark-navy);
+  color: var(--white);
   transform: scale(1.02);
 }
 
@@ -42,8 +42,8 @@
 }
 
 .custom-rbc-toolbar .view-button.active {
-  background-color: #002b49;
-  border-color: #002b49;
+  background-color: var(--dark-navy);
+  border-color: var(--dark-navy);
   font-weight: 500;
 }
 
@@ -90,6 +90,6 @@
 }
 
 .rbc-current-time-indicator {
-  color: #002b49;
-  background-color: #002b49;
+  color: var(--dark-navy);
+  background-color: var(--dark-navy);
 }
