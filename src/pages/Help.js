@@ -15,6 +15,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { useTranslation } from 'react-i18next';
 
 import Title from '../components/Title';
 import Guide from '../data/Guide.json';
@@ -22,6 +23,8 @@ import TicketCategories from '../data/TicketCategories.json';
 import '../styles/Utilities.css';
 
 export default function Help() {
+  const { t } = useTranslation();
+
   const [search, setSearch] = useState('');
   const [filteredCategories, setFilteredCategories] = useState(TicketCategories);
 
@@ -57,7 +60,7 @@ export default function Help() {
             </div>
             <InputGroup className="my-3">
               <Form.Control
-                placeholder="Cerca tra le FAQ..."
+                placeholder={t('help.cerca')}
                 aria-label="FAQ Search"
                 aria-describedby="basic-addon2"
                 style={{
@@ -89,7 +92,7 @@ export default function Help() {
                     action
                     onClick={() => handleCategorieClick(cat)}
                   >
-                    {cat.category}
+                    {t(`help.${cat.key}`)}
                   </ListGroup.Item>
                 );
               })}
@@ -101,7 +104,7 @@ export default function Help() {
             <Container className="custom-container">
               <Accordion className="py-3">
                 <Accordion.Item eventKey="0" className="ticket-accordion">
-                  <Accordion.Header>Domanda 1</Accordion.Header>
+                  <Accordion.Header>{t('help.domanda')} 1</Accordion.Header>
                   <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -110,7 +113,7 @@ export default function Help() {
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1" className="ticket-accordion mt-2">
-                  <Accordion.Header>Domanda 2</Accordion.Header>
+                  <Accordion.Header>{t('help.domanda')} 2</Accordion.Header>
                   <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -119,7 +122,7 @@ export default function Help() {
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2" className="ticket-accordion mt-2">
-                  <Accordion.Header>Domanda 3</Accordion.Header>
+                  <Accordion.Header>{t('help.domanda')} 3</Accordion.Header>
                   <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -130,8 +133,8 @@ export default function Help() {
               </Accordion>
 
               <div className="text-center mt-3 mb-2">
-                <h5 className="text-style">Non hai trovato quello che cerchi?</h5>
-                <Button className="custom-button mt-2">Apri un ticket</Button>
+                <h5 className="text-style">{t('help.non_trovato')}</h5>
+                <Button className="custom-button mt-2">{t('help.apri_ticket')}</Button>
               </div>
             </Container>
           )}
@@ -141,7 +144,7 @@ export default function Help() {
             <div className="subsection">
               <span className="subsection-title">
                 <FaBook size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
-                Guide
+                {t('help.guide')}
               </span>
             </div>
             <ListGroup>
@@ -150,7 +153,7 @@ export default function Help() {
                   <ListGroup.Item key={guida.guida} className="px-1" style={{ border: 'hidden' }}>
                     <Link to={guida.link} target="_blank" className="custom-link mb-auto">
                       <TiArrowForward className="me-1" style={{ marginBottom: '2px' }} />
-                      {guida.guida}
+                      {t(`help.${guida.guida.toLowerCase().replace(/ /g, '_')}`)}
                     </Link>
                   </ListGroup.Item>
                 );
@@ -166,23 +169,23 @@ export default function Help() {
                   className="subsection-icon"
                   style={{ position: 'relative', bottom: '1px', cursor: 'pointer' }}
                 />
-                I tuoi ticket recenti
+                {t('help.ticket')}
               </span>
             </div>
             <ListGroup style={{ borderRadius: '16px' }}>
               <ListGroup.Item className="summary" style={{ marginBottom: '4px' }}>
-                Oggetto ticket 1 <br></br> - Chiuso
+                {t('help.oggetto_ticket')} 1 <br></br> - {t('help.chiuso')}
               </ListGroup.Item>
               <ListGroup.Item className="summary" style={{ marginBottom: '4px' }}>
-                Oggetto ticket 2 <br></br>- Chiuso
+                {t('help.oggetto_ticket')} 2 <br></br>- {t('help.chiuso')}
               </ListGroup.Item>
               <ListGroup.Item className="summary" style={{ marginBottom: '4px' }}>
-                Oggetto ticket 3 <br></br>- Aperto
+                {t('help.oggetto_ticket')} 3<br></br>- {t('help.aperto')}
               </ListGroup.Item>
             </ListGroup>
             <div className="text-center my-2">
               <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
-                Consulta i tuoi ticket
+                {t('help.consulta_ticket')}
               </Button>
             </div>
           </Container>

@@ -10,35 +10,38 @@ import { MdWorkHistory } from 'react-icons/md';
 import { MdSportsFootball } from 'react-icons/md';
 import { TbWorldShare } from 'react-icons/tb';
 
+import { useTranslation } from 'react-i18next';
+
 import BaseCard from '../components/BaseCard';
 import Title from '../components/Title';
 
 export default function Opportunita() {
+  const { t } = useTranslation();
   return (
     <>
       <Title
         icon={<FaBriefcase size={28} style={{ position: 'relative', bottom: '2px' }} />}
-        sectionName="Opportunità"
+        sectionName={t('sidebar.opportunità')}
       />
       <Container style={{ marginLeft: '0px', maxWidth: '1416px' }}>
         <Row>
           <BaseCard
             icon={<MdWorkHistory size="42" className="card-icon" />}
-            service={'Tirocinio'}
-            description={'Elenco proposte di stage curriculare.'}
+            service={t('opportunità.tirocinio')}
+            description={t('opportunità.tirocinio_descrizione')}
             servicePath={'/opportunita'}
           />
           <BaseCard
             icon={<FaHelmetSafety size="42" className="card-icon" />}
             service={'Job'}
-            description={'Bacheca delle proposte di lavoro.'}
+            description={t('opportunità.job_descrizione')}
             servicePath={'/opportunita'}
           />
           <BaseCard
             icon={<HiMiniClipboardDocumentCheck size="42" className="card-icon" />}
-            service={'Borse di studio'}
-            description={'Visualizzazione bandi e borse di studio.'}
-            linkText={'Informazioni sulle borse di studio'}
+            service={t('opportunità.borse_di_studio')}
+            description={t('opportunità.borse_di_studio_descrizione')}
+            linkText={t('opportunità.borse_di_studio_link')}
             link={
               'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/borse-di-studio'
             }
@@ -46,9 +49,9 @@ export default function Opportunita() {
           />
           <BaseCard
             icon={<TbWorldShare size="42" className="card-icon" />}
-            service={"Studiare all'estero"}
-            description={'Visualizzazione e adesione bandi di mobilità.'}
-            linkText={'Informazioni sulle iniziative di mobilità'}
+            service={t('opportunità.iniziative_di_mobilità')}
+            description={t('opportunità.iniziative_di_mobilità_descrizione')}
+            linkText={t('opportunità.iniziative_di_mobilità_link')}
             link={
               'https://www.polito.it/didattica/iscriversi-studiare-laurearsi/studiare-all-estero/iniziative-di-mobilita'
             }
@@ -56,9 +59,9 @@ export default function Opportunita() {
           />
           <BaseCard
             icon={<FaChalkboardTeacher size="42" className="card-icon" />}
-            service={'Collaborazioni studentesche'}
-            description={'Iscrizione alle collaborazioni studentesche offerte dal Politecnico.'}
-            linkText={'Informazioni sulle collaborazioni part-time'}
+            service={t('opportunità.collaborazioni')}
+            description={t('opportunità.collaborazioni_descrizione')}
+            linkText={t('opportunità.collaborazioni_link')}
             link={
               'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/diritto-allo-studio-e-contribuzione-studentesca/collaborazioni-part-time'
             }
@@ -66,9 +69,9 @@ export default function Opportunita() {
           />
           <BaseCard
             icon={<GiTeamIdea size="42" className="card-icon" />}
-            service={'Team studenteschi'}
-            description={'Visualizzazione e adesione ai team studenteschi del Politecnico.'}
-            linkText={'Informazioni su team e progetti studenteschi'}
+            service={t('opportunità.team_studenteschi')}
+            description={t('opportunità.team_studenteschi_descrizione')}
+            linkText={t('opportunità.team_studenteschi_link')}
             link={
               'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/team-e-progetti-studenteschi'
             }
@@ -76,9 +79,9 @@ export default function Opportunita() {
           />
           <BaseCard
             icon={<HiMiniUserGroup size="42" className="card-icon" />}
-            service={'Associazioni studentesche'}
-            description={'Visualizzazione e adesione alle associazioni del Politecnico.'}
-            linkText={'Informazioni sulle assiociazioni studentesche'}
+            service={t('opportunità.associazioni')}
+            description={t('opportunità.associazioni_descrizione')}
+            linkText={t('opportunità.associazioni_link')}
             link={
               'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/associazioni-studentesche'
             }
@@ -87,8 +90,8 @@ export default function Opportunita() {
           <BaseCard
             icon={<MdSportsFootball size="42" className="card-icon" />}
             service={'Sport'}
-            description={'Eventi sportivi organizzati presso il Politecnico.'}
-            linkText={'Informazioni sulle iniziative sportive'}
+            description={t('opportunità.sport_descrizione')}
+            linkText={t('opportunità.sport_link')}
             link={'https://www.polito.it/didattica/servizi-e-vita-al-politecnico/vivere-il-politecnico/sport'}
             servicePath={'/opportunita'}
           />

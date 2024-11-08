@@ -9,10 +9,14 @@ import { Star, StarFill } from 'react-bootstrap-icons';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { PiUserListFill } from 'react-icons/pi';
 
+import { useTranslation } from 'react-i18next';
+
 import { FavoritesContext } from '../App';
 import '../styles/Card.css';
 
 export default function BaseCard(props) {
+  const { t } = useTranslation();
+
   const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const [starClicked, setStarClicked] = useState(() => {
@@ -85,7 +89,7 @@ export default function BaseCard(props) {
           }}
         >
           <Link to={props.servicePath}>
-            <Button className="card-button">Accedi</Button>
+            <Button className="card-button">{t('Accedi')}</Button>
           </Link>
         </div>
       </Container>

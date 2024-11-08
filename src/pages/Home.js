@@ -16,6 +16,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { useTranslation } from 'react-i18next';
 
 import { FavoritesContext } from '../App';
 import CourseNotice from '../components/CourseNotice';
@@ -33,6 +34,8 @@ import '../styles/Utilities.css';
 export default function Home() {
   const { favorites } = useContext(FavoritesContext);
 
+  const { t } = useTranslation();
+
   const renderTooltip = service => <Tooltip id="button-tooltip">{service}</Tooltip>;
 
   return (
@@ -45,9 +48,9 @@ export default function Home() {
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
                 <FaList size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
-                Carico didattico
+                {t('homepage.carico_didattico')}
               </span>
-              <InfoTooltip text="Attraverso il carico didattico è possibile accedere alle pagine dei singoli corsi" />
+              <InfoTooltip text={t('homepage.cd_tooltip')} />
             </div>
             <ListGroup style={{ borderRadius: '16px' }}>
               {Courses.map(corso => {
@@ -67,9 +70,9 @@ export default function Home() {
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
                 <StarFill size={20} className="subsection-icon" style={{ position: 'relative', bottom: '2px' }} />
-                Preferiti
+                {t('homepage.preferiti')}
               </span>
-              <InfoTooltip text="I servizi selezionati come preferiti (attraverso icona ★) compariranno qui" />
+              <InfoTooltip text={t('homepage.preferiti_tooltip')} />
             </div>
             <Row>
               {favorites.length > 0 ? (
@@ -86,7 +89,7 @@ export default function Home() {
                 })
               ) : (
                 <p className="mb-2 px-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Nessun servizio selezionato tra i preferiti
+                  {t('homepage.nessun_servizio')}
                 </p>
               )}
             </Row>
@@ -104,7 +107,7 @@ export default function Home() {
                 />
                 Agenda
               </span>
-              <InfoTooltip text="Attraverso l'agenda è possibile visionare lezioni, appelli, scadenze e prenotazioni" />
+              <InfoTooltip text={t('homepage.agenda_tooltip')} />
             </div>
             <WidgetCalendar />
           </Container>
@@ -112,12 +115,12 @@ export default function Home() {
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
                 <FaClipboard size={20} className="subsection-icon" style={{ position: 'relative', bottom: '2px' }} />
-                Avvisi recenti
+                {t('homepage.avvisi_recenti')}
               </span>
-              <InfoTooltip text="Elenco degli avvisi pubblicati negli ultimi 7 giorni" />
+              <InfoTooltip text={t('homepage.avvisi_tooltip')} />
             </div>
             <Tabs defaultActiveKey="generali" transition={false} id="tab-avvisi" className="mb-2 custom-tab">
-              <Tab eventKey="generali" title="Avvisi generali">
+              <Tab eventKey="generali" title={t('homepage.avvisi_generali')}>
                 {GeneralNotices.map(notice => {
                   return (
                     <GeneralNotice
@@ -130,7 +133,7 @@ export default function Home() {
                   );
                 })}
               </Tab>
-              <Tab eventKey="corsi" title="Avvisi corsi">
+              <Tab eventKey="corsi" title={t('homepage.avvisi_corsi')}>
                 {CourseNotices.map(notice => {
                   return (
                     <CourseNotice

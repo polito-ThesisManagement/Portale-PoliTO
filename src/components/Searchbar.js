@@ -2,13 +2,18 @@ import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { Form, InputGroup, ListGroup } from 'react-bootstrap';
+import { InputGroup } from 'react-bootstrap';
 
 import { Search } from 'react-bootstrap-icons';
+
+import Form from 'react-bootstrap/Form';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { useTranslation } from 'react-i18next';
 
 export default function Searchbar(props) {
   const [filteredData, setFilteredData] = useState([]);
   const [searchWord, setSearchWord] = useState('');
+  const { t } = useTranslation();
 
   const handleChange = event => {
     const word = event.target.value;
@@ -42,7 +47,7 @@ export default function Searchbar(props) {
         <Form.Control
           className="truncated"
           type="search"
-          placeholder="Ricerca nel portale..."
+          placeholder={t('navbar.ricerca_nel_portale')}
           aria-label="Search"
           size="md"
           style={{

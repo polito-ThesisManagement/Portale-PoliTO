@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+
 import { Button } from 'react-bootstrap';
 
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
@@ -7,6 +9,7 @@ import 'moment/locale/it';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 //import events from '../data/Events';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useTranslation } from 'react-i18next';
 
 import '../styles/Calendar.css';
 
@@ -23,6 +26,8 @@ const CustomToolbar = toolbar => {
     toolbar.onNavigate('TODAY');
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="custom-rbc-toolbar timetable">
       <span className="rbc-btn-group">
@@ -30,7 +35,7 @@ const CustomToolbar = toolbar => {
           <BsChevronLeft />
         </Button>
         <Button type="button" onClick={goToToday}>
-          Oggi
+          {t('homepage.agenda.oggi')}
         </Button>
         <Button type="button" onClick={goToNext}>
           <BsChevronRight />
@@ -61,7 +66,13 @@ const formats = {
 };
 
 export default function OrarioLezioniAgenda() {
-  const localizer = momentLocalizer(moment);
+  const { i18n } = useTranslation();
+  const [localizer, setLocalizer] = useState(momentLocalizer(moment));
+
+  useEffect(() => {
+    moment.locale(i18n.language);
+    setLocalizer(momentLocalizer(moment));
+  }, [i18n.language]);
 
   return (
     <Calendar

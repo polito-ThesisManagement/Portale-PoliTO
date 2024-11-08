@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Button } from 'react-bootstrap';
 
@@ -8,11 +8,14 @@ import moment from 'moment';
 import 'moment/locale/it';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useTranslation } from 'react-i18next';
 
 import '../styles/Calendar.css';
 
 const CustomToolbar = toolbar => {
   const [isMonthView, setMonthView] = useState(true);
+
+  const { t } = useTranslation();
 
   const goToBack = () => {
     toolbar.onNavigate('PREV');
@@ -44,7 +47,7 @@ const CustomToolbar = toolbar => {
             <BsChevronLeft />
           </Button>
           <Button type="button" onClick={goToToday}>
-            Oggi
+            {t('homepage.agenda.oggi')}
           </Button>
           <Button type="button" onClick={goToNext}>
             <BsChevronRight />
@@ -55,10 +58,10 @@ const CustomToolbar = toolbar => {
 
         <span className="rbc-btn-group">
           <Button onClick={goToWeekView} className={`view-button ${isMonthView ? '' : 'active'}`}>
-            Settimana
+            {t('homepage.agenda.settimana')}
           </Button>
           <Button onClick={goToMonthView} className={`view-button ${isMonthView ? 'active' : ''}`}>
-            Mese
+            {t('homepage.agenda.mese')}
           </Button>
         </span>
       </div>
@@ -68,7 +71,7 @@ const CustomToolbar = toolbar => {
             <BsChevronLeft />
           </Button>
           <Button type="button" onClick={goToToday}>
-            Oggi
+            {t('homepage.agenda.oggi')}
           </Button>
           <Button type="button" onClick={goToNext}>
             <BsChevronRight />
@@ -77,10 +80,10 @@ const CustomToolbar = toolbar => {
 
         <span className="rbc-btn-group" style={{ marginLeft: '0px', marginTop: '6px', marginBottom: '6px' }}>
           <Button onClick={goToWeekView} className={`view-button ${isMonthView ? '' : 'active'}`}>
-            Settimana
+            {t('homepage.agenda.settimana')}
           </Button>
           <Button onClick={goToMonthView} className={`view-button ${isMonthView ? 'active' : ''}`}>
-            Mese
+            {t('homepage.agenda.mese')}
           </Button>
         </span>
 
@@ -110,7 +113,13 @@ const formats = {
 };
 
 export default function WidgetCalendar() {
-  const localizer = momentLocalizer(moment);
+  const { i18n } = useTranslation();
+  const [localizer, setLocalizer] = useState(momentLocalizer(moment));
+
+  useEffect(() => {
+    moment.locale(i18n.language);
+    setLocalizer(momentLocalizer(moment));
+  }, [i18n.language]);
 
   return (
     <Calendar

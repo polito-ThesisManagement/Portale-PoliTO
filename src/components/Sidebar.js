@@ -8,11 +8,14 @@ import { FaInfoCircle } from 'react-icons/fa';
 import { FaBookOpen, FaBriefcase, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
 import { MdApps } from 'react-icons/md';
 
+import { useTranslation } from 'react-i18next';
+
 import '../styles/Sidebar.css';
 import '../styles/Utilities.css';
 
 export default function Sidebar() {
   const location = useLocation();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -33,7 +36,7 @@ export default function Sidebar() {
             >
               <FaBookOpen size={28} />
               <span className="sidebar-text" style={{ marginTop: '2px' }}>
-                Didattica
+                {t('sidebar.didattica')}
               </span>
             </Link>
           </Nav.Item>
@@ -44,7 +47,7 @@ export default function Sidebar() {
             >
               <FaUser size={28} />
               <span className="sidebar-text" style={{ marginTop: '2px' }}>
-                Area personale
+                {t('sidebar.area_personale')}
               </span>
             </Link>
           </Nav.Item>
@@ -55,7 +58,7 @@ export default function Sidebar() {
             >
               <FaUserGraduate size={25} style={{ marginLeft: '1px' }} />
               <span className="sidebar-text" style={{ marginTop: '3px' }}>
-                Carriera
+                {t('sidebar.carriera')}
               </span>
             </Link>
           </Nav.Item>
@@ -66,7 +69,7 @@ export default function Sidebar() {
             >
               <FaBriefcase size={25} style={{ marginLeft: '1px' }} />
               <span className="sidebar-text" style={{ marginTop: '1px' }}>
-                Opportunità
+                {t('sidebar.opportunità')}
               </span>
             </Link>
           </Nav.Item>
@@ -77,7 +80,7 @@ export default function Sidebar() {
             >
               <MdApps size={28} style={{ marginLeft: '-1px' }} />
               <span className="sidebar-text" style={{ marginTop: '3px' }}>
-                Servizi
+                {t('sidebar.servizi')}
               </span>
             </Link>
           </Nav.Item>

@@ -1,0 +1,15 @@
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-top: -1px;
+}
+
+.dropdown-submenu:hover .submenu {
+    display: block;
+}
