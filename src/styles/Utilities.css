@@ -68,7 +68,7 @@ body {
 }
 
 .summary:hover .link-container {
-  color: var(--black); 
+  color: var(--black);
 }
 
 .summary.selected {

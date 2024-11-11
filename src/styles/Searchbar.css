@@ -1,4 +1,4 @@
 .truncated::placeholder {
-    color: var(--placeholder); 
-    opacity: 1;
+  color: var(--placeholder);
+  opacity: 1;
 }
