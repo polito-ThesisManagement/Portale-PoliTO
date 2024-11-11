@@ -124,10 +124,7 @@ export default function Tirocini() {
             <label style={{ fontFamily: 'var(--font-primary)', marginBottom: '2px' }}>Durata:</label>
             <Form.Select
               onChange={e => setDurata(e.target.value)}
-              style={{
-                backgroundColor: 'var(--background)',
-                color: 'var(--text)',
-              }}
+              style={{ backgroundColor: 'var(--background)', color: 'var(--text)' }}
             >
               <option value="">Tutte</option>
               <option value="3">3 mesi</option>

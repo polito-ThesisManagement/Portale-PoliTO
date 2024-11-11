@@ -57,8 +57,11 @@ export default function CoursePage() {
             >
               <span className="p-4">2023/2024</span>
             </Dropdown.Toggle>
-            <Dropdown.Menu className="px-4">
-              <Dropdown.Item>2023/2024</Dropdown.Item>
+            <Dropdown.Menu
+              className="px-4"
+              style={{ backgroundColor: 'var(--primary)', borderColor: 'var(--primary)' }}
+            >
+              <Dropdown.Item style={{ color: 'var(--surface)' }}>2023/2024</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown

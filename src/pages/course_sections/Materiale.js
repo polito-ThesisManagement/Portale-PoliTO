@@ -39,24 +39,25 @@ export default function Materiale() {
           <Col md={5} className="d-flex">
             <InputGroup>
               <Form.Control
+                className="form-control-materiale mb-2 truncated"
+                type="search"
                 placeholder={t('didattica.corso.cerca_materiale')}
                 aria-label="Cerca Materiale"
                 aria-describedby="basic-addon2"
+                size="md"
                 style={{
                   borderRadius: '8px',
-                  position: 'relative',
                   bottom: '1px',
                   backgroundColor: 'var(--background)',
                   color: 'var(--primary)',
                 }}
-                className="form-control-materiale mb-2 pe-4 truncated"
               />
               <Search
                 style={{
                   position: 'relative',
                   zIndex: '3',
                   right: '28',
-                  top: '11',
+                  top: '12',
                   color: 'var(--primary)',
                 }}
               />

@@ -60,10 +60,11 @@ export default function Help() {
             </div>
             <InputGroup className="my-3">
               <Form.Control
+                className="truncated"
+                type="search"
                 placeholder={t('help.cerca')}
                 aria-label="FAQ Search"
                 aria-describedby="basic-addon2"
-                className="truncated"
                 style={{
                   height: '40px',
                   backgroundColor: 'var(--background)',

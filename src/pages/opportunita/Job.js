@@ -66,10 +66,18 @@ export default function Job() {
           <Form.Control
             type="search"
             placeholder="Ricerca per corso di studi, nome azienda, sede, incarico"
-            className="me-2"
+            className="me-2 truncated"
             aria-label="Search"
             size="md"
-            style={{ flex: '1', width: '300px', height: '80%', marginTop: '10px', marginBottom: '10px' }}
+            style={{
+              flex: '1',
+              width: '300px',
+              height: '80%',
+              marginTop: '10px',
+              marginBottom: '10px',
+              backgroundColor: 'var(--surface)',
+              color: 'var(--primary)',
+            }}
             color="primary"
             value={search}
             onChange={handleChange}
@@ -87,13 +95,13 @@ export default function Job() {
               </tr>
             </thead>
             <tbody>
-              {jobs.map(element => (
+              {jobs.map((element, index) => (
                 <tr key={getRandomNumber(1, 10000)}>
                   <td>{element.azienda}</td>
                   <td>{element.lavoro}</td>
                   <td>{element.sede}</td>
                   <td>{element.data_ins}</td>
-                  <td style={{ textAlign: 'center' }}>{element.invia_cv ? <Send /> : 'non abilitato'}</td>
+                  <td>{element.invia_cv ? <Send /> : 'non abilitato'}</td>
                 </tr>
               ))}
             </tbody>
