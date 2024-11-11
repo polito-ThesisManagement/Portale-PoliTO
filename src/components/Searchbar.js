@@ -10,6 +10,8 @@ import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useTranslation } from 'react-i18next';
 
+import '../styles/Searchbar.css';
+
 export default function Searchbar(props) {
   const [filteredData, setFilteredData] = useState([]);
   const [searchWord, setSearchWord] = useState('');
@@ -52,8 +54,8 @@ export default function Searchbar(props) {
           size="md"
           style={{
             height: '40px',
-            backgroundColor: 'var(--background-light)',
-            color: 'var(--dark-navy)',
+            backgroundColor: 'var(--background)',
+            color: 'var(--primary)',
             borderRadius: '8px',
           }}
           value={searchWord}
@@ -65,6 +67,7 @@ export default function Searchbar(props) {
             zIndex: '3',
             right: '28',
             top: '12',
+            color: 'var(--primary)',
           }}
         />
       </InputGroup>

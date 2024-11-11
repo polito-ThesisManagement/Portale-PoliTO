@@ -1,6 +1,6 @@
 .custom-sidebar {
-  background-color: var(--white);
-  color: var(--dark-navy);
+  background-color: var(--surface);
+  color: var(--primary);
   z-index: 4;
   width: 224px;
   padding: 0;
@@ -25,7 +25,7 @@
 }
 
 .custom-sidebar .nav-link {
-  color: var(--dark-navy);
+  color: var(--primary);
   padding-right: 0;
   margin-left: 16px;
   border-radius: 8px;
@@ -39,8 +39,8 @@
 }
 
 .custom-sidebar .nav-link.active {
-  background-color: var(--dark-navy);
-  color: var(--white);
+  background-color: var(--primary);
+  color: var(--background);
 }
 
 .sidebar-text {

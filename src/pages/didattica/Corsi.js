@@ -144,7 +144,7 @@ export default function Corsi() {
                   className="summary"
                   style={{ marginBottom: '8px', cursor: 'pointer' }}
                 >
-                  <Container className="p-0">
+                  <Container className="link-container p-0">
                     <Row>
                       <Col xs={12} sm={8} className="course-detail truncated ps-2">
                         {rec.corso}
@@ -171,7 +171,7 @@ export default function Corsi() {
               </span>
               <InfoTooltip text={t('didattica.materiale_condiviso_tooltip')} />
             </div>
-            <p className="mb-2 px-2" style={{ fontFamily: 'var(--font-primary)' }}>
+            <p className="mb-2 px-2" style={{ fontFamily: 'var(--font-primary)', color: 'var(--secondary-text)' }}>
               {t('didattica.materiale_condiviso_descrizione')}
             </p>
             <div className="text-center my-2">

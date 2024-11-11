@@ -7,13 +7,27 @@
   --navy: #006db9;                      /* navy.500 - primary.500 */
   --light-navy: #b7e1ff;                /* navy.50 - primary.50 */
   --light-navy-transparent: #B7E1FF66;  /* Transparent version of --light-navy */
+  --light-navy-transperent-2: #B7E1FFDD;/* Transparent version of --light-navy */
   --dark-gray: #33424d;                 /* gray.700 */
   --medium-gray: #415462;               /* gray.600 */
   --trueGray: #737373;                  /* trueGray.500 */
-  --background-light: #f0f3f5;          /* background.light */
   --white: #ffffff;                     /* surface.light */
   --light-orange: #ffc893;              /* orange.200 - secondary.200 */
   --medium-orange: #ef7b00;             /* orange.600 - secondary.600 */
+  --background-light: #f0f3f5;          /* background.light */
+  --background-dark: var(--dark-navy);    /* background.dark */
+  --surface-light: var(--white);          /* surface.light */
+  --surface-dark: #143959;              /* surface.dark */
+
+  
+  --background: var(--background-light); 
+  --surface: var(--surface-light);      
+  --primary: var(--dark-navy);   
+  --text: var(--black);  
+  --secondary-text: #212529;
+  --placeholder: #5f666d;
+  --pill-button: var(--light-navy-transparent);
+  --link: var(--navy);
 
   /* Font Family */
   --font-primary: 'Montserrat', sans-serif;
@@ -32,4 +46,16 @@
   --font-size-lg: 18px;  
   --font-size-xl: 20px; 
   --font-size-xxl: 22px; 
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+  --background: var(--dark-navy);       
+  --surface: #143959;
+  --primary: var(--white);
+  --text: var(--white);
+  --secondary-text: #adb5bd;
+  --placeholder: #adb5bd;
+  --pill-button: var(--light-navy-transperent-2);
+  --link: var(--light-navy);
 }

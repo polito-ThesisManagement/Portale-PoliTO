@@ -5,6 +5,7 @@ import { ClockFill, Search } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 
 import OrarioLezioniAgenda from '../../components/OrarioLezioniAgenda';
+import '../../styles/Utilities.css';
 
 export default function OrarioLezioni() {
   const { t } = useTranslation();
@@ -17,18 +18,19 @@ export default function OrarioLezioni() {
             {t('didattica.ricerca_orario')}
           </span>
         </div>
-        <div className="subsection">
+        <div className="subsection" style={{ color: 'var(--text)' }}>
           <span className="important-detail"> {t('didattica.ricerca_orari')} </span>
           <InputGroup className="my-1">
             <Form.Control
+              className="truncated"
               placeholder={t('didattica.ricerca_orari_placeholder')}
               aria-label=""
               aria-describedby="basic-addon2"
               style={{
                 height: '40px',
                 maxWidth: '500px',
-                backgroundColor: 'var(--background-light)',
-                color: 'var(--dark-navy)',
+                backgroundColor: 'var(--background)',
+                color: 'var(--primary)',
                 borderRadius: '8px',
               }}
             />

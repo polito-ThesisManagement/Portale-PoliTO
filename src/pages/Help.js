@@ -63,10 +63,11 @@ export default function Help() {
                 placeholder={t('help.cerca')}
                 aria-label="FAQ Search"
                 aria-describedby="basic-addon2"
+                className="truncated"
                 style={{
                   height: '40px',
-                  backgroundColor: 'var(--background-light)',
-                  color: 'var(--dark-navy)',
+                  backgroundColor: 'var(--background)',
+                  color: 'var(--primary)',
                   borderRadius: '8px',
                 }}
                 value={search}
@@ -79,6 +80,7 @@ export default function Help() {
                   zIndex: '3',
                   right: '28',
                   top: '12',
+                  color: 'var(--primary)',
                 }}
               />
             </InputGroup>
@@ -133,7 +135,9 @@ export default function Help() {
               </Accordion>
 
               <div className="text-center mt-3 mb-2">
-                <h5 className="text-style">{t('help.non_trovato')}</h5>
+                <h5 className="text-style" style={{ color: 'var(--primary)' }}>
+                  {t('help.non_trovato')}
+                </h5>
                 <Button className="custom-button mt-2">{t('help.apri_ticket')}</Button>
               </div>
             </Container>
@@ -150,7 +154,11 @@ export default function Help() {
             <ListGroup>
               {Guide.map(guida => {
                 return (
-                  <ListGroup.Item key={guida.guida} className="px-1" style={{ border: 'hidden' }}>
+                  <ListGroup.Item
+                    key={guida.guida}
+                    className="px-1"
+                    style={{ border: 'hidden', backgroundColor: 'var(--surface)' }}
+                  >
                     <Link to={guida.link} target="_blank" className="custom-link mb-auto">
                       <TiArrowForward className="me-1" style={{ marginBottom: '2px' }} />
                       {t(`help.${guida.guida.toLowerCase().replace(/ /g, '_')}`)}

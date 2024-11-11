@@ -52,8 +52,7 @@ export default function CourseSummary(props) {
           <Col xs={10} sm={2} className="detail truncated pe-3">
             {props.crediti} CFU
           </Col>
-          <Col className="p-0" />
-          <Col className="link-container p-0" style={{ position: 'relative', left: '-8px' }}>
+          <Col className="p-0" style={{ position: 'relative', left: '-8px' }}>
             {avvisi[0].some(obj => {
               return obj.course === props.nome;
             }) ? (

@@ -15,7 +15,7 @@ export default function Avvisi() {
   return (
     <>
       <Container className="custom-container m-0">
-        <div className="subsection">
+        <div className="subsection" style={{ color: 'var(--text)' }}>
           {avvisi
             .filter(avviso => avviso.course === nome)
             .map(avviso => (

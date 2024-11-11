@@ -18,11 +18,18 @@ export default function Materiale() {
       <Container className="custom-container pt-3 pb-2">
         <Row className="mb-1">
           <Col md={6} className="d-flex" style={{ marginTop: '9px' }}>
-            <FaArrowLeft size={20} className="ms-2" />
-            <FaArrowRight size={20} className="ms-4" />
+            <FaArrowLeft size={20} className="ms-2" color="var(--text)" />
+            <FaArrowRight size={20} className="ms-4" color="var(--text)" />
             <Form.Control
               className="form-control-materiale ms-4 truncated"
-              style={{ position: 'relative', bottom: '9px', height: '40px', cursor: 'default' }}
+              style={{
+                position: 'relative',
+                bottom: '9px',
+                height: '40px',
+                cursor: 'default',
+                backgroundColor: 'var(--background)',
+                color: 'var(--primary)',
+              }}
               type="text"
               placeholder={t('didattica.corso.materiale_didattico') + '/Labs/Lab1'}
               readOnly
@@ -35,7 +42,13 @@ export default function Materiale() {
                 placeholder={t('didattica.corso.cerca_materiale')}
                 aria-label="Cerca Materiale"
                 aria-describedby="basic-addon2"
-                style={{ borderRadius: '8px', position: 'relative', bottom: '1px' }}
+                style={{
+                  borderRadius: '8px',
+                  position: 'relative',
+                  bottom: '1px',
+                  backgroundColor: 'var(--background)',
+                  color: 'var(--primary)',
+                }}
                 className="form-control-materiale mb-2 pe-4 truncated"
               />
               <Search
@@ -44,6 +57,7 @@ export default function Materiale() {
                   zIndex: '3',
                   right: '28',
                   top: '11',
+                  color: 'var(--primary)',
                 }}
               />
             </InputGroup>
@@ -102,7 +116,7 @@ export default function Materiale() {
             </Container>
           </Col>
           <Col className="mb-2" xs={12} sm={9}>
-            <Container className="file-container">
+            <Container className="file-container" style={{ color: 'var(--text)' }}>
               <div className="pt-3 px-3">
                 <FaFilePdf size={30} style={{ position: 'relative', left: '13' }} />
                 <div className="mt-1" style={{ fontSize: 'var(--font-size-md)' }}>

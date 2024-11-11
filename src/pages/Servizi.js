@@ -41,7 +41,11 @@ export default function Servizi() {
               <ListGroup>
                 {LinkUtili.map(link => {
                   return (
-                    <ListGroup.Item key={link.servizio} className="px-1" style={{ border: 'hidden' }}>
+                    <ListGroup.Item
+                      key={link.servizio}
+                      className="px-1"
+                      style={{ border: 'hidden', backgroundColor: 'var(--surface)' }}
+                    >
                       <Link to={link.link} target="_blank" className="custom-link">
                         <TiArrowForward className="me-1" style={{ marginBottom: '2px' }} />
                         {t(`servizi.${link.servizio.toLowerCase().replace(/ /g, '_')}`)}

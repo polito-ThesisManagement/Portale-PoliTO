@@ -55,10 +55,10 @@ export default function ExpandibleCard(props) {
               onClick={handleStarClick}
             />
           ) : (
-            <Star size="24px" className="star" style={{ color: 'var(--dark-navy)' }} onClick={handleStarClick} />
+            <Star size="24px" className="star" style={{ color: 'var(--primary)' }} onClick={handleStarClick} />
           )}
         </div>
-        <div style={{ color: 'var(--black)' }}>{props.description}</div>
+        <div style={{ color: 'var(--text)' }}>{props.description}</div>
         {props.link && props.linkText ? (
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link className="card-link custom-link truncated" target="_blank" to={props.link}>

@@ -2,7 +2,7 @@
   margin-left: 224px;
   margin-top: 80px;
   height: 100vh;
-  background-color: var(--background-light);
+  background-color: var(--background);
   margin-right: 8px;
 }
 
@@ -13,8 +13,8 @@
 }
 
 .custom-navbar {
-  background-color: var(--white);
-  color: var(--dark-navy);
+  background-color: var(--surface);
+  color: var(--primary);
   z-index: 5;
   width: 100%;
   position: fixed;
@@ -25,11 +25,11 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: var(--background-light);
+  background-color: var(--background);
 }
 
 .title {
-  color: var(--dark-navy);
+  color: var(--primary);
   display: flex;
   align-items: center;
   padding: 14px;
@@ -45,7 +45,7 @@ body {
 }
 
 .custom-container {
-  background-color: var(--white);
+  background-color: var(--surface);
   border-radius: 10px;
   margin: 0px;
   margin-bottom: 16px;
@@ -53,17 +53,22 @@ body {
 }
 
 .summary {
-  border-color: var(--background-light);
-  background-color: var(--background-light);
-  color: var(--black);
+  border-color: var(--background);
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 16px;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
 }
 
 .summary:hover {
+  color: var(--black);
   border-color: var(--light-navy);
   background-color: var(--light-navy);
+}
+
+.summary:hover .link-container {
+  color: var(--black); 
 }
 
 .summary.selected {
@@ -73,22 +78,23 @@ body {
 }
 
 .summary-static {
-  border-color: var(--background-light);
-  background-color: var(--background-light);
-  color: var(--black);
+  border-color: var(--background);
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 16px;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
 }
 
 .ticket-category {
-  border-color: var(--background-light);
-  background-color: var(--background-light);
-  color: var(--black);
+  border-color: var(--background);
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 16px;
 }
 
 .ticket-category:hover {
+  color: var(--black);
   border-color: var(--light-navy);
   background-color: var(--light-navy);
 }
@@ -119,9 +125,9 @@ body {
 
 .custom-button {
   height: 40px;
-  color: var(--dark-navy);
-  border-color: var(--dark-navy);
-  background-color: var(--white);
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: var(--surface);
   padding-top: 7px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
@@ -131,9 +137,9 @@ body {
 }
 
 .custom-button:hover {
-  border-color: var(--dark-navy);
-  background-color: var(--dark-navy);
-  color: var(--white);
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--background);
   transform: scale(1.02);
 }
 
@@ -146,7 +152,7 @@ body {
 .custom-pill-button {
   height: 40px;
   border-color: var(--light-navy-transparent);
-  background-color: var(--light-navy-transparent);
+  background-color: var(--pill-button);
   color: var(--medium-navy);
   padding-top: 7px;
   font-family: var(--font-primary);
@@ -176,7 +182,8 @@ body {
 }
 
 .accordion-button {
-  color: var(--dark-navy);
+  color: var(--primary);
+  background-color: var(--surface);
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: var(--font-primary);
@@ -184,13 +191,19 @@ body {
 }
 
 .custom-accordion {
+  color: var(--primary);
+  background-color: var(--surface);
   margin-left: 8px;
   border: hidden;
   border-radius: 5px;
 }
 
 .ticket-accordion {
+  color: var(--primary);
+  background-color: var(--surface);
+  margin-left: 8px;
   border: hidden;
+  border-radius: 5px;
 }
 
 .custom-table .centered-th {
@@ -226,13 +239,11 @@ body {
 }
 
 .form-control-materiale {
-  border-color: var(--black);
-  border-width: 2px;
+  border-color: var(--primary);
 }
 
 .form-control-materiale:focus {
-  border-color: var(--black);
-  border-width: 2px;
+  border-color: var(--primary);
   box-shadow: none;
 }
 
@@ -246,15 +257,20 @@ body {
 }
 
 .notice-container {
-  background-color: var(--background-light);
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 10px;
   margin-bottom: 16px;
   padding-bottom: 8px;
 }
 
 .link-container {
-  color: var(--black);
+  color: var(--text);
   text-decoration: none;
+}
+
+.link-container:hover {
+  color: var(--black);
 }
 
 .click-notifica {
@@ -264,6 +280,7 @@ body {
 
 .click-notifica:hover {
   background-color: var(--light-navy);
+  color: var(--black);
 }
 
 .click-notifica:active {
@@ -273,6 +290,8 @@ body {
 
 .custom-popover {
   width: 1000px !important;
+  background-color: var(--surface);
+  color: var(--text);
 }
 
 .zooming-icon:hover {
@@ -280,7 +299,7 @@ body {
 }
 
 .file-container {
-  background-color: var(--background-light);
+  background-color: var(--background);
   border-radius: 10px;
   margin: 0px;
   padding-left: 0px;
@@ -289,7 +308,8 @@ body {
 }
 
 .file-element {
-  background-color: var(--background-light);
+  background-color: var(--background);
+  color: var(--text);
   border: hidden;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
@@ -303,5 +323,11 @@ body {
 
 .file-element:hover {
   background-color: var(--light-navy);
+  color: var(--black);
   border-radius: 10px;
+}
+
+.lang-card {
+  color: var(--primary);
+  background-color: var(--surface);
 }

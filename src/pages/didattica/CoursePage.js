@@ -31,11 +31,17 @@ export default function CoursePage() {
   return (
     <>
       <div className="d-flex mt-4 mx-3">
+        <Link to="/" className="breadcrumb-link">
+          Homepage
+        </Link>
+        <span className="mx-2">
+          <ArrowRightShort color="var(--placeholder)" />
+        </span>
         <Link to="/didattica" className="breadcrumb-link">
           {t('sidebar.didattica')}
         </Link>
         <span className="mx-2" style={{ marginTop: '-2px' }}>
-          <ArrowRightShort />
+          <ArrowRightShort color="var(--placeholder)" />
         </span>
         <span className="breadcrumb">{nome}</span>
       </div>
@@ -46,7 +52,7 @@ export default function CoursePage() {
           <Dropdown style={{ fontSize: 'var(--font-size-md)', fontFamily: 'var(--font-primary)' }}>
             <Dropdown.Toggle
               className="ms-4 py-1"
-              style={{ backgroundColor: 'var(--dark-navy)', borderColor: 'var(--dark-navy)' }}
+              style={{ backgroundColor: 'var(--primary)', borderColor: 'var(--primary)', color: 'var(--surface)' }}
               id="dropdown-year"
             >
               <span className="p-4">2023/2024</span>

@@ -1,4 +1,5 @@
 .dropdown-submenu {
+    background-color: var(--background);
     position: relative;
 }
 
@@ -12,4 +13,12 @@
 
 .dropdown-submenu:hover .submenu {
     display: block;
+}
+
+.dropdown-menu {
+    background-color: var(--background);
+}
+
+.dropdown-item {
+    color: var(--text);
 }

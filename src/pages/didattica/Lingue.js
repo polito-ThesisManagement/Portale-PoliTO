@@ -31,7 +31,7 @@ export default function Lingue() {
             </div>
             <Row>
               <Col sm={6} className="mb-4">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">{t('didattica.caricamento_cdl')}</Card.Title>
                     <Card.Text></Card.Text>
@@ -80,7 +80,7 @@ export default function Lingue() {
             </Row>
             <Row>
               <Col sm={6} md={4} className="mb-4">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
@@ -91,7 +91,7 @@ export default function Lingue() {
                 </Card>
               </Col>
               <Col sm={6} md={4} className="mb-4">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">IELTS Grammar tutorials</Card.Title>
                     <Card.Text></Card.Text>
@@ -102,7 +102,7 @@ export default function Lingue() {
                 </Card>
               </Col>
               <Col sm={6} md={4} className="mb-3">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Listening tutorials</Card.Title>
                     <Card.Text></Card.Text>
@@ -113,7 +113,7 @@ export default function Lingue() {
                 </Card>
               </Col>
               <Col sm={6} md={4} className="mb-3">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Reading tutorials</Card.Title>
                     <Card.Text></Card.Text>
@@ -124,7 +124,7 @@ export default function Lingue() {
                 </Card>
               </Col>
               <Col sm={6} md={4} className="mb-3">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
@@ -160,7 +160,7 @@ export default function Lingue() {
             </Row>
             <Row>
               <Col sm={6} className="mb-4">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">{t('didattica.esame_plida')}</Card.Title>
                     <Card.Text></Card.Text>
@@ -193,7 +193,7 @@ export default function Lingue() {
             </div>
             <Row>
               <Col sm={6} lg={3} className="mb-4 text-center">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body>
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.francese')}
@@ -205,7 +205,7 @@ export default function Lingue() {
                 </Card>
               </Col>
               <Col md={6} lg={3} className="mb-4 text-center">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body>
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.spagnolo')}
@@ -217,7 +217,7 @@ export default function Lingue() {
                 </Card>
               </Col>
               <Col md={6} lg={3} className="mb-4 text-center">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body>
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.tedesco')}
@@ -229,7 +229,7 @@ export default function Lingue() {
                 </Card>
               </Col>
               <Col md={6} lg={3} className="mb-4 text-center">
-                <Card>
+                <Card className="lang-card">
                   <Card.Body>
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.portoghese')}

@@ -1,6 +1,6 @@
 .custom-card {
-  background-color: var(--white);
-  color: var(--dark-navy);
+  background-color: var(--surface);
+  color: var(--primary);
   border-radius: 32px;
   margin-bottom: 16px;
   padding-top: 20px;
@@ -31,9 +31,9 @@
 
 .card-button {
   height: 40px;
-  background-color: var(--white);
-  color: var(--dark-navy);
-  border-color: var(--dark-navy);
+  background-color: var(--surface);
+  color: var(--primary);
+  border-color: var(--primary);
   padding-top: 7px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
@@ -44,8 +44,9 @@
 }
 
 .card-button:hover {
-  border-color: var(--dark-navy);
-  background-color: var(--dark-navy);
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--background);
 }
 
 .card-link {

@@ -1,3 +1,7 @@
+.rbc-calendar {
+  color: var(--text);
+}
+
 .rbc-header,
 .rbc-header + .rbc-header {
   font-family: var(--font-primary);
@@ -24,16 +28,16 @@
 }
 
 .custom-rbc-toolbar button {
-  background-color: var(--white);
-  border-color: var(--dark-navy);
-  color: var(--dark-navy);
+  background-color: var(--surface);
+  border-color: var(--primary);
+  color: var(--primary);
   font-weight: var(--font-weight-medium);
 }
 
 .custom-rbc-toolbar button:hover {
-  background-color: var(--dark-navy);
-  border-color: var(--dark-navy);
-  color: var(--white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--background);
   transform: scale(1.02);
 }
 
@@ -42,8 +46,9 @@
 }
 
 .custom-rbc-toolbar .view-button.active {
-  background-color: var(--dark-navy);
-  border-color: var(--dark-navy);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--background);
   font-weight: var(--font-weight-medium);
 }
 

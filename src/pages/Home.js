@@ -88,7 +88,7 @@ export default function Home() {
                   );
                 })
               ) : (
-                <p className="mb-2 px-3" style={{ fontFamily: 'var(--font-primary)' }}>
+                <p className="mb-2 px-3" style={{ fontFamily: 'var(--font-primary)', color: 'var(--secondary-text)' }}>
                   {t('homepage.nessun_servizio')}
                 </p>
               )}

@@ -38,38 +38,44 @@ export default function Job() {
     <>
       <div className="d-flex mt-3 mx-3">
         <div>
-          <Link to="/">Home</Link>
+          <Link to="/" className="breadcrumb-link">
+            Homepage
+          </Link>
           <span className="mx-2">
-            <ArrowRightShort />
+            <ArrowRightShort color="var(--placeholder)" />
           </span>
         </div>
         <div>
-          <Link to="/opportunita">Opportunità</Link>
+          <Link to="/opportunita" className="breadcrumb-link">
+            Opportunità
+          </Link>
           <span className="mx-2">
-            <ArrowRightShort />
+            <ArrowRightShort color="var(--placeholder)" />
           </span>
         </div>
-        <span style={{ color: 'var(--trueGray)' }}>Job</span>
+        <span className="breadcrumb">Job</span>
       </div>
-      <Container className="mt-3 me-3">
+      <Container className="me-3">
         <div className="d-flex justify-content-start">
-          <ListStars size={40} />
-          <h1 style={{ marginLeft: '8px', fontFamily: 'var(--font-primary)' }}>Elenco offerte lavoro</h1>
+          <span className="section-title">
+            <ListStars size={28} style={{ position: 'relative', bottom: '2px', paddingRight: '2px' }} />
+            Elenco Offerte Lavoro
+          </span>
         </div>
-        <Form className="d-flex me-3 mt-1">
+        <Form className="d-flex mt-1">
           <Form.Control
             type="search"
             placeholder="Ricerca per corso di studi, nome azienda, sede, incarico"
             className="me-2"
             aria-label="Search"
             size="md"
-            style={{ flex: '1', width: '300px', height: '80%' }}
+            style={{ flex: '1', width: '300px', height: '80%', marginTop: '10px', marginBottom: '10px' }}
             color="primary"
             value={search}
             onChange={handleChange}
           />
         </Form>
-        <div className="p-3 ">
+        <div className="mt-3 pb-3">
           <Table striped responsive="sm" hover="primary">
             <thead>
               <tr>

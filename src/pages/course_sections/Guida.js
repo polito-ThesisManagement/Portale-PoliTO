@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 export default function Guida() {
   return (
     <>
-      <Container className="custom-container m-0">
+      <Container className="custom-container m-0" style={{ color: 'var(--text)' }}>
         <Row className="my-3 pt-3">
           <Col md={3}>
             <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
