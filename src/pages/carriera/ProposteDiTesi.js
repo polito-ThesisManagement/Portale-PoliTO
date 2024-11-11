@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+//import { useEffect, useState } from 'react';
+//import axios from 'axios';
+import Proposals from '../../components/Proposals';
 
-import axios from 'axios';
-
-const researchGroups = [
+/*const researchGroups = [
   '03-Aerotermodinamica, Magnetofluidodinamica e dinamica dei plasmi',
   '04-Automazione e Robotica',
   '05-Bioingegneria Industriale',
@@ -240,10 +240,10 @@ const researchGroups = [
   'steps-denerg',
   'www.reslog.polito.it',
   'www.rockmech.polito.it',
-];
+];*/
 
 export default function ProposteDiTesi() {
-  const [thesisProposals, setThesisProposals] = useState([]);
+  /*const [thesisProposals, setThesisProposals] = useState([]);
 
   useEffect(() => {
     const fetchThesisProposals = async () => {
@@ -266,7 +266,7 @@ export default function ProposteDiTesi() {
     };
 
     fetchThesisProposals();
-  }, []);
+  }, []);*/
 
-  return <></>;
+  return <Proposals />;
 }
