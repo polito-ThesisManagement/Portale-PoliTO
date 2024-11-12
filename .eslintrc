@@ -1,0 +1,57 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",          
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "react",    
+    "import"
+  ],
+  "rules": {
+    "react/prop-types": "off",               
+    "no-unused-vars": "warn",               
+    "react/react-in-jsx-scope": "off",       
+    "import/order": ["error", {         
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+      "newlines-between": "always"
+    }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"                   
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]  
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["cypress/**/*.js"],  
+      "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+      },
+      "rules": {
+        "no-unused-expressions": "off",
+        "no-undef": "off"
+      }
+    }
+  ]
+}

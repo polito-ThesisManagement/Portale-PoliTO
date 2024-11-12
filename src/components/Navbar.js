@@ -47,6 +47,7 @@ export default function PoliNavbar() {
   const changeLanguage = lng => {
     i18n.changeLanguage(lng);
     setSelectedLanguage(lng);
+    document.documentElement.setAttribute('lang', lng);
   };
 
   const handleClickOutside = event => {
