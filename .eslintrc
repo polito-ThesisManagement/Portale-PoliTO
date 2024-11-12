@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:react/recommended",          
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 12,
@@ -19,16 +20,14 @@
   },
   "plugins": [
     "react",    
-    "import"
+    "import",
+    "prettier"
   ],
   "rules": {
     "react/prop-types": "off",               
     "no-unused-vars": "warn",               
     "react/react-in-jsx-scope": "off",       
-    "import/order": ["error", {         
-      "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
-      "newlines-between": "always"
-    }]
+    "prettier/prettier": "error"
   },
   "settings": {
     "react": {
@@ -46,7 +45,8 @@
       "env": {
         "browser": true,
         "node": true,
-        "es2021": true
+        "es2021": true,
+        "cypress/globals": true
       },
       "rules": {
         "no-unused-expressions": "off",
