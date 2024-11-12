@@ -8,8 +8,6 @@
                         For that reason, we have removed the display width from the INT data type also in the provided original schema.
  *------------------------------------------------------------------------------------------------------------------------------------**/
 
-START TRANSACTION;
-
 DROP DATABASE IF EXISTS POLITO;
 CREATE DATABASE IF NOT EXISTS POLITO;
 USE POLITO;
@@ -109,8 +107,6 @@ CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS_SUPERVISORS_COSUPERVISORS (
     FOREIGN KEY (thesis_proposal_id) REFERENCES THESIS_PROPOSALS(id) ON DELETE CASCADE,
     FOREIGN KEY (teacher_id) REFERENCES TEACHERS(id) ON DELETE RESTRICT -- are you deleting a teacher?
 );
-
-COMMIT;
 
 /**---------------------------------------------------------------------
  **               SQL Syntax
