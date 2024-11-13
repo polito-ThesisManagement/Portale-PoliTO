@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,7 @@ import { Star, StarFill } from 'react-bootstrap-icons';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { PiUserListFill } from 'react-icons/pi';
 
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import { FavoritesContext } from '../App';
@@ -96,3 +97,12 @@ export default function BaseCard(props) {
     </Col>
   );
 }
+
+BaseCard.propTypes = {
+  icon: PropTypes.node,
+  service: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  link: PropTypes.string,
+  linkText: PropTypes.string,
+  servicePath: PropTypes.string.isRequired,
+};

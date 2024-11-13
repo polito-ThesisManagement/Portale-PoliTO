@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import { Col, Container, Row } from 'react-bootstrap';
@@ -31,7 +33,7 @@ export default function Servizi() {
             <Container className="custom-container">
               <div className="subsection">
                 <span className="subsection-title">
-                  <FaLink size={20} className="subsection-icon"/>
+                  <FaLink size={20} className="subsection-icon" />
                   {t('servizi.link_utili')}
                 </span>
               </div>

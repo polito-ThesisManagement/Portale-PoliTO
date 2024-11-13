@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Col, Container, Row } from 'react-bootstrap';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
@@ -76,9 +78,7 @@ export default function Materiale() {
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
                   <FolderSymlinkFill size={25} />
-                  <span className="ms-2 bold-weight">
-                    {t('didattica.corso.materiale_didattico')}
-                  </span>
+                  <span className="ms-2 bold-weight">{t('didattica.corso.materiale_didattico')}</span>
                 </ListGroupItem>
                 <ListGroupItem className="file-element ms-3">
                   <FolderFill size={20} />
@@ -109,9 +109,7 @@ export default function Materiale() {
                 </ListGroupItem>
                 <ListGroupItem className="file-element">
                   <Dropbox size={25} />
-                  <span className="ms-2 bold-weight">
-                    Dropbox
-                  </span>
+                  <span className="ms-2 bold-weight">Dropbox</span>
                 </ListGroupItem>
               </ListGroup>
             </Container>

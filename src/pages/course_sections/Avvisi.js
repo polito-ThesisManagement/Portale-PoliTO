@@ -21,18 +21,12 @@ export default function Avvisi() {
             .map(avviso => (
               <div key={avviso.id} className="avviso">
                 <div>
-                  <span className="text-style semibold-wight">
-                    {avviso.data}
-                  </span>
+                  <span className="text-style semibold-wight">{avviso.data}</span>
                   <span className="semibold-weight">{' - '}</span>
-                  <span className="text-style semibold-weight">
-                    {nome}
-                  </span>
+                  <span className="text-style semibold-weight">{nome}</span>
                 </div>
                 <div>
-                  <span className="text-style semibold-weight">
-                    {avviso.sender}
-                  </span>
+                  <span className="text-style semibold-weight">{avviso.sender}</span>
                 </div>
                 <div>
                   <span className="text-style">{avviso.body}</span>

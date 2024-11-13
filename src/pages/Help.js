@@ -54,7 +54,7 @@ export default function Help() {
           <Container className="custom-container">
             <div className="subsection">
               <span className="subsection-title">
-                <FaTicketSimple size={20} className="subsection-icon"/>
+                <FaTicketSimple size={20} className="subsection-icon" />
                 Ticketing
               </span>
             </div>
@@ -148,7 +148,7 @@ export default function Help() {
           <Container className="custom-container">
             <div className="subsection">
               <span className="subsection-title">
-                <FaBook size={20} className="subsection-icon"/>
+                <FaBook size={20} className="subsection-icon" />
                 {t('help.guide')}
               </span>
             </div>
@@ -173,7 +173,7 @@ export default function Help() {
           <Container className="custom-container">
             <div className="subsection">
               <span className="subsection-title">
-                <HiMiniTicket size={20} className="subsection-icon"/>
+                <HiMiniTicket size={20} className="subsection-icon" />
                 {t('help.ticket')}
               </span>
             </div>
@@ -189,9 +189,7 @@ export default function Help() {
               </ListGroup.Item>
             </ListGroup>
             <div className="text-center my-2">
-              <Button className="custom-button btn-sm">
-                {t('help.consulta_ticket')}
-              </Button>
+              <Button className="custom-button btn-sm">{t('help.consulta_ticket')}</Button>
             </div>
           </Container>
         </Col>

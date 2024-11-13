@@ -18,7 +18,7 @@ export default function VirtualClassroom() {
               e a cui puoi accedere solo con le credenziali istituzionali. Ti informiamo che qualora la lezione sia
               registrata la tua webcam e il tuo microfono sono disabilitati e solo nel caso in cui tu decida di porre
               delle domande nel corso della lezione e/o intervenire a seguito di richiesta del docente, darai il
-              consenso, affinche la tua immagine e la tua voce siano oggetto di registrazione. L'informativa completa
+              consenso, affinche la tua immagine e la tua voce siano oggetto di registrazione. L’informativa completa
               sul trattamento dei dati personali operato dal Politecnico di Torino e disponibile al seguente link:
               https://didattica.polito.it/privacy/.
             </h6>
@@ -29,9 +29,7 @@ export default function VirtualClassroom() {
             <Container className="file-container">
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
-                  <span className="ms-2 bold-weight">
-                    Registrazioni del corso
-                  </span>
+                  <span className="ms-2 bold-weight">Registrazioni del corso</span>
                 </ListGroupItem>
                 <ListGroupItem className="file-element ms-3">
                   <CameraVideoFill size={25} />

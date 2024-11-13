@@ -27,7 +27,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <FaList size={20} className="subsection-icon"/>
+                <FaList size={20} className="subsection-icon" />
                 {t('homepage.carico_didattico')}
               </span>
               <InfoTooltip text={t('homepage.cd_tooltip')} />
@@ -49,7 +49,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <PiListPlusFill size={20} className="subsection-icon"/>
+                <PiListPlusFill size={20} className="subsection-icon" />
                 {t('didattica.altri_corsi')}
               </span>
               <InfoTooltip text={t('didattica.altri_corsi_tooltip')} />
@@ -73,7 +73,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <BsCalendarCheckFill size={20} className="subsection-icon"/>
+                <BsCalendarCheckFill size={20} className="subsection-icon" />
                 {t('didattica.appelli_prenotati')}
               </span>
               <InfoTooltip text={t('didattica.appelli_prenotati_tooltip')} />
@@ -114,16 +114,14 @@ export default function Corsi() {
             </ListGroup>
 
             <div className="text-center my-2">
-              <Button className="custom-button mt-2 btn-sm">
-                {t('didattica.prenotazione_appelli')}
-              </Button>
+              <Button className="custom-button mt-2 btn-sm">{t('didattica.prenotazione_appelli')}</Button>
             </div>
           </Container>
 
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <PiVideoCameraFill size={20} className="subsection-icon"/>
+                <PiVideoCameraFill size={20} className="subsection-icon" />
                 {t('didattica.virtual_classroom_recenti')}
               </span>
               <InfoTooltip text={t('didattica.vc_tooltip')} />
@@ -158,7 +156,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <ImFolderUpload size={20} className="subsection-icon"/>
+                <ImFolderUpload size={20} className="subsection-icon" />
                 {t('didattica.materiale_condiviso')}
               </span>
               <InfoTooltip text={t('didattica.materiale_condiviso_tooltip')} />
@@ -167,9 +165,7 @@ export default function Corsi() {
               {t('didattica.materiale_condiviso_descrizione')}
             </p>
             <div className="text-center my-2">
-              <Button className="custom-button mt-2 btn-sm">
-                {t('didattica.ricerca_nel_mc')}
-              </Button>
+              <Button className="custom-button mt-2 btn-sm">{t('didattica.ricerca_nel_mc')}</Button>
             </div>
           </Container>
         </Col>

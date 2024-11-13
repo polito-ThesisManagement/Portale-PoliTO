@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -243,6 +243,7 @@ const researchGroups = [
 ];
 
 export default function ProposteDiTesi() {
+  // eslint-disable-next-line no-unused-vars
   const [thesisProposals, setThesisProposals] = useState([]);
 
   useEffect(() => {

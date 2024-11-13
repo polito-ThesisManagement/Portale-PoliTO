@@ -47,7 +47,7 @@ export default function Home() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <FaList size={20} className="subsection-icon"/>
+                <FaList size={20} className="subsection-icon" />
                 {t('homepage.carico_didattico')}
               </span>
               <InfoTooltip text={t('homepage.cd_tooltip')} />
@@ -69,7 +69,7 @@ export default function Home() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <StarFill size={20} className="subsection-icon"/>
+                <StarFill size={20} className="subsection-icon" />
                 {t('homepage.preferiti')}
               </span>
               <InfoTooltip text={t('homepage.preferiti_tooltip')} />
@@ -100,7 +100,7 @@ export default function Home() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <BsFillCalendarFill size={20} className="subsection-icon"/>
+                <BsFillCalendarFill size={20} className="subsection-icon" />
                 Agenda
               </span>
               <InfoTooltip text={t('homepage.agenda_tooltip')} />
@@ -110,7 +110,7 @@ export default function Home() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <FaClipboard size={20} className="subsection-icon"/>
+                <FaClipboard size={20} className="subsection-icon" />
                 {t('homepage.avvisi_recenti')}
               </span>
               <InfoTooltip text={t('homepage.avvisi_tooltip')} />

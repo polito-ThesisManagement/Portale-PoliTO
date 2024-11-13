@@ -47,6 +47,7 @@ export default function PoliNavbar() {
   const changeLanguage = lng => {
     i18n.changeLanguage(lng);
     setSelectedLanguage(lng);
+    document.documentElement.setAttribute('lang', lng);
   };
 
   const handleClickOutside = event => {
@@ -121,8 +122,12 @@ export default function PoliNavbar() {
             className="click-notifica mb-2 py-1 px-2"
           >
             <span className="d-flex" style={{ fontSize: 'var(--font-size-md)' }}>
-              <div className="medium-weight" style={{ marginRight: '6px' }}>{notifica.data} -</div>
-              <div className="semibold-weight" style={{ marginRight: '4px' }}>{notifica.course}</div>
+              <div className="medium-weight" style={{ marginRight: '6px' }}>
+                {notifica.data} -
+              </div>
+              <div className="semibold-weight" style={{ marginRight: '4px' }}>
+                {notifica.course}
+              </div>
             </span>
             <div className="medium-weight" style={{ fontSize: 'var(--font-size-sm)' }}>
               ({notifica.sender})
@@ -251,7 +256,8 @@ export default function PoliNavbar() {
                   <Dropdown.Item className="medium-weight">
                     <FaSignOutAlt /> Logout
                   </Dropdown.Item>
-                  <Dropdown.Item className="dropdown-submenu medium-weight"
+                  <Dropdown.Item
+                    className="dropdown-submenu medium-weight"
                     onMouseEnter={() => setShowSubmenu(true)}
                     onMouseLeave={() => setShowSubmenu(false)}
                   >

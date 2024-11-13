@@ -24,9 +24,7 @@ export default function Sidebar() {
           <Nav.Item>
             <Link to="/" className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}>
               <FaHouse size={28} />
-              <span className="sidebar-text">
-                Homepage
-              </span>
+              <span className="sidebar-text">Homepage</span>
             </Link>
           </Nav.Item>
           <Nav.Item>
@@ -35,9 +33,7 @@ export default function Sidebar() {
               className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}
             >
               <FaBookOpen size={28} />
-              <span className="sidebar-text">
-                {t('sidebar.didattica')}
-              </span>
+              <span className="sidebar-text">{t('sidebar.didattica')}</span>
             </Link>
           </Nav.Item>
           <Nav.Item>
@@ -46,9 +42,7 @@ export default function Sidebar() {
               className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}
             >
               <FaUser size={28} />
-              <span className="sidebar-text">
-                {t('sidebar.area_personale')}
-              </span>
+              <span className="sidebar-text">{t('sidebar.area_personale')}</span>
             </Link>
           </Nav.Item>
           <Nav.Item>
@@ -57,9 +51,7 @@ export default function Sidebar() {
               className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}
             >
               <FaUserGraduate size={28} />
-              <span className="sidebar-text">
-                {t('sidebar.carriera')}
-              </span>
+              <span className="sidebar-text">{t('sidebar.carriera')}</span>
             </Link>
           </Nav.Item>
           <Nav.Item>
@@ -68,9 +60,7 @@ export default function Sidebar() {
               className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}
             >
               <FaBriefcase size={28} />
-              <span className="sidebar-text">
-                {t('sidebar.opportunità')}
-              </span>
+              <span className="sidebar-text">{t('sidebar.opportunità')}</span>
             </Link>
           </Nav.Item>
           <Nav.Item>
@@ -79,17 +69,13 @@ export default function Sidebar() {
               className={`nav-link text-style ${location.pathname.includes('/servizi') ? 'active' : ''}`}
             >
               <MdApps size={28} />
-              <span className="sidebar-text">
-                {t('sidebar.servizi')}
-              </span>
+              <span className="sidebar-text">{t('sidebar.servizi')}</span>
             </Link>
           </Nav.Item>
           <Nav.Item>
             <Link to="/help" className={`nav-link text-style ${location.pathname.includes('/help') ? 'active' : ''}`}>
               <FaInfoCircle size={28} />
-              <span className="sidebar-text">
-                Help
-              </span>
+              <span className="sidebar-text">Help</span>
             </Link>
           </Nav.Item>
         </Nav>

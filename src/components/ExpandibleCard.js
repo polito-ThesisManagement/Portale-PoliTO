@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,8 @@ import { Star, StarFill } from 'react-bootstrap-icons';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FaCaretDown } from 'react-icons/fa';
 import { PiUserListFill } from 'react-icons/pi';
+
+import PropTypes from 'prop-types';
 
 import { FavoritesContext } from '../App';
 import '../styles/Card.css';
@@ -77,3 +79,12 @@ export default function ExpandibleCard(props) {
     </Col>
   );
 }
+
+ExpandibleCard.propTypes = {
+  icon: PropTypes.node,
+  service: PropTypes.string.isRequired,
+  servicePath: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  link: PropTypes.string,
+  linkText: PropTypes.string,
+};
