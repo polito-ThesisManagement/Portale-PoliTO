@@ -42,6 +42,8 @@ body {
 
 .subsection-icon {
   margin-right: 10px;
+  position: relative;
+  bottom: 2px;
 }
 
 .custom-container {
@@ -59,6 +61,7 @@ body {
   border-radius: 16px;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
+  margin-bottom: 8px;
 }
 
 .summary:hover {
@@ -75,15 +78,6 @@ body {
   background-color: var(--dark-navy);
   border-color: var(--dark-navy);
   color: var(--white);
-}
-
-.summary-static {
-  border-color: var(--background);
-  background-color: var(--background);
-  color: var(--text);
-  border-radius: 16px;
-  font-family: var(--font-primary);
-  font-size: var(--font-size-sm);
 }
 
 .ticket-category {
@@ -149,6 +143,19 @@ body {
   color: var(--white);
 }
 
+.btn-sm {
+  height: auto;
+}
+
+.didattica-button {
+  width: 200px;
+  margin-right: 36px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .custom-pill-button {
   height: 40px;
   border-color: var(--light-navy-transparent);
@@ -206,14 +213,36 @@ body {
   border-radius: 5px;
 }
 
-.custom-table .centered-th {
-  color: var(--medium-orange);
-  position: relative;
-  left: -16px;
+.custom-table {
+  font-family: var(--font-primary);
+  background-color: var(--surface);
+  color: var(--text);
 }
 
-.course-menu-reduced {
-  display: none;
+.custom-table .custom-th {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.custom-table .custom-td {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.regular-weight {
+  font-weight: var(--font-weight-regular);
+}
+
+.medium-weight {
+  font-weight: var(--font-weight-medium);
+}
+
+.semibold-weight {
+  font-weight: var(--font-weight-semibold);
+}
+
+.bold-weight {
+  font-weight: var(--font-weight-bold);
 }
 
 @media (max-width: 991px) {
@@ -300,11 +329,12 @@ body {
 
 .file-container {
   background-color: var(--background);
+  color: var(--text);
   border-radius: 10px;
   margin: 0px;
   padding-left: 0px;
   padding-bottom: 8px;
-  height: 400px;
+  height: 500px;
 }
 
 .file-element {
@@ -330,4 +360,9 @@ body {
 .lang-card {
   color: var(--primary);
   background-color: var(--surface);
+}
+
+.card-container {
+  margin-left: 0;
+  max-width: 1416px;
 }

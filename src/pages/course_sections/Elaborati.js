@@ -7,7 +7,7 @@ export default function Elaborati() {
     <>
       <Container className="custom-container m-0 d-flex flex-column align-items-center justify-content-center">
         <div className="text-start my-3">
-          <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--text)' }}>
+          <h6 className="text-style medium-weight" style={{ color: 'var(--text)' }}>
             Tramite questo strumento è possibile consegnare file da parte degli studenti ai docenti del corso in
             oggetto. Una volta caricato, il file sarà visibile solo al docente ed allo studente che ha eseguito il
             caricamento e non sarà possibile eliminarlo, ma solo richiedere la cancellazione dei propri elaborati al

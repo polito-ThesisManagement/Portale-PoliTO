@@ -7,7 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function ProvisionalGrade(props) {
   return (
-    <ListGroup.Item className="summary" style={{ marginBottom: '8px' }}>
+    <ListGroup.Item className="summary">
       <Container className="p-0">
         <Row>
           <Col xs={2} className="course-detail p-0 me-3" style={{ marginLeft: '8px' }}>

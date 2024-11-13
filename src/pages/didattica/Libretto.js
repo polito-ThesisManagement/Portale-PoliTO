@@ -26,95 +26,53 @@ export default function Libretto() {
                 <FaList size={20} className="subsection-icon" />
                 {t('didattica.valutazioni_provvisorie')}
               </span>
-              <Table striped className="custom-table" style={{ fontFamily: 'var(--font-primary)' }}>
-                <thead style={{ fontFamily: 'var(--font-primary)' }}>
+              <Table striped className="custom-table">
+                <thead>
                   <tr>
-                    <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>{t('didattica.codice')}</th>
-                    <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>{t('didattica.nome')}</th>
-                    <th
-                      style={{
-                        backgroundColor: 'var(--surface)',
-                        color: 'var(--text)',
-                        position: 'relative',
-                        left: -18,
-                      }}
-                    >
-                      {t('didattica.anno')}
-                    </th>
-                    <th
-                      style={{
-                        backgroundColor: 'var(--surface)',
-                        color: 'var(--text)',
-                        position: 'relative',
-                        left: -24,
-                      }}
-                    >
-                      {t('didattica.crediti')}
-                    </th>
-                    <th
-                      style={{
-                        backgroundColor: 'var(--surface)',
-                        color: 'var(--text)',
-                        position: 'relative',
-                        left: -10,
-                      }}
-                    >
-                      {t('didattica.esito')}
-                    </th>
-                    <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>{t('didattica.data')}</th>
+                    <th className="custom-th">{t('didattica.codice')}</th>
+                    <th className="custom-th">{t('didattica.nome')}</th>
+                    <th className="custom-th text-center">{t('didattica.anno')}</th>
+                    <th className="custom-th text-center">{t('didattica.crediti')}</th>
+                    <th className="custom-th text-center">{t('didattica.esito')}</th>
+                    <th className="custom-th">{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {valutazioniProvvisorie.map((course, index) => (
                     <tr key={course.codice}>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                          fontWeight: 'var(--font-weight-medium)',
-                        }}
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.codice}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                          fontWeight: 'var(--font-weight-medium)',
-                        }}
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.nome}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                        }}
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.anno}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                        }}
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.cfu}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                          fontWeight: 'var(--font-weight-medium)',
-                        }}
+                        className="custom-td text-center medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.esito}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                        }}
+                        className="custom-td"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.data}
                       </td>
@@ -130,95 +88,53 @@ export default function Libretto() {
                 <PiListChecksBold size={28} className="subsection-icon" />
                 {t('didattica.valutazioni')}
               </span>
-              <Table striped className="custom-table" style={{ fontFamily: 'var(--font-primary)' }}>
-                <thead style={{ fontFamily: 'var(--font-primary)' }}>
+              <Table striped className="custom-table">
+                <thead>
                   <tr>
-                    <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>{t('didattica.codice')}</th>
-                    <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>{t('didattica.nome')}</th>
-                    <th
-                      style={{
-                        backgroundColor: 'var(--surface)',
-                        color: 'var(--text)',
-                        position: 'relative',
-                        left: -18,
-                      }}
-                    >
-                      {t('didattica.anno')}
-                    </th>
-                    <th
-                      style={{
-                        backgroundColor: 'var(--surface)',
-                        color: 'var(--text)',
-                        position: 'relative',
-                        left: -24,
-                      }}
-                    >
-                      {t('didattica.crediti')}
-                    </th>
-                    <th
-                      style={{
-                        backgroundColor: 'var(--surface)',
-                        color: 'var(--text)',
-                        position: 'relative',
-                        left: -10,
-                      }}
-                    >
-                      {t('didattica.esito')}
-                    </th>
-                    <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>{t('didattica.data')}</th>
+                    <th className="custom-th">{t('didattica.codice')}</th>
+                    <th className="custom-th">{t('didattica.nome')}</th>
+                    <th className="custom-th text-center">{t('didattica.anno')}</th>
+                    <th className="custom-th text-center">{t('didattica.crediti')}</th>
+                    <th className="custom-th text-center">{t('didattica.esito')}</th>
+                    <th className="custom-th">{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {valutazioni.map((course, index) => (
                     <tr key={course.codice}>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                          fontWeight: 'var(--font-weight-medium)',
-                        }}
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.codice}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                          fontWeight: 'var(--font-weight-medium)',
-                        }}
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.nome}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                        }}
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.anno}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                        }}
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.cfu}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                          fontWeight: 'var(--font-weight-medium)',
-                        }}
+                        className="custom-td text-center medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.voto}
                       </td>
                       <td
-                        style={{
-                          backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)',
-                          color: 'var(--text)',
-                        }}
+                        className="custom-td"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.data}
                       </td>

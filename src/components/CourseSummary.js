@@ -36,7 +36,7 @@ export default function CourseSummary(props) {
   };
 
   return (
-    <ListGroup.Item className="summary" style={{ marginBottom: '8px' }}>
+    <ListGroup.Item className="summary">
       <Container
         className="link-container p-0"
         as={Link}

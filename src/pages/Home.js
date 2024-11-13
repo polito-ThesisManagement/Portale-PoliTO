@@ -40,14 +40,14 @@ export default function Home() {
 
   return (
     <>
-      <Title icon={<FaHouse size={28} style={{ position: 'relative', bottom: '2px' }} />} sectionName="Homepage" />
+      <Title icon={<FaHouse size={28} />} sectionName="Homepage" />
 
       <Row>
         <Col md={12} lg={5}>
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <FaList size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
+                <FaList size={20} className="subsection-icon" />
                 {t('homepage.carico_didattico')}
               </span>
               <InfoTooltip text={t('homepage.cd_tooltip')} />
@@ -69,7 +69,7 @@ export default function Home() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <StarFill size={20} className="subsection-icon" style={{ position: 'relative', bottom: '2px' }} />
+                <StarFill size={20} className="subsection-icon" />
                 {t('homepage.preferiti')}
               </span>
               <InfoTooltip text={t('homepage.preferiti_tooltip')} />
@@ -100,11 +100,7 @@ export default function Home() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <BsFillCalendarFill
-                  size={20}
-                  className="subsection-icon"
-                  style={{ position: 'relative', bottom: '1px' }}
-                />
+                <BsFillCalendarFill size={20} className="subsection-icon" />
                 Agenda
               </span>
               <InfoTooltip text={t('homepage.agenda_tooltip')} />
@@ -114,7 +110,7 @@ export default function Home() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <FaClipboard size={20} className="subsection-icon" style={{ position: 'relative', bottom: '2px' }} />
+                <FaClipboard size={20} className="subsection-icon" />
                 {t('homepage.avvisi_recenti')}
               </span>
               <InfoTooltip text={t('homepage.avvisi_tooltip')} />

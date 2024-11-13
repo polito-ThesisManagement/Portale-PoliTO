@@ -46,4 +46,5 @@
 .sidebar-text {
   padding-left: 10px;
   font-weight: var(--font-weight-medium);
+  margin-top: 3px;
 }

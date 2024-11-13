@@ -8,12 +8,14 @@ export default function GeneralNotice(props) {
       <div className="p-2">
         <div className="mb-1">
           <span className="d-flex">
-            <div style={{ marginRight: '6px', fontWeight: 'var(--font-weight-regular)' }}>{props.data}</div>
-            {props.sender ? <div style={{ fontWeight: 'var(--font-weight-regular)' }}>({props.sender})</div> : null}
+            <div className="regular-weight" style={{ marginRight: '6px' }}>
+              {props.data}
+            </div>
+            {props.sender ? <div className="regular-weight">({props.sender})</div> : null}
           </span>
         </div>
 
-        <span style={{ fontWeight: 'var(--font-weight-semibold)' }}>{props.title}</span>
+        <span className="semibold-weight">{props.title}</span>
 
         <div>{props.body}</div>
       </div>

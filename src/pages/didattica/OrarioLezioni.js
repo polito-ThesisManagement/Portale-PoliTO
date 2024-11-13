@@ -16,7 +16,7 @@ export default function OrarioLezioni() {
       <Container className="custom-container m-0">
         <div className="subsection">
           <span className="subsection-title">
-            <ClockFill size={20} className="subsection-icon" style={{ marginBottom: '2px' }} />
+            <ClockFill size={20} className="subsection-icon" />
             {t('didattica.ricerca_orario')}
           </span>
         </div>
@@ -25,6 +25,7 @@ export default function OrarioLezioni() {
           <InputGroup className="my-1">
             <Form.Control
               className="truncated"
+              type="search"
               placeholder={t('didattica.ricerca_orari_placeholder')}
               aria-label=""
               aria-describedby="basic-addon2"

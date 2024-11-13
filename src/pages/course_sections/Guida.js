@@ -8,9 +8,7 @@ export default function Guida() {
       <Container className="custom-container m-0" style={{ color: 'var(--text)' }}>
         <Row className="my-3 pt-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Anno accademico di inizio valdità
-            </h6>
+            <h6 className="text-style semibold-weight">Anno accademico di inizio validità</h6>
           </Col>
           <Col>
             <h6 className="text-style">2023/2024</h6>
@@ -18,9 +16,7 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Presentazione
-            </h6>
+            <h6 className="text-style semibold-weight">Presentazione</h6>
           </Col>
           <Col>
             <h6 className="text-style">
@@ -37,9 +33,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Risultati attesi
-            </h6>
+            <h6 className="text-style semibold-weight">Risultati attesi</h6>
           </Col>
           <Col>
             <h6 className="text-style">
@@ -53,9 +47,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Prerequisiti
-            </h6>
+            <h6 className="text-style semibold-weight">Prerequisiti</h6>
           </Col>
           <Col>
             <h6 className="text-style">Non sono previsti prerequisiti.</h6>
@@ -63,53 +55,52 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Programma del corso
-            </h6>
+            <h6 className="text-style semibold-weight">Programma del corso</h6>
           </Col>
           <Col>
-            ATOMO: Costituzione del nucleo, struttura dell’atomo di idrogeno e modelli atomici di Bohr e
-            quantistico-ondulatorio. Numeri quantici, principio di esclusione e regola di Hund Forma spaziale degli
-            orbitali s,p,d<br></br>
-            CLASSIFICAZIONE DEGLI ELEMENTI E TAVOLA PERIODICA: Configurazione elettronica degli elementi e periodicità
-            nelle loro proprietà chimiche e fisiche Raggio atomico, energia di ionizzazione ed affinità elettronica.
-            Suddivisione in metalli, nonmetalli e semimetalli. Generalità sui gruppi principali della tavola periodica e
-            su alcuni metalli di transizione.<br></br>
-            LEGAME CHIMICO: Il legame ionico, covalente, metallico. Legame semplice, doppio e triplo. Geometria
-            molecolare, teoria dell’ibridazione e della risonanza. Cenni sulla teoria degli orbitali molecolari.
-            <br></br>
-            INTERAZIONI INTERMOLECOLARI: Interazioni di van der Waals e legame a idrogeno.<br></br>
-            NOMENCLATURA, FORMULE E STECHIOMETRIA: Massa atomica e molecolare, mole, numero di Avogadro; definizioni ed
-            unità di misura. Reazioni acido-base e formazione di sali. Stato di ossidazione e bilanciamento di reazioni
-            redox. Relazioni ponderali in una reazione, reagente limitante. Reazioni di combustione.<br></br>
-            STATO GASSOSO: Leggi dei gas ideali. Equazione di stato dei gas ideali. Distribuzione statistica delle
-            energie (Boltzmann). Equazione di stato dei gas reali.<br></br>
-            STATO LIQUIDO: Tensione di vapore di liquidi puri. Soluzioni e modi di esprimere la loro concentrazione.
-            Dissociazione elettrolitica e grado di ionizzazione. Proprietà colligative di soluzioni elettrolitiche e
-            non. Definizione di acido e base secondo Arrhenius, Brönsted e Lewis. Prodotto ionico dell’acqua. pH, pOH e
-            idrolisi dei sali.<br></br>
-            STATO SOLIDO: Cella elementare e struttura dei più semplici solidi cristallini. Reticoli cristallini.
-            Classificazione dei solidi.<br></br>
-            EQUILIBRI TRA FASI: Liquefazione dei gas. Diagramma di stato di sostanze pure (acqua e anidride carbonica).
-            <br></br>
-            CINETICA CHIMICA E CATALISI: Velocità e ordine di reazione. Equazione di Arrhenius. Energia di attivazione.
-            Catalisi e catalizzatori.<br></br>
-            EQUILIBRIO CHIMICO: Legge di azione di massa. Equilibri chimici omogenei ed eterogenei. Principio di le
-            Chatelier ed influenza della temperatura sull’equilibrio.<br></br>
-            TERMODINAMICA CHIMICA: Primo, secondo e terzo Principio. Entalpia di reazione e legge di Hess. Energia
-            libera ed entropia in una reazione. Criterio di spontaneità.<br></br>
-            ELETTROCHIMICA: Potenziale normale ed effettivo di un elettrodo. Celle elettrochimiche ed equazione di
-            Nernst. Forza elettromotrice di una pila. Reattività di metalli con acidi ossidanti e non. Elettrolisi e
-            leggi di Faraday.<br></br>
-            CHIMICA ORGANICA: Nomenclatura e proprietà dei principali composti organici. I gruppi funzionali più comuni
-            e le loro principali reazioni. Isomeria strutturale.<br></br>
+            <h6 className="text-style">
+              ATOMO: Costituzione del nucleo, struttura dell’atomo di idrogeno e modelli atomici di Bohr e
+              quantistico-ondulatorio. Numeri quantici, principio di esclusione e regola di Hund Forma spaziale degli
+              orbitali s,p,d<br></br>
+              CLASSIFICAZIONE DEGLI ELEMENTI E TAVOLA PERIODICA: Configurazione elettronica degli elementi e periodicità
+              nelle loro proprietà chimiche e fisiche Raggio atomico, energia di ionizzazione ed affinità elettronica.
+              Suddivisione in metalli, nonmetalli e semimetalli. Generalità sui gruppi principali della tavola periodica
+              e su alcuni metalli di transizione.<br></br>
+              LEGAME CHIMICO: Il legame ionico, covalente, metallico. Legame semplice, doppio e triplo. Geometria
+              molecolare, teoria dell’ibridazione e della risonanza. Cenni sulla teoria degli orbitali molecolari.
+              <br></br>
+              INTERAZIONI INTERMOLECOLARI: Interazioni di van der Waals e legame a idrogeno.<br></br>
+              NOMENCLATURA, FORMULE E STECHIOMETRIA: Massa atomica e molecolare, mole, numero di Avogadro; definizioni
+              ed unità di misura. Reazioni acido-base e formazione di sali. Stato di ossidazione e bilanciamento di
+              reazioni redox. Relazioni ponderali in una reazione, reagente limitante. Reazioni di combustione.<br></br>
+              STATO GASSOSO: Leggi dei gas ideali. Equazione di stato dei gas ideali. Distribuzione statistica delle
+              energie (Boltzmann). Equazione di stato dei gas reali.<br></br>
+              STATO LIQUIDO: Tensione di vapore di liquidi puri. Soluzioni e modi di esprimere la loro concentrazione.
+              Dissociazione elettrolitica e grado di ionizzazione. Proprietà colligative di soluzioni elettrolitiche e
+              non. Definizione di acido e base secondo Arrhenius, Brönsted e Lewis. Prodotto ionico dell’acqua. pH, pOH
+              e idrolisi dei sali.<br></br>
+              STATO SOLIDO: Cella elementare e struttura dei più semplici solidi cristallini. Reticoli cristallini.
+              Classificazione dei solidi.<br></br>
+              EQUILIBRI TRA FASI: Liquefazione dei gas. Diagramma di stato di sostanze pure (acqua e anidride
+              carbonica).
+              <br></br>
+              CINETICA CHIMICA E CATALISI: Velocità e ordine di reazione. Equazione di Arrhenius. Energia di
+              attivazione. Catalisi e catalizzatori.<br></br>
+              EQUILIBRIO CHIMICO: Legge di azione di massa. Equilibri chimici omogenei ed eterogenei. Principio di le
+              Chatelier ed influenza della temperatura sull’equilibrio.<br></br>
+              TERMODINAMICA CHIMICA: Primo, secondo e terzo Principio. Entalpia di reazione e legge di Hess. Energia
+              libera ed entropia in una reazione. Criterio di spontaneità.<br></br>
+              ELETTROCHIMICA: Potenziale normale ed effettivo di un elettrodo. Celle elettrochimiche ed equazione di
+              Nernst. Forza elettromotrice di una pila. Reattività di metalli con acidi ossidanti e non. Elettrolisi e
+              leggi di Faraday.<br></br>
+              CHIMICA ORGANICA: Nomenclatura e proprietà dei principali composti organici. I gruppi funzionali più
+              comuni e le loro principali reazioni. Isomeria strutturale.<br></br>
+            </h6>
           </Col>
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Sustainable development goals
-            </h6>
+            <h6 className="text-style semibold-weight">Sustainable development goals</h6>
           </Col>
           <Col>
             <h6 className="text-style">4 - Quality Education</h6>
@@ -117,9 +108,7 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Organizzazione dell’insegnamento
-            </h6>
+            <h6 className="text-style semibold-weight">Organizzazione dell’insegnamento</h6>
           </Col>
           <Col>
             <h6 className="text-style">
@@ -156,9 +145,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Bibliografia
-            </h6>
+            <h6 className="text-style semibold-weight">Bibliografia</h6>
           </Col>
           <Col>
             <h6 className="text-style">
@@ -177,9 +164,7 @@ export default function Guida() {
         </Row>
         <Row className="my-3">
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-              Materiale di supporto allo studio
-            </h6>
+            <h6 className="text-style semibold-weight">Materiale di supporto allo studio</h6>
           </Col>
           <Col>
             <h6 className="text-style">
@@ -189,7 +174,7 @@ export default function Guida() {
         </Row>
         <Row>
           <Col md={3}>
-            <h6 className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
+            <h6 className="text-style semibold-weight">
               Criteri, regole e procedure per l’esame esclusivamente IN PRESENZA
             </h6>
           </Col>

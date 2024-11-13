@@ -18,11 +18,8 @@ export default function Carriera() {
   const { t } = useTranslation();
   return (
     <>
-      <Title
-        icon={<FaUserGraduate size={28} style={{ position: 'relative', bottom: '1px' }} />}
-        sectionName="Carriera"
-      />
-      <Container style={{ marginLeft: '0px', maxWidth: '1416px' }}>
+      <Title icon={<FaUserGraduate size={28} />} sectionName={t('sidebar.carriera')} />
+      <Container className="card-container">
         <Row>
           <BaseCard
             icon={<BsCreditCard2BackFill size="42" className="card-icon" />}

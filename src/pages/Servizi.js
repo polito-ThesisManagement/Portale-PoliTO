@@ -20,11 +20,8 @@ export default function Servizi() {
   const { t } = useTranslation();
   return (
     <>
-      <Title
-        icon={<MdApps size={28} style={{ position: 'relative', bottom: '1px' }} />}
-        sectionName={t('sidebar.servizi')}
-      />
-      <Container style={{ marginLeft: '0px', maxWidth: '1416px' }}>
+      <Title icon={<MdApps size={28} />} sectionName={t('sidebar.servizi')} />
+      <Container className="card-container">
         <Row className="p-0">
           <BaseCard
             icon={<MdMapsHomeWork size="42" className="card-icon" />}
@@ -36,7 +33,7 @@ export default function Servizi() {
             <Container className="custom-container">
               <div className="subsection">
                 <span className="subsection-title">
-                  <FaLink size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
+                  <FaLink size={20} className="subsection-icon" />
                   {t('servizi.link_utili')}
                 </span>
               </div>

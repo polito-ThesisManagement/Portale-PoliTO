@@ -54,12 +54,22 @@
   margin-top: 8px;
 }
 
-.star {
+.star,
+.star-fill {
   margin-right: 16px;
   margin-bottom: 8px;
   cursor: pointer;
 }
 
-.star:hover {
+.star:hover,
+.star-fill:hover {
   transform: scale(1.2);
+}
+
+.star {
+  color: var(--primary);
+}
+
+.star-fill {
+  color: var(--medium-orange);
 }

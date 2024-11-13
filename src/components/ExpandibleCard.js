@@ -50,14 +50,9 @@ export default function ExpandibleCard(props) {
             <div style={{ maxWidth: '170px' }}>{props.service}</div>
           </span>
           {starClicked ? (
-            <StarFill
-              size="24px"
-              className="star"
-              style={{ color: 'var(--medium-orange)' }}
-              onClick={handleStarClick}
-            />
+            <StarFill size="24px" className="star" onClick={handleStarClick} />
           ) : (
-            <Star size="24px" className="star" style={{ color: 'var(--primary)' }} onClick={handleStarClick} />
+            <Star size="24px" className="star" onClick={handleStarClick} />
           )}
         </div>
         <div style={{ color: 'var(--text)' }}>{props.description}</div>

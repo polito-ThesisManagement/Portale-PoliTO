@@ -21,18 +21,12 @@ export default function Avvisi() {
             .map(avviso => (
               <div key={avviso.id} className="avviso">
                 <div>
-                  <span className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-                    {avviso.data}
-                  </span>
-                  <span style={{ fontWeight: 'var(--font-weight-semibold)' }}>{' - '}</span>
-                  <span className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-                    {nome}
-                  </span>
+                  <span className="text-style semibold-wight">{avviso.data}</span>
+                  <span className="semibold-weight">{' - '}</span>
+                  <span className="text-style semibold-weight">{nome}</span>
                 </div>
                 <div>
-                  <span className="text-style" style={{ fontWeight: 'var(--font-weight-semibold)' }}>
-                    {avviso.sender}
-                  </span>
+                  <span className="text-style semibold-weight">{avviso.sender}</span>
                 </div>
                 <div>
                   <span className="text-style">{avviso.body}</span>

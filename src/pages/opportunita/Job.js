@@ -84,24 +84,24 @@ export default function Job() {
           />
         </Form>
         <div className="mt-3 pb-3">
-          <Table striped responsive="sm" hover="primary">
+          <Table className="custom-table" striped responsive="sm" hover="primary">
             <thead>
               <tr>
-                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Azienda</th>
-                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Incarico</th>
-                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>sede/i</th>
-                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Inserzione</th>
-                <th style={{ backgroundColor: 'var(--medium-navy)', color: 'var(--white)' }}>Invia CV</th>
+                <th className="custom-th">Azienda</th>
+                <th className="custom-th">Incarico</th>
+                <th className="custom-th">sede/i</th>
+                <th className="custom-th">Inserzione</th>
+                <th className="custom-th text-center">Invia CV</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{ fontSize: 'var(--font-size-md)' }}>
               {jobs.map(element => (
                 <tr key={getRandomNumber(1, 10000)}>
-                  <td>{element.azienda}</td>
-                  <td>{element.lavoro}</td>
-                  <td>{element.sede}</td>
-                  <td>{element.data_ins}</td>
-                  <td>{element.invia_cv ? <Send /> : 'non abilitato'}</td>
+                  <td className="custom-td">{element.azienda}</td>
+                  <td className="custom-td">{element.lavoro}</td>
+                  <td className="custom-td">{element.sede}</td>
+                  <td className="custom-td">{element.data_ins}</td>
+                  <td className="custom-td text-center">{element.invia_cv ? <Send /> : 'non abilitato'}</td>
                 </tr>
               ))}
             </tbody>

@@ -78,9 +78,7 @@ export default function Materiale() {
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
                   <FolderSymlinkFill size={25} />
-                  <span className="ms-2" style={{ fontWeight: 'var(--font-weight-bold)' }}>
-                    {t('didattica.corso.materiale_didattico')}
-                  </span>
+                  <span className="ms-2 bold-weight">{t('didattica.corso.materiale_didattico')}</span>
                 </ListGroupItem>
                 <ListGroupItem className="file-element ms-3">
                   <FolderFill size={20} />
@@ -111,15 +109,13 @@ export default function Materiale() {
                 </ListGroupItem>
                 <ListGroupItem className="file-element">
                   <Dropbox size={25} />
-                  <span className="ms-2" style={{ fontWeight: 'var(--font-weight-bold)' }}>
-                    Dropbox
-                  </span>
+                  <span className="ms-2 bold-weight">Dropbox</span>
                 </ListGroupItem>
               </ListGroup>
             </Container>
           </Col>
           <Col className="mb-2" xs={12} sm={9}>
-            <Container className="file-container" style={{ color: 'var(--text)' }}>
+            <Container className="file-container">
               <div className="pt-3 px-3">
                 <FaFilePdf size={30} style={{ position: 'relative', left: '13' }} />
                 <div className="mt-1" style={{ fontSize: 'var(--font-size-md)' }}>
