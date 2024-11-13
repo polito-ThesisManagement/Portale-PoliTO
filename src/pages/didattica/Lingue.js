@@ -35,7 +35,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">{t('didattica.caricamento_cdl')}</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('Accedi')}
                     </Button>
                   </Card.Body>
@@ -84,7 +84,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
@@ -95,7 +95,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">IELTS Grammar tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
@@ -106,7 +106,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Listening tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
@@ -117,7 +117,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Reading tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
@@ -128,7 +128,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.prenotazione_lezioni')}
                     </Button>
                   </Card.Body>
@@ -164,7 +164,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">{t('didattica.esame_plida')}</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('Accedi')}
                     </Button>
                   </Card.Body>
@@ -198,7 +198,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.francese')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>
@@ -210,7 +210,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.spagnolo')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>
@@ -222,7 +222,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.tedesco')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>
@@ -234,7 +234,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.portoghese')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+                    <Button className="custom-button btn-sm">
                       {t('didattica.inizia_la_prova')}
                     </Button>
                   </Card.Body>

@@ -24,7 +24,7 @@ export default function Sidebar() {
           <Nav.Item>
             <Link to="/" className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}>
               <FaHouse size={28} />
-              <span className="sidebar-text" style={{ marginTop: '3px' }}>
+              <span className="sidebar-text">
                 Homepage
               </span>
             </Link>
@@ -35,7 +35,7 @@ export default function Sidebar() {
               className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}
             >
               <FaBookOpen size={28} />
-              <span className="sidebar-text" style={{ marginTop: '2px' }}>
+              <span className="sidebar-text">
                 {t('sidebar.didattica')}
               </span>
             </Link>
@@ -46,7 +46,7 @@ export default function Sidebar() {
               className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}
             >
               <FaUser size={28} />
-              <span className="sidebar-text" style={{ marginTop: '2px' }}>
+              <span className="sidebar-text">
                 {t('sidebar.area_personale')}
               </span>
             </Link>
@@ -56,8 +56,8 @@ export default function Sidebar() {
               to="/carriera"
               className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}
             >
-              <FaUserGraduate size={25} style={{ marginLeft: '1px' }} />
-              <span className="sidebar-text" style={{ marginTop: '3px' }}>
+              <FaUserGraduate size={28} />
+              <span className="sidebar-text">
                 {t('sidebar.carriera')}
               </span>
             </Link>
@@ -67,8 +67,8 @@ export default function Sidebar() {
               to="/opportunita"
               className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}
             >
-              <FaBriefcase size={25} style={{ marginLeft: '1px' }} />
-              <span className="sidebar-text" style={{ marginTop: '1px' }}>
+              <FaBriefcase size={28} />
+              <span className="sidebar-text">
                 {t('sidebar.opportunità')}
               </span>
             </Link>
@@ -78,16 +78,16 @@ export default function Sidebar() {
               to="/servizi"
               className={`nav-link text-style ${location.pathname.includes('/servizi') ? 'active' : ''}`}
             >
-              <MdApps size={28} style={{ marginLeft: '-1px' }} />
-              <span className="sidebar-text" style={{ marginTop: '3px' }}>
+              <MdApps size={28} />
+              <span className="sidebar-text">
                 {t('sidebar.servizi')}
               </span>
             </Link>
           </Nav.Item>
           <Nav.Item>
             <Link to="/help" className={`nav-link text-style ${location.pathname.includes('/help') ? 'active' : ''}`}>
-              <FaInfoCircle size={28} style={{ marginLeft: '-1px' }} />
-              <span className="sidebar-text" style={{ marginTop: '3px' }}>
+              <FaInfoCircle size={28} />
+              <span className="sidebar-text">
                 Help
               </span>
             </Link>

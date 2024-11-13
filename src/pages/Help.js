@@ -48,13 +48,13 @@ export default function Help() {
 
   return (
     <>
-      <Title icon={<FaInfoCircle size={28} style={{ position: 'relative', bottom: '1px' }} />} sectionName="Help" />
+      <Title icon={<FaInfoCircle size={28} />} sectionName="Help" />
       <Row>
         <Col md={12} lg={5}>
           <Container className="custom-container">
             <div className="subsection">
               <span className="subsection-title">
-                <FaTicketSimple size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
+                <FaTicketSimple size={20} className="subsection-icon"/>
                 Ticketing
               </span>
             </div>
@@ -148,7 +148,7 @@ export default function Help() {
           <Container className="custom-container">
             <div className="subsection">
               <span className="subsection-title">
-                <FaBook size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
+                <FaBook size={20} className="subsection-icon"/>
                 {t('help.guide')}
               </span>
             </div>
@@ -173,27 +173,23 @@ export default function Help() {
           <Container className="custom-container">
             <div className="subsection">
               <span className="subsection-title">
-                <HiMiniTicket
-                  size={20}
-                  className="subsection-icon"
-                  style={{ position: 'relative', bottom: '1px', cursor: 'pointer' }}
-                />
+                <HiMiniTicket size={20} className="subsection-icon"/>
                 {t('help.ticket')}
               </span>
             </div>
             <ListGroup style={{ borderRadius: '16px' }}>
-              <ListGroup.Item className="summary" style={{ marginBottom: '4px' }}>
+              <ListGroup.Item className="summary">
                 {t('help.oggetto_ticket')} 1 <br></br> - {t('help.chiuso')}
               </ListGroup.Item>
-              <ListGroup.Item className="summary" style={{ marginBottom: '4px' }}>
+              <ListGroup.Item className="summary">
                 {t('help.oggetto_ticket')} 2 <br></br>- {t('help.chiuso')}
               </ListGroup.Item>
-              <ListGroup.Item className="summary" style={{ marginBottom: '4px' }}>
+              <ListGroup.Item className="summary">
                 {t('help.oggetto_ticket')} 3<br></br>- {t('help.aperto')}
               </ListGroup.Item>
             </ListGroup>
             <div className="text-center my-2">
-              <Button className="custom-button btn-sm" style={{ height: 'auto' }}>
+              <Button className="custom-button btn-sm">
                 {t('help.consulta_ticket')}
               </Button>
             </div>

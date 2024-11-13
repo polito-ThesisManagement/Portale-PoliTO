@@ -27,7 +27,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <FaList size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
+                <FaList size={20} className="subsection-icon"/>
                 {t('homepage.carico_didattico')}
               </span>
               <InfoTooltip text={t('homepage.cd_tooltip')} />
@@ -49,7 +49,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <PiListPlusFill size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
+                <PiListPlusFill size={20} className="subsection-icon"/>
                 {t('didattica.altri_corsi')}
               </span>
               <InfoTooltip text={t('didattica.altri_corsi_tooltip')} />
@@ -73,11 +73,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <BsCalendarCheckFill
-                  size={20}
-                  className="subsection-icon"
-                  style={{ position: 'relative', bottom: '1px' }}
-                />
+                <BsCalendarCheckFill size={20} className="subsection-icon"/>
                 {t('didattica.appelli_prenotati')}
               </span>
               <InfoTooltip text={t('didattica.appelli_prenotati_tooltip')} />
@@ -91,7 +87,7 @@ export default function Corsi() {
             <ListGroup style={{ borderRadius: '16px' }}>
               {Courses.map(val =>
                 val.prenotatoEsame ? (
-                  <ListGroup.Item key={val.codice} className="summary-static" style={{ marginBottom: '8px' }}>
+                  <ListGroup.Item key={val.codice} className="summary">
                     <Container className="p-0">
                       <Row>
                         <Col xs={4} sm={3} className="course-detail ps-2">
@@ -118,7 +114,7 @@ export default function Corsi() {
             </ListGroup>
 
             <div className="text-center my-2">
-              <Button className="custom-button mt-2 btn-sm" style={{ height: 'auto' }}>
+              <Button className="custom-button mt-2 btn-sm">
                 {t('didattica.prenotazione_appelli')}
               </Button>
             </div>
@@ -127,11 +123,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <PiVideoCameraFill
-                  size={20}
-                  className="subsection-icon"
-                  style={{ position: 'relative', bottom: '1px' }}
-                />
+                <PiVideoCameraFill size={20} className="subsection-icon"/>
                 {t('didattica.virtual_classroom_recenti')}
               </span>
               <InfoTooltip text={t('didattica.vc_tooltip')} />
@@ -166,7 +158,7 @@ export default function Corsi() {
           <Container className="custom-container">
             <div className="subsection d-flex justify-content-between">
               <span className="subsection-title">
-                <ImFolderUpload size={20} className="subsection-icon" style={{ position: 'relative', bottom: '2px' }} />
+                <ImFolderUpload size={20} className="subsection-icon"/>
                 {t('didattica.materiale_condiviso')}
               </span>
               <InfoTooltip text={t('didattica.materiale_condiviso_tooltip')} />
@@ -175,7 +167,7 @@ export default function Corsi() {
               {t('didattica.materiale_condiviso_descrizione')}
             </p>
             <div className="text-center my-2">
-              <Button className="custom-button mt-2 btn-sm" style={{ height: 'auto' }}>
+              <Button className="custom-button mt-2 btn-sm">
                 {t('didattica.ricerca_nel_mc')}
               </Button>
             </div>

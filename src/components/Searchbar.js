@@ -82,6 +82,7 @@ export default function Searchbar(props) {
         >
           {filteredData.slice(0, 3).map(service => (
             <ListGroup.Item
+              className="medium-weight"
               action
               as={Link}
               to={service.link}
@@ -91,7 +92,7 @@ export default function Searchbar(props) {
                 setFilteredData([]);
                 setSearchWord('');
               }}
-              style={{ fontSize: 'var(--font-size-xs)', fontWeight: 'var(--font-weight-medium)' }}
+              style={{ fontSize: 'var(--font-size-xs)' }}
             >
               {service.pageName}
             </ListGroup.Item>
@@ -107,7 +108,7 @@ export default function Searchbar(props) {
             }}
             style={{ fontSize: 'var(--font-size-xs)' }}
           >
-            Cerca <span style={{ fontWeight: 'var(--font-weight-medium)' }}>{searchWord}</span> su polito.it...
+            Cerca <span className="medium-weight">{searchWord}</span> su polito.it...
           </ListGroup.Item>
         </ListGroup>
       )}

@@ -29,7 +29,7 @@ export default function VirtualClassroom() {
             <Container className="file-container">
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
-                  <span className="ms-2" style={{ fontWeight: 'var(--font-weight-bold)' }}>
+                  <span className="ms-2 bold-weight">
                     Registrazioni del corso
                   </span>
                 </ListGroupItem>

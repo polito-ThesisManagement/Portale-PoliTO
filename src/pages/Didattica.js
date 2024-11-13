@@ -19,46 +19,39 @@ export default function Didattica() {
   const { t } = useTranslation();
   return (
     <>
-      <Title
-        icon={<FaBookOpen size={28} style={{ position: 'relative', bottom: '0px' }} />}
-        sectionName={t('sidebar.didattica')}
-      />
+      <Title icon={<FaBookOpen size={28} />} sectionName={t('sidebar.didattica')} />
       <Row style={{ marginLeft: '8px', marginBottom: '8px' }}>
         <Button
-          className={`custom-pill-button ${currentPath === '/didattica' ? 'active' : ''}`}
-          style={{ width: '200px', marginRight: '36px', marginBottom: '8px', display: 'flex', alignItems: 'center' }}
+          className={`custom-pill-button ${currentPath === '/didattica' ? 'active' : ''} didattica-button`}
           as={Link}
           to="/didattica"
         >
-          <ImBooks size={24} />
-          <span style={{ flex: '1', textAlign: 'center', marginLeft: '-8px' }}>{t('didattica.corsi')}</span>
+          <ImBooks className="me-2" size={24} />
+          <span>{t('didattica.corsi')}</span>
         </Button>
         <Button
-          className={`custom-pill-button ${currentPath === '/didattica/orario' ? 'active' : ''}`}
-          style={{ width: '200px', marginRight: '36px', marginBottom: '8px', display: 'flex', alignItems: 'center' }}
+          className={`custom-pill-button ${currentPath === '/didattica/orario' ? 'active' : ''} didattica-button`}
           as={Link}
           to="/didattica/orario"
         >
-          <ClockFill size={20} />
-          <span style={{ flex: '1', textAlign: 'center' }}>{t('didattica.orario_lezioni')}</span>
+          <ClockFill className="me-2" size={20} />
+          <span>{t('didattica.orario_lezioni')}</span>
         </Button>
         <Button
-          className={`custom-pill-button ${currentPath === '/didattica/libretto' ? 'active' : ''}`}
-          style={{ width: '200px', marginRight: '36px', marginBottom: '8px', display: 'flex', alignItems: 'center' }}
+          className={`custom-pill-button ${currentPath === '/didattica/libretto' ? 'active' : ''} didattica-button`}
           as={Link}
           to="/didattica/libretto"
         >
-          <IoIosJournal size={24} />
-          <span style={{ flex: '1', textAlign: 'center' }}>{t('didattica.libretto')}</span>
+          <IoIosJournal className="me-2" size={24} />
+          <span>{t('didattica.libretto')}</span>
         </Button>
         <Button
-          className={`custom-pill-button ${currentPath === '/didattica/lingue' ? 'active' : ''}`}
-          style={{ width: '200px', marginRight: '36px', marginBottom: '8px', display: 'flex', alignItems: 'center' }}
+          className={`custom-pill-button ${currentPath === '/didattica/lingue' ? 'active' : ''} didattica-button`}
           as={Link}
           to="/didattica/lingue"
         >
-          <Translate size={24} />
-          <span style={{ flex: '1', textAlign: 'center' }}>{t('didattica.lingue')}</span>
+          <Translate className="me-2" size={24} />
+          <span>{t('didattica.lingue')}</span>
         </Button>
       </Row>
 

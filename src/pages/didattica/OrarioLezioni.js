@@ -14,7 +14,7 @@ export default function OrarioLezioni() {
       <Container className="custom-container m-0">
         <div className="subsection">
           <span className="subsection-title">
-            <ClockFill size={20} className="subsection-icon" style={{ marginBottom: '2px' }} />
+            <ClockFill size={20} className="subsection-icon"/>
             {t('didattica.ricerca_orario')}
           </span>
         </div>
