@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Container, Row } from 'react-bootstrap';
 
 import { BsCreditCard2BackFill } from 'react-icons/bs';

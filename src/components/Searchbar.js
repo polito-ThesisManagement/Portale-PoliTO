@@ -6,6 +6,7 @@ import { InputGroup } from 'react-bootstrap';
 
 import { Search } from 'react-bootstrap-icons';
 
+import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useTranslation } from 'react-i18next';
@@ -114,3 +115,13 @@ export default function Searchbar(props) {
     </Form>
   );
 }
+
+Searchbar.propTypes = {
+  services: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      pageName: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
+import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -40,3 +41,7 @@ class DoughnutChart extends React.Component {
 }
 
 export default DoughnutChart;
+
+DoughnutChart.propTypes = {
+  values: PropTypes.arrayOf(PropTypes.number).isRequired,
+};

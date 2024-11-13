@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Container, Form, InputGroup } from 'react-bootstrap';
 
 import { ClockFill, Search } from 'react-bootstrap-icons';

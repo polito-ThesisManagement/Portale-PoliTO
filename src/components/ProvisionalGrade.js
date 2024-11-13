@@ -1,5 +1,8 @@
+import React from 'react';
+
 import { Col, Container, Row } from 'react-bootstrap';
 
+import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function ProvisionalGrade(props) {
@@ -30,3 +33,12 @@ export default function ProvisionalGrade(props) {
     </ListGroup.Item>
   );
 }
+
+ProvisionalGrade.propTypes = {
+  codice: PropTypes.string.isRequired,
+  nome: PropTypes.string.isRequired,
+  anno: PropTypes.string.isRequired,
+  cfu: PropTypes.string.isRequired,
+  esito: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+};

@@ -6,6 +6,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import { Bell, BellFill } from 'react-bootstrap-icons';
 
+import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 import { AvvisiContext } from '../App';
@@ -66,3 +67,11 @@ export default function CourseSummary(props) {
     </ListGroup.Item>
   );
 }
+
+CourseSummary.propTypes = {
+  codice: PropTypes.string.isRequired,
+  nome: PropTypes.string.isRequired,
+  periodo: PropTypes.string.isRequired,
+  crediti: PropTypes.string.isRequired,
+  linkGuida: PropTypes.string.isRequired,
+};

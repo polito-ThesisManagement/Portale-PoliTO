@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -95,7 +95,7 @@ export default function Job() {
               </tr>
             </thead>
             <tbody>
-              {jobs.map((element, index) => (
+              {jobs.map(element => (
                 <tr key={getRandomNumber(1, 10000)}>
                   <td>{element.azienda}</td>
                   <td>{element.lavoro}</td>

@@ -1,4 +1,8 @@
+import React from 'react';
+
 import { Container } from 'react-bootstrap';
+
+import PropTypes from 'prop-types';
 
 export default function CourseNotice(props) {
   return (
@@ -19,3 +23,11 @@ export default function CourseNotice(props) {
     </Container>
   );
 }
+
+CourseNotice.propTypes = {
+  data: PropTypes.string.isRequired,
+  course: PropTypes.string.isRequired,
+  sender: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+};
