@@ -35,7 +35,9 @@ CREATE TABLE IF NOT EXISTS TEACHERS (
     id INT PRIMARY KEY, -- INT? -- was INT(10)
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
+    role VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
+    profile_url VARCHAR(100) NOT NULL,
     facility_short_name VARCHAR(50) NOT NULL
 );
 
