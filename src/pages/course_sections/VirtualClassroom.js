@@ -26,7 +26,7 @@ export default function VirtualClassroom() {
         </Row>
         <Row>
           <Col xs={12} sm={3} className="mb-2">
-            <Container className="file-container" style={{ height: '500px' }}>
+            <Container className="file-container">
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
                   <span className="ms-2" style={{ fontWeight: 'var(--font-weight-bold)' }}>
@@ -53,7 +53,7 @@ export default function VirtualClassroom() {
             </Container>
           </Col>
           <Col className="mb-2" xs={12} sm={9}>
-            <Container className="file-container" style={{ height: '500px' }}></Container>
+            <Container className="file-container"></Container>
           </Col>
         </Row>
       </Container>

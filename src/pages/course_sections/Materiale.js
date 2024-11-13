@@ -117,7 +117,7 @@ export default function Materiale() {
             </Container>
           </Col>
           <Col className="mb-2" xs={12} sm={9}>
-            <Container className="file-container" style={{ color: 'var(--text)' }}>
+            <Container className="file-container">
               <div className="pt-3 px-3">
                 <FaFilePdf size={30} style={{ position: 'relative', left: '13' }} />
                 <div className="mt-1" style={{ fontSize: 'var(--font-size-md)' }}>

@@ -206,14 +206,24 @@ body {
   border-radius: 5px;
 }
 
-.custom-table .centered-th {
-  color: var(--medium-orange);
-  position: relative;
-  left: -16px;
+.custom-table {
+  font-family: var(--font-primary);
+  background-color: var(--surface);
+  color: var(--text);
 }
 
-.course-menu-reduced {
-  display: none;
+.custom-table .custom-th {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.custom-table .custom-td {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.medium-weight {
+  font-weight: var(--font-weight-medium);
 }
 
 @media (max-width: 991px) {
@@ -300,11 +310,12 @@ body {
 
 .file-container {
   background-color: var(--background);
+  color: var(--text);
   border-radius: 10px;
   margin: 0px;
   padding-left: 0px;
   padding-bottom: 8px;
-  height: 400px;
+  height: 500px;
 }
 
 .file-element {

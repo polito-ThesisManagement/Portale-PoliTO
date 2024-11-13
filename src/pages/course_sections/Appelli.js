@@ -12,61 +12,35 @@ export default function Appelli() {
   return (
     <>
       <Container className="custom-container m-0">
-        <Table striped responsive bordered className="custom-table my-2" style={{ fontFamily: 'var(--font-primary)' }}>
-          <thead style={{ fontFamily: 'var(--font-primary)' }}>
+        <Table striped responsive bordered className="custom-table my-2">
+          <thead>
             <tr>
-              <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>Codice</th>
-              <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>Nome</th>
-              <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>Data</th>
-              <th style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}></th>
+              <th className="custom-th">Codice</th>
+              <th className="custom-th">Nome</th>
+              <th className="custom-th">Data</th>
+              <th className="custom-th"></th>
             </tr>
           </thead>
           <tbody>
             <tr key="01">
-              <td
-                style={{
-                  backgroundColor: 'var(--background)',
-                  color: 'var(--text)',
-                  fontWeight: 'var(--font-weight-medium)',
-                }}
-              >
-                {codice}
+              <td className="custom-td medium-weight" style={{ backgroundColor: 'var(--background)' }}>
+                {codice}{' '}
               </td>
-              <td
-                style={{
-                  backgroundColor: 'var(--background)',
-                  color: 'var(--text)',
-                  fontWeight: 'var(--font-weight-medium)',
-                }}
-              >
+              <td className="custom-td medium-weight" style={{ backgroundColor: 'var(--background)' }}>
                 {nome}
               </td>
-              <td style={{ backgroundColor: 'var(--background)', color: 'var(--text)' }}>20/01/2023</td>
-              <td style={{ backgroundColor: 'var(--background)', color: 'var(--text)' }} className="text-center">
+              <td className="custom-td" style={{ backgroundColor: 'var(--background)' }}>
+                20/01/2023
+              </td>
+              <td className="custom-td text-center" style={{ backgroundColor: 'var(--background)' }}>
                 <Button className="custom-button">Prenota</Button>
               </td>
             </tr>
             <tr key="02">
-              <td
-                style={{
-                  backgroundColor: 'var(--surface)',
-                  color: 'var(--text)',
-                  fontWeight: 'var(--font-weight-medium)',
-                }}
-              >
-                {codice}
-              </td>
-              <td
-                style={{
-                  backgroundColor: 'var(--surface)',
-                  color: 'var(--text)',
-                  fontWeight: 'var(--font-weight-medium)',
-                }}
-              >
-                {nome}
-              </td>
-              <td style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }}>08/02/2023</td>
-              <td style={{ backgroundColor: 'var(--surface)', color: 'var(--text)' }} className="text-center">
+              <td className="custom-td medium-weight">{codice}</td>
+              <td className="custom-td medium-weight">{nome}</td>
+              <td className="custom-td">08/02/2023</td>
+              <td className="custom-td text-center">
                 <Button className="custom-button">Prenota</Button>
               </td>
             </tr>
