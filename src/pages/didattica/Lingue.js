@@ -26,18 +26,14 @@ export default function Lingue() {
             {t('didattica.certificazioni_di_lingua')}
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
-            <div className="mb-3 mx-1" style={{ display: 'inline-block' }}>
-              {t('didattica.cdl_descrizione')}
-            </div>
+            <div className="mb-3 mx-1">{t('didattica.cdl_descrizione')}</div>
             <Row>
               <Col sm={6} className="mb-4">
                 <Card className="lang-card">
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">{t('didattica.caricamento_cdl')}</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm">
-                      {t('Accedi')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('Accedi')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -51,24 +47,24 @@ export default function Lingue() {
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
             <Row className="mx-1">
-              <div className="px-0 mb-1" style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="px-0 mb-1">
                 <Link
                   className="custom-link truncated"
                   target="_blank"
                   to="https://didattica.polito.it/clapdf/it-vlaib-sito.pdf"
                 >
                   {t('didattica.verifica_lingua_inglese')}&nbsp;
-                  <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
+                  <FaExternalLinkAlt className="subsection-icon" />
                 </Link>
               </div>
-              <div className="px-0 mb-1" style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="px-0 mb-1">
                 <Link
                   className="custom-link truncated"
                   target="_blank"
                   to="https://didattica.polito.it/cla/it/esame_ielts_poli"
                 >
                   {t('didattica.ulteriori_informazioni')}&nbsp;
-                  <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
+                  <FaExternalLinkAlt className="subsection-icon" />
                 </Link>
               </div>
               <div
@@ -84,9 +80,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.prenotazione_lezioni')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.prenotazione_lezioni')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -95,9 +89,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">IELTS Grammar tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.prenotazione_lezioni')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.prenotazione_lezioni')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -106,9 +98,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Listening tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.prenotazione_lezioni')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.prenotazione_lezioni')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -117,9 +107,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Reading tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.prenotazione_lezioni')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.prenotazione_lezioni')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -128,9 +116,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-4">IELTS Speaking tutorials</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.prenotazione_lezioni')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.prenotazione_lezioni')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -144,17 +130,17 @@ export default function Lingue() {
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
             <Row className="mx-1">
-              <div className="px-0 mb-1" style={{ display: 'inline-block' }}>
+              <div className="px-0 mb-1">
                 {t('didattica.lingua_italiana_descrizione')}&nbsp;
                 <Link className="custom-link" target="_blank" to="https://didattica.polito.it/clapdf/it-vlaib-sito.pdf">
                   {t('didattica.lingua_italiana_descrizione_link')}&nbsp;
-                  <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
+                  <FaExternalLinkAlt className="subsection-icon" />
                 </Link>
               </div>
-              <div className="px-0 mb-3" style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="px-0 mb-3">
                 <Link className="custom-link truncated" target="_blank" to="https://didattica.polito.it/cla/it/plida">
                   {t('didattica.ulteriori_informazioni')}&nbsp;
-                  <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
+                  <FaExternalLinkAlt className="subsection-icon" />
                 </Link>
               </div>
             </Row>
@@ -164,9 +150,7 @@ export default function Lingue() {
                   <Card.Body className="text-center">
                     <Card.Title className="mb-3">{t('didattica.esame_plida')}</Card.Title>
                     <Card.Text></Card.Text>
-                    <Button className="custom-button btn-sm">
-                      {t('Accedi')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('Accedi')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -179,7 +163,7 @@ export default function Lingue() {
             Altre lingue
           </Accordion.Header>
           <Accordion.Body className="pb-0 pt-1">
-            <div className="mb-3 mx-1" style={{ display: 'inline-block' }}>
+            <div className="mb-3 mx-1">
               {t('didattica.altre_lingue_descrizione')}&nbsp;
               <Link
                 className="custom-link"
@@ -187,7 +171,7 @@ export default function Lingue() {
                 to="https://didattica.polito.it/cla/it/corsi_studenti_mobilita_verso_estero"
               >
                 {t('didattica.questa_pagina')}&nbsp;
-                <FaExternalLinkAlt style={{ position: 'relative', bottom: '2px' }} />
+                <FaExternalLinkAlt className="subsection-icon" />
               </Link>
               &nbsp;{t('didattica.sezione_tdl')}
             </div>
@@ -198,9 +182,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.francese')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.inizia_la_prova')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.inizia_la_prova')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -210,9 +192,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.spagnolo')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.inizia_la_prova')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.inizia_la_prova')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -222,9 +202,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.tedesco')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.inizia_la_prova')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.inizia_la_prova')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -234,9 +212,7 @@ export default function Lingue() {
                     <Card.Title className="mx-auto mb-3">
                       {t('didattica.tdl')} - {t('didattica.portoghese')}
                     </Card.Title>
-                    <Button className="custom-button btn-sm">
-                      {t('didattica.inizia_la_prova')}
-                    </Button>
+                    <Button className="custom-button btn-sm">{t('didattica.inizia_la_prova')}</Button>
                   </Card.Body>
                 </Card>
               </Col>
