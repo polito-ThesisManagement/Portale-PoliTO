@@ -132,7 +132,7 @@ export default function WidgetCalendar() {
       min={new Date(2023, 10, 12, 8, 0)}
       max={new Date(2023, 10, 12, 20, 0)}
       defaultDate={new Date(2023, 11, 12)}
-      style={{ height: '400px', fontFamily: 'Montserrat, sans-serif', marginTop: '16px' }}
+      style={{ height: '400px', fontFamily: 'var(--font-primary)', marginTop: '16px' }}
       formats={formats}
       components={{
         toolbar: CustomToolbar,

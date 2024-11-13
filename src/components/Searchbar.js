@@ -10,6 +10,8 @@ import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useTranslation } from 'react-i18next';
 
+import '../styles/Searchbar.css';
+
 export default function Searchbar(props) {
   const [filteredData, setFilteredData] = useState([]);
   const [searchWord, setSearchWord] = useState('');
@@ -52,8 +54,8 @@ export default function Searchbar(props) {
           size="md"
           style={{
             height: '40px',
-            backgroundColor: '#F0F3F5',
-            color: '#002B49',
+            backgroundColor: 'var(--background)',
+            color: 'var(--primary)',
             borderRadius: '8px',
           }}
           value={searchWord}
@@ -65,6 +67,7 @@ export default function Searchbar(props) {
             zIndex: '3',
             right: '28',
             top: '12',
+            color: 'var(--primary)',
           }}
         />
       </InputGroup>
@@ -79,6 +82,7 @@ export default function Searchbar(props) {
         >
           {filteredData.slice(0, 3).map(service => (
             <ListGroup.Item
+              className="medium-weight"
               action
               as={Link}
               to={service.link}
@@ -88,7 +92,7 @@ export default function Searchbar(props) {
                 setFilteredData([]);
                 setSearchWord('');
               }}
-              style={{ fontSize: '12px', fontWeight: '500' }}
+              style={{ fontSize: 'var(--font-size-xs)' }}
             >
               {service.pageName}
             </ListGroup.Item>
@@ -102,9 +106,9 @@ export default function Searchbar(props) {
             onClick={() => {
               setSearchWord('');
             }}
-            style={{ fontSize: '12px' }}
+            style={{ fontSize: 'var(--font-size-xs)' }}
           >
-            Cerca <span style={{ fontWeight: '500' }}>{searchWord}</span> su polito.it...
+            Cerca <span className="medium-weight">{searchWord}</span> su polito.it...
           </ListGroup.Item>
         </ListGroup>
       )}

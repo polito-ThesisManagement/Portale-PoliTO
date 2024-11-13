@@ -12,35 +12,35 @@ export default function Appelli() {
   return (
     <>
       <Container className="custom-container m-0">
-        <Table
-          striped
-          responsive
-          bordered
-          className="custom-table my-2"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
-        >
-          <thead style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <Table striped responsive bordered className="custom-table my-2">
+          <thead>
             <tr>
-              <th>Codice</th>
-              <th>Nome</th>
-              <th>Data</th>
-              <th></th>
+              <th className="custom-th">Codice</th>
+              <th className="custom-th">Nome</th>
+              <th className="custom-th">Data</th>
+              <th className="custom-th"></th>
             </tr>
           </thead>
           <tbody>
             <tr key="01">
-              <td style={{ fontWeight: 500 }}>{codice}</td>
-              <td style={{ fontWeight: 500 }}>{nome}</td>
-              <td>20/01/2023</td>
-              <td className="text-center">
+              <td className="custom-td medium-weight" style={{ backgroundColor: 'var(--background)' }}>
+                {codice}{' '}
+              </td>
+              <td className="custom-td medium-weight" style={{ backgroundColor: 'var(--background)' }}>
+                {nome}
+              </td>
+              <td className="custom-td" style={{ backgroundColor: 'var(--background)' }}>
+                20/01/2023
+              </td>
+              <td className="custom-td text-center" style={{ backgroundColor: 'var(--background)' }}>
                 <Button className="custom-button">Prenota</Button>
               </td>
             </tr>
             <tr key="02">
-              <td style={{ fontWeight: 500 }}>{codice}</td>
-              <td style={{ fontWeight: 500 }}>{nome}</td>
-              <td>08/02/2023</td>
-              <td className="text-center">
+              <td className="custom-td medium-weight">{codice}</td>
+              <td className="custom-td medium-weight">{nome}</td>
+              <td className="custom-td">08/02/2023</td>
+              <td className="custom-td text-center">
                 <Button className="custom-button">Prenota</Button>
               </td>
             </tr>

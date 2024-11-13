@@ -15,22 +15,22 @@ export default function Avvisi() {
   return (
     <>
       <Container className="custom-container m-0">
-        <div className="subsection">
+        <div className="subsection" style={{ color: 'var(--text)' }}>
           {avvisi
             .filter(avviso => avviso.course === nome)
             .map(avviso => (
               <div key={avviso.id} className="avviso">
                 <div>
-                  <span className="text-style" style={{ fontWeight: '600' }}>
+                  <span className="text-style semibold-wight">
                     {avviso.data}
                   </span>
-                  <span style={{ fontWeight: '600' }}>{' - '}</span>
-                  <span className="text-style" style={{ fontWeight: '600' }}>
+                  <span className="semibold-weight">{' - '}</span>
+                  <span className="text-style semibold-weight">
                     {nome}
                   </span>
                 </div>
                 <div>
-                  <span className="text-style" style={{ fontWeight: '500' }}>
+                  <span className="text-style semibold-weight">
                     {avviso.sender}
                   </span>
                 </div>

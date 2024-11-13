@@ -4,7 +4,10 @@
         "ricerca_nel_portale": "Search in the portal...",
         "profilo_utente": "User Profile",
         "cambio_password": "Change Password",
-        "ultime_notifiche": "Latest Notifications"
+        "ultime_notifiche": "Latest Notifications",
+        "tema_chiaro": "Light Theme",
+        "tema_scuro": "Dark Theme",
+        "tema_automatico": "Automatic Theme"
     },
     "sidebar": {
         "didattica": "Education",

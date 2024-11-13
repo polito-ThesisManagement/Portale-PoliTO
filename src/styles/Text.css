@@ -1,25 +1,27 @@
 .text-style {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .button-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
 }
 
 .section-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
 }
 
 .subsection-title {
-  color: #002b49;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
 }
+
 .truncated {
   overflow: hidden;
   white-space: nowrap;
@@ -29,62 +31,63 @@
 }
 
 .detail {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
 }
 
 .important-detail {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .course-detail {
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
 }
 
 .custom-tab {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #002b49;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
 }
 
 .custom-tab .nav-link {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #002b49;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
 }
 
 .custom-tab .active {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #002b49;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
 }
 
 .custom-link {
-  color: #002b49;
+  color: var(--primary);
   text-decoration: none;
 }
 
 .custom-link:hover {
-  color: #006db9;
+  color: var(--link);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--dark-navy);
+}
+
+.nav-tabs .nav-link {
+  color: var(--primary);
 }
 
 .breadcrumb {
-  font-family: 'Montserrat', sans-serif;
-  color: #415462;
+  font-family: var(--font-primary);
+  color: var(--placeholder);
 }
 
 .breadcrumb-link {
-  font-family: 'Montserrat', sans-serif;
-  color: #415462;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.breadcrumb-link:hover {
-  color: #33424d;
+  font-family: var(--font-primary);
+  color: var(--link);
+  font-weight: var(--font-weight-medium);
 }

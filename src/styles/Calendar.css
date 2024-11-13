@@ -1,14 +1,18 @@
+.rbc-calendar {
+  color: var(--text);
+}
+
 .rbc-header,
 .rbc-header + .rbc-header {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .rbc-event-label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .rbc-label {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .rbc-events-container {
@@ -16,7 +20,7 @@
 }
 
 .rbc-button-link {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .rbc-date-cell {
@@ -24,34 +28,35 @@
 }
 
 .custom-rbc-toolbar button {
-  background-color: #ffffff;
-  border-color: #002b49;
-  color: #002b49;
-  font-weight: 500;
+  background-color: var(--surface);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
 }
 
 .custom-rbc-toolbar button:hover {
-  background-color: #002b49;
-  border-color: #002b49;
-  color: #ffffff;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--background);
   transform: scale(1.02);
 }
 
 .custom-rbc-toolbar .view-button {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
 }
 
 .custom-rbc-toolbar .view-button.active {
-  background-color: #002b49;
-  border-color: #002b49;
-  font-weight: 500;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--background);
+  font-weight: var(--font-weight-medium);
 }
 
 .custom-rbc-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 8px;
 }
 
@@ -90,6 +95,6 @@
 }
 
 .rbc-current-time-indicator {
-  color: #002b49;
-  background-color: #002b49;
+  color: var(--dark-navy);
+  background-color: var(--dark-navy);
 }

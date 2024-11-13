@@ -13,7 +13,7 @@ export default function VirtualClassroom() {
       <Container className="custom-container m-0">
         <Row className="mb-1 mx-1">
           <Alert key="warning" variant="warning" className="my-2">
-            <h6 className="text-style" style={{ fontSize: '16px' }}>
+            <h6 className="text-style" style={{ fontSize: 'var(--font-size-base)' }}>
               Ti segnaliamo che le video-lezioni di ogni singolo corso sono visibili ai soli studenti iscritti al corso
               e a cui puoi accedere solo con le credenziali istituzionali. Ti informiamo che qualora la lezione sia
               registrata la tua webcam e il tuo microfono sono disabilitati e solo nel caso in cui tu decida di porre
@@ -26,10 +26,10 @@ export default function VirtualClassroom() {
         </Row>
         <Row>
           <Col xs={12} sm={3} className="mb-2">
-            <Container className="file-container" style={{ height: '500px' }}>
+            <Container className="file-container">
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
-                  <span className="ms-2" style={{ fontWeight: 'bold' }}>
+                  <span className="ms-2 bold-weight">
                     Registrazioni del corso
                   </span>
                 </ListGroupItem>
@@ -53,7 +53,7 @@ export default function VirtualClassroom() {
             </Container>
           </Col>
           <Col className="mb-2" xs={12} sm={9}>
-            <Container className="file-container" style={{ height: '500px' }}></Container>
+            <Container className="file-container"></Container>
           </Col>
         </Row>
       </Container>

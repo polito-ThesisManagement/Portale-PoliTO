@@ -2,7 +2,7 @@
   margin-left: 224px;
   margin-top: 80px;
   height: 100vh;
-  background-color: #f0f3f5;
+  background-color: var(--background);
   margin-right: 8px;
 }
 
@@ -13,8 +13,8 @@
 }
 
 .custom-navbar {
-  background-color: #ffffff;
-  color: #002b49;
+  background-color: var(--surface);
+  color: var(--primary);
   z-index: 5;
   width: 100%;
   position: fixed;
@@ -25,11 +25,11 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #f0f3f5;
+  background-color: var(--background);
 }
 
 .title {
-  color: #002b49;
+  color: var(--primary);
   display: flex;
   align-items: center;
   padding: 14px;
@@ -42,10 +42,12 @@ body {
 
 .subsection-icon {
   margin-right: 10px;
+  position: relative;
+  bottom: 2px;
 }
 
 .custom-container {
-  background-color: #fff;
+  background-color: var(--surface);
   border-radius: 10px;
   margin: 0px;
   margin-bottom: 16px;
@@ -53,60 +55,58 @@ body {
 }
 
 .summary {
-  border-color: #f0f3f5;
-  background-color: #f0f3f5;
-  color: #000000;
+  border-color: var(--background);
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: 8px;
 }
 
 .summary:hover {
-  border-color: #b7e1ff;
-  background-color: #b7e1ff;
+  color: var(--black);
+  border-color: var(--light-navy);
+  background-color: var(--light-navy);
+}
+
+.summary:hover .link-container {
+  color: var(--black);
 }
 
 .summary.selected {
-  background-color: #002b49;
-  border-color: #002b49;
-  color: #ffffff;
-}
-
-.summary-static {
-  border-color: #f0f3f5;
-  background-color: #f0f3f5;
-  color: #000000;
-  border-radius: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  background-color: var(--dark-navy);
+  border-color: var(--dark-navy);
+  color: var(--white);
 }
 
 .ticket-category {
-  border-color: #f0f3f5;
-  background-color: #f0f3f5;
-  color: #000000;
+  border-color: var(--background);
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 16px;
 }
 
 .ticket-category:hover {
-  border-color: #b7e1ff;
-  background-color: #b7e1ff;
+  color: var(--black);
+  border-color: var(--light-navy);
+  background-color: var(--light-navy);
 }
 
 .ticket-category.active {
-  background-color: #006db9;
-  border-color: #006db9;
-  color: white;
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
 }
 
 .list-group-item-action:hover {
-  border-color: #b7e1ff;
-  background-color: #b7e1ff;
+  border-color: var(--light-navy);
+  background-color: var(--light-navy);
 }
 
 .list-group-item-action:focus {
-  background-color: #006db9;
-  color: #fff;
+  background-color: var(--navy);
+  color: var(--white);
 }
 
 .course-bar {
@@ -119,54 +119,67 @@ body {
 
 .custom-button {
   height: 40px;
-  color: #002b49;
-  border-color: #002b49;
-  background-color: #ffffff;
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: var(--surface);
   padding-top: 7px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   border-radius: 10px;
   overflow: hidden;
 }
 
 .custom-button:hover {
-  border-color: #002b49;
-  background-color: #002b49;
-  color: #ffffff;
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--background);
   transform: scale(1.02);
 }
 
 .custom-button.active {
-  background-color: #002b49;
-  border-color: #002b49;
-  color: white;
+  background-color: var(--dark-navy);
+  border-color: var(--dark-navy);
+  color: var(--white);
+}
+
+.btn-sm {
+  height: auto;
+}
+
+.didattica-button {
+  width: 200px;
+  margin-right: 36px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .custom-pill-button {
   height: 40px;
-  border-color: rgba(183, 225, 255, 0.4);
-  background-color: rgba(183, 225, 255, 0.4);
-  color: #004c81;
+  border-color: var(--light-navy-transparent);
+  background-color: var(--pill-button);
+  color: var(--medium-navy);
   padding-top: 7px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   border-radius: 10px;
   overflow: hidden;
 }
 
 .custom-pill-button:hover {
-  border: #b7e1ff;
-  background-color: #b7e1ff;
-  color: #004c81;
+  border: var(--light-navy);
+  background-color: var(--light-navy);
+  color: var(--medium-navy);
   transform: scale(1.02);
 }
 
 .custom-pill-button.active {
-  background-color: #006db9;
-  border-color: #006db9;
-  color: white;
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
 }
 
 .course-menu-button {
@@ -176,31 +189,60 @@ body {
 }
 
 .accordion-button {
-  color: #002b49;
+  color: var(--primary);
+  background-color: var(--surface);
   border-radius: 5px;
   margin-bottom: 10px;
-  font-family: 'Montserrat', 'sans-serif';
-  font-weight: 600;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .custom-accordion {
+  color: var(--primary);
+  background-color: var(--surface);
   margin-left: 8px;
   border: hidden;
   border-radius: 5px;
 }
 
 .ticket-accordion {
+  color: var(--primary);
+  background-color: var(--surface);
+  margin-left: 8px;
   border: hidden;
+  border-radius: 5px;
 }
 
-.custom-table .centered-th {
-  color: #ef7b00;
-  position: relative;
-  left: -16px;
+.custom-table {
+  font-family: var(--font-primary);
+  background-color: var(--surface);
+  color: var(--text);
 }
 
-.course-menu-reduced {
-  display: none;
+.custom-table .custom-th {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.custom-table .custom-td {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.regular-weight {
+  font-weight: var(--font-weight-regular);
+}
+
+.medium-weight {
+  font-weight: var(--font-weight-medium);
+}
+
+.semibold-weight {
+  font-weight: var(--font-weight-semibold);
+}
+
+.bold-weight {
+  font-weight: var(--font-weight-bold);
 }
 
 @media (max-width: 991px) {
@@ -220,19 +262,17 @@ body {
 }
 
 .form-control:focus {
-  border-color: #002b49;
+  border-color: var(--dark-navy);
   border-width: 2px;
   box-shadow: none;
 }
 
 .form-control-materiale {
-  border-color: black;
-  border-width: 2px;
+  border-color: var(--primary);
 }
 
 .form-control-materiale:focus {
-  border-color: black;
-  border-width: 2px;
+  border-color: var(--primary);
   box-shadow: none;
 }
 
@@ -246,15 +286,20 @@ body {
 }
 
 .notice-container {
-  background-color: #f0f3f5;
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 10px;
   margin-bottom: 16px;
   padding-bottom: 8px;
 }
 
 .link-container {
-  color: #000000;
+  color: var(--text);
   text-decoration: none;
+}
+
+.link-container:hover {
+  color: var(--black);
 }
 
 .click-notifica {
@@ -263,16 +308,19 @@ body {
 }
 
 .click-notifica:hover {
-  background-color: #b7e1ff;
+  background-color: var(--light-navy);
+  color: var(--black);
 }
 
 .click-notifica:active {
-  background-color: #006db9;
-  color: white;
+  background-color: var(--navy);
+  color: var(--white);
 }
 
 .custom-popover {
   width: 1000px !important;
+  background-color: var(--surface);
+  color: var(--text);
 }
 
 .zooming-icon:hover {
@@ -280,19 +328,21 @@ body {
 }
 
 .file-container {
-  background-color: #f0f3f5;
+  background-color: var(--background);
+  color: var(--text);
   border-radius: 10px;
   margin: 0px;
   padding-left: 0px;
   padding-bottom: 8px;
-  height: 400px;
+  height: 500px;
 }
 
 .file-element {
-  background-color: #f0f3f5;
+  background-color: var(--background);
+  color: var(--text);
   border: hidden;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -302,6 +352,17 @@ body {
 }
 
 .file-element:hover {
-  background-color: #b7e1ff;
+  background-color: var(--light-navy);
+  color: var(--black);
   border-radius: 10px;
+}
+
+.lang-card {
+  color: var(--primary);
+  background-color: var(--surface);
+}
+
+.card-container {
+  margin-left: 0;
+  max-width: 1416px;
 }
