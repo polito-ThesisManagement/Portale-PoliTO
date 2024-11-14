@@ -71,7 +71,7 @@ export default function CourseSummary(props) {
 CourseSummary.propTypes = {
   codice: PropTypes.string.isRequired,
   nome: PropTypes.string.isRequired,
-  periodo: PropTypes.string.isRequired,
-  crediti: PropTypes.string.isRequired,
-  linkGuida: PropTypes.string.isRequired,
+  periodo: PropTypes.number.isRequired,
+  crediti: PropTypes.number.isRequired,
+  linkGuida: PropTypes.string,
 };

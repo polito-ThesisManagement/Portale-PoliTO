@@ -101,8 +101,8 @@ export default function BaseCard(props) {
 BaseCard.propTypes = {
   icon: PropTypes.node,
   service: PropTypes.string.isRequired,
+  servicePath: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   link: PropTypes.string,
   linkText: PropTypes.string,
-  servicePath: PropTypes.string.isRequired,
 };
