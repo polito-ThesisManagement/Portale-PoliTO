@@ -37,8 +37,8 @@ export default function ProvisionalGrade(props) {
 ProvisionalGrade.propTypes = {
   codice: PropTypes.string.isRequired,
   nome: PropTypes.string.isRequired,
-  anno: PropTypes.string.isRequired,
-  cfu: PropTypes.string.isRequired,
-  esito: PropTypes.string.isRequired,
+  anno: PropTypes.number.isRequired,
+  cfu: PropTypes.number.isRequired,
+  esito: PropTypes.number.isRequired,
   data: PropTypes.string.isRequired,
 };
