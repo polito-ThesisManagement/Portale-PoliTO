@@ -31,9 +31,11 @@ export default function ThesisItem({ title, tags, description, professor, thesis
           </div>
         </div>
         <footer className={styles.thesisItemFooter}>
-          <span className={styles.expirationDate}>Data di scadenza:</span>
-          <span className={styles.expirationDateValue}>{expirationDate}</span>
           <button className={styles.showMoreButton}>Mostra di più</button>
+          <div className={styles.expirationDate}>
+            <span className={styles.expirationDateLabel}>Data di scadenza:</span>
+            <span className={styles.expirationDateValue}>{expirationDate}</span>
+          </div>
         </footer>
       </div>
     </article>

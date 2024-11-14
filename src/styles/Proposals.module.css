@@ -524,31 +524,33 @@
   
   @media (max-width: 991px) {
     .thesisItemFooter {
-      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
     }
   }
   
   .expirationDate {
-    position: absolute;
+    position: relative;
     overflow: hidden;
-    right: 98px;
+    white-space: nowrap;
+    margin-left: auto; /* Aggiungi questa riga per spingere la data di scadenza a destra */
   }
   
   .expirationDateValue {
-    position: absolute;
+    position: relative;
     overflow: hidden;
     white-space: nowrap;
   }
   
   @media (max-width: 991px) {
     .expirationDateValue {
-      .expirationDateValue {
       white-space: initial;
     }
   }
   
   .showMoreButton {
-    align-self: stretch;
     border-radius: 8px;
     border: 1px solid #d9d9d9;
     background-color: #fff;
@@ -557,19 +559,9 @@
     gap: 10px;
     color: rgba(0, 0, 0, 0.85);
     text-align: center;
-    margin: auto 0;
     padding: 0 15px;
   }
   
   .visually-hidden {
     position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
   }
-}
