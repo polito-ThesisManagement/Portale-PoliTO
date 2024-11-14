@@ -33,7 +33,7 @@ export default function ThesisItem({ title, tags, description, professor, thesis
         <footer className={styles.thesisItemFooter}>
           <button className={styles.showMoreButton}>Mostra di più</button>
           <div className={styles.expirationDate}>
-            <span className={styles.expirationDateLabel}>Data di scadenza:</span>
+            <span className={styles.expirationDateLabel}>Data di scadenza: &nbsp;</span>
             <span className={styles.expirationDateValue}>{expirationDate}</span>
           </div>
         </footer>
