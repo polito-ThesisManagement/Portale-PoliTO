@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS TYPES (
 -- Table for storing Thesis Proposals' Data
 CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    title_en VARCHAR(255) NOT NULL,
+    topic VARCHAR(255) NOT NULL,
+    topic_en VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     description_en TEXT NOT NULL,
     link TEXT DEFAULT NULL,
@@ -76,9 +76,8 @@ CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS (
 
 -- Table for storing Thesis Proposals' Attachments
 CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS_ATTACHMENTS (
-    thesis_proposal_id INT NOT NULL,
+    thesis_proposal_id INT PRIMARY KEY,
     link VARCHAR(255) NOT NULL,
-    PRIMARY KEY (thesis_proposal_id, link),
     FOREIGN KEY (thesis_proposal_id) REFERENCES THESIS_PROPOSALS(id) ON DELETE CASCADE
 );
 
