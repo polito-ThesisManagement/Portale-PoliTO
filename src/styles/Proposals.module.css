@@ -20,13 +20,6 @@
   padding-bottom: 2%;
 }
 
-@media (max-width: 991px) {
-  .mainContent {
-    max-width: 100%;
-    padding-right: 1.25rem; /* 20px in rem */
-  }
-}
-
 .subHeader {
   display: flex;
   gap: 0.625rem; /* 10px in rem */
@@ -76,25 +69,12 @@
   padding: 1.5rem; 
 }
 
-@media (max-width: 991px) {
-  .cardBody {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-}
-
 .filterSection {
   display: flex;
   width: 100%;
   align-items: center;
   flex-wrap: wrap; 
   padding-left: 3%;
-}
-
-@media (max-width: 991px) {
-  .filterSection {
-    max-width: 100%;
-  }
 }
 
 .filterWrapper {
@@ -225,14 +205,7 @@
   width: 100%;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 8px 32px 32px;
-}
-
-@media (max-width: 991px) {
-  .thesisList {
-    max-width: 100%;
-    padding: 0 20px;
-  }
+  padding: 1rem 1rem 1rem 1rem;
 }
 
 .thesisListInner {
@@ -241,12 +214,6 @@
   flex-direction: column;
   overflow: hidden;
   justify-content: flex-start;
-}
-
-@media (max-width: 991px) {
-  .thesisListInner {
-    max-width: 100%;
-  }
 }
 
 .thesisItem {
@@ -258,14 +225,8 @@
   gap: 40px;
   overflow: hidden;
   justify-content: flex-start;
-  padding: 16px 24px;
+  padding: 0.8rem 1rem;
   padding-bottom: 1rem;
-}
-
-@media (max-width: 991px) {
-  .thesisItem {
-    padding: 0 20px;
-  }
 }
 
 .thesisItemContent {
@@ -278,11 +239,6 @@
   flex-basis: 0%;
 }
 
-@media (max-width: 991px) {
-  .thesisItemContent {
-    max-width: 100%;
-  }
-}
 
 .thesisItemMeta {
   display: flex;
@@ -291,23 +247,12 @@
   justify-content: flex-start;
 }
 
-@media (max-width: 991px) {
-  .thesisItemMeta {
-    max-width: 100%;
-  }
-}
 
 .thesisTitle {
   width: 100%;
   overflow: hidden;
   color: rgba(0, 0, 0, 0.85);
   font: 500 16px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-}
-
-@media (max-width: 991px) {
-  .thesisTitle {
-    max-width: 100%;
-  }
 }
 
 .tagGroup {
@@ -320,12 +265,6 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   font: 400 0.8rem/2 Roboto, sans-serif;
-}
-
-@media (max-width: 991px) {
-  .tagGroup {
-    max-width: 100%;
-  }
 }
 
 .tag {
@@ -368,12 +307,6 @@
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   justify-content: flex-start;
-}
-
-@media (max-width: 991px) {
-  .thesisMetaInfo {
-    max-width: 100%;
-  }
 }
 
 .professorTag {
@@ -445,15 +378,6 @@
   font: 400 14px/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
-@media (max-width: 991px) {
-  .thesisItemFooter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-}
-
 .expirationDate {
   position: relative;
   overflow: hidden;
@@ -465,12 +389,6 @@
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-}
-
-@media (max-width: 991px) {
-  .expirationDateValue {
-    white-space: initial;
-  }
 }
 
 .showMoreButton {
@@ -494,20 +412,4 @@
 
 .visually-hidden {
   position: absolute;
-}
-
-@media (max-width: 48rem) { 
-  .mainContent {
-    padding: 2vh 2vw 0 2vw; 
-    max-height: 100vh; /* Imposta un'altezza massima per evitare overflow */
-  }
-
-  .filterWrapper {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .searchBar {
-    max-width: 100%;
-  }
 }

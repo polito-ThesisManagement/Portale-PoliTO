@@ -1,10 +1,13 @@
+import React from 'react';
+
 import { Col, Container, Row } from 'react-bootstrap';
 
+import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function ProvisionalGrade(props) {
   return (
-    <ListGroup.Item className="summary" style={{ marginBottom: '8px' }}>
+    <ListGroup.Item className="summary">
       <Container className="p-0">
         <Row>
           <Col xs={2} className="course-detail p-0 me-3" style={{ marginLeft: '8px' }}>
@@ -30,3 +33,12 @@ export default function ProvisionalGrade(props) {
     </ListGroup.Item>
   );
 }
+
+ProvisionalGrade.propTypes = {
+  codice: PropTypes.string.isRequired,
+  nome: PropTypes.string.isRequired,
+  anno: PropTypes.number.isRequired,
+  cfu: PropTypes.number.isRequired,
+  esito: PropTypes.number.isRequired,
+  data: PropTypes.string.isRequired,
+};

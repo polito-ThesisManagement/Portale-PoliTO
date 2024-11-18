@@ -4,7 +4,10 @@
         "ricerca_nel_portale": "Ricerca nel portale...",
         "profilo_utente": "Profilo utente",
         "cambio_password": "Cambio password",
-        "ultime_notifiche": "Ultime notifiche"
+        "ultime_notifiche": "Ultime notifiche",
+        "tema_chiaro": "Tema chiaro",
+        "tema_scuro": "Tema scuro",
+        "tema_automatico": "Tema automatico"
     },
     "sidebar": {
         "didattica": "Didattica",

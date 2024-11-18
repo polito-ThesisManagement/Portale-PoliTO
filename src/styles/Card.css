@@ -1,6 +1,6 @@
 .custom-card {
-  background-color: #ffffff;
-  color: #002b49;
+  background-color: var(--surface);
+  color: var(--primary);
   border-radius: 32px;
   margin-bottom: 16px;
   padding-top: 20px;
@@ -11,9 +11,9 @@
 }
 
 .card-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
   padding-left: 6px;
   display: flex;
   flex-direction: column;
@@ -31,34 +31,45 @@
 
 .card-button {
   height: 40px;
-  background-color: #ffffff;
-  color: #002b49;
-  border-color: #002b49;
+  background-color: var(--surface);
+  color: var(--primary);
+  border-color: var(--primary);
   padding-top: 7px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   border-radius: 10px;
   overflow: hidden;
   text-align: end;
 }
 
 .card-button:hover {
-  border-color: #002b49;
-  background-color: #002b49;
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--background);
 }
 
 .card-link {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   margin-top: 8px;
 }
 
-.star {
+.star,
+.star-fill {
   margin-right: 16px;
   margin-bottom: 8px;
   cursor: pointer;
 }
 
-.star:hover {
+.star:hover,
+.star-fill:hover {
   transform: scale(1.2);
+}
+
+.star {
+  color: var(--primary);
+}
+
+.star-fill {
+  color: var(--medium-orange);
 }

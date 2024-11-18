@@ -1,5 +1,5 @@
-//import { useEffect, useState } from 'react';
-//import axios from 'axios';
+import React from 'react';
+
 import Proposals from '../../components/Proposals';
 
 /*const researchGroups = [

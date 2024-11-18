@@ -1,3 +1,7 @@
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
 export default function Title(props) {
   return (
     <div className="title reduced">
@@ -8,3 +12,8 @@ export default function Title(props) {
     </div>
   );
 }
+
+Title.propTypes = {
+  icon: PropTypes.node.isRequired,
+  sectionName: PropTypes.string.isRequired,
+};

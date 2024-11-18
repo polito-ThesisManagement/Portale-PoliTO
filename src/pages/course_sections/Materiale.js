@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Col, Container, Row } from 'react-bootstrap';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
@@ -18,11 +20,18 @@ export default function Materiale() {
       <Container className="custom-container pt-3 pb-2">
         <Row className="mb-1">
           <Col md={6} className="d-flex" style={{ marginTop: '9px' }}>
-            <FaArrowLeft size={20} className="ms-2" />
-            <FaArrowRight size={20} className="ms-4" />
+            <FaArrowLeft size={20} className="ms-2" color="var(--text)" />
+            <FaArrowRight size={20} className="ms-4" color="var(--text)" />
             <Form.Control
               className="form-control-materiale ms-4 truncated"
-              style={{ position: 'relative', bottom: '9px', height: '40px', cursor: 'default' }}
+              style={{
+                position: 'relative',
+                bottom: '9px',
+                height: '40px',
+                cursor: 'default',
+                backgroundColor: 'var(--background)',
+                color: 'var(--primary)',
+              }}
               type="text"
               placeholder={t('didattica.corso.materiale_didattico') + '/Labs/Lab1'}
               readOnly
@@ -32,18 +41,26 @@ export default function Materiale() {
           <Col md={5} className="d-flex">
             <InputGroup>
               <Form.Control
+                className="form-control-materiale mb-2 truncated"
+                type="search"
                 placeholder={t('didattica.corso.cerca_materiale')}
                 aria-label="Cerca Materiale"
                 aria-describedby="basic-addon2"
-                style={{ borderRadius: '8px', position: 'relative', bottom: '1px' }}
-                className="form-control-materiale mb-2 pe-4 truncated"
+                size="md"
+                style={{
+                  borderRadius: '8px',
+                  bottom: '1px',
+                  backgroundColor: 'var(--background)',
+                  color: 'var(--primary)',
+                }}
               />
               <Search
                 style={{
                   position: 'relative',
                   zIndex: '3',
                   right: '28',
-                  top: '11',
+                  top: '12',
+                  color: 'var(--primary)',
                 }}
               />
             </InputGroup>
@@ -61,9 +78,7 @@ export default function Materiale() {
               <ListGroup>
                 <ListGroupItem className="file-element mt-1">
                   <FolderSymlinkFill size={25} />
-                  <span className="ms-2" style={{ fontWeight: 'bold' }}>
-                    {t('didattica.corso.materiale_didattico')}
-                  </span>
+                  <span className="ms-2 bold-weight">{t('didattica.corso.materiale_didattico')}</span>
                 </ListGroupItem>
                 <ListGroupItem className="file-element ms-3">
                   <FolderFill size={20} />
@@ -75,7 +90,7 @@ export default function Materiale() {
                 </ListGroupItem>
                 <ListGroupItem
                   className="file-element ms-5"
-                  style={{ backgroundColor: '#006DB9', width: '', borderRadius: '10px', color: 'white' }}
+                  style={{ backgroundColor: 'var(--navy)', width: '', borderRadius: '10px', color: 'white' }}
                 >
                   <Folder2Open size={20} />
                   <span className="ms-2">Lab1</span>
@@ -94,9 +109,7 @@ export default function Materiale() {
                 </ListGroupItem>
                 <ListGroupItem className="file-element">
                   <Dropbox size={25} />
-                  <span className="ms-2" style={{ fontWeight: 'bold' }}>
-                    Dropbox
-                  </span>
+                  <span className="ms-2 bold-weight">Dropbox</span>
                 </ListGroupItem>
               </ListGroup>
             </Container>
@@ -105,7 +118,7 @@ export default function Materiale() {
             <Container className="file-container">
               <div className="pt-3 px-3">
                 <FaFilePdf size={30} style={{ position: 'relative', left: '13' }} />
-                <div className="mt-1" style={{ fontSize: '15px' }}>
+                <div className="mt-1" style={{ fontSize: 'var(--font-size-md)' }}>
                   Lab1.pdf
                 </div>
               </div>

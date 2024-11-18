@@ -6,6 +6,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import { Bell, BellFill } from 'react-bootstrap-icons';
 
+import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 import { AvvisiContext } from '../App';
@@ -35,7 +36,7 @@ export default function CourseSummary(props) {
   };
 
   return (
-    <ListGroup.Item className="summary" style={{ marginBottom: '8px' }}>
+    <ListGroup.Item className="summary">
       <Container
         className="link-container p-0"
         as={Link}
@@ -52,8 +53,7 @@ export default function CourseSummary(props) {
           <Col xs={10} sm={2} className="detail truncated pe-3">
             {props.crediti} CFU
           </Col>
-          <Col className="p-0" />
-          <Col className="link-container p-0" style={{ position: 'relative', left: '-8px' }}>
+          <Col className="p-0" style={{ position: 'relative', left: '-8px' }}>
             {avvisi[0].some(obj => {
               return obj.course === props.nome;
             }) ? (
@@ -67,3 +67,11 @@ export default function CourseSummary(props) {
     </ListGroup.Item>
   );
 }
+
+CourseSummary.propTypes = {
+  codice: PropTypes.string.isRequired,
+  nome: PropTypes.string.isRequired,
+  periodo: PropTypes.number.isRequired,
+  crediti: PropTypes.number.isRequired,
+  linkGuida: PropTypes.string,
+};

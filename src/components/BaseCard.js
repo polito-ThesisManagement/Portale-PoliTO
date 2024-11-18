@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,7 @@ import { Star, StarFill } from 'react-bootstrap-icons';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { PiUserListFill } from 'react-icons/pi';
 
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import { FavoritesContext } from '../App';
@@ -60,13 +61,13 @@ export default function BaseCard(props) {
           </span>
           <div className="col d-flex justify-content-end">
             {starClicked ? (
-              <StarFill size="24px" className="star" style={{ color: '#EF7B00' }} onClick={handleStarClick} />
+              <StarFill size="24px" className="star-fill" onClick={handleStarClick} />
             ) : (
-              <Star size="24px" className="star" style={{ color: '#002B49' }} onClick={handleStarClick} />
+              <Star size="24px" className="star" onClick={handleStarClick} />
             )}
           </div>
         </div>
-        <div style={{ color: '#000000' }}>{props.description}</div>
+        <div style={{ color: 'var(--text)' }}>{props.description}</div>
         {props.link && props.linkText ? (
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link
@@ -96,3 +97,12 @@ export default function BaseCard(props) {
     </Col>
   );
 }
+
+BaseCard.propTypes = {
+  icon: PropTypes.node,
+  service: PropTypes.string.isRequired,
+  servicePath: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  link: PropTypes.string,
+  linkText: PropTypes.string,
+};

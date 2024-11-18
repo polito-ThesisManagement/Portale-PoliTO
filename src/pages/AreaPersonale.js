@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Container, Row } from 'react-bootstrap';
 
 import { BsCalendarFill } from 'react-icons/bs';
@@ -18,7 +20,7 @@ export default function AreaPersonale() {
   return (
     <>
       <Title icon={<FaUser size={28} />} sectionName={t('sidebar.area_personale')} />
-      <Container style={{ marginLeft: '0px', maxWidth: '1416px' }}>
+      <Container className="card-container">
         <Row>
           <BaseCard
             icon={<PiUserListFill size="48" className="card-icon" />}

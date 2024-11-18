@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import Stages from '../../data/Stages.json';
+import '../../styles/Modal.css';
+import '../../styles/Utilities.css';
 
 export default function Tirocini() {
   const [stages, setStages] = useState(Stages);
@@ -54,48 +56,57 @@ export default function Tirocini() {
     <>
       <div className="d-flex mt-3 mx-3">
         <div>
-          <Link to="/">Home</Link>
+          <Link to="/" className="breadcrumb-link">
+            Homepage
+          </Link>
           <span className="mx-2">
-            <ArrowRightShort />
+            <ArrowRightShort color="var(--placeholder)" />
           </span>
         </div>
         <div>
-          <Link to="/opportunita">Opportunità</Link>
+          <Link to="/opportunita" className="breadcrumb-link">
+            Opportunità
+          </Link>
           <span className="mx-2">
-            <ArrowRightShort />
+            <ArrowRightShort color="var(--placeholder)" />
           </span>
         </div>
-        <span style={{ color: '#808080' }}>Tirocini</span>
+        <span className="breadcrumb">Tirocinio</span>
       </div>
-      <Container className="mt-3 me-3">
+      <Container className="me-3">
         <div className="d-flex justify-content-start">
-          <List size={40} />
-          <h1 style={{ marginLeft: '8px', fontFamily: 'Montserrat' }}>Elenco Proposte Tirocinio </h1>
+          <span className="section-title">
+            <List size={28} style={{ position: 'relative', bottom: '2px', paddingRight: '2px' }} />
+            Elenco Proposte Tirocinio
+          </span>
         </div>
-        <Button style={{ backgroundColor: '#B75E00', alignSelf: 'baseline' }} onClick={handleShow}>
+        <Button
+          style={{ backgroundColor: 'var(--navy)', alignSelf: 'baseline', marginTop: '10px', marginBottom: '10px' }}
+          onClick={handleShow}
+        >
           <FilterCircleFill /> Filtra le proposte
         </Button>
-        <div className="p-3 ">
-          <Table striped responsive="sm" hover="primary">
+        <div className="mt-3 pb-3">
+          <Table className="custom-table" striped responsive="sm" hover="primary">
             <thead>
               <tr>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Azienda</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Incarico</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Sede/i</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Durata</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Scadenza</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Invia CV</th>
+                <th className="custom-th">Azienda</th>
+                <th className="custom-th">Incarico</th>
+                <th className="custom-th">Sede/i</th>
+                <th className="custom-th">Durata</th>
+                <th className="custom-th">Scadenza</th>
+                <th className="custom-th text-center">Invia CV</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{ fontSize: 'var(--font-size-md)' }}>
               {stages.map(element => (
                 <tr key={element.id}>
-                  <td>{element.azienda}</td>
-                  <td>{element.oggetto}</td>
-                  <td>{element.luogo}</td>
-                  <td>{element.durata} mesi</td>
-                  <td>{element.scadenza}</td>
-                  <td style={{ textAlign: 'center' }}>
+                  <td className="custom-td">{element.azienda}</td>
+                  <td className="custom-td">{element.oggetto}</td>
+                  <td className="custom-td">{element.luogo}</td>
+                  <td className="custom-td">{element.durata} mesi</td>
+                  <td className="custom-td">{element.scadenza}</td>
+                  <td className="custom-td text-center">
                     <Send />
                   </td>
                 </tr>
@@ -105,14 +116,14 @@ export default function Tirocini() {
         </div>
       </Container>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+      <Modal className="modal-custom" show={show} onHide={handleClose}>
+        <Modal.Header className="modal-header-custom" closeButton>
           <Modal.Title>Filtra tirocini disponibili</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modal-body-custom">
           <div>
-            <label style={{ fontFamily: 'Montserrat', marginBottom: '2px' }}>Durata:</label>
-            <Form.Select onChange={e => setDurata(e.target.value)}>
+            <label className="label-custom">Durata:</label>
+            <Form.Select className="select-custom" onChange={e => setDurata(e.target.value)}>
               <option value="">Tutte</option>
               <option value="3">3 mesi</option>
               <option value="6">6 mesi</option>
@@ -120,23 +131,23 @@ export default function Tirocini() {
             </Form.Select>
           </div>
           <div className="my-2">
-            <label style={{ fontFamily: 'Montserrat', marginBottom: '2px' }}>Tipo:</label>
-            <Form.Select onChange={e => setCurriculare(e.target.value === 'true')}>
+            <label className="label-custom">Tipo:</label>
+            <Form.Select className="select-custom" onChange={e => setCurriculare(e.target.value === 'true')}>
               <option value="">Tutti</option>
               <option value="true">Curriculare</option>
               <option value="false">Extra-curriculare</option>
             </Form.Select>
           </div>
           <div>
-            <label style={{ fontFamily: 'Montserrat', marginBottom: '2px' }}>Scadenza entro:</label>
-            <Form.Control type="date" onChange={e => setScadenza(e.target.value)} />
+            <label className="label-custom">Scadenza entro:</label>
+            <Form.Control className="select-custom" type="date" onChange={e => setScadenza(e.target.value)} />
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button style={{ fontFamily: 'Montserrat' }} variant="danger" onClick={handleClose}>
+        <Modal.Footer className="modal-footer-custom">
+          <Button style={{ fontFamily: 'var(--font-primary)' }} variant="danger" onClick={handleClose}>
             Annulla
           </Button>
-          <Button style={{ backgroundColor: '#004C81', fontFamily: 'Montserrat' }} onClick={filterStages}>
+          <Button style={{ backgroundColor: 'var(--navy)', fontFamily: 'var(--font-primary)' }} onClick={filterStages}>
             Salva Cambiamenti
           </Button>
         </Modal.Footer>

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Container, Row } from 'react-bootstrap';
 
 import { FaChalkboardTeacher } from 'react-icons/fa';
@@ -19,23 +21,20 @@ export default function Opportunita() {
   const { t } = useTranslation();
   return (
     <>
-      <Title
-        icon={<FaBriefcase size={28} style={{ position: 'relative', bottom: '2px' }} />}
-        sectionName={t('sidebar.opportunità')}
-      />
-      <Container style={{ marginLeft: '0px', maxWidth: '1416px' }}>
+      <Title icon={<FaBriefcase size={28} />} sectionName={t('sidebar.opportunità')} />
+      <Container className="card-container">
         <Row>
           <BaseCard
             icon={<MdWorkHistory size="42" className="card-icon" />}
             service={t('opportunità.tirocinio')}
             description={t('opportunità.tirocinio_descrizione')}
-            servicePath={'/opportunita'}
+            servicePath={'/opportunita/tirocinio'}
           />
           <BaseCard
             icon={<FaHelmetSafety size="42" className="card-icon" />}
             service={'Job'}
             description={t('opportunità.job_descrizione')}
-            servicePath={'/opportunita'}
+            servicePath={'/opportunita/job'}
           />
           <BaseCard
             icon={<HiMiniClipboardDocumentCheck size="42" className="card-icon" />}

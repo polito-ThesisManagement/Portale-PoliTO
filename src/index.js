@@ -9,6 +9,7 @@ import App from './App';
 import './i18n';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import './styles/Theme.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

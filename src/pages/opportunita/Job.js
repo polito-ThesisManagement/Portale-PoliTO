@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -38,56 +38,70 @@ export default function Job() {
     <>
       <div className="d-flex mt-3 mx-3">
         <div>
-          <Link to="/">Home</Link>
+          <Link to="/" className="breadcrumb-link">
+            Homepage
+          </Link>
           <span className="mx-2">
-            <ArrowRightShort />
+            <ArrowRightShort color="var(--placeholder)" />
           </span>
         </div>
         <div>
-          <Link to="/opportunita">Opportunità</Link>
+          <Link to="/opportunita" className="breadcrumb-link">
+            Opportunità
+          </Link>
           <span className="mx-2">
-            <ArrowRightShort />
+            <ArrowRightShort color="var(--placeholder)" />
           </span>
         </div>
-        <span style={{ color: '#808080' }}>Job</span>
+        <span className="breadcrumb">Job</span>
       </div>
-      <Container className="mt-3 me-3">
+      <Container className="me-3">
         <div className="d-flex justify-content-start">
-          <ListStars size={40} />
-          <h1 style={{ marginLeft: '8px', fontFamily: 'Montserrat' }}>Elenco offerte lavoro</h1>
+          <span className="section-title">
+            <ListStars size={28} style={{ position: 'relative', bottom: '2px', paddingRight: '2px' }} />
+            Elenco Offerte Lavoro
+          </span>
         </div>
-        <Form className="d-flex me-3 mt-1">
+        <Form className="d-flex mt-1">
           <Form.Control
             type="search"
             placeholder="Ricerca per corso di studi, nome azienda, sede, incarico"
-            className="me-2"
+            className="me-2 truncated"
             aria-label="Search"
             size="md"
-            style={{ flex: '1', width: '300px', height: '80%' }}
+            style={{
+              flex: '1',
+              width: '300px',
+              height: '80%',
+              marginTop: '10px',
+              marginBottom: '10px',
+              backgroundColor: 'var(--surface)',
+              color: 'var(--primary)',
+            }}
             color="primary"
             value={search}
             onChange={handleChange}
           />
         </Form>
-        <div className="p-3 ">
-          <Table striped responsive="sm" hover="primary">
+        <div className="mt-3 pb-3">
+          <Table className="custom-table" striped responsive="sm" hover="primary">
             <thead>
               <tr>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Azienda</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Incarico</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>sede/i</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Inserzione</th>
-                <th style={{ backgroundColor: '#004C81', color: '#fff' }}>Invia CV</th>
+                <th className="custom-th">Azienda</th>
+                <th className="custom-th">Incarico</th>
+                <th className="custom-th">sede/i</th>
+                <th className="custom-th">Inserzione</th>
+                <th className="custom-th text-center">Invia CV</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{ fontSize: 'var(--font-size-md)' }}>
               {jobs.map(element => (
                 <tr key={getRandomNumber(1, 10000)}>
-                  <td>{element.azienda}</td>
-                  <td>{element.lavoro}</td>
-                  <td>{element.sede}</td>
-                  <td>{element.data_ins}</td>
-                  <td style={{ textAlign: 'center' }}>{element.invia_cv ? <Send /> : 'non abilitato'}</td>
+                  <td className="custom-td">{element.azienda}</td>
+                  <td className="custom-td">{element.lavoro}</td>
+                  <td className="custom-td">{element.sede}</td>
+                  <td className="custom-td">{element.data_ins}</td>
+                  <td className="custom-td text-center">{element.invia_cv ? <Send /> : 'non abilitato'}</td>
                 </tr>
               ))}
             </tbody>

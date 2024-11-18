@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Bell, BellFill, Envelope, PersonCircle } from 'react-bootstrap-icons';
 
 import { FaSignOutAlt } from 'react-icons/fa';
-import { FaKey, FaUser } from 'react-icons/fa6';
+import { FaCircleHalfStroke, FaKey, FaMoon, FaSun, FaUser } from 'react-icons/fa6';
 
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -19,14 +19,19 @@ import { useTranslation } from 'react-i18next';
 import { AvvisiContext } from '../App';
 import Logo from '../assets/logo_polito.svg';
 import Logo2 from '../assets/logo_polito_reduced.svg';
+import Logo2White from '../assets/logo_polito_reduced_white.svg';
+import LogoWhite from '../assets/logo_polito_white.svg';
 import Services from '../data/Data.json';
 import '../styles/Navbar.css';
+import '../styles/Theme.css';
 import '../styles/Utilities.css';
+import { getSystemTheme } from '../utils/utils';
 import Searchbar from './Searchbar';
 
 export default function PoliNavbar() {
   const [showPopover, setShowPopover] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
+  const [theme, setTheme] = useState('auto');
   const targetRef = useRef(null);
 
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
@@ -42,6 +47,7 @@ export default function PoliNavbar() {
   const changeLanguage = lng => {
     i18n.changeLanguage(lng);
     setSelectedLanguage(lng);
+    document.documentElement.setAttribute('lang', lng);
   };
 
   const handleClickOutside = event => {
@@ -58,6 +64,21 @@ export default function PoliNavbar() {
     };
   }, []);
 
+  useEffect(() => {
+    const initialTheme = 'auto';
+    setTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
+  }, []);
+
+  useEffect(() => {
+    if (theme === 'auto') {
+      const systemTheme = getSystemTheme();
+      document.documentElement.setAttribute('data-theme', systemTheme);
+    } else {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+  }, [theme]);
+
   const handleBellClick = () => {
     setShowPopover(!showPopover);
   };
@@ -69,10 +90,30 @@ export default function PoliNavbar() {
     setAvvisi([updatedAvvisi]);
   };
 
+  const toggleTheme = newTheme => {
+    setTheme(newTheme);
+  };
+
+  const getLogo = (logoLight, logoDark) => {
+    if (theme === 'auto') {
+      return getSystemTheme() === 'dark' ? logoDark : logoLight;
+    }
+    return theme === 'light' ? logoLight : logoDark;
+  };
+
   const popover = (
     <Popover id="popover-basic" className="custom-popover">
-      <Popover.Header style={{ fontSize: '16px', fontWeight: '600' }}>{t('navbar.ultime_notifiche')}</Popover.Header>
-      <Popover.Body className="pb-0 px-2">
+      <Popover.Header
+        style={{
+          fontSize: 'var(--font-size-base)',
+          fontWeight: 'var(--font-weight-semibold)',
+          backgroundColor: 'var(--background)',
+          color: 'var(--text)',
+        }}
+      >
+        {t('navbar.ultime_notifiche')}
+      </Popover.Header>
+      <Popover.Body className="pb-0 px-2" style={{ color: 'var(--text)' }}>
         {avvisi[0].map(notifica => (
           <div
             key={notifica.id}
@@ -80,12 +121,18 @@ export default function PoliNavbar() {
             style={{ borderRadius: '5px' }}
             className="click-notifica mb-2 py-1 px-2"
           >
-            <span className="d-flex" style={{ fontSize: '15px' }}>
-              <div style={{ marginRight: '6px', fontWeight: '500' }}>{notifica.data} -</div>
-              <div style={{ marginRight: '4px', fontWeight: '600' }}>{notifica.course}</div>
+            <span className="d-flex" style={{ fontSize: 'var(--font-size-md)' }}>
+              <div className="medium-weight" style={{ marginRight: '6px' }}>
+                {notifica.data} -
+              </div>
+              <div className="semibold-weight" style={{ marginRight: '4px' }}>
+                {notifica.course}
+              </div>
             </span>
-            <div style={{ fontWeight: '500', fontSize: '14px' }}>({notifica.sender})</div>
-            <span style={{ fontSize: '15px' }}>{notifica.body}</span>
+            <div className="medium-weight" style={{ fontSize: 'var(--font-size-sm)' }}>
+              ({notifica.sender})
+            </div>
+            <span style={{ fontSize: 'var(--font-size-md)' }}>{notifica.body}</span>
           </div>
         ))}
       </Popover.Body>
@@ -108,7 +155,7 @@ export default function PoliNavbar() {
             marginRight: '36px',
           }}
         >
-          <Image src={Logo} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
+          <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
           className="d-block d-lg-none"
@@ -122,16 +169,16 @@ export default function PoliNavbar() {
             marginRight: '12px',
           }}
         >
-          <Image src={Logo2} alt="Logo PoliTo" style={{ width: '51.44px', height: '100%' }} />
+          <Image src={getLogo(Logo2, Logo2White)} alt="Logo PoliTo" style={{ width: '51.44px', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand className="d-none d-lg-block">
           <span
             style={{
-              color: '#002B49',
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: '600',
+              color: 'var(--primary)',
               display: 'inline-block',
-              fontSize: '22px',
+              fontFamily: 'var(--font-primary)',
+              fontWeight: 'var(--font-weight-semibold)',
+              fontSize: 'var(--font-size-xxl)',
             }}
           >
             {t('navbar.portale_della_didattica')}
@@ -147,11 +194,11 @@ export default function PoliNavbar() {
               target="_blank"
               style={{ marginRight: '5px', marginTop: '9px' }}
             >
-              <Envelope size={28} color="#002B49" />
+              <Envelope size={28} color="var(--primary)" />
             </Nav.Link>
             <Nav.Link style={{ marginRight: '0px', marginTop: '9px' }}>
               {avvisi[0].length === 0 ? (
-                <Bell size={28} color="#002B49" />
+                <Bell size={28} color="var(--primary)" />
               ) : (
                 <OverlayTrigger
                   show={showPopover}
@@ -161,12 +208,19 @@ export default function PoliNavbar() {
                   overlay={popover}
                 >
                   <span ref={targetRef}>
-                    <BellFill size={28} color="#002B49" onClick={handleBellClick} />
+                    <BellFill size={28} color="var(--primary)" onClick={handleBellClick} />
                   </span>
                 </OverlayTrigger>
               )}
             </Nav.Link>
-            <Navbar.Text className="text-style" style={{ fontWeight: '500', fontSize: '16px', color: '#002B49' }}>
+            <Navbar.Text
+              className="text-style"
+              style={{
+                fontWeight: 'var(--font-weight-medium)',
+                fontSize: 'var(--font-size-base)',
+                color: 'var(--primary)',
+              }}
+            >
               <div className="d-none d-md-block" style={{ marginLeft: '12px', marginRight: '12px' }}>
                 s123456
                 <br />
@@ -184,32 +238,31 @@ export default function PoliNavbar() {
                     boxShadow: 'none',
                   }}
                 >
-                  <PersonCircle height={48} width={46} color="#002B49" />
+                  <PersonCircle height={48} width={46} color="var(--primary)" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu
                   style={{
                     right: 'auto',
                     left: '-130px',
-                    fontFamily: 'Montserrat, sans-serif',
+                    fontFamily: 'var(--font-primary)',
                   }}
                 >
-                  <Dropdown.Item style={{ fontWeight: '500' }}>
+                  <Dropdown.Item className="medium-weight">
                     <FaUser /> {t('navbar.profilo_utente')}
                   </Dropdown.Item>
-                  <Dropdown.Item style={{ fontWeight: '500' }}>
+                  <Dropdown.Item className="medium-weight">
                     <FaKey /> {t('navbar.cambio_password')}
                   </Dropdown.Item>
-                  <Dropdown.Item style={{ fontWeight: '500' }}>
+                  <Dropdown.Item className="medium-weight">
                     <FaSignOutAlt /> Logout
                   </Dropdown.Item>
                   <Dropdown.Item
-                    style={{ fontWeight: '500' }}
-                    className="dropdown-submenu"
+                    className="dropdown-submenu medium-weight"
                     onMouseEnter={() => setShowSubmenu(true)}
                     onMouseLeave={() => setShowSubmenu(false)}
                   >
                     <Dropdown drop="bottom" show={showSubmenu}>
-                      <Dropdown.Toggle as="div" style={{ fontWeight: '500' }}>
+                      <Dropdown.Toggle className="medium-weight" as="div">
                         <span className={`flag ${languageOptions[selectedLanguage].flag}`} />{' '}
                         {languageOptions[selectedLanguage].label}
                       </Dropdown.Toggle>
@@ -218,15 +271,50 @@ export default function PoliNavbar() {
                           right: 'auto',
                           left: '0',
                           marginTop: '30px',
-                          fontFamily: 'Montserrat, sans-serif',
+                          fontFamily: 'var(--font-primary)',
                         }}
                         className="submenu"
                       >
-                        <Dropdown.Item as="div" style={{ fontWeight: '500' }} onClick={() => changeLanguage('it')}>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => changeLanguage('it')}>
                           <span className="flag flag-it" /> Italiano
                         </Dropdown.Item>
-                        <Dropdown.Item as="div" style={{ fontWeight: '500' }} onClick={() => changeLanguage('en')}>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => changeLanguage('en')}>
                           <span className="flag flag-gb" /> English
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-submenu medium-weight"
+                    onMouseEnter={() => setShowSubmenu(true)}
+                    onMouseLeave={() => setShowSubmenu(false)}
+                  >
+                    <Dropdown drop="bottom" show={showSubmenu}>
+                      <Dropdown.Toggle className="medium-weight" as="div">
+                        {theme === 'light' ? <FaSun /> : theme === 'dark' ? <FaMoon /> : <FaCircleHalfStroke />}{' '}
+                        {theme === 'light'
+                          ? t('navbar.tema_chiaro')
+                          : theme === 'dark'
+                            ? t('navbar.tema_scuro')
+                            : t('navbar.tema_automatico')}
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu
+                        style={{
+                          right: 'auto',
+                          left: '0',
+                          marginTop: '30px',
+                          fontFamily: 'var(--font-primary)',
+                        }}
+                        className="submenu"
+                      >
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => toggleTheme('light')}>
+                          <FaSun /> {t('navbar.tema_chiaro')}
+                        </Dropdown.Item>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => toggleTheme('dark')}>
+                          <FaMoon /> {t('navbar.tema_scuro')}
+                        </Dropdown.Item>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => toggleTheme('auto')}>
+                          <FaCircleHalfStroke /> {t('navbar.tema_automatico')}
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

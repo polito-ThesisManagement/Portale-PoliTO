@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import { Col, Container, Row } from 'react-bootstrap';
@@ -18,11 +20,8 @@ export default function Servizi() {
   const { t } = useTranslation();
   return (
     <>
-      <Title
-        icon={<MdApps size={28} style={{ position: 'relative', bottom: '1px' }} />}
-        sectionName={t('sidebar.servizi')}
-      />
-      <Container style={{ marginLeft: '0px', maxWidth: '1416px' }}>
+      <Title icon={<MdApps size={28} />} sectionName={t('sidebar.servizi')} />
+      <Container className="card-container">
         <Row className="p-0">
           <BaseCard
             icon={<MdMapsHomeWork size="42" className="card-icon" />}
@@ -34,14 +33,18 @@ export default function Servizi() {
             <Container className="custom-container">
               <div className="subsection">
                 <span className="subsection-title">
-                  <FaLink size={20} className="subsection-icon" style={{ position: 'relative', bottom: '1px' }} />
+                  <FaLink size={20} className="subsection-icon" />
                   {t('servizi.link_utili')}
                 </span>
               </div>
               <ListGroup>
                 {LinkUtili.map(link => {
                   return (
-                    <ListGroup.Item key={link.servizio} className="px-1" style={{ border: 'hidden' }}>
+                    <ListGroup.Item
+                      key={link.servizio}
+                      className="px-1"
+                      style={{ border: 'hidden', backgroundColor: 'var(--surface)' }}
+                    >
                       <Link to={link.link} target="_blank" className="custom-link">
                         <TiArrowForward className="me-1" style={{ marginBottom: '2px' }} />
                         {t(`servizi.${link.servizio.toLowerCase().replace(/ /g, '_')}`)}

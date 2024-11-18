@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Container } from 'react-bootstrap';
 import { Col, Row, Table } from 'react-bootstrap';
 
@@ -24,26 +26,56 @@ export default function Libretto() {
                 <FaList size={20} className="subsection-icon" />
                 {t('didattica.valutazioni_provvisorie')}
               </span>
-              <Table striped className="custom-table" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <thead style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <Table striped className="custom-table">
+                <thead>
                   <tr>
-                    <th>{t('didattica.codice')}</th>
-                    <th>{t('didattica.nome')}</th>
-                    <th style={{ position: 'relative', left: -18 }}>{t('didattica.anno')}</th>
-                    <th style={{ position: 'relative', left: -24 }}>{t('didattica.crediti')}</th>
-                    <th style={{ position: 'relative', left: -10 }}>{t('didattica.esito')}</th>
-                    <th>{t('didattica.data')}</th>
+                    <th className="custom-th">{t('didattica.codice')}</th>
+                    <th className="custom-th">{t('didattica.nome')}</th>
+                    <th className="custom-th text-center">{t('didattica.anno')}</th>
+                    <th className="custom-th text-center">{t('didattica.crediti')}</th>
+                    <th className="custom-th text-center">{t('didattica.esito')}</th>
+                    <th className="custom-th">{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {valutazioniProvvisorie.map(course => (
+                  {valutazioniProvvisorie.map((course, index) => (
                     <tr key={course.codice}>
-                      <td style={{ fontWeight: 500 }}>{course.codice}</td>
-                      <td style={{ fontWeight: 500 }}>{course.nome}</td>
-                      <td>{course.anno}</td>
-                      <td>{course.cfu}</td>
-                      <td style={{ fontWeight: 500 }}>{course.esito}</td>
-                      <td>{course.data}</td>
+                      <td
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.codice}
+                      </td>
+                      <td
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.nome}
+                      </td>
+                      <td
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.anno}
+                      </td>
+                      <td
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.cfu}
+                      </td>
+                      <td
+                        className="custom-td text-center medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.esito}
+                      </td>
+                      <td
+                        className="custom-td"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.data}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -56,26 +88,56 @@ export default function Libretto() {
                 <PiListChecksBold size={28} className="subsection-icon" />
                 {t('didattica.valutazioni')}
               </span>
-              <Table striped className="custom-table" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <thead style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <Table striped className="custom-table">
+                <thead>
                   <tr>
-                    <th>{t('didattica.codice')}</th>
-                    <th>{t('didattica.nome')}</th>
-                    <th style={{ position: 'relative', left: -18 }}>{t('didattica.anno')}</th>
-                    <th style={{ position: 'relative', left: -24 }}>{t('didattica.crediti')}</th>
-                    <th style={{ position: 'relative', left: -10 }}>{t('didattica.esito')}</th>
-                    <th>{t('didattica.data')}</th>
+                    <th className="custom-th">{t('didattica.codice')}</th>
+                    <th className="custom-th">{t('didattica.nome')}</th>
+                    <th className="custom-th text-center">{t('didattica.anno')}</th>
+                    <th className="custom-th text-center">{t('didattica.crediti')}</th>
+                    <th className="custom-th text-center">{t('didattica.esito')}</th>
+                    <th className="custom-th">{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {valutazioni.map(course => (
+                  {valutazioni.map((course, index) => (
                     <tr key={course.codice}>
-                      <td style={{ fontWeight: 500 }}>{course.codice}</td>
-                      <td style={{ fontWeight: 500 }}>{course.nome}</td>
-                      <td>{course.anno}</td>
-                      <td>{course.cfu}</td>
-                      <td style={{ fontWeight: 500 }}>{course.voto}</td>
-                      <td>{course.data}</td>
+                      <td
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.codice}
+                      </td>
+                      <td
+                        className="custom-td medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.nome}
+                      </td>
+                      <td
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.anno}
+                      </td>
+                      <td
+                        className="custom-td text-center"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.cfu}
+                      </td>
+                      <td
+                        className="custom-td text-center medium-weight"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.voto}
+                      </td>
+                      <td
+                        className="custom-td"
+                        style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
+                      >
+                        {course.data}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -84,7 +146,7 @@ export default function Libretto() {
           </Container>
         </Col>
         <Col md={12} lg={4}>
-          <Container className="custom-container">
+          <Container className="custom-container" style={{ color: 'var(--text)' }}>
             <div className="subsection">
               <span className="subsection-title">
                 <BsGraphUp size={20} className="subsection-icon" />
@@ -106,7 +168,7 @@ export default function Libretto() {
           </Container>
           <Row>
             <Col md={12} lg={6}>
-              <Container className="custom-container">
+              <Container className="custom-container" style={{ color: 'var(--text)' }}>
                 <div className="subsection truncated">
                   <span className="subsection-title">
                     <VscGraph size={20} className="subsection-icon" />
@@ -127,7 +189,7 @@ export default function Libretto() {
               </Container>
             </Col>
             <Col md={12} lg={6}>
-              <Container className="custom-container">
+              <Container className="custom-container" style={{ color: 'var(--text)' }}>
                 <div className="subsection truncated">
                   <span className="subsection-title">
                     <VscGraph size={20} className="subsection-icon" />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
@@ -31,11 +31,17 @@ export default function CoursePage() {
   return (
     <>
       <div className="d-flex mt-4 mx-3">
+        <Link to="/" className="breadcrumb-link">
+          Homepage
+        </Link>
+        <span className="mx-2">
+          <ArrowRightShort color="var(--placeholder)" />
+        </span>
         <Link to="/didattica" className="breadcrumb-link">
           {t('sidebar.didattica')}
         </Link>
         <span className="mx-2" style={{ marginTop: '-2px' }}>
-          <ArrowRightShort />
+          <ArrowRightShort color="var(--placeholder)" />
         </span>
         <span className="breadcrumb">{nome}</span>
       </div>
@@ -43,25 +49,32 @@ export default function CoursePage() {
       <Row className="mb-3">
         <div className="d-flex align-items-center mx-3">
           <span className="section-title">{nome}</span>
-          <Dropdown style={{ fontSize: '15px', fontFamily: 'Montserrat, sans-serif' }}>
+          <Dropdown style={{ fontSize: 'var(--font-size-md)', fontFamily: 'var(--font-primary)' }}>
             <Dropdown.Toggle
               className="ms-4 py-1"
-              style={{ backgroundColor: '#1A415A', borderColor: '#1A415A' }}
+              style={{ backgroundColor: 'var(--primary)', borderColor: 'var(--primary)', color: 'var(--surface)' }}
               id="dropdown-year"
             >
               <span className="p-4">2023/2024</span>
             </Dropdown.Toggle>
-            <Dropdown.Menu className="px-4">
-              <Dropdown.Item>2023/2024</Dropdown.Item>
+            <Dropdown.Menu
+              className="px-4"
+              style={{ backgroundColor: 'var(--primary)', borderColor: 'var(--primary)' }}
+            >
+              <Dropdown.Item style={{ color: 'var(--surface)' }}>2023/2024</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown
             className="course-menu-reduced"
-            style={{ fontSize: '15px', fontFamily: 'Montserrat, sans-serif', fontWeight: '500' }}
+            style={{
+              fontSize: 'var(--font-size-md)',
+              fontFamily: 'var(--font-primary)',
+              fontWeight: 'var(--font-weight-medium)',
+            }}
           >
             <Dropdown.Toggle
               className="dropdown-toggle-custom ms-3 py-1"
-              style={{ width: '200px', backgroundColor: '#EF7B00', borderColor: '#EF7B00' }}
+              style={{ width: '200px', backgroundColor: 'var(--medium-orange)', borderColor: 'var(--medium-orange)' }}
               id="dropdown-section"
             >
               <span style={{ display: 'inline-block' }}>{activeButton}</span>
