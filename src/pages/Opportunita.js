@@ -21,7 +21,7 @@ export default function Opportunita() {
   const { t } = useTranslation();
   return (
     <>
-      <Title icon={<FaBriefcase size={28} />} sectionName={t('sidebar.opportunità')} />
+      <Title icon={<FaBriefcase size={32} />} sectionName={t('sidebar.opportunità')} />
       <Container className="card-container">
         <Row>
           <BaseCard

@@ -48,7 +48,7 @@ export default function Help() {
 
   return (
     <>
-      <Title icon={<FaInfoCircle size={28} />} sectionName="Help" />
+      <Title icon={<FaInfoCircle size={32} />} sectionName="Help" />
       <Row>
         <Col md={12} lg={5}>
           <Container className="custom-container">
@@ -69,7 +69,7 @@ export default function Help() {
                   height: '40px',
                   backgroundColor: 'var(--background)',
                   color: 'var(--primary)',
-                  borderRadius: '8px',
+                  borderRadius: '6px',
                 }}
                 value={search}
                 onChange={handleSearch}
@@ -85,7 +85,7 @@ export default function Help() {
                 }}
               />
             </InputGroup>
-            <ListGroup style={{ borderRadius: '16px' }}>
+            <ListGroup style={{ borderRadius: '12px' }}>
               {filteredCategories.map(cat => {
                 return (
                   <ListGroup.Item
@@ -177,7 +177,7 @@ export default function Help() {
                 {t('help.ticket')}
               </span>
             </div>
-            <ListGroup style={{ borderRadius: '16px' }}>
+            <ListGroup style={{ borderRadius: '12px' }}>
               <ListGroup.Item className="summary">
                 {t('help.oggetto_ticket')} 1 <br></br> - {t('help.chiuso')}
               </ListGroup.Item>

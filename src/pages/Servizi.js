@@ -20,7 +20,7 @@ export default function Servizi() {
   const { t } = useTranslation();
   return (
     <>
-      <Title icon={<MdApps size={28} />} sectionName={t('sidebar.servizi')} />
+      <Title icon={<MdApps size={32} />} sectionName={t('sidebar.servizi')} />
       <Container className="card-container">
         <Row className="p-0">
           <BaseCard

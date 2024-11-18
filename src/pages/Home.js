@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <>
-      <Title icon={<FaHouse size={28} />} sectionName="Homepage" />
+      <Title icon={<FaHouse size={32} />} sectionName="Home" />
 
       <Row>
         <Col md={12} lg={5}>
@@ -52,7 +52,7 @@ export default function Home() {
               </span>
               <InfoTooltip text={t('homepage.cd_tooltip')} />
             </div>
-            <ListGroup style={{ borderRadius: '16px' }}>
+            <ListGroup style={{ borderRadius: '12px' }}>
               {Courses.map(corso => {
                 return (
                   <CourseSummary

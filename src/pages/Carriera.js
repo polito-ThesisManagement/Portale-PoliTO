@@ -18,7 +18,7 @@ export default function Carriera() {
   const { t } = useTranslation();
   return (
     <>
-      <Title icon={<FaUserGraduate size={28} />} sectionName={t('sidebar.carriera')} />
+      <Title icon={<FaUserGraduate size={32} />} sectionName={t('sidebar.carriera')} />
       <Container className="card-container">
         <Row>
           <BaseCard
