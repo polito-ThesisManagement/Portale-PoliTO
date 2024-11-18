@@ -1,4 +1,5 @@
 {
+    "descrizione": "Portale della Didattica del Politecnico di Torino",
     "navbar": {
         "portale_della_didattica": "Portale della Didattica",
         "ricerca_nel_portale": "Ricerca nel portale...",
@@ -137,7 +138,11 @@
         },
         "proposte_di_tesi": {
             "title": "Proposte di Tesi",
+            "title_half_lowercase": "Proposte di tesi",
             "description": "Elenco delle proposte di tesi."
+        },
+        "proposta_di_tesi": {
+            "dettagli_proposta_di_tesi": "Dettagli proposta di tesi"
         }
     },
     "opportunità": {
