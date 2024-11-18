@@ -1,567 +1,513 @@
 .container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .header {
-    align-self: flex-start;
-    z-index: 10;
-    display: flex;
-    margin-left: 13px;
-    align-items: flex-start;
-    gap: 14px;
-    color: #002b49;
-    white-space: nowrap;
-    font: 600 20px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-  }
-  
-  @media (max-width: 991px) {
-    .header {
-      margin-left: 10px;
-      white-space: initial;
-    }
-  }
-  
-  .headerIcon {
-    aspect-ratio: 1;
-    object-fit: contain;
-    object-position: center;
-    width: 28px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 2vw;
+  padding-bottom: 1%;
+  padding-top: 1%;
+}
+
+.mainContent {
+  border-radius: 1rem; /* 16px in rem */
+  background-color: #fff;
+  display: flex;
+  margin-top: 1.125rem; /* 18px in rem */
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 8rem;
+  flex-grow: 1;
+  padding-bottom: 2%;
+}
+
+@media (max-width: 991px) {
   .mainContent {
-    border-radius: 16px;
-    background-color: #fff;
-    display: flex;
-    margin-top: 18px;
-    width: 100%;
-    flex-direction: column;
-    padding: 22px 40px 0 16px;
-  }
-  
-  @media (max-width: 991px) {
-    .mainContent {
-      max-width: 100%;
-      padding-right: 20px;
-    }
-  }
-  
-  .subHeader {
-    align-self: flex-start;
-    display: flex;
-    gap: 10px;
-    color: #002b49;
-    font: 600 18px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-  }
-  
-  .subHeaderIcon {
-    aspect-ratio: 1;
-    object-fit: contain;
-    object-position: center;
-    width: 28px;
-  }
-  
-  .contentWrapper {
-    align-self: flex-end;
-    display: flex;
-    margin-top: 14px;
-    width: 100%;
-    max-width: 1184px;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  @media (max-width: 991px) {
-    .contentWrapper {
-      max-width: 100%;
-    }
-  }
-  
-  .card {
-    border-radius: 2px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    background-color: #fff;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    overflow: hidden;
-    justify-content: flex-start;
-  }
-  
-  @media (max-width: 991px) {
-    .card {
-      max-width: 100%;
-    }
-  }
-  
-  .cardBody {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    padding: 24px;
-  }
-  
-  @media (max-width: 991px) {
-    .cardBody {
-      max-width: 100%;
-      padding: 0 20px;
-    }
-  }
-  
-  .filterSection {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  @media (max-width: 991px) {
-    .filterSection {
-      max-width: 100%;
-    }
-  }
-  
-  .filterWrapper {
-    align-self: stretch;
-    position: relative;
-    display: flex;
-    min-width: 240px;
-    min-height: 32px;
-    width: 1085px;
-    align-items: flex-start;
-    gap: 40px 100px;
-    justify-content: space-between;
-    margin: auto 0;
-  }
-  
-  .segmentedControl {
-    border-radius: 2px;
-    position: absolute;
-    z-index: 0;
-    display: flex;
-    min-width: 240px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    left: 0;
-    bottom: 0;
-    font: 400 14px/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-  }
-  
-  .segmentedControlInner {
-    border-radius: 8px;
-    background-color: #f0f3f5;
-    display: flex;
-    min-width: 240px;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 2px;
-  }
-  
-  .segmentedItem {
-    align-self: stretch;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
-    gap: 6px;
-    overflow: hidden;
-    color: #262626;
-    margin: auto 0;
-    padding: 3px 11px;
-  }
-  
-  .segmentedItemInactive {
-    align-self: stretch;
-    background-color: #f0f3f5;
-    gap: 6px;
-    overflow: hidden;
-    color: rgba(0, 0, 0, 0.65);
-    margin: auto 0;
-    padding: 3px 11px;
-  }
-  
-  .searchBar {
-    border-radius: 8px;
-    background-color: #f0f3f5;
-    position: absolute;
-    z-index: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    justify-content: flex-start;
-    right: 0;
-    bottom: 0;
-    width: 237px;
-    border: 1px solid #cccbcc;
-  }
-  
-  .searchBarInner {
-    display: flex;
-    min-height: 32px;
-    width: 100%;
-    gap: 4px;
-    justify-content: flex-start;
-    padding: 4px 7px 4px 10px;
-  }
-  
-  .searchInput {
-    align-self: stretch;
-    gap: 10px;
-    color: #3d3d3d;
-    height: 100%;
-    width: 200px;
-    font: 400 14px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-  }
-  
-  .searchIcon {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 16px;
-    margin: auto 0;
-  }
-  
-  .searchIconImage {
-    aspect-ratio: 1;
-    object-fit: contain;
-    object-position: center;
-    width: 16px;
-    align-self: stretch;
-    margin: auto 0;
-  }
-  
-  .sortBy {
-    border-radius: 8px;
-    background-color: #f0f3f5;
-    position: absolute;
-    z-index: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    justify-content: flex-start;
-    right: 254px;
-    bottom: 0;
-    width: 229px;
-    border: 1px solid #cccbcc;
-  }
-  
-  .sortByInner {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: #3d3d3d;
-    justify-content: flex-start;
-    height: 100%;
-    width: 192px;
-    font: 14px Montserrat, sans-serif;
-  }
-  
-  .sortByLabel {
-    font-weight: 400;
-    position: absolute;
-    z-index: 0;
-    right: 139px;
-    bottom: 3px;
-    width: 53px;
-    height: 17px;
-  }
-  
-  .sortByValue {
-    font-weight: 500;
-    text-align: center;
-    position: absolute;
-    z-index: 0;
-    right: 0;
-    bottom: 3px;
-    width: 139px;
-    height: 17px;
-  }
-  
-  .sortByIcon {
-    display: flex;
-    padding-top: 2px;
-    align-items: center;
-    justify-content: flex-end;
-    width: 16px;
-    margin: auto 0;
-  }
-  
-  .sortByIconImage {
-    aspect-ratio: 1;
-    object-fit: contain;
-    object-position: center;
-    width: 16px;
-    align-self: stretch;
-    margin: auto 0;
-  }
-  
-  .thesisList {
-    background-color: #fff;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 8px 32px 32px;
-  }
-  
-  @media (max-width: 991px) {
-    .thesisList {
-      max-width: 100%;
-      padding: 0 20px;
-    }
-  }
-  
-  .thesisListInner {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    overflow: hidden;
-    justify-content: flex-start;
-  }
-  
-  @media (max-width: 991px) {
-    .thesisListInner {
-      max-width: 100%;
-    }
-  }
-  
-  .thesisItem {
-    align-items: flex-start;
-    background-color: #fff;
-    box-shadow: 0 -1px 0 0 #f0f0f0 inset;
-    display: flex;
     max-width: 100%;
-    width: 1120px;
-    gap: 40px;
-    overflow: hidden;
-    justify-content: flex-start;
-    padding: 16px 24px;
+    padding-right: 1.25rem; /* 20px in rem */
   }
-  
-  @media (max-width: 991px) {
-    .thesisItem {
-      padding: 0 20px;
-    }
+}
+
+.subHeader {
+  display: flex;
+  gap: 0.625rem; /* 10px in rem */
+  color: #002b49;
+  font: 600 1.125rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* 18px in rem */
+  width: 100%; /* Assicurati che il subHeader occupi tutta la larghezza */
+  padding-top: 2%;
+  padding-left: 3%;
+  padding-bottom: 2%;
+  align-items: center;
+}
+
+.subHeaderIcon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 1.75rem; /* 28px in rem */
+}
+
+.contentWrapper {
+  display: flex;
+  margin-top: 0.875rem; /* 14px in rem */
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1; 
+  overflow: auto;
+}
+
+
+.card {
+  border-radius: 0.125rem; /* 2px in rem */
+  border: 0.0625rem solid rgba(0, 0, 0, 0.06); /* 1px in rem */
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  margin-bottom: 1.25rem; /* 20px in rem */
+}
+
+
+.cardBody {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 1.5rem; 
+}
+
+@media (max-width: 991px) {
+  .cardBody {
+    max-width: 100%;
+    padding: 0 20px;
   }
-  
+}
+
+.filterSection {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap; 
+  padding-left: 3%;
+}
+
+@media (max-width: 991px) {
+  .filterSection {
+    max-width: 100%;
+  }
+}
+
+.filterWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; 
+}
+
+.segmentedControl {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.625rem; 
+}
+
+.segmentedControlInner {
+  display: flex;
+  gap: 0.625rem; 
+}
+
+.segmentedItem,
+.segmentedItemInactive {
+  padding: 0.5rem 1rem; 
+  border-radius: 0.5rem; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.segmentedItem {
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.05); /* 2px 8px in rem */
+  border: none;
+}
+
+.segmentedItem:hover {
+  background-color: #e0e0e0;
+}
+
+.segmentedItemInactive {
+  background-color: #f0f3f5;
+  box-shadow: none;
+  border: none;
+}
+
+.segmentedItemInactive:hover {
+  background-color: #e0e0e0;
+}
+
+.searchBar {
+  border-radius: 0.5rem; 
+  background-color: #f0f3f5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: flex-start;
+  width: 100%;
+  height: fit-content;
+  max-width: 15rem; 
+  border: 0.0625rem solid #cccbcc; 
+}
+
+.searchBarInner {
+  display: flex;
+  min-height: 2rem; 
+  width: 100%;
+  gap: 0.25rem; 
+  justify-content: flex-start;
+  padding: 0.25rem 0.4375rem 0.25rem 0.625rem; 
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 0.5rem; 
+  font-size: 0.875rem; 
+  outline: none;
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem; /* 8px in rem */
+}
+
+.searchIconImage {
+  width: 1.25rem; /* 20px in rem */
+  height: 1.25rem; /* 20px in rem */
+}
+
+.sortBy {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.625rem; /* 10px in rem */
+}
+
+.sortByInner {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* 4px in rem */
+}
+
+.sortByLabel {
+  font-weight: bold;
+}
+
+.sortByValue {
+  font-weight: normal;
+}
+
+.sortByIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem; /* 8px in rem */
+}
+
+.sortByIconImage {
+  width: 1.25rem; /* 20px in rem */
+  height: 1.25rem; /* 20px in rem */
+}
+
+.thesisList {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 8px 32px 32px;
+}
+
+@media (max-width: 991px) {
+  .thesisList {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+.thesisListInner {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+@media (max-width: 991px) {
+  .thesisListInner {
+    max-width: 100%;
+  }
+}
+
+.thesisItem {
+  align-items: flex-start;
+  background-color: #fff;
+  box-shadow: 0 -1px 0 0 #f0f0f0 inset;
+  display: flex;
+  max-width: 100%;
+  gap: 40px;
+  overflow: hidden;
+  justify-content: flex-start;
+  padding: 16px 24px;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 991px) {
+  .thesisItem {
+    padding: 0 20px;
+  }
+}
+
+.thesisItemContent {
+  display: flex;
+  min-width: 240px;
+  max-width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  flex-basis: 0%;
+}
+
+@media (max-width: 991px) {
   .thesisItemContent {
-    display: flex;
-    min-width: 240px;
-    width: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex: 1;
-    flex-basis: 0%;
+    max-width: 100%;
   }
-  
-  @media (max-width: 991px) {
-    .thesisItemContent {
-      max-width: 100%;
-    }
-  }
-  
+}
+
+.thesisItemMeta {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (max-width: 991px) {
   .thesisItemMeta {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
+    max-width: 100%;
   }
-  
-  @media (max-width: 991px) {
-    .thesisItemMeta {
-      max-width: 100%;
-    }
-  }
-  
+}
+
+.thesisTitle {
+  width: 100%;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.85);
+  font: 500 16px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+@media (max-width: 991px) {
   .thesisTitle {
-    width: 100%;
-    overflow: hidden;
-    color: rgba(0, 0, 0, 0.85);
-    font: 500 16px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+    max-width: 100%;
   }
-  
-  @media (max-width: 991px) {
-    .thesisTitle {
-      max-width: 100%;
-    }
-  }
-  
+}
+
+.tagGroup {
+  display: flex;
+  margin-top: 0.6rem;
+  width: 100%;
+  align-items: flex-start;
+  gap: 0.3rem;
+  color: #002b49;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  font: 400 0.8rem/2 Roboto, sans-serif;
+}
+
+@media (max-width: 991px) {
   .tagGroup {
-    display: flex;
-    margin-top: 12px;
-    width: 100%;
-    align-items: flex-start;
-    gap: 8px;
-    color: #002b49;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    font: 400 12px/2 Roboto, sans-serif;
+    max-width: 100%;
   }
-  
-  @media (max-width: 991px) {
-    .tagGroup {
-      max-width: 100%;
-    }
-  }
-  
-  .tag {
-    align-self: stretch;
-    border-radius: 8px;
-    border: 1px solid #d9d9d9;
-    background-color: #fafafa;
-    gap: 3px;
-    overflow: hidden;
-    font-family: Montserrat, sans-serif;
-    color: #002b49;
-    padding: 1px 8px;
-  }
-  
+}
+
+.tag {
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  background-color: #fafafa;
+  gap: 3px;
+  overflow: hidden;
+  font-family: Montserrat, sans-serif;
+  color: #002b49;
+  padding: 1px 8px;
+}
+
+.thesisDescription {
+  display: flex;
+  margin-top: 16px;
+  min-height: 68px;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  color: #333;
+  justify-content: flex-start;
+  font: 400 14px/22px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+@media (max-width: 991px) {
   .thesisDescription {
-    display: flex;
-    margin-top: 16px;
-    min-height: 68px;
-    width: 100%;
-    flex-direction: column;
-    overflow: hidden;
-    color: #333;
-    justify-content: flex-start;
-    font: 400 14px/22px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+    max-width: 100%;
   }
-  
-  @media (max-width: 991px) {
-    .thesisDescription {
-      max-width: 100%;
-    }
-  }
-  
+}
+
+.thesisMetaInfo {
+  position: relative;
+  display: flex;
+  margin-top: 16px;
+  width: 100%;
+  align-items: flex-start;
+  gap: 40px 100px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  justify-content: flex-start;
+}
+
+@media (max-width: 991px) {
   .thesisMetaInfo {
-    position: relative;
-    display: flex;
-    margin-top: 16px;
-    width: 100%;
-    align-items: flex-start;
-    gap: 40px 100px;
-    font-family: Montserrat, sans-serif;
-    font-weight: 400;
-    justify-content: flex-start;
+    max-width: 100%;
   }
-  
-  @media (max-width: 991px) {
-    .thesisMetaInfo {
-      max-width: 100%;
-    }
-  }
-  
-  .professorTag {
-    align-items: center;
-    border-radius: 8px;
-    border: 1px solid #91d5ff;
-    background-color: #e6f7ff;
-    z-index: 0;
-    display: flex;
-    gap: 3px;
-    font-size: 14px;
-    color: #008ef1;
-    line-height: 2;
-    justify-content: flex-start;
-    margin: auto 0;
-    padding: 1px 8px;
-  }
-  
-  .professorName {
-    align-self: stretch;
-    overflow: hidden;
-    margin: auto 0;
-  }
-  
-  .thesisTypeTag {
-    align-items: center;
-    border-radius: 8px;
-    border: 0.8px solid #002b49;
-    background-color: #f0f5ff;
-    align-self: flex-start;
-    position: absolute;
-    z-index: 0;
-    display: flex;
-    gap: 8px;
-    font-size: 12px;
-    color: #002b49;
-    line-height: 2;
-    justify-content: flex-start;
-    right: 0;
-    bottom: 1px;
-    padding: 1px 8px;
-  }
-  
-  .thesisTypeIcon {
-    aspect-ratio: 1;
-    object-fit: contain;
-    object-position: center;
-    width: 16px;
-    align-self: stretch;
-    margin: auto 0;
-  }
-  
-  .thesisTypeText {
-    align-self: stretch;
-    gap: 3px;
-    margin: auto 0;
-  }
-  
+}
+
+.professorTag {
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #91d5ff;
+  background-color: #e6f7ff;
+  z-index: 0;
+  display: flex;
+  gap: 3px;
+  font-size: 14px;
+  color: #008ef1;
+  line-height: 2;
+  justify-content: flex-start;
+  margin: auto 0;
+  padding: 1px 8px;
+}
+
+.professorName {
+  align-self: stretch;
+  overflow: hidden;
+  margin: auto 0;
+}
+
+.thesisTypeTag {
+  align-items: center;
+  border-radius: 8px;
+  border: 0.8px solid #002b49;
+  background-color: #f0f5ff;
+  align-self: flex-start;
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #002b49;
+  line-height: 2;
+  justify-content: flex-start;
+  right: 0;
+  bottom: 1px;
+  padding: 1px 8px;
+}
+
+.thesisTypeIcon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 16px;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.thesisTypeText {
+  align-self: stretch;
+  gap: 3px;
+  margin: auto 0;
+}
+
+.thesisItemFooter {
+  position: relative;
+  display: flex;
+  margin-top: 16px;
+  min-height: 22px;
+  width: 100%;
+  align-items: flex-start;
+  gap: 16px;
+  color: rgba(27, 31, 38, 0.72);
+  justify-content: flex-start;
+  font: 400 14px/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+@media (max-width: 991px) {
   .thesisItemFooter {
-    position: relative;
     display: flex;
-    margin-top: 16px;
-    min-height: 22px;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    align-items: flex-start;
-    gap: 16px;
-    color: rgba(27, 31, 38, 0.72);
-    justify-content: flex-start;
-    font: 400 14px/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
   }
-  
-  @media (max-width: 991px) {
-    .thesisItemFooter {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
-  }
-  
-  .expirationDate {
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    margin-left: auto; /* Aggiungi questa riga per spingere la data di scadenza a destra */
-  }
-  
+}
+
+.expirationDate {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: auto; /* Aggiungi questa riga per spingere la data di scadenza a destra */
+}
+
+.expirationDateValue {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
   .expirationDateValue {
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
+    white-space: initial;
   }
-  
-  @media (max-width: 991px) {
-    .expirationDateValue {
-      white-space: initial;
-    }
+}
+
+.showMoreButton {
+  border-radius: 0.5rem; /* 8px in rem */
+  border: 0.0625rem solid #d9d9d9; /* 1px in rem */
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0 0 rgba(0, 0, 0, 0.02); /* 2px in rem */
+  min-height: 1.375rem; /* 22px in rem */
+  gap: 0.625rem; /* 10px in rem */
+  color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+  padding: 0 0.9375rem; /* 0 15px in rem */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.showMoreButton:hover {
+  background-color: #e0e0e0; /* Colore di sfondo per l'hover */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px 8px in rem */
+}
+
+.visually-hidden {
+  position: absolute;
+}
+
+@media (max-width: 48rem) { 
+  .mainContent {
+    padding: 2vh 2vw 0 2vw; 
+    max-height: 100vh; /* Imposta un'altezza massima per evitare overflow */
   }
-  
-  .showMoreButton {
-    border-radius: 8px;
-    border: 1px solid #d9d9d9;
-    background-color: #fff;
-    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.02);
-    min-height: 22px;
-    gap: 10px;
-    color: rgba(0, 0, 0, 0.85);
-    text-align: center;
-    padding: 0 15px;
+
+  .filterWrapper {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .visually-hidden {
-    position: absolute;
+
+  .searchBar {
+    max-width: 100%;
   }
+}
