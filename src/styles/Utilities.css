@@ -1,14 +1,14 @@
 .custom-content {
-  margin-left: 224px;
-  margin-top: 80px;
-  height: 100vh;
+  margin-left: 228px;
+  margin-top: 86px;
+  height: 100%;
   background-color: var(--background);
-  margin-right: 8px;
+  margin-right: 16px;
 }
 
 @media (max-width: 991px) {
   .custom-content.reduced {
-    margin-left: 84px;
+    margin-left: 88px;
   }
 }
 
@@ -31,9 +31,8 @@ body {
 .title {
   color: var(--primary);
   display: flex;
-  align-items: center;
-  padding: 14px;
-  padding-left: 10px;
+  align-items: start;
+  text-align: start;
 }
 
 .subsection {
@@ -48,9 +47,11 @@ body {
 
 .custom-container {
   background-color: var(--surface);
-  border-radius: 10px;
-  margin: 0px;
+  border-radius: 12px;
   margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 6px;
   padding-bottom: 8px;
 }
 
@@ -58,7 +59,7 @@ body {
   border-color: var(--background);
   background-color: var(--background);
   color: var(--text);
-  border-radius: 16px;
+  border-radius: 12px;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
   margin-bottom: 8px;
@@ -84,7 +85,7 @@ body {
   border-color: var(--background);
   background-color: var(--background);
   color: var(--text);
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 .ticket-category:hover {
@@ -113,7 +114,7 @@ body {
   margin-top: 5px;
   height: 90px;
   width: 30px;
-  border-radius: 5px;
+  border-radius: 6px;
   position: absolute;
 }
 
@@ -122,11 +123,11 @@ body {
   color: var(--primary);
   border-color: var(--primary);
   background-color: var(--surface);
-  padding-top: 7px;
+  padding-top: 6px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -134,7 +135,7 @@ body {
   border-color: var(--primary);
   background-color: var(--primary);
   color: var(--background);
-  transform: scale(1.02);
+  transform: scale(1.04);
 }
 
 .custom-button.active {
@@ -161,11 +162,11 @@ body {
   border-color: var(--light-navy-transparent);
   background-color: var(--pill-button);
   color: var(--medium-navy);
-  padding-top: 7px;
+  padding-top: 6px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -191,7 +192,7 @@ body {
 .accordion-button {
   color: var(--primary);
   background-color: var(--surface);
-  border-radius: 5px;
+  border-radius: 6px;
   margin-bottom: 10px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-semibold);
@@ -202,7 +203,7 @@ body {
   background-color: var(--surface);
   margin-left: 8px;
   border: hidden;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .ticket-accordion {
@@ -210,7 +211,7 @@ body {
   background-color: var(--surface);
   margin-left: 8px;
   border: hidden;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .custom-table {
@@ -288,7 +289,7 @@ body {
 .notice-container {
   background-color: var(--background);
   color: var(--text);
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 16px;
   padding-bottom: 8px;
 }
@@ -330,7 +331,7 @@ body {
 .file-container {
   background-color: var(--background);
   color: var(--text);
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 0px;
   padding-left: 0px;
   padding-bottom: 8px;
@@ -354,7 +355,7 @@ body {
 .file-element:hover {
   background-color: var(--light-navy);
   color: var(--black);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .lang-card {
