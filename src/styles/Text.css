@@ -11,7 +11,7 @@
 .section-title {
   color: var(--primary);
   font-family: var(--font-primary);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xl);
 }
 
@@ -84,10 +84,14 @@
 .breadcrumb {
   font-family: var(--font-primary);
   color: var(--placeholder);
+  margin-top: 1px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
 }
 
 .breadcrumb-link {
   font-family: var(--font-primary);
   color: var(--link);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
 }
