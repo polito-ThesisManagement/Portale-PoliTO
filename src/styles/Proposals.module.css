@@ -4,7 +4,7 @@
   width: 100%;
   padding: 0 2vw;
   padding-bottom: 1%;
-  padding-top: 1%;
+  padding-top: 0.5%;
 }
 
 .mainContent {
@@ -15,7 +15,6 @@
   width: 100%;
   flex-direction: column;
   overflow: hidden;
-  padding-bottom: 8rem;
   flex-grow: 1;
   padding-bottom: 2%;
 }
@@ -24,7 +23,7 @@
   display: flex;
   gap: 0.625rem; /* 10px in rem */
   color: #002b49;
-  font: 600 1.125rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* 18px in rem */
+  font: 0.3rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* 18px in rem */
   width: 100%; /* Assicurati che il subHeader occupi tutta la larghezza */
   padding-top: 2%;
   padding-left: 3%;
@@ -66,7 +65,7 @@
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
-  padding: 1.5rem; 
+  padding: 1.75rem; 
 }
 
 .filterSection {
@@ -75,6 +74,8 @@
   align-items: center;
   flex-wrap: wrap; 
   padding-left: 3%;
+  padding-right: 3%;
+  border-color: #f0f0f0;
 }
 
 .filterWrapper {
@@ -205,7 +206,10 @@
   width: 100%;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 1rem 1rem 1rem 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
 }
 
 .thesisListInner {
@@ -225,8 +229,10 @@
   gap: 40px;
   overflow: hidden;
   justify-content: flex-start;
-  padding: 0.8rem 1rem;
-  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.75rem;
+  padding-top: 1.75rem;
 }
 
 .thesisItemContent {
@@ -252,7 +258,7 @@
   width: 100%;
   overflow: hidden;
   color: rgba(0, 0, 0, 0.85);
-  font: 500 16px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 500 1.5rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
 .tagGroup {

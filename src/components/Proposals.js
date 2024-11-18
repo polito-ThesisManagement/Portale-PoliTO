@@ -7,15 +7,15 @@ import ThesisItem from './ThesisItem';
 export default function Proposals() {
   return (
     <div className={styles.container}>
+      <div className={styles.subHeader}>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/dccd6c21cc2dba0fc5eddbcc61d9d9c6e208c5f8f1a45925abe44be65c1e5966?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a"
+          alt=""
+          className={styles.subHeaderIcon}
+        />
+        <h2>Proposte di tesi</h2>
+      </div>
       <main className={styles.mainContent}>
-        <div className={styles.subHeader}>
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/dccd6c21cc2dba0fc5eddbcc61d9d9c6e208c5f8f1a45925abe44be65c1e5966?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a"
-            alt=""
-            className={styles.subHeaderIcon}
-          />
-          <h2>Proposte di tesi</h2>
-        </div>
         <div className={styles.contentWrapper}>
           <section className={styles.card}>
             <div className={styles.cardBody}>
