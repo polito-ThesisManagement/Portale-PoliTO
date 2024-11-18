@@ -1,5 +1,5 @@
 [
-    { "id": 1, "pageName": "Homepage", "link": "/" },
+    { "id": 1, "pageName": "Home", "link": "/" },
     { "id": 2, "pageName": "Didattica", "link": "/didattica" },
     { "id": 3, "pageName": "Corsi", "link": "/didattica" },
     { "id": 4, "pageName": "Orario lezioni", "link": "/didattica/orario" },

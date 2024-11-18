@@ -24,7 +24,7 @@ export default function Sidebar() {
           <Nav.Item>
             <Link to="/" className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}>
               <FaHouse size={28} />
-              <span className="sidebar-text">Homepage</span>
+              <span className="sidebar-text">Home</span>
             </Link>
           </Nav.Item>
           <Nav.Item>
