@@ -8,9 +8,11 @@ export default function ThesisProposals() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
-  const [sortBy, setSortBy] = useState('creationDate');
+  const [sortBy, setSortBy] = useState('');
   const [pageProposals, setPageProposals] = useState([]);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
+  const [filteredProposals, setFilteredProposals] = useState(ThesisProposalsData);
+  const [totalPages, setTotalPages] = useState(Math.ceil(ThesisProposalsData.length / proposalsPerPage));
 
   const handleToggle = () => {
     setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
@@ -31,16 +33,30 @@ export default function ThesisProposals() {
     setSortBy(event.target.value);
   };
 
-  // Calculate total pages
-  const totalPages = Math.ceil(ThesisProposalsData.length / proposalsPerPage);
-
-  // Set initial page proposals
-  if (pageProposals.length === 0 && currentPage === 1) {
-    setPageProposals(ThesisProposalsData.slice(0, proposalsPerPage));
-  }
-
-  // Set initial page numbers
+  // Filter proposals based on activeIndex
   useEffect(() => {
+    const filteredProposals = ThesisProposalsData.filter(proposal =>
+      activeIndex === 1 ? proposal.course === 'Computer Science' : true,
+    );
+    setFilteredProposals(filteredProposals);
+    setCurrentPage(1);
+  }, [activeIndex]);
+
+  // Sort the filtered proposals based on the selected sort option
+  useEffect(() => {
+    const sortedProposals = [...filteredProposals];
+    if (sortBy === 'creationDate') {
+      sortedProposals.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+    } else if (sortBy === 'expirationDate') {
+      sortedProposals.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
+    }
+    setFilteredProposals(sortedProposals);
+    setPageProposals(sortedProposals.slice(0, proposalsPerPage));
+  }, [sortBy]);
+
+  // Set page numbers
+  useEffect(() => {
+    setTotalPages(Math.ceil(filteredProposals.length / proposalsPerPage));
     if (totalPages <= 5) {
       const array = [];
       for (let i = 1; i <= totalPages; i++) {
@@ -65,9 +81,9 @@ export default function ThesisProposals() {
           totalPages,
         ]);
       }
-      setPageProposals(ThesisProposalsData.slice((currentPage - 1) * proposalsPerPage, currentPage * proposalsPerPage));
     }
-  }, [currentPage, totalPages]);
+    setPageProposals(filteredProposals.slice((currentPage - 1) * proposalsPerPage, currentPage * proposalsPerPage));
+  }, [currentPage, totalPages, proposalsPerPage]);
 
   return (
     <div className={styles.container}>
@@ -101,7 +117,14 @@ export default function ThesisProposals() {
                       <label htmlFor="sortBy" className={styles.sortByLabel}>
                         Ordina per:
                       </label>
-                      <select id="sortBy" value={sortBy} onChange={handleSortByChange} className={styles.sortBySelect}>
+                      <select
+                        id="sortBy"
+                        value={sortBy}
+                        placeholder=""
+                        onChange={handleSortByChange}
+                        className={styles.sortBySelect}
+                      >
+                        <option value="">Seleziona...</option>
                         <option value="creationDate">Data di creazione</option>
                         <option value="expirationDate">Data di scadenza</option>
                       </select>
@@ -168,7 +191,7 @@ export default function ThesisProposals() {
                 ),
               )}
             </div>
-            <span className={styles.totalItems}>Totale: {ThesisProposalsData.length}</span>
+            <span className={styles.totalItems}>Totale: {filteredProposals.length}</span>
           </div>
         </div>
       </main>
