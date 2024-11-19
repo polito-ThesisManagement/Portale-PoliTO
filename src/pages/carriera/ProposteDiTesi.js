@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Proposals from '../../components/Proposals';
+import ThesisProposals from '../../components/ThesisProposals';
 
 /*const researchGroups = [
   '03-Aerotermodinamica, Magnetofluidodinamica e dinamica dei plasmi',
@@ -268,5 +268,5 @@ export default function ProposteDiTesi() {
     fetchThesisProposals();
   }, []);*/
 
-  return <Proposals />;
+  return <ThesisProposals />;
 }

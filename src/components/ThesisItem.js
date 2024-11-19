@@ -1,6 +1,8 @@
 import React from 'react';
 
-import styles from '../styles/Proposals.module.css';
+import PropTypes from 'prop-types';
+
+import styles from '../styles/ThesisProposals.module.css';
 
 export default function ThesisItem({ title, tags, description, professor, thesisType, expirationDate }) {
   return (
@@ -41,3 +43,12 @@ export default function ThesisItem({ title, tags, description, professor, thesis
     </article>
   );
 }
+
+ThesisItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  description: PropTypes.string.isRequired,
+  professor: PropTypes.string.isRequired,
+  thesisType: PropTypes.string.isRequired,
+  expirationDate: PropTypes.string.isRequired,
+};

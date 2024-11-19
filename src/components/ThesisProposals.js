@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import ThesisProposalsData from '../data/ThesisProposalsData.json';
-import styles from '../styles/Proposals.module.css';
+import styles from '../styles/ThesisProposals.module.css';
 import ThesisItem from './ThesisItem';
 
-export default function Proposals() {
+export default function ThesisProposals() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
@@ -65,9 +65,7 @@ export default function Proposals() {
           totalPages,
         ]);
       }
-      setPageProposals(
-        ThesisProposalsData.slice((currentPage - 1) * proposalsPerPage, currentPage * (proposalsPerPage - 1)),
-      );
+      setPageProposals(ThesisProposalsData.slice((currentPage - 1) * proposalsPerPage, currentPage * proposalsPerPage));
     }
   }, [currentPage, totalPages]);
 
@@ -140,14 +138,18 @@ export default function Proposals() {
           </section>
           <div className={styles.pagination}>
             <div className={styles.paginationControls}>
-              <label htmlFor="proposalsPerPage">Proposte per pagina:</label>
-              <select id="proposalsPerPage" value={proposalsPerPage} onChange={handleProposalsPerPageChange}>
+              <label htmlFor="proposalsPerPage">Elementi per pagina:</label>
+              <select
+                id="proposalsPerPage"
+                value={proposalsPerPage}
+                onChange={handleProposalsPerPageChange}
+                className={styles.sortBySelect}
+              >
                 <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={20}>20</option>
                 <option value={50}>50</option>
               </select>
-              <span className={styles.totalItems}>Totale: {ThesisProposalsData.length}</span>
             </div>
             <div className={styles.paginationNumbers}>
               {pageNumbers.map((number, index) =>
@@ -166,7 +168,7 @@ export default function Proposals() {
                 ),
               )}
             </div>
-            <div className={styles.paginationEmpty}></div>
+            <span className={styles.totalItems}>Totale: {ThesisProposalsData.length}</span>
           </div>
         </div>
       </main>

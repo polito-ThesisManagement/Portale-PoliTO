@@ -276,6 +276,41 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
+@media(max-width: 768px) {
+    .filterSection {
+      flex-direction: column;
+      align-items: flex-start;
+      align-content: center;
+      justify-content: space-between;
+  }
+
+  .segmentedControl {
+    position: relative;
+    display: inline-block;
+    width: 20rem; 
+    height: 2.5rem; 
+    background-color: #cccbcc; 
+    border-radius: 0.5rem;
+    border: #c0c0c0 solid 0.0625rem; 
+    cursor: pointer;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.9rem; /* Altezza del pulsante */
+    width: 9.2rem; /* Larghezza del pulsante */
+    left: 0.25rem; /* Spazio a sinistra */
+    bottom: 0.25rem; /* Spazio in basso */
+    background-color: white;
+    border-radius: 0.5rem;
+    transition: 0.4s;
+  }
+  input:checked + .slider:before {
+    transform: translateX(8.9rem); /* Sposta il pulsante a destra */
+  }
+} 
+
 .thesisList {
   background-color: #fff;
   display: flex;
@@ -512,13 +547,16 @@ input:checked + .slider:before {
   align-items: center;
   margin-top: 1rem;
   flex-wrap: wrap;
+  padding-bottom: 1.5rem;
 }
 
 .paginationControls {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-left: 1%;
+  height: 2rem;
+  padding-bottom: 1rem;
+  padding-left: 5%;
 }
 
 .paginationNumbers {
@@ -527,9 +565,6 @@ input:checked + .slider:before {
   flex-grow: 1; /* Permette ai numeri di pagina di occupare lo spazio centrale */
 }
 
-.paginationEmpty {
-  flex-grow: 1; /* Colonna vuota per bilanciare il layout */
-}
 
 .pagination button {
   margin: 0 0.25rem;
@@ -555,7 +590,9 @@ input:checked + .slider:before {
 }
 
 .totalItems {
-  font-weight: bold;
+  font: 400 0.875rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  padding-right: 5%;
+  padding-left: 5%;
 }
 
 .ellipsis {
@@ -565,4 +602,16 @@ input:checked + .slider:before {
   background-color: #fff;
   cursor: default;
   pointer-events: none;
+}
+
+@media(max-width: 768px) {
+  .paginationEmpty {
+    flex-grow: 0;
+  }
+}
+
+@media(max-width: 320px) {
+  .paginationControls {
+    padding-left: 0;
+  }
 }
