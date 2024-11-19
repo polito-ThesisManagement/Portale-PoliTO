@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from '../styles/ThesisProposals.module.css';
 
-export default function ThesisItem({ title, tags, description, professor, thesisType, expirationDate }) {
+export default function ThesisItem({ title, tags, description, professor, thesisType, expirationDate, creationDate }) {
   return (
     <article className={styles.thesisItem}>
       <div className={styles.thesisItemContent}>
@@ -35,6 +35,10 @@ export default function ThesisItem({ title, tags, description, professor, thesis
         <footer className={styles.thesisItemFooter}>
           <button className={styles.showMoreButton}>Mostra di più</button>
           <div className={styles.expirationDate}>
+            <span className={styles.creationDateLabel}>Data di creazione: &nbsp;</span>
+            <span className={styles.creationDateValue}>{creationDate}</span>
+          </div>
+          <div className={styles.expirationDate}>
             <span className={styles.expirationDateLabel}>Data di scadenza: &nbsp;</span>
             <span className={styles.expirationDateValue}>{expirationDate}</span>
           </div>
@@ -51,4 +55,5 @@ ThesisItem.propTypes = {
   professor: PropTypes.string.isRequired,
   thesisType: PropTypes.string.isRequired,
   expirationDate: PropTypes.string.isRequired,
+  creationDate: PropTypes.string.isRequired,
 };
