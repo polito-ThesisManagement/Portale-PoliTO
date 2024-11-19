@@ -59,14 +59,17 @@ export default function ThesisProposals() {
         sortedProposals.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
       }
     }
-    sortedProposals.filter(proposal => (activeIndex === 1 ? proposal.course === 'Computer Science' : true));
     return sortedProposals;
   }
 
   // Filter proposals based on activeIndex
   useEffect(() => {
-    const proposals = filterAndSorting(filteredProposals);
-    setFilteredProposals(proposals);
+    if (activeIndex === 0) {
+      setFilteredProposals(filteredProposals);
+    } else {
+      const filtered = filteredProposals.filter(proposal => proposal.course.includes('Computer Science'));
+      setFilteredProposals(filtered);
+    }
     setCurrentPage(1);
   }, [activeIndex]);
 
@@ -85,6 +88,7 @@ export default function ThesisProposals() {
         proposal.professor.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proposal.thesisType.toLowerCase().includes(searchQuery.toLowerCase()),
     );
+    console.log(filterAndSorting(filtered));
     setFilteredProposals(filterAndSorting(filtered));
     setCurrentPage(1);
   }, [searchQuery]);
