@@ -9,6 +9,7 @@ export default function ThesisProposals() {
   const [currentPage, setCurrentPage] = useState(1);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [sortBy, setSortBy] = useState('');
+  const [orderBy, setOrderBy] = useState('');
   const [pageProposals, setPageProposals] = useState([]);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
   const [filteredProposals, setFilteredProposals] = useState(ThesisProposalsData);
@@ -33,6 +34,10 @@ export default function ThesisProposals() {
     setSortBy(event.target.value);
   };
 
+  const handleOrderByChange = event => {
+    setOrderBy(event.target.value);
+  };
+
   // Filter proposals based on activeIndex
   useEffect(() => {
     const filteredProposals = ThesisProposalsData.filter(proposal =>
@@ -45,14 +50,22 @@ export default function ThesisProposals() {
   // Sort the filtered proposals based on the selected sort option
   useEffect(() => {
     const sortedProposals = [...filteredProposals];
-    if (sortBy === 'creationDate') {
-      sortedProposals.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
-    } else if (sortBy === 'expirationDate') {
-      sortedProposals.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
+    if (orderBy === 'asc') {
+      if (sortBy === 'creationDate' && orderBy === 'asc') {
+        sortedProposals.sort((a, b) => new Date(a.creationDate) - new Date(b.creationDate));
+      } else if (sortBy === 'expirationDate') {
+        sortedProposals.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
+      }
+    } else if (orderBy === 'desc') {
+      if (sortBy === 'creationDate') {
+        sortedProposals.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+      } else if (sortBy === 'expirationDate') {
+        sortedProposals.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
+      }
     }
     setFilteredProposals(sortedProposals);
     setPageProposals(sortedProposals.slice(0, proposalsPerPage));
-  }, [sortBy]);
+  }, [sortBy, orderBy]);
 
   // Set page numbers
   useEffect(() => {
@@ -127,6 +140,16 @@ export default function ThesisProposals() {
                         <option value="">Seleziona...</option>
                         <option value="creationDate">Data di creazione</option>
                         <option value="expirationDate">Data di scadenza</option>
+                      </select>
+                      <select
+                        id="orderBy"
+                        value={orderBy}
+                        onChange={handleOrderByChange}
+                        className={styles.sortBySelect}
+                      >
+                        <option value="">Seleziona...</option>
+                        <option value="asc">Ascendente</option>
+                        <option value="desc">Discendente</option>
                       </select>
                     </div>
                   </div>
