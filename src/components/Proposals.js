@@ -1,10 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 
 import ThesisProposalsData from '../data/ThesisProposalsData.json';
 import styles from '../styles/Proposals.module.css';
 import ThesisItem from './ThesisItem';
 
 export default function Proposals() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleToggle = () => {
+    setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.subHeader}>
@@ -21,16 +28,36 @@ export default function Proposals() {
             <div className={styles.cardBody}>
               <div className={styles.filterSection}>
                 <div className={styles.filterWrapper}>
-                  <div className={styles.segmentedControl}>
-                    <div className={styles.segmentedControlInner}>
-                      <button className={styles.segmentedItem}>Tutte le tesi</button>
-                      <button className={styles.segmentedItemInactive}>Tesi per il tuo corso di studi</button>
+                  <label className={styles.segmentedControl}>
+                    <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
+                    <span className={styles.slider}>
+                      <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>Tutte le tesi</span>
+                      <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
+                        Tesi per il tuo corso di studi
+                      </span>
+                    </span>
+                  </label>
+                  <div className={styles.searchBar}>
+                    <div className={styles.searchBarInner}>
+                      <input
+                        id="searchInput"
+                        type="text"
+                        placeholder="Ricerca tra le proposte..."
+                        className={styles.searchInput}
+                      />
+                      <div className={styles.searchIcon}>
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/a80747fb44e9ee0d6e39fbcf3093cbe80fcfe231f4c7adb450c279b34baaf281?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a"
+                          alt="Search"
+                          className={styles.searchIconImage}
+                        />
+                      </div>
                     </div>
                   </div>
                   <div className={styles.sortBy}>
                     <div className={styles.searchBarInner}>
                       <div className={styles.sortByInner}>
-                        <span className={styles.sortByLabel}>Ordina per:</span>
+                        <span className={styles.sortByLabel}>Sort by:</span>
                         <span className={styles.sortByValue}>Data di creazione</span>
                       </div>
                       <div className={styles.sortByIcon}>
@@ -38,23 +65,6 @@ export default function Proposals() {
                           src="https://cdn.builder.io/api/v1/image/assets/TEMP/e674cf310ea20dfc5bd1174ff8c4ad024c334cc3259c6ba02e84cbce1c24a4c5?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a"
                           alt="Sort"
                           className={styles.sortByIconImage}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.searchBar}>
-                    <div className={styles.searchBarInner}>
-                      <input
-                        id="searchInput"
-                        type="text"
-                        className={styles.searchInput}
-                        placeholder="Ricerca tra le proposte..."
-                      />
-                      <div className={styles.searchIcon}>
-                        <img
-                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/a80747fb44e9ee0d6e39fbcf3093cbe80fcfe231f4c7adb450c279b34baaf281?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a"
-                          alt="Search"
-                          className={styles.searchIconImage}
                         />
                       </div>
                     </div>

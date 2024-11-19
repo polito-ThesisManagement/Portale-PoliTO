@@ -26,8 +26,7 @@
   font: 0.3rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* 18px in rem */
   width: 100%; /* Assicurati che il subHeader occupi tutta la larghezza */
   padding-top: 2%;
-  padding-left: 3%;
-  padding-bottom: 2%;
+  padding-left: 1%;
   align-items: center;
 }
 
@@ -87,42 +86,116 @@
 }
 
 .segmentedControl {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.625rem; 
+  position: relative;
+  display: inline-block;
+  width: 25rem; /* Aumenta la larghezza del toggle switch */
+  height: 2.5rem; /* Aumenta l'altezza del toggle switch */
+  background-color: #d9d9d9; /* Colore di sfondo per il toggle switch */
+  border-radius: 0.5rem; /* Bordo arrotondato */
+  cursor: pointer;
+}
+
+.segmentedControl input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d9d9d9; /* Mantieni il colore di sfondo quando attivo */
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2rem; /* Altezza del pulsante */
+  width: 12rem; /* Larghezza del pulsante */
+  left: 0.25rem; /* Spazio a sinistra */
+  bottom: 0.25rem; /* Spazio in basso */
+  background-color: white;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #d9d9d9; /* Colore di sfondo quando attivo */
+}
+
+input:checked + .slider:before {
+  transform: translateX(12.5rem); /* Sposta il pulsante a destra */
+}
+
+.toggleText {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  text-align: center;
+  font-size: 0.9rem; /* Dimensione del font */
+  color: black; /* Colore del testo */
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.toggleTextLeft {
+  left: 0;
+}
+
+.toggleTextRight {
+  right: 0;
+  left: 50%;
 }
 
 .segmentedControlInner {
   display: flex;
-  gap: 0.625rem; 
-}
-
-.segmentedItem,
-.segmentedItemInactive {
-  padding: 0.5rem 1rem; 
-  border-radius: 0.5rem; 
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  width: 100%;
+  position: relative;
 }
 
 .segmentedItem {
+  padding: 0.25rem 0.5rem; /* 4px 8px in rem */
+  border-radius: 0.5rem; /* 8px in rem */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background-color: #d9d9d9; /* Colore di sfondo per il pulsante non attivo */
+}
+
+.segmentedItemActive {
   background-color: #fff;
   box-shadow: 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.05); /* 2px 8px in rem */
   border: none;
+  position: absolute;
+  top: 0.25rem; /* 4px in rem */
+  bottom: 0.25rem; /* 4px in rem */
+  left: 0.25rem; /* 4px in rem */
+  right: 50%; /* 50% della larghezza */
+  transition: left 0.3s ease, right 0.3s ease;
+  z-index: 0;
 }
 
-.segmentedItem:hover {
-  background-color: #e0e0e0;
+.segmentedItemActive:nth-child(2) {
+  left: 50%; /* 50% della larghezza */
+  right: 0.25rem; /* 4px in rem */
 }
 
 .segmentedItemInactive {
-  background-color: #f0f3f5;
+  background-color: #d9d9d9; /* Colore di sfondo per il pulsante non attivo */
   box-shadow: none;
   border: none;
 }
 
 .segmentedItemInactive:hover {
-  background-color: #e0e0e0;
+  background-color: #c0c0c0; /* Colore di sfondo per l'hover del pulsante non attivo */
 }
 
 .searchBar {
@@ -133,7 +206,7 @@
   overflow: hidden;
   justify-content: flex-start;
   width: 100%;
-  height: fit-content;
+  min-height: 1rem;
   max-width: 15rem; 
   border: 0.0625rem solid #cccbcc; 
 }
@@ -221,6 +294,10 @@
 }
 
 .thesisItem {
+  border: 0.0625rem solid #d9d9d9; /* 1px in rem */
+  border-radius: 1;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   align-items: flex-start;
   background-color: #fff;
   box-shadow: 0 -1px 0 0 #f0f0f0 inset;
@@ -245,7 +322,6 @@
   flex-basis: 0%;
 }
 
-
 .thesisItemMeta {
   display: flex;
   width: 100%;
@@ -253,12 +329,11 @@
   justify-content: flex-start;
 }
 
-
 .thesisTitle {
   width: 100%;
   overflow: hidden;
   color: rgba(0, 0, 0, 0.85);
-  font: 500 1.5rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 500 1.25rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* Riduci la dimensione del font */
 }
 
 .tagGroup {
@@ -282,7 +357,7 @@
   overflow: hidden;
   font-family: Montserrat, sans-serif;
   color: #002b49;
-  padding: 1px 8px;
+  padding: 0.0625rem 0.5rem;
 }
 
 .thesisDescription {
@@ -306,7 +381,7 @@
 .thesisMetaInfo {
   position: relative;
   display: flex;
-  margin-top: 16px;
+  margin-top: 0.3rem;
   width: 100%;
   align-items: flex-start;
   gap: 40px 100px;
@@ -317,18 +392,18 @@
 
 .professorTag {
   align-items: center;
-  border-radius: 8px;
-  border: 1px solid #91d5ff;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid #91d5ff;
   background-color: #e6f7ff;
   z-index: 0;
   display: flex;
-  gap: 3px;
-  font-size: 14px;
+  gap: 0.1875rem;
+  font-size: 0.875rem;
   color: #008ef1;
   line-height: 2;
   justify-content: flex-start;
   margin: auto 0;
-  padding: 1px 8px;
+  padding: 0.0625rem 0.5rem;
 }
 
 .professorName {
@@ -374,7 +449,7 @@
 .thesisItemFooter {
   position: relative;
   display: flex;
-  margin-top: 16px;
+  margin-top: 0.5rem;
   min-height: 22px;
   width: 100%;
   align-items: flex-start;
