@@ -59,26 +59,25 @@ export default function ThesisProposals() {
         sortedProposals.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
       }
     }
+    sortedProposals.filter(proposal => (activeIndex === 1 ? proposal.course === 'Computer Science' : true));
     return sortedProposals;
   }
 
   // Filter proposals based on activeIndex
   useEffect(() => {
-    const proposals = ThesisProposalsData.filter(proposal =>
-      activeIndex === 1 ? proposal.course === 'Computer Science' : true,
-    );
+    const proposals = filterAndSorting(filteredProposals);
     setFilteredProposals(proposals);
     setCurrentPage(1);
   }, [activeIndex]);
 
   // Filter proposals based on search query
   useEffect(() => {
-    console.log(searchQuery);
     if (searchQuery === '') {
       setFilteredProposals(ThesisProposalsData);
+      setCurrentPage(1);
       return;
     }
-    const proposals = ThesisProposalsData.filter(
+    const filtered = ThesisProposalsData.filter(
       proposal =>
         proposal.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proposal.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
@@ -86,15 +85,13 @@ export default function ThesisProposals() {
         proposal.professor.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proposal.thesisType.toLowerCase().includes(searchQuery.toLowerCase()),
     );
-    const sortedProposals = filterAndSorting(proposals);
-    setFilteredProposals(sortedProposals);
+    setFilteredProposals(filterAndSorting(filtered));
     setCurrentPage(1);
   }, [searchQuery]);
 
   // Sort the filtered proposals based on the selected sort option
   useEffect(() => {
     const sortedProposals = filterAndSorting(filteredProposals);
-
     setFilteredProposals(sortedProposals);
     setPageProposals(sortedProposals.slice(0, proposalsPerPage));
   }, [sortBy, orderBy]);
