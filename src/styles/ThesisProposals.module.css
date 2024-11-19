@@ -491,10 +491,10 @@ input:checked + .slider:before {
   min-height: 22px;
   width: 100%;
   align-items: flex-start;
-  gap: 16px;
+  gap: 1rem;
   color: rgba(27, 31, 38, 0.72);
   justify-content: flex-start;
-  font: 400 14px/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 400 0.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
 .expirationDate {
@@ -614,4 +614,14 @@ input:checked + .slider:before {
   .paginationControls {
     padding-left: 0;
   }
+}
+
+.creationDate{
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: auto; 
+  font: 400 00.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #484b50;
+  margin-right: 0;
 }

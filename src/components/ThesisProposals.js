@@ -40,10 +40,10 @@ export default function ThesisProposals() {
 
   // Filter proposals based on activeIndex
   useEffect(() => {
-    const filteredProposals = ThesisProposalsData.filter(proposal =>
+    const proposals = ThesisProposalsData.filter(proposal =>
       activeIndex === 1 ? proposal.course === 'Computer Science' : true,
     );
-    setFilteredProposals(filteredProposals);
+    setFilteredProposals(proposals);
     setCurrentPage(1);
   }, [activeIndex]);
 
@@ -96,7 +96,7 @@ export default function ThesisProposals() {
       }
     }
     setPageProposals(filteredProposals.slice((currentPage - 1) * proposalsPerPage, currentPage * proposalsPerPage));
-  }, [currentPage, totalPages, proposalsPerPage]);
+  }, [currentPage, totalPages, proposalsPerPage, filteredProposals]);
 
   return (
     <div className={styles.container}>
