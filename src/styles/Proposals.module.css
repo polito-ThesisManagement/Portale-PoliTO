@@ -90,7 +90,7 @@
   display: inline-block;
   width: 27rem; 
   height: 2rem; 
-  background-color: #d9d9d9; 
+  background-color: #cccbcc; 
   border-radius: 0.5rem;
   border: #c0c0c0 solid 0.0625rem; 
   cursor: pointer;
@@ -108,7 +108,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #d9d9d9; /* Mantieni il colore di sfondo quando attivo */
+  background-color: #cccbcc; /* Mantieni il colore di sfondo quando attivo */
   border-radius: 0.5rem;
   transition: 0.4s;
   font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
@@ -127,7 +127,7 @@
 }
 
 input:checked + .slider {
-  background-color: #d9d9d9; /* Colore di sfondo quando attivo */
+  background-color: #cccbcc; /* Colore di sfondo quando attivo */
 }
 
 input:checked + .slider:before {
@@ -191,7 +191,7 @@ input:checked + .slider:before {
 }
 
 .segmentedItemInactive {
-  background-color: #d9d9d9; /* Colore di sfondo per il pulsante non attivo */
+  background-color: #cccbcc; /* Colore di sfondo per il pulsante non attivo */
   box-shadow: none;
   border: none;
 }
@@ -508,9 +508,27 @@ input:checked + .slider:before {
 
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Distribuisce lo spazio tra gli elementi */
+  align-items: center;
   margin-top: 1rem;
   flex-wrap: wrap;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1%;
+}
+
+.paginationNumbers {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* Permette ai numeri di pagina di occupare lo spazio centrale */
+}
+
+.paginationEmpty {
+  flex-grow: 1; /* Colonna vuota per bilanciare il layout */
 }
 
 .pagination button {
@@ -518,10 +536,9 @@ input:checked + .slider:before {
   padding: 0.5rem 1rem;
   border: 0.0625rem solid #c0c0c0;
   border-radius: 0.5rem;
-  background-color: #d9d9d9;
+  background-color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
 .pagination button:hover {
@@ -530,12 +547,19 @@ input:checked + .slider:before {
 
 .pagination .activePage {
   background-color: #fff;
-  color: black;
-  border: #c0c0c0 solid 0.0625rem;
+  color: #008ef1;
+  border: #008ef1 solid 0.0625rem;
 }
 
 .totalItems {
-  margin-left: 1rem;
   font-weight: bold;
-  font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.ellipsis {
+  margin: 0 0.25rem;
+  padding: 0.5rem 1rem;
+  border: 0.0625rem solid #c0c0c0;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  cursor: default;
 }

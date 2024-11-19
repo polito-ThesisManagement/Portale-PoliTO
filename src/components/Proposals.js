@@ -15,28 +15,38 @@ export default function Proposals() {
   };
 
   const handlePageChange = pageNumber => {
-    if (pageNumber != currentPage) {
-      setCurrentPage(pageNumber);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleProposalsPerPageChange = event => {
     setProposalsPerPage(Number(event.target.value));
     setCurrentPage(1); // Reset to first page when changing proposals per page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSortByChange = event => {
     setSortBy(event.target.value);
   };
 
-  // Calculate the current proposals to display
-  const indexOfLastProposal = currentPage * proposalsPerPage;
-  const indexOfFirstProposal = indexOfLastProposal - proposalsPerPage;
-  const currentProposals = ThesisProposalsData.slice(indexOfFirstProposal, indexOfLastProposal);
-
   // Calculate total pages
   const totalPages = Math.ceil(ThesisProposalsData.length / proposalsPerPage);
+
+  // Generate page numbers with ellipsis if there are more than 5 pages
+  const pageNumbers = [];
+  if (totalPages <= 5) {
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+  } else {
+    if (currentPage <= 3) {
+      pageNumbers.push(1, 2, 3, 4, '...', totalPages);
+    } else if (currentPage > totalPages - 3) {
+      pageNumbers.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      pageNumbers.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -66,11 +76,15 @@ export default function Proposals() {
                     </span>
                   </label>
                   <div className={styles.sortBy}>
-                    <label htmlFor="sortBy">Ordina per:</label>
-                    <select id="sortBy" value={sortBy} onChange={handleSortByChange} className={styles.sortBySelect}>
-                      <option value="creationDate">Data di creazione</option>
-                      <option value="expirationDate">Data di scadenza</option>
-                    </select>
+                    <div className={styles.sortByInner}>
+                      <label htmlFor="sortBy" className={styles.sortByLabel}>
+                        Ordina per:
+                      </label>
+                      <select id="sortBy" value={sortBy} onChange={handleSortByChange} className={styles.sortBySelect}>
+                        <option value="creationDate">Data di creazione</option>
+                        <option value="expirationDate">Data di scadenza</option>
+                      </select>
+                    </div>
                   </div>
                   <div className={styles.searchBar}>
                     <div className={styles.searchBarInner}>
@@ -96,7 +110,7 @@ export default function Proposals() {
           </section>
           <section className={styles.thesisList}>
             <div className={styles.thesisListInner}>
-              {currentProposals.map((thesis, index) => (
+              {ThesisProposalsData.map((thesis, index) => (
                 <ThesisItem key={index} {...thesis} />
               ))}
             </div>
@@ -112,15 +126,24 @@ export default function Proposals() {
               </select>
               <span className={styles.totalItems}>Totale: {ThesisProposalsData.length}</span>
             </div>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index + 1}
-                onClick={() => handlePageChange(index + 1)}
-                className={currentPage === index + 1 ? styles.activePage : ''}
-              >
-                {index + 1}
-              </button>
-            ))}
+            <div className={styles.paginationNumbers}>
+              {pageNumbers.map((number, index) =>
+                number === '...' ? (
+                  <button key={index} className={styles.ellipsis} disabled>
+                    {number}
+                  </button>
+                ) : (
+                  <button
+                    key={number}
+                    onClick={() => handlePageChange(number)}
+                    className={currentPage === number ? styles.activePage : ''}
+                  >
+                    {number}
+                  </button>
+                ),
+              )}
+            </div>
+            <div className={styles.paginationEmpty}></div>
           </div>
         </div>
       </main>
