@@ -137,7 +137,9 @@ export default function ThesisProposals() {
                         onChange={handleSortByChange}
                         className={styles.sortBySelect}
                       >
-                        <option value="">Seleziona...</option>
+                        <option value="" disabled={sortBy !== ''}>
+                          Seleziona...
+                        </option>
                         <option value="creationDate">Data di creazione</option>
                         <option value="expirationDate">Data di scadenza</option>
                       </select>
@@ -147,7 +149,9 @@ export default function ThesisProposals() {
                         onChange={handleOrderByChange}
                         className={styles.sortBySelect}
                       >
-                        <option value="">Seleziona...</option>
+                        <option value="" disabled={orderBy !== ''}>
+                          Seleziona...
+                        </option>
                         <option value="asc">Ascendente</option>
                         <option value="desc">Discendente</option>
                       </select>
