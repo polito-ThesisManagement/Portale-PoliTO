@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ThesisProposalsData from '../data/ThesisProposalsData.json';
 import styles from '../styles/Proposals.module.css';
@@ -9,6 +9,8 @@ export default function Proposals() {
   const [currentPage, setCurrentPage] = useState(1);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [sortBy, setSortBy] = useState('creationDate');
+  const [pageProposals, setPageProposals] = useState([]);
+  const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
 
   const handleToggle = () => {
     setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
@@ -32,21 +34,42 @@ export default function Proposals() {
   // Calculate total pages
   const totalPages = Math.ceil(ThesisProposalsData.length / proposalsPerPage);
 
-  // Generate page numbers with ellipsis if there are more than 5 pages
-  const pageNumbers = [];
-  if (totalPages <= 5) {
-    for (let i = 1; i <= totalPages; i++) {
-      pageNumbers.push(i);
-    }
-  } else {
-    if (currentPage <= 3) {
-      pageNumbers.push(1, 2, 3, 4, '...', totalPages);
-    } else if (currentPage > totalPages - 3) {
-      pageNumbers.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
-    } else {
-      pageNumbers.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
-    }
+  // Set initial page proposals
+  if (pageProposals.length === 0 && currentPage === 1) {
+    setPageProposals(ThesisProposalsData.slice(0, proposalsPerPage));
   }
+
+  // Set initial page numbers
+  useEffect(() => {
+    if (totalPages <= 5) {
+      const array = [];
+      for (let i = 1; i <= totalPages; i++) {
+        array.push(i);
+      }
+      setPageNumbers(array);
+    } else {
+      if (currentPage <= 3) {
+        setPageNumbers([1, 2, 3, 4, '...', totalPages]);
+      } else if (currentPage > totalPages - 3) {
+        setPageNumbers([1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages]);
+      } else {
+        setPageNumbers([
+          1,
+          '...',
+          currentPage - 2,
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          currentPage + 2,
+          '...',
+          totalPages,
+        ]);
+      }
+      setPageProposals(
+        ThesisProposalsData.slice((currentPage - 1) * proposalsPerPage, currentPage * (proposalsPerPage - 1)),
+      );
+    }
+  }, [currentPage, totalPages]);
 
   return (
     <div className={styles.container}>
@@ -110,7 +133,7 @@ export default function Proposals() {
           </section>
           <section className={styles.thesisList}>
             <div className={styles.thesisListInner}>
-              {ThesisProposalsData.map((thesis, index) => (
+              {pageProposals.map((thesis, index) => (
                 <ThesisItem key={index} {...thesis} />
               ))}
             </div>
@@ -129,12 +152,12 @@ export default function Proposals() {
             <div className={styles.paginationNumbers}>
               {pageNumbers.map((number, index) =>
                 number === '...' ? (
-                  <button key={index} className={styles.ellipsis} disabled>
+                  <button key={`ellipsis-${index}`} className={styles.ellipsis} disabled>
                     {number}
                   </button>
                 ) : (
                   <button
-                    key={number}
+                    key={`page-${number}`}
                     onClick={() => handlePageChange(number)}
                     className={currentPage === number ? styles.activePage : ''}
                   >
