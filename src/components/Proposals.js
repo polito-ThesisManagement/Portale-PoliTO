@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import ThesisProposalsData from '../data/ThesisProposalsData.json';
 import styles from '../styles/Proposals.module.css';
@@ -7,10 +6,37 @@ import ThesisItem from './ThesisItem';
 
 export default function Proposals() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [proposalsPerPage, setProposalsPerPage] = useState(5);
+  const [sortBy, setSortBy] = useState('creationDate');
 
   const handleToggle = () => {
     setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
   };
+
+  const handlePageChange = pageNumber => {
+    if (pageNumber != currentPage) {
+      setCurrentPage(pageNumber);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleProposalsPerPageChange = event => {
+    setProposalsPerPage(Number(event.target.value));
+    setCurrentPage(1); // Reset to first page when changing proposals per page
+  };
+
+  const handleSortByChange = event => {
+    setSortBy(event.target.value);
+  };
+
+  // Calculate the current proposals to display
+  const indexOfLastProposal = currentPage * proposalsPerPage;
+  const indexOfFirstProposal = indexOfLastProposal - proposalsPerPage;
+  const currentProposals = ThesisProposalsData.slice(indexOfFirstProposal, indexOfLastProposal);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(ThesisProposalsData.length / proposalsPerPage);
 
   return (
     <div className={styles.container}>
@@ -31,19 +57,29 @@ export default function Proposals() {
                   <label className={styles.segmentedControl}>
                     <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
                     <span className={styles.slider}>
-                      <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>Tutte le tesi</span>
+                      <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
+                        {activeIndex === 0 ? 'Tutte le tesi' : 'Tutte le tesi'}
+                      </span>
                       <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
-                        Tesi per il tuo corso di studi
+                        {activeIndex === 1 ? 'Tesi per il tuo corso di studi' : 'Tesi per il tuo corso di studi'}
                       </span>
                     </span>
                   </label>
+                  <div className={styles.sortBy}>
+                    <label htmlFor="sortBy">Ordina per:</label>
+                    <select id="sortBy" value={sortBy} onChange={handleSortByChange} className={styles.sortBySelect}>
+                      <option value="creationDate">Data di creazione</option>
+                      <option value="expirationDate">Data di scadenza</option>
+                    </select>
+                  </div>
                   <div className={styles.searchBar}>
                     <div className={styles.searchBarInner}>
+                      <label htmlFor="searchInput" className={styles['visually-hidden']}></label>
                       <input
                         id="searchInput"
                         type="text"
-                        placeholder="Ricerca tra le proposte..."
                         className={styles.searchInput}
+                        placeholder="Ricerca tra le proposte..."
                       />
                       <div className={styles.searchIcon}>
                         <img
@@ -54,32 +90,38 @@ export default function Proposals() {
                       </div>
                     </div>
                   </div>
-                  <div className={styles.sortBy}>
-                    <div className={styles.searchBarInner}>
-                      <div className={styles.sortByInner}>
-                        <span className={styles.sortByLabel}>Sort by:</span>
-                        <span className={styles.sortByValue}>Data di creazione</span>
-                      </div>
-                      <div className={styles.sortByIcon}>
-                        <img
-                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e674cf310ea20dfc5bd1174ff8c4ad024c334cc3259c6ba02e84cbce1c24a4c5?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a"
-                          alt="Sort"
-                          className={styles.sortByIconImage}
-                        />
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </section>
           <section className={styles.thesisList}>
             <div className={styles.thesisListInner}>
-              {ThesisProposalsData.map((thesis, index) => (
+              {currentProposals.map((thesis, index) => (
                 <ThesisItem key={index} {...thesis} />
               ))}
             </div>
           </section>
+          <div className={styles.pagination}>
+            <div className={styles.paginationControls}>
+              <label htmlFor="proposalsPerPage">Proposte per pagina:</label>
+              <select id="proposalsPerPage" value={proposalsPerPage} onChange={handleProposalsPerPageChange}>
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+              </select>
+              <span className={styles.totalItems}>Totale: {ThesisProposalsData.length}</span>
+            </div>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => handlePageChange(index + 1)}
+                className={currentPage === index + 1 ? styles.activePage : ''}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </main>
     </div>
