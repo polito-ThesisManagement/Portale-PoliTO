@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-import ThesisProposalsData from '../data/ThesisProposalsData.json';
+import { HiLightBulb } from 'react-icons/hi';
+
+import PropTypes from 'prop-types';
+
 import styles from '../styles/ThesisProposals.module.css';
 import ThesisItem from './ThesisItem';
 import Title from './Title';
 
-export default function ThesisProposals() {
+export default function ThesisProposals({ thesisProposals }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
@@ -14,8 +17,8 @@ export default function ThesisProposals() {
   const [orderBy, setOrderBy] = useState('');
   const [pageProposals, setPageProposals] = useState([]);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
-  const [filteredProposals, setFilteredProposals] = useState(ThesisProposalsData);
-  const [totalPages, setTotalPages] = useState(Math.ceil(ThesisProposalsData.length / proposalsPerPage));
+  const [filteredProposals, setFilteredProposals] = useState(thesisProposals);
+  const [totalPages, setTotalPages] = useState(Math.ceil(thesisProposals.length / proposalsPerPage));
 
   const handleToggle = () => {
     setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
@@ -47,16 +50,16 @@ export default function ThesisProposals() {
   function filterAndSorting(proposals) {
     const sortedProposals = [...proposals];
     if (orderBy === 'asc') {
-      if (sortBy === 'creationDate' && orderBy === 'asc') {
-        sortedProposals.sort((a, b) => new Date(a.creationDate) - new Date(b.creationDate));
-      } else if (sortBy === 'expirationDate') {
-        sortedProposals.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
+      if (sortBy === 'creation_date' && orderBy === 'asc') {
+        sortedProposals.sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date));
+      } else if (sortBy === 'exp_date') {
+        sortedProposals.sort((a, b) => new Date(a.exp_date) - new Date(b.exp_date));
       }
     } else if (orderBy === 'desc') {
-      if (sortBy === 'creationDate') {
-        sortedProposals.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
-      } else if (sortBy === 'expirationDate') {
-        sortedProposals.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
+      if (sortBy === 'creation_date') {
+        sortedProposals.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date));
+      } else if (sortBy === 'exp_date') {
+        sortedProposals.sort((a, b) => new Date(b.exp_date) - new Date(a.exp_date));
       }
     }
     return sortedProposals;
@@ -67,7 +70,7 @@ export default function ThesisProposals() {
     if (activeIndex === 0) {
       setFilteredProposals(filteredProposals);
     } else {
-      const filtered = filteredProposals.filter(proposal => proposal.course.includes('Computer Science'));
+      const filtered = filteredProposals.filter(proposal => proposal.cds_type === '2');
       setFilteredProposals(filtered);
     }
     setCurrentPage(1);
@@ -76,17 +79,16 @@ export default function ThesisProposals() {
   // Filter proposals based on search query
   useEffect(() => {
     if (searchQuery === '') {
-      setFilteredProposals(ThesisProposalsData);
+      setFilteredProposals(thesisProposals);
       setCurrentPage(1);
       return;
     }
-    const filtered = ThesisProposalsData.filter(
+    const filtered = thesisProposals.filter(
       proposal =>
-        proposal.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proposal.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        proposal.topic.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        proposal.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery.toLowerCase())) ||
         proposal.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proposal.professor.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proposal.thesisType.toLowerCase().includes(searchQuery.toLowerCase()),
+        proposal.advisors.some(advisor => advisor.name.toLowerCase().includes(searchQuery.toLowerCase())),
     );
     console.log(filterAndSorting(filtered));
     setFilteredProposals(filterAndSorting(filtered));
@@ -133,12 +135,7 @@ export default function ThesisProposals() {
 
   return (
     <>
-      <Title
-        icon={
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dccd6c21cc2dba0fc5eddbcc61d9d9c6e208c5f8f1a45925abe44be65c1e5966?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a" />
-        }
-        sectionName="Proposte di tesi"
-      />
+      <Title icon={<HiLightBulb size={28} />} sectionName="Proposte di tesi" />
       <div className={styles.container}>
         <main className={styles.mainContent}>
           <div className={styles.contentWrapper}>
@@ -172,8 +169,8 @@ export default function ThesisProposals() {
                           <option value="" disabled={sortBy !== ''}>
                             Seleziona...
                           </option>
-                          <option value="expirationDate">Data di scadenza</option>
-                          <option value="creationDate">Data di creazione</option>
+                          <option value="exp_date">Data di scadenza</option>
+                          <option value="creation_date">Data di creazione</option>
                         </select>
                         <select
                           id="orderBy"
@@ -260,3 +257,17 @@ export default function ThesisProposals() {
     </>
   );
 }
+
+ThesisProposals.propTypes = {
+  thesisProposals: PropTypes.arrayOf(
+    PropTypes.shape({
+      topic: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      exp_date: PropTypes.string.isRequired,
+      advisors: PropTypes.arrayOf(PropTypes.shape({ matricola: PropTypes.string, name: PropTypes.string })).isRequired,
+      keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+      thesis_types: PropTypes.arrayOf(PropTypes.string).isRequired,
+      cds_type: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};

@@ -405,6 +405,12 @@ input:checked + .slider:before {
   color: #333;
   justify-content: flex-start;
   font: 400 14px/22px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 991px) {
@@ -419,7 +425,7 @@ input:checked + .slider:before {
   margin-top: 0.3rem;
   width: 100%;
   align-items: flex-start;
-  gap: 40px 100px;
+  gap: 40px 0.3rem;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   justify-content: flex-start;

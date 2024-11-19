@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+
+import LoadingModal from '../../components/LoadingModal';
 import ThesisProposals from '../../components/ThesisProposals';
 
-/*const researchGroups = [
+const researchGroups = [
+  'DAUIN - GR-03 - COMPUTER NETWORKS GROUP - NETGROUP',
+  'DAUIN - GR-16 - SOFTWARE ENGINEERING GROUP - SOFTENG',
+  'GR-16 - SOFTWARE ENGINEERING GROUP - SOFTENG',
+  /*
   '03-Aerotermodinamica, Magnetofluidodinamica e dinamica dei plasmi',
   '04-Automazione e Robotica',
   '05-Bioingegneria Industriale',
@@ -240,33 +248,45 @@ import ThesisProposals from '../../components/ThesisProposals';
   'steps-denerg',
   'www.reslog.polito.it',
   'www.rockmech.polito.it',
-];*/
+  */
+];
 
 export default function ProposteDiTesi() {
-  /*const [thesisProposals, setThesisProposals] = useState([]);
+  const { i18n } = useTranslation();
+  const [thesisProposals, setThesisProposals] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchThesisProposals = async () => {
-      const lang = 'IT'; // IT or EN
+      const lang = i18n.language;
       try {
         const thesisProposalsArray = await Promise.all(
           researchGroups.map(async grp => {
             const response = await axios.get(`http://localhost:5000/api/thesisProposals`, {
               params: { grp, lang },
             });
-            return response.data.thesis;
+            return response.data;
           }),
         );
         const allThesisProposals = thesisProposalsArray.flat();
         setThesisProposals(allThesisProposals);
-        console.log('Thesis proposals ', allThesisProposals);
       } catch (error) {
         console.error('Error fetching thesis proposals:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchThesisProposals();
-  }, []);*/
+  }, [i18n.language]);
 
-  return <ThesisProposals />;
+  return (
+    <>
+      {loading ? (
+        <LoadingModal show={loading} onHide={() => setLoading(false)} />
+      ) : (
+        <ThesisProposals thesisProposals={thesisProposals} />
+      )}
+    </>
+  );
 }
