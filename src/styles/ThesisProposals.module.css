@@ -396,14 +396,15 @@ input:checked + .slider:before {
 }
 
 .thesisDescription {
-  display: flex;
+  display: -webkit-box; 
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+  line-clamp: 3;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
   margin-top: 16px;
-  min-height: 68px;
-  width: 100%;
-  flex-direction: column;
-  overflow: hidden;
+  width: 100%; 
   color: #333;
-  justify-content: flex-start;
   font: 400 14px/22px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
   display: -webkit-box;
   -webkit-line-clamp: 3; 

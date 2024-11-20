@@ -258,6 +258,7 @@ export default function ProposteDiTesi() {
 
   useEffect(() => {
     const fetchThesisProposals = async () => {
+      setLoading(true);
       const lang = i18n.language;
       try {
         const thesisProposalsArray = await Promise.all(
