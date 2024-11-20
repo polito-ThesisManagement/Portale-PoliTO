@@ -142,7 +142,10 @@
             "description": "Elenco delle proposte di tesi."
         },
         "proposta_di_tesi": {
-            "dettagli_proposta_di_tesi": "Dettagli proposta di tesi"
+            "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",
+            "descrizione": "Descrizione",
+            "conoscenze_richieste": "Conoscenze richieste",
+            "note": "Note"
         }
     },
     "opportunità": {

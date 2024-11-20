@@ -141,7 +141,10 @@
             "description": "List of thesis proposals."
         },
         "proposta_di_tesi": {
-            "dettagli_proposta_di_tesi": "Thesis Proposal Details"
+            "dettagli_proposta_di_tesi": "Thesis Proposal Details",
+            "descrizione": "Description",
+            "conoscenze_richieste": "Required knowledge",
+            "note": "Notes"
         }
     },
     "opportunità": {
