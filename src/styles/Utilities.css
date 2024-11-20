@@ -391,7 +391,7 @@ body {
 .expire-badge{
   background-color: var(--background);
   color: var(--primary);
-  padding-top: 1px;
+  padding-top: 2px;
   padding-bottom: 1px;
   padding-left: 6px;
   padding-right: 6px;
@@ -401,4 +401,15 @@ body {
   border-width: 2px;
   font-size: var(--font-size-sm);
   vertical-align: baseline;
+}
+
+.keyword {
+  background-color: var(--navy);
+  color: var(--primary);
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: var(--font-size-sm);
+  vertical-align: baseline;
+  display: inline-block;
+  margin-right: 4px;
 }

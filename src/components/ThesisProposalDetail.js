@@ -32,8 +32,10 @@ function ThesisProposalDetail() {
           <p>Banana</p>
         </div>
         <div className="important-detail" style={{ display: 'flex', flexDirection: 'column' }}>
+          <Keywords keywords={['Banana', 'Banana', 'Banana', 'Banana', 'Banana']} />
           <MyBlock title="carriera.proposta_di_tesi.descrizione" content="Banana" />
           <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content="Banana" />
+          <MyBlock title="Link" content="Banana" />
           <MyBlock title="carriera.proposta_di_tesi.note" content="Banana" />
         </div>
       </Container>
@@ -74,11 +76,11 @@ function ExpirationDate() {
     <div className="d-flex mb-2" style={{ justifyContent: 'space-between' }}>
       <div className="expire-badge">
         <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-        <span className="course-detail">Creazione proposta: 27 Ottobre 2020</span>
+        <span className="course-detail">Creata il 27 Ottobre 2020</span>
       </div>
       <div className="expire-badge" style={{ marginLeft: '4px' }}>
         <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-        <span className="course-detail">Scadenza proposta: 27 Ottobre 2025</span>
+        <span className="course-detail">Scade il 27 Ottobre 2025</span>
       </div>
     </div>
   );
@@ -96,9 +98,26 @@ function MyBlock({ title, content }) {
   );
 }
 
+function Keywords({ keywords }) {
+  //const { t } = useTranslation();
+  return (
+    <div className="d-flex mb-3">
+      {keywords.map((keyword, index) => (
+        <div key={index} className="keyword">
+          <span className="course-detail">{keyword}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 MyBlock.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+};
+
+Keywords.propTypes = {
+  keywords: PropTypes.array.isRequired,
 };
 
 export { ThesisProposalDetail, MyBreadcrumb };
