@@ -25,7 +25,7 @@ import Services from '../data/Data.json';
 import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import '../styles/Utilities.css';
-import { getSystemTheme } from '../utils/utils';
+import { getLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
 
 export default function PoliNavbar() {
@@ -79,11 +79,6 @@ export default function PoliNavbar() {
 
   const updateTheme = newTheme => {
     setTheme(newTheme);
-  };
-
-  const getLogo = (logoLight, logoDark) => {
-    if (theme === 'auto') return getSystemTheme() === 'dark' ? logoDark : logoLight;
-    return theme === 'light' ? logoLight : logoDark;
   };
 
   const popover = (
