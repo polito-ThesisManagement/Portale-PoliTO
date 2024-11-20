@@ -31,12 +31,15 @@ function ThesisProposalDetail() {
         <div className="subsection-title">
           <p>Banana</p>
         </div>
-        <div className="important-detail" style={{ display: 'flex', flexDirection: 'column' }}>
-          <Keywords keywords={['Banana', 'Banana', 'Banana', 'Banana', 'Banana']} />
-          <MyBlock title="carriera.proposta_di_tesi.descrizione" content="Banana" />
-          <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content="Banana" />
-          <MyBlock title="Link" content="Banana" />
-          <MyBlock title="carriera.proposta_di_tesi.note" content="Banana" />
+        <div className="important-detail">
+          <Keywords keywords={['Banana', 'Banana', 'Banana', 'Banana', 'Banana', 'Banana']} />
+          <MyBlock
+            title="carriera.proposta_di_tesi.descrizione"
+            content="Banana Banana Banana Banana Banana Banana Banana Banana Banana Banana Banana Banana"
+          />
+          <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content="Banana Banana Banana Banana" />
+          <MyBlock title="Link" content="Banana Banana Banana Banana" />
+          <MyBlock title="carriera.proposta_di_tesi.note" content="Banana Banana Banana Banana" />
         </div>
       </Container>
     </>
@@ -90,23 +93,8 @@ function MyBlock({ title, content }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
-      <span className="detail-title" style={{ minWidth: '200px' }}>
-        {t(title)}:
-      </span>
+      <span className="detail-title">{t(title)}:</span>
       <span className="course-detail">{content}</span>
-    </div>
-  );
-}
-
-function Keywords({ keywords }) {
-  //const { t } = useTranslation();
-  return (
-    <div className="d-flex mb-3">
-      {keywords.map((keyword, index) => (
-        <div key={index} className="keyword">
-          <span className="course-detail">{keyword}</span>
-        </div>
-      ))}
     </div>
   );
 }
@@ -115,6 +103,19 @@ MyBlock.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
 };
+
+function Keywords({ keywords }) {
+  //const { t } = useTranslation();
+  return (
+    <div className="keywords-container mb-3">
+      {keywords.map((keyword, index) => (
+        <div key={index} className="keyword">
+          <span className="course-detail">{keyword}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 Keywords.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
