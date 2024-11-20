@@ -8,18 +8,25 @@
   height: 100%;
   position: fixed;
   overflow-y: auto;
+  transition-duration: 0.5s;
 }
 
 .custom-sidebar::-webkit-scrollbar {
   display: none;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1100px) {
   .custom-sidebar.reduced {
     width: 84px;
   }
 
   .sidebar-text {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-sidebar.reduced {
     display: none;
   }
 }

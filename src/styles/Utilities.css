@@ -1,14 +1,34 @@
-.custom-content {
-  margin-left: 228px;
+.main-space{
+  height: auto;
   margin-top: 86px;
-  height: 100%;
-  background-color: var(--background);
-  margin-right: 16px;
+  background-color: var(--surface);
+  margin-left: 224px;
+  display: flex;
+  padding-left: 0px !important;
+  transition-duration: 0.5s;
 }
 
-@media (max-width: 991px) {
-  .custom-content.reduced {
-    margin-left: 88px;
+.custom-content {
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+  transition-duration: 0.5s;
+  background-color: var(--background);
+  height: 100%;
+  border-top-left-radius: 12px;
+}
+
+@media (max-width: 1100px) {
+  .main-space.reduced {
+    margin-left: 84px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-space.reduced {
+    margin-left: 12px;
+  }
+  .custom-content.reduced{
+    border-top-left-radius: 0px;
   }
 }
 
@@ -366,4 +386,19 @@ body {
 .card-container {
   margin-left: 0;
   max-width: 1416px;
+}
+
+.expire-badge{
+  background-color: var(--background);
+  color: var(--primary);
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: var(--surface-dark);
+  border-width: 2px;
+  font-size: var(--font-size-sm);
+  vertical-align: baseline;
 }
