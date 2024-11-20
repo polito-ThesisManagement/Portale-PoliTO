@@ -7,31 +7,13 @@
 
 .mainContent {
   border-radius: 1rem; /* 16px in rem */
-  background-color: #fff;
+  background-color: var(--surface);
   display: flex;
   width: 100%;
   flex-direction: column;
   overflow: hidden;
   flex-grow: 1;
   padding-bottom: 2%;
-}
-
-.subHeader {
-  display: flex;
-  gap: 0.625rem; /* 10px in rem */
-  color: #002b49;
-  font: 0.3rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* 18px in rem */
-  width: 100%; /* Assicurati che il subHeader occupi tutta la larghezza */
-  padding-top: 2%;
-  padding-left: 1%;
-  align-items: center;
-}
-
-.subHeaderIcon {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 1.75rem; /* 28px in rem */
 }
 
 .contentWrapper {
@@ -46,9 +28,7 @@
 
 
 .card {
-  border-radius: 0.125rem; /* 2px in rem */
-  border: 0.0625rem solid rgba(0, 0, 0, 0.06); /* 1px in rem */
-  background-color: #fff;
+  background-color: var(--surface);
   display: flex;
   width: 100%;
   margin-bottom: 1.25rem; /* 20px in rem */
@@ -71,7 +51,6 @@
   flex-wrap: wrap; 
   padding-left: 3%;
   padding-right: 3%;
-  border-color: #f0f0f0;
 }
 
 .filterWrapper {
@@ -87,9 +66,6 @@
   display: inline-block;
   width: 27rem; 
   height: 2rem; 
-  background-color: #cccbcc; 
-  border-radius: 0.5rem;
-  border: #c0c0c0 solid 0.0625rem; 
   cursor: pointer;
 }
 
@@ -105,8 +81,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #cccbcc; /* Mantieni il colore di sfondo quando attivo */
+  background-color: var(--background); /* Mantieni il colore di sfondo quando attivo */
   border-radius: 0.5rem;
+  border-color: var(--placeholder);
   transition: 0.4s;
   font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
 }
@@ -118,18 +95,19 @@
   width: 13rem; /* Larghezza del pulsante */
   left: 0.25rem; /* Spazio a sinistra */
   bottom: 0.25rem; /* Spazio in basso */
-  background-color: white;
+  background-color: var(--white);
   border-radius: 0.5rem;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #cccbcc; /* Colore di sfondo quando attivo */
+  background-color: var(--background); /* Colore di sfondo quando attivo */
 }
 
 input:checked + .slider:before {
   transform: translateX(13.5rem); /* Sposta il pulsante a destra */
 }
+
 
 .toggleText {
   position: absolute;
@@ -151,6 +129,22 @@ input:checked + .slider:before {
   left: 50%;
 }
 
+input:checked + .slider .toggleTextLeft {
+  color: var(--text-inactive); /*checked significa slider su Tesi per corso di studi*/
+}
+
+input:checked + .slider .toggleTextRight {
+  color: var(--text-active); /* Colore del testo non attivo */
+}
+
+input:not(:checked) + .slider .toggleTextLeft {
+  color: var(--text-active); /* Colore del testo non attivo */
+}
+
+input:not(:checked) + .slider .toggleTextRight {
+  color: var(--text-inactive); /* Colore del testo attivo */
+}
+
 .segmentedControlInner {
   display: flex;
   width: 100%;
@@ -166,12 +160,9 @@ input:checked + .slider:before {
   text-align: center;
   position: relative;
   z-index: 1;
-  background-color: #cccbcc; /* Colore di sfondo per il pulsante non attivo */
 }
 
 .segmentedItemActive {
-  background-color: #fff;
-  box-shadow: 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.05); /* 2px 8px in rem */
   border: none;
   position: absolute;
   top: 0.25rem; /* 4px in rem */
@@ -187,92 +178,6 @@ input:checked + .slider:before {
   right: 0.25rem; /* 4px in rem */
 }
 
-.segmentedItemInactive {
-  background-color: #cccbcc; /* Colore di sfondo per il pulsante non attivo */
-  box-shadow: none;
-  border: none;
-}
-
-.segmentedItemInactive:hover {
-  background-color: #c0c0c0; /* Colore di sfondo per l'hover del pulsante non attivo */
-}
-
-.searchBar {
-  border-radius: 0.5rem; 
-  background-color: #f0f3f5;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  justify-content: flex-start;
-  width: 100%;
-  max-height: 2rem;
-  max-width: 15rem; 
-  border: 0.0625rem solid #cccbcc; 
-}
-
-.searchBarInner {
-  display: flex;
-  min-height: 2rem; 
-  width: 100%;
-  gap: 0.25rem; 
-  justify-content: flex-start;
-  padding: 0.25rem 0.4375rem 0.25rem 0.625rem; 
-  font: 400 0.875rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-}
-
-.searchInput {
-  flex: 1;
-  border: none;
-  background: none;
-  padding: 0.5rem; 
-  font-size: 0.875rem; 
-  outline: none;
-}
-
-.searchIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem; /* 8px in rem */
-}
-
-.searchIconImage {
-  width: 1rem; /* 20px in rem */
-  height: 1rem; /* 20px in rem */
-}
-
-.sortBy {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #f0f3f5; /* Colore di sfondo del riquadro */
-  border: 0.0625rem solid #cccbcc; /* Bordo del riquadro */
-  border-radius: 0.5rem; /* Bordo arrotondato del riquadro */
-  padding: 0.5rem; /* Padding interno del riquadro */
-  max-height: 2rem;
-  font: 400 0.875rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-  font-weight: bold;
-  color:#3b3b3b;
-}
-
-.sortByInner {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.sortByLabel {
-  font-weight: bold;
-}
-
-.sortBySelect {
-  background-color: #f0f3f5; /* Rimuove il colore di sfondo bianco */
-  border: none; /* Rimuove il bordo del menu a tendina */
-  font-size: 0.875rem; /* 14px in rem */
-  outline: none;
-  cursor: pointer;
-}
-
 @media(max-width: 768px) {
     .filterSection {
       flex-direction: column;
@@ -286,9 +191,10 @@ input:checked + .slider:before {
     display: inline-block;
     width: 20rem; 
     height: 2.5rem; 
-    background-color: #cccbcc; 
+    background-color: var(--primary); 
     border-radius: 0.5rem;
-    border: #c0c0c0 solid 0.0625rem; 
+    border: solid 0.0625rem; 
+    border-color: var(--primary);
     cursor: pointer;
   }
 
@@ -300,6 +206,8 @@ input:checked + .slider:before {
     left: 0.25rem; /* Spazio a sinistra */
     bottom: 0.25rem; /* Spazio in basso */
     background-color: white;
+    border: 0.0625rem solid;
+    border-color: var(--primary);
     border-radius: 0.5rem;
     transition: 0.4s;
   }
@@ -516,8 +424,8 @@ input:checked + .slider:before {
 
 .showMoreButton {
   border-radius: 0.5rem; /* 8px in rem */
-  border: 0.0625rem solid #d9d9d9; /* 1px in rem */
-  background-color: #fff;
+  border: 0.0625rem solid var(--placeholder); /* 1px in rem */
+  background-color: var(--surface);
   box-shadow: 0 0.125rem 0 0 rgba(0, 0, 0, 0.02); /* 2px in rem */
   min-height: 1.375rem; /* 22px in rem */
   gap: 0.625rem; /* 10px in rem */
@@ -529,7 +437,7 @@ input:checked + .slider:before {
 }
 
 .showMoreButton:hover {
-  background-color: #e0e0e0; /* Colore di sfondo per l'hover */
+  background-color: var(--background); /* Colore di sfondo per l'hover */
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px 8px in rem */
 }
 
@@ -572,11 +480,11 @@ input:checked + .slider:before {
 
 .pagination button {
   margin: 0 0.25rem;
-  border: 0.0625rem solid #c0c0c0;
+  border: 0.0625rem solid var(--primary);
   border-radius: 0.5rem;
   height: 2.3rem;
   width: 2.3rem;
-  background-color: #fff;
+  background-color: var(--surface);
   align-content: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -584,13 +492,13 @@ input:checked + .slider:before {
 }
 
 .pagination button:hover {
-  background-color: #c0c0c0;
+  background-color: var(--placeholder);
 }
 
 .pagination .activePage {
-  background-color: #fff;
-  color: #008ef1;
-  border: #008ef1 solid 0.0625rem;
+  background-color: var(--background);
+  color: var(--light-navy);
+  border: var(--light-navy) solid 0.0625rem;
 }
 
 .totalItems {
@@ -601,9 +509,9 @@ input:checked + .slider:before {
 
 .ellipsis {
   margin: 0 0.25rem;
-  border: 0.0625rem solid #c0c0c0;
+  border: 0.0625rem solid var(--placeholder);
   border-radius: 0.5rem;
-  background-color: #fff;
+  background-color: var(--background);
   cursor: default;
   pointer-events: none;
 }
@@ -626,6 +534,6 @@ input:checked + .slider:before {
   white-space: nowrap;
   margin-left: auto; 
   font: 400 00.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
-  color: #484b50;
+  color: var(--text);
   margin-right: 0;
 }

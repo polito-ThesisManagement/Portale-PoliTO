@@ -27,6 +27,8 @@
   --placeholder: #5f666d;
   --pill-button: var(--light-navy-transparent);
   --link: var(--navy);
+  --text-active: var(--black);
+  --text-inactive: var(--black);
 
   /* Font Family */
   --font-primary: 'Montserrat', sans-serif;
@@ -57,6 +59,8 @@
   --placeholder: #adb5bd;
   --pill-button: var(--light-navy-transperent-2);
   --link: var(--light-navy);
+  --text-active: var(--surface);
+  --text-inactive: var(--text);
 
   .form-select {
     --bs-form-select-bg-img: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");

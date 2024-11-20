@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+import { Search, SortDown, SortUp } from 'react-bootstrap-icons';
+
 import { HiLightBulb } from 'react-icons/hi';
 
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
+import '../styles/Searchbar.css';
 import styles from '../styles/ThesisProposals.module.css';
 import ThesisItem from './ThesisItem';
 import Title from './Title';
@@ -14,7 +19,7 @@ export default function ThesisProposals({ thesisProposals }) {
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('');
-  const [orderBy, setOrderBy] = useState('');
+  const [orderBy, setOrderBy] = useState('asc');
   const [pageProposals, setPageProposals] = useState([]);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
   const [filteredProposals, setFilteredProposals] = useState(thesisProposals);
@@ -39,8 +44,13 @@ export default function ThesisProposals({ thesisProposals }) {
     setSortBy(event.target.value);
   };
 
-  const handleOrderByChange = event => {
-    setOrderBy(event.target.value);
+  const handleOrderByChange = () => {
+    if (orderBy === 'asc') {
+      setOrderBy('desc');
+    }
+    if (orderBy === 'desc') {
+      setOrderBy('asc');
+    }
   };
 
   const handleSearchbarChange = event => {
@@ -154,58 +164,84 @@ export default function ThesisProposals({ thesisProposals }) {
                         </span>
                       </span>
                     </label>
-                    <div className={styles.sortBy}>
-                      <div className={styles.sortByInner}>
-                        <label htmlFor="sortBy" className={styles.sortByLabel}>
-                          Ordina per:
-                        </label>
-                        <select
-                          id="sortBy"
+                    <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }}>
+                      <InputGroup className="flex-nowrap w-100">
+                        <Form.Select
+                          label="Ordina per"
+                          style={{
+                            height: '2rem',
+                            backgroundColor: 'var(--background)',
+                            color: 'var(--primary)',
+                            borderRadius: '8px',
+                            lineHeight: '1rem',
+                            paddingRight: '2rem',
+                          }}
                           value={sortBy}
-                          placeholder=""
                           onChange={handleSortByChange}
-                          className={styles.sortBySelect}
                         >
                           <option value="" disabled={sortBy !== ''}>
-                            Seleziona...
+                            Ordina per:
                           </option>
-                          <option value="exp_date">Data di scadenza</option>
-                          <option value="creation_date">Data di creazione</option>
-                        </select>
-                        <select
-                          id="orderBy"
-                          value={orderBy}
-                          onChange={handleOrderByChange}
-                          className={styles.sortBySelect}
-                        >
-                          <option value="" disabled={orderBy !== ''}>
-                            Seleziona...
-                          </option>
-                          <option value="asc">Ascendente</option>
-                          <option value="desc">Discendente</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className={styles.searchBar}>
-                      <div className={styles.searchBarInner}>
-                        <label htmlFor="searchInput" className={styles['visually-hidden']}></label>
-                        <input
-                          id="searchInput"
-                          type="text"
+                          <option value="creationDate">Data di creazione</option>
+                          <option value="expirationDate">Data di scadenza</option>
+                        </Form.Select>
+                        {sortBy !== '' && (
+                          <>
+                            {orderBy === 'asc' ? (
+                              <SortUp
+                                style={{
+                                  color: 'var(--primary)',
+                                  height: '2.2rem',
+                                  width: '2.2rem',
+                                  cursor: 'pointer',
+                                  padding: '0 0.5rem',
+                                }}
+                                onClick={handleOrderByChange}
+                              />
+                            ) : (
+                              <SortDown
+                                style={{
+                                  color: 'var(--primary)',
+                                  height: '2.2rem',
+                                  width: '2.2rem',
+                                  cursor: 'pointer',
+                                  padding: '0 0.5rem',
+                                }}
+                                onClick={handleOrderByChange}
+                              />
+                            )}
+                          </>
+                        )}
+                      </InputGroup>
+                    </Form>
+                    <Form className="d-flex me-3 w-100" style={{ maxWidth: '250px' }}>
+                      <InputGroup className="flex-nowrap w-100">
+                        <Form.Control
+                          className="truncated"
+                          type="search"
+                          placeholder="Ricerca tra le proposte..."
+                          aria-label="Search"
+                          style={{
+                            height: '2rem',
+                            backgroundColor: 'var(--background)',
+                            color: 'var(--primary)',
+                            borderRadius: '8px',
+                          }}
                           value={searchQuery}
                           onChange={handleSearchbarChange}
-                          className={styles.searchInput}
-                          placeholder="Ricerca tra le proposte..."
                         />
-                        <div className={styles.searchIcon}>
-                          <img
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a80747fb44e9ee0d6e39fbcf3093cbe80fcfe231f4c7adb450c279b34baaf281?placeholderIfAbsent=true&apiKey=72cc577f79b64674b03fc8a1de6d7a2a"
-                            alt="Search"
-                            className={styles.searchIconImage}
-                          />
-                        </div>
-                      </div>
-                    </div>
+                        <Search
+                          style={{
+                            position: 'relative',
+                            zIndex: '3',
+                            right: '30',
+                            top: '8',
+                            color: 'var(--primary)',
+                            height: '1.1rem',
+                          }}
+                        />
+                      </InputGroup>
+                    </Form>
                   </div>
                 </div>
               </div>
