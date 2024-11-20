@@ -117,7 +117,7 @@ MyBlock.propTypes = {
 };
 
 Keywords.propTypes = {
-  keywords: PropTypes.array.isRequired,
+  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export { ThesisProposalDetail, MyBreadcrumb };
