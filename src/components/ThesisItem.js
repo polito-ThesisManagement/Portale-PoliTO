@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import styles from '../styles/ThesisProposals.module.css';
 
 export default function ThesisItem(props) {
+  const { description, advisors, foreign } = props;
   return (
     <article className={styles.thesisItem}>
       <div className={styles.thesisItemContent}>
@@ -24,15 +25,17 @@ export default function ThesisItem(props) {
             ))}
           </div>
         </div>
-        <p className={styles.thesisDescription}>{props.description}</p>
+        <p className={styles.thesisDescription}>{description.slice(0, 350) + '...'}</p>
         <div className={styles.thesisMetaInfo}>
-          {props.advisors.map(advisor => (
-            <div key={advisor.matricola} className={styles.professorTag}>
-              <span key={advisor.matricola} className={styles.professorName}>
-                {advisor.name}
-              </span>
-            </div>
-          ))}
+          <div className={styles.professorTagGroup}>
+            {advisors.map(advisor => (
+              <div key={advisor.matricola} className={styles.professorTag}>
+                <span key={advisor.matricola} className={styles.professorName}>
+                  {advisor.name}
+                </span>
+              </div>
+            ))}
+          </div>
           <div className={styles.thesisTypeTagGroup}>
             <span className={styles.thesisTypeTag}>
               {props.where === 'P' ? (
@@ -42,13 +45,13 @@ export default function ThesisItem(props) {
               )}
               <span className={styles.thesisTypeText}>{props.where === 'P' ? 'Tesi interna' : 'Tesi in azienda'}</span>
             </span>
+            {foreign === 'S' && (
+              <div className={styles.thesisTypeTag}>
+                <FaEarthAmericas className={styles.thesisTypeIcon} />
+                <span className={styles.thesisTypeText}>Tesi all’estero</span>
+              </div>
+            )}
           </div>
-          {props.foreign === 'S' && (
-            <div className={styles.thesisTypeTag}>
-              <FaEarthAmericas className={styles.thesisTypeIcon} />
-              <span className={styles.thesisTypeText}>Tesi all’estero</span>
-            </div>
-          )}
         </div>
         <footer className={styles.thesisItemFooter}>
           <Link to={`${props.ID}`} state={{ ...props }}>
