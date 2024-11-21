@@ -16,24 +16,12 @@
   padding-bottom: 2%;
 }
 
-.contentWrapper {
-  display: flex;
-  margin-top: 0.875rem; /* 14px in rem */
-  width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1; 
-  overflow: auto;
-}
-
-
 .card {
   background-color: var(--surface);
   display: flex;
   width: 100%;
   margin-bottom: 1.25rem; /* 20px in rem */
 }
-
 
 .cardBody {
   display: flex;
@@ -44,21 +32,10 @@
   padding: 1.75rem; 
 }
 
-.filterSection {
+.filterRow{
   display: flex;
-  width: 100%;
-  align-items: center;
-  flex-wrap: wrap; 
-  padding-left: 3%;
-  padding-right: 3%;
-}
-
-.filterWrapper {
-  display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; 
 }
 
 .segmentedControl {
@@ -67,6 +44,8 @@
   width: 27rem; 
   height: 2rem; 
   cursor: pointer;
+  border: 0.0625rem solid var(--border-slider);
+  border-radius: 0.5rem;
 }
 
 .segmentedControl input {
@@ -81,7 +60,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--background); /* Mantieni il colore di sfondo quando attivo */
+  background-color: var(--background-slider); /* Mantieni il colore di sfondo quando attivo */
   border-radius: 0.5rem;
   border-color: var(--placeholder);
   transition: 0.4s;
@@ -95,13 +74,13 @@
   width: 13rem; /* Larghezza del pulsante */
   left: 0.25rem; /* Spazio a sinistra */
   bottom: 0.25rem; /* Spazio in basso */
-  background-color: var(--white);
-  border-radius: 0.5rem;
+  background-color: white;
+  border-radius: 0.4rem;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: var(--background); /* Colore di sfondo quando attivo */
+  background-color: var(--background-slider); /* Colore di sfondo quando attivo */
 }
 
 input:checked + .slider:before {
@@ -214,10 +193,10 @@ input:not(:checked) + .slider .toggleTextRight {
   input:checked + .slider:before {
     transform: translateX(8.9rem); /* Sposta il pulsante a destra */
   }
-} 
+}
 
 .thesisList {
-  background-color: #fff;
+  background-color: var(--surface);
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -237,13 +216,13 @@ input:not(:checked) + .slider .toggleTextRight {
 }
 
 .thesisItem {
-  border: 0.0625rem solid #d9d9d9; /* 1px in rem */
+  border: 0.0625rem solid var(--background); /* 1px in rem */
   border-radius: 1;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   align-items: flex-start;
-  background-color: #fff;
-  box-shadow: 0 -1px 0 0 #f0f0f0 inset;
+  background-color: var(--surface);
+  box-shadow: 0 -1px 0 0 var(--background) inset;
   display: flex;
   max-width: 100%;
   gap: 40px;
@@ -451,6 +430,7 @@ input:not(:checked) + .slider .toggleTextRight {
   gap: 0.5rem;
   margin-top: 1rem;
   font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  color: var(--text);
 }
 
 .pagination {
@@ -505,6 +485,7 @@ input:not(:checked) + .slider .toggleTextRight {
   font: 400 0.875rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
   padding-right: 5%;
   padding-left: 5%;
+  color: var(--text);
 }
 
 .ellipsis {
@@ -536,4 +517,9 @@ input:not(:checked) + .slider .toggleTextRight {
   font: 400 00.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
   color: var(--text);
   margin-right: 0;
+}
+
+.bText{
+  font: 600 0.95rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  color: var(--text);
 }

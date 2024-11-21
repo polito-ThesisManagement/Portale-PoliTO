@@ -29,6 +29,8 @@
   --link: var(--navy);
   --text-active: var(--black);
   --text-inactive: var(--black);
+  --border-slider: transparent; /* border.slider */
+  --background-slider: #e2e2e2; /* background.slider */
 
   /* Font Family */
   --font-primary: 'Montserrat', sans-serif;
@@ -61,7 +63,8 @@
   --link: var(--light-navy);
   --text-active: var(--surface);
   --text-inactive: var(--text);
-
+  --border-slider: var(--placeholder);
+  --background-slider: var(--background);
   .form-select {
     --bs-form-select-bg-img: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
   }

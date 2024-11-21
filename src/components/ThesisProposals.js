@@ -45,10 +45,10 @@ export default function ThesisProposals({ thesisProposals }) {
   };
 
   const handleOrderByChange = () => {
-    if (orderBy === 'asc') {
+    if (sortBy !== '' && orderBy === 'asc') {
       setOrderBy('desc');
     }
-    if (orderBy === 'desc') {
+    if (sortBy !== '' && orderBy === 'desc') {
       setOrderBy('asc');
     }
   };
@@ -60,7 +60,7 @@ export default function ThesisProposals({ thesisProposals }) {
   function filterAndSorting(proposals) {
     const sortedProposals = [...proposals];
     if (orderBy === 'asc') {
-      if (sortBy === 'creation_date' && orderBy === 'asc') {
+      if (sortBy === 'creation_date') {
         sortedProposals.sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date));
       } else if (sortBy === 'exp_date') {
         sortedProposals.sort((a, b) => new Date(a.exp_date) - new Date(b.exp_date));
@@ -148,145 +148,153 @@ export default function ThesisProposals({ thesisProposals }) {
       <Title icon={<HiLightBulb size={28} />} sectionName="Proposte di tesi" />
       <div className={styles.container}>
         <main className={styles.mainContent}>
-          <div className={styles.contentWrapper}>
-            <section className={styles.card}>
-              <div className={styles.cardBody}>
-                <div className={styles.filterSection}>
-                  <div className={styles.filterWrapper}>
-                    <label className={styles.segmentedControl}>
-                      <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
-                      <span className={styles.slider}>
-                        <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
-                          {activeIndex === 0 ? 'Tutte le tesi' : 'Tutte le tesi'}
-                        </span>
-                        <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
-                          {activeIndex === 1 ? 'Tesi per il tuo corso di studi' : 'Tesi per il tuo corso di studi'}
-                        </span>
-                      </span>
-                    </label>
-                    <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }}>
-                      <InputGroup className="flex-nowrap w-100">
-                        <Form.Select
-                          label="Ordina per"
-                          style={{
-                            height: '2rem',
-                            backgroundColor: 'var(--background)',
-                            color: 'var(--primary)',
-                            borderRadius: '8px',
-                            lineHeight: '1rem',
-                            paddingRight: '2rem',
-                          }}
-                          value={sortBy}
-                          onChange={handleSortByChange}
-                        >
-                          <option value="" disabled={sortBy !== ''}>
-                            Ordina per:
-                          </option>
-                          <option value="creationDate">Data di creazione</option>
-                          <option value="expirationDate">Data di scadenza</option>
-                        </Form.Select>
-                        {sortBy !== '' && (
-                          <>
-                            {orderBy === 'asc' ? (
-                              <SortUp
-                                style={{
-                                  color: 'var(--primary)',
-                                  height: '2.2rem',
-                                  width: '2.2rem',
-                                  cursor: 'pointer',
-                                  padding: '0 0.5rem',
-                                }}
-                                onClick={handleOrderByChange}
-                              />
-                            ) : (
-                              <SortDown
-                                style={{
-                                  color: 'var(--primary)',
-                                  height: '2.2rem',
-                                  width: '2.2rem',
-                                  cursor: 'pointer',
-                                  padding: '0 0.5rem',
-                                }}
-                                onClick={handleOrderByChange}
-                              />
-                            )}
-                          </>
-                        )}
-                      </InputGroup>
-                    </Form>
-                    <Form className="d-flex me-3 w-100" style={{ maxWidth: '250px' }}>
-                      <InputGroup className="flex-nowrap w-100">
-                        <Form.Control
-                          className="truncated"
-                          type="search"
-                          placeholder="Ricerca tra le proposte..."
-                          aria-label="Search"
-                          style={{
-                            height: '2rem',
-                            backgroundColor: 'var(--background)',
-                            color: 'var(--primary)',
-                            borderRadius: '8px',
-                          }}
-                          value={searchQuery}
-                          onChange={handleSearchbarChange}
-                        />
-                        <Search
-                          style={{
-                            position: 'relative',
-                            zIndex: '3',
-                            right: '30',
-                            top: '8',
-                            color: 'var(--primary)',
-                            height: '1.1rem',
-                          }}
-                        />
-                      </InputGroup>
-                    </Form>
-                  </div>
-                </div>
+          <section className={styles.card}>
+            <div className={styles.cardBody}>
+              <div className={styles.filterRow}>
+                <label className={styles.segmentedControl}>
+                  <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
+                  <span className={styles.slider}>
+                    <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
+                      {activeIndex === 0 ? 'Tutte le tesi' : 'Tutte le tesi'}
+                    </span>
+                    <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
+                      {activeIndex === 1 ? 'Tesi per il tuo corso di studi' : 'Tesi per il tuo corso di studi'}
+                    </span>
+                  </span>
+                </label>
+                <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }}>
+                  <InputGroup className="flex-nowrap w-100">
+                    <Form.Select
+                      label="Ordina per"
+                      style={{
+                        height: '2rem',
+                        backgroundColor: 'var(--background)',
+                        color: 'var(--primary)',
+                        borderRadius: '8px',
+                        lineHeight: '1rem',
+                        paddingRight: '2rem',
+                      }}
+                      value={sortBy}
+                      onChange={handleSortByChange}
+                    >
+                      <option value="" disabled={sortBy !== ''}>
+                        Ordina per:
+                      </option>
+                      <option value="creationDate">Data di creazione</option>
+                      <option value="expirationDate">Data di scadenza</option>
+                    </Form.Select>
+                    {orderBy === 'asc' ? (
+                      <SortUp
+                        style={{
+                          color: 'var(--primary)',
+                          height: '2.2rem',
+                          width: '2.2rem',
+                          cursor: 'pointer',
+                          padding: '0 0.5rem',
+                        }}
+                        onClick={handleOrderByChange}
+                        disabled={sortBy === ''}
+                      />
+                    ) : (
+                      <SortDown
+                        style={{
+                          color: 'var(--primary)',
+                          height: '2.2rem',
+                          width: '2.2rem',
+                          cursor: 'pointer',
+                          padding: '0 0.5rem',
+                        }}
+                        onClick={handleOrderByChange}
+                        disabled={sortBy === ''}
+                      />
+                    )}
+                  </InputGroup>
+                </Form>
+                <Form className="d-flex me-3 w-100" style={{ maxWidth: '250px' }}>
+                  <InputGroup className="flex-nowrap w-100">
+                    <Form.Control
+                      className="truncated"
+                      type="search"
+                      placeholder="Ricerca tra le proposte..."
+                      aria-label="Search"
+                      style={{
+                        height: '2rem',
+                        backgroundColor: 'var(--background)',
+                        color: 'var(--primary)',
+                        borderRadius: '8px',
+                      }}
+                      value={searchQuery}
+                      onChange={handleSearchbarChange}
+                    />
+                    <Search
+                      style={{
+                        position: 'relative',
+                        zIndex: '3',
+                        right: '30',
+                        top: '8',
+                        color: 'var(--primary)',
+                        height: '1.1rem',
+                      }}
+                    />
+                  </InputGroup>
+                </Form>
               </div>
-            </section>
-            <section className={styles.thesisList}>
-              <div className={styles.thesisListInner}>
-                {pageProposals.map((thesis, index) => (
-                  <ThesisItem key={index} {...thesis} />
-                ))}
-              </div>
-            </section>
-            <div className={styles.pagination}>
-              <div className={styles.paginationControls}>
-                <label htmlFor="proposalsPerPage">Elementi per pagina:</label>
-                <select
-                  id="proposalsPerPage"
+            </div>
+            <div className={styles.filterRow}></div>
+          </section>
+          <section className={styles.thesisList}>
+            <div className={styles.thesisListInner}>
+              {pageProposals.map((thesis, index) => (
+                <ThesisItem key={index} {...thesis} />
+              ))}
+            </div>
+          </section>
+          <div className={styles.pagination}>
+            <b className={styles.bText} style={{ paddingLeft: '2rem' }}>
+              Elementi per pagina:
+            </b>
+            <Form className="d-flex me-3 w-100" style={{ maxWidth: '100px', paddingLeft: '1rem' }}>
+              <InputGroup className="flex-nowrap w-100">
+                <Form.Select
+                  label="Elementi per pagina"
+                  style={{
+                    height: '2rem',
+                    backgroundColor: 'var(--background)',
+                    color: 'var(--primary)',
+                    borderRadius: '8px',
+                    lineHeight: '1rem',
+                    paddingRight: '2rem',
+                  }}
                   value={proposalsPerPage}
                   onChange={handleProposalsPerPageChange}
-                  className={styles.sortBySelect}
                 >
                   <option value={5}>5</option>
                   <option value={10}>10</option>
                   <option value={20}>20</option>
                   <option value={50}>50</option>
-                </select>
-              </div>
-              <div className={styles.paginationNumbers}>
-                {pageNumbers.map((number, index) =>
-                  number === '...' ? (
-                    <button key={`ellipsis-${index}`} className={styles.ellipsis} disabled>
-                      {number}
-                    </button>
-                  ) : (
-                    <button
-                      key={`page-${number}`}
-                      onClick={() => handlePageChange(number)}
-                      className={currentPage === number ? styles.activePage : ''}
-                    >
-                      {number}
-                    </button>
-                  ),
-                )}
-              </div>
-              <span className={styles.totalItems}>Totale: {filteredProposals.length}</span>
+                </Form.Select>
+              </InputGroup>
+            </Form>
+            <div className={styles.paginationNumbers}>
+              {pageNumbers.map((number, index) =>
+                number === '...' ? (
+                  <button key={`ellipsis-${index}`} className={styles.ellipsis} disabled>
+                    {number}
+                  </button>
+                ) : (
+                  <button
+                    key={`page-${number}`}
+                    onClick={() => handlePageChange(number)}
+                    className={currentPage === number ? styles.activePage : ''}
+                  >
+                    {number}
+                  </button>
+                ),
+              )}
             </div>
+            <span className={styles.bText} style={{ paddingRight: '4rem' }}>
+              Totale: {filteredProposals.length}
+            </span>
           </div>
         </main>
       </div>
