@@ -421,13 +421,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   row-gap: 0.2rem;
-  column-gap: 0.1rem;
+  column-gap: 0.3rem;
 }
 
 .keyword {
   border-radius: 6px;
   border: 1px solid #d9d9d9;
-  margin-right: 4px;
   overflow: hidden;
   color: var(--primary);
   padding: 0.0625rem 0.5rem;
@@ -437,20 +436,35 @@ body {
   background-color: rgba(var(--medium-orange), 0.25);
   border-radius: 6px;
   border: 1px solid rgba(var(--medium-orange), 0.8);
-  margin-right: 4px;
   overflow: hidden;
   color: rgba(var(--medium-orange), 1);
-  padding: 0.1rem 0.4rem 0rem 0.4rem;
+  padding: 0.1rem 0.35rem 0rem 0.4rem;
 }
 
 .not-internal {
   background-color: rgba(62, 163, 55, 0.25);
   border-radius: 6px;
   border: 1px solid rgba(62, 163, 55, 0.8);
-  margin-right: 4px;
   overflow: hidden;
   color: rgba(62, 163, 55, 1);
-  padding: 0.1rem 0.4rem 0rem 0.4rem;
+  padding: 0.1rem 0.35rem 0rem 0.4rem;
+}
+
+.supervisors-container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.2rem;
+  column-gap: 0.1rem;
+}
+
+.supervisor {
+  background-color: rgba(90, 173, 209, 0.25);
+  border-radius: 6px;
+  border: 1px solid rgba(90, 173, 209, 0.8);
+  margin-right: 4px;
+  overflow: hidden;
+  color: rgba(90, 173, 209, 1);
+  padding: 0rem 0.35rem 0rem 0.31rem;
 }
 
 /*
