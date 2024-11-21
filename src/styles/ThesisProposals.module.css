@@ -29,10 +29,10 @@
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
-  padding: 1.75rem; 
+  padding: 1.75rem;
 }
 
-.filterRow{
+.filterRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,8 +41,8 @@
 .segmentedControl {
   position: relative;
   display: inline-block;
-  width: 27rem; 
-  height: 2rem; 
+  width: 27rem;
+  height: 2rem;
   cursor: pointer;
   border: 0.0625rem solid var(--border-slider);
   border-radius: 0.5rem;
@@ -64,12 +64,17 @@
   border-radius: 0.5rem;
   border-color: var(--placeholder);
   transition: 0.4s;
-  font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font:
+    500 1rem Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 1.4375rem; /* Altezza del pulsante */
   width: 13rem; /* Larghezza del pulsante */
   left: 0.25rem; /* Spazio a sinistra */
@@ -86,7 +91,6 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(13.5rem); /* Sposta il pulsante a destra */
 }
-
 
 .toggleText {
   position: absolute;
@@ -148,7 +152,9 @@ input:not(:checked) + .slider .toggleTextRight {
   bottom: 0.25rem; /* 4px in rem */
   left: 0.25rem; /* 4px in rem */
   right: 50%; /* 50% della larghezza */
-  transition: left 0.3s ease, right 0.3s ease;
+  transition:
+    left 0.3s ease,
+    right 0.3s ease;
   z-index: 0;
 }
 
@@ -157,29 +163,29 @@ input:not(:checked) + .slider .toggleTextRight {
   right: 0.25rem; /* 4px in rem */
 }
 
-@media(max-width: 768px) {
-    .filterSection {
-      flex-direction: column;
-      align-items: flex-start;
-      align-content: center;
-      justify-content: space-between;
+@media (max-width: 768px) {
+  .filterSection {
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: space-between;
   }
 
   .segmentedControl {
     position: relative;
     display: inline-block;
-    width: 20rem; 
-    height: 2.5rem; 
-    background-color: var(--primary); 
+    width: 20rem;
+    height: 2.5rem;
+    background-color: var(--primary);
     border-radius: 0.5rem;
-    border: solid 0.0625rem; 
+    border: solid 0.0625rem;
     border-color: var(--primary);
     cursor: pointer;
   }
 
   .slider:before {
     position: absolute;
-    content: "";
+    content: '';
     height: 1.9rem; /* Altezza del pulsante */
     width: 9.2rem; /* Larghezza del pulsante */
     left: 0.25rem; /* Spazio a sinistra */
@@ -255,7 +261,12 @@ input:not(:checked) + .slider .toggleTextRight {
   width: 100%;
   overflow: hidden;
   color: var(--text);
-  font: 500 1.25rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* Riduci la dimensione del font */
+  font:
+    500 1.25rem Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif; /* Riduci la dimensione del font */
 }
 
 .tagGroup {
@@ -267,7 +278,9 @@ input:not(:checked) + .slider .toggleTextRight {
   color: #002b49;
   justify-content: flex-start;
   flex-wrap: wrap;
-  font: 400 0.8rem/2 Roboto, sans-serif;
+  font:
+    400 0.8rem/2 Roboto,
+    sans-serif;
 }
 
 .tag {
@@ -283,18 +296,23 @@ input:not(:checked) + .slider .toggleTextRight {
 }
 
 .thesisDescription {
-  display: -webkit-box; 
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical; 
-  line-clamp: 3;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  margin-top: 16px;
-  width: 100%; 
-  color: var(--text);
-  font: 400 14px/22px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 16px;
+  width: 100%;
+  color: var(--text);
+  font:
+    400 14px/22px Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   line-clamp: 3;
   overflow: hidden;
@@ -385,7 +403,12 @@ input:not(:checked) + .slider .toggleTextRight {
   gap: 1rem;
   color: rgba(27, 31, 38, 0.72);
   justify-content: flex-start;
-  font: 400 0.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font:
+    400 0.875rem/2 Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
 
 .expirationDate {
@@ -412,7 +435,9 @@ input:not(:checked) + .slider .toggleTextRight {
   text-align: center;
   padding: 0 0.9375rem; /* 0 15px in rem */
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .showMoreButton:hover {
@@ -430,7 +455,12 @@ input:not(:checked) + .slider .toggleTextRight {
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font:
+    500 1rem Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   color: var(--text);
 }
 
@@ -458,7 +488,6 @@ input:not(:checked) + .slider .toggleTextRight {
   flex-grow: 1; /* Permette ai numeri di pagina di occupare lo spazio centrale */
 }
 
-
 .pagination button {
   margin: 0 0.25rem;
   border: 0.0625rem solid var(--primary);
@@ -469,7 +498,12 @@ input:not(:checked) + .slider .toggleTextRight {
   align-content: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font:
+    500 1rem Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   color: var(--text);
 }
 
@@ -483,14 +517,19 @@ input:not(:checked) + .slider .toggleTextRight {
   border: var(--active-page) solid 0.0625rem;
 }
 
-.pagination .activePage:hover{
+.pagination .activePage:hover {
   background-color: var(--background);
   color: var(--active-page);
   border: var(--active-page) solid 0.0625rem;
 }
 
 .totalItems {
-  font: 400 0.875rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font:
+    400 0.875rem Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   padding-right: 5%;
   padding-left: 5%;
   color: var(--text);
@@ -505,29 +544,39 @@ input:not(:checked) + .slider .toggleTextRight {
   pointer-events: none;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .paginationEmpty {
     flex-grow: 0;
   }
 }
 
-@media(max-width: 320px) {
+@media (max-width: 320px) {
   .paginationControls {
     padding-left: 0;
   }
 }
 
-.creationDate{
+.creationDate {
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  margin-left: auto; 
-  font: 400 00.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  margin-left: auto;
+  font:
+    400 00.875rem/2 Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   color: var(--text);
   margin-right: 0;
 }
 
-.bText{
-  font: 600 0.95rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+.bText {
+  font:
+    600 0.95rem/2 Montserrat,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   color: var(--text);
 }

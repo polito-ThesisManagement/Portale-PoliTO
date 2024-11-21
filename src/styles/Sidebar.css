@@ -94,13 +94,13 @@
 
 .modal-menu .nav-link:hover {
   background-color: var(--navy);
-  color: var(--white); 
+  color: var(--white);
   border-radius: 8px;
 }
 
 .modal-menu .nav-link.active {
   background-color: var(--primary);
-  color: var(--background); 
+  color: var(--background);
   border-radius: 8px;
 }
 
@@ -109,4 +109,3 @@
   font-weight: var(--font-weight-medium);
   margin-top: 3px;
 }
-

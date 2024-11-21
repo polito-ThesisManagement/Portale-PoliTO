@@ -1,4 +1,4 @@
-.main-space{
+.main-space {
   height: auto;
   margin-top: 86px;
   background-color: var(--surface);
@@ -17,7 +17,7 @@
   border-top-left-radius: 12px;
 }
 
-.detail-title{
+.detail-title {
   min-width: 200px;
 }
 
@@ -32,7 +32,7 @@
     min-width: 100%;
   }
 
-  .detail-row{
+  .detail-row {
     flex-wrap: wrap;
   }
 }
@@ -41,7 +41,7 @@
   .main-space.reduced {
     margin-left: 12px;
   }
-  .custom-content.reduced{
+  .custom-content.reduced {
     border-top-left-radius: 0px;
   }
 }
@@ -402,7 +402,7 @@ body {
   max-width: 1416px;
 }
 
-.expire-badge{
+.expire-badge {
   background-color: var(--background);
   color: var(--primary);
   padding-top: 2px;

@@ -97,8 +97,8 @@
   font-weight: var(--font-weight-medium);
 }
 
-.pol-headline.pol-headline--with-bar>h3:before {
-  content: "";
+.pol-headline.pol-headline--with-bar > h3:before {
+  content: '';
   width: 50px;
   height: 5px;
   background: #ef7b02;
