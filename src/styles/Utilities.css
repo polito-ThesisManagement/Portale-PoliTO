@@ -431,20 +431,20 @@ body {
 }
 
 .internal {
-  background-color: rgba(var(--medium-orange-rgb), 0.25);
-  border-radius: 6px;
-  border: 1px solid rgba(var(--medium-orange-rgb), 0.8);
-  overflow: hidden;
-  color: rgba(var(--medium-orange-rgb), 1);
-  padding: 0.1rem 0.35rem 0rem 0.4rem;
-}
-
-.not-internal {
   background-color: rgba(62, 163, 55, 0.25);
   border-radius: 6px;
   border: 1px solid rgba(62, 163, 55, 0.8);
   overflow: hidden;
   color: rgba(62, 163, 55, 1);
+  padding: 0.1rem 0.35rem 0rem 0.4rem;
+}
+
+.not-internal {
+  background-color: rgba(var(--medium-orange-rgb), 0.25);
+  border-radius: 6px;
+  border: 1px solid rgba(var(--medium-orange-rgb), 0.8);
+  overflow: hidden;
+  color: rgba(var(--medium-orange-rgb), 1);
   padding: 0.1rem 0.35rem 0rem 0.4rem;
 }
 
