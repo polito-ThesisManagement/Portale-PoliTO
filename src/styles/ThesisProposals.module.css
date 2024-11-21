@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 1%;
+  padding-bottom: 5.675rem;
 }
 
 .mainContent {
@@ -35,7 +35,21 @@
 .filterRow{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 5rem;
+  margin-bottom: 1%;
+}
+
+@media(max-width: 1396px) {
+  .filterRow{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1%;
+  }
 }
 
 .segmentedControl {
@@ -46,12 +60,6 @@
   cursor: pointer;
   border: 0.0625rem solid var(--border-slider);
   border-radius: 0.5rem;
-}
-
-.segmentedControl input {
-  opacity: 0;
-  width: 0;
-  height: 0;
 }
 
 .slider {
@@ -84,7 +92,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(13.5rem); /* Sposta il pulsante a destra */
+  transform: translateX(13.4rem); /* Sposta il pulsante a destra */
 }
 
 
@@ -124,74 +132,39 @@ input:not(:checked) + .slider .toggleTextRight {
   color: var(--text-inactive); /* Colore del testo attivo */
 }
 
-.segmentedControlInner {
-  display: flex;
-  width: 100%;
-  position: relative;
-}
 
-.segmentedItem {
-  padding: 0.25rem 0.5rem; /* 4px 8px in rem */
-  border-radius: 0.5rem; /* 8px in rem */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  flex: 1;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.segmentedItemActive {
-  border: none;
-  position: absolute;
-  top: 0.25rem; /* 4px in rem */
-  bottom: 0.25rem; /* 4px in rem */
-  left: 0.25rem; /* 4px in rem */
-  right: 50%; /* 50% della larghezza */
-  transition: left 0.3s ease, right 0.3s ease;
-  z-index: 0;
-}
-
-.segmentedItemActive:nth-child(2) {
-  left: 50%; /* 50% della larghezza */
-  right: 0.25rem; /* 4px in rem */
-}
-
-@media(max-width: 768px) {
-    .filterSection {
-      flex-direction: column;
-      align-items: flex-start;
-      align-content: center;
-      justify-content: space-between;
+@media (max-width: 595px) {
+  .segmentedControl {
+    width: 100%;
   }
 
   .segmentedControl {
     position: relative;
     display: inline-block;
     width: 20rem; 
-    height: 2.5rem; 
-    background-color: var(--primary); 
-    border-radius: 0.5rem;
-    border: solid 0.0625rem; 
-    border-color: var(--primary);
+    height: 3.2rem; 
     cursor: pointer;
+    border: 0.0625rem solid var(--border-slider);
+    border-radius: 0.5rem;
   }
-
+  
+  .slider {
+    font: 500 0.5rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  }
+  
   .slider:before {
     position: absolute;
     content: "";
-    height: 1.9rem; /* Altezza del pulsante */
+    height: 2.6375rem; /* Altezza del pulsante */
     width: 9.2rem; /* Larghezza del pulsante */
-    left: 0.25rem; /* Spazio a sinistra */
-    bottom: 0.25rem; /* Spazio in basso */
+    top: 0.2rem; /* Spazio in alto */
     background-color: white;
-    border: 0.0625rem solid;
-    border-color: var(--primary);
-    border-radius: 0.5rem;
-    transition: 0.4s;
+    border-radius: 0.4rem;
   }
+
   input:checked + .slider:before {
-    transform: translateX(8.9rem); /* Sposta il pulsante a destra */
+    transform: translateX(9.5rem); /* Sposta il pulsante a destra */
+    width: 9.8rem; /* Larghezza del pulsante */
   }
 }
 
@@ -255,7 +228,7 @@ input:not(:checked) + .slider .toggleTextRight {
   width: 100%;
   overflow: hidden;
   color: var(--text);
-  font: 500 1.25rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* Riduci la dimensione del font */
+  font: 600 1.25rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* Riduci la dimensione del font */
 }
 
 .tagGroup {
@@ -289,7 +262,7 @@ input:not(:checked) + .slider .toggleTextRight {
   line-clamp: 3;
   overflow: hidden; 
   text-overflow: ellipsis; 
-  margin-top: 16px;
+  margin-top: 0.2rem;
   width: 100%; 
   color: var(--text);
   font: 400 14px/22px Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
@@ -301,22 +274,12 @@ input:not(:checked) + .slider .toggleTextRight {
   text-overflow: ellipsis;
 }
 
-@media (max-width: 991px) {
-  .thesisDescription {
-    max-width: 100%;
-  }
-}
-
 .thesisMetaInfo {
-  position: relative;
   display: flex;
-  margin-top: 0.3rem;
-  width: 100%;
+  flex-wrap: wrap; /* Permette ai contenuti di andare a capo */
+  gap: 1rem; /* Spaziatura tra i gruppi di tag */
   align-items: flex-start;
-  gap: 40px 0.3rem;
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  justify-content: flex-start;
+  justify-content: space-between; /* Distribuisce lo spazio tra i gruppi di tag */
 }
 
 .professorTag {
@@ -341,43 +304,44 @@ input:not(:checked) + .slider .toggleTextRight {
   margin: auto 0;
 }
 
+/* Aggiungi questa classe per il gruppo di tag professor */
+.professorTagGroup {
+  display: flex;
+  flex-wrap: wrap; /* Permette ai tag di andare a capo */
+  gap: 0.5rem; /* Spaziatura tra i tag */
+}
+
+/* Aggiungi questa classe per il gruppo di tag type */
+.thesisTypeTagGroup {
+  display: flex;
+  flex-wrap: wrap; /* Permette ai tag di andare a capo */
+  flex-direction: column;
+  justify-content: flex-end; /* Allinea i tag a destra */
+  gap: 0.5rem; /* Spaziatura tra i tag */
+}
+
 .thesisTypeTag {
   align-items: center;
   border-radius: 8px;
   border: 0.8px solid var(--type-tag-border);
+  padding: 0.0625rem 0.5rem;
   background-color: var(--type-tag-bg);
-  align-self: flex-start;
-  position: absolute;
-  z-index: 0;
-  display: flex;
-  gap: 8px;
-  font-size: 12px;
   color: var(--type-tag-text);
-  line-height: 2;
-  justify-content: flex-start;
-  right: 0;
-  bottom: 1px;
-  padding: 1px 8px;
+  display: flex;
+  justify-content: center;
+  font: 400 0.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
-.thesisTypeIcon {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 16px;
-  align-self: stretch;
-  margin: auto 0;
-}
+.thesisTypeIcon{
+  margin-right: 0.25rem;
+  align-self: left;
 
-.thesisTypeText {
-  align-self: stretch;
-  gap: 3px;
-  margin: auto 0;
 }
 
 .thesisItemFooter {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   margin-top: 0.5rem;
   min-height: 22px;
   width: 100%;
@@ -385,7 +349,7 @@ input:not(:checked) + .slider .toggleTextRight {
   gap: 1rem;
   color: rgba(27, 31, 38, 0.72);
   justify-content: flex-start;
-  font: 400 0.875rem/2 Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 400 0.875rem/2 Montserrat;
 }
 
 .expirationDate {
@@ -412,6 +376,7 @@ input:not(:checked) + .slider .toggleTextRight {
   text-align: center;
   padding: 0 0.9375rem; /* 0 15px in rem */
   cursor: pointer;
+  max-width: 200px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -428,6 +393,7 @@ input:not(:checked) + .slider .toggleTextRight {
 .paginationControls {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
   font: 500 1rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;

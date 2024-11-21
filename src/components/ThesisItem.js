@@ -31,15 +31,17 @@ export default function ThesisItem({
             ))}
           </div>
         </div>
-        <p className={styles.thesisDescription}>{description}</p>
+        <p className={styles.thesisDescription}>{description.slice(0, 350) + '...'}</p>
         <div className={styles.thesisMetaInfo}>
-          {advisors.map(advisor => (
-            <div key={advisor.matricola} className={styles.professorTag}>
-              <span key={advisor.matricola} className={styles.professorName}>
-                {advisor.name}
-              </span>
-            </div>
-          ))}
+          <div className={styles.professorTagGroup}>
+            {advisors.map(advisor => (
+              <div key={advisor.matricola} className={styles.professorTag}>
+                <span key={advisor.matricola} className={styles.professorName}>
+                  {advisor.name}
+                </span>
+              </div>
+            ))}
+          </div>
           <div className={styles.thesisTypeTagGroup}>
             <span className={styles.thesisTypeTag}>
               {where === 'P' ? (
@@ -49,13 +51,13 @@ export default function ThesisItem({
               )}
               <span className={styles.thesisTypeText}>{where === 'P' ? 'Tesi interna' : 'Tesi in azienda'}</span>
             </span>
+            {foreign === 'S' && (
+              <div className={styles.thesisTypeTag}>
+                <FaEarthAmericas className={styles.thesisTypeIcon} />
+                <span className={styles.thesisTypeText}>Tesi all’estero</span>
+              </div>
+            )}
           </div>
-          {foreign === 'S' && (
-            <div className={styles.thesisTypeTag}>
-              <FaEarthAmericas className={styles.thesisTypeIcon} />
-              <span className={styles.thesisTypeText}>Tesi all’estero</span>
-            </div>
-          )}
         </div>
         <footer className={styles.thesisItemFooter}>
           <button className={styles.showMoreButton}>Mostra di più</button>

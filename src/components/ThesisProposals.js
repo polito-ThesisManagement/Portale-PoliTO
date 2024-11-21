@@ -164,7 +164,7 @@ export default function ThesisProposals({ thesisProposals }) {
                     </span>
                   </span>
                 </label>
-                <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }}>
+                <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Select
                       label="Ordina per"
@@ -212,7 +212,7 @@ export default function ThesisProposals({ thesisProposals }) {
                     )}
                   </InputGroup>
                 </Form>
-                <Form className="d-flex me-3 w-100" style={{ maxWidth: '250px' }}>
+                <Form className="d-flex me-3 w-100" style={{ maxWidth: '250px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Control
                       className="truncated"
