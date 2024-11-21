@@ -30,8 +30,10 @@ export default function ThesisProposals({ thesisProposals }) {
   };
 
   const handlePageChange = pageNumber => {
-    setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (pageNumber !== currentPage) {
+      setCurrentPage(pageNumber);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleProposalsPerPageChange = event => {
