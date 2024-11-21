@@ -45,7 +45,10 @@ export default function Searchbar(props) {
   }, []);
 
   return (
-    <Form className="d-flex me-3 w-100" style={{ maxWidth: '400px' }}>
+    <Form
+      className={props.mobile ? 'd-flex m-2 mb-4 w-100' : 'd-sm-block d-none d-flex me-3 w-100'}
+      style={{ maxWidth: '400px' }}
+    >
       <InputGroup className="flex-nowrap w-100">
         <Form.Control
           className="truncated"
@@ -78,7 +81,6 @@ export default function Searchbar(props) {
           style={{
             position: 'absolute',
             maxWidth: '370px',
-            marginTop: '40px',
           }}
         >
           {filteredData.slice(0, 3).map(service => (
@@ -90,6 +92,9 @@ export default function Searchbar(props) {
               key={service.id}
               variant="light"
               onClick={() => {
+                if (props.mobile) {
+                  props.handleClose();
+                }
                 setFilteredData([]);
                 setSearchWord('');
               }}
@@ -125,4 +130,6 @@ Searchbar.propTypes = {
       link: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  mobile: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func,
 };

@@ -12,6 +12,12 @@
   }
 }
 
+@media (max-width: 575px) {
+  .custom-content.reduced {
+      margin-left: 8px;
+  }
+}
+
 .custom-navbar {
   background-color: var(--surface);
   color: var(--primary);

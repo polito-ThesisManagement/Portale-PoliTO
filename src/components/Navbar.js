@@ -27,10 +27,12 @@ import '../styles/Theme.css';
 import '../styles/Utilities.css';
 import { getSystemTheme } from '../utils/utils';
 import Searchbar from './Searchbar';
+import SidebarModal from './SidebarModal';
 
 export default function PoliNavbar() {
   const [showPopover, setShowPopover] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [theme, setTheme] = useState('auto');
   const targetRef = useRef(null);
 
@@ -158,7 +160,7 @@ export default function PoliNavbar() {
           <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
-          className="d-block d-lg-none"
+          className="d-none d-sm-block d-lg-none"
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -184,9 +186,19 @@ export default function PoliNavbar() {
             {t('navbar.portale_della_didattica')}
           </span>
         </Navbar.Brand>
+        <Navbar.Toggle
+          onClick={() => setShowModal(true)}
+          className="d-block d-sm-none sidebar-modal-toggler"
+          bsPrefix="btn btn-primary"
+          as={'button'}
+          style={{ backgroundColor: 'var(--primary)', color: 'var(--background)' }}
+        >
+          ☰
+        </Navbar.Toggle>
+        <SidebarModal show={showModal} handleClose={() => setShowModal(false)} />
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
-          <Searchbar services={Services} />
+          <Searchbar services={Services} mobile={false} />
           <Nav className="my-0 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
             <Nav.Link
               as={Link}

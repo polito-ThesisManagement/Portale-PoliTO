@@ -48,3 +48,44 @@
   font-weight: var(--font-weight-medium);
   margin-top: 3px;
 }
+
+.modal-85vw {
+  width: 85% !important;
+}
+
+.modal-content {
+  background-color: var(--surface);
+  color: var(--primary);
+}
+
+.modal-menu .nav-link {
+  color: var(--primary);
+  padding-right: 0;
+  margin-left: 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  margin-right: 16px;
+  display: flex;
+  padding: 10px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.modal-menu .nav-link:hover {
+  background-color: var(--navy);
+  color: var(--white); 
+  border-radius: 8px;
+}
+
+.modal-menu .nav-link.active {
+  background-color: var(--primary);
+  color: var(--background); 
+  border-radius: 8px;
+}
+
+.modal-sidebar-text {
+  padding-left: 10px;
+  font-weight: var(--font-weight-medium);
+  margin-top: 3px;
+}
+
