@@ -148,7 +148,9 @@
             "luogo": "Place",
             "ambiente": "Environment",
             "allegato": "Attachment",
-            "tipo": "Type"
+            "tipo": "Type",
+            "relatore_principale": "Main Supervisor",
+            "relatori_secondari": "Secondary Supervisors"
         }
     },
     "opportunità": {
