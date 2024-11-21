@@ -403,16 +403,14 @@ body {
 }
 
 .expire-badge{
-  background-color: var(--background);
-  color: var(--primary);
+  background-color: rgba(var(--surface-dark-rgb), 0.85);
+  color: var(--white);
   padding-top: 2px;
   padding-bottom: 1px;
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 6px;
-  border-style: solid;
-  border-color: var(--surface-dark);
-  border-width: 2px;
+  border: 3px solid rgba(var(--surface-dark-rgb), 1);
   font-size: var(--font-size-sm);
   vertical-align: baseline;
 }
@@ -433,11 +431,11 @@ body {
 }
 
 .internal {
-  background-color: rgba(var(--medium-orange), 0.25);
+  background-color: rgba(var(--medium-orange-rgb), 0.25);
   border-radius: 6px;
-  border: 1px solid rgba(var(--medium-orange), 0.8);
+  border: 1px solid rgba(var(--medium-orange-rgb), 0.8);
   overflow: hidden;
-  color: rgba(var(--medium-orange), 1);
+  color: rgba(var(--medium-orange-rgb), 1);
   padding: 0.1rem 0.35rem 0rem 0.4rem;
 }
 
@@ -454,7 +452,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   row-gap: 0.2rem;
-  column-gap: 0.1rem;
+  column-gap: 0.05rem;
 }
 
 .supervisor {
