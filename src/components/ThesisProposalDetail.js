@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 
 import { ArrowRightShort } from 'react-bootstrap-icons';
 
-import { FaBuildingCircleArrowRight, FaBuildingCircleCheck, FaCalendar, FaFileLines } from 'react-icons/fa6';
+import { FaBuildingCircleArrowRight, FaBuildingCircleCheck, FaCalendar, FaFileLines, FaUser } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
@@ -39,9 +39,13 @@ function ThesisProposalDetail() {
           <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content="Banana Banana Banana Banana" />
           <MyBlock title="Link" content="Banana Banana Banana Banana" />
           <MyBlock title="carriera.proposta_di_tesi.tipo" content="Banana Banana Banana Banana" />
+          <MainSupervisor name="Nome Cognome" />
+          <SecondarySupervisors names={['Nome Cognome', 'Nome Cognome']} />
+          <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content="Banana Banana Banana Banana" />
           <Environment />
           <MyBlock title="carriera.proposta_di_tesi.luogo" content="Italia Estero" />
           <MyBlock title="carriera.proposta_di_tesi.note" content="Banana Banana Banana Banana" />
+          {/*allegato*/}
         </div>
       </Container>
     </>
@@ -103,6 +107,7 @@ function MyBlock({ title, content }) {
 
 function Keywords({ keywords }) {
   //const { t } = useTranslation();
+  // if null return a bit of margin
   return (
     <div className="keywords-container mb-3">
       {keywords.map((keyword, index) => (
@@ -143,6 +148,39 @@ function NotInternal() {
   );
 }
 
+function MainSupervisor({ name }) {
+  const { t } = useTranslation();
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
+      <Supervisor name={name} />
+    </div>
+  );
+}
+
+function SecondarySupervisors({ names }) {
+  const { t } = useTranslation();
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
+      <div className="supervisors-container">
+        {names.map((name, index) => (
+          <Supervisor key={index} name={name} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Supervisor({ name }) {
+  return (
+    <div className="supervisor">
+      <FaUser size={15} style={{ marginRight: '4px', verticalAlign: 'middle', marginTop: '-3px' }} />
+      <span className="course-detail">{name}</span>
+    </div>
+  );
+}
+
 MyBlock.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
@@ -150,6 +188,18 @@ MyBlock.propTypes = {
 
 Keywords.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+MainSupervisor.propTypes = {
+  name: PropTypes.string.isRequired,
+};
+
+SecondarySupervisors.propTypes = {
+  names: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+Supervisor.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 
 export { ThesisProposalDetail, MyBreadcrumb };
