@@ -149,7 +149,10 @@
             "luogo": "Luogo",
             "ambiente": "Ambiente",
             "allegato": "Allegato",
-            "tipo": "Tipo"
+            "tipo": "Tipo",
+            "relatore_principale": "Relatore principale",
+            "relatori_secondari": "Relatori secondari",
+            "relatori_esterni": "Relatori esterni"
         }
     },
     "opportunità": {

@@ -13,12 +13,15 @@
   --medium-gray: #415462; /* gray.600 */
   --trueGray: #737373; /* trueGray.500 */
   --white: #ffffff; /* surface.light */
-  --light-orange: 255, 200, 147; /* orange.200 - secondary.200 */
-  --medium-orange: 239, 123, 0; /* orange.600 - secondary.600 */
+  --light-orange: #ffc893; /* orange.200 - secondary.200 */
+  --medium-orange: #ef7b00; /* orange.600 - secondary.600 */
+  --light-orange-rgb: 255, 200, 147;
+  --medium-orange-rgb: 239, 123, 0;
   --background-light: #f0f3f5; /* background.light */
   --background-dark: var(--dark-navy); /* background.dark */
   --surface-light: var(--white); /* surface.light */
   --surface-dark: #143959; /* surface.dark */
+  --surface-dark-rgb: 20, 57, 89;
 
   --background: var(--background-light);
   --surface: var(--surface-light);

@@ -402,17 +402,15 @@ body {
   max-width: 1416px;
 }
 
-.expire-badge {
-  background-color: var(--background);
-  color: var(--primary);
+.expire-badge{
+  background-color: rgba(var(--surface-dark-rgb), 0.85);
+  color: var(--white);
   padding-top: 2px;
   padding-bottom: 1px;
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 6px;
-  border-style: solid;
-  border-color: var(--surface-dark);
-  border-width: 2px;
+  border: 3px solid rgba(var(--surface-dark-rgb), 1);
   font-size: var(--font-size-sm);
   vertical-align: baseline;
 }
@@ -421,36 +419,50 @@ body {
   display: flex;
   flex-wrap: wrap;
   row-gap: 0.2rem;
-  column-gap: 0.1rem;
+  column-gap: 0.3rem;
 }
 
 .keyword {
   border-radius: 6px;
   border: 1px solid #d9d9d9;
-  margin-right: 4px;
   overflow: hidden;
   color: var(--primary);
   padding: 0.0625rem 0.5rem;
 }
 
 .internal {
-  background-color: rgba(var(--medium-orange), 0.25);
-  border-radius: 6px;
-  border: 1px solid rgba(var(--medium-orange), 0.8);
-  margin-right: 4px;
-  overflow: hidden;
-  color: rgba(var(--medium-orange), 1);
-  padding: 0.1rem 0.4rem 0rem 0.4rem;
-}
-
-.not-internal {
   background-color: rgba(62, 163, 55, 0.25);
   border-radius: 6px;
   border: 1px solid rgba(62, 163, 55, 0.8);
-  margin-right: 4px;
   overflow: hidden;
   color: rgba(62, 163, 55, 1);
-  padding: 0.1rem 0.4rem 0rem 0.4rem;
+  padding: 0.1rem 0.35rem 0rem 0.4rem;
+}
+
+.not-internal {
+  background-color: rgba(var(--medium-orange-rgb), 0.25);
+  border-radius: 6px;
+  border: 1px solid rgba(var(--medium-orange-rgb), 0.8);
+  overflow: hidden;
+  color: rgba(var(--medium-orange-rgb), 1);
+  padding: 0.1rem 0.35rem 0rem 0.4rem;
+}
+
+.supervisors-container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.2rem;
+  column-gap: 0.05rem;
+}
+
+.supervisor {
+  background-color: rgba(90, 173, 209, 0.25);
+  border-radius: 6px;
+  border: 1px solid rgba(90, 173, 209, 0.8);
+  margin-right: 4px;
+  overflow: hidden;
+  color: rgba(90, 173, 209, 1);
+  padding: 0rem 0.35rem 0rem 0.31rem;
 }
 
 /*
