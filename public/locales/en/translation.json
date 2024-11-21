@@ -144,7 +144,11 @@
             "dettagli_proposta_di_tesi": "Thesis Proposal Details",
             "descrizione": "Description",
             "conoscenze_richieste": "Required knowledge",
-            "note": "Notes"
+            "note": "Notes",
+            "luogo": "Place",
+            "ambiente": "Environment",
+            "allegato": "Attachment",
+            "tipo": "Type"
         }
     },
     "opportunità": {

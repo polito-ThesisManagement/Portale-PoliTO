@@ -145,7 +145,11 @@
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",
             "descrizione": "Descrizione",
             "conoscenze_richieste": "Conoscenze richieste",
-            "note": "Note"
+            "note": "Note",
+            "luogo": "Luogo",
+            "ambiente": "Ambiente",
+            "allegato": "Allegato",
+            "tipo": "Tipo"
         }
     },
     "opportunità": {
