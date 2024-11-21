@@ -5,10 +5,12 @@ import { Image, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Logo from '../assets/logo_polito.svg';
+import LogoWhite from '../assets/logo_polito_white.svg';
 import Services from '../data/Data.json';
 import '../styles/Sidebar.css';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
+import { getLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
 import { NavItems } from './Sidebar';
 
@@ -25,7 +27,7 @@ export default function SidebarModal({ show, handleClose }) {
             marginRight: '36px',
           }}
         >
-          <Image src={Logo} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
+          <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

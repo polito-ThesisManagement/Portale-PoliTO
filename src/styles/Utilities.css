@@ -46,12 +46,6 @@
   }
 }
 
-@media (max-width: 575px) {
-  .custom-content.reduced {
-      margin-left: 8px;
-  }
-}
-
 .custom-navbar {
   background-color: var(--surface);
   color: var(--primary);
@@ -303,7 +297,7 @@ body {
 }
 
 .form-control:focus {
-  border-color: var(--dark-navy);
+  border-color: var(--primary);
   border-width: 2px;
   box-shadow: none;
 }

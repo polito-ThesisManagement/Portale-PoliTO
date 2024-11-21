@@ -125,7 +125,7 @@ export default function PoliNavbar() {
     <Navbar className="custom-navbar">
       <Container fluid>
         <Navbar.Brand
-          className="d-none d-lg-block"
+          className="nav-logo"
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -140,7 +140,7 @@ export default function PoliNavbar() {
           <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
-          className="d-none d-sm-block d-lg-none"
+          className="nav-logo-reduced"
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -168,7 +168,7 @@ export default function PoliNavbar() {
         </Navbar.Brand>
         <Navbar.Toggle
           onClick={() => setShowModal(true)}
-          className="d-block d-sm-none sidebar-modal-toggler"
+          className="sidebar-modal-toggler"
           bsPrefix="btn btn-primary"
           as={'button'}
           style={{ backgroundColor: 'var(--primary)', color: 'var(--background)' }}
@@ -219,7 +219,7 @@ export default function PoliNavbar() {
                 <span className="truncated">Mario Rossi</span>
               </div>
             </Navbar.Text>
-            <Navbar.Brand>
+            <Navbar.Brand style={{ marginRight: '0' }}>
               <Dropdown>
                 <Dropdown.Toggle
                   id="dropdown-icon"
@@ -228,6 +228,7 @@ export default function PoliNavbar() {
                     background: 'transparent',
                     border: 'none',
                     boxShadow: 'none',
+                    paddingRight: '0',
                   }}
                 >
                   <PersonCircle height={48} width={46} color="var(--primary)" />

@@ -46,8 +46,8 @@ export default function Searchbar(props) {
 
   return (
     <Form
-      className={props.mobile ? 'd-flex m-2 mb-4 w-100' : 'd-sm-block d-none d-flex me-3 w-100'}
-      style={{ maxWidth: '400px' }}
+      className={props.mobile ? 'd-flex m-2 mb-4 w-100' : 'custom-searchbar d-flex me-3 w-100'}
+      style={props.mobile ? { maxWidth: 'none', position: 'relative' } : { maxWidth: '400px', position: 'relative' }}
     >
       <InputGroup className="flex-nowrap w-100">
         <Form.Control
@@ -76,16 +76,10 @@ export default function Searchbar(props) {
         />
       </InputGroup>
       {searchWord !== '' && (
-        <ListGroup
-          className="w-100"
-          style={{
-            position: 'absolute',
-            maxWidth: '370px',
-          }}
-        >
+        <ListGroup className="custom-list-group w-100">
           {filteredData.slice(0, 3).map(service => (
             <ListGroup.Item
-              className="medium-weight"
+              className="medium-weight custom-list-group-item"
               action
               as={Link}
               to={service.link}
@@ -98,12 +92,12 @@ export default function Searchbar(props) {
                 setFilteredData([]);
                 setSearchWord('');
               }}
-              style={{ fontSize: 'var(--font-size-xs)' }}
             >
               {service.pageName}
             </ListGroup.Item>
           ))}
           <ListGroup.Item
+            className="custom-list-group-item"
             action
             as={Link}
             to={'https://www.polito.it/en/search?q=+' + searchWord + '&lang=it'}
@@ -112,7 +106,6 @@ export default function Searchbar(props) {
             onClick={() => {
               setSearchWord('');
             }}
-            style={{ fontSize: 'var(--font-size-xs)' }}
           >
             Cerca <span className="medium-weight">{searchWord}</span> su polito.it...
           </ListGroup.Item>
