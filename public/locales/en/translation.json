@@ -217,5 +217,10 @@
         "chiuso": "Closed",
         "aperto": "Open"
     },
-    "Accedi": "Login"
+    "Accedi": "Login",
+    "page_not_found": {
+        "title": "Page not found",
+        "message": "The requested page does not exist or is not available.",
+        "back": "Back to the homepage"
+    }
 }

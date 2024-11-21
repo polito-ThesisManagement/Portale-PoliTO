@@ -218,5 +218,10 @@
         "chiuso": "Chiuso",
         "aperto": "Aperto"
     },
-    "Accedi": "Accedi"
+    "Accedi": "Accedi",
+    "page_not_found": {
+        "title": "Pagina non trovata",
+        "message": "La pagina che stai cercando non esiste o è stata spostata.",
+        "back": "Torna alla homepage"
+    }
 }

@@ -13,6 +13,7 @@ import Didattica from './pages/Didattica';
 import Help from './pages/Help';
 import Home from './pages/Home';
 import Opportunita from './pages/Opportunita';
+import PageNotFound from './pages/PageNotFound';
 import Servizi from './pages/Servizi';
 import LaureaEdEsameFinale from './pages/carriera/LaureaEdEsameFinale';
 import PropostaDiTesi from './pages/carriera/PropostaDiTesi';
@@ -113,6 +114,7 @@ function App() {
                       <Route path="appelli" element={<Appelli />} />
                       <Route path="vc" element={<VirtualClassroom />} />
                     </Route>
+                    <Route path="*" element={<PageNotFound />} />
                   </Routes>
                 </Col>
               </Col>

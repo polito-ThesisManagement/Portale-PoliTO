@@ -13,12 +13,18 @@ import { useTranslation } from 'react-i18next';
 
 import '../../styles/Text.css';
 import '../../styles/Utilities.css';
+import PageNotFound from '../PageNotFound';
 
 export default function CoursePage() {
   const { t } = useTranslation();
 
   const location = useLocation();
-  const { codice, nome, periodo, crediti, linkGuida } = location.state;
+  const { codice, nome, periodo, crediti, linkGuida } = location.state || {};
+
+  if (!codice || !nome || !periodo || !crediti) {
+    return <PageNotFound />;
+  }
+
   const section = location.pathname.replace(/.*\//, '');
   const sectionName = section.charAt(0).toUpperCase() + section.slice(1);
 

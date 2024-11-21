@@ -79,4 +79,8 @@
   .accordion-button::after {
     filter: invert(1);
   }
+
+  .accordion-button:not(.collapsed)::after {
+    filter: none;
+  }
 }
