@@ -228,7 +228,7 @@ input:not(:checked) + .slider .toggleTextRight {
   width: 100%;
   overflow: hidden;
   color: var(--text);
-  font: 600;
+  font: 600 1.25rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif; /* Riduci la dimensione del font */
 }
 
 .tagGroup {
