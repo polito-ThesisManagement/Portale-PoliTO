@@ -123,24 +123,24 @@ function Environment() {
       <NotInternal />
     </div>
   );
+}
 
-  function Internal() {
-    return (
-      <div className="internal">
-        <FaBuildingCircleArrowRight size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
-        <span className="course-detail">Tesi in Azienda</span>
-      </div>
-    );
-  }
+function Internal() {
+  return (
+    <div className="internal">
+      <FaBuildingCircleArrowRight size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
+      <span className="course-detail">Tesi in Azienda</span>
+    </div>
+  );
+}
 
-  function NotInternal() {
-    return (
-      <div className="not-internal">
-        <FaBuildingCircleCheck size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
-        <span className="course-detail">Tesi al Politecnico</span>
-      </div>
-    );
-  }
+function NotInternal() {
+  return (
+    <div className="not-internal">
+      <FaBuildingCircleCheck size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
+      <span className="course-detail">Tesi al Politecnico</span>
+    </div>
+  );
 }
 
 MyBlock.propTypes = {
