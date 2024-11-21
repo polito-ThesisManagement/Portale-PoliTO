@@ -28,7 +28,21 @@
   --placeholder: #5f666d;
   --pill-button: var(--light-navy-transparent);
   --link: var(--navy);
-
+  --text-active: var(--black);
+  --text-inactive: var(--black);
+  --border-slider: transparent; /* border.slider */
+  --background-slider: #e2e2e2; /* background.slider */
+  --tag-border: #d9d9d9;
+  --tag-bg: #fafafa;
+  --tag-text: var(--dark-navy);
+  --professor-tag-border: #91d5ff;
+  --professor-tag-bg: #e6f7ff;
+  --professor-tag-text: #008ef1;
+  --type-tag-border: var(--dark-navy);
+  --type-tag-bg: var(--background-light);
+  --type-tag-text: var(--dark-navy);
+  --active-page: var(--professor-tag-text);
+  --active-page-border: var(--professor-tag-text);
   /* Font Family */
   --font-primary: 'Montserrat', sans-serif;
 
@@ -59,7 +73,21 @@
   --placeholder: #adb5bd;
   --pill-button: var(--light-navy-transperent-2);
   --link: var(--light-navy);
-
+  --text-active: var(--surface);
+  --text-inactive: var(--text);
+  --border-slider: var(--placeholder);
+  --background-slider: var(--background);
+  --tag-border: #d9d9d9;
+  --tag-bg: var(--dark-navy);
+  --tag-text: var(--text);
+  --professor-tag-border: var(--medium-orange);
+  --professor-tag-bg: var(--medium-orange);
+  --professor-tag-text: var(--text);
+  --type-tag-border: var(--text);
+  --type-tag-bg: var(--background);
+  --type-tag-text: var(--text);
+  --active-page: var(--medium-orange);
+  --active-page-border: var(--medium-orange);
   .form-select {
     --bs-form-select-bg-img: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
   }
