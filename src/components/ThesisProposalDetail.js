@@ -101,11 +101,6 @@ function MyBlock({ title, content }) {
   );
 }
 
-MyBlock.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-};
-
 function Keywords({ keywords }) {
   //const { t } = useTranslation();
   return (
@@ -119,25 +114,42 @@ function Keywords({ keywords }) {
   );
 }
 
-Keywords.propTypes = {
-  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
 function Environment() {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.ambiente')}:</span>
-      <div className="not-internal">
-        <FaBuildingCircleCheck size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
-        <span className="course-detail">Tesi al Politecnico</span>
-      </div>
+      <Internal />
+      <NotInternal />
+    </div>
+  );
+
+  function Internal() {
+    return (
       <div className="internal">
         <FaBuildingCircleArrowRight size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
         <span className="course-detail">Tesi in Azienda</span>
       </div>
-    </div>
-  );
+    );
+  }
+
+  function NotInternal() {
+    return (
+      <div className="not-internal">
+        <FaBuildingCircleCheck size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
+        <span className="course-detail">Tesi al Politecnico</span>
+      </div>
+    );
+  }
 }
+
+MyBlock.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
+
+Keywords.propTypes = {
+  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export { ThesisProposalDetail, MyBreadcrumb };
