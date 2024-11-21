@@ -32,7 +32,7 @@ export default function Corsi() {
               </span>
               <InfoTooltip text={t('homepage.cd_tooltip')} />
             </div>
-            <ListGroup style={{ borderRadius: '16px' }}>
+            <ListGroup style={{ borderRadius: '12px' }}>
               {Courses.map(corso => {
                 return (
                   <CourseSummary
@@ -54,7 +54,7 @@ export default function Corsi() {
               </span>
               <InfoTooltip text={t('didattica.altri_corsi_tooltip')} />
             </div>
-            <ListGroup style={{ borderRadius: '16px' }}>
+            <ListGroup style={{ borderRadius: '12px' }}>
               {AltriCorsi.map(corso => {
                 return (
                   <CourseSummary
@@ -84,7 +84,7 @@ export default function Corsi() {
 
                             </Row>*/}
             </div>
-            <ListGroup style={{ borderRadius: '16px' }}>
+            <ListGroup style={{ borderRadius: '12px' }}>
               {Courses.map(val =>
                 val.prenotatoEsame ? (
                   <ListGroup.Item key={val.codice} className="summary">
@@ -127,7 +127,7 @@ export default function Corsi() {
               <InfoTooltip text={t('didattica.vc_tooltip')} />
             </div>
 
-            <ListGroup style={{ borderRadius: '16px' }}>
+            <ListGroup style={{ borderRadius: '12px' }}>
               {recentVirtualClassroom.map(rec => (
                 <ListGroup.Item
                   key={rec.corso + ' ' + rec.data}

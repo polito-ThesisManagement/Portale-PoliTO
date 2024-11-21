@@ -21,7 +21,7 @@ export default function Didattica() {
   const { t } = useTranslation();
   return (
     <>
-      <Title icon={<FaBookOpen size={28} />} sectionName={t('sidebar.didattica')} />
+      <Title icon={<FaBookOpen size={32} />} sectionName={t('sidebar.didattica')} />
       <Row style={{ marginLeft: '8px', marginBottom: '8px' }}>
         <Button
           className={`custom-pill-button ${currentPath === '/didattica' ? 'active' : ''} didattica-button`}

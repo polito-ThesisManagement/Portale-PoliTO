@@ -30,9 +30,9 @@ export default function CoursePage() {
 
   return (
     <>
-      <div className="d-flex mt-4 mx-3">
+      <div className="d-flex mt-2">
         <Link to="/" className="breadcrumb-link">
-          Homepage
+          Home
         </Link>
         <span className="mx-2">
           <ArrowRightShort color="var(--placeholder)" />
@@ -47,7 +47,7 @@ export default function CoursePage() {
       </div>
 
       <Row className="mb-3">
-        <div className="d-flex align-items-center mx-3">
+        <div className="d-flex align-items-center">
           <span className="section-title">{nome}</span>
           <Dropdown style={{ fontSize: 'var(--font-size-md)', fontFamily: 'var(--font-primary)' }}>
             <Dropdown.Toggle

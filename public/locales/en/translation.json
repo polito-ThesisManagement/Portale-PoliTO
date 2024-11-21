@@ -1,4 +1,5 @@
 {
+    "descrizione": "Teaching Portal of the Polytechnic University of Turin",
     "navbar": {
         "portale_della_didattica": "Teaching Portal",
         "ricerca_nel_portale": "Search in the portal...",
@@ -138,6 +139,16 @@
         "proposte_di_tesi": {
             "title": "Thesis Proposals",
             "description": "List of thesis proposals."
+        },
+        "proposta_di_tesi": {
+            "dettagli_proposta_di_tesi": "Thesis Proposal Details",
+            "descrizione": "Description",
+            "conoscenze_richieste": "Required knowledge",
+            "note": "Notes",
+            "luogo": "Place",
+            "ambiente": "Environment",
+            "allegato": "Attachment",
+            "tipo": "Type"
         }
     },
     "opportunità": {

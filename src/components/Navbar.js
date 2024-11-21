@@ -16,7 +16,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { useTranslation } from 'react-i18next';
 
-import { AvvisiContext } from '../App';
+import { AvvisiContext, ThemeContext } from '../App';
 import Logo from '../assets/logo_polito.svg';
 import Logo2 from '../assets/logo_polito_reduced.svg';
 import Logo2White from '../assets/logo_polito_reduced_white.svg';
@@ -25,31 +25,34 @@ import Services from '../data/Data.json';
 import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import '../styles/Utilities.css';
-import { getSystemTheme } from '../utils/utils';
+import { getLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
 import SidebarModal from './SidebarModal';
 
 export default function PoliNavbar() {
+  const { avvisi, setAvvisi } = useContext(AvvisiContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const { t, i18n } = useTranslation();
+
   const [showPopover, setShowPopover] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [theme, setTheme] = useState('auto');
-  const targetRef = useRef(null);
-
-  const { avvisi, setAvvisi } = useContext(AvvisiContext);
-
-  const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+  const targetRef = useRef(null);
 
   const languageOptions = {
     it: { flag: 'flag-it', label: 'Italiano' },
     en: { flag: 'flag-gb', label: 'English' },
   };
 
-  const changeLanguage = lng => {
+  const updateLanguage = lng => {
     i18n.changeLanguage(lng);
     setSelectedLanguage(lng);
     document.documentElement.setAttribute('lang', lng);
+    {
+      document.querySelector('meta[name="description"]').setAttribute('content', t('descrizione'));
+    }
   };
 
   const handleClickOutside = event => {
@@ -60,26 +63,10 @@ export default function PoliNavbar() {
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
-
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
-
-  useEffect(() => {
-    const initialTheme = 'auto';
-    setTheme(initialTheme);
-    document.documentElement.setAttribute('data-theme', initialTheme);
-  }, []);
-
-  useEffect(() => {
-    if (theme === 'auto') {
-      const systemTheme = getSystemTheme();
-      document.documentElement.setAttribute('data-theme', systemTheme);
-    } else {
-      document.documentElement.setAttribute('data-theme', theme);
-    }
-  }, [theme]);
 
   const handleBellClick = () => {
     setShowPopover(!showPopover);
@@ -92,15 +79,8 @@ export default function PoliNavbar() {
     setAvvisi([updatedAvvisi]);
   };
 
-  const toggleTheme = newTheme => {
+  const updateTheme = newTheme => {
     setTheme(newTheme);
-  };
-
-  const getLogo = (logoLight, logoDark) => {
-    if (theme === 'auto') {
-      return getSystemTheme() === 'dark' ? logoDark : logoLight;
-    }
-    return theme === 'light' ? logoLight : logoDark;
   };
 
   const popover = (
@@ -120,7 +100,7 @@ export default function PoliNavbar() {
           <div
             key={notifica.id}
             onClick={e => handleNotificationClick(e, notifica)}
-            style={{ borderRadius: '5px' }}
+            style={{ borderRadius: '6px' }}
             className="click-notifica mb-2 py-1 px-2"
           >
             <span className="d-flex" style={{ fontSize: 'var(--font-size-md)' }}>
@@ -179,7 +159,7 @@ export default function PoliNavbar() {
               color: 'var(--primary)',
               display: 'inline-block',
               fontFamily: 'var(--font-primary)',
-              fontWeight: 'var(--font-weight-semibold)',
+              fontWeight: 'var(--font-weight-extrabold)',
               fontSize: 'var(--font-size-xxl)',
             }}
           >
@@ -287,10 +267,10 @@ export default function PoliNavbar() {
                         }}
                         className="submenu"
                       >
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => changeLanguage('it')}>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateLanguage('it')}>
                           <span className="flag flag-it" /> Italiano
                         </Dropdown.Item>
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => changeLanguage('en')}>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateLanguage('en')}>
                           <span className="flag flag-gb" /> English
                         </Dropdown.Item>
                       </Dropdown.Menu>
@@ -319,13 +299,13 @@ export default function PoliNavbar() {
                         }}
                         className="submenu"
                       >
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => toggleTheme('light')}>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateTheme('light')}>
                           <FaSun /> {t('navbar.tema_chiaro')}
                         </Dropdown.Item>
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => toggleTheme('dark')}>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateTheme('dark')}>
                           <FaMoon /> {t('navbar.tema_scuro')}
                         </Dropdown.Item>
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => toggleTheme('auto')}>
+                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateTheme('auto')}>
                           <FaCircleHalfStroke /> {t('navbar.tema_automatico')}
                         </Dropdown.Item>
                       </Dropdown.Menu>

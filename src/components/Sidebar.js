@@ -18,7 +18,7 @@ import '../styles/Utilities.css';
 function Sidebar() {
   return (
     <Nav defaultActiveKey="/home" className="flex-column">
-      <Col className={`col-md-1 d-none d-sm-block custom-sidebar py-2 reduced col`}>
+      <Col className={`col-md-1 custom-sidebar py-2 reduced`}>
         <NavItems />
       </Col>
     </Nav>

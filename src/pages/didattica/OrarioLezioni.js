@@ -34,7 +34,7 @@ export default function OrarioLezioni() {
                 maxWidth: '500px',
                 backgroundColor: 'var(--background)',
                 color: 'var(--primary)',
-                borderRadius: '8px',
+                borderRadius: '6px',
               }}
             />
             <Search

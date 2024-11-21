@@ -60,7 +60,7 @@ export default function Searchbar(props) {
             height: '40px',
             backgroundColor: 'var(--background)',
             color: 'var(--primary)',
-            borderRadius: '8px',
+            borderRadius: '12px',
           }}
           value={searchWord}
           onChange={handleChange}

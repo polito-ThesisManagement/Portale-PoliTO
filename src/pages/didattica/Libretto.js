@@ -85,7 +85,7 @@ export default function Libretto() {
           <Container className="custom-container" style={{ overflowX: 'auto' }}>
             <div className="subsection">
               <span className="subsection-title">
-                <PiListChecksBold size={28} className="subsection-icon" />
+                <PiListChecksBold size={32} className="subsection-icon" />
                 {t('didattica.valutazioni')}
               </span>
               <Table striped className="custom-table">

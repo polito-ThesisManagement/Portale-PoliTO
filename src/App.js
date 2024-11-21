@@ -15,6 +15,7 @@ import Home from './pages/Home';
 import Opportunita from './pages/Opportunita';
 import Servizi from './pages/Servizi';
 import LaureaEdEsameFinale from './pages/carriera/LaureaEdEsameFinale';
+import PropostaDiTesi from './pages/carriera/PropostaDiTesi';
 import ProposteDiTesi from './pages/carriera/ProposteDiTesi';
 import Appelli from './pages/course_sections/Appelli';
 import Avvisi from './pages/course_sections/Avvisi';
@@ -31,12 +32,16 @@ import Lingue from './pages/didattica/Lingue';
 import OrarioLezioni from './pages/didattica/OrarioLezioni';
 import Job from './pages/opportunita/Job';
 import Tirocinio from './pages/opportunita/Tirocini';
+import './styles/Theme.css';
 import './styles/Utilities.css';
+import { getSystemTheme } from './utils/utils';
 
 export const FavoritesContext = createContext(null);
 export const AvvisiContext = createContext(null);
+export const ThemeContext = createContext(null);
 
 function App() {
+  const [theme, setTheme] = useState('auto');
   const [favorites, setFavorites] = useState([]);
   const [avvisi, setAvvisi] = useState([Avvisi_GC]);
   const location = useLocation();
@@ -45,58 +50,76 @@ function App() {
     window.scrollTo(0, 0);
   }, [location]);
 
+  useEffect(() => {
+    const initialTheme = 'auto';
+    setTheme(initialTheme);
+    updateTheme(initialTheme);
+  }, []);
+
+  useEffect(() => {
+    updateTheme(theme);
+  }, [theme]);
+
+  const updateTheme = theme => {
+    const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+    document.documentElement.setAttribute('data-theme', appliedTheme);
+    document
+      .querySelector('meta[name="theme-color"]')
+      .setAttribute(
+        'content',
+        appliedTheme === 'dark'
+          ? getComputedStyle(document.documentElement).getPropertyValue('--background-dark')
+          : getComputedStyle(document.documentElement).getPropertyValue('--background-light'),
+      );
+  };
+
   return (
     <>
       <style>@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap);</style>
-      <FavoritesContext.Provider
-        value={{
-          favorites,
-          setFavorites,
-        }}
-      >
-        <AvvisiContext.Provider
-          value={{
-            avvisi,
-            setAvvisi,
-          }}
-        >
-          <PoliNavbar avvisi={avvisi} setAvvisi={setAvvisi} />
-          <Row>
-            <Sidebar />
-            <Col className={'custom-content reduced'}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/area_personale" element={<AreaPersonale />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/didattica" element={<Didattica />}>
-                  <Route path="" element={<Corsi />} />
-                  <Route path="libretto" element={<Libretto />} />
-                  <Route path="orario" element={<OrarioLezioni />} />
-                  <Route path="lingue" element={<Lingue />} />
-                </Route>
-                <Route path="/carriera" element={<Carriera />} />
-                <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
-                <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
-                <Route path="/opportunita" element={<Opportunita />} />
-                <Route path="/opportunita/job" element={<Job />} />
-                <Route path="/opportunita/tirocinio" element={<Tirocinio />} />
-                <Route path="/servizi" element={<Servizi />} />
-                <Route path="/help" element={<Help />} />
-                <Route path="/didattica/:nome" element={<CoursePage />}>
-                  <Route path="materiale" element={<Materiale />} />
-                  <Route path="avvisi" element={<Avvisi />} />
-                  <Route path="orario" element={<OrarioCorso />} />
-                  <Route path="guida" element={<Guida />} />
-                  <Route path="moodle" element={<Moodle />} />
-                  <Route path="elaborati" element={<Elaborati />} />
-                  <Route path="appelli" element={<Appelli />} />
-                  <Route path="vc" element={<VirtualClassroom />} />
-                </Route>
-              </Routes>
-            </Col>
-          </Row>
-        </AvvisiContext.Provider>
-      </FavoritesContext.Provider>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <FavoritesContext.Provider value={{ favorites, setFavorites }}>
+          <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
+            <PoliNavbar />
+            <Row>
+              <Sidebar />
+              <Col className={'main-space reduced'}>
+                <Col className={'custom-content reduced'}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/area_personale" element={<AreaPersonale />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/didattica" element={<Didattica />}>
+                      <Route path="" element={<Corsi />} />
+                      <Route path="libretto" element={<Libretto />} />
+                      <Route path="orario" element={<OrarioLezioni />} />
+                      <Route path="lingue" element={<Lingue />} />
+                    </Route>
+                    <Route path="/carriera" element={<Carriera />} />
+                    <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                    <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
+                    <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
+                    <Route path="/opportunita" element={<Opportunita />} />
+                    <Route path="/opportunita/job" element={<Job />} />
+                    <Route path="/opportunita/tirocinio" element={<Tirocinio />} />
+                    <Route path="/servizi" element={<Servizi />} />
+                    <Route path="/help" element={<Help />} />
+                    <Route path="/didattica/:nome" element={<CoursePage />}>
+                      <Route path="materiale" element={<Materiale />} />
+                      <Route path="avvisi" element={<Avvisi />} />
+                      <Route path="orario" element={<OrarioCorso />} />
+                      <Route path="guida" element={<Guida />} />
+                      <Route path="moodle" element={<Moodle />} />
+                      <Route path="elaborati" element={<Elaborati />} />
+                      <Route path="appelli" element={<Appelli />} />
+                      <Route path="vc" element={<VirtualClassroom />} />
+                    </Route>
+                  </Routes>
+                </Col>
+              </Col>
+            </Row>
+          </AvvisiContext.Provider>
+        </FavoritesContext.Provider>
+      </ThemeContext.Provider>
     </>
   );
 }
