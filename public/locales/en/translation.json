@@ -138,6 +138,7 @@
         },
         "proposte_di_tesi": {
             "title": "Thesis Proposals",
+            "title_half_lowercase": "Thesis proposals",
             "description": "List of thesis proposals."
         },
         "proposta_di_tesi": {
@@ -221,6 +222,6 @@
     "page_not_found": {
         "title": "Page not found",
         "message": "The requested page does not exist or is not available.",
-        "back": "Back to the homepage"
+        "back": "Back to the Homepage"
     }
 }

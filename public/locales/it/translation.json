@@ -222,6 +222,6 @@
     "page_not_found": {
         "title": "Pagina non trovata",
         "message": "La pagina che stai cercando non esiste o è stata spostata.",
-        "back": "Torna alla homepage"
+        "back": "Torna alla Homepage"
     }
 }

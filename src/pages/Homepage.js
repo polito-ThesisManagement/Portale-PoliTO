@@ -31,7 +31,7 @@ import GeneralNotices from '../data/GeneralNotices.json';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
 
-export default function Home() {
+export default function Homepage() {
   const { favorites } = useContext(FavoritesContext);
 
   const { t } = useTranslation();
@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <>
-      <Title icon={<FaHouse size={32} />} sectionName="Home" />
+      <Title icon={<FaHouse size={32} />} sectionName="Homepage" />
 
       <Row>
         <Col md={12} lg={5}>

@@ -38,7 +38,7 @@ export default function CoursePage() {
     <>
       <div className="d-flex mt-2">
         <Link to="/" className="breadcrumb-link">
-          Home
+          Homepage
         </Link>
         <span className="mx-2">
           <ArrowRightShort color="var(--placeholder)" />

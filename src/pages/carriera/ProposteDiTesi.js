@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
+import { ArrowRightShort } from 'react-bootstrap-icons';
+
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
@@ -286,8 +290,33 @@ export default function ProposteDiTesi() {
       {loading ? (
         <LoadingModal show={loading} onHide={() => setLoading(false)} />
       ) : (
-        <ThesisProposals thesisProposals={thesisProposals} />
+        <>
+          <MyBreadcrumb />
+          <ThesisProposals thesisProposals={thesisProposals} />
+        </>
       )}
     </>
+  );
+}
+
+function MyBreadcrumb() {
+  const { t } = useTranslation();
+
+  return (
+    <div className="d-flex mt-2">
+      <Link to="/" className="breadcrumb-link">
+        Homepage
+      </Link>
+      <span className="mx-2">
+        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
+      </span>
+      <Link to="/carriera" className="breadcrumb-link">
+        {t('sidebar.carriera')}
+      </Link>
+      <span className="mx-2">
+        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
+      </span>
+      <span className="breadcrumb">{t('carriera.proposte_di_tesi.title_half_lowercase')}</span>
+    </div>
   );
 }

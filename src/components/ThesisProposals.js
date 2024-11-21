@@ -307,13 +307,21 @@ export default function ThesisProposals({ thesisProposals }) {
 ThesisProposals.propTypes = {
   thesisProposals: PropTypes.arrayOf(
     PropTypes.shape({
+      ID: PropTypes.number.isRequired,
       topic: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      exp_date: PropTypes.string.isRequired,
-      advisors: PropTypes.arrayOf(PropTypes.shape({ matricola: PropTypes.string, name: PropTypes.string })).isRequired,
       keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+      description: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      required_skills: PropTypes.string.isRequired,
+      additional_notes: PropTypes.string.isRequired,
+      advisors: PropTypes.arrayOf(PropTypes.shape({ matricola: PropTypes.string, name: PropTypes.string })).isRequired,
+      external_advisors: PropTypes.string.isRequired,
       thesis_types: PropTypes.arrayOf(PropTypes.string).isRequired,
+      where: PropTypes.string.isRequired,
+      foreign: PropTypes.string.isRequired,
       cds_type: PropTypes.string.isRequired,
+      exp_date: PropTypes.string.isRequired,
+      creation_date: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };

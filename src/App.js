@@ -11,7 +11,7 @@ import AreaPersonale from './pages/AreaPersonale';
 import Carriera from './pages/Carriera';
 import Didattica from './pages/Didattica';
 import Help from './pages/Help';
-import Home from './pages/Home';
+import Homepage from './pages/Homepage';
 import Opportunita from './pages/Opportunita';
 import PageNotFound from './pages/PageNotFound';
 import Servizi from './pages/Servizi';
@@ -86,9 +86,9 @@ function App() {
               <Col className={'main-space reduced'}>
                 <Col className={'custom-content reduced'}>
                   <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Homepage />} />
                     <Route path="/area_personale" element={<AreaPersonale />} />
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/home" element={<Homepage />} />
                     <Route path="/didattica" element={<Didattica />}>
                       <Route path="" element={<Corsi />} />
                       <Route path="libretto" element={<Libretto />} />

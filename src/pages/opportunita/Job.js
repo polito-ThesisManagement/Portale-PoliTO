@@ -39,7 +39,7 @@ export default function Job() {
       <div className="d-flex mt-2 mx-3">
         <div>
           <Link to="/" className="breadcrumb-link">
-            Home
+            Homepage
           </Link>
           <span className="mx-2">
             <ArrowRightShort color="var(--placeholder)" />
