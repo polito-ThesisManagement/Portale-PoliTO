@@ -14,6 +14,7 @@
   --white: #ffffff; /* surface.light */
   --light-orange: #ffc893; /* orange.200 - secondary.200 */
   --medium-orange: #ef7b00; /* orange.600 - secondary.600 */
+  --medium-orange-rgb: 239, 123, 0;
   --background-light: #f0f3f5; /* background.light */
   --background-dark: var(--dark-navy); /* background.dark */
   --surface-light: var(--white); /* surface.light */
@@ -34,9 +35,7 @@
   --tag-border: #d9d9d9;
   --tag-bg: #fafafa;
   --tag-text: var(--dark-navy);
-  --professor-tag-border: #91d5ff;
-  --professor-tag-bg: #e6f7ff;
-  --professor-tag-text: #008ef1;
+  --professor-tag: 0, 142, 241;
   --type-tag-border: var(--dark-navy);
   --type-tag-bg: var(--background-light);
   --type-tag-text: var(--dark-navy);
@@ -75,12 +74,10 @@
   --text-inactive: var(--text);
   --border-slider: var(--placeholder);
   --background-slider: var(--background);
-  --tag-border: #d9d9d9;
+  --tag-border: var(--text);
   --tag-bg: var(--dark-navy);
   --tag-text: var(--text);
-  --professor-tag-border: var(--medium-orange);
-  --professor-tag-bg: var(--medium-orange);
-  --professor-tag-text: var(--text);
+  --professor-tag: var(--medium-orange-rgb);
   --type-tag-border: var(--text);
   --type-tag-bg: var(--background);
   --type-tag-text: var(--text);
