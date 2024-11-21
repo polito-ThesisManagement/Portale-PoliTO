@@ -6,8 +6,7 @@ import { Container } from 'react-bootstrap';
 
 import { ArrowRightShort } from 'react-bootstrap-icons';
 
-import { FaFileLines } from 'react-icons/fa6';
-import { FaCalendar } from 'react-icons/fa6';
+import { FaBuildingCircleArrowRight, FaBuildingCircleCheck, FaCalendar, FaFileLines } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
@@ -39,6 +38,9 @@ function ThesisProposalDetail() {
           />
           <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content="Banana Banana Banana Banana" />
           <MyBlock title="Link" content="Banana Banana Banana Banana" />
+          <MyBlock title="carriera.proposta_di_tesi.tipo" content="Banana Banana Banana Banana" />
+          <Environment />
+          <MyBlock title="carriera.proposta_di_tesi.luogo" content="Italia Estero" />
           <MyBlock title="carriera.proposta_di_tesi.note" content="Banana Banana Banana Banana" />
         </div>
       </Container>
@@ -120,5 +122,22 @@ function Keywords({ keywords }) {
 Keywords.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
+
+function Environment() {
+  const { t } = useTranslation();
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.ambiente')}:</span>
+      <div className="not-internal">
+        <FaBuildingCircleCheck size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
+        <span className="course-detail">Tesi al Politecnico</span>
+      </div>
+      <div className="internal">
+        <FaBuildingCircleArrowRight size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
+        <span className="course-detail">Tesi in Azienda</span>
+      </div>
+    </div>
+  );
+}
 
 export { ThesisProposalDetail, MyBreadcrumb };

@@ -68,8 +68,8 @@ function App() {
       .setAttribute(
         'content',
         appliedTheme === 'dark'
-          ? getComputedStyle(document.documentElement).getPropertyValue('--surface-dark')
-          : getComputedStyle(document.documentElement).getPropertyValue('--surface-light'),
+          ? getComputedStyle(document.documentElement).getPropertyValue('--background-dark')
+          : getComputedStyle(document.documentElement).getPropertyValue('--background-light'),
       );
   };
 
