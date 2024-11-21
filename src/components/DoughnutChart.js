@@ -11,7 +11,8 @@ class DoughnutChart extends React.Component {
     const { values } = this.props;
 
     // Retrieve CSS variable values
-    const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--medium-orange').trim();
+    const primaryColorValue = getComputedStyle(document.documentElement).getPropertyValue('--medium-orange').trim();
+    const primaryColor = `rgb(${primaryColorValue})`;
     const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--navy').trim();
 
     const data = {

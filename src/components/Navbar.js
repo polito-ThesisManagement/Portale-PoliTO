@@ -236,7 +236,7 @@ export default function PoliNavbar() {
                 <Dropdown.Menu
                   style={{
                     right: 'auto',
-                    left: '-130px',
+                    left: '-150px',
                     fontFamily: 'var(--font-primary)',
                   }}
                 >

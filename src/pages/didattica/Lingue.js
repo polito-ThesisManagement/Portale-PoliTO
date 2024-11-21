@@ -54,6 +54,7 @@ export default function Lingue() {
                   className="custom-link truncated"
                   target="_blank"
                   to="https://didattica.polito.it/clapdf/it-vlaib-sito.pdf"
+                  style={{ whiteSpace: 'normal' }}
                 >
                   {t('didattica.verifica_lingua_inglese')}&nbsp;
                   <FaExternalLinkAlt className="subsection-icon" />

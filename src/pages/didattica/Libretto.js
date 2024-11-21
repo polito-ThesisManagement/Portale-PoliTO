@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import DoughnutChart from '../../components/DoughnutChart';
 import valutazioni from '../../data/Valutazioni.json';
 import valutazioniProvvisorie from '../../data/ValutazioniProvvisorie.json';
+import '../../styles/Table.css';
 
 export default function Libretto() {
   const { t } = useTranslation();
@@ -31,10 +32,10 @@ export default function Libretto() {
                   <tr>
                     <th className="custom-th">{t('didattica.codice')}</th>
                     <th className="custom-th">{t('didattica.nome')}</th>
-                    <th className="custom-th text-center">{t('didattica.anno')}</th>
-                    <th className="custom-th text-center">{t('didattica.crediti')}</th>
+                    <th className="custom-th text-center d-none d-sm-table-cell">{t('didattica.anno')}</th>
+                    <th className="custom-th text-center d-none d-sm-table-cell">{t('didattica.crediti')}</th>
                     <th className="custom-th text-center">{t('didattica.esito')}</th>
-                    <th className="custom-th">{t('didattica.data')}</th>
+                    <th className="custom-th d-none d-sm-table-cell">{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,13 +54,13 @@ export default function Libretto() {
                         {course.nome}
                       </td>
                       <td
-                        className="custom-td text-center"
+                        className="custom-td text-center d-none d-sm-table-cell"
                         style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.anno}
                       </td>
                       <td
-                        className="custom-td text-center"
+                        className="custom-td text-center d-none d-sm-table-cell"
                         style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.cfu}
@@ -71,7 +72,7 @@ export default function Libretto() {
                         {course.esito}
                       </td>
                       <td
-                        className="custom-td"
+                        className="custom-td d-none d-sm-table-cell"
                         style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.data}
@@ -93,10 +94,10 @@ export default function Libretto() {
                   <tr>
                     <th className="custom-th">{t('didattica.codice')}</th>
                     <th className="custom-th">{t('didattica.nome')}</th>
-                    <th className="custom-th text-center">{t('didattica.anno')}</th>
-                    <th className="custom-th text-center">{t('didattica.crediti')}</th>
+                    <th className="custom-th text-center d-none d-sm-table-cell">{t('didattica.anno')}</th>
+                    <th className="custom-th text-center d-none d-sm-table-cell">{t('didattica.crediti')}</th>
                     <th className="custom-th text-center">{t('didattica.esito')}</th>
-                    <th className="custom-th">{t('didattica.data')}</th>
+                    <th className="custom-th d-none d-sm-table-cell">{t('didattica.data')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -115,13 +116,13 @@ export default function Libretto() {
                         {course.nome}
                       </td>
                       <td
-                        className="custom-td text-center"
+                        className="custom-td text-center d-none d-sm-table-cell"
                         style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.anno}
                       </td>
                       <td
-                        className="custom-td text-center"
+                        className="custom-td text-center d-none d-sm-table-cell"
                         style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.cfu}
@@ -133,7 +134,7 @@ export default function Libretto() {
                         {course.voto}
                       </td>
                       <td
-                        className="custom-td"
+                        className="custom-td d-none d-sm-table-cell"
                         style={{ backgroundColor: index % 2 === 0 ? 'var(--background)' : 'var(--surface)' }}
                       >
                         {course.data}
