@@ -151,7 +151,8 @@
             "allegato": "Allegato",
             "tipo": "Tipo",
             "relatore_principale": "Relatore principale",
-            "relatori_secondari": "Relatori secondari"
+            "relatori_secondari": "Relatori secondari",
+            "relatori_esterni": "Relatori esterni"
         }
     },
     "opportunità": {
