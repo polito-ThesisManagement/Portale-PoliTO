@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { FaUniversity } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa6';
 import { FaEarthAmericas } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 
@@ -36,6 +37,7 @@ export default function ThesisItem({
           <div className={styles.professorTagGroup}>
             {advisors.map(advisor => (
               <div key={advisor.matricola} className={styles.professorTag}>
+                <FaUser className={styles.thesisTypeIcon} />
                 <span key={advisor.matricola} className={styles.professorName}>
                   {advisor.name}
                 </span>
