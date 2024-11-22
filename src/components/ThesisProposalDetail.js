@@ -49,6 +49,7 @@ function ThesisProposalDetail() {
         icon={<FaFileLines size={26} />}
         sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
       />
+      {/*<WarningBadge content="Attenzione: la proposta di tesi è scaduta" />*/}
       {creation_date && exp_date && <ExpirationDate creation_date={creation_date} exp_date={exp_date} />}
       <Container fluid className="custom-container pt-3">
         {foreign === 'S' && <Abroad />}
@@ -122,13 +123,17 @@ function ExpirationDate({ creation_date, exp_date }) {
   const formattedExpDate = capitalizeMonth(moment(exp_date).format('DD MMMM YYYY'));
   return (
     <div className="d-flex mb-2" style={{ justifyContent: 'space-between' }}>
-      <div className="expire-badge">
+      <div className="expire-section">
         <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-        <span className="course-detail">Creata il {formattedCreationDate}</span>
+        <span className="course-detail">
+          Creata il <span className="no-break">{formattedCreationDate}</span>
+        </span>
       </div>
-      <div className="expire-badge" style={{ marginLeft: '4px' }}>
+      <div className="expire-section" style={{ marginLeft: '4px' }}>
         <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-        <span className="course-detail">Scade il {formattedExpDate}</span>
+        <span className="course-detail">
+          Scade il <span className="no-break">{formattedExpDate}</span>
+        </span>
       </div>
     </div>
   );
@@ -243,6 +248,15 @@ function Abroad() {
     </div>
   );
 }
+/*
+function WarningBadge({ content }) {
+  return (
+    <div className={styles.warningTag}>
+      <FaCircleExclamation className={styles.thesisTypeIcon} />
+      <span className="course-detail">{content}</span>
+    </div>
+  )
+}*/
 
 ExpirationDate.propTypes = {
   creation_date: PropTypes.string.isRequired,

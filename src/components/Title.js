@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function Title(props) {
   return (
-    <div className={`title ${props.thesis ? 'mt-2 mb-2' : 'mt-3 mb-3'}`}>
+    <div className={`title ${props.thesis ? 'mb-2' : 'mt-3 mb-3'}`}>
       <div className="icon">{props.icon}</div>
       <span className="section-title" style={{ marginLeft: '8px' }}>
         {props.sectionName}
