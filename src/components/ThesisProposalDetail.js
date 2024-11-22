@@ -1,3 +1,4 @@
+// add attachments, thesis type, review prop types, handle null fields better + call to db in parent + API.jsx for mapping
 import React from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
@@ -45,26 +46,36 @@ function ThesisProposalDetail() {
         icon={<FaFileLines size={26} />}
         sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
       />
-      <ExpirationDate creation_date={creation_date} exp_date={exp_date} />
+      {creation_date && exp_date && <ExpirationDate creation_date={creation_date} exp_date={exp_date} />}
       <Container fluid className="custom-container pt-3">
-        <div className="subsection-title">
-          <p>{topic}</p>
-        </div>
+        {topic && (
+          <div className="subsection-title">
+            <p>{topic}</p>
+          </div>
+        )}
         <div className="important-detail">
           <Keywords keywords={keywords} />
-          <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />
-          <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={required_skills} />
-          <MyBlock title="Link" content={link} />
-          <MyBlock
-            title="carriera.proposta_di_tesi.tipo"
-            content={thesis_types.map(type => capitalize(type.toLowerCase())).join(', ')}
-          />
-          <MainSupervisor name={advisors[0].name} />
-          <SecondarySupervisors names={advisors.slice(1).map(advisor => advisor.name)} />
-          <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={external_advisors} />
-          <Environment where={where} />
-          <MyBlock title="carriera.proposta_di_tesi.luogo" content={foreign === 'N' ? 'Italia' : 'Estero'} />
-          <MyBlock title="carriera.proposta_di_tesi.note" content={additional_notes} />
+          {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
+          {required_skills && (
+            <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={required_skills} />
+          )}
+          {link && <MyBlock title="Link" content={link} />}
+          {thesis_types.length > 0 && (
+            <MyBlock
+              title="carriera.proposta_di_tesi.tipo"
+              content={thesis_types.map(type => capitalize(type.toLowerCase())).join(', ')}
+            />
+          )}
+          {advisors.length > 0 && <MainSupervisor name={advisors[0].name} />}
+          {advisors.length > 1 && <SecondarySupervisors names={advisors.slice(1).map(advisor => advisor.name)} />}
+          {external_advisors && (
+            <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={external_advisors} />
+          )}
+          {where && <Environment where={where} />}
+          {foreign && (
+            <MyBlock title="carriera.proposta_di_tesi.luogo" content={foreign === 'N' ? 'Italia' : 'Estero'} />
+          )}
+          {additional_notes && <MyBlock title="carriera.proposta_di_tesi.note" content={additional_notes} />}
         </div>
       </Container>
     </>
