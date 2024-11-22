@@ -38,6 +38,7 @@ export default function ThesisItem(props) {
               </div>
             ))}
           </div>
+          {/*Qui i tag se non dovessero andare bene*/}
           <div className={styles.thesisTypeTagGroup}>
             <span className={styles.thesisTypeTag}>
               {props.where === 'P' ? (

@@ -175,6 +175,8 @@ export default function ThesisProposals({ thesisProposals }) {
                         borderRadius: '8px',
                         lineHeight: '1rem',
                         paddingRight: '2rem',
+                        fontFamily: 'var(--font-family)',
+                        fontSize: 'var(--font-size-md)',
                       }}
                       value={sortBy}
                       onChange={handleSortByChange}
@@ -266,6 +268,7 @@ export default function ThesisProposals({ thesisProposals }) {
                     borderRadius: '8px',
                     lineHeight: '1rem',
                     paddingRight: '2rem',
+                    fontFamily: 'var(--font-family)',
                   }}
                   value={proposalsPerPage}
                   onChange={handleProposalsPerPageChange}
