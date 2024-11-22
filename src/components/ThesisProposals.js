@@ -112,7 +112,6 @@ export default function ThesisProposals({ thesisProposals }) {
   // Sort the filtered proposals based on the selected sort option
   useEffect(() => {
     const sortedProposals = sortingProposals(filteredProposals);
-    console.log(sortedProposals);
     setFilteredProposals(sortedProposals);
     setPageProposals(sortedProposals.slice(0, proposalsPerPage));
   }, [sortBy, orderBy]);

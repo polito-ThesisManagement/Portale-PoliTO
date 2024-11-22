@@ -119,6 +119,7 @@ function MyBreadcrumb() {
 }
 
 function ExpirationDate({ creation_date, exp_date }) {
+  const { t } = useTranslation();
   const formattedCreationDate = capitalizeMonth(moment(creation_date).format('DD MMMM YYYY'));
   const formattedExpDate = capitalizeMonth(moment(exp_date).format('DD MMMM YYYY'));
   return (
@@ -126,13 +127,13 @@ function ExpirationDate({ creation_date, exp_date }) {
       <div className="expire-section">
         <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
         <span className="course-detail">
-          Creata il <span className="no-break">{formattedCreationDate}</span>
+          {t('carriera.proposte_di_tesi.created')} <span className="no-break">{formattedCreationDate}</span>
         </span>
       </div>
       <div className="expire-section" style={{ marginLeft: '4px' }}>
         <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
         <span className="course-detail">
-          Scade il <span className="no-break">{formattedExpDate}</span>
+          {t('carriera.proposte_di_tesi.expires')} <span className="no-break">{formattedExpDate}</span>
         </span>
       </div>
     </div>
@@ -219,31 +220,32 @@ function Environment({ where }) {
 }
 
 function Internal() {
-  //translations
+  const { t } = useTranslation();
   return (
     <div className={styles.thesisTypeTag}>
       <FaUniversity className={styles.thesisTypeIcon} />
-      <span className="course-detail">Tesi interna</span>
+      <span className="course-detail">{t('carriera.proposte_di_tesi.internal_thesis')}</span>
     </div>
   );
 }
 
 function NotInternal() {
-  //translations
+  const { t } = useTranslation();
   return (
     <div className={styles.thesisTypeTag}>
       <HiBuildingOffice2 className={styles.thesisTypeIcon} />
-      <span className="course-detail">Tesi in azienda</span>
+      <span className="course-detail">{t('carriera.proposte_di_tesi.external_thesis')}</span>
     </div>
   );
 }
 
 function Abroad() {
+  const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
       <div className={styles.thesisTypeTag}>
         <FaEarthAmericas className={styles.thesisTypeIcon} />
-        <span className="course-detail">Tesi all’estero</span>
+        <span className="course-detail">{t('carriera.proposte_di_tesi.abroad_thesis')}</span>
       </div>
     </div>
   );

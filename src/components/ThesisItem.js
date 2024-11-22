@@ -44,7 +44,7 @@ export default function ThesisItem(props) {
                 {props.foreign === 'S' && (
                   <div className={styles.thesisTypeTag}>
                     <FaEarthAmericas className={styles.thesisTypeIcon} />
-                    <span className={styles.thesisTypeText}>{t('carriera.proposte_di_tesi.ongoing_thesis')}</span>
+                    <span className={styles.thesisTypeText}>{t('carriera.proposte_di_tesi.abroad_thesis')}</span>
                   </div>
                 )}
               </div>
