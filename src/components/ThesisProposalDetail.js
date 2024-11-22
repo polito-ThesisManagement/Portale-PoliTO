@@ -274,4 +274,4 @@ Supervisor.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export { ThesisProposalDetail, MyBreadcrumb };
+export { ThesisProposalDetail, MyBreadcrumb, ExpirationDate };

@@ -244,7 +244,6 @@ export default function ThesisProposals({ thesisProposals }) {
                 </Form>
               </div>
             </div>
-            <div className={styles.filterRow}></div>
           </section>
           <section className={styles.thesisList}>
             <div className={styles.thesisListInner}>
@@ -260,7 +259,7 @@ export default function ThesisProposals({ thesisProposals }) {
             <Form className="d-flex me-3 w-100" style={{ maxWidth: '100px', paddingLeft: '1rem' }}>
               <InputGroup className="flex-nowrap w-100">
                 <Form.Select
-                  label="Elementi per pagina"
+                  label="page_elements"
                   style={{
                     height: '2rem',
                     backgroundColor: 'var(--background)',
