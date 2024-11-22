@@ -407,7 +407,7 @@ body {
   max-width: 1416px;
 }
 
-.expire-badge{
+.expire-section {
   background-color: rgba(var(--surface-dark-rgb), 0.85);
   color: var(--white);
   padding-top: 2px;
@@ -415,7 +415,12 @@ body {
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 6px;
-  border: 3px solid rgba(var(--surface-dark-rgb), 1);
+  border: 2px solid rgba(var(--surface-dark-rgb), 1);
   font-size: var(--font-size-sm);
   vertical-align: baseline;
+}
+
+.no-break {
+  display: inline-block;
+  white-space: nowrap;
 }
