@@ -8,11 +8,14 @@ import { FaEarthAmericas } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
 
 export default function ThesisItem(props) {
+  const { t } = useTranslation();
+
   function formatDate(date) {
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString('it-IT', { year: 'numeric', month: 'numeric', day: 'numeric' });
@@ -33,13 +36,15 @@ export default function ThesisItem(props) {
                     <HiBuildingOffice2 className={styles.thesisTypeIcon} />
                   )}
                   <span className={styles.thesisTypeText}>
-                    {props.where === 'P' ? 'Tesi interna' : 'Tesi in azienda'}
+                    {props.where === 'P'
+                      ? t('carriera.proposte_di_tesi.internal_thesis')
+                      : t('carriera.proposte_di_tesi.external_thesis')}
                   </span>
                 </span>
                 {props.foreign === 'S' && (
                   <div className={styles.thesisTypeTag}>
                     <FaEarthAmericas className={styles.thesisTypeIcon} />
-                    <span className={styles.thesisTypeText}>Tesi all’estero</span>
+                    <span className={styles.thesisTypeText}>{t('carriera.proposte_di_tesi.ongoing_thesis')}</span>
                   </div>
                 )}
               </div>
@@ -71,18 +76,22 @@ export default function ThesisItem(props) {
           <div className={styles.expirationDate}>
             <div className={styles.thesisTypeTag}>
               <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-              <span className="course-detail">Creata il {formatDate(props.creation_date)}</span>
+              <span className="course-detail">
+                {t('carriera.proposte_di_tesi.created')} {formatDate(props.creation_date)}
+              </span>
             </div>
           </div>
         </footer>
         <div className={styles.creationDate}>
           <Link to={`${props.ID}`} state={{ ...props }}>
-            <button className={styles.showMoreButton}>Mostra di più</button>
+            <button className={styles.showMoreButton}>{t('carriera.proposte_di_tesi.show_more')}</button>
           </Link>
           <div>
             <div className={styles.thesisTypeTag}>
               <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-              <span className="course-detail">Scade il {formatDate(props.exp_date)}</span>
+              <span className="course-detail">
+                {t('carriera.proposte_di_tesi.expires')} {formatDate(props.exp_date)}
+              </span>
             </div>
           </div>
         </div>

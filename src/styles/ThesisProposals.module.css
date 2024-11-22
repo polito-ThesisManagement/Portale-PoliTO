@@ -52,6 +52,14 @@
     gap: 1rem;
     margin-bottom: 6px;
   }
+  .pagination{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 6px;
+  }
 }
 
 .segmentedControl {

@@ -7,6 +7,7 @@ import { HiLightBulb } from 'react-icons/hi';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useTranslation } from 'react-i18next';
 
 import '../styles/Searchbar.css';
 import styles from '../styles/ThesisProposals.module.css';
@@ -24,6 +25,8 @@ export default function ThesisProposals({ thesisProposals }) {
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
   const [filteredProposals, setFilteredProposals] = useState(thesisProposals);
   const [totalPages, setTotalPages] = useState(Math.ceil(thesisProposals.length / proposalsPerPage));
+
+  const { t } = useTranslation();
 
   const handleToggle = () => {
     setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
@@ -147,7 +150,7 @@ export default function ThesisProposals({ thesisProposals }) {
 
   return (
     <>
-      <Title icon={<HiLightBulb size={28} />} sectionName="Proposte di tesi" />
+      <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
       <div className={styles.container}>
         <main className={styles.mainContent}>
           <section className={styles.card}>
@@ -157,17 +160,21 @@ export default function ThesisProposals({ thesisProposals }) {
                   <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
                   <span className={styles.slider}>
                     <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
-                      {activeIndex === 0 ? 'Tutte le tesi' : 'Tutte le tesi'}
+                      {activeIndex === 0
+                        ? t('carriera.proposte_di_tesi.all_thesis')
+                        : t('carriera.proposte_di_tesi.all_thesis')}
                     </span>
                     <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
-                      {activeIndex === 1 ? 'Tesi per il tuo corso di studi' : 'Tesi per il tuo corso di studi'}
+                      {activeIndex === 1
+                        ? t('carriera.proposte_di_tesi.course_thesis')
+                        : t('carriera.proposte_di_tesi.course_thesis')}
                     </span>
                   </span>
                 </label>
                 <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Select
-                      label="Ordina per"
+                      label="order_by"
                       style={{
                         height: '2rem',
                         backgroundColor: 'var(--background)',
@@ -182,10 +189,10 @@ export default function ThesisProposals({ thesisProposals }) {
                       onChange={handleSortByChange}
                     >
                       <option value="" disabled={sortBy !== ''}>
-                        Ordina per:
+                        {t('carriera.proposte_di_tesi.order_by')}
                       </option>
-                      <option value="creation_date">Data di creazione</option>
-                      <option value="exp_date">Data di scadenza</option>
+                      <option value="creation_date">{t('carriera.proposte_di_tesi.created_order')}</option>
+                      <option value="exp_date">{t('carriera.proposte_di_tesi.exp_order')}</option>
                     </Form.Select>
                     {orderBy === 'asc' ? (
                       <SortUp
@@ -219,8 +226,8 @@ export default function ThesisProposals({ thesisProposals }) {
                     <Form.Control
                       className="truncated"
                       type="search"
-                      placeholder="Ricerca tra le proposte..."
-                      aria-label="Search"
+                      placeholder={t('carriera.proposte_di_tesi.search')}
+                      aria-label="search_proposals"
                       style={{
                         height: '2rem',
                         backgroundColor: 'var(--background)',
@@ -253,33 +260,35 @@ export default function ThesisProposals({ thesisProposals }) {
             </div>
           </section>
           <div className={styles.pagination}>
-            <b className={styles.bText} style={{ paddingLeft: '2rem' }}>
-              Elementi per pagina:
-            </b>
-            <Form className="d-flex me-3 w-100" style={{ maxWidth: '100px', paddingLeft: '1rem' }}>
-              <InputGroup className="flex-nowrap w-100">
-                <Form.Select
-                  label="page_elements"
-                  style={{
-                    height: '2rem',
-                    backgroundColor: 'var(--background)',
-                    color: 'var(--primary)',
-                    borderRadius: '8px',
-                    lineHeight: '1rem',
-                    paddingRight: '2rem',
-                    fontFamily: 'var(--font-family)',
-                  }}
-                  value={proposalsPerPage}
-                  onChange={handleProposalsPerPageChange}
-                  onSubmit={e => e.preventDefault()}
-                >
-                  <option value={5}>5</option>
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={50}>50</option>
-                </Form.Select>
-              </InputGroup>
-            </Form>
+            <div style={{ display: 'flex', alignItems: 'center', width: '300px' }}>
+              <b className={styles.bText} style={{ paddingLeft: '2rem', width: '100%' }}>
+                {t('carriera.proposte_di_tesi.elements_per_page')}:
+              </b>
+              <Form className="d-flex me-3 w-100" style={{ maxWidth: '80px' }}>
+                <InputGroup className="flex-nowrap w-100">
+                  <Form.Select
+                    label="page_elements"
+                    style={{
+                      height: '2rem',
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--primary)',
+                      borderRadius: '8px',
+                      lineHeight: '1rem',
+                      paddingRight: '2rem',
+                      fontFamily: 'var(--font-family)',
+                    }}
+                    value={proposalsPerPage}
+                    onChange={handleProposalsPerPageChange}
+                    onSubmit={e => e.preventDefault()}
+                  >
+                    <option value={5}>5</option>
+                    <option value={10}>10</option>
+                    <option value={20}>20</option>
+                    <option value={50}>50</option>
+                  </Form.Select>
+                </InputGroup>
+              </Form>
+            </div>
             <div className={styles.paginationNumbers}>
               {pageNumbers.map((number, index) =>
                 number === '...' ? (
@@ -297,8 +306,8 @@ export default function ThesisProposals({ thesisProposals }) {
                 ),
               )}
             </div>
-            <span className={styles.bText} style={{ paddingRight: '4rem' }}>
-              Totale: {filteredProposals.length}
+            <span className={styles.bText} style={{ paddingRight: '2rem' }}>
+              {t('carriera.proposte_di_tesi.total')} {filteredProposals.length}
             </span>
           </div>
         </main>
