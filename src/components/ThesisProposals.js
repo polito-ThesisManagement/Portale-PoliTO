@@ -59,7 +59,7 @@ export default function ThesisProposals({ thesisProposals }) {
     setSearchQuery(event.target.value);
   };
 
-  function filterAndSorting(proposals) {
+  function sortingProposals(proposals) {
     const sortedProposals = [...proposals];
     if (orderBy === 'asc') {
       if (sortBy === 'creation_date') {
@@ -83,7 +83,7 @@ export default function ThesisProposals({ thesisProposals }) {
       setFilteredProposals(filteredProposals);
     } else {
       const filtered = filteredProposals.filter(proposal => proposal.cds_type === '2');
-      setFilteredProposals(filtered);
+      setFilteredProposals(sortingProposals(filtered));
     }
     setCurrentPage(1);
   }, [activeIndex]);
@@ -102,14 +102,14 @@ export default function ThesisProposals({ thesisProposals }) {
         proposal.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proposal.advisors.some(advisor => advisor.name.toLowerCase().includes(searchQuery.toLowerCase())),
     );
-    console.log(filterAndSorting(filtered));
-    setFilteredProposals(filterAndSorting(filtered));
+    setFilteredProposals(sortingProposals(filtered));
     setCurrentPage(1);
   }, [searchQuery]);
 
   // Sort the filtered proposals based on the selected sort option
   useEffect(() => {
-    const sortedProposals = filterAndSorting(filteredProposals);
+    const sortedProposals = sortingProposals(filteredProposals);
+    console.log(sortedProposals);
     setFilteredProposals(sortedProposals);
     setPageProposals(sortedProposals.slice(0, proposalsPerPage));
   }, [sortBy, orderBy]);
@@ -184,8 +184,8 @@ export default function ThesisProposals({ thesisProposals }) {
                       <option value="" disabled={sortBy !== ''}>
                         Ordina per:
                       </option>
-                      <option value="creationDate">Data di creazione</option>
-                      <option value="expirationDate">Data di scadenza</option>
+                      <option value="creation_date">Data di creazione</option>
+                      <option value="exp_date">Data di scadenza</option>
                     </Form.Select>
                     {orderBy === 'asc' ? (
                       <SortUp
@@ -271,6 +271,7 @@ export default function ThesisProposals({ thesisProposals }) {
                   }}
                   value={proposalsPerPage}
                   onChange={handleProposalsPerPageChange}
+                  onSubmit={e => e.preventDefault()}
                 >
                   <option value={5}>5</option>
                   <option value={10}>10</option>

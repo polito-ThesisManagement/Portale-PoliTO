@@ -213,8 +213,6 @@ input:not(:checked)+.slider .toggleTextRight {
   border: 0.0625rem solid var(--background);
   /* 1px in rem */
   border-radius: 1;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
   align-items: flex-start;
   background-color: var(--surface);
   box-shadow: 0 -1px 0 0 var(--background) inset;
@@ -300,7 +298,8 @@ input:not(:checked)+.slider .toggleTextRight {
   line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   width: 100%;
   color: var(--text);
   font-family: var(--font-primary);
