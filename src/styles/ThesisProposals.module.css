@@ -349,7 +349,7 @@ input:not(:checked) + .slider .toggleTextRight {
 .thesisTypeIcon{
   margin-right: 0.25rem;
   align-self: left;
-
+  margin-top: -1px;
 }
 
 .thesisItemFooter {

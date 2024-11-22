@@ -45,7 +45,6 @@
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-md);
-  text-align: justify;
 }
 
 .custom-tab {

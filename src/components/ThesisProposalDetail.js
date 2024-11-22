@@ -7,7 +7,9 @@ import { Container } from 'react-bootstrap';
 
 import { ArrowRightShort } from 'react-bootstrap-icons';
 
-import { FaBuildingCircleArrowRight, FaBuildingCircleCheck, FaCalendar, FaFileLines, FaUser } from 'react-icons/fa6';
+import { FaUniversity } from 'react-icons/fa';
+import { FaCalendar, FaEarthAmericas, FaFileLines, FaUser } from 'react-icons/fa6';
+import { HiBuildingOffice2 } from 'react-icons/hi2';
 
 import moment from 'moment';
 import 'moment/locale/it';
@@ -16,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 
 import Title from '../components/Title';
 import '../styles/Text.css';
+import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
 
 moment.locale('it');
@@ -48,13 +51,14 @@ function ThesisProposalDetail() {
       />
       {creation_date && exp_date && <ExpirationDate creation_date={creation_date} exp_date={exp_date} />}
       <Container fluid className="custom-container pt-3">
+        {foreign === 'S' && <Abroad />}
         {topic && (
           <div className="subsection-title">
             <p>{topic}</p>
           </div>
         )}
         <div className="important-detail">
-          <Keywords keywords={keywords} />
+          {keywords && keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2"></div>}
           {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
           {required_skills && (
             <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={required_skills} />
@@ -66,15 +70,14 @@ function ThesisProposalDetail() {
               content={thesis_types.map(type => capitalize(type.toLowerCase())).join(', ')}
             />
           )}
-          {advisors.length > 0 && <MainSupervisor name={advisors[0].name} />}
-          {advisors.length > 1 && <SecondarySupervisors names={advisors.slice(1).map(advisor => advisor.name)} />}
+          {advisors && advisors.length > 0 && <MainSupervisor name={advisors[0].name} />}
+          {advisors && advisors.length > 1 && (
+            <SecondarySupervisors names={advisors.slice(1).map(advisor => advisor.name)} />
+          )}
           {external_advisors && (
             <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={external_advisors} />
           )}
           {where && <Environment where={where} />}
-          {foreign && (
-            <MyBlock title="carriera.proposta_di_tesi.luogo" content={foreign === 'N' ? 'Italia' : 'Estero'} />
-          )}
           {additional_notes && <MyBlock title="carriera.proposta_di_tesi.note" content={additional_notes} />}
         </div>
       </Container>
@@ -153,12 +156,49 @@ function Keywords({ keywords }) {
   //const { t } = useTranslation();
   // if null return a bit of margin
   return (
-    <div className="keywords-container mb-3">
-      {keywords.map((keyword, index) => (
-        <div key={index} className="keyword">
-          <span className="course-detail">{keyword}</span>
-        </div>
-      ))}
+    <div className="mb-3">
+      <div className={styles.tagGroup}>
+        {keywords.map((keyword, index) => (
+          <div key={index} className={styles.tag}>
+            <span className="course-detail">{keyword}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MainSupervisor({ name }) {
+  const { t } = useTranslation();
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
+      <div className={styles.professorTagGroup}>
+        <Supervisor name={name} />
+      </div>
+    </div>
+  );
+}
+
+function SecondarySupervisors({ names }) {
+  const { t } = useTranslation();
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
+      <div className={styles.professorTagGroup}>
+        {names.map((name, index) => (
+          <Supervisor key={index} name={name} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Supervisor({ name }) {
+  return (
+    <div className={styles.professorTag}>
+      <FaUser className={styles.thesisTypeIcon} />
+      <span className="course-detail">{name}</span>
     </div>
   );
 }
@@ -174,52 +214,32 @@ function Environment({ where }) {
 }
 
 function Internal() {
+  //translations
   return (
-    <div className="internal">
-      <FaBuildingCircleCheck size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
-      <span className="course-detail">Tesi al Politecnico</span>
+    <div className={styles.thesisTypeTag}>
+      <FaUniversity className={styles.thesisTypeIcon} />
+      <span className="course-detail">Tesi interna</span>
     </div>
   );
 }
 
 function NotInternal() {
+  //translations
   return (
-    <div className="not-internal">
-      <FaBuildingCircleArrowRight size={20} style={{ marginRight: '4px', verticalAlign: 'sub' }} />
-      <span className="course-detail">Tesi in Azienda</span>
+    <div className={styles.thesisTypeTag}>
+      <HiBuildingOffice2 className={styles.thesisTypeIcon} />
+      <span className="course-detail">Tesi in azienda</span>
     </div>
   );
 }
 
-function MainSupervisor({ name }) {
-  const { t } = useTranslation();
+function Abroad() {
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
-      <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
-      <Supervisor name={name} />
-    </div>
-  );
-}
-
-function SecondarySupervisors({ names }) {
-  const { t } = useTranslation();
-  return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
-      <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
-      <div className="supervisors-container">
-        {names.map((name, index) => (
-          <Supervisor key={index} name={name} />
-        ))}
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
+      <div className={styles.thesisTypeTag}>
+        <FaEarthAmericas className={styles.thesisTypeIcon} />
+        <span className="course-detail">Tesi all’estero</span>
       </div>
-    </div>
-  );
-}
-
-function Supervisor({ name }) {
-  return (
-    <div className="supervisor">
-      <FaUser size={15} style={{ marginRight: '4px', verticalAlign: 'middle', marginTop: '-3px' }} />
-      <span className="course-detail">{name}</span>
     </div>
   );
 }
