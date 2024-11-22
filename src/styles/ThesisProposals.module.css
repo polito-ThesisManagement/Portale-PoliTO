@@ -261,6 +261,7 @@ input:not(:checked) + .slider .toggleTextRight {
   font-family: Montserrat, sans-serif;
   color: var(--tag-text);
   padding: 0px 6px;
+  font-size: var(--font-size-md);
 }
 
 .thesisDescription {
