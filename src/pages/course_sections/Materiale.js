@@ -48,7 +48,7 @@ export default function Materiale() {
                 aria-describedby="basic-addon2"
                 size="md"
                 style={{
-                  borderRadius: '8px',
+                  borderRadius: '6px',
                   bottom: '1px',
                   backgroundColor: 'var(--background)',
                   color: 'var(--primary)',
@@ -90,7 +90,7 @@ export default function Materiale() {
                 </ListGroupItem>
                 <ListGroupItem
                   className="file-element ms-5"
-                  style={{ backgroundColor: 'var(--navy)', width: '', borderRadius: '10px', color: 'white' }}
+                  style={{ backgroundColor: 'var(--navy)', width: '', borderRadius: '12px', color: 'white' }}
                 >
                   <Folder2Open size={20} />
                   <span className="ms-2">Lab1</span>
@@ -117,7 +117,7 @@ export default function Materiale() {
           <Col className="mb-2" xs={12} sm={9}>
             <Container className="file-container">
               <div className="pt-3 px-3">
-                <FaFilePdf size={30} style={{ position: 'relative', left: '13' }} />
+                <FaFilePdf size={32} style={{ position: 'relative', left: '13' }} />
                 <div className="mt-1" style={{ fontSize: 'var(--font-size-md)' }}>
                   Lab1.pdf
                 </div>

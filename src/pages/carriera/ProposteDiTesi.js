@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
+import { ArrowRightShort } from 'react-bootstrap-icons';
+
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+
+import LoadingModal from '../../components/LoadingModal';
+import ThesisProposals from '../../components/ThesisProposals';
 
 const researchGroups = [
+  'DAUIN - GR-03 - COMPUTER NETWORKS GROUP - NETGROUP',
+  'DAUIN - GR-16 - SOFTWARE ENGINEERING GROUP - SOFTENG',
+  'GR-16 - SOFTWARE ENGINEERING GROUP - SOFTENG',
+  /*
   '03-Aerotermodinamica, Magnetofluidodinamica e dinamica dei plasmi',
   '04-Automazione e Robotica',
   '05-Bioingegneria Industriale',
@@ -240,34 +252,71 @@ const researchGroups = [
   'steps-denerg',
   'www.reslog.polito.it',
   'www.rockmech.polito.it',
+  */
 ];
 
 export default function ProposteDiTesi() {
-  // eslint-disable-next-line no-unused-vars
+  const { i18n } = useTranslation();
   const [thesisProposals, setThesisProposals] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchThesisProposals = async () => {
-      const lang = 'IT'; // IT or EN
+      setLoading(true);
+      const lang = i18n.language;
       try {
         const thesisProposalsArray = await Promise.all(
           researchGroups.map(async grp => {
             const response = await axios.get(`http://localhost:5000/api/thesisProposals`, {
               params: { grp, lang },
             });
-            return response.data.thesis;
+            return response.data;
           }),
         );
         const allThesisProposals = thesisProposalsArray.flat();
         setThesisProposals(allThesisProposals);
-        console.log('Thesis proposals ', allThesisProposals);
       } catch (error) {
         console.error('Error fetching thesis proposals:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchThesisProposals();
-  }, []);
+  }, [i18n.language]);
 
-  return <></>;
+  return (
+    <>
+      {loading ? (
+        <LoadingModal show={loading} onHide={() => setLoading(false)} />
+      ) : (
+        <>
+          <MyBreadcrumb />
+          <ThesisProposals thesisProposals={thesisProposals} />
+        </>
+      )}
+    </>
+  );
+}
+
+function MyBreadcrumb() {
+  const { t } = useTranslation();
+
+  return (
+    <div className="d-flex mt-2">
+      <Link to="/" className="breadcrumb-link">
+        Homepage
+      </Link>
+      <span className="mx-2">
+        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
+      </span>
+      <Link to="/carriera" className="breadcrumb-link">
+        {t('sidebar.carriera')}
+      </Link>
+      <span className="mx-2">
+        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
+      </span>
+      <span className="breadcrumb">{t('carriera.proposte_di_tesi.title_half_lowercase')}</span>
+    </div>
+  );
 }

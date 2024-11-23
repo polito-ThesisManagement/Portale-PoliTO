@@ -13,12 +13,18 @@ import { useTranslation } from 'react-i18next';
 
 import '../../styles/Text.css';
 import '../../styles/Utilities.css';
+import PageNotFound from '../PageNotFound';
 
 export default function CoursePage() {
   const { t } = useTranslation();
 
   const location = useLocation();
-  const { codice, nome, periodo, crediti, linkGuida } = location.state;
+  const { codice, nome, periodo, crediti, linkGuida } = location.state || {};
+
+  if (!codice || !nome || !periodo || !crediti) {
+    return <PageNotFound />;
+  }
+
   const section = location.pathname.replace(/.*\//, '');
   const sectionName = section.charAt(0).toUpperCase() + section.slice(1);
 
@@ -30,7 +36,7 @@ export default function CoursePage() {
 
   return (
     <>
-      <div className="d-flex mt-4 mx-3">
+      <div className="d-flex mt-2">
         <Link to="/" className="breadcrumb-link">
           Homepage
         </Link>
@@ -47,7 +53,7 @@ export default function CoursePage() {
       </div>
 
       <Row className="mb-3">
-        <div className="d-flex align-items-center mx-3">
+        <div className="d-flex align-items-center">
           <span className="section-title">{nome}</span>
           <Dropdown style={{ fontSize: 'var(--font-size-md)', fontFamily: 'var(--font-primary)' }}>
             <Dropdown.Toggle

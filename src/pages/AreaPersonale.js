@@ -19,7 +19,7 @@ export default function AreaPersonale() {
   const { t } = useTranslation();
   return (
     <>
-      <Title icon={<FaUser size={28} />} sectionName={t('sidebar.area_personale')} />
+      <Title icon={<FaUser size={32} />} sectionName={t('sidebar.area_personale')} />
       <Container className="card-container">
         <Row>
           <BaseCard

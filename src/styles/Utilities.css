@@ -1,14 +1,48 @@
-.custom-content {
+.main-space {
+  height: auto;
+  margin-top: 86px;
+  background-color: var(--surface);
   margin-left: 224px;
-  margin-top: 80px;
-  height: 100vh;
-  background-color: var(--background);
-  margin-right: 8px;
+  display: flex;
+  padding-left: 0px !important;
+  transition-duration: 0.5s;
 }
 
-@media (max-width: 991px) {
-  .custom-content.reduced {
+.custom-content {
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+  transition-duration: 0.5s;
+  background-color: var(--background);
+  height: 100%;
+  border-top-left-radius: 12px;
+}
+
+.detail-title {
+  min-width: 200px;
+}
+
+@media (max-width: 1100px) {
+  .main-space.reduced {
     margin-left: 84px;
+  }
+}
+
+@media (max-width: 850px) {
+  .detail-title {
+    min-width: 100%;
+  }
+
+  .detail-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-space.reduced {
+    margin-left: 12px;
+  }
+  .custom-content.reduced {
+    border-top-left-radius: 0px;
   }
 }
 
@@ -31,9 +65,8 @@ body {
 .title {
   color: var(--primary);
   display: flex;
-  align-items: center;
-  padding: 14px;
-  padding-left: 10px;
+  align-items: start;
+  text-align: start;
 }
 
 .subsection {
@@ -48,9 +81,11 @@ body {
 
 .custom-container {
   background-color: var(--surface);
-  border-radius: 10px;
-  margin: 0px;
+  border-radius: 12px;
   margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 6px;
   padding-bottom: 8px;
 }
 
@@ -58,7 +93,7 @@ body {
   border-color: var(--background);
   background-color: var(--background);
   color: var(--text);
-  border-radius: 16px;
+  border-radius: 12px;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
   margin-bottom: 8px;
@@ -84,7 +119,7 @@ body {
   border-color: var(--background);
   background-color: var(--background);
   color: var(--text);
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 .ticket-category:hover {
@@ -113,7 +148,7 @@ body {
   margin-top: 5px;
   height: 90px;
   width: 30px;
-  border-radius: 5px;
+  border-radius: 6px;
   position: absolute;
 }
 
@@ -122,11 +157,11 @@ body {
   color: var(--primary);
   border-color: var(--primary);
   background-color: var(--surface);
-  padding-top: 7px;
+  padding-top: 6px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -134,7 +169,7 @@ body {
   border-color: var(--primary);
   background-color: var(--primary);
   color: var(--background);
-  transform: scale(1.02);
+  transform: scale(1.04);
 }
 
 .custom-button.active {
@@ -161,11 +196,11 @@ body {
   border-color: var(--light-navy-transparent);
   background-color: var(--pill-button);
   color: var(--medium-navy);
-  padding-top: 7px;
+  padding-top: 6px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -191,7 +226,7 @@ body {
 .accordion-button {
   color: var(--primary);
   background-color: var(--surface);
-  border-radius: 5px;
+  border-radius: 6px;
   margin-bottom: 10px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-semibold);
@@ -202,7 +237,7 @@ body {
   background-color: var(--surface);
   margin-left: 8px;
   border: hidden;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .ticket-accordion {
@@ -210,7 +245,7 @@ body {
   background-color: var(--surface);
   margin-left: 8px;
   border: hidden;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .custom-table {
@@ -245,7 +280,12 @@ body {
   font-weight: var(--font-weight-bold);
 }
 
-@media (max-width: 991px) {
+
+.course-menu-reduced{
+  display: none;
+}
+
+@media (max-width: 1100px) {
   .course-menu {
     display: none !important;
   }
@@ -262,7 +302,7 @@ body {
 }
 
 .form-control:focus {
-  border-color: var(--dark-navy);
+  border-color: var(--primary);
   border-width: 2px;
   box-shadow: none;
 }
@@ -288,7 +328,7 @@ body {
 .notice-container {
   background-color: var(--background);
   color: var(--text);
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 16px;
   padding-bottom: 8px;
 }
@@ -330,7 +370,7 @@ body {
 .file-container {
   background-color: var(--background);
   color: var(--text);
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 0px;
   padding-left: 0px;
   padding-bottom: 8px;
@@ -354,7 +394,7 @@ body {
 .file-element:hover {
   background-color: var(--light-navy);
   color: var(--black);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .lang-card {
@@ -365,4 +405,22 @@ body {
 .card-container {
   margin-left: 0;
   max-width: 1416px;
+}
+
+.expire-section {
+  background-color: rgba(var(--surface-dark-rgb), 0.85);
+  color: var(--white);
+  padding-top: 2px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 6px;
+  border: 2px solid rgba(var(--surface-dark-rgb), 1);
+  font-size: var(--font-size-sm);
+  vertical-align: baseline;
+}
+
+.no-break {
+  display: inline-block;
+  white-space: nowrap;
 }

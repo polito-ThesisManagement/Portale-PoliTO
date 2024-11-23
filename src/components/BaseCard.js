@@ -53,9 +53,9 @@ export default function BaseCard(props) {
             alignItems: 'center',
           }}
         >
-          <span className="section-title col-10">
+          <span className="subsection-title col-10">
             {props.icon ? props.icon : <PiUserListFill size="48" className="card-icon" />}
-            <span className="section-title position-relative" style={{ maxWidth: '170px' }}>
+            <span className="subsection-title position-relative" style={{ maxWidth: '170px' }}>
               {props.service}
             </span>
           </span>

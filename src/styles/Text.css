@@ -11,7 +11,7 @@
 .section-title {
   color: var(--primary);
   font-family: var(--font-primary);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xl);
 }
 
@@ -42,7 +42,8 @@
 }
 
 .course-detail {
-  font-weight: var(--font-weight-medium);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
   font-size: var(--font-size-md);
 }
 
@@ -84,10 +85,24 @@
 .breadcrumb {
   font-family: var(--font-primary);
   color: var(--placeholder);
+  margin-top: 1px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
 }
 
 .breadcrumb-link {
   font-family: var(--font-primary);
   color: var(--link);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
+}
+
+.pol-headline.pol-headline--with-bar > h3:before {
+  content: '';
+  width: 50px;
+  height: 5px;
+  background: #ef7b02;
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }

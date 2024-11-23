@@ -16,7 +16,15 @@ app.get('/api/thesisProposals', async (req, res) => {
         lang: lang,
       },
     });
-    res.json(response.data);
+    const thesisProposals = response.data.thesis.map(thesisProposal => {
+      const creationDate = new Date(thesisProposal.exp_date);
+      creationDate.setFullYear(creationDate.getFullYear() - 1);
+      return {
+        ...thesisProposal,
+        creation_date: creationDate.toISOString().split('T')[0],
+      };
+    });
+    res.json(thesisProposals);
   } catch (error) {
     res.status(error.response ? error.response.status : 500).send('Error during thesis proposals fetching');
   }

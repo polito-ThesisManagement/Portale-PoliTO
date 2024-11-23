@@ -1,4 +1,5 @@
 /* Define colors and fonts for the theme */
+
 :root {
   /* Colors */
   --black: #000000;
@@ -14,10 +15,12 @@
   --white: #ffffff; /* surface.light */
   --light-orange: #ffc893; /* orange.200 - secondary.200 */
   --medium-orange: #ef7b00; /* orange.600 - secondary.600 */
+  --medium-orange-rgb: 239, 123, 0;
   --background-light: #f0f3f5; /* background.light */
   --background-dark: var(--dark-navy); /* background.dark */
   --surface-light: var(--white); /* surface.light */
   --surface-dark: #143959; /* surface.dark */
+  --surface-dark-rgb: 20, 57, 89;
 
   --background: var(--background-light);
   --surface: var(--surface-light);
@@ -27,7 +30,19 @@
   --placeholder: #5f666d;
   --pill-button: var(--light-navy-transparent);
   --link: var(--navy);
-
+  --text-active: var(--black);
+  --text-inactive: var(--black);
+  --border-slider: transparent; /* border.slider */
+  --background-slider: #e2e2e2; /* background.slider */
+  --tag-border: #d9d9d9;
+  --tag-bg: #fafafa;
+  --tag-text: var(--dark-navy);
+  --professor-tag: 0, 142, 241;
+  --type-tag-border: var(--dark-navy);
+  --type-tag-bg: var(--background-light);
+  --type-tag-text: var(--dark-navy);
+  --active-page: var(--professor-tag-text);
+  --active-page-border: var(--professor-tag-text);
   /* Font Family */
   --font-primary: 'Montserrat', sans-serif;
 
@@ -36,6 +51,7 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
   /* Font Sizes */
   --font-size-xs: 12px;
@@ -43,8 +59,8 @@
   --font-size-md: 15px;
   --font-size-base: 16px;
   --font-size-lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-xxl: 22px;
+  --font-size-xl: 22px;
+  --font-size-xxl: 28px;
 }
 
 /* Dark Theme Colors */
@@ -57,7 +73,19 @@
   --placeholder: #adb5bd;
   --pill-button: var(--light-navy-transperent-2);
   --link: var(--light-navy);
-
+  --text-active: var(--surface);
+  --text-inactive: var(--text);
+  --border-slider: var(--placeholder);
+  --background-slider: var(--background);
+  --tag-border: var(--text);
+  --tag-bg: var(--dark-navy);
+  --tag-text: var(--text);
+  --professor-tag: var(--medium-orange-rgb);
+  --type-tag-border: var(--text);
+  --type-tag-bg: var(--background);
+  --type-tag-text: var(--text);
+  --active-page: var(--medium-orange);
+  --active-page-border: var(--medium-orange);
   .form-select {
     --bs-form-select-bg-img: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
   }
@@ -76,5 +104,9 @@
 
   .accordion-button::after {
     filter: invert(1);
+  }
+
+  .accordion-button:not(.collapsed)::after {
+    filter: none;
   }
 }

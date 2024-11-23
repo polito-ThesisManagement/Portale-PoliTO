@@ -54,7 +54,7 @@ export default function Tirocini() {
 
   return (
     <>
-      <div className="d-flex mt-3 mx-3">
+      <div className="d-flex mt-2 mx-3">
         <div>
           <Link to="/" className="breadcrumb-link">
             Homepage
@@ -76,7 +76,7 @@ export default function Tirocini() {
       <Container className="me-3">
         <div className="d-flex justify-content-start">
           <span className="section-title">
-            <List size={28} style={{ position: 'relative', bottom: '2px', paddingRight: '2px' }} />
+            <List size={32} style={{ position: 'relative', bottom: '2px', paddingRight: '2px' }} />
             Elenco Proposte Tirocinio
           </span>
         </div>

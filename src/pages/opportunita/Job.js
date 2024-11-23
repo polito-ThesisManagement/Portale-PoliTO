@@ -36,7 +36,7 @@ export default function Job() {
 
   return (
     <>
-      <div className="d-flex mt-3 mx-3">
+      <div className="d-flex mt-2 mx-3">
         <div>
           <Link to="/" className="breadcrumb-link">
             Homepage
@@ -58,7 +58,7 @@ export default function Job() {
       <Container className="me-3">
         <div className="d-flex justify-content-start">
           <span className="section-title">
-            <ListStars size={28} style={{ position: 'relative', bottom: '2px', paddingRight: '2px' }} />
+            <ListStars size={32} style={{ position: 'relative', bottom: '2px', paddingRight: '2px' }} />
             Elenco Offerte Lavoro
           </span>
         </div>
