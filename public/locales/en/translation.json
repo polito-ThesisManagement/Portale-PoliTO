@@ -139,7 +139,21 @@
         "proposte_di_tesi": {
             "title": "Thesis Proposals",
             "title_half_lowercase": "Thesis proposals",
-            "description": "List of thesis proposals."
+            "description": "List of thesis proposals.",
+            "order_by": "Order by",
+            "expires": "Expires on",
+            "exp_order": "Expiration date",
+            "created": "Created on",
+            "created_order": "Creation date",
+            "show_more": "Show more",
+            "internal_thesis": "Internal thesis",
+            "external_thesis": "Company thesis",
+            "abroad_thesis": "Abroad thesis",
+            "total": "Total:",
+            "elements_per_page": "Elements per page",
+            "all_thesis": "All thesis",
+            "course_thesis": "Thesis for your study course",
+            "search": "Search proposals..."
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Thesis Proposal Details",

@@ -3,21 +3,53 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaUniversity } from 'react-icons/fa';
-import { FaUser } from 'react-icons/fa6';
+import { FaCalendar, FaUser } from 'react-icons/fa6';
 import { FaEarthAmericas } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import styles from '../styles/ThesisProposals.module.css';
+import '../styles/Utilities.css';
 
 export default function ThesisItem(props) {
-  const { description, advisors, foreign } = props;
+  const { t } = useTranslation();
+
+  function formatDate(date) {
+    const dateObj = new Date(date);
+    return dateObj.toLocaleDateString('it-IT', { year: 'numeric', month: 'numeric', day: 'numeric' });
+  }
+
   return (
     <article className={styles.thesisItem}>
       <div className={styles.thesisItemContent}>
         <div className={styles.thesisItemMeta}>
-          <h3 className={styles.thesisTitle}>{props.topic}</h3>
+          <div className={styles.thesisItemHeader}>
+            <h3 className={styles.thesisTitle}>
+              {props.topic}
+              <div className={styles.thesisTypeTagGroup}>
+                <span className={styles.thesisTypeTag}>
+                  {props.where === 'P' ? (
+                    <FaUniversity className={styles.thesisTypeIcon} />
+                  ) : (
+                    <HiBuildingOffice2 className={styles.thesisTypeIcon} />
+                  )}
+                  <span className={styles.thesisTypeText}>
+                    {props.where === 'P'
+                      ? t('carriera.proposte_di_tesi.internal_thesis')
+                      : t('carriera.proposte_di_tesi.external_thesis')}
+                  </span>
+                </span>
+                {props.foreign === 'S' && (
+                  <div className={styles.thesisTypeTag}>
+                    <FaEarthAmericas className={styles.thesisTypeIcon} />
+                    <span className={styles.thesisTypeText}>{t('carriera.proposte_di_tesi.abroad_thesis')}</span>
+                  </div>
+                )}
+              </div>
+            </h3>
+          </div>
           <div className={styles.tagGroup}>
             {props.keywords.map((keyword, index) => (
               <span key={index} className={styles.tag}>
@@ -26,10 +58,10 @@ export default function ThesisItem(props) {
             ))}
           </div>
         </div>
-        <p className={styles.thesisDescription}>{description.slice(0, 350) + '...'}</p>
+        <p className={styles.thesisDescription}>{props.description.slice(0, 350) + '...'}</p>
         <div className={styles.thesisMetaInfo}>
           <div className={styles.professorTagGroup}>
-            {advisors.map(advisor => (
+            {props.advisors.map(advisor => (
               <div key={advisor.matricola} className={styles.professorTag}>
                 <FaUser className={styles.thesisTypeIcon} />
                 <span key={advisor.matricola} className={styles.professorName}>
@@ -38,35 +70,30 @@ export default function ThesisItem(props) {
               </div>
             ))}
           </div>
-          <div className={styles.thesisTypeTagGroup}>
-            <span className={styles.thesisTypeTag}>
-              {props.where === 'P' ? (
-                <FaUniversity className={styles.thesisTypeIcon} />
-              ) : (
-                <HiBuildingOffice2 className={styles.thesisTypeIcon} />
-              )}
-              <span className={styles.thesisTypeText}>{props.where === 'P' ? 'Tesi interna' : 'Tesi in azienda'}</span>
-            </span>
-            {foreign === 'S' && (
-              <div className={styles.thesisTypeTag}>
-                <FaEarthAmericas className={styles.thesisTypeIcon} />
-                <span className={styles.thesisTypeText}>Tesi all’estero</span>
-              </div>
-            )}
-          </div>
+          {/*Qui i tag se non dovessero andare bene*/}
         </div>
         <footer className={styles.thesisItemFooter}>
-          <Link to={`${props.ID}`} state={{ ...props }}>
-            <button className={styles.showMoreButton}>Mostra di più</button>
-          </Link>
           <div className={styles.expirationDate}>
-            <span className={styles.expirationDateLabel}>Data di scadenza: &nbsp;</span>
-            <span className={styles.expirationDateValue}>{props.exp_date}</span>
+            <div className={styles.thesisTypeTag}>
+              <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
+              <span className="course-detail">
+                {t('carriera.proposte_di_tesi.created')} {formatDate(props.creation_date)}
+              </span>
+            </div>
           </div>
         </footer>
         <div className={styles.creationDate}>
-          <span className={styles.creationDateLabel}>Data di creazione: &nbsp;</span>
-          <span className={styles.creationDateValue}>{props.creation_date}</span>
+          <Link to={`${props.ID}`} state={{ ...props }}>
+            <button className={styles.showMoreButton}>{t('carriera.proposte_di_tesi.show_more')}</button>
+          </Link>
+          <div>
+            <div className={styles.thesisTypeTag}>
+              <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
+              <span className="course-detail">
+                {t('carriera.proposte_di_tesi.expires')} {formatDate(props.exp_date)}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </article>

@@ -6,7 +6,8 @@
 }
 
 .mainContent {
-  border-radius: 1rem; /* 16px in rem */
+  border-radius: 1rem;
+  /* 16px in rem */
   background-color: var(--surface);
   display: flex;
   width: 100%;
@@ -20,7 +21,8 @@
   background-color: var(--surface);
   display: flex;
   width: 100%;
-  margin-bottom: 1.25rem; /* 20px in rem */
+  margin-bottom: 1.25rem;
+  /* 20px in rem */
 }
 
 .cardBody {
@@ -37,18 +39,26 @@
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  gap: 5rem;
-  margin-bottom: 1%;
+  gap: 1rem;
+  margin-bottom: 8px;
 }
 
 @media(max-width: 1396px) {
-  .filterRow{
+  .filterRow {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1%;
+    margin-bottom: 6px;
+  }
+  .pagination{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 6px;
   }
 }
 
@@ -68,36 +78,39 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--background-slider); /* Mantieni il colore di sfondo quando attivo */
+  background-color: var(--background-slider);
+  /* Mantieni il colore di sfondo quando attivo */
   border-radius: 0.5rem;
   border-color: var(--placeholder);
   transition: 0.4s;
-  font:
-    500 1rem Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
 }
 
 .slider:before {
   position: absolute;
   content: '';
-  height: 1.4375rem; /* Altezza del pulsante */
-  width: 13rem; /* Larghezza del pulsante */
-  left: 0.25rem; /* Spazio a sinistra */
-  bottom: 0.25rem; /* Spazio in basso */
+  height: 1.4375rem;
+  /* Altezza del pulsante */
+  width: 13rem;
+  /* Larghezza del pulsante */
+  left: 0.25rem;
+  /* Spazio a sinistra */
+  bottom: 0.25rem;
+  /* Spazio in basso */
   background-color: white;
   border-radius: 0.4rem;
   transition: 0.4s;
 }
 
-input:checked + .slider {
-  background-color: var(--background-slider); /* Colore di sfondo quando attivo */
+input:checked+.slider {
+  background-color: var(--background-slider);
+  /* Colore di sfondo quando attivo */
 }
 
-input:checked + .slider:before {
-  transform: translateX(13.4rem); /* Sposta il pulsante a destra */
+input:checked+.slider:before {
+  transform: translateX(13.4rem);
+  /* Sposta il pulsante a destra */
 }
 
 .toggleText {
@@ -105,8 +118,10 @@ input:checked + .slider:before {
   top: 50%;
   width: 50%;
   text-align: center;
-  font-size: 0.9rem; /* Dimensione del font */
-  color: black; /* Colore del testo */
+  font-size: 0.9rem;
+  /* Dimensione del font */
+  color: black;
+  /* Colore del testo */
   transform: translateY(-50%);
   pointer-events: none;
 }
@@ -120,20 +135,24 @@ input:checked + .slider:before {
   left: 50%;
 }
 
-input:checked + .slider .toggleTextLeft {
-  color: var(--text-inactive); /*checked significa slider su Tesi per corso di studi*/
+input:checked+.slider .toggleTextLeft {
+  color: var(--text-inactive);
+  /*checked significa slider su Tesi per corso di studi*/
 }
 
-input:checked + .slider .toggleTextRight {
-  color: var(--text-active); /* Colore del testo non attivo */
+input:checked+.slider .toggleTextRight {
+  color: var(--text-active);
+  /* Colore del testo non attivo */
 }
 
-input:not(:checked) + .slider .toggleTextLeft {
-  color: var(--text-active); /* Colore del testo non attivo */
+input:not(:checked)+.slider .toggleTextLeft {
+  color: var(--text-active);
+  /* Colore del testo non attivo */
 }
 
-input:not(:checked) + .slider .toggleTextRight {
-  color: var(--text-inactive); /* Colore del testo attivo */
+input:not(:checked)+.slider .toggleTextRight {
+  color: var(--text-inactive);
+  /* Colore del testo attivo */
 }
 
 
@@ -145,30 +164,37 @@ input:not(:checked) + .slider .toggleTextRight {
   .segmentedControl {
     position: relative;
     display: inline-block;
-    width: 20rem; 
-    height: 3.2rem; 
+    width: 20rem;
+    height: 3.2rem;
     cursor: pointer;
     border: 0.0625rem solid var(--border-slider);
     border-radius: 0.5rem;
   }
-  
+
   .slider {
-    font: 500 0.5rem Montserrat, -apple-system, Roboto, Helvetica, sans-serif;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
-    height: 2.6375rem; /* Altezza del pulsante */
-    width: 9.2rem; /* Larghezza del pulsante */
-    top: 0.2rem; /* Spazio in alto */
+    height: 2.6375rem;
+    /* Altezza del pulsante */
+    width: 9.2rem;
+    /* Larghezza del pulsante */
+    top: 0.2rem;
+    /* Spazio in alto */
     background-color: white;
     border-radius: 0.4rem;
   }
 
-  input:checked + .slider:before {
-    transform: translateX(9.5rem); /* Sposta il pulsante a destra */
-    width: 9.8rem; /* Larghezza del pulsante */
+  input:checked+.slider:before {
+    transform: translateX(9.5rem);
+    /* Sposta il pulsante a destra */
+    width: 9.8rem;
+    /* Larghezza del pulsante */
   }
 }
 
@@ -178,10 +204,9 @@ input:not(:checked) + .slider .toggleTextRight {
   width: 100%;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 6px;
 }
 
 .thesisListInner {
@@ -193,10 +218,9 @@ input:not(:checked) + .slider .toggleTextRight {
 }
 
 .thesisItem {
-  border: 0.0625rem solid var(--background); /* 1px in rem */
+  border: 0.0625rem solid var(--background);
+  /* 1px in rem */
   border-radius: 1;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
   align-items: flex-start;
   background-color: var(--surface);
   box-shadow: 0 -1px 0 0 var(--background) inset;
@@ -228,16 +252,25 @@ input:not(:checked) + .slider .toggleTextRight {
   justify-content: flex-start;
 }
 
+.thesisItemHeader {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
 .thesisTitle {
   width: 100%;
   overflow: hidden;
   color: var(--text);
-  font:
-    500 1.25rem Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif; /* Riduci la dimensione del font */
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
 }
 
 .tagGroup {
@@ -258,7 +291,7 @@ input:not(:checked) + .slider .toggleTextRight {
   background-color: var(--tag-bg);
   gap: 3px;
   overflow: hidden;
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-primary);
   color: var(--tag-text);
   padding: 0px 6px;
   font-size: var(--font-size-md);
@@ -269,17 +302,14 @@ input:not(:checked) + .slider .toggleTextRight {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   line-clamp: 3;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  margin-top: 0.2rem;
-  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
   color: var(--text);
-  font:
-    400 14px/22px Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -291,10 +321,13 @@ input:not(:checked) + .slider .toggleTextRight {
 
 .thesisMetaInfo {
   display: flex;
-  flex-wrap: wrap; /* Permette ai contenuti di andare a capo */
-  gap: 1rem; /* Spaziatura tra i gruppi di tag */
+  flex-wrap: wrap;
+  /* Permette ai contenuti di andare a capo */
+  gap: 1rem;
+  /* Spaziatura tra i gruppi di tag */
   align-items: flex-start;
-  justify-content: space-between; /* Distribuisce lo spazio tra i gruppi di tag */
+  justify-content: space-between;
+  /* Distribuisce lo spazio tra i gruppi di tag */
 }
 
 .professorTag {
@@ -319,17 +352,22 @@ input:not(:checked) + .slider .toggleTextRight {
 /* Aggiungi questa classe per il gruppo di tag professor */
 .professorTagGroup {
   display: flex;
-  flex-wrap: wrap; /* Permette ai tag di andare a capo */
-  gap: 0.5rem; /* Spaziatura tra i tag */
+  flex-wrap: wrap;
+  /* Permette ai tag di andare a capo */
+  gap: 0.5rem;
+  /* Spaziatura tra i tag */
 }
 
 /* Aggiungi questa classe per il gruppo di tag type */
 .thesisTypeTagGroup {
   display: flex;
-  flex-wrap: wrap; /* Permette ai tag di andare a capo */
-  flex-direction: column;
-  justify-content: flex-end; /* Allinea i tag a destra */
-  gap: 0.5rem; /* Spaziatura tra i tag */
+  flex-wrap: wrap;
+  /* Permette ai tag di andare a capo */
+  flex-direction: row;
+  justify-content: flex-end;
+  /* Allinea i tag a destra */
+  gap: 0.5rem;
+  /* Spaziatura tra i tag */
 }
 
 .thesisTypeTag {
@@ -342,10 +380,11 @@ input:not(:checked) + .slider .toggleTextRight {
   display: flex;
   justify-content: center;
   font-family: var(--font-primary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
+  height: 1.5rem;
 }
 
-.thesisTypeIcon{
+.thesisTypeIcon {
   margin-right: 0.25rem;
   align-self: left;
   margin-top: -1px;
@@ -362,19 +401,16 @@ input:not(:checked) + .slider .toggleTextRight {
   gap: 1rem;
   color: rgba(27, 31, 38, 0.72);
   justify-content: flex-start;
-  font:
-    400 0.875rem/2 Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
 }
 
 .expirationDate {
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  margin-left: auto; /* Aggiungi questa riga per spingere la data di scadenza a destra */
+  margin-left: auto;
+  /* Aggiungi questa riga per spingere la data di scadenza a destra */
   color: var(--text);
   font-size: var(--font-size-md);
 }
@@ -386,22 +422,27 @@ input:not(:checked) + .slider .toggleTextRight {
 }
 
 .showMoreButton {
-  border-radius: 0.5rem; /* 8px in rem */
-  border: 0.0625rem solid var(--text); /* 1px in rem */
+  border-radius: 0.5rem;
+  /* 8px in rem */
+  border: 0.0625rem solid var(--text);
+  /* 1px in rem */
   background-color: var(--surface);
-  min-height: 1.375rem; /* 22px in rem */
-  gap: 0.625rem; /* 10px in rem */
+  min-height: 1.375rem;
+  /* 22px in rem */
   color: var(--text);
   text-align: center;
-  padding: 0 0.9375rem; /* 0 15px in rem */
+  padding: 0 6px;
+  /* 0 15px in rem */
   cursor: pointer;
   max-width: 200px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .showMoreButton:hover {
-  background-color: var(--background); /* Colore di sfondo per l'hover */
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px 8px in rem */
+  background-color: var(--background);
+  /* Colore di sfondo per l'hover */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  /* 4px 8px in rem */
   color: var(--text);
 }
 
@@ -415,18 +456,16 @@ input:not(:checked) + .slider .toggleTextRight {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
-  font:
-    500 1rem Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
   color: var(--text);
 }
 
 .pagination {
   display: flex;
-  justify-content: space-between; /* Distribuisce lo spazio tra gli elementi */
+  justify-content: space-between;
+  /* Distribuisce lo spazio tra gli elementi */
   align-items: center;
   margin-top: 1rem;
   margin-left: 1rem;
@@ -447,7 +486,8 @@ input:not(:checked) + .slider .toggleTextRight {
 .paginationNumbers {
   display: flex;
   justify-content: center;
-  flex-grow: 1; /* Permette ai numeri di pagina di occupare lo spazio centrale */
+  flex-grow: 1;
+  /* Permette ai numeri di pagina di occupare lo spazio centrale */
 }
 
 .pagination button {
@@ -460,12 +500,9 @@ input:not(:checked) + .slider .toggleTextRight {
   align-content: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font:
-    500 1rem Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
   color: var(--text);
 }
 
@@ -486,12 +523,9 @@ input:not(:checked) + .slider .toggleTextRight {
 }
 
 .totalItems {
-  font:
-    400 0.875rem Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
   padding-right: 5%;
   padding-left: 5%;
   color: var(--text);
@@ -521,24 +555,19 @@ input:not(:checked) + .slider .toggleTextRight {
 .creationDate {
   position: relative;
   overflow: hidden;
-  white-space: nowrap;
-  margin-left: auto;
-  font:
-    400 00.875rem/2 Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
   color: var(--text);
   margin-right: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
 }
 
 .bText {
-  font:
-    600 0.95rem/2 Montserrat,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
   color: var(--text);
 }

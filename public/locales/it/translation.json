@@ -139,7 +139,21 @@
         "proposte_di_tesi": {
             "title": "Proposte di Tesi",
             "title_half_lowercase": "Proposte di tesi",
-            "description": "Elenco delle proposte di tesi."
+            "description": "Elenco delle proposte di tesi.",
+            "order_by": "Ordina per:",
+            "expires": "Scade il",
+            "exp_order": "Data di scadenza",
+            "created": "Creata il",
+            "created_order": "Data di creazione",
+            "show_more": "Mostra di più",
+            "internal_thesis": "Tesi interna",
+            "external_thesis": "Tesi in azienda",
+            "abroad_thesis": "Tesi all'estero",
+            "total": "Totale:",
+            "elements_per_page": "Elementi per pagina",
+            "all_thesis": "Tutte le tesi",
+            "course_thesis": "Tesi per il tuo corso di studi",
+            "search": "Ricerca tra le proposte..."
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",
