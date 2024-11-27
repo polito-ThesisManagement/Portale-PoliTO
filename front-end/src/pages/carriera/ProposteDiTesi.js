@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import { ArrowRightShort } from 'react-bootstrap-icons';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { ArrowRightShort } from 'react-bootstrap-icons';
-
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
 
 import LoadingModal from '../../components/LoadingModal';
 import ThesisProposals from '../../components/ThesisProposals';

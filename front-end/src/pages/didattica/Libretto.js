@@ -2,13 +2,11 @@ import React from 'react';
 
 import { Container } from 'react-bootstrap';
 import { Col, Row, Table } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 import { BsGraphUp } from 'react-icons/bs';
 import { FaList } from 'react-icons/fa';
 import { PiListChecksBold } from 'react-icons/pi';
 import { VscGraph } from 'react-icons/vsc';
-
-import { useTranslation } from 'react-i18next';
 
 import DoughnutChart from '../../components/DoughnutChart';
 import valutazioni from '../../data/Valutazioni.json';

@@ -1,16 +1,14 @@
 import React from 'react';
 
 import { Col, Container, ListGroup, Row } from 'react-bootstrap';
-
+import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
 import { BsCalendarCheckFill } from 'react-icons/bs';
 import { FaList } from 'react-icons/fa';
 import { FaArrowRight } from 'react-icons/fa6';
 import { ImFolderUpload } from 'react-icons/im';
 import { IoClose } from 'react-icons/io5';
 import { PiListPlusFill, PiVideoCameraFill } from 'react-icons/pi';
-
-import Button from 'react-bootstrap/Button';
-import { useTranslation } from 'react-i18next';
 
 import CourseSummary from '../../components/CourseSummary';
 import InfoTooltip from '../../components/InfoTooltip';

@@ -1,15 +1,12 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Col, Container, Row } from 'react-bootstrap';
 import { ListGroup } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 import { FaLink } from 'react-icons/fa6';
 import { MdApps, MdMapsHomeWork } from 'react-icons/md';
 import { TiArrowForward } from 'react-icons/ti';
-
-import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import BaseCard from '../components/BaseCard';
 import Title from '../components/Title';

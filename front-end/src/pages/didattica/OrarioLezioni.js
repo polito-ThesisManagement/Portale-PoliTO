@@ -1,9 +1,7 @@
 import React from 'react';
 
 import { Container, Form, InputGroup } from 'react-bootstrap';
-
 import { ClockFill, Search } from 'react-bootstrap-icons';
-
 import { useTranslation } from 'react-i18next';
 
 import OrarioLezioniAgenda from '../../components/OrarioLezioniAgenda';

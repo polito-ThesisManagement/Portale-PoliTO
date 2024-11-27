@@ -1,15 +1,13 @@
 import { React } from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
-
 import { Col, Nav } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 import { FaInfoCircle } from 'react-icons/fa';
 import { FaBookOpen, FaBriefcase, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
 import { MdApps } from 'react-icons/md';
+import { Link, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 
 import '../styles/Sidebar.css';
 import '../styles/Text.css';

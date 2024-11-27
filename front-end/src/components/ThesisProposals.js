@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import { Search, SortDown, SortUp } from 'react-bootstrap-icons';
-
-import { HiLightBulb } from 'react-icons/hi';
-
-import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
+import { HiLightBulb } from 'react-icons/hi';
+
+import PropTypes from 'prop-types';
 
 import '../styles/Searchbar.css';
 import styles from '../styles/ThesisProposals.module.css';

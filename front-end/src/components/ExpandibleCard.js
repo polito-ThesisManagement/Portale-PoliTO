@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Col, Container } from 'react-bootstrap';
-
 import { Star, StarFill } from 'react-bootstrap-icons';
-
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FaCaretDown } from 'react-icons/fa';
 import { PiUserListFill } from 'react-icons/pi';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 

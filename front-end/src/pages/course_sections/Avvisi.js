@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { useLocation } from 'react-router-dom';
-
 import { Container } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 import Avvisi_GC from '../../data/Avvisi_GC.json';
 

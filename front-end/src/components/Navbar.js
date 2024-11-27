@@ -1,12 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Bell, BellFill, Envelope, PersonCircle } from 'react-bootstrap-icons';
-
-import { FaSignOutAlt } from 'react-icons/fa';
-import { FaCircleHalfStroke, FaKey, FaMoon, FaSun, FaUser } from 'react-icons/fa6';
-
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Image from 'react-bootstrap/Image';
@@ -15,6 +9,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { useTranslation } from 'react-i18next';
+import { FaSignOutAlt } from 'react-icons/fa';
+import { FaCircleHalfStroke, FaKey, FaMoon, FaSun, FaUser } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 import { AvvisiContext, ThemeContext } from '../App';
 import Logo from '../assets/logo_polito.svg';

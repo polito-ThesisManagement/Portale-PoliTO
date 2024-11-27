@@ -29,11 +29,11 @@
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": [
-        "eslint --fix",
-        "prettier --write"
+            "eslint --fix .",
+            "prettier --write ."
         ],
         "*.{json,md,css,scss,html}": [
-            "prettier --write"
+            "prettier --write ."
         ]
     }
 }

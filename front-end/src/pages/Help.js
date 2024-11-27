@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Accordion, Col, Container, Row } from 'react-bootstrap';
-
 import { Search } from 'react-bootstrap-icons';
-
-import { FaBook, FaInfoCircle } from 'react-icons/fa';
-import { FaTicketSimple } from 'react-icons/fa6';
-import { HiMiniTicket } from 'react-icons/hi2';
-import { TiArrowForward } from 'react-icons/ti';
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useTranslation } from 'react-i18next';
+import { FaBook, FaInfoCircle } from 'react-icons/fa';
+import { FaTicketSimple } from 'react-icons/fa6';
+import { HiMiniTicket } from 'react-icons/hi2';
+import { TiArrowForward } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
 
 import Title from '../components/Title';
 import Guide from '../data/Guide.json';

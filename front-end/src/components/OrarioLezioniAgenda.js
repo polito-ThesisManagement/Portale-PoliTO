@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+//import events from '../data/Events';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Button } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
 import moment from 'moment';
 import 'moment/locale/it';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-//import events from '../data/Events';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { useTranslation } from 'react-i18next';
 
 import '../styles/Calendar.css';
 

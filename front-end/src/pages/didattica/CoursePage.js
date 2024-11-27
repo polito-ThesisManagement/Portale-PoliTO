@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 
-import { Link, Outlet, useLocation } from 'react-router-dom';
-
 import { Row } from 'react-bootstrap';
-
 import { ArrowRightShort } from 'react-bootstrap-icons';
-
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import '../../styles/Text.css';
 import '../../styles/Utilities.css';

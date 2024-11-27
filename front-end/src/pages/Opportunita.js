@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container, Row } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { FaHelmetSafety } from 'react-icons/fa6';
 import { FaBriefcase } from 'react-icons/fa6';
@@ -11,8 +11,6 @@ import { HiMiniUserGroup } from 'react-icons/hi2';
 import { MdWorkHistory } from 'react-icons/md';
 import { MdSportsFootball } from 'react-icons/md';
 import { TbWorldShare } from 'react-icons/tb';
-
-import { useTranslation } from 'react-i18next';
 
 import BaseCard from '../components/BaseCard';
 import Title from '../components/Title';

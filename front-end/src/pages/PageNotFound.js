@@ -1,12 +1,9 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Button, Container } from 'react-bootstrap';
-
-import { TbBrowserX } from 'react-icons/tb';
-
 import { useTranslation } from 'react-i18next';
+import { TbBrowserX } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
 
 import '../styles/Text.css';
 

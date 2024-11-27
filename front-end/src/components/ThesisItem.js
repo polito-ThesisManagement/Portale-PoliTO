@@ -1,14 +1,13 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaUser } from 'react-icons/fa6';
 import { FaEarthAmericas } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 
 import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';

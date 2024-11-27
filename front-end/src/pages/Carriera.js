@@ -1,15 +1,13 @@
 import React from 'react';
 
 import { Container, Row } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 import { BsCreditCard2BackFill } from 'react-icons/bs';
 import { FaUserEdit } from 'react-icons/fa';
 import { FaGraduationCap, FaUserGraduate } from 'react-icons/fa6';
 import { HiLightBulb } from 'react-icons/hi';
 import { IoIosListBox } from 'react-icons/io';
 import { MdEditDocument } from 'react-icons/md';
-
-import { useTranslation } from 'react-i18next';
 
 import BaseCard from '../components/BaseCard';
 import Title from '../components/Title';

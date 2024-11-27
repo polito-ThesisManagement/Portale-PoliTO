@@ -1,8 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-import { Route, Routes, useLocation } from 'react-router-dom';
-
 import { Col, Row } from 'react-bootstrap';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import PoliNavbar from './components/Navbar';
 import Sidebar from './components/Sidebar';

@@ -43,7 +43,7 @@
   margin-bottom: 8px;
 }
 
-@media(max-width: 1396px) {
+@media (max-width: 1396px) {
   .filterRow {
     display: flex;
     justify-content: center;
@@ -52,7 +52,7 @@
     gap: 1rem;
     margin-bottom: 6px;
   }
-  .pagination{
+  .pagination {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -103,12 +103,12 @@
   transition: 0.4s;
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: var(--background-slider);
   /* Colore di sfondo quando attivo */
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   transform: translateX(13.4rem);
   /* Sposta il pulsante a destra */
 }
@@ -135,26 +135,25 @@ input:checked+.slider:before {
   left: 50%;
 }
 
-input:checked+.slider .toggleTextLeft {
+input:checked + .slider .toggleTextLeft {
   color: var(--text-inactive);
   /*checked significa slider su Tesi per corso di studi*/
 }
 
-input:checked+.slider .toggleTextRight {
+input:checked + .slider .toggleTextRight {
   color: var(--text-active);
   /* Colore del testo non attivo */
 }
 
-input:not(:checked)+.slider .toggleTextLeft {
+input:not(:checked) + .slider .toggleTextLeft {
   color: var(--text-active);
   /* Colore del testo non attivo */
 }
 
-input:not(:checked)+.slider .toggleTextRight {
+input:not(:checked) + .slider .toggleTextRight {
   color: var(--text-inactive);
   /* Colore del testo attivo */
 }
-
 
 @media (max-width: 595px) {
   .segmentedControl {
@@ -179,7 +178,7 @@ input:not(:checked)+.slider .toggleTextRight {
 
   .slider:before {
     position: absolute;
-    content: "";
+    content: '';
     height: 2.6375rem;
     /* Altezza del pulsante */
     width: 9.2rem;
@@ -190,7 +189,7 @@ input:not(:checked)+.slider .toggleTextRight {
     border-radius: 0.4rem;
   }
 
-  input:checked+.slider:before {
+  input:checked + .slider:before {
     transform: translateX(9.5rem);
     /* Sposta il pulsante a destra */
     width: 9.8rem;
@@ -435,7 +434,9 @@ input:not(:checked)+.slider .toggleTextRight {
   /* 0 15px in rem */
   cursor: pointer;
   max-width: 200px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .showMoreButton:hover {

@@ -1,20 +1,17 @@
 // add attachments, thesis type, review prop types, handle null fields better + call to db in parent + API.jsx for mapping
 import React from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
-
 import { Container } from 'react-bootstrap';
-
 import { ArrowRightShort } from 'react-bootstrap-icons';
-
+import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaEarthAmericas, FaFileLines, FaUser } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
+import { Link, useLocation } from 'react-router-dom';
 
 import moment from 'moment';
 import 'moment/locale/it';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 
 import Title from '../components/Title';
 import '../styles/Text.css';

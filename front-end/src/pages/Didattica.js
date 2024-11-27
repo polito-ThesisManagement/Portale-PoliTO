@@ -1,16 +1,12 @@
 import React from 'react';
 
-import { Link, Outlet, useLocation } from 'react-router-dom';
-
 import { Button, Row } from 'react-bootstrap';
-
 import { ClockFill, Translate } from 'react-bootstrap-icons';
-
+import { useTranslation } from 'react-i18next';
 import { FaBookOpen } from 'react-icons/fa6';
 import { ImBooks } from 'react-icons/im';
 import { IoIosJournal } from 'react-icons/io';
-
-import { useTranslation } from 'react-i18next';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import Title from '../components/Title';
 

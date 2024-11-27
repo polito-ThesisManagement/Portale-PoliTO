@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Container } from 'react-bootstrap';
 import { Form, Table } from 'react-bootstrap';
-
 import { ArrowRightShort, ListStars, Send } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 import Jobs from '../../data/Job.json';
 

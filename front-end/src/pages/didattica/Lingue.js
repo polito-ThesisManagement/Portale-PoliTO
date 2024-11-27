@@ -1,19 +1,15 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Button } from 'react-bootstrap';
-
 import { FileEarmarkRichtextFill, Globe } from 'react-bootstrap-icons';
-
-import { FaExternalLinkAlt } from 'react-icons/fa';
-
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Flag from 'react-flagkit';
 import { useTranslation } from 'react-i18next';
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import '../../styles/Utilities.css';
 

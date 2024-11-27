@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { useLocation } from 'react-router-dom';
-
 import { Button, Container, Table } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 export default function Appelli() {
   const location = useLocation();

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container, Row } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 import { BsCalendarFill } from 'react-icons/bs';
 import { BsCalendar2WeekFill } from 'react-icons/bs';
 import { FaDownload, FaUserCog } from 'react-icons/fa';
@@ -9,8 +9,6 @@ import { FaUser } from 'react-icons/fa';
 import { PiUserListFill } from 'react-icons/pi';
 import { RiFileUserFill } from 'react-icons/ri';
 import { TbCertificate } from 'react-icons/tb';
-
-import { useTranslation } from 'react-i18next';
 
 import BaseCard from '../components/BaseCard';
 import Title from '../components/Title';

@@ -1,12 +1,12 @@
-.custom-table td, 
+.custom-table td,
 .custom-table th {
-  white-space: normal; 
-  word-wrap: break-word; 
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 @media (max-width: 576px) {
-    .custom-table td,
-    .custom-table th {
-      padding: .3rem;
-    }
+  .custom-table td,
+  .custom-table th {
+    padding: 0.3rem;
   }
+}

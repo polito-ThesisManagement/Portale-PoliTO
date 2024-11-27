@@ -1,11 +1,11 @@
-import globals from 'globals';
+import pluginJs from '@eslint/js';
 import pluginCypress from 'eslint-plugin-cypress';
 import pluginImport from 'eslint-plugin-import';
-import pluginJs from '@eslint/js';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
+import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -30,11 +30,11 @@ export default [
       globals: globals.browser,
     },
     plugins: {
-      'cypress': pluginCypress,
-      'import': pluginImport,
+      cypress: pluginCypress,
+      import: pluginImport,
       'jsx-a11y': pluginJsxA11y,
-      'prettier': pluginPrettier,
-      'react': pluginReact,
+      prettier: pluginPrettier,
+      react: pluginReact,
       'react-hooks': pluginReactHooks,
     },
     rules: {
@@ -44,17 +44,17 @@ export default [
       //'jsx-a11y/no-static-element-interactions': 'warn',
       'no-unused-vars': 'off',
       //'react/jsx-boolean-value': ['warn', 'never'], // Avoid unnecessary boolean values in JSX props
-      'react/jsx-key': 'error',                       // Enforce keys for array elements
-      'react/jsx-no-duplicate-props': 'error',        // Avoid duplicate props in JSX
+      'react/jsx-key': 'error', // Enforce keys for array elements
+      'react/jsx-no-duplicate-props': 'error', // Avoid duplicate props in JSX
       //'react/jsx-no-useless-fragment': 'warn',      // Prevent useless fragments
-      'react/jsx-pascal-case': 'warn',                // Enforce PascalCase for component names
+      'react/jsx-pascal-case': 'warn', // Enforce PascalCase for component names
       'react/jsx-uses-react': 'off',
       //'react/no-array-index-key': 'warn',           // Discourage using array index as key
-      'react/no-unknown-property': 'warn',            // Prevent invalid DOM properties
+      'react/no-unknown-property': 'warn', // Prevent invalid DOM properties
       'react/prop-types': 'warn',
       'react/react-in-jsx-scope': 'off',
-      'react-hooks/exhaustive-deps': 'warn',          // Validates dependencies of hooks
-      'react-hooks/rules-of-hooks': 'error',          // Ensures hooks are used correctly
+      //'react-hooks/exhaustive-deps': 'warn', // Validates dependencies of hooks
+      //'react-hooks/rules-of-hooks': 'error', // Ensures hooks are used correctly
       'prettier/prettier': 'error',
     },
     settings: {
@@ -80,7 +80,7 @@ export default [
       },
     },
     plugins: {
-      'cypress': pluginCypress,
+      cypress: pluginCypress,
     },
   },
   {

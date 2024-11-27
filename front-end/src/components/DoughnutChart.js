@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { Doughnut } from 'react-chartjs-2';
+
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import PropTypes from 'prop-types';
-import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

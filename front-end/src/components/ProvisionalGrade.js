@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Col, Container, Row } from 'react-bootstrap';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import PropTypes from 'prop-types';
-import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function ProvisionalGrade(props) {
   return (

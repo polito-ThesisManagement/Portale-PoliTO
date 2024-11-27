@@ -1,22 +1,18 @@
 import React, { useContext } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import { Col, Container, ListGroup, Row } from 'react-bootstrap';
-
 import { StarFill } from 'react-bootstrap-icons';
-
-import { BsFillCalendarFill } from 'react-icons/bs';
-import { FaList } from 'react-icons/fa';
-import { FaClipboard } from 'react-icons/fa';
-import { FaHouse } from 'react-icons/fa6';
-
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { useTranslation } from 'react-i18next';
+import { BsFillCalendarFill } from 'react-icons/bs';
+import { FaList } from 'react-icons/fa';
+import { FaClipboard } from 'react-icons/fa';
+import { FaHouse } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 import { FavoritesContext } from '../App';
 import CourseNotice from '../components/CourseNotice';

@@ -2,9 +2,7 @@ import React from 'react';
 
 import { Col, Container, Row } from 'react-bootstrap';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-
 import { CameraVideoFill } from 'react-bootstrap-icons';
-
 import Alert from 'react-bootstrap/Alert';
 
 export default function VirtualClassroom() {

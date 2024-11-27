@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 
+import { Col, Container, Row } from 'react-bootstrap';
+import { Bell, BellFill } from 'react-bootstrap-icons';
+import ListGroup from 'react-bootstrap/ListGroup';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { Col, Container, Row } from 'react-bootstrap';
-
-import { Bell, BellFill } from 'react-bootstrap-icons';
-
 import PropTypes from 'prop-types';
-import ListGroup from 'react-bootstrap/ListGroup';
 
 import { AvvisiContext } from '../App';
 

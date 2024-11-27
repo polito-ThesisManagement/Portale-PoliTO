@@ -2,16 +2,13 @@ import React from 'react';
 
 import { Col, Container, Row } from 'react-bootstrap';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-
 import { Dropbox, Folder2Open, FolderFill, FolderSymlinkFill, Search } from 'react-bootstrap-icons';
-
-import { FaList } from 'react-icons/fa';
-import { FaArrowLeft, FaArrowRight, FaFilePdf } from 'react-icons/fa';
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
+import { FaList } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaFilePdf } from 'react-icons/fa';
 
 export default function Materiale() {
   const { t } = useTranslation();

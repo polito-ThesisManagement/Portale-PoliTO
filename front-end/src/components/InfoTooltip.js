@@ -1,8 +1,8 @@
 import React, { QuestionCircleFill } from 'react-bootstrap-icons';
-
-import PropTypes from 'prop-types';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+
+import PropTypes from 'prop-types';
 
 function TriggerExample(props) {
   const testo = props.text;
