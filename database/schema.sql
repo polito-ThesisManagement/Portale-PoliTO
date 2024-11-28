@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS DEGREE (
 
 -- Table for storing Students' Data 
 CREATE TABLE IF NOT EXISTS STUDENTS (
+    -- misalignment regarding the data types used to store STUDENTS(id) and TEACHERS(id)
     id VARCHAR(6) PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE IF NOT EXISTS STUDENTS (
 
 -- Table for storing Teachers' Data
 CREATE TABLE IF NOT EXISTS TEACHERS (
+    -- misalignment regarding the data types used to store STUDENTS(id) and TEACHERS(id)
     id INT PRIMARY KEY, -- provided schema specifies INT(10)
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
