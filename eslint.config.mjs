@@ -1,26 +1,18 @@
 import pluginJs from '@eslint/js';
+import prettierConfig from 'eslint-config-prettier';
 import pluginCypress from 'eslint-plugin-cypress';
 import pluginImport from 'eslint-plugin-import';
+import pluginJest from 'eslint-plugin-jest';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
-import pluginUnusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  pluginJs.configs.recommended, // JS recommended rules
-  pluginReact.configs.flat.recommended, // React recommended rules
   {
-    name: 'Config files',
-    files: ['**/*.config.js', '**/*.config.mjs'],
-    languageOptions: {
-      globals: {
-        module: true,
-        require: true,
-      },
-    },
+    ignores: ['node_modules/**', '**/reports/**', '**/coverage/**', '**/*.config.js', '**/.config.mjs'],
   },
   {
     name: 'Back-end',
@@ -30,6 +22,16 @@ export default [
       sourceType: 'module',
       globals: globals.node,
     },
+    plugins: {
+      js: pluginJs,
+      prettier: pluginPrettier,
+    },
+    rules: {
+      ...pluginJs.configs.recommended.rules,
+      ...pluginPrettier.configs.recommended.rules,
+      ...prettierConfig.rules, // Disable conflicting ESLint formatting rules
+      'prettier/prettier': 'error', // Enforce Prettier as an ESLint rule
+    },
   },
   {
     name: 'Front-end',
@@ -38,42 +40,29 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     plugins: {
-      cypress: pluginCypress,
       import: pluginImport,
+      js: pluginJs,
       'jsx-a11y': pluginJsxA11y,
       prettier: pluginPrettier,
       react: pluginReact,
       'react-hooks': pluginReactHooks,
-      'unused-imports': pluginUnusedImports,
     },
     rules: {
-      //'import/no-unresolved': 'error', // Ensure all imports are resolved
-      'import/named': 'error', // Ensure named imports correspond to named exports
-      'jsx-a11y/alt-text': 'warn',
-      //'jsx-a11y/click-events-have-key-events': 'warn',
-      //'jsx-a11y/label-has-associated-control': 'error',
-      //'jsx-a11y/no-static-element-interactions': 'warn',
-      //'no-console': ['warn', { allow: ['warn', 'error'] }], // Allow warnings and errors, but not other console methods
-      'no-debugger': 'warn',
-      'no-unused-vars': 'off',
-      'react/display-name': 'warn', // Enforce display names for React components
-      //'react/jsx-boolean-value': ['warn', 'never'], // Avoid unnecessary boolean values in JSX props
-      'react/jsx-key': 'error', // Enforce keys for array elements
-      'react/jsx-no-duplicate-props': 'error', // Avoid duplicate props in JSX
-      //'react/jsx-no-useless-fragment': 'warn',      // Prevent useless fragments
-      'react/jsx-pascal-case': 'warn', // Enforce PascalCase for component names
-      'react/jsx-uses-react': 'off',
-      'react/jsx-uses-vars': 'warn', // Ensure JSX variables are marked as used
-      //'react/no-array-index-key': 'warn',           // Discourage using array index as key
-      'react/no-unknown-property': 'warn', // Prevent invalid DOM properties
-      'react/prop-types': 'warn',
-      'react/react-in-jsx-scope': 'off',
-      //'react-hooks/exhaustive-deps': 'warn', // Validates dependencies of hooks
-      //'react-hooks/rules-of-hooks': 'error', // Ensures hooks are used correctly
-      'prettier/prettier': 'error',
-      //"unused-imports/no-unused-imports": "warn", // Warn about unused imports
+      //...pluginImport.configs.recommended.rules, // Import recommended rules
+      ...pluginJs.configs.recommended.rules, // JS recommended rules
+      //...pluginJsxA11y.configs.recommended.rules, // JSX a11y recommended rules
+      ...pluginPrettier.configs.recommended.rules, // Prettier recommended rules
+      ...pluginReact.configs.recommended.rules, // React recommended rules
+      //...pluginReactHooks.configs.recommended.rules, // React hooks recommended rules
+      ...prettierConfig.rules, // Disable conflicting ESLint formatting rules
+      'prettier/prettier': 'error', // Enforce Prettier as an ESLint rule
     },
     settings: {
       react: {
@@ -81,7 +70,7 @@ export default [
       },
       'import/resolver': {
         node: {
-          extensions: ['.js'],
+          extensions: ['.js', '.jsx'],
         },
       },
     },
@@ -90,35 +79,31 @@ export default [
     name: 'Front-end Cypress',
     files: ['front-end/cypress/**/*.js', 'front-end/cypress/**/*.cy.js'],
     languageOptions: {
-      globals: {
-        cy: true,
-        describe: true,
-        beforeEach: true,
-        it: true,
-      },
+      globals: pluginCypress.environments.globals.globals,
     },
     plugins: {
       cypress: pluginCypress,
     },
+    rules: {
+      ...pluginCypress.configs.recommended.rules,
+    },
   },
   {
-    name: 'Front-end tests',
-    files: ['front-end/**/*.test.js'],
+    name: 'Tests',
+    files: ['back-end/**/*.test.js', 'front-end/**/*.test.js'],
     languageOptions: {
-      globals: {
-        expect: true,
-        test: true,
-      },
+      globals: pluginJest.environments.globals.globals,
+    },
+    plugins: {
+      jest: pluginJest,
     },
     rules: {
-      'react/react-in-jsx-scope': 'off',
+      ...pluginJest.configs.recommended.rules,
     },
-  },
-  {
-    name: 'Front-end server',
-    files: ['front-end/server.js'],
-    languageOptions: {
-      globals: globals.node,
+    settings: {
+      jest: {
+        version: 'detect',
+      },
     },
   },
 ];
