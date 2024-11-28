@@ -64,16 +64,16 @@ export default function ThesisProposals({ thesisProposals }) {
   function sortingProposals(proposals) {
     const sortedProposals = [...proposals];
     if (orderBy === 'asc') {
-      if (sortBy === 'creation_date') {
-        sortedProposals.sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date));
-      } else if (sortBy === 'exp_date') {
-        sortedProposals.sort((a, b) => new Date(a.exp_date) - new Date(b.exp_date));
+      if (sortBy === 'creationDate') {
+        sortedProposals.sort((a, b) => new Date(a.creationDate) - new Date(b.creationDate));
+      } else if (sortBy === 'expirationDate') {
+        sortedProposals.sort((a, b) => new Date(a.expirationDate) - new Date(b.expirationDate));
       }
     } else if (orderBy === 'desc') {
-      if (sortBy === 'creation_date') {
-        sortedProposals.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date));
-      } else if (sortBy === 'exp_date') {
-        sortedProposals.sort((a, b) => new Date(b.exp_date) - new Date(a.exp_date));
+      if (sortBy === 'creationDate') {
+        sortedProposals.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+      } else if (sortBy === 'expirationDate') {
+        sortedProposals.sort((a, b) => new Date(b.expirationDate) - new Date(a.expirationDate));
       }
     }
     return sortedProposals;
@@ -84,7 +84,7 @@ export default function ThesisProposals({ thesisProposals }) {
     if (activeIndex === 0) {
       setFilteredProposals(filteredProposals);
     } else {
-      const filtered = filteredProposals.filter(proposal => proposal.cds_type === '2');
+      const filtered = filteredProposals; // Add filter for thesis related to the logged student's degree course
       setFilteredProposals(sortingProposals(filtered));
     }
     setCurrentPage(1);
@@ -100,9 +100,20 @@ export default function ThesisProposals({ thesisProposals }) {
     const filtered = thesisProposals.filter(
       proposal =>
         proposal.topic.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proposal.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        proposal.keywords.some(keyword => keyword.keyword.toLowerCase().includes(searchQuery.toLowerCase())) ||
         proposal.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proposal.advisors.some(advisor => advisor.name.toLowerCase().includes(searchQuery.toLowerCase())),
+        proposal.supervisor.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        proposal.supervisor.last_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        proposal.internalCoSupervisors.some(coSupervisor => {
+          return (
+            coSupervisor.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            coSupervisor.last_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            coSupervisor.first_name
+              .concat(' ', coSupervisor.last_name)
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase())
+          );
+        }),
     );
     setFilteredProposals(sortingProposals(filtered));
     setCurrentPage(1);
@@ -189,8 +200,8 @@ export default function ThesisProposals({ thesisProposals }) {
                       <option value="" disabled={sortBy !== ''}>
                         {t('carriera.proposte_di_tesi.order_by')}
                       </option>
-                      <option value="creation_date">{t('carriera.proposte_di_tesi.created_order')}</option>
-                      <option value="exp_date">{t('carriera.proposte_di_tesi.exp_order')}</option>
+                      <option value="creationDate">{t('carriera.proposte_di_tesi.created_order')}</option>
+                      <option value="expirationDate">{t('carriera.proposte_di_tesi.exp_order')}</option>
                     </Form.Select>
                     {orderBy === 'asc' ? (
                       <SortUp
@@ -252,9 +263,9 @@ export default function ThesisProposals({ thesisProposals }) {
           </section>
           <section className={styles.thesisList}>
             <div className={styles.thesisListInner}>
-              {pageProposals.map((thesis, index) => (
-                <ThesisItem key={index} {...thesis} />
-              ))}
+              {pageProposals.map(thesis => {
+                return <ThesisItem key={thesis.id} {...thesis} />;
+              })}
             </div>
           </section>
           <div className={styles.pagination}>
@@ -317,21 +328,31 @@ export default function ThesisProposals({ thesisProposals }) {
 ThesisProposals.propTypes = {
   thesisProposals: PropTypes.arrayOf(
     PropTypes.shape({
-      ID: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
       topic: PropTypes.string.isRequired,
-      keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
       description: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      required_skills: PropTypes.string.isRequired,
-      additional_notes: PropTypes.string.isRequired,
-      advisors: PropTypes.arrayOf(PropTypes.shape({ matricola: PropTypes.string, name: PropTypes.string })).isRequired,
-      external_advisors: PropTypes.string.isRequired,
-      thesis_types: PropTypes.arrayOf(PropTypes.string).isRequired,
-      where: PropTypes.string.isRequired,
-      foreign: PropTypes.string.isRequired,
-      cds_type: PropTypes.string.isRequired,
-      exp_date: PropTypes.string.isRequired,
-      creation_date: PropTypes.string.isRequired,
+      supervisor: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        first_name: PropTypes.string.isRequired,
+        last_name: PropTypes.string.isRequired,
+      }).isRequired,
+      internalCoSupervisors: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          first_name: PropTypes.string.isRequired,
+          last_name: PropTypes.string.isRequired,
+        }),
+      ).isRequired,
+      creationDate: PropTypes.string.isRequired,
+      expirationDate: PropTypes.string.isRequired,
+      isInternal: PropTypes.bool.isRequired,
+      isAbroad: PropTypes.bool.isRequired,
+      keywords: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          keyword: PropTypes.string.isRequired,
+        }),
+      ),
     }),
-  ).isRequired,
+  ),
 };

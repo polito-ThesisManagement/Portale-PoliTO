@@ -20,24 +20,26 @@ import '../styles/Utilities.css';
 
 moment.locale('it');
 
-function ThesisProposalDetail() {
+function ThesisProposalDetail(props) {
   const { t } = useTranslation();
   const location = useLocation();
   const {
+    id,
     topic,
-    keywords,
     description,
     link,
-    required_skills,
-    additional_notes,
-    advisors,
-    external_advisors,
-    thesis_types,
-    where,
-    foreign,
-    exp_date,
-    creation_date,
-  } = location.state || {};
+    requiredSkills,
+    additionalNotes,
+    supervisor,
+    internalCoSupervisors,
+    externalCoSupervisors,
+    creationDate,
+    expirationDate,
+    isInternal,
+    isAbroad,
+    keywords,
+    types,
+  } = props.thesisProposal;
 
   return (
     <>
@@ -47,9 +49,9 @@ function ThesisProposalDetail() {
         sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
       />
       {/*<WarningBadge content="Attenzione: la proposta di tesi è scaduta" />*/}
-      {creation_date && exp_date && <ExpirationDate creation_date={creation_date} exp_date={exp_date} />}
+      {creationDate && expirationDate && <ExpirationDate creation_date={creationDate} exp_date={expirationDate} />}
       <Container fluid className="custom-container pt-3">
-        {foreign === 'S' && <Abroad />}
+        {isAbroad && <Abroad />}
         {topic && (
           <div className="subsection-title">
             <p>{topic}</p>
@@ -58,25 +60,29 @@ function ThesisProposalDetail() {
         <div className="important-detail">
           {keywords && keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2"></div>}
           {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
-          {required_skills && (
-            <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={required_skills} />
+          {requiredSkills && (
+            <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />
           )}
           {link && <MyBlock title="Link" content={link} />}
-          {thesis_types.length > 0 && (
+          {types.length > 0 && (
             <MyBlock
               title="carriera.proposta_di_tesi.tipo"
-              content={thesis_types.map(type => capitalize(type.toLowerCase())).join(', ')}
+              content={types.map(type => capitalize(type.type.toLowerCase())).join(', ')}
             />
           )}
-          {advisors && advisors.length > 0 && <MainSupervisor name={advisors[0].name} />}
-          {advisors && advisors.length > 1 && (
-            <SecondarySupervisors names={advisors.slice(1).map(advisor => advisor.name)} />
+          <MainSupervisor name={supervisor.first_name + ' ' + supervisor.last_name} />
+          {internalCoSupervisors && internalCoSupervisors.length > 1 && (
+            <SecondarySupervisors
+              names={internalCoSupervisors.map(supervisor => {
+                supervisor.first_name + ' ' + supervisor.last_name;
+              })}
+            />
           )}
-          {external_advisors && (
-            <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={external_advisors} />
+          {externalCoSupervisors && (
+            <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
           )}
-          {where && <Environment where={where} />}
-          {additional_notes && <MyBlock title="carriera.proposta_di_tesi.note" content={additional_notes} />}
+          {isInternal && <Environment is_internal={isInternal} />}
+          {additionalNotes && <MyBlock title="carriera.proposta_di_tesi.note" content={additionalNotes} />}
         </div>
       </Container>
     </>
@@ -162,8 +168,8 @@ function Keywords({ keywords }) {
     <div className="mb-3">
       <div className={styles.tagGroup}>
         {keywords.map((keyword, index) => (
-          <div key={index} className={styles.tag}>
-            <span className="course-detail">{keyword}</span>
+          <div key={keyword.id} className={styles.tag}>
+            <span className="course-detail">{keyword.keyword}</span>
           </div>
         ))}
       </div>
@@ -206,12 +212,12 @@ function Supervisor({ name }) {
   );
 }
 
-function Environment({ where }) {
+function Environment({ is_internal }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.ambiente')}:</span>
-      {where === 'P' ? <Internal /> : <NotInternal />}
+      {is_internal ? <Internal /> : <NotInternal />}
     </div>
   );
 }
@@ -257,6 +263,42 @@ function WarningBadge({ content }) {
   )
 }*/
 
+ThesisProposalDetail.propTypes = {
+  thesisProposal: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    topic: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    link: PropTypes.string,
+    requiredSkills: PropTypes.string,
+    additionalNotes: PropTypes.string,
+    supervisor: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      first_name: PropTypes.string.isRequired,
+      last_name: PropTypes.string.isRequired,
+      role: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      profile_url: PropTypes.string.isRequired,
+      facility_short_name: PropTypes.string.isRequired,
+    }).isRequired,
+    internalCoSupervisors: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        first_name: PropTypes.string.isRequired,
+        last_name: PropTypes.string.isRequired,
+      }),
+    ),
+    externalCoSupervisors: PropTypes.string,
+    creationDate: PropTypes.string.isRequired,
+    expirationDate: PropTypes.string.isRequired,
+    isInternal: PropTypes.bool.isRequired,
+    isAbroad: PropTypes.bool.isRequired,
+    keywords: PropTypes.arrayOf(
+      PropTypes.shape({ id: PropTypes.number.isRequired, keyword: PropTypes.string.isRequired }),
+    ),
+    types: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number.isRequired, type: PropTypes.string.isRequired })),
+  }).isRequired,
+};
+
 ExpirationDate.propTypes = {
   creation_date: PropTypes.string.isRequired,
   exp_date: PropTypes.string.isRequired,
@@ -268,11 +310,11 @@ MyBlock.propTypes = {
 };
 
 Keywords.propTypes = {
-  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+  keywords: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, keyword: PropTypes.string })).isRequired,
 };
 
 Environment.propTypes = {
-  where: PropTypes.string.isRequired,
+  is_internal: PropTypes.bool.isRequired,
 };
 
 MainSupervisor.propTypes = {

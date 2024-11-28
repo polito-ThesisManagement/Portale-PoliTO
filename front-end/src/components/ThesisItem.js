@@ -14,7 +14,6 @@ import '../styles/Utilities.css';
 
 export default function ThesisItem(props) {
   const { t } = useTranslation();
-
   function formatDate(date) {
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString('it-IT', { year: 'numeric', month: 'numeric', day: 'numeric' });
@@ -29,18 +28,18 @@ export default function ThesisItem(props) {
               {props.topic}
               <div className={styles.thesisTypeTagGroup}>
                 <span className={styles.thesisTypeTag}>
-                  {props.where === 'P' ? (
+                  {props.isInternal ? (
                     <FaUniversity className={styles.thesisTypeIcon} />
                   ) : (
                     <HiBuildingOffice2 className={styles.thesisTypeIcon} />
                   )}
                   <span className={styles.thesisTypeText}>
-                    {props.where === 'P'
+                    {props.isInternal
                       ? t('carriera.proposte_di_tesi.internal_thesis')
                       : t('carriera.proposte_di_tesi.external_thesis')}
                   </span>
                 </span>
-                {props.foreign === 'S' && (
+                {props.isAbroad && (
                   <div className={styles.thesisTypeTag}>
                     <FaEarthAmericas className={styles.thesisTypeIcon} />
                     <span className={styles.thesisTypeText}>{t('carriera.proposte_di_tesi.abroad_thesis')}</span>
@@ -51,8 +50,8 @@ export default function ThesisItem(props) {
           </div>
           <div className={styles.tagGroup}>
             {props.keywords.map((keyword, index) => (
-              <span key={index} className={styles.tag}>
-                {keyword}
+              <span key={keyword.id} className={styles.tag}>
+                {keyword.keyword}
               </span>
             ))}
           </div>
@@ -60,11 +59,17 @@ export default function ThesisItem(props) {
         <p className={styles.thesisDescription}>{props.description.slice(0, 350) + '...'}</p>
         <div className={styles.thesisMetaInfo}>
           <div className={styles.professorTagGroup}>
-            {props.advisors.map(advisor => (
-              <div key={advisor.matricola} className={styles.professorTag}>
+            <div key={props.supervisor.id} className={styles.professorTag}>
+              <FaUser className={styles.thesisTypeIcon} />
+              <span key={props.supervisor.id} className={styles.professorName}>
+                {props.supervisor.first_name} {props.supervisor.last_name}
+              </span>
+            </div>
+            {props.internalCoSupervisors.map(coSupervisor => (
+              <div key={coSupervisor.id} className={styles.professorTag}>
                 <FaUser className={styles.thesisTypeIcon} />
-                <span key={advisor.matricola} className={styles.professorName}>
-                  {advisor.name}
+                <span key={coSupervisor.id} className={styles.professorName}>
+                  {coSupervisor.first_name} {coSupervisor.last_name}
                 </span>
               </div>
             ))}
@@ -76,20 +81,20 @@ export default function ThesisItem(props) {
             <div className={styles.thesisTypeTag}>
               <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
               <span className="course-detail">
-                {t('carriera.proposte_di_tesi.created')} {formatDate(props.creation_date)}
+                {t('carriera.proposte_di_tesi.created')} {formatDate(props.creationDate)}
               </span>
             </div>
           </div>
         </footer>
         <div className={styles.creationDate}>
-          <Link to={`${props.ID}`} state={{ ...props }}>
+          <Link to={`${props.id}`}>
             <button className={styles.showMoreButton}>{t('carriera.proposte_di_tesi.show_more')}</button>
           </Link>
           <div>
             <div className={styles.thesisTypeTag}>
               <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
               <span className="course-detail">
-                {t('carriera.proposte_di_tesi.expires')} {formatDate(props.exp_date)}
+                {t('carriera.proposte_di_tesi.expires')} {formatDate(props.expirationDate)}
               </span>
             </div>
           </div>
@@ -100,19 +105,29 @@ export default function ThesisItem(props) {
 }
 
 ThesisItem.propTypes = {
-  ID: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   topic: PropTypes.string.isRequired,
-  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
   description: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  required_skills: PropTypes.string.isRequired,
-  additional_notes: PropTypes.string.isRequired,
-  advisors: PropTypes.arrayOf(PropTypes.shape({ matricola: PropTypes.string, name: PropTypes.string })).isRequired,
-  external_advisors: PropTypes.string.isRequired,
-  thesis_types: PropTypes.arrayOf(PropTypes.string).isRequired,
-  where: PropTypes.string.isRequired,
-  foreign: PropTypes.string.isRequired,
-  cds_type: PropTypes.string.isRequired,
-  exp_date: PropTypes.string.isRequired,
-  creation_date: PropTypes.string.isRequired,
+  supervisor: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
+  }).isRequired,
+  internalCoSupervisors: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      first_name: PropTypes.string.isRequired,
+      last_name: PropTypes.string.isRequired,
+    }),
+  ),
+  creationDate: PropTypes.string.isRequired,
+  expirationDate: PropTypes.string.isRequired,
+  isInternal: PropTypes.bool.isRequired,
+  isAbroad: PropTypes.bool.isRequired,
+  keywords: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      keyword: PropTypes.string.isRequired,
+    }),
+  ),
 };

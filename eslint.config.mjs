@@ -1,12 +1,12 @@
-import globals from 'globals';
+import pluginJs from '@eslint/js';
 import pluginCypress from 'eslint-plugin-cypress';
 import pluginImport from 'eslint-plugin-import';
-import pluginJs from '@eslint/js';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import pluginUnusedImports from 'eslint-plugin-unused-imports';
+import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
