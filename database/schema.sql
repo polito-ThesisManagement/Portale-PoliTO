@@ -47,7 +47,6 @@ CREATE TABLE IF NOT EXISTS TEACHERS (
     email VARCHAR(100) NOT NULL,
     profile_url VARCHAR(100) NOT NULL,
     profile_picture_url VARCHAR(100) DEFAULT NULL,
-    attachment_url VARCHAR(100) DEFAULT NULL,
     facility_short_name VARCHAR(50) NOT NULL
 );
 
@@ -76,7 +75,8 @@ CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS (
     is_internal BOOLEAN NOT NULL DEFAULT 1,
     is_abroad BOOLEAN NOT NULL DEFAULT 0,
     area ENUM("Ingegneria", "Architettura") NOT NULL,
-    level ENUM("1", "2") NOT NULL -- 1 for Bachelor, 2 for Master
+    level ENUM("1", "2") NOT NULL, -- 1 for Bachelor, 2 for Master
+    attachment_url VARCHAR(100) DEFAULT NULL,
 );
 
 -- Table for linking Thesis Proposals with Keywords
