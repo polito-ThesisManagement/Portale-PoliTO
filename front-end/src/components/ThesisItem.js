@@ -49,7 +49,7 @@ export default function ThesisItem(props) {
             </h3>
           </div>
           <div className={styles.tagGroup}>
-            {props.keywords.map((keyword, index) => (
+            {props.keywords.map(keyword => (
               <span key={keyword.id} className={styles.tag}>
                 {keyword.keyword}
               </span>

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaEarthAmericas, FaFileLines, FaUser } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import moment from 'moment';
 import 'moment/locale/it';
@@ -22,9 +22,7 @@ moment.locale('it');
 
 function ThesisProposalDetail(props) {
   const { t } = useTranslation();
-  const location = useLocation();
   const {
-    id,
     topic,
     description,
     link,
@@ -167,7 +165,7 @@ function Keywords({ keywords }) {
   return (
     <div className="mb-3">
       <div className={styles.tagGroup}>
-        {keywords.map((keyword, index) => (
+        {keywords.map(keyword => (
           <div key={keyword.id} className={styles.tag}>
             <span className="course-detail">{keyword.keyword}</span>
           </div>
