@@ -9,39 +9,39 @@
  *------------------------------------------------------------------------------------------------------------------------------------**/
 
 -- Drop database if it already exists
-DROP DATABASE IF EXISTS Polito;
-CREATE DATABASE IF NOT EXISTS Polito;
-USE Polito;
+DROP DATABASE IF EXISTS polito;
+CREATE DATABASE IF NOT EXISTS polito;
+USE polito;
 
 -- Drop tables if they already exist
-DROP TABLE IF EXISTS Thesis_Proposal_Supervisor_Cosupervisor;
-DROP TABLE IF EXISTS Thesis_Proposal_Keyword;
-DROP TABLE IF EXISTS Thesis_Proposal_Degree;
-DROP TABLE IF EXISTS Thesis_Proposal;
-DROP TABLE IF EXISTS Keyword;
-DROP TABLE IF EXISTS Teacher;
-DROP TABLE IF EXISTS Student;
-DROP TABLE IF EXISTS Degree;
+DROP TABLE IF EXISTS thesis_proposal_supervisor_cosupervisor;
+DROP TABLE IF EXISTS thesis_proposal_keyword;
+DROP TABLE IF EXISTS thesis_proposal_degree;
+DROP TABLE IF EXISTS thesis_proposal;
+DROP TABLE IF EXISTS keyword;
+DROP TABLE IF EXISTS teacher;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS degree;
 
 -- Table for storing degrees' data
-CREATE TABLE IF NOT EXISTS Degree (
+CREATE TABLE IF NOT EXISTS degree (
     id VARCHAR(5) PRIMARY KEY,
     description VARCHAR(100) NOT NULL
 );
 
 -- Table for storing students' data 
-CREATE TABLE IF NOT EXISTS Student (
+CREATE TABLE IF NOT EXISTS student (
     -- misalignment regarding the data types used to store STUDENTS(id) and TEACHERS(id)
     id VARCHAR(6) PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     profile_picture_url VARCHAR(100) DEFAULT NULL,
     degree_id VARCHAR(5) NOT NULL,
-    FOREIGN KEY (degree_id) REFERENCES Degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
+    FOREIGN KEY (degree_id) REFERENCES degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
 );
 
 -- Table for storing teachers' data
-CREATE TABLE IF NOT EXISTS Teacher (
+CREATE TABLE IF NOT EXISTS teacher (
     -- misalignment regarding the data types used to store STUDENTS(id) and TEACHERS(id)
     id INT PRIMARY KEY, -- provided schema specifies INT(10)
     first_name VARCHAR(100) NOT NULL,
@@ -54,14 +54,14 @@ CREATE TABLE IF NOT EXISTS Teacher (
 );
 
 -- Table for storing keywords
-CREATE TABLE IF NOT EXISTS Keyword (
+CREATE TABLE IF NOT EXISTS keyword (
     id INT AUTO_INCREMENT PRIMARY KEY,
     keyword VARCHAR(50) DEFAULT NULL,
     keyword_en VARCHAR(50) DEFAULT NULL
 );
 
 -- Table for storing thesis proposals' data
-CREATE TABLE IF NOT EXISTS Thesis_Proposal (
+CREATE TABLE IF NOT EXISTS thesis_proposal (
     id INT AUTO_INCREMENT PRIMARY KEY,
     topic VARCHAR(255) NOT NULL,
     topic_en VARCHAR(255) NOT NULL,
@@ -83,31 +83,31 @@ CREATE TABLE IF NOT EXISTS Thesis_Proposal (
 );
 
 -- Table for linking thesis proposals with degrees
-CREATE TABLE IF NOT EXISTS Thesis_Proposal_Degree (
+CREATE TABLE IF NOT EXISTS thesis_proposal_degree (
     thesis_proposal_id INT NOT NULL,
     degree_id VARCHAR(5) NOT NULL,
     PRIMARY KEY (thesis_proposal_id, degree_id),
-    FOREIGN KEY (thesis_proposal_id) REFERENCES Thesis_Proposal(id) ON DELETE CASCADE,
-    FOREIGN KEY (degree_id) REFERENCES Degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposal(id) ON DELETE CASCADE,
+    FOREIGN KEY (degree_id) REFERENCES degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
 );
 
 -- Table for linking thesis proposals with keywords
-CREATE TABLE IF NOT EXISTS Thesis_Proposal_Keyword (
+CREATE TABLE IF NOT EXISTS thesis_proposal_keyword (
     thesis_proposal_id INT NOT NULL,
     keyword_id INT NOT NULL,
     PRIMARY KEY (thesis_proposal_id, keyword_id),
-    FOREIGN KEY (thesis_proposal_id) REFERENCES Thesis_Proposal(id) ON DELETE CASCADE,
-    FOREIGN KEY (keyword_id) REFERENCES Keyword(id) ON DELETE CASCADE
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposal(id) ON DELETE CASCADE,
+    FOREIGN KEY (keyword_id) REFERENCES keyword(id) ON DELETE CASCADE
 );
 
 -- Table for linking thesis proposals with supervisors and cosupervisors
-CREATE TABLE IF NOT EXISTS Thesis_Proposal_Supervisor_Cosupervisor (
+CREATE TABLE IF NOT EXISTS thesis_proposal_supervisor_cosupervisor (
     thesis_proposal_id INT NOT NULL,
     teacher_id INT NOT NULL, -- provided schema specifies INT(10)
     is_supervisor BOOLEAN NOT NULL, -- if true then supervisor, else cosupervisor
     PRIMARY KEY (thesis_proposal_id, teacher_id),
-    FOREIGN KEY (thesis_proposal_id) REFERENCES Thesis_Proposal(id) ON DELETE CASCADE,
-    FOREIGN KEY (teacher_id) REFERENCES Teacher(id) ON DELETE RESTRICT -- RESTRICT policy because why should you delete a teacher?
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposal(id) ON DELETE CASCADE,
+    FOREIGN KEY (teacher_id) REFERENCES teacher(id) ON DELETE RESTRICT -- RESTRICT policy because why should you delete a teacher?
 );
 
 /**---------------------------------------------------------------------
