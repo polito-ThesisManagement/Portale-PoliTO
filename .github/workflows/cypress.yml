@@ -22,7 +22,10 @@ jobs:
           start: npm start
           working-directory: ./front-end # Working directory for Cypress
           wait-on: 'http://localhost:3000' # Waits for above
-          parallel: true # Runs test in parallel using settings above
+          # Records to Cypress Cloud
+          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
+          # record: true
+          # parallel: true # Runs test in parallel using settings above
         env:
           # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
