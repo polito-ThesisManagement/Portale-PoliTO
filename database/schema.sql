@@ -15,7 +15,6 @@ USE POLITO;
 
 -- Drop tables if they already exist
 DROP TABLE IF EXISTS THESIS_PROPOSALS_SUPERVISORS_COSUPERVISORS;
-DROP TABLE IF EXISTS THESIS_PROPOSALS_ATTACHMENTS;
 DROP TABLE IF EXISTS THESIS_PROPOSALS_KEYWORDS;
 DROP TABLE IF EXISTS THESIS_PROPOSALS;
 DROP TABLE IF EXISTS KEYWORDS;
@@ -48,6 +47,7 @@ CREATE TABLE IF NOT EXISTS TEACHERS (
     email VARCHAR(100) NOT NULL,
     profile_url VARCHAR(100) NOT NULL,
     profile_picture_url VARCHAR(100) DEFAULT NULL,
+    attachment_url VARCHAR(100) DEFAULT NULL,
     facility_short_name VARCHAR(50) NOT NULL
 );
 
@@ -77,13 +77,6 @@ CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS (
     is_abroad BOOLEAN NOT NULL DEFAULT 0,
     area ENUM("Ingegneria", "Architettura") NOT NULL,
     level ENUM("1", "2") NOT NULL -- 1 for Bachelor, 2 for Master
-);
-
--- Table for storing Thesis Proposals' Attachments
-CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS_ATTACHMENTS (
-    thesis_proposal_id INT PRIMARY KEY,
-    link VARCHAR(255) NOT NULL,
-    FOREIGN KEY (thesis_proposal_id) REFERENCES THESIS_PROPOSALS(id) ON DELETE CASCADE
 );
 
 -- Table for linking Thesis Proposals with Keywords
