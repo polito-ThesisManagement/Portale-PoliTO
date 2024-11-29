@@ -2436,16 +2436,6 @@ VALUES
         'https://www.det.polito.it/personale/scheda/(matricola)/016873',
         'https://www.swas.polito.it/_library/image_pub.asp?matricola=016873',
         'DAUIN'
-    ),
-    (
-        38485,
-        'Riccardo',
-        'Coppola',
-        'Docente',
-        'riccardo.coppola@polito.it',
-        'https://www.dauin.polito.it/personale/scheda/(matricola)/038485',
-        NULL,
-        'DAUIN'
     );
 
 -- ------------------------------------------------------------
