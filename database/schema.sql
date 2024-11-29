@@ -63,6 +63,8 @@ CREATE TABLE IF NOT EXISTS keyword (
 -- Table for storing thesis proposals' data
 CREATE TABLE IF NOT EXISTS thesis_proposal (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(100) DEFAULT NULL,
+    type_en VARCHAR(100) DEFAULT NULL,
     topic VARCHAR(255) NOT NULL,
     topic_en VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
