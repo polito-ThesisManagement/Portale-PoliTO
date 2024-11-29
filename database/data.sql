@@ -235,7 +235,6 @@ VALUES
 -- ------------------------------------------------------------
 -- ↓ teacher table ↓
 -- ------------------------------------------------------------
-
 INSERT INTO
     teacher (
         id,
@@ -2417,89 +2416,114 @@ VALUES
         'https://www.det.polito.it/personale/scheda/(matricola)/098620',
         NULL,
         'DET'
+    ),
+    (
+        3019,
+        'Marco',
+        'Torchiano',
+        'Docente',
+        'marco.torchiano@polito.it',
+        'https://www.det.polito.it/personale/scheda/(matricola)/003019',
+        'https://www.swas.polito.it/_library/image_pub.asp?matricola=003019',
+        'DAUIN'
+    ),
+    (
+        16873,
+        'Antonio',
+        'Vetrò',
+        'Docente',
+        'antonio.vetro@polito.it',
+        'https://www.det.polito.it/personale/scheda/(matricola)/016873',
+        'https://www.swas.polito.it/_library/image_pub.asp?matricola=016873',
+        'DAUIN'
+    ),
+    (
+        38485,
+        'Riccardo',
+        'Coppola',
+        'Docente',
+        'riccardo.coppola@polito.it',
+        'https://www.dauin.polito.it/personale/scheda/(matricola)/038485',
+        NULL,
+        'DAUIN'
     );
 
 -- ------------------------------------------------------------
 -- ↓ keyword table ↓
 -- ------------------------------------------------------------
-/*
- INSERT INTO
- keyword (id, keyword, keyword_en)
- VALUES
- (0, "", "");
- 
- -- ------------------------------------------------------------
- -- ↓ thesis_proposal table ↓
- -- ------------------------------------------------------------
- 
- INSERT INTO
- thesis_proposal (
- id,
- topic,
- topic_en,
- description,
- description_en,
- link,
- required_skills,
- required_skills_en,
- additional_notes,
- additional_notes_en,
- external_cosupervisors,
- creation_date,
- expiration_date,
- is_internal,
- is_abroad,
- area,
- level,
- attachment_url
- )
- VALUES
- (
- 0,
- '',
- '',
- '',
- '',
- NULL,
- NULL,
- NULL,
- NULL,
- NULL,
- NULL,
- CURRENT_TIMESTAMP,
- CURRENT_TIMESTAMP,
- 1,
- 0,
- 'Ingegneria',
- '1',
- NULL
- );
- 
- -- ------------------------------------------------------------
- -- ↓ thesis_proposal_degree table ↓
- -- ------------------------------------------------------------
- 
- INSERT INTO
- thesis_proposal_degree (thesis_proposal_id, degree_id)
- VALUES
- (0, "");
- 
- -- ------------------------------------------------------------
- -- ↓ thesis_proposal_keyword table ↓
- -- ------------------------------------------------------------
- 
- INSERT INTO
- thesis_proposal_keyword (thesis_proposal_id, keyword_id)
- VALUES
- (0, 0);
- 
- -- ------------------------------------------------------------
- -- ↓ thesis_proposal_supervisor_cosupervisor table ↓
- -- ------------------------------------------------------------
- 
- INSERT INTO
- thesis_proposal_supervisor_cosupervisor (thesis_proposal_id, teacher_id, is_supervisor)
- VALUES
- (0, 0, 1);
- 
- */
+INSERT INTO
+    keyword (id, keyword, keyword_en)
+VALUES
+    -- ------------------------------------------------------------
+    -- ↓ thesis_proposal table ↓
+    -- ------------------------------------------------------------
+INSERT INTO
+    thesis_proposal (
+        id,
+        type,
+        type_en,
+        topic,
+        topic_en,
+        description,
+        description_en,
+        link,
+        required_skills,
+        required_skills_en,
+        additional_notes,
+        additional_notes_en,
+        external_cosupervisors,
+        creation_date,
+        expiration_date,
+        is_internal,
+        is_abroad,
+        area,
+        level,
+        attachment_url
+    )
+VALUES
+    (
+        13169,
+        "Ricerca",
+        "Research",
+        "Studio esplorativo delle soluzioni AI-based per la generazione del codice",
+        "An exploration of the solutions for AI-based code generation",
+        "La tesi comporta una completa esplorazione delle soluzioni attuali nel dominio. L'obiettivo è valutare le metodologie esistenti, le tecnologie e i framework rilevanti per il contesto di ricerca. Questa analisi preliminare sarà condotta in modo sistematico applicando le linee guida di Kitchenham per la conduzione di Revisioni Bibliografiche Sistematiche nel campo della Ricerca in Ingegneria del Software. La revisione bibliografica sistematica terrà conto anche delle fonti di letteratura grigia (cioè, fonti non sottoposte a revisione tra pari disponibili su varie fonti internet) per far fronte alla grande novità del campo della ricerca sull'IA generativa. La valutazione sistematica dello stato dell'arte sarà integrata con la conduzione di interviste aperte e strutturate con professionisti e sviluppatori per comprendere le loro principali esigenze e pratiche più comuni.",
+        "The thesis involves a comprehensive exploration of current solutions in the domain. The objective is to evaluate existing methodologies, technologies, and frameworks relevant to the research context. This preliminary analysis will be conducted in a systematic way by applying Kitchenham's guidelines for the conduction of Systematic Literature Reviews in the Software Engineering research field. The systematic literature review will also consider grey-literature sources (i.e., non-peer reviewed sources available on various internet sources) to cope with the high novelty of the generative AI research field. The systematic evaluation of the state of the art will be complemented with the conduction of open and structured interviews with practitioners and developers to understand their main needs and most common practices.",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        "2023-12-07",
+        "2024-12-07",
+        1,
+        0,
+        'Ingegneria',
+        '2',
+        NULL
+    );
+
+-- ------------------------------------------------------------
+-- ↓ thesis_proposal_degree table ↓
+-- ------------------------------------------------------------
+INSERT INTO
+    thesis_proposal_degree (thesis_proposal_id, degree_id)
+VALUES
+    (13169, "37-18");
+
+-- ------------------------------------------------------------
+-- ↓ thesis_proposal_keyword table ↓
+-- ------------------------------------------------------------
+INSERT INTO
+    thesis_proposal_keyword (thesis_proposal_id, keyword_id)
+VALUES
+    ();
+
+-- ------------------------------------------------------------
+-- ↓ thesis_proposal_supervisor_cosupervisor table ↓
+-- ------------------------------------------------------------
+INSERT INTO
+    thesis_proposal_supervisor_cosupervisor (thesis_proposal_id, teacher_id, is_supervisor)
+VALUES
+    (13169, 38485, 1);
