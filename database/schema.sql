@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS degree;
 -- Table for storing degrees' data
 CREATE TABLE IF NOT EXISTS degree (
     id VARCHAR(5) PRIMARY KEY,
-    description VARCHAR(100) NOT NULL
+    description VARCHAR(255) NOT NULL
 );
 
 -- Table for storing students' data 
