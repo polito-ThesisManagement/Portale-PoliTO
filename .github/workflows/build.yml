@@ -6,15 +6,48 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
+  build:
     name: SonarQube Cloud
     runs-on: ubuntu-latest
+    env:
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: polito
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
     steps:
-      - uses: actions/checkout@v4
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
+      # Step 2: Install dependencies
+      - name: Install dependencies
+        run: npm install
+        working-directory: back-end
+
+      # Step 3: Start MySQL service
+      - name: Start MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e "CREATE DATABASE IF NOT EXISTS ${{ env.DB_NAME }};" -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+
+      # Step 4: Run schema and data scripts
+      - name: Execute schema.sql and data.sql
+        run: |
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} ${{ env.DB_NAME }} < ./database/schema.sql || exit 1
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} ${{ env.DB_NAME }} < ./database/data.sql || exit 1
+
+      # Step 5: Run tests
+      - name: Test and coverage
+        run: npm run test
+        working-directory: back-end
+        continue-on-error: true
+
+      # Step 6: Run SonarQube Cloud Scan
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

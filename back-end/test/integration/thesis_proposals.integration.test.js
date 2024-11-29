@@ -8,14 +8,13 @@ const request = require('supertest');
 let server;
 
 beforeAll(async () => {
-  server = app.listen(4000, () => {
-    console.log('Test server running on port 4000');
+  server = app.listen(0, () => {
+    console.log(`Test server running on port ${server.address().port}`);
   });
 });
 
 afterAll(async () => {
   await server.close(() => {
-    console.log('Test server closed');
     sequelize.close();
   });
 });

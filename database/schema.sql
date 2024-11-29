@@ -8,31 +8,31 @@
                         For that reason, we have removed the display width from the INT data type also in the provided original schema.
  *------------------------------------------------------------------------------------------------------------------------------------**/
 
-DROP DATABASE IF EXISTS POLITO;
-CREATE DATABASE IF NOT EXISTS POLITO;
-USE POLITO;
+DROP DATABASE IF EXISTS polito;
+CREATE DATABASE IF NOT EXISTS polito;
+USE polito;
 
 -- Drop tables if they already exist
-DROP TABLE IF EXISTS THESIS_PROPOSALS_SUPERVISORS_COSUPERVISORS;
-DROP TABLE IF EXISTS THESIS_PROPOSALS_TYPES;
-DROP TABLE IF EXISTS THESIS_PROPOSALS_KEYWORDS;
-DROP TABLE IF EXISTS THESIS_PROPOSALS_ATTACHMENTS;
-DROP TABLE IF EXISTS THESIS_PROPOSALS;
-DROP TABLE IF EXISTS TYPES;
-DROP TABLE IF EXISTS KEYWORDS;
-DROP TABLE IF EXISTS TEACHERS;
-DROP TABLE IF EXISTS STUDENTS;
+DROP TABLE IF EXISTS thesis_proposals_supervisors_cosupervisors;
+DROP TABLE IF EXISTS thesis_proposals_types;
+DROP TABLE IF EXISTS thesis_proposals_keywords;
+DROP TABLE IF EXISTS thesis_proposals_attachments;
+DROP TABLE IF EXISTS thesis_proposals;
+DROP TABLE IF EXISTS types;
+DROP TABLE IF EXISTS keywords;
+DROP TABLE IF EXISTS teachers;
+DROP TABLE IF EXISTS students;
 
 -- Table for storing Students' Data 
-CREATE TABLE IF NOT EXISTS STUDENTS (
+CREATE TABLE IF NOT EXISTS students (
     id VARCHAR(6) PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL
 );
 
 -- Table for storing Teachers' Data
-CREATE TABLE IF NOT EXISTS TEACHERS (
-    id INT PRIMARY KEY, -- INT? -- was INT(10)
+CREATE TABLE IF NOT EXISTS teachers (
+    id INT PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     role VARCHAR(100) NOT NULL,
@@ -42,21 +42,21 @@ CREATE TABLE IF NOT EXISTS TEACHERS (
 );
 
 -- Table for storing Keywords
-CREATE TABLE IF NOT EXISTS KEYWORDS (
+CREATE TABLE IF NOT EXISTS keywords (
     id INT AUTO_INCREMENT PRIMARY KEY,
     keyword VARCHAR(50) DEFAULT NULL,
     keyword_en VARCHAR(50) DEFAULT NULL
 );
 
 -- Table for storing Thesis types
-CREATE TABLE IF NOT EXISTS TYPES (
+CREATE TABLE IF NOT EXISTS types (
     id INT AUTO_INCREMENT PRIMARY KEY,
     type VARCHAR(50) DEFAULT NULL,
     type_en VARCHAR(50) DEFAULT NULL
 );
 
 -- Table for storing Thesis Proposals' Data
-CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS (
+CREATE TABLE IF NOT EXISTS thesis_proposals (
     id INT AUTO_INCREMENT PRIMARY KEY,
     topic VARCHAR(255) NOT NULL,
     topic_en VARCHAR(255) NOT NULL,
@@ -75,38 +75,38 @@ CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS (
 );
 
 -- Table for storing Thesis Proposals' Attachments
-CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS_ATTACHMENTS (
+CREATE TABLE IF NOT EXISTS thesis_proposals_attachments (
     thesis_proposal_id INT PRIMARY KEY,
     link VARCHAR(255) NOT NULL,
-    FOREIGN KEY (thesis_proposal_id) REFERENCES THESIS_PROPOSALS(id) ON DELETE CASCADE
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposals(id) ON DELETE CASCADE
 );
 
 -- Table for linking Thesis Proposals with Keywords
-CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS_KEYWORDS (
+CREATE TABLE IF NOT EXISTS thesis_proposals_keywords (
     thesis_proposal_id INT NOT NULL,
     keyword_id INT NOT NULL,
     PRIMARY KEY (thesis_proposal_id, keyword_id),
-    FOREIGN KEY (thesis_proposal_id) REFERENCES THESIS_PROPOSALS(id) ON DELETE CASCADE,
-    FOREIGN KEY (keyword_id) REFERENCES KEYWORDS(id) ON DELETE CASCADE
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposals(id) ON DELETE CASCADE,
+    FOREIGN KEY (keyword_id) REFERENCES keywords(id) ON DELETE CASCADE
 );
 
 -- Table for linking Thesis Proposals with Types
-CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS_TYPES (
+CREATE TABLE IF NOT EXISTS thesis_proposals_types (
     thesis_proposal_id INT NOT NULL,
     type_id INT NOT NULL,
     PRIMARY KEY (thesis_proposal_id, type_id),
-    FOREIGN KEY (thesis_proposal_id) REFERENCES THESIS_PROPOSALS(id) ON DELETE CASCADE,
-    FOREIGN KEY (type_id) REFERENCES TYPES(id) ON DELETE CASCADE
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposals(id) ON DELETE CASCADE,
+    FOREIGN KEY (type_id) REFERENCES types(id) ON DELETE CASCADE
 );
 
 -- Table for linking Thesis Proposals with Supervisors and Cosupervisors
-CREATE TABLE IF NOT EXISTS THESIS_PROPOSALS_SUPERVISORS_COSUPERVISORS (
+CREATE TABLE IF NOT EXISTS thesis_proposals_supervisors_cosupervisors (
     thesis_proposal_id INT NOT NULL,
-    teacher_id INT NOT NULL, -- was INT(10)
-    is_supervisor BOOLEAN NOT NULL, -- if true then supervisor, else cosupervisor
+    teacher_id INT NOT NULL,
+    is_supervisor BOOLEAN NOT NULL,
     PRIMARY KEY (thesis_proposal_id, teacher_id),
-    FOREIGN KEY (thesis_proposal_id) REFERENCES THESIS_PROPOSALS(id) ON DELETE CASCADE,
-    FOREIGN KEY (teacher_id) REFERENCES TEACHERS(id) ON DELETE RESTRICT -- are you deleting a teacher?
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposals(id) ON DELETE CASCADE,
+    FOREIGN KEY (teacher_id) REFERENCES teachers(id) ON DELETE RESTRICT
 );
 
 /**---------------------------------------------------------------------
