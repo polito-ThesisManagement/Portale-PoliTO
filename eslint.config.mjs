@@ -12,7 +12,14 @@ import globals from 'globals';
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ['node_modules/**', '**/reports/**', '**/coverage/**', '**/*.config.js', '**/.config.mjs'],
+    ignores: [
+      'node_modules/**',
+      '**/reports/**',
+      '**/coverage/**',
+      '**/*.config.js',
+      '**/.config.mjs',
+      '**/config-overrides.js',
+    ],
   },
   {
     name: 'Back-end',
