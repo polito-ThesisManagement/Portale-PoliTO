@@ -22,8 +22,8 @@ jobs:
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-      # Step 2: Install dependencies
-      - name: Install dependencies
+      # Step 2: Install back-end dependencies
+      - name: Install back-end dependencies
         run: npm install
         working-directory: back-end
 
@@ -39,13 +39,24 @@ jobs:
           mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} ${{ env.DB_NAME }} < ./database/schema.sql || exit 1
           mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} ${{ env.DB_NAME }} < ./database/data.sql || exit 1
 
-      # Step 5: Run tests
+      # Step 5: Run back-end tests
       - name: Test and coverage
-        run: npm run test
+        run: npm test
         working-directory: back-end
         continue-on-error: true
 
-      # Step 6: Run SonarQube Cloud Scan
+      # Step 6: Install front-end dependencies
+      - name: Install front-end dependencies
+        run: npm install
+        working-directory: front-end
+
+      # Step 7: Run front-end tests
+      - name: Test front-end
+        run: npm test
+        working-directory: front-end
+        continue-on-error: true
+
+      # Step 8: Run SonarQube Cloud Scan
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
