@@ -1,32 +1,75 @@
 import pluginJs from '@eslint/js';
-import cypress from 'eslint-plugin-cypress';
+import prettierConfig from 'eslint-config-prettier';
+import pluginCypress from 'eslint-plugin-cypress';
 import pluginImport from 'eslint-plugin-import';
+import pluginJest from 'eslint-plugin-jest';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginPrettier from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
+import pluginReactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    files: ['**/*.{js,mjs,cjs,jsx}'],
+    ignores: [
+      'node_modules/**',
+      '**/reports/**',
+      '**/coverage/**',
+      '**/*.config.js',
+      '**/.config.mjs',
+      '**/config-overrides.js',
+    ],
+  },
+  {
+    name: 'Back-end',
+    files: ['back-end/**/*.js'],
     languageOptions: {
-      ecmaVersion: 12,
+      ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: globals.browser,
+      globals: globals.node,
     },
     plugins: {
-      react: pluginReact,
-      'jsx-a11y': pluginJsxA11y,
-      import: pluginImport,
+      js: pluginJs,
       prettier: pluginPrettier,
-      cypress,
     },
     rules: {
-      'react/prop-types': 'off',
-      'no-unused-vars': 'warn',
-      'react/react-in-jsx-scope': 'off',
-      'prettier/prettier': 'error',
+      ...pluginJs.configs.recommended.rules,
+      ...pluginPrettier.configs.recommended.rules,
+      ...prettierConfig.rules, // Disable conflicting ESLint formatting rules
+      'prettier/prettier': 'error', // Enforce Prettier as an ESLint rule
+    },
+  },
+  {
+    name: 'Front-end',
+    files: ['front-end/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      import: pluginImport,
+      js: pluginJs,
+      'jsx-a11y': pluginJsxA11y,
+      prettier: pluginPrettier,
+      react: pluginReact,
+      'react-hooks': pluginReactHooks,
+    },
+    rules: {
+      //...pluginImport.configs.recommended.rules, // Import recommended rules
+      ...pluginJs.configs.recommended.rules, // JS recommended rules
+      //...pluginJsxA11y.configs.recommended.rules, // JSX a11y recommended rules
+      ...pluginPrettier.configs.recommended.rules, // Prettier recommended rules
+      ...pluginReact.configs.recommended.rules, // React recommended rules
+      //...pluginReactHooks.configs.recommended.rules, // React hooks recommended rules
+      ...prettierConfig.rules, // Disable conflicting ESLint formatting rules
+      'prettier/prettier': 'error', // Enforce Prettier as an ESLint rule
     },
     settings: {
       react: {
@@ -40,57 +83,34 @@ export default [
     },
   },
   {
-    files: ['cypress/**/*.js'],
+    name: 'Front-end Cypress',
+    files: ['front-end/cypress/**/*.js', 'front-end/cypress/**/*.cy.js'],
     languageOptions: {
-      globals: {
-        browser: true,
-        node: true,
-        es2021: true,
-        Cypress: true,
-        cy: true,
-        describe: true,
-        beforeEach: true,
-        it: true,
-      },
+      globals: pluginCypress.environments.globals.globals,
     },
     plugins: {
-      cypress,
+      cypress: pluginCypress,
     },
     rules: {
-      'no-unused-expressions': 'off',
+      ...pluginCypress.configs.recommended.rules,
     },
   },
   {
-    files: ['**/*.test.js'],
+    name: 'Tests',
+    files: ['back-end/**/*.test.js', 'front-end/**/*.test.js'],
     languageOptions: {
-      globals: {
-        describe: true,
-        it: true,
-        expect: true,
-        jest: true,
-        test: true,
-        React: true,
-      },
+      globals: pluginJest.environments.globals.globals,
+    },
+    plugins: {
+      jest: pluginJest,
     },
     rules: {
-      'no-unused-expressions': 'off',
-      'no-undef': 'off',
-      'react/react-in-jsx-scope': 'off',
+      ...pluginJest.configs.recommended.rules,
     },
-  },
-  {
-    files: ['**/*.config.js', 'server.js'],
-    languageOptions: {
-      globals: {
-        module: true,
-        require: true,
-        console: true,
+    settings: {
+      jest: {
+        version: 'detect',
       },
     },
-    rules: {
-      'no-undef': 'off',
-    },
   },
-  pluginJs.configs.recommended,
-  pluginReact.configs.flat.recommended,
 ];

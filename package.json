@@ -1,81 +1,39 @@
 {
-  "name": "portale-poli",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "axios": "^1.7.7",
-    "bootstrap": "^5.3.3",
-    "chart.js": "^4.4.0",
-    "cors": "^2.8.5",
-    "eslint-plugin-import": "^2.31.0",
-    "express": "^4.21.1",
-    "i18next": "^23.16.4",
-    "i18next-browser-languagedetector": "^8.0.0",
-    "i18next-http-backend": "^2.6.2",
-    "moment": "^2.30.1",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-big-calendar": "^1.8.5",
-    "react-bootstrap": "^2.9.0",
-    "react-bootstrap-icons": "^1.10.3",
-    "react-chartjs-2": "^5.2.0",
-    "react-dom": "^18.2.0",
-    "react-flagkit": "^2.0.4",
-    "react-i18next": "^15.1.0",
-    "react-icons": "^4.11.0",
-    "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write .",
-    "lint": "eslint .",
-    "prepare": "husky"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@eslint/js": "^9.14.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "cypress": "^13.15.2",
-    "eslint": "^9.14.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-cypress": "^4.1.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.37.2",
-    "globals": "^15.12.0",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.jsx": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  }
+    "name": "portale-poli",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "format": "prettier --write .",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "prepare": "husky"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^19.6.0",
+        "@commitlint/config-conventional": "^19.6.0",
+        "@eslint/js": "^9.14.0",
+        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+        "eslint": "^9.14.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-cypress": "^4.1.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-jest": "^28.9.0",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-react": "^7.37.2",
+        "eslint-plugin-react-hooks": "^5.0.0",
+        "globals": "^15.12.0",
+        "husky": "^9.1.6",
+        "lint-staged": "^15.2.10",
+        "prettier": "^3.3.3"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix .",
+            "prettier --write ."
+        ],
+        "*.{json,md,css,scss,html}": [
+            "prettier --write ."
+        ]
+    }
 }

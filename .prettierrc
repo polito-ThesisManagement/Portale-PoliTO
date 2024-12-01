@@ -6,16 +6,7 @@
   "bracketSpacing": true,
   "endOfLine": "auto",
   "semi": true,
-  "importOrder": [
-    "^react$",
-    "^react-dom$",
-    "^react-router-dom$",
-    "^react-bootstrap$",
-    "^react-bootstrap-icons$",
-    "^react-icons",
-    "^@?\\w",
-    "^[./]"
-  ],
+  "importOrder": ["^react$", "^react-(.*)$", "^@?\\w", "^@/(.*)", "^[../]", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "plugins": ["@trivago/prettier-plugin-sort-imports"]
