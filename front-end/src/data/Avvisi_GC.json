@@ -7,7 +7,7 @@
         "course" : "Informatica I",
         "sender": "Giuseppe Verdi",
         "title": "Lezione annullata",
-        "body": "La lezione di oggi è stata annullata."
+        "body": "lezione_cancellata_descrizione"
     },
     {
         "id" : 1,
@@ -15,6 +15,6 @@
         "course" : "Chimica",
         "sender": "Giulia Ferraris",
         "title": "Anticipo fine lezione",
-        "body": "La lezione di oggi terminerà con mezz'ora d'anticipo."
+        "body": "anticipo_fine_lezione_descrizione"
     }
 ]

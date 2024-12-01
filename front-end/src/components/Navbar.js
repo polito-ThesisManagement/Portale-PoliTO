@@ -111,7 +111,7 @@ export default function PoliNavbar() {
             <div className="medium-weight" style={{ fontSize: 'var(--font-size-sm)' }}>
               ({notifica.sender})
             </div>
-            <span style={{ fontSize: 'var(--font-size-md)' }}>{notifica.body}</span>
+            <span style={{ fontSize: 'var(--font-size-md)' }}>{t('navbar.' + notifica.body)}</span>
           </div>
         ))}
       </Popover.Body>
