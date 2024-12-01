@@ -165,7 +165,7 @@ export default function ThesisProposals({ thesisProposals }) {
           <section className={styles.card}>
             <div className={styles.cardBody}>
               <div className={styles.filterRow}>
-                <label className={styles.segmentedControl}>
+                <label className={styles.segmentedControl} aria-label="Toggle thesis proposals">
                   <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
                   <span className={styles.slider}>
                     <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>

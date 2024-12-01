@@ -97,6 +97,11 @@ export default function PoliNavbar() {
           <div
             key={notifica.id}
             onClick={e => handleNotificationClick(e, notifica)}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') handleNotificationClick(e, notifica);
+            }}
+            role="button"
+            tabIndex={0}
             style={{ borderRadius: '6px' }}
             className="click-notifica mb-2 py-1 px-2"
           >

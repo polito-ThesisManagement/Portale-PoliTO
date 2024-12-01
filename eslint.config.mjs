@@ -62,14 +62,15 @@ export default [
       'react-hooks': pluginReactHooks,
     },
     rules: {
-      //...pluginImport.configs.recommended.rules, // Import recommended rules
+      ...pluginImport.configs.recommended.rules, // Import recommended rules
       ...pluginJs.configs.recommended.rules, // JS recommended rules
-      //...pluginJsxA11y.configs.recommended.rules, // JSX a11y recommended rules
+      ...pluginJsxA11y.configs.recommended.rules, // JSX a11y recommended rules
       ...pluginPrettier.configs.recommended.rules, // Prettier recommended rules
       ...pluginReact.configs.recommended.rules, // React recommended rules
-      //...pluginReactHooks.configs.recommended.rules, // React hooks recommended rules
+      ...pluginReactHooks.configs.recommended.rules, // React hooks recommended rules
       ...prettierConfig.rules, // Disable conflicting ESLint formatting rules
       'prettier/prettier': 'error', // Enforce Prettier as an ESLint rule
+      'react-hooks/exhaustive-deps': 'off',
     },
     settings: {
       react: {
