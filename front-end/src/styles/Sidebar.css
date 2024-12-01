@@ -54,6 +54,7 @@
   margin-right: 8px;
   display: flex;
 }
+
 .custom-sidebar .nav-link:hover {
   background-color: var(--navy);
   color: var(--white);
