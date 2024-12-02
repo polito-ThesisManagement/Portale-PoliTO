@@ -41,6 +41,7 @@
   .main-space.reduced {
     margin-left: 12px;
   }
+
   .custom-content.reduced {
     border-top-left-radius: 0px;
   }
@@ -73,6 +74,7 @@ body {
   padding: 8px;
 }
 
+/* unused */
 .subsection-icon {
   margin-right: 10px;
   position: relative;
@@ -89,51 +91,6 @@ body {
   padding-bottom: 8px;
 }
 
-.summary {
-  border-color: var(--background);
-  background-color: var(--background);
-  color: var(--text);
-  border-radius: 12px;
-  font-family: var(--font-primary);
-  font-size: var(--font-size-sm);
-  margin-bottom: 8px;
-}
-
-.summary:hover {
-  color: var(--black);
-  border-color: var(--light-navy);
-  background-color: var(--light-navy);
-}
-
-.summary:hover .link-container {
-  color: var(--black);
-}
-
-.summary.selected {
-  background-color: var(--dark-navy);
-  border-color: var(--dark-navy);
-  color: var(--white);
-}
-
-.ticket-category {
-  border-color: var(--background);
-  background-color: var(--background);
-  color: var(--text);
-  border-radius: 12px;
-}
-
-.ticket-category:hover {
-  color: var(--black);
-  border-color: var(--light-navy);
-  background-color: var(--light-navy);
-}
-
-.ticket-category.active {
-  background-color: var(--navy);
-  border-color: var(--navy);
-  color: var(--white);
-}
-
 .list-group-item-action:hover {
   border-color: var(--light-navy);
   background-color: var(--light-navy);
@@ -144,14 +101,7 @@ body {
   color: var(--white);
 }
 
-.course-bar {
-  margin-top: 5px;
-  height: 90px;
-  width: 30px;
-  border-radius: 6px;
-  position: absolute;
-}
-
+/* unused */
 .custom-button {
   height: 40px;
   color: var(--primary);
@@ -178,19 +128,7 @@ body {
   color: var(--white);
 }
 
-.btn-sm {
-  height: auto;
-}
-
-.didattica-button {
-  width: 200px;
-  margin-right: 36px;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* unused */
 .custom-pill-button {
   height: 40px;
   border-color: var(--light-navy-transparent);
@@ -217,53 +155,7 @@ body {
   color: var(--white);
 }
 
-.course-menu-button {
-  width: 9vw;
-  align-items: center;
-  margin-right: 4px;
-}
-
-.accordion-button {
-  color: var(--primary);
-  background-color: var(--surface);
-  border-radius: 6px;
-  margin-bottom: 10px;
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-semibold);
-}
-
-.custom-accordion {
-  color: var(--primary);
-  background-color: var(--surface);
-  margin-left: 8px;
-  border: hidden;
-  border-radius: 6px;
-}
-
-.ticket-accordion {
-  color: var(--primary);
-  background-color: var(--surface);
-  margin-left: 8px;
-  border: hidden;
-  border-radius: 6px;
-}
-
-.custom-table {
-  font-family: var(--font-primary);
-  background-color: var(--surface);
-  color: var(--text);
-}
-
-.custom-table .custom-th {
-  background-color: var(--surface);
-  color: var(--text);
-}
-
-.custom-table .custom-td {
-  background-color: var(--surface);
-  color: var(--text);
-}
-
+/* unused */
 .regular-weight {
   font-weight: var(--font-weight-regular);
 }
@@ -280,41 +172,13 @@ body {
   font-weight: var(--font-weight-bold);
 }
 
-.course-menu-reduced {
-  display: none;
-}
-
-@media (max-width: 1100px) {
-  .course-menu {
-    display: none !important;
-  }
-
-  .course-menu-reduced {
-    display: block;
-  }
-}
-
-.dropdown-toggle-custom::after {
-  position: absolute;
-  right: 16px;
-  top: 14px;
-}
-
 .form-control:focus {
   border-color: var(--primary);
   border-width: 2px;
   box-shadow: none;
 }
 
-.form-control-materiale {
-  border-color: var(--primary);
-}
-
-.form-control-materiale:focus {
-  border-color: var(--primary);
-  box-shadow: none;
-}
-
+/* unused */
 .modal-body-scrollable {
   max-height: 400px;
   overflow-y: auto;
@@ -324,26 +188,14 @@ body {
   display: none;
 }
 
-.notice-container {
-  background-color: var(--background);
-  color: var(--text);
-  border-radius: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-}
-
-.link-container {
-  color: var(--text);
-  text-decoration: none;
-}
-
-.link-container:hover {
-  color: var(--black);
-}
-
 .click-notifica {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  background-color: var(--surface);
+  color: var(--text);
+  border: none;
+  text-align: left;
+  width: 100%;
 }
 
 .click-notifica:hover {
@@ -360,45 +212,6 @@ body {
   width: 1000px !important;
   background-color: var(--surface);
   color: var(--text);
-}
-
-.zooming-icon:hover {
-  transform: scale(1.2);
-}
-
-.file-container {
-  background-color: var(--background);
-  color: var(--text);
-  border-radius: 12px;
-  margin: 0px;
-  padding-left: 0px;
-  padding-bottom: 8px;
-  height: 500px;
-}
-
-.file-element {
-  background-color: var(--background);
-  color: var(--text);
-  border: hidden;
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-medium);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: fit-content;
-  display: block;
-  cursor: pointer;
-}
-
-.file-element:hover {
-  background-color: var(--light-navy);
-  color: var(--black);
-  border-radius: 12px;
-}
-
-.lang-card {
-  color: var(--primary);
-  background-color: var(--surface);
 }
 
 .card-container {

@@ -94,7 +94,7 @@ export default function PoliNavbar() {
       </Popover.Header>
       <Popover.Body className="pb-0 px-2" style={{ color: 'var(--text)' }}>
         {avvisi[0].map(notifica => (
-          <div
+          <button
             key={notifica.id}
             onClick={e => handleNotificationClick(e, notifica)}
             style={{ borderRadius: '6px' }}
@@ -111,8 +111,8 @@ export default function PoliNavbar() {
             <div className="medium-weight" style={{ fontSize: 'var(--font-size-sm)' }}>
               ({notifica.sender})
             </div>
-            <span style={{ fontSize: 'var(--font-size-md)' }}>{notifica.body}</span>
-          </div>
+            <span style={{ fontSize: 'var(--font-size-md)' }}>{t('navbar.' + notifica.body)}</span>
+          </button>
         ))}
       </Popover.Body>
     </Popover>

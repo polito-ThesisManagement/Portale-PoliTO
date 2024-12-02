@@ -2,12 +2,6 @@
   font-family: var(--font-primary);
 }
 
-.button-text {
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-}
-
 .section-title {
   color: var(--primary);
   font-family: var(--font-primary);
@@ -30,6 +24,7 @@
   display: block;
 }
 
+/* unused */
 .detail {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
@@ -47,6 +42,7 @@
   font-size: var(--font-size-md);
 }
 
+/* unused */
 .custom-tab {
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
@@ -72,14 +68,6 @@
 
 .custom-link:hover {
   color: var(--link);
-}
-
-.nav-tabs .nav-link.active {
-  color: var(--dark-navy);
-}
-
-.nav-tabs .nav-link {
-  color: var(--primary);
 }
 
 .breadcrumb {
