@@ -191,6 +191,11 @@ body {
 .click-notifica {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  background-color: var(--surface);
+  color: var(--text);
+  border: none;
+  text-align: left;
+  width: 100%;
 }
 
 .click-notifica:hover {

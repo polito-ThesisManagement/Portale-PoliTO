@@ -94,14 +94,9 @@ export default function PoliNavbar() {
       </Popover.Header>
       <Popover.Body className="pb-0 px-2" style={{ color: 'var(--text)' }}>
         {avvisi[0].map(notifica => (
-          <div
+          <button
             key={notifica.id}
             onClick={e => handleNotificationClick(e, notifica)}
-            onKeyDown={e => {
-              if (e.key === 'Enter' || e.key === ' ') handleNotificationClick(e, notifica);
-            }}
-            role="button"
-            tabIndex={0}
             style={{ borderRadius: '6px' }}
             className="click-notifica mb-2 py-1 px-2"
           >
@@ -117,7 +112,7 @@ export default function PoliNavbar() {
               ({notifica.sender})
             </div>
             <span style={{ fontSize: 'var(--font-size-md)' }}>{t('navbar.' + notifica.body)}</span>
-          </div>
+          </button>
         ))}
       </Popover.Body>
     </Popover>
