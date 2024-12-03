@@ -17,30 +17,24 @@ jobs:
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
     steps:
-      # Step 1: Checkout the code
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-      # Step 2: Install back-end dependencies
       - name: Install back-end dependencies
         run: npm install
         working-directory: back-end
 
-      # Step 3: Start MySQL service
       - name: Start MySQL
         run: |
           sudo /etc/init.d/mysql start
-          mysql -e "CREATE DATABASE IF NOT EXISTS ${{ env.DB_NAME }};" -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
-      # Step 4: Run schema and data scripts
       - name: Execute schema.sql and data.sql
         run: |
-          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} ${{ env.DB_NAME }} < ./database/schema.sql || exit 1
-          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} ${{ env.DB_NAME }} < ./database/data.sql || exit 1
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/schema.sql || exit 1
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/data.sql || exit 1
 
-      # Step 5: Run back-end tests
       - name: Run back-end tests
         run: npm test
         working-directory: back-end
@@ -51,6 +45,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
@@ -67,6 +63,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
