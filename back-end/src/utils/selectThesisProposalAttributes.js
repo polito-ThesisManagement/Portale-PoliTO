@@ -15,6 +15,7 @@ const selectThesisProposalAttributes = (lang, detailed = false) => {
       'link',
       [lang === 'it' ? 'required_skills' : 'required_skills_en', 'required_skills'],
       [lang === 'it' ? 'additional_notes' : 'additional_notes_en', 'additional_notes'],
+      'attachment_url',
     );
   }
 

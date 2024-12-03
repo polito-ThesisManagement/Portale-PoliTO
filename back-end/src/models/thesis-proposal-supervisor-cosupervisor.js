@@ -1,18 +1,18 @@
 module.exports = (sequelize, DataTypes) => {
   const ThesisProposalSupervisorCoSupervisor = sequelize.define(
-    'thesis-proposals-supervisors-cosupervisors',
+    'thesis-proposal-supervisor-cosupervisor',
     {
       thesis_proposal_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'thesis_proposals',
+          model: 'thesis_proposal',
           key: 'id',
         },
       },
       teacher_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'keywords',
+          model: 'keyword',
           key: 'id',
         },
       },
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      tableName: 'thesis_proposals_supervisors_cosupervisors',
+      tableName: 'thesis_proposal_supervisor_cosupervisor',
       timestamps: false,
     },
   );

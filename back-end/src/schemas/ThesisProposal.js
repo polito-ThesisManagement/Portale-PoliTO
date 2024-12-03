@@ -17,20 +17,21 @@ const thesisProposalOverviewSchema = z
     expiration_date: z.date(),
     is_internal: z.boolean(),
     is_abroad: z.boolean(),
+    attachment_url: z.string().nullable(),
     keywords: z.array(keywordSchema).default([]),
     types: z.array(typeSchema).default([]),
     teachers: z.array(teacherSchema).default([]),
   })
   .transform(proposal => {
     const teachers = proposal.teachers;
-    const supervisor = teachers.find(teacher => teacher['thesis-proposals-supervisors-cosupervisors'].is_supervisor);
+    const supervisor = teachers.find(teacher => teacher['thesis-proposal-supervisor-cosupervisor'].is_supervisor);
     const internalCoSupervisors = teachers.filter(
-      teacher => !teacher['thesis-proposals-supervisors-cosupervisors'].is_supervisor,
+      teacher => !teacher['thesis-proposal-supervisor-cosupervisor'].is_supervisor,
     );
 
     delete proposal.teachers;
-    delete supervisor['thesis-proposals-supervisors-cosupervisors'];
-    internalCoSupervisors.forEach(coSupervisor => delete coSupervisor['thesis-proposals-supervisors-cosupervisors']);
+    delete supervisor['thesis-proposal-supervisor-cosupervisor'];
+    internalCoSupervisors.forEach(coSupervisor => delete coSupervisor['thesis-proposal-supervisor-cosupervisor']);
 
     return {
       id: proposal.id,
@@ -46,6 +47,7 @@ const thesisProposalOverviewSchema = z
       expirationDate: proposal.expiration_date,
       isInternal: proposal.is_internal,
       isAbroad: proposal.is_abroad,
+      attachmentUrl: proposal.attachment_url,
       keywords: proposal.keywords,
       types: proposal.types,
     };

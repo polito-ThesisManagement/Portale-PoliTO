@@ -23,7 +23,8 @@ describe('GET /api/thesis-proposals', () => {
   test('should return a list of thesis proposals', async () => {
     const response = await request(app).get('/api/thesis-proposals');
     expect(response.status).toBe(200);
-    expect(response.body).toBeInstanceOf(Array);
-    expect(response.body.length).toBeGreaterThan(0);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty('thesisProposals');
+    expect(response.body.thesisProposals).toBeInstanceOf(Array);
   });
 });
