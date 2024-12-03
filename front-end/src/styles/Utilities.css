@@ -236,3 +236,28 @@ body {
   display: inline-block;
   white-space: nowrap;
 }
+
+.floating-button {
+  position: fixed;
+  z-index: 100;
+  right: 3%;
+  bottom:3%;
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+  background-color: rgba(var(--medium-orange-rgb), 0.7);
+  color: var(--background-light);
+  border-width: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-button:hover {
+  background-color: rgba(var(--medium-orange-rgb), 0.85);
+  box-shadow: 0 4px 10px rgba(var(--medium-orange-rgb), 0.25);
+}
+
+.floating-button:active {
+  background-color: rgba(var(--medium-orange-rgb), 1) !important;
+}
