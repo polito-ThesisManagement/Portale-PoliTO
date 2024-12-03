@@ -1,7 +1,7 @@
 /**------------------------------------------------------------------------------------------------------------------------------------
  * ?                                             Portale-PoliTO MySQL Schema (MySQL 8.4.3)
  * @createdOn       :   09 November 2024
- * @lastModifiedOn  :   29 November 2024
+ * @lastModifiedOn  :   02 December 2024
  * @description     :   SQL Schema for the Portale-PoliTO Database. Designed for MySQL 8.4.3
  * @note            :   [1681] Integer display width is deprecated and will be removed in a future release.
                         Therefore, we have removed the display width from the INT data type in the provided original schema as well.
@@ -14,10 +14,13 @@ CREATE DATABASE IF NOT EXISTS polito;
 USE polito;
 
 -- Drop tables if they already exist
+DROP TABLE IF EXISTS logged_student;
 DROP TABLE IF EXISTS thesis_proposal_supervisor_cosupervisor;
+DROP TABLE IF EXISTS thesis_proposal_type;
 DROP TABLE IF EXISTS thesis_proposal_keyword;
 DROP TABLE IF EXISTS thesis_proposal_degree;
 DROP TABLE IF EXISTS thesis_proposal;
+DROP TABLE IF EXISTS type;
 DROP TABLE IF EXISTS keyword;
 DROP TABLE IF EXISTS teacher;
 DROP TABLE IF EXISTS student;
@@ -26,7 +29,8 @@ DROP TABLE IF EXISTS degree;
 -- Table for storing degrees' data
 CREATE TABLE IF NOT EXISTS degree (
     id VARCHAR(5) PRIMARY KEY,
-    description VARCHAR(255) NOT NULL
+    description VARCHAR(255) NOT NULL,
+    description_en VARCHAR(255) NOT NULL
 );
 
 -- Table for storing students' data 
@@ -60,11 +64,16 @@ CREATE TABLE IF NOT EXISTS keyword (
     keyword_en VARCHAR(50) DEFAULT NULL
 );
 
+-- Table for storing types
+CREATE TABLE IF NOT EXISTS type (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(50) DEFAULT NULL,
+    type_en VARCHAR(50) DEFAULT NULL
+);
+
 -- Table for storing thesis proposals' data
 CREATE TABLE IF NOT EXISTS thesis_proposal (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    type VARCHAR(100) DEFAULT NULL,
-    type_en VARCHAR(100) DEFAULT NULL,
     topic VARCHAR(255) NOT NULL,
     topic_en VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
@@ -102,6 +111,15 @@ CREATE TABLE IF NOT EXISTS thesis_proposal_keyword (
     FOREIGN KEY (keyword_id) REFERENCES keyword(id) ON DELETE CASCADE
 );
 
+-- Table for linking thesis proposals with types
+CREATE TABLE IF NOT EXISTS thesis_proposal_type (
+    thesis_proposal_id INT NOT NULL,
+    type_id INT NOT NULL,
+    PRIMARY KEY (thesis_proposal_id, type_id),
+    FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposal(id) ON DELETE CASCADE,
+    FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE
+);
+
 -- Table for linking thesis proposals with supervisors and cosupervisors
 CREATE TABLE IF NOT EXISTS thesis_proposal_supervisor_cosupervisor (
     thesis_proposal_id INT NOT NULL,
@@ -110,6 +128,12 @@ CREATE TABLE IF NOT EXISTS thesis_proposal_supervisor_cosupervisor (
     PRIMARY KEY (thesis_proposal_id, teacher_id),
     FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposal(id) ON DELETE CASCADE,
     FOREIGN KEY (teacher_id) REFERENCES teacher(id) ON DELETE RESTRICT -- RESTRICT policy because why should you delete a teacher?
+);
+
+-- Table for storing the id of the logged student
+CREATE TABLE IF NOT EXISTS logged_student (
+    student_id VARCHAR(6) PRIMARY KEY,
+    FOREIGN KEY (student_id) REFERENCES student(id) ON DELETE CASCADE
 );
 
 /**---------------------------------------------------------------------
