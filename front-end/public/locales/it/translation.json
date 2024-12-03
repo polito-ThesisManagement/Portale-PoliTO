@@ -1,0 +1,81 @@
+{
+    "descrizione": "Portale della Didattica del Politecnico di Torino",
+    "navbar": {
+        "portale_della_didattica": "Portale della Didattica",
+        "ricerca_nel_portale": "Ricerca nel portale...",
+        "profilo_utente": "Profilo utente",
+        "cambio_password": "Cambio password",
+        "ultime_notifiche": "Ultime notifiche",
+        "lezione_cancellata_descrizione": "La lezione di oggi è stata annullata.",
+        "anticipo_fine_lezione_descrizione": "La lezione di oggi terminerà con mezz'ora d'anticipo.",
+        "tema_chiaro": "Tema chiaro",
+        "tema_scuro": "Tema scuro",
+        "tema_automatico": "Tema automatico"
+    },
+    "sidebar": {
+        "didattica": "Didattica",
+        "area_personale": "Area personale",
+        "carriera": "Carriera",
+        "opportunità": "Opportunità",
+        "servizi": "Servizi"
+    },
+    "carriera": {
+        "tasse_e_agevolazioni": {
+            "title": "Tasse e Agevolazioni",
+            "description": "Pagamento e richiesta riduzione tasse."
+        },
+        "piano_carriera": {
+            "title": "Piano Carriera",
+            "description": "Compilazione o modifica del piano carriera e/o del carico didattico, iscrizione al nuovo accademico."
+        },
+        "gestione_carriera": {
+            "title": "Gestione Carriera",
+            "description": "Richiesta approvazione di attività esterne e modifica stato carriera."
+        },
+        "apply": {
+            "title": "Apply@polito",
+            "description": "Visualizzazione e verifica stato della tua carriera."
+        },
+        "laurea_ed_esame_finale": {
+            "title": "Laurea ed Esame Finale",
+            "description": "Visualizzazione stato della tesi e degli step per conseguire il titolo."
+        },
+        "proposte_di_tesi": {
+            "title": "Proposte di Tesi",
+            "title_half_lowercase": "Proposte di tesi",
+            "description": "Elenco delle proposte di tesi.",
+            "order_by": "Ordina per:",
+            "expires": "Scade il",
+            "exp_order": "Data di scadenza",
+            "created": "Creata il",
+            "created_order": "Data di creazione",
+            "show_more": "Mostra di più",
+            "internal_thesis": "Tesi interna",
+            "external_thesis": "Tesi in azienda",
+            "abroad_thesis": "Tesi all'estero",
+            "total": "Totale:",
+            "elements_per_page": "Elementi per pagina",
+            "all_thesis": "Tutte le tesi",
+            "course_thesis": "Tesi per il tuo corso di studi",
+            "search": "Ricerca tra le proposte..."
+        },
+        "proposta_di_tesi": {
+            "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",
+            "descrizione": "Descrizione",
+            "conoscenze_richieste": "Conoscenze richieste",
+            "note": "Note",
+            "ambiente": "Ambiente",
+            "allegato": "Allegato",
+            "tipo": "Tipo",
+            "relatore_principale": "Relatore principale",
+            "relatori_secondari": "Relatori secondari",
+            "relatori_esterni": "Relatori esterni"
+        }
+    },
+    "Accedi": "Accedi",
+    "page_not_found": {
+        "title": "Pagina non trovata",
+        "message": "La pagina che stai cercando non esiste o è stata spostata.",
+        "back": "Torna alla Homepage"
+    }
+}
