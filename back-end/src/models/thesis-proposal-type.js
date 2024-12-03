@@ -1,24 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
   const ThesisProposalType = sequelize.define(
-    'thesis-proposals-types',
+    'thesi-proposal-type',
     {
       thesis_proposal_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'thesis_proposals',
+          model: 'thesis_proposal',
           key: 'id',
         },
       },
       type_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'types',
+          model: 'type',
           key: 'id',
         },
       },
     },
     {
-      tableName: 'thesis_proposals_types',
+      tableName: 'thesis_proposal_type',
       timestamps: false,
     },
   );

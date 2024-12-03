@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Keyword, Teacher, ThesisProposal, Type } = require('../models');
 const formatThesisProposals = require('../utils/formatThesisProposals');
 const selectKeywordAttributes = require('../utils/selectKeywordAttributes');
@@ -8,19 +9,22 @@ const selectTypeAttributes = require('../utils/selectTypeAttributes');
 const getThesisProposals = async (req, res) => {
   try {
     const lang = req.query.lang || 'it';
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const offset = (page - 1) * limit;
 
-    const thesisProposals = await ThesisProposal.findAll({
+    const { count, rows } = await ThesisProposal.findAndCountAll({
       attributes: selectThesisProposalAttributes(lang),
       include: [
         {
           model: Keyword,
           through: { attributes: [] },
-          attributes: selectKeywordAttributes(),
+          attributes: selectKeywordAttributes(lang),
         },
         {
           model: Type,
           through: { attributes: [] },
-          attributes: selectTypeAttributes(),
+          attributes: selectTypeAttributes(lang),
         },
         {
           model: Teacher,
@@ -30,10 +34,23 @@ const getThesisProposals = async (req, res) => {
           attributes: selectTeacherAttributes(),
         },
       ],
+      where: {
+        expiration_date: {
+          [Op.gt]: new Date(),
+        },
+      },
+      order: [['creation_date', 'DESC']],
+      limit,
+      offset,
+      distinct: true,
     });
-
-    const formattedThesisProposals = formatThesisProposals(thesisProposals);
-    res.json(formattedThesisProposals);
+    const formattedThesisProposals = formatThesisProposals(rows);
+    res.json({
+      count: count,
+      thesisProposals: formattedThesisProposals,
+      currentPage: page,
+      totalPages: Math.ceil(count / limit),
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

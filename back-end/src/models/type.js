@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Type = sequelize.define(
-    'types',
+    'type',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -11,9 +11,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      type_en: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     {
-      tableName: 'types',
+      tableName: 'type',
       timestamps: false,
     },
   );

@@ -4,7 +4,7 @@ const teacherOverviewSchema = z.object({
   id: z.number(),
   first_name: z.string(),
   last_name: z.string(),
-  'thesis-proposals-supervisors-cosupervisors': z.object({
+  'thesis-proposal-supervisor-cosupervisor': z.object({
     is_supervisor: z.boolean(),
   }),
 });

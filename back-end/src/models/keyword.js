@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Keyword = sequelize.define(
-    'keywords',
+    'keyword',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -11,9 +11,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      keyword_en: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     {
-      tableName: 'keywords',
+      tableName: 'keyword',
       timestamps: false,
     },
   );

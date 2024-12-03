@@ -1,24 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
   const ThesisProposalKeyword = sequelize.define(
-    'thesis-proposals-keywords',
+    'thesis-proposal-keyword',
     {
       thesis_proposal_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'thesis_proposals',
+          model: 'thesis_proposal',
           key: 'id',
         },
       },
       keyword_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'keywords',
+          model: 'keyword',
           key: 'id',
         },
       },
     },
     {
-      tableName: 'thesis_proposals_keywords',
+      tableName: 'thesis_proposal_keyword',
       timestamps: false,
     },
   );
