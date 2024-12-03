@@ -7,8 +7,9 @@ const teacherSchema = z.object({
   role: z.string(),
   email: z.string(),
   profile_url: z.string(),
+  profile_picture_url: z.string().nullable(),
   facility_short_name: z.string(),
-  'thesis-proposals-supervisors-cosupervisors': z.object({
+  'thesis-proposal-supervisor-cosupervisor': z.object({
     is_supervisor: z.boolean(),
   }),
 });
