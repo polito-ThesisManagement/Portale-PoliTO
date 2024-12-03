@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Teacher = sequelize.define(
-    'teachers',
+    'teacher',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -27,13 +27,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      profile_picture_url: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       facility_short_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
     },
     {
-      tableName: 'teachers',
+      tableName: 'teacher',
       timestamps: false,
     },
   );
