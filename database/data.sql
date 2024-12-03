@@ -4,198 +4,269 @@ USE polito;
 -- ↓ degree table ↓
 -- ------------------------------------------------------------
 INSERT INTO
-    degree (id, description)
+    degree (id, description, description_en)
 VALUES
     (
         "32-1",
-        "Laurea Triennale - INGEGNERIA DELL'AUTOVEICOLO"
+        "Laurea Triennale - INGEGNERIA DELL'AUTOVEICOLO",
+        "Bachelor's Degree - AUTOMOTIVE ENGINEERING"
     ),
     (
         "32-2",
-        "Laurea Magistrale - AUTOMOTIVE ENGINEERING (INGEGNERIA DELL'AUTOVEICOLO)"
+        "Laurea Magistrale - AUTOMOTIVE ENGINEERING (INGEGNERIA DELL'AUTOVEICOLO)",
+        "Master's Degree - AUTOMOTIVE ENGINEERING"
     ),
     (
         "32-6",
-        "Laurea Triennale - INGEGNERIA DEI MATERIALI"
+        "Laurea Triennale - INGEGNERIA DEI MATERIALI",
+        "Bachelor's Degree - MATERIALS ENGINEERING"
     ),
     (
         "32-9",
-        "Laurea Triennale - INGEGNERIA ELETTRICA"
+        "Laurea Triennale - INGEGNERIA ELETTRICA",
+        "Bachelor's Degree - ELECTRICAL ENGINEERING"
     ),
     (
         "32-11",
-        "Laurea Triennale - INGEGNERIA AEROSPAZIALE"
+        "Laurea Triennale - INGEGNERIA AEROSPAZIALE",
+        "Bachelor's Degree - AEROSPACE ENGINEERING"
     ),
     (
         "32-12",
-        "Laurea Triennale - INGEGNERIA BIOMEDICA"
+        "Laurea Triennale - INGEGNERIA BIOMEDICA",
+        "Bachelor's Degree - BIOMEDICAL ENGINEERING"
     ),
     (
         "32-13",
-        "Laurea Triennale - INGEGNERIA CHIMICA E ALIMENTARE"
+        "Laurea Triennale - INGEGNERIA CHIMICA E ALIMENTARE",
+        "Bachelor's Degree - CHEMICAL AND FOOD ENGINEERING"
     ),
-    ("32-14", "Laurea Triennale - INGEGNERIA CIVILE"),
-    ("32-17", "Laurea Triennale - INGEGNERIA EDILE"),
+    (   "32-14", 
+        "Laurea Triennale - INGEGNERIA CIVILE",
+        "Bachelor's Degree - CIVIL ENGINEERING"
+    ),
+    (   "32-17", 
+        "Laurea Triennale - INGEGNERIA EDILE",
+        "Bachelor's Degree - BUILDING ENGINEERING"
+    ),
     (
         "32-18",
-        "Laurea Triennale - INGEGNERIA ENERGETICA"
+        "Laurea Triennale - INGEGNERIA ENERGETICA",
+        "Bachelor's Degree - ENERGY ENGINEERING"
     ),
     (
         "32-19",
-        "Laurea Triennale - INGEGNERIA MECCANICA"
+        "Laurea Triennale - INGEGNERIA MECCANICA (MECHANICAL ENGINEERING)",
+        "Bachelor's Degree - MECHANICAL ENGINEERING"
     ),
-    -- ("32-21", "Laurea Triennale - INGEGNERIA MECCANICA"),
+    (
+        "32-21", 
+        "Laurea Triennale - INGEGNERIA MECCANICA", 
+        "Bachelor's Degree - MECHANICAL ENGINEERING"
+    ),
     (
         "32-22",
-        "Laurea Triennale - INGEGNERIA PER L'AMBIENTE E IL TERRITORIO"
+        "Laurea Triennale - INGEGNERIA PER L'AMBIENTE E IL TERRITORIO",
+        "Bachelor's Degree - ENVIRONMENTAL AND LAND ENGINEERING"
     ),
     (
         "32-23",
-        "Laurea Triennale - MATEMATICA PER L'INGEGNERIA"
+        "Laurea Triennale - MATEMATICA PER L'INGEGNERIA",
+        "Bachelor's Degree - MATHEMATICS FOR ENGINEERING"
     ),
     (
         "32-26",
-        "Laurea Magistrale - INGEGNERIA AEROSPAZIALE"
+        "Laurea Magistrale - INGEGNERIA AEROSPAZIALE",
+        "Master's Degree - AEROSPACE ENGINEERING"
     ),
     (
         "32-27",
-        "Laurea Magistrale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE E DELL'INNOVAZIONE TECNOLOGICA"
+        "Laurea Magistrale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE E DELL'INNOVAZIONE TECNOLOGICA",
+        "Master's Degree - INDUSTRIAL PRODUCTION AND TECHNOLOGICAL INNOVATION ENGINEERING"
     ),
     (
         "32-28",
-        "Laurea Magistrale - INGEGNERIA BIOMEDICA"
+        "Laurea Magistrale - INGEGNERIA BIOMEDICA",
+        "Master's Degree - BIOMEDICAL ENGINEERING"
     ),
     (
         "32-29",
-        "Laurea Magistrale - INGEGNERIA CHIMICA E DEI PROCESSI SOSTENIBILI"
+        "Laurea Magistrale - INGEGNERIA CHIMICA E DEI PROCESSI SOSTENIBILI",
+        "Master's Degree - CHEMICAL AND SUSTAINABLE PROCESSES ENGINEERING"
     ),
     (
         "32-30",
-        "Laurea Magistrale - INGEGNERIA CIVILE"
+        "Laurea Magistrale - INGEGNERIA CIVILE",
+        "Master's Degree - CIVIL ENGINEERING"
     ),
     (
         "32-34",
-        "Laurea Magistrale - INGEGNERIA EDILE"
+        "Laurea Magistrale - INGEGNERIA EDILE",
+        "Master's Degree - BUILDING ENGINEERING"
     ),
     (
         "32-35",
-        "Laurea Magistrale - INGEGNERIA ELETTRICA"
+        "Laurea Magistrale - INGEGNERIA ELETTRICA",
+        "Master's Degree - ELECTRICAL ENGINEERING"
     ),
     (
         "32-36",
-        "Laurea Magistrale - INGEGNERIA ENERGETICA E NUCLEARE"
+        "Laurea Magistrale - INGEGNERIA ENERGETICA E NUCLEARE",
+        "Master's Degree - ENERGY AND NUCLEAR ENGINEERING"
     ),
     (
         "32-37",
-        "Laurea Magistrale - INGEGNERIA MECCANICA"
+        "Laurea Magistrale - INGEGNERIA MECCANICA",
+        "Master's Degree - MECHANICAL ENGINEERING"
     ),
     (
         "32-38",
-        "Laurea Magistrale - INGEGNERIA PER L'AMBIENTE E IL TERRITORIO"
+        "Laurea Magistrale - INGEGNERIA PER L'AMBIENTE E IL TERRITORIO",
+        "Master's Degree - ENVIRONMENTAL AND LAND ENGINEERING"
     ),
     (
         "32-39",
-        "Laurea Magistrale - INGEGNERIA MATEMATICA"
+        "Laurea Magistrale - INGEGNERIA MATEMATICA",
+        "Master's Degree - MATHEMATICAL ENGINEERING"
     ),
     (
         "32-42",
-        "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE"
+        "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE",
+        "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING"
     ),
-    -- ("32-44", "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE"),
-    -- ("32-51", "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE"),
-    -- ("32-52", "Laurea Triennale - INGEGNERIA DELL'AUTOVEICOLO"),
-    -- ("32-53", "Laurea Magistrale - INGEGNERIA MECCANICA"),
+    -- ("32-44", "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE", "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING"),
+    -- ("32-51", "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE", "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING"),
+    (
+        "32-52", 
+        "Laurea Triennale - INGEGNERIA DELL'AUTOVEICOLO (AUTOMOTIVE ENGINEERING)", 
+        "Bachelor's Degree - AUTOMOTIVE ENGINEERING"
+    ),
+    (
+        "32-53", 
+        "Laurea Magistrale - INGEGNERIA MECCANICA (MECHANICAL ENGINEERING)", 
+        "Master's Degree - MECHANICAL ENGINEERING"
+    ),
     (
         "37-1",
-        "Laurea Triennale - INGEGNERIA ELETTRONICA"
+        "Laurea Triennale - INGEGNERIA ELETTRONICA",
+        "Bachelor's Degree - ELECTRONIC ENGINEERING"
     ),
     (
         "37-3",
-        "Laurea Triennale - INGEGNERIA INFORMATICA"
+        "Laurea Triennale - INGEGNERIA INFORMATICA",
+        "Bachelor's Degree - COMPUTER ENGINEERING"
     ),
     (
         "37-9",
-        "Laurea Triennale - INGEGNERIA FISICA"
+        "Laurea Triennale - INGEGNERIA FISICA",
+        "Bachelor's Degree - PHYSICAL ENGINEERING"
     ),
-    -- ("37-10", "Laurea Triennale - INGEGNERIA INFORMATICA"),
+    -- ("37-10", "Laurea Triennale - INGEGNERIA INFORMATICA", "Bachelor's Degree - COMPUTER ENGINEERING"),
     (
         "37-13",
-        "Laurea Magistrale - INGEGNERIA ELETTRONICA (ELECTRONIC ENGINEERING)"
+        "Laurea Magistrale - INGEGNERIA ELETTRONICA (ELECTRONIC ENGINEERING)",
+        "Master's Degree - ELECTRONIC ENGINEERING"
     ),
     (
         "37-17",
-        "Laurea Triennale - ELECTRONIC AND COMMUNICATIONS ENGINEERING (INGEGNERIA ELETTRONICA E DELLE COMUNICAZIONI)"
+        "Laurea Triennale - ELECTRONIC AND COMMUNICATIONS ENGINEERING (INGEGNERIA ELETTRONICA E DELLE COMUNICAZIONI)",
+        "Bachelor's Degree - ELECTRONIC AND COMMUNICATIONS ENGINEERING"
     ),
     (
         "37-18",
-        "Laurea Magistrale - INGEGNERIA INFORMATICA (COMPUTER ENGINEERING)"
+        "Laurea Magistrale - INGEGNERIA INFORMATICA (COMPUTER ENGINEERING)",
+        "Master's Degree - COMPUTER ENGINEERING"
     ),
     (
         "37-20",
-        "Laurea Magistrale - ICT FOR SMART SOCIETIES (ICT PER LA SOCIETA' DEL FUTURO)"
+        "Laurea Magistrale - ICT FOR SMART SOCIETIES (ICT PER LA SOCIETA' DEL FUTURO)",
+        "Master's Degree - ICT FOR SMART SOCIETIES"
     ),
     (
         "37-21",
-        "Laurea Triennale - INGEGNERIA DEL CINEMA E DEI MEZZI DI COMUNICAZIONE"
+        "Laurea Triennale - INGEGNERIA DEL CINEMA E DEI MEZZI DI COMUNICAZIONE",
+        "Bachelor's Degree - CINEMA AND MEDIA ENGINEERING"
     ),
     (
         "37-22",
-        "Laurea Magistrale - INGEGNERIA DEL CINEMA E DEI MEZZI DI COMUNICAZIONE"
+        "Laurea Magistrale - INGEGNERIA DEL CINEMA E DEI MEZZI DI COMUNICAZIONE",
+        "Master's Degree - CINEMA AND MEDIA ENGINEERING"
     ),
     (
         "37-23",
-        "Laurea Magistrale - NANOTECHNOLOGIES FOR ICTs (NANOTECNOLOGIE PER LE ICT)"
+        "Laurea Magistrale - NANOTECHNOLOGIES FOR ICTs (NANOTECNOLOGIE PER LE ICT)",
+        "Master's Degree - NANOTECHNOLOGIES FOR ICTs"
     ),
     (
         "37-24",
-        "Laurea Magistrale - PHYSICS OF COMPLEX SYSTEMS (FISICA DEI SISTEMI COMPLESSI)"
+        "Laurea Magistrale - PHYSICS OF COMPLEX SYSTEMS (FISICA DEI SISTEMI COMPLESSI)",
+        "Master's Degree - PHYSICS OF COMPLEX SYSTEMS"
     ),
     (
         "37-55",
-        "Laurea Magistrale - MECHATRONIC ENGINEERING (INGEGNERIA MECCATRONICA)"
+        "Laurea Magistrale - MECHATRONIC ENGINEERING (INGEGNERIA MECCATRONICA)",
+        "Master's Degree - MECHATRONIC ENGINEERING"
     ),
     (
         "38-1",
-        "Laurea Magistrale - INGEGNERIA GESTIONALE"
+        "Laurea Magistrale - INGEGNERIA GESTIONALE",
+        "Master's Degree - ENGINEERING AND MANAGEMENT"
     ),
     (
         "38-3",
-        "Laurea Triennale - INGEGNERIA GESTIONALE"
+        "Laurea Triennale - INGEGNERIA GESTIONALE",
+        "Bachelor's Degree - ENGINEERING AND MANAGEMENT"
     ),
-    -- ("38-5", "Laurea Triennale - INGEGNERIA GESTIONALE"),
-    -- ("38-10", "Laurea Magistrale - INGEGNERIA GESTIONALE"),
+    -- ("38-5", "Laurea Triennale - INGEGNERIA GESTIONALE", "Bachelor's Degree - ENGINEERING AND MANAGEMENT"),
+    (
+        "38-10", 
+        "Laurea Magistrale - INGEGNERIA GESTIONALE (ENGINEERING AND MANAGEMENT)", 
+        "Master's degree - ENGINEERING AND MANAGEMENT"
+    ),
     (
         "80-1",
-        "Laurea Triennale - ARCHITETTURA"
+        "Laurea Triennale - ARCHITETTURA",
+        "Bachelor's Degree - ARCHITECTURE"
     ),
-    -- ("80-2", "Laurea Triennale - ARCHITETTURA"),
+    (   
+        "80-2", 
+        "Laurea Triennale - ARCHITETTURA (ARCHITECTURE)", 
+        "Bachelor's Degree - ARCHITECTURE"
+    ),
     (
         "81-4",
-        "Laurea Magistrale - DESIGN SISTEMICO"
+        "Laurea Magistrale - DESIGN SISTEMICO",
+        "Master's Degree - SYSTEMIC DESIGN"
     ),
     (
         "81-5",
-        "Laurea Magistrale - ARCHITETTURA COSTRUZIONE CITTA'"
+        "Laurea Magistrale - ARCHITETTURA COSTRUZIONE CITTA'",
+        "Master's Degree - ARCHITECTURE CONSTRUCTION CITY"
     ),
     (
         "81-6",
-        "Laurea Triennale - DESIGN E COMUNICAZIONE"
+        "Laurea Triennale - DESIGN E COMUNICAZIONE",
+        "Bachelor's Degree - DESIGN AND COMMUNICATION"
     ),
     (
         "81-83",
-        "Laurea Magistrale - DIGITAL SKILLS FOR SUSTAINABLE SOCIETAL TRANSITIONS"
+        "Laurea Magistrale - DIGITAL SKILLS FOR SUSTAINABLE SOCIETAL TRANSITIONS",
+        "Master's Degree - DIGITAL SKILLS FOR SUSTAINABLE SOCIETAL TRANSITIONS"
     ),
     (
         "82-4",
-        "Laurea Magistrale - ARCHITETTURA PER IL PATRIMONIO"
+        "Laurea Magistrale - ARCHITETTURA PER IL PATRIMONIO",
+        "Master's Degree - ARCHITECTURE FOR HERITAGE"
     ),
     (
         "82-5",
-        "Laurea Triennale - PIANIFICAZIONE TERRITORIALE, URBANISTICA E PAESAGGISTICO-AMBIENTALE"
+        "Laurea Triennale - PIANIFICAZIONE TERRITORIALE, URBANISTICA E PAESAGGISTICO-AMBIENTALE",
+        "Bachelor's Degree - TERRITORIAL, URBAN, ENVIRONMENTAL AND LANDSCAPE PLANNING"
     ),
     (
         "82-6",
-        "Laurea Magistrale - ARCHITETTURA PER LA SOSTENIBILITA'"
+        "Laurea Magistrale - ARCHITETTURA PER LA SOSTENIBILITA'",
+        "Master's Degree - ARCHITECTURE FOR SUSTAINABILITY"
     );
 
 -- ------------------------------------------------------------
@@ -2454,28 +2525,33 @@ VALUES
 INSERT INTO
     keyword (id, keyword, keyword_en)
 VALUES
-    (1, "ia", "ai"),
-    (2, "generazione di codice", "code generation"),
-    (3, "istruzione", "education"),
-    (4, "llm", "llm"),
-    (5, "domotica", "domotics"),
-    (6, "iot", "iot"),
-    (7, "simulatore", "simulation"),
-    (8, "testing", "testing"),
-    (9, "automotive", "automotive"),
-    (10, "realtà virtuale", "virtual reality"),
-    (11, "sviluppo applicazioni mobile", "mobile application development"),
-    (12, "sviluppo web", "web development"),
-    (13, "applicazioni web", "web applications");
+    (1, "IA", "IA"),
+    (2, "GENERAZIONE DI CODICE", "CODE GENERATION"),
+    (3, "ISTRUZIONE", "EDUCATION"),
+    (4, "LLM", "LLM"),
+    (5, "DOMOTICA", "DOMOTICS"),
+    (6, "IOT", "IOT"),
+    (7, "SIMULATORE", "SIMULATION"),
+    (8, "TESTING", "TESTING"),
+    (9, "AUTOMOTIVE", "AUTOMOTIVE"),
+    (10, "REALTÀ", "VIRTUAL REALITY"),
+    (11, "SVILUPPO APPLICAZIONI MOBILI", "MOBILE APPLICATION DEVELOPMENT"),
+    (12, "SVILUPPO WEB", "WEB DEVELOPMENT"),
+    (13, "APPLICAZIONI WEB", "WEB APPLICATIONS");
 
+-- ------------------------------------------------------------
+-- ↓ type table ↓
+-- ------------------------------------------------------------
+INSERT INTO type (id, type, type_en)
+VALUES
+    (1, 'RICERCA', 'RESEARCH'),
+    (2, 'SPERIMENTALE', 'EXPERIMENTAL');
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal table ↓
 -- ------------------------------------------------------------
 INSERT INTO
     thesis_proposal (
         id,
-        type,
-        type_en,
         topic,
         topic_en,
         description,
@@ -2497,8 +2573,6 @@ INSERT INTO
 VALUES
     (
         13169,
-        "Ricerca",
-        "Research",
         "Studio esplorativo delle soluzioni IA-based per la generazione del codice",
         "An exploration of the solutions for AI-based code generation",
         "La tesi comporta una completa esplorazione delle soluzioni attuali nel dominio. L'obiettivo è valutare le metodologie esistenti, le tecnologie e i framework rilevanti per il contesto di ricerca. Questa analisi preliminare sarà condotta in modo sistematico applicando le linee guida di Kitchenham per la conduzione di Revisioni Bibliografiche Sistematiche nel campo della Ricerca in Ingegneria del Software. La revisione bibliografica sistematica terrà conto anche delle fonti di letteratura grigia (cioè, fonti non sottoposte a revisione tra pari disponibili su varie fonti internet) per far fronte alla grande novità del campo della ricerca sull'IA generativa. La valutazione sistematica dello stato dell'arte sarà integrata con la conduzione di interviste aperte e strutturate con professionisti e sviluppatori per comprendere le loro principali esigenze e pratiche più comuni.",
@@ -2519,8 +2593,6 @@ VALUES
     ),
     (
         13275,
-        "Sperimentale",
-        "Empirical Research",
         "Valutazione Critica delle Capacità di Generazione del Codice da Parte di LLM in Contesto di Istruzione",
         "Critical Appraisal of LLM Code Generation Capabilities in Educational Context",
         "Recentemente diversi strumenti di generazione automatica del codice basati su tecniche di AI sono stati messi a disposizione degli utenti. Si tratta di prodotti specifici (es. CodePilot) oppure con scopi più ampi (ChatGPT) che sono in grado di generare codice di elevata qualità a partire da requisiti espressi in linguaggio naturale.
@@ -2545,8 +2617,6 @@ VALUES
     ),
     (
         13363,
-        "Sperimentale",
-        "Experimental",
         "Sviluppo di un simulatore di Home Automation",
         "Development of a Home Automation Simulator",
         "La tesi mira a progettare e realizzare un ambiente di simulazione per sistemi di automazione domestica. Questo simulatore avrà il compito di emulare il comportamento di dispositivi IoT (Internet of Things) in un contesto di automazione domestica, supportando protocolli di comunicazione come HTTP, MQTT e BLE (Bluetooth Low Energy). L'obiettivo è fornire agli sviluppatori di sistemi di home automation uno strumento per testare e validare funzionalità e scenari d'uso senza la necessità di disporre fisicamente di tutti i dispositivi hardware.
@@ -2633,8 +2703,6 @@ VALUES
     ),
     (
         14027,
-        "Aziendale",
-        "Industry",
         "Migliorare il Testing del Software attraverso l'IA Generativa",
         "Enhancing Software Testing Through Generative AI",
         "Tesi presso Concept Quality Reply
@@ -2703,8 +2771,6 @@ VALUES
     ),
     (
         13470,
-        "Aziendale",
-        "Company Stage",
         "IA Generativa per la Creazione di OpenScenario e OpenDrive da Serie di Immagini del Traffico",
         "Generative AI for Generation of OpenScenario and OpenDrive from series of traffic images",
         "Contesto:
@@ -2754,8 +2820,6 @@ VALUES
     ),
     (
         12946,
-        "Ricerca",
-        "Research",
         "Gamification applicata al test refactoring",
         "Gamification for test refactoring",
         "Il test refactoring rappresenta una pratica essenziale nello sviluppo del software, mirata a ottimizzare e migliorare la qualità dei test automatizzati senza alterarne la funzionalità. Questo processo coinvolge la riscrittura del codice dei test al fine di renderlo più efficiente, manutenibile e adatto agli scopi di testing. Tuttavia, implementare con successo il test refactoring richiede un elevato livello di competenza tecnica e una comprensione approfondita del sistema in esame.
@@ -2796,8 +2860,6 @@ VALUES
     ),
     (
         13837,
-        "Sperimentale",
-        "Experimental",
         "Coach personale basato sull'IA generativa",
         "Personal coach based on generative AI",
         "L'obiettivo di questo progetto è sperimentare l'uso dei modelli linguistici di grandi dimensioni (LLM) per costruire un sistema di raccomandazione nel dominio del fitness e del benessere. Gli input al LLM includono dati relativi a: attività fisica, sonno, alimentazione, livello di stress. A eccezione dell'alimentazione, gli altri parametri vengono raccolti da dispositivi indossabili personali (es. Fitbit, smartwatch). L'output previsto dal LLM consiste in raccomandazioni giornaliere o settimanali su comportamenti (in particolare alimentazione, sonno, attività fisica) mirati a migliorare il fitness e il benessere, personalizzate per ciascun individuo. Le raccomandazioni si basano su letteratura scientifica disponibile (PubMed e altre fonti) e sui dati personali dell'utente.
@@ -2846,8 +2908,6 @@ VALUES
     ),
     (
         13253,
-        "Aziendale a distanza",
-        "Industry Remote",
         "Test automatizzato per soluzioni Virtual Reality Content Management System e piattaforme di VR streaming",
         "Test automation for an enterprise VR (Virtual Reality) CMS and VR streaming platforms",
         "Questa proposta di tesi si concentra sullo studio e lo sviluppo di un innovativo approccio all'automazione dei test per migliorare la stabilità e l'affidabilità di un sistema di gestione dei contenuti VR (Virtual Reality) e di una piattaforma di streaming VR per le imprese. I componenti necessari per la piattaforma includono una piattaforma web, client VR Android e servizi AWS per l'orchestrazione e il rendering nel cloud.
@@ -2896,8 +2956,6 @@ VALUES
     ),
     (
         14026,
-        "Aziendale",
-        "Industry",
         "Utilizzo dell'IA per la generazione automatizzata di script di test",
         "Use of AI for automated test script generation",
         "Tesi presso Concept Quality Reply
@@ -2970,7 +3028,7 @@ VALUES
         NULL,
         "2024-09-03",
         "2025-09-03",
-        1,
+        0, /* Discrepancy with real value */
         0,
         "Ingegneria",
         "2",
@@ -2978,8 +3036,6 @@ VALUES
     ),
     (
         10187,
-        "Sperimentale",
-        "Experimental",
         "App per il benessere",
         "Well being app",
         "Obbiettivo della tesi è sviluppare una app e relativo back end per supportare le persone a perseguire uno stile di vita salutare.
@@ -3059,6 +3115,18 @@ VALUES
     (10187, 13);
 
 -- ------------------------------------------------------------
+-- ↓ thesis_proposal_type table ↓
+-- ------------------------------------------------------------
+INSERT INTO
+    thesis_proposal_type (thesis_proposal_id, type_id)
+VALUES
+    (13169, 1),
+    (13275, 2),
+    (13363, 2),
+    (12946, 1),
+    (13837, 2),
+    (10187, 2);
+-- ------------------------------------------------------------
 -- ↓ thesis_proposal_supervisor_cosupervisor table ↓
 -- ------------------------------------------------------------
 INSERT INTO
@@ -3075,3 +3143,10 @@ VALUES
     (13253, 38485, 1),
     (14026, 38485, 1),
     (10187, 1921, 1);
+-- ------------------------------------------------------------
+-- ↓ logged_student table ↓
+-- ------------------------------------------------------------
+INSERT INTO
+    logged_student (student_id)
+VALUES
+    (320213);
