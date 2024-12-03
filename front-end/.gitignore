@@ -6,8 +6,8 @@
 .pnp.js
 
 # testing
-/coverage
-.scannerwork
+coverage
+.nyc_output
 
 # production
 /build

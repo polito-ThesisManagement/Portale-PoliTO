@@ -1,0 +1,96 @@
+.text-style {
+  font-family: var(--font-primary);
+}
+
+.section-title {
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+}
+
+.subsection-title {
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.truncated {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+
+/* unused */
+.detail {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.important-detail {
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.course-detail {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-md);
+}
+
+/* unused */
+.custom-tab {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+}
+
+.custom-tab .nav-link {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+}
+
+.custom-tab .active {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+}
+
+.custom-link {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: var(--link);
+}
+
+.breadcrumb {
+  font-family: var(--font-primary);
+  color: var(--placeholder);
+  margin-top: 1px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.breadcrumb-link {
+  font-family: var(--font-primary);
+  color: var(--link);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.pol-headline.pol-headline--with-bar > h3:before {
+  content: '';
+  width: 50px;
+  height: 5px;
+  background: #ef7b02;
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}

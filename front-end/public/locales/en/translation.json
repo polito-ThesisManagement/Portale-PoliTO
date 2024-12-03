@@ -1,0 +1,81 @@
+{
+    "descrizione": "Teaching Portal of the Polytechnic University of Turin",
+    "navbar": {
+        "portale_della_didattica": "Teaching Portal",
+        "ricerca_nel_portale": "Search in the portal...",
+        "profilo_utente": "User Profile",
+        "cambio_password": "Change Password",
+        "ultime_notifiche": "Latest Notifications",
+        "lezione_cancellata_descrizione": "Today's lesson has been cancelled.",
+        "anticipo_fine_lezione_descrizione": "Today's lesson will end half an hour early.",
+        "tema_chiaro": "Light Theme",
+        "tema_scuro": "Dark Theme",
+        "tema_automatico": "Automatic Theme"
+    },
+    "sidebar": {
+        "didattica": "Education",
+        "area_personale": "Personal Area",
+        "carriera": "Career",
+        "opportunità": "Opportunities",
+        "servizi": "Services"
+    },
+    "carriera": {
+        "tasse_e_agevolazioni": {
+            "title": "Taxes and Benefits",
+            "description": "Payment and request for tax reduction."
+        },
+        "piano_carriera": {
+            "title": "Career Plan",
+            "description": "Completion or modification of the career plan and/or the teaching load, enrollment in the new academic year."
+        },
+        "gestione_carriera": {
+            "title": "Career Management",
+            "description": "Request for approval of external activities and modification of career status."
+        },
+        "apply": {
+            "title": "Apply@polito",
+            "description": "View and check the status of your career."
+        },
+        "laurea_ed_esame_finale": {
+            "title": "Degree and Final Examination",
+            "description": "View the status of the thesis and the steps to obtain the title."
+        },
+        "proposte_di_tesi": {
+            "title": "Thesis Proposals",
+            "title_half_lowercase": "Thesis proposals",
+            "description": "List of thesis proposals.",
+            "order_by": "Order by",
+            "expires": "Expires on",
+            "exp_order": "Expiration date",
+            "created": "Created on",
+            "created_order": "Creation date",
+            "show_more": "Show more",
+            "internal_thesis": "Internal thesis",
+            "external_thesis": "Company thesis",
+            "abroad_thesis": "Abroad thesis",
+            "total": "Total:",
+            "elements_per_page": "Elements per page",
+            "all_thesis": "All thesis",
+            "course_thesis": "Thesis for your study course",
+            "search": "Search proposals..."
+        },
+        "proposta_di_tesi": {
+            "dettagli_proposta_di_tesi": "Thesis Proposal Details",
+            "descrizione": "Description",
+            "conoscenze_richieste": "Required knowledge",
+            "note": "Notes",
+            "ambiente": "Environment",
+            "allegato": "Attachment",
+            "tipo": "Type",
+            "relatore_principale": "Main Supervisor",
+            "relatori_secondari": "Secondary Supervisors",
+            "relatori_esterni": "External Supervisors"
+        }
+    },
+    "Accedi": "Login",
+    "page_not_found": {
+        "title": "Page not found",
+        "message": "The requested page does not exist or is not available.",
+        "back": "Back to the Homepage"
+    }
+}

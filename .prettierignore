@@ -1,3 +1,7 @@
+back-end/coverage
+back-end/reports
+front-end/coverage
+front-end/.nyc_output
 *.html
 *.json
 *.md
