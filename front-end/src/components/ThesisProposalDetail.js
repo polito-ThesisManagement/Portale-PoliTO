@@ -49,7 +49,7 @@ function ThesisProposalDetail(props) {
       />
       {creationDate && expirationDate && <ExpirationDate creation_date={creationDate} exp_date={expirationDate} />}
       <Container fluid className="custom-container pt-3">
-        {isAbroad && <Abroad />}
+        {isAbroad && <Badge variant="abroad" />}
         {topic && (
           <div className="subsection-title">
             <p>{topic}</p>
