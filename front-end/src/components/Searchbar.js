@@ -44,7 +44,7 @@ export default function Searchbar(props) {
 
   return (
     <Form
-      className={props.mobile ? 'd-flex m-2 mb-4 w-100' : 'custom-searchbar d-flex me-3 w-100'}
+      className={props.mobile ? 'd-flex m-2 mb-4' : 'custom-searchbar d-flex me-3 w-100'}
       style={props.mobile ? { maxWidth: 'none', position: 'relative' } : { maxWidth: '400px', position: 'relative' }}
     >
       <InputGroup className="flex-nowrap w-100">

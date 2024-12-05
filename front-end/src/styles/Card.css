@@ -51,6 +51,12 @@
   color: var(--background);
 }
 
+.card-button:active:focus {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--background);
+}
+
 .card-link {
   font-weight: var(--font-weight-regular);
   margin-top: 8px;

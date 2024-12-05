@@ -71,8 +71,9 @@
   margin-top: 3px;
 }
 
-.modal-85vw {
-  width: 85% !important;
+.modal-size {
+  width: 75vw;
+  min-width: 260px;
 }
 
 .modal-content {
