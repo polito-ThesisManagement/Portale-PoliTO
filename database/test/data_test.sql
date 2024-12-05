@@ -2854,16 +2854,16 @@ VALUES
         13169,
         "Studio esplorativo delle soluzioni IA-based per la generazione del codice",
         "An exploration of the solutions for AI-based code generation",
-        "La tesi comporta una completa esplorazione delle soluzioni attuali nel dominio. L'obiettivo è valutare le metodologie esistenti, le tecnologie e i framework rilevanti per il contesto di ricerca. Questa analisi preliminare sarà condotta in modo sistematico applicando le linee guida di Kitchenham per la conduzione di Revisioni Bibliografiche Sistematiche nel campo della Ricerca in Ingegneria del Software. La revisione bibliografica sistematica terrà conto anche delle fonti di letteratura grigia (cioè, fonti non sottoposte a revisione tra pari disponibili su varie fonti internet) per far fronte alla grande novità del campo della ricerca sull'IA generativa. La valutazione sistematica dello stato dell'arte sarà integrata con la conduzione di interviste aperte e strutturate con professionisti e sviluppatori per comprendere le loro principali esigenze e pratiche più comuni.",
-        "The thesis involves a comprehensive exploration of current solutions in the domain. The objective is to evaluate existing methodologies, technologies, and frameworks relevant to the research context. This preliminary analysis will be conducted in a systematic way by applying Kitchenham's guidelines for the conduction of Systematic Literature Reviews in the Software Engineering research field. The systematic literature review will also consider grey-literature sources (i.e., non-peer reviewed sources available on various internet sources) to cope with the high novelty of the generative AI research field. The systematic evaluation of the state of the art will be complemented with the conduction of open and structured interviews with practitioners and developers to understand their main needs and most common practices.",
+        "Descrizione 13169",
+        "Description 13169",
         NULL,
         NULL,
         NULL,
         NULL,
         NULL,
         NULL,
+        "2022-12-07",
         "2023-12-07",
-        "2024-12-07",
         1,
         0,
         "CL003",
@@ -2874,20 +2874,16 @@ VALUES
         13275,
         "Valutazione Critica delle Capacità di Generazione del Codice da Parte di LLM in Contesto di Istruzione",
         "Critical Appraisal of LLM Code Generation Capabilities in Educational Context",
-        "Recentemente diversi strumenti di generazione automatica del codice basati su tecniche di AI sono stati messi a disposizione degli utenti. Si tratta di prodotti specifici (es. CodePilot) oppure con scopi più ampi (ChatGPT) che sono in grado di generare codice di elevata qualità a partire da requisiti espressi in linguaggio naturale.
-        Questi strumenti entreranno a breve nel set di uso comune per gli sviluppatori di software e quindi dovranno essere integrati nei progetti formazione universitari (e non solo).
-        L'obiettivo di questa tesi è valutare in maniera sperimentale il livello di qualità del codice generato nel contesto degli esercizi tipici di un corso universitario, identificare i limiti, definire delle strategie per mitigarli e migliorare il risultato. Inoltre sarà necessario identificare le competenze necessarie agli studenti ed ai futuri sviluppatori per poter interagire efficacemente con questo tipo di strumenti.",
-        "Recently, several automatic code generation tools based on AI techniques have been made available to users. These are specific products (e.g., CodePilot) or those with broader purposes (such as ChatGPT) that are capable of generating high-quality code from requirements expressed in natural language.
-        These tools will soon enter the common toolset for software developers and therefore must be integrated into university training projects (and not only).
-        The goal of this thesis is to experimentally evaluate the quality level of the code generated in the context of typical university course exercises, identify the limits, define strategies to mitigate them and improve the result. Additionally, it will be necessary to identify the skills required for students and future developers to effectively interact with this type of tools.",
+        "Descrizione 13275",
+        "Description 13275",
         NULL,
         "Sviluppo in Java, Software Engineering, possibilmente Machine Learning",
         "Java development, Software Engineering, possibly Machine Learning",
         NULL,
         NULL,
         NULL,
-        "2024-01-11",
-        "2025-01-11",
+        "2024-11-11",
+        "2025-11-11",
         1,
         0,
         "CL003",
@@ -2898,82 +2894,16 @@ VALUES
         13363,
         "Sviluppo di un simulatore di Home Automation",
         "Development of a Home Automation Simulator",
-        "La tesi mira a progettare e realizzare un ambiente di simulazione per sistemi di automazione domestica. Questo simulatore avrà il compito di emulare il comportamento di dispositivi IoT (Internet of Things) in un contesto di automazione domestica, supportando protocolli di comunicazione come HTTP, MQTT e BLE (Bluetooth Low Energy). L'obiettivo è fornire agli sviluppatori di sistemi di home automation uno strumento per testare e validare funzionalità e scenari d'uso senza la necessità di disporre fisicamente di tutti i dispositivi hardware.
-
-        Introduzione
-
-        L'introduzione esporrà la crescente importanza dell'IoT nell'automazione domestica, sottolineando come la capacità di simulare dispositivi e scenari d'uso rappresenti un vantaggio significativo nello sviluppo di tali sistemi. Verrà inoltre definito l'obiettivo della tesi e descritta brevemente la metodologia di ricerca adottata.
-        Stato dell'arte
-        Questa sezione fornirà una panoramica delle tecnologie IoT applicate all'automazione domestica, con particolare attenzione ai protocolli di comunicazione HTTP, MQTT e BLE. Si analizzerà anche lo stato attuale degli strumenti di simulazione disponibili, evidenziando limiti e opportunità.
-
-        Progettazione del simulatore
-
-        In questa parte, verrà descritta la progettazione del simulatore, includendo:
-        Architettura del sistema: Struttura software del simulatore, con dettagli sui moduli principali, le interfacce di comunicazione e il flusso di dati.
-        Mock dei dispositivi IoT: Metodologie per l'emulazione dei dispositivi IoT, inclusi sensori e attuatori, che comunicano tramite HTTP, MQTT e BLE.
-        API di interazione programmatica con il simulatore: Implementazione di una API che consenta di implementare test-case E2E automatizzati
-
-        Implementazione
-
-        Questa sezione illustrerà l'implementazione del simulatore, coprendo:
-        Scelta delle tecnologie: Giustificazione delle tecnologie software utilizzate per lo sviluppo del simulatore.
-        Dettagli di implementazione: Spiegazione del codice e delle strutture dati principali, insieme a esempi di interazione tra i moduli software.
-
-        Validazione e Testing
-
-        In questa fase, verranno descritti i metodi e i risultati della fase di test del simulatore, inclusa l'esecuzione di scenari d'uso per validare le funzionalità simulate. Si discuterà dell'efficacia del simulatore nell'emulare il comportamento dei dispositivi IoT e nella facilitazione dello sviluppo di sistemi di home automation. Particolare enfasi sarà posta nella possibilit`a di utilizzare lo strumento in ambito di continuous integration e continuous deployment (CI/CD)
-        Conclusioni e sviluppi futuri
-        Infine, verranno tratte le conclusioni, riflettendo sull'impatto del simulatore nello sviluppo di sistemi di automazione domestica e suggerendo possibili miglioramenti e direzioni future di ricerca, come l'integrazione con piattaforme di sviluppo cloud-based o il supporto per protocolli di comunicazione emergenti.
-
-        Tecnologie, ambienti e linguaggi utilizzati
-
-        Linux OpenWrt
-        Docker
-        Python
-        Javascript
-        HTTP/Rest
-        Websocket
-        MQTT",
-        "The thesis aims to design and implement a simulation environment for home automation systems. This simulator will be responsible for emulating the behavior of IoT (Internet of Things) devices within a home automation context, supporting communication protocols such as HTTP, MQTT, and BLE (Bluetooth Low Energy). The goal is to provide developers of home automation systems with a tool to test and validate functionalities and use scenarios without the need to physically have all the hardware devices.
-
-        Introduction
-
-        The introduction will discuss the growing importance of IoT in home automation, highlighting how the ability to simulate devices and use scenarios represents a significant advantage in the development of such systems. The objective of the thesis and a brief description of the adopted research methodology will also be defined. State of the Art This section will provide an overview of IoT technologies applied to home automation, with particular attention to the HTTP, MQTT, and BLE communication protocols. It will also analyze the current state of available simulation tools, highlighting limits and opportunities.
-
-        Simulator Design
-
-        In this part, the design of the simulator will be described, including:
-        System Architecture: The software structure of the simulator, with details on the main modules, communication interfaces, and data flow.
-        Mocking of IoT Devices: Methodologies for emulating IoT devices, including sensors and actuators, communicating via HTTP, MQTT, and BLE.
-        Programmatic Interaction API with the Simulator: Implementation of an API that allows for the implementation of automated E2E test cases.
-
-        Implementation
-
-        This section will illustrate the implementation of the simulator, covering:
-        Choice of Technologies: Justification of the software technologies used for the development of the simulator.
-        Implementation Details: Explanation of the code and main data structures, along with examples of interaction between software modules.
-
-        Validation and Testing
-
-        In this phase, the methods and results of the simulator's test phase will be described, including the execution of use scenarios to validate the simulated functionalities. The effectiveness of the simulator in emulating the behavior of IoT devices and in facilitating the development of home automation systems will be discussed. Particular emphasis will be placed on the possibility of using the tool in the context of continuous integration and continuous deployment (CI/CD). Conclusions and Future Developments Finally, conclusions will be drawn, reflecting on the impact of the simulator in the development of home automation systems and suggesting possible improvements and future research directions, such as integration with cloud-based development platforms or support for emerging communication protocols.
-
-        Technologies, Environments, and Languages Used
-
-        Linux OpenWrt
-        Docker
-        Python
-        JavaScript
-        HTTP/Rest
-        Websocket
-        MQTT",
+        "Descrizione 13363",
+        "Description 13363",
         NULL,
         "Python",
         "Python",
         NULL,
         NULL,
         "Domenico De Guglielmo",
-        "2024-02-05",
-        "2025-02-05",
+        "2024-09-05",
+        "2025-09-05",
         1,
         0,
         "CL003",
@@ -2984,64 +2914,16 @@ VALUES
         14027,
         "Migliorare il Testing del Software attraverso l'IA Generativa",
         "Enhancing Software Testing Through Generative AI",
-        "Tesi presso Concept Quality Reply
-
-        Contesto:
-        Nel dominio specifico della diagnostica dei veicoli e dell'IoT, ottenere una valida End-to-End (E2E) è fondamentale per garantire l'affidabilità e le prestazioni dei sistemi integrati. Questo richiede approcci innovativi al testing del software, e l'Intelligenza Artificiale Generativa (Generative AI) emerge come uno strumento promettente per ottimizzare e potenziare i processi di testing.
-
-        Descrizione:
-        Questa tesi esplora l'integrazione e l'applicazione dell'IA Generativa nel campo del testing del software. Sfruttando il potere della Generative AI, questa ricerca mira a migliorare l'efficienza, l'accuratezza e la completezza delle attività di testing, soprattutto nel contesto dell'IoT e dei veicoli connessi.
-
-        Obiettivi:
-
-        Esplorare il potenziale della Generative AI nella generazione di test case completi e diversificati per sistemi software complessi.
-        Indagare come la Generative AI possa accelerare la creazione di scenari di test e dati, simulando l'uso reale e migliorando la copertura dei test.
-        Valutare l'impatto della Generative AI sull'efficienza e sull'efficacia complessiva dei processi di validazione End-to-End (E2E), in particolare nei sistemi IoT e nei veicoli connessi.
-        Sviluppare metodologie per integrare l'IA Generativa nel ciclo di vita del testing del software, con un focus sull'ottimizzazione dell'utilizzo delle risorse e sulla riduzione dei tempi di testing.
-        Prerequisiti:
-
-        Competenza nello sviluppo software e nelle metodologie di testing.
-        Familiarità con i concetti e i principi della Generative AI.
-        Conoscenza delle tecnologie IoT e dei veicoli connessi.
-        Competenze acquisite:
-
-        Java, Postman, Selenium, CANalyzer, CAPL, framework di Generative AI (es. GPT-3, GPT-4), Python, librerie di Machine Learning (es. TensorFlow, PyTorch), framework e protocolli IoT, tecnologie per veicoli connessi, strumenti di testing automatizzato.",
-        "Thesis work at Concept Quality Reply
-
-        Context:
-        In the specific domain of vehicle diagnostics and IoT, achieving thorough End-to-End (E2E) validation is critical for ensuring the reliability and
-        performance of integrated systems. This necessitates innovative approaches to software testing, and Generative Artificial Int elligence (Generative AI)
-        emerges as a promising tool to streamline and augment testing processes.
-
-        Description:
-        This thesis delves into the integration and application of Generative AI in the field of software testing. y harnessing the p ower of Generative AI, this
-        research aims to enhance the efficiency, accuracy, and comprehensiveness of testing activities, especially within the context of IoT and connected
-        vehicles.
-
-        Objectives:
-        • Explore the potential of Generative AI in generating comprehensive and diverse test cases for intricate software systems.
-        • Investigate how Generative AI can expedite the creation of test scenarios and data, mimicking real-world usage and improving test coverage.
-        • Assess the impact of Generative AI on the overall efficiency and effectiveness of End-to-End (E2E) validation processes, particularly in IoT and
-        connected vehicle systems.
-        • Develop methodologies to integrate Generative AI seamlessly into the software testing life cycle, with a focus on optimizing resource utilization and
-        reducing testing time.
-
-        • Pre-requisites:
-        • Proficiency in software development and testing methodologies.
-        • Familiarity with Generative AI concepts and principles.
-        • Understanding of IoT and connected vehicle technologies.
-
-        • Skills acquired:
-        • Java, Postman, Selenium, CANalyzer, CAPL, Generative AI frameworks (e.g., GPT-3, GPT-4), Python, Machine Learning libraries (e.g.,
-        TensorFlow, PyTorch), IoT frameworks and protocols, Connected vehicle technologies, Automated testing tools.",
+        "Descrizione 14027",
+        "Description 14027",
         NULL,
         NULL,
         NULL,
         NULL,
         NULL,
         NULL,
-        "2024-03-09",
-        "2025-03-09",
+        "2026-01-09",
+        "2024-01-09",
         0,
         0,
         "CL003",
@@ -3052,31 +2934,8 @@ VALUES
         13470,
         "IA Generativa per la Creazione di OpenScenario e OpenDrive da Serie di Immagini del Traffico",
         "Generative AI for Generation of OpenScenario and OpenDrive from series of traffic images",
-        "Contesto:
-        Nel campo dei Sistemi Avanzati di Assistenza alla Guida (ADAS) e dei Veicoli Autonomi (AV), i simulatori di guida e traffico svolgono un ruolo cruciale nell'accelerare i processi di sviluppo, formazione e validazione. Questo settore dinamico sta assistendo a una crescente domanda di modelli di simulazione standardizzati, con l'obiettivo di garantire uno scambio fluido di dati e modelli.
-
-        Descrizione:
-        Il candidato entrerà a far parte di un team dinamico di Ricerca e Innovazione dedicato a spingere i limiti dello sviluppo basato sui dati. Questo ruolo si concentra sullo sviluppo di una piattaforma innovativa Software as a Service (SaaS), capace di tradurre immagini di traffico in file OpenSCENARIO e OpenDRIVE utilizzando modelli linguistici avanzati (Large Language Models).
-
-        Obiettivi:
-
-        Esplorare tecniche all'avanguardia, modelli linguistici avanzati e generazione di testo strutturato
-        Sviluppare prompt ottimizzati per la generazione di file standardizzati a partire da immagini di traffico
-        Ottimizzare ChatGPT per un modello personalizzato
-        Progettare ed eseguire la validazione dell'output tramite l'ambiente di simulazione CARLA/esmini
-        Sviluppare un servizio end-to-end, che includa la definizione del customer journey, lo sviluppo del front-end, l'integrazione di ChatGPT e il deployment su server fisico",
-        "Context:
-        In the realm of Advanced Driver Assistance Systems (ADAS) and Autonomous Vehicles (AV), drive and traffic simulators play a crucial role in accelerating development, training, and validation processes. This dynamic field is witnessing a growing demand for standardized simulation models, aiming for the seamless exchange of data and models.
-
-        Description:
-        The candidate will join a dynamic Research and Innovation team dedicated to pushing the boundaries of data-driven development. This role focuses on developing a cutting-edge Software as a Service (SaaS) platform, seamlessly translating traffic images into OpenSCENARIO and OpenDRIVE files using Large Language Models.
-
-        Objectives:
-        Explore state-of-the-art techniques, large language models, and structured text generation
-        Prompt engineering for optimized generation of standardized files from traffic images
-        Fine-tune ChatGPT for a customized model
-        Design and execute output validation using CARLA simulator / esmini testing environment
-        Develop end-to-end service, including customer journey definition, front-end development, ChatGPT integration, and deployment on a physical server",
+        "Descrizione 13470",
+        "Description 13470",
         NULL,
         "Prerequisiti:
         Esperienza nell'integrazione di API di OpenAI ChatGPT (o simili) per la generazione di descrizioni testuali strutturate a partire da immagini
@@ -3090,9 +2949,9 @@ VALUES
         NULL,
         NULL,
         "2024-02-26",
-        "2025-02-26",
+        "2026-02-26",
         0,
-        0,
+        1,
         "CL003",
         "2",
         NULL
@@ -3101,28 +2960,8 @@ VALUES
         12946,
         "Gamification applicata al test refactoring",
         "Gamification for test refactoring",
-        "Il test refactoring rappresenta una pratica essenziale nello sviluppo del software, mirata a ottimizzare e migliorare la qualità dei test automatizzati senza alterarne la funzionalità. Questo processo coinvolge la riscrittura del codice dei test al fine di renderlo più efficiente, manutenibile e adatto agli scopi di testing. Tuttavia, implementare con successo il test refactoring richiede un elevato livello di competenza tecnica e una comprensione approfondita del sistema in esame.
-
-        La gamification è una strategia che applica elementi tipici dei giochi, come punti, sfide e ricompense, in contesti non ludici per motivare e coinvolgere gli utenti. L'obiettivo della gamification è trasformare compiti complessi o noiosi in attività coinvolgenti e gratificanti.
-
-        La presente tesi propone un'indagine approfondita sull'applicazione della gamification nel contesto del test refactoring. L'obiettivo principale è esplorare come l'introduzione di elementi ludici possa influenzare positivamente l'efficacia e l'efficienza del processo di test refactoring.
-
-        Gli aspetti chiave della ricerca includeranno:
-        - Studio dei Metodi di Test Refactoring: Analisi delle diverse tecniche e metodologie di test refactoring attualmente utilizzate nello sviluppo del software.
-        - Analisi dei Problemi Comuni: Identificazione e analisi dei problemi comuni riscontrati nello svolgimento del test refactoring, come la resistenza agli aggiornamenti e la complessità del processo.
-        - Gamification Applicata: Progettazione e implementazione di un sistema di gamification per incentivare e migliorare l'adozione del test refactoring. Ciò potrebbe includere la definizione di obiettivi, la creazione di sfide e la valutazione delle ricompense.
-        - Valutazione dell'Impatto: Valutazione dell'efficacia della gamification attraverso indicatori chiave di prestazione, confrontando i risultati con gruppi di controllo che seguono approcci tradizionali di test refactoring.",
-        "Test refactoring is an essential practice in software development aimed at optimizing and improving the quality of automated tests without altering their functionality. This process involves rewriting test code to make it more efficient, maintainable, and suitable for testing purposes. However, successfully implementing test refactoring requires a high level of technical expertise and a deep understanding of the system under consideration.
-
-        On the other hand, gamification is a strategy that applies typical game elements, such as points, challenges, and rewards, in non-game contexts to motivate and engage users. The goal of gamification is to transform complex or tedious tasks into engaging and rewarding activities.
-
-        This thesis proposes an in-depth investigation into the application of gamification in the context of test refactoring. The main objective is to explore how the introduction of playful elements can positively influence the effectiveness and efficiency of the test refactoring process.
-
-        Key aspects of the research will include:
-        - Study of Test Refactoring Methods: Analysis of different techniques and methodologies of test refactoring currently used in software development.
-        - Analysis of Common Issues: Identification and analysis of common problems encountered in test refactoring, such as resistance to updates and process complexity.
-        - Applied Gamification: Design and implementation of a gamification system to encourage and improve the adoption of test refactoring. This may include goal definition, challenge creation, and reward evaluation.
-        - Impact Evaluation: Assessment of the effectiveness of gamification through key performance indicators, comparing results with control groups following traditional approaches to test refactoring.",
+        "Descrizione 12946",
+        "Description 12946",
         NULL,
         "Sviluppo con linguaggi di programmazione a oggetti (preferibilmente Java), Fondamenti del software testing",
         "Development with OOP languages (preferably Java), Testing fundamentals",
@@ -3141,36 +2980,8 @@ VALUES
         13837,
         "Coach personale basato sull'IA generativa",
         "Personal coach based on generative AI",
-        "L'obiettivo di questo progetto è sperimentare l'uso dei modelli linguistici di grandi dimensioni (LLM) per costruire un sistema di raccomandazione nel dominio del fitness e del benessere. Gli input al LLM includono dati relativi a: attività fisica, sonno, alimentazione, livello di stress. A eccezione dell'alimentazione, gli altri parametri vengono raccolti da dispositivi indossabili personali (es. Fitbit, smartwatch). L'output previsto dal LLM consiste in raccomandazioni giornaliere o settimanali su comportamenti (in particolare alimentazione, sonno, attività fisica) mirati a migliorare il fitness e il benessere, personalizzate per ciascun individuo. Le raccomandazioni si basano su letteratura scientifica disponibile (PubMed e altre fonti) e sui dati personali dell'utente.
-
-        Le fasi del progetto sono:
-
-        -valutazione e selezione del LLM più adatto (criteri: addestramento su dati medici, privacy, licenze)
-        -costruzione di una ground truth (insieme di casi studio individuali e raccomandazioni correlate fornite da esperti medici)
-        -selezione e personalizzazione delle metriche di valutazione
-        -sperimentazione sull'LLM senza fine-tuning (prompt engineering, progettazione di prompt per convertire i dati personali in raccomandazioni specifiche)
-        -costruzione del dataset per il fine-tuning (letteratura medica su invecchiamento e benessere)
-        -fine-tuning dell'LLM
-        -secondo ciclo di sperimentazione
-
-        Il progetto è realizzato in collaborazione con l'Università di Paderborn e l'Amsterdam University Medical Center.",
-        "The goal of this project is to experiment the use of LLMs to build a recommender system in the domain of fitness and well being.
-        Inputs to the LLM are data about a person’s: physical activity, sleep, food eaten, stress level.
-        Apart the food eaten, the other parameters are collected from personal wearable devices (aka Fitbit, Smartwatch).
-        Expected output from the LLM are daily or weekly recommendations about behaviours (notably food, sleep, physical activity)
-        to improve fitness and well being, customized for the specific person.
-        Recommendations are based on scientific literature available (Pubmed and other sources) and personal data.
-
-        The steps for the project are:
-        -evaluation and selection of the most suitable LLM (criteria: training on medical data, privacy, licensing)
-        -construction of ground truth (set of case studies, individual cases and related recommendations by medical experts)
-        -selection and customization of evaluation metrics
-        -experimentation on LLM without fine tuning (prompt engineering, design of prompts to convert personal data in specific recommendations)
-        -construction of data set for fine tuning (medical literature on aging and well being)
-        -fine tuning of LLM
-        -experimentation, second round
-
-        The project is in collaboration with University of Paderborn and Amsterdam University Medical Center",
+        "Descrizione 13837",
+        "Description 13837",
         NULL,
         "Sviluppo software, IA generativa",
         "Software development, Generative AI",
@@ -3178,7 +2989,7 @@ VALUES
         NULL,
         NULL,
         "2024-05-31",
-        "2025-05-31",
+        "2025-10-31",
         1,
         0,
         "CL003",
@@ -3189,30 +3000,8 @@ VALUES
         13253,
         "Test automatizzato per soluzioni Virtual Reality Content Management System e piattaforme di VR streaming",
         "Test automation for an enterprise VR (Virtual Reality) CMS and VR streaming platforms",
-        "Questa proposta di tesi si concentra sullo studio e lo sviluppo di un innovativo approccio all'automazione dei test per migliorare la stabilità e l'affidabilità di un sistema di gestione dei contenuti VR (Virtual Reality) e di una piattaforma di streaming VR per le imprese. I componenti necessari per la piattaforma includono una piattaforma web, client VR Android e servizi AWS per l'orchestrazione e il rendering nel cloud.
-
-        L'obiettivo principale della tesi è lo sviluppo un'applicazione Unity VR in grado di fornire feedback sulle performance dello streaming e sul comportamento atteso della piattaforma. Con un approccio bottom-up in mente, lo studio si concentrerà poi su come le applicazioni vengono avviate sia dai client VR Android che dai browser web e su come questo processo possa essere automatizzato per scopi di testing.
-
-        La tesi prevede una revisione dello stato attuale dell'arte dell'automazione dei test in VR, esplorando approcci innovativi su come affrontare le sfide dell'interazione umana, come ad esempio: simulare l'uso di visori VR di vari produttori (Meta, HTC, Pico), incorporare movimenti della testa e interazioni con i controller. Un prototipo, costruito con componenti Lego, potrebbe aiutare a dimostrare la fattibilità di tali simulazioni.
-
-        La ricerca esplorerà infine le sfide potenziali per raggiungere una soluzione completa di automazione dei test end-to-end per l'intera piattaforma, considerando il percorso tipico dell'utente. Saranno esplorati sia strumenti tradizionali (Windows Forms, Selenium) che soluzioni all'avanguardia (come modelli di linguaggio e OpenAI) per valutarne l'efficacia nel affrontare queste sfide.
-
-        La tesi aspira dunque a contribuire non solo al campo dei test VR, ma anche al più ampio settore dei sistemi di gestione dei contenuti e delle piattaforme di streaming a livello aziendale introducendo metodologie innovative di automazione dei test.
-
-        La tesi sarà condotta tramite lavoro da remoto in collaborazione con l'azienda innoactive.io (referente aziendale: Dr. Edgar Pironti)",
-        "This thesis proposal focuses on the study and development of an innovative testing automation approach to enhance the stability and reliability of an enterprise VR Content Management System and VR streaming platform. The encompassed components include a web platform, Android VR clients, and AWS services for cloud orchestration and rendering.
-
-        The primary objective is to develop a Unity VR application capable of providing feedback on streaming performances and expected platform behavior. With a bottom-up approach in mind, the study will then focus on how applications are launched from both Android VR clients and web browsers and how this process can be automated for testing purposes.
-
-
-        The thesis involves a review of the current state of the art of testing automation in VR, exploring innovative approaches on how to address human interaction challenges, such as: simulating wearing VR headsets from various manufacturers (Meta, HTC, Pico), incorporating head movements and hand interactions with controllers. A prototype, constructed using Lego components, may aid in demonstrating the feasibility of these simulations.
-
-
-        The research will explore the potential challenges to achieve a complete end-to-end testing automation solution for the entire platform, considering the typical user journey. Both traditional tools (Windows Forms, Selenium) and cutting-edge solutions (such as leveraging OpenAI) will be explored to assess their efficacy in addressing these challenges.
-
-        This thesis aspires to contribute not only to the domain of VR testing but also to the broader field of enterprise-level content management systems and streaming platforms by introducing innovative testing automation methodologies.
-
-        The thesis will be conducted remotely in collaboration with innoactive.io (industrial mentor: Dr. Edgar Pironti)",
+        "Descrizione 13253",
+        "Description 13253",
         NULL,
         "soft skill necessarie: padronanza della lingua inglese, capacità di lavoro da remoto, buona connessione a internet (almeno 50Mbps in download)
 
@@ -3225,8 +3014,8 @@ VALUES
         NULL,
         NULL,
         "Edgar Pironti - innoactive.io",
-        "2023-12-31",
-        "2024-12-31",
+        "2023-10-31",
+        "2024-10-31",
         0,
         0,
         "CL003",
@@ -3237,68 +3026,8 @@ VALUES
         14026,
         "Utilizzo dell'IA per la generazione automatizzata di script di test",
         "Use of AI for automated test script generation",
-        "Tesi presso Concept Quality Reply
-
-        Questa tesi riconosce il ruolo fondamentale della generazione di test case utilizzando l’IA generativa per garantire la qualità e l'affidabilità del prodotto durante l'intero ciclo di vita, migliorando la soddisfazione degli utenti e riducendo i costi.
-
-        Descrizione:
-        Ecco una breve descrizione delle attività che il candidato per la tesi potrebbe svolgere all'interno del team sotto la guida di un tutor esperto:
-
-        Rivedere la ricerca rilevante su IA generativa e test automatizzati.
-        Definire l'ambito e le sfide della generazione di test case basata su IA.
-        Raccogliere dataset per l'addestramento e la valutazione del modello.
-        Creare modelli di IA per la generazione di test case.
-        Progettare esperimenti per valutare le prestazioni del modello.
-        Analizzare i risultati degli esperimenti per misurare l'efficacia del sistema.
-        Raffinare il modello di IA basandosi sui feedback delle valutazioni.
-        Familiarità con diversi framework di test per vari aspetti del testing di app mobili (ad esempio, test UI, test di integrazione).
-        Esperienza pratica con framework di test popolari (es. Selenium, Appium).
-        Scrivere e presentare i risultati della ricerca in una tesi.
-        Obiettivi:
-        Utilizzare l'IA generativa per trasformare requisiti in linguaggio naturale da diversi formati (PDF, PPT, Word) in un set completo di test case e generare lo script automatizzato finale (Appium, Selenium) dei test automatizzati corrispondenti.
-
-        Prerequisiti:
-
-        Conoscenza di Java, Python, JavaScript, HTML, CSS
-        Conoscenza del testing automatizzato (ad esempio, Selenium, Appium)
-        Conoscenza di approcci di IA e Machine Learning
-        Interesse dimostrato per il testing automatizzato, algoritmi di IA generativa
-        Competenze acquisite:
-
-        Apprendimento sull’IA generativa per velocizzare i processi di testing e validazione
-        Apprendimento del processo generativo automatizzato dai requisiti funzionali ai test case per i servizi finanziari",
-        "Thesis work at Concept Quality Reply
-
-        Context:
-        This thesis recognizes the pivotal role of test case generation, using generative AI, to ensure product quality and reliability throughout the entire product lifecycle, ultimately
-        enhancing user satisfaction and reducing cost.
-
-        Description:
-        Here's a brief description of the activities the candidate for the thesis might undertake within the team under the guidance of an expert tutor:
-        • Review relevant research on generative AI and automated testing.
-        • Define the scope and challenges of AI-based test case generation.
-        • Gather datasets for model training and evaluation.
-        • Create AI models for test case generation.
-        • Design experiments to assess model performance.
-        • Analyze experiment results to measure system effectiveness.
-        • Refine the AI model based on evaluation feedback.
-        • Familiarity with various test frameworks for different aspects of mobile app testing (e.g., UI testing, integration testing).
-        • Hands-on experience with popular testing frameworks (e.g., Selenium, Appium).
-        • Write and present the research findings in a thesis.
-
-        Objectives:
-        Use generative AI to transform natural language requirements from different formats (PDF, PPT, Word) into a complete set of test cases, and to generate the final automated script
-        (Appium, Selenium) of the corresponding automated tests.
-
-        Pre-requisites:
-        • Knowledge of Java, python, javascript, html, css
-        • Knowledge of automated testing (e.g., Selenium, Appium).
-        • Knowledge of AI and Machine learning approaches
-        • Demonstrated interest in automated testing, Generative AI algorithms
-        Skills acquired:
-        • Learning about Generative AI to speed-up testing and validation processes
-        • Learning about automated generative process from functional requirements to test
-        cases for financial services",
+        "Descrizione 14026",
+        "Description 14026",
         NULL,
         NULL,
         NULL,
@@ -3317,19 +3046,8 @@ VALUES
         10187,
         "App per il benessere",
         "Well being app",
-        "Obbiettivo della tesi è sviluppare una app e relativo back end per supportare le persone a perseguire uno stile di vita salutare.
-        La app raccoglie (direttamente, o tramite device esterni tipo smartwatch o fitbit) dati sulla vita della persona (attività fisica, qualità e durata del sonno, pressione, pulsazioni) (nutrizione, tipo e quantità del cibo mangiato e delle bevande). Confrontando i dati raccolti con pattern predefiniti e possibilmente con analisi mediche supplettive la app suggerisce modifiche allo stile di vita (recommendation). Via via che la persona viene monitorata altre modifiche sono suggerite e il loro effetto verificato.
-        La parte back end della app raccoglie in modo anonimo i dati di molti utenti e utilizzando tecniche statistiche e di machine learning costruisce e raffina modelli e pattern predittivi da usare per le recommendation.
-
-        Le recommendation iniziali sono derivate dalla letteratura scientifica su aging e well being (vedere ad esempio Fontana L., The path to longevity). Scopo di lungo termine della app è di raccogliere dati per validare e migliorare le recommendation.
-
-        Il lavoro è svolto in collaborazione con University of Sydney e Azienda Ospedaliera Verona. Il lavoro supporta una tesi lato app e una lato backend.",
-        "Goal of the project is to develop a mobile app + backend to support people in having a healthy lifestyle. The mobile app collects (directly or using wearable devices) information about a person's life: physical status and activity (walking running and any physical activity, heart rate, pressure, sleeping times etc), nutrition (type and quantity of food eaten). Starting from the data collected and using predefined patterns the app proposes recommendations to improve the lifestyle. The effect of recommendations is monitored in ters of changes to the lifestyle, in function of changes recommendations are recomputed.
-        The back end side of the app collects, anonymously, data about all users, analyses them via statistic and machine learning models, in order to build models to characterize and predict the effects of behaviours and recommendations.
-
-        At start recommendations are derived from the existing scientific literature about aging and well being (ex Fontana L., The path to longevity). On the long run the data collected and analysed is used to further validate and improve the recommendations, and the models they are built on.
-
-        This project is developed with University of Sydney and Azienda Ospedaliera Verona.",
+        "Descrizione 10187",
+        "Description 10187",
         NULL,
         "Sviluppo di applicazioni web (lato client, lato server). Flutter / React",
         "Web application development (client side, server side). Flutter / React",
@@ -3356,11 +3074,9 @@ VALUES
     (13363, "37-18"),
     (14027, "37-18"),
     (13470, "37-18"),
-    (12946, "37-18"),
-    (13837, "37-18"),
-    (13253, "37-18"),
-    (14026, "37-18"),
-    (10187, "37-18");
+    (13253, "37-320"),
+    (14026, "37-320"),
+    (10187, "37-320");
 
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_keyword table ↓
