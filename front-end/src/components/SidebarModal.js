@@ -17,7 +17,7 @@ import { NavItems } from './Sidebar';
 export default function SidebarModal({ show, handleClose }) {
   return (
     <Modal dialogClassName="modal-size" show={show} onHide={handleClose} fullscreen={true}>
-      <Modal.Header closeButton={true} style={{height: "86px"}}>
+      <Modal.Header closeButton={true} style={{height: "87px"}}>
         <Modal.Title>
           <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }}/>
         </Modal.Title>

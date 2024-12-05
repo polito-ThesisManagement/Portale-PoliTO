@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
 import { Bell, BellFill, Envelope, PersonCircle } from 'react-bootstrap-icons';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Image from 'react-bootstrap/Image';
@@ -163,15 +164,13 @@ export default function PoliNavbar() {
             {t('navbar.portale_della_didattica')}
           </span>
         </Navbar.Brand>
-        <Navbar.Toggle
+        <Button
           onClick={() => setShowModal(true)}
           className="sidebar-modal-toggler"
-          bsPrefix="btn btn-primary"
-          as={'button'}
           style={{ backgroundColor: 'var(--primary)', color: 'var(--background)' }}
         >
           ☰
-        </Navbar.Toggle>
+        </Button>
         <SidebarModal show={showModal} handleClose={() => setShowModal(false)} />
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
