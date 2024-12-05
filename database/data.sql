@@ -1,272 +1,551 @@
 USE polito;
 
 -- ------------------------------------------------------------
+-- ↓ collegio table ↓
+-- ------------------------------------------------------------
+INSERT INTO
+    collegio (id, name)
+VALUES
+    ("CL003", "Collegio di Ingegneria Informatica, del Cinema e Meccatronica"),
+    ("CL006", "Collegio di Ingegneria Elettronica, delle Telecomunicazioni e Fisica"),
+    ("CL007", "Collegio di Ingegneria per l'Ambiente e il Territorio"),
+    ("CL008", "Collegio di Ingegneria Gestionale e della Produzione"),
+    ("CL009", "Collegio di Ingegneria Meccanica, Aerospaziale e dell'Autoveicolo"),
+    ("CL010", "Collegio di Ingegneria Biomedica"),
+    ("CL011", "Collegio di Ingegneria Chimica e dei Materiali"),
+    ("CL014", "Collegio di Ingegneria Matematica"),
+    ("CL015", "Collegio di Pianificazione e Progettazione"),
+    ("CL016", "Collegio di Architettura e Design"),
+    ("CL017", "Collegio di Ingegneria Elettrica ed Energetica"),
+    ("CL018", "Collegio di Ingegneria Civile ed Edile");
+-- ------------------------------------------------------------
 -- ↓ degree table ↓
 -- ------------------------------------------------------------
 INSERT INTO
-    degree (id, description, description_en)
+    degree (id, description, description_en, level, id_collegio)
 VALUES
     (
         "32-1",
         "Laurea Triennale - INGEGNERIA DELL'AUTOVEICOLO",
-        "Bachelor's Degree - AUTOMOTIVE ENGINEERING"
+        "Bachelor's Degree - AUTOMOTIVE ENGINEERING",
+        "1",
+        "CL009"
     ),
     (
         "32-2",
         "Laurea Magistrale - AUTOMOTIVE ENGINEERING (INGEGNERIA DELL'AUTOVEICOLO)",
-        "Master's Degree - AUTOMOTIVE ENGINEERING"
+        "Master's Degree - AUTOMOTIVE ENGINEERING",
+        "2",
+        "CL009"
     ),
     (
         "32-6",
         "Laurea Triennale - INGEGNERIA DEI MATERIALI",
-        "Bachelor's Degree - MATERIALS ENGINEERING"
+        "Bachelor's Degree - MATERIALS ENGINEERING",
+        "1",
+        "CL011"
     ),
     (
         "32-9",
         "Laurea Triennale - INGEGNERIA ELETTRICA",
-        "Bachelor's Degree - ELECTRICAL ENGINEERING"
+        "Bachelor's Degree - ELECTRICAL ENGINEERING",
+        "1",
+        "CL017"
     ),
     (
         "32-11",
         "Laurea Triennale - INGEGNERIA AEROSPAZIALE",
-        "Bachelor's Degree - AEROSPACE ENGINEERING"
+        "Bachelor's Degree - AEROSPACE ENGINEERING",
+        "1",
+        "CL009"
     ),
     (
         "32-12",
         "Laurea Triennale - INGEGNERIA BIOMEDICA",
-        "Bachelor's Degree - BIOMEDICAL ENGINEERING"
+        "Bachelor's Degree - BIOMEDICAL ENGINEERING",
+        "1",
+        "CL010"
     ),
     (
         "32-13",
         "Laurea Triennale - INGEGNERIA CHIMICA E ALIMENTARE",
-        "Bachelor's Degree - CHEMICAL AND FOOD ENGINEERING"
+        "Bachelor's Degree - CHEMICAL AND FOOD ENGINEERING",
+        "1",
+        "CL011"
     ),
     (   "32-14", 
         "Laurea Triennale - INGEGNERIA CIVILE",
-        "Bachelor's Degree - CIVIL ENGINEERING"
+        "Bachelor's Degree - CIVIL ENGINEERING",
+        "1",
+        "CL018"
     ),
     (   "32-17", 
         "Laurea Triennale - INGEGNERIA EDILE",
-        "Bachelor's Degree - BUILDING ENGINEERING"
+        "Bachelor's Degree - BUILDING ENGINEERING",
+        "1",
+        "CL018"
     ),
     (
         "32-18",
         "Laurea Triennale - INGEGNERIA ENERGETICA",
-        "Bachelor's Degree - ENERGY ENGINEERING"
+        "Bachelor's Degree - ENERGY ENGINEERING",
+        "1",
+        "CL017"
     ),
     (
         "32-19",
         "Laurea Triennale - INGEGNERIA MECCANICA (MECHANICAL ENGINEERING)",
-        "Bachelor's Degree - MECHANICAL ENGINEERING"
+        "Bachelor's Degree - MECHANICAL ENGINEERING",
+        "1",
+        "CL009"
     ),
     (
         "32-21", 
         "Laurea Triennale - INGEGNERIA MECCANICA", 
-        "Bachelor's Degree - MECHANICAL ENGINEERING"
+        "Bachelor's Degree - MECHANICAL ENGINEERING",
+        "1",
+        "CL009"
     ),
     (
         "32-22",
         "Laurea Triennale - INGEGNERIA PER L'AMBIENTE E IL TERRITORIO",
-        "Bachelor's Degree - ENVIRONMENTAL AND LAND ENGINEERING"
+        "Bachelor's Degree - ENVIRONMENTAL AND LAND ENGINEERING",
+        "1",
+        "CL007"
     ),
     (
         "32-23",
         "Laurea Triennale - MATEMATICA PER L'INGEGNERIA",
-        "Bachelor's Degree - MATHEMATICS FOR ENGINEERING"
+        "Bachelor's Degree - MATHEMATICS FOR ENGINEERING",
+        "1",
+        "CL014"
     ),
     (
         "32-26",
         "Laurea Magistrale - INGEGNERIA AEROSPAZIALE",
-        "Master's Degree - AEROSPACE ENGINEERING"
+        "Master's Degree - AEROSPACE ENGINEERING",
+        "2",
+        "CL009"
     ),
     (
         "32-27",
         "Laurea Magistrale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE E DELL'INNOVAZIONE TECNOLOGICA",
-        "Master's Degree - INDUSTRIAL PRODUCTION AND TECHNOLOGICAL INNOVATION ENGINEERING"
+        "Master's Degree - INDUSTRIAL PRODUCTION AND TECHNOLOGICAL INNOVATION ENGINEERING",
+        "2",
+        "CL008"
     ),
     (
         "32-28",
         "Laurea Magistrale - INGEGNERIA BIOMEDICA",
-        "Master's Degree - BIOMEDICAL ENGINEERING"
+        "Master's Degree - BIOMEDICAL ENGINEERING",
+        "2",
+        "CL010"
     ),
     (
         "32-29",
         "Laurea Magistrale - INGEGNERIA CHIMICA E DEI PROCESSI SOSTENIBILI",
-        "Master's Degree - CHEMICAL AND SUSTAINABLE PROCESSES ENGINEERING"
+        "Master's Degree - CHEMICAL AND SUSTAINABLE PROCESSES ENGINEERING",
+        "2",
+        "CL011"
     ),
     (
         "32-30",
         "Laurea Magistrale - INGEGNERIA CIVILE",
-        "Master's Degree - CIVIL ENGINEERING"
+        "Master's Degree - CIVIL ENGINEERING",
+        "2",
+        "CL018"
     ),
     (
         "32-34",
         "Laurea Magistrale - INGEGNERIA EDILE",
-        "Master's Degree - BUILDING ENGINEERING"
+        "Master's Degree - BUILDING ENGINEERING",
+        "2",
+        "CL018"
     ),
     (
         "32-35",
         "Laurea Magistrale - INGEGNERIA ELETTRICA",
-        "Master's Degree - ELECTRICAL ENGINEERING"
+        "Master's Degree - ELECTRICAL ENGINEERING",
+        "2",
+        "CL017"
     ),
     (
         "32-36",
         "Laurea Magistrale - INGEGNERIA ENERGETICA E NUCLEARE",
-        "Master's Degree - ENERGY AND NUCLEAR ENGINEERING"
+        "Master's Degree - ENERGY AND NUCLEAR ENGINEERING",
+        "2",
+        "CL017"
     ),
     (
         "32-37",
         "Laurea Magistrale - INGEGNERIA MECCANICA",
-        "Master's Degree - MECHANICAL ENGINEERING"
+        "Master's Degree - MECHANICAL ENGINEERING",
+        "2",
+        "CL009"
     ),
     (
         "32-38",
         "Laurea Magistrale - INGEGNERIA PER L'AMBIENTE E IL TERRITORIO",
-        "Master's Degree - ENVIRONMENTAL AND LAND ENGINEERING"
+        "Master's Degree - ENVIRONMENTAL AND LAND ENGINEERING",
+        "2",
+        "CL007"
     ),
     (
         "32-39",
         "Laurea Magistrale - INGEGNERIA MATEMATICA",
-        "Master's Degree - MATHEMATICAL ENGINEERING"
+        "Master's Degree - MATHEMATICAL ENGINEERING",
+        "2",
+        "CL014"
     ),
     (
         "32-42",
         "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE",
-        "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING"
+        "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING",
+        "1",
+        "CL008"
     ),
-    -- ("32-44", "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE", "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING"),
-    -- ("32-51", "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE", "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING"),
+    (   
+        "32-44", 
+        "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE", 
+        "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING",
+        "1",
+        "CL008"
+    ),
+    (
+        "32-51", 
+        "Laurea Triennale - INGEGNERIA DELLA PRODUZIONE INDUSTRIALE", 
+        "Bachelor's Degree - INDUSTRIAL PRODUCTION ENGINEERING",
+        "1",
+        "CL008"
+    ),
     (
         "32-52", 
         "Laurea Triennale - INGEGNERIA DELL'AUTOVEICOLO (AUTOMOTIVE ENGINEERING)", 
-        "Bachelor's Degree - AUTOMOTIVE ENGINEERING"
+        "Bachelor's Degree - AUTOMOTIVE ENGINEERING",
+        "1",
+        "CL009"
     ),
     (
         "32-53", 
         "Laurea Magistrale - INGEGNERIA MECCANICA (MECHANICAL ENGINEERING)", 
-        "Master's Degree - MECHANICAL ENGINEERING"
+        "Master's Degree - MECHANICAL ENGINEERING",
+        "2",
+        "CL009"
+    ),
+    (
+        "32-136",
+        "Laurea Magistrale - AGRITECH ENGINEERING",
+        "Master's Degree - AGRITECH ENGINEERING",
+        "2",
+        "CL006"
+    ),
+    (
+        "32-137",
+        "Laurea Magistrale - QUANTUM ENGINEERING",
+        "Master's Degree - QUANTUM ENGINEERING",
+        "2",
+        "CL016"
+    ),
+    (
+        "32-138",
+        "Laurea Magistrale - CYBERSECURITY",
+        "Master's Degree - CYBERSECURITY",
+        "2",
+        "CL003" 
+    ),
+    (
+        "32-139",
+        "Laurea Magistrale - CYBERSECURITY",
+        "Master's Degree - CYBERSECURITY",
+        "2",
+        "CL003"
+    ),
+    (
+        "32-141",
+        "Laurea Magistrale - CIVIL ENGINEERING",
+        "Master's Degree - CIVIL ENGINEERING",
+        "2",
+        "CL018"
+    ),
+    (
+        "32-282",
+        "Laurea Triennale - CIVIL AND ENVIRONMENTAL ENGINEERING",
+        "Bachelor's Degree - CIVIL AND ENVIRONMENTAL ENGINEERING",
+        "1",
+        "CL018"
+    ),
+    (
+        "32-283",
+        "Laurea Magistrale - GEORESOURCES AND GEOENERGY ENGINEERING",
+        "Master's Degree - GEORESOURCES AND GEOENERGY ENGINEERING",
+        "2",
+        "CL007"
+    ),
+    (
+        "32-284",
+        "Laurea Magistrale - INDUSTRIAL CHEMISTRY FOR CIRCULAR AND BIO ECONOMY",
+        "Master's Degree - INDUSTRIAL CHEMISTRY FOR CIRCULAR AND BIO ECONOMY",
+        "2",
+        "CL011"
+    ),
+    (
+        "32-932",
+        "Laurea Magistrale - INGEGNERIA DEI MATERIALI PER L'INDUSTRIA 4.0",
+        "Master's Degree - MATERIALS ENGINEERING FOR INDUSTRY 4.0",
+        "2",
+        "CL011"
     ),
     (
         "37-1",
         "Laurea Triennale - INGEGNERIA ELETTRONICA",
-        "Bachelor's Degree - ELECTRONIC ENGINEERING"
+        "Bachelor's Degree - ELECTRONIC ENGINEERING",
+        "1",
+        "CL006"
     ),
     (
         "37-3",
         "Laurea Triennale - INGEGNERIA INFORMATICA",
-        "Bachelor's Degree - COMPUTER ENGINEERING"
+        "Bachelor's Degree - COMPUTER ENGINEERING",
+        "1",
+        "CL003"
     ),
     (
         "37-9",
         "Laurea Triennale - INGEGNERIA FISICA",
-        "Bachelor's Degree - PHYSICAL ENGINEERING"
+        "Bachelor's Degree - PHYSICAL ENGINEERING",
+        "1",
+        "CL006" 
     ),
-    -- ("37-10", "Laurea Triennale - INGEGNERIA INFORMATICA", "Bachelor's Degree - COMPUTER ENGINEERING"),
+    (
+        "37-10", 
+        "Laurea Triennale - INGEGNERIA INFORMATICA (COMPUTER ENGINEERING)", 
+        "Bachelor's Degree - COMPUTER ENGINEERING",
+        "1",
+        "CL003"
+    ),
     (
         "37-13",
         "Laurea Magistrale - INGEGNERIA ELETTRONICA (ELECTRONIC ENGINEERING)",
-        "Master's Degree - ELECTRONIC ENGINEERING"
+        "Master's Degree - ELECTRONIC ENGINEERING",
+        "2",
+        "CL006"
     ),
     (
         "37-17",
         "Laurea Triennale - ELECTRONIC AND COMMUNICATIONS ENGINEERING (INGEGNERIA ELETTRONICA E DELLE COMUNICAZIONI)",
-        "Bachelor's Degree - ELECTRONIC AND COMMUNICATIONS ENGINEERING"
+        "Bachelor's Degree - ELECTRONIC AND COMMUNICATIONS ENGINEERING",
+        "1",
+        "CL006"
     ),
     (
         "37-18",
         "Laurea Magistrale - INGEGNERIA INFORMATICA (COMPUTER ENGINEERING)",
-        "Master's Degree - COMPUTER ENGINEERING"
+        "Master's Degree - COMPUTER ENGINEERING",
+        "2",
+        "CL003"
     ),
     (
         "37-20",
         "Laurea Magistrale - ICT FOR SMART SOCIETIES (ICT PER LA SOCIETA' DEL FUTURO)",
-        "Master's Degree - ICT FOR SMART SOCIETIES"
+        "Master's Degree - ICT FOR SMART SOCIETIES",
+        "2",
+        "CL003"
     ),
     (
         "37-21",
         "Laurea Triennale - INGEGNERIA DEL CINEMA E DEI MEZZI DI COMUNICAZIONE",
-        "Bachelor's Degree - CINEMA AND MEDIA ENGINEERING"
+        "Bachelor's Degree - CINEMA AND MEDIA ENGINEERING",
+        "1",
+        "CL003"
     ),
     (
         "37-22",
         "Laurea Magistrale - INGEGNERIA DEL CINEMA E DEI MEZZI DI COMUNICAZIONE",
-        "Master's Degree - CINEMA AND MEDIA ENGINEERING"
+        "Master's Degree - CINEMA AND MEDIA ENGINEERING",
+        "2",
+        "CL003"
     ),
     (
         "37-23",
         "Laurea Magistrale - NANOTECHNOLOGIES FOR ICTs (NANOTECNOLOGIE PER LE ICT)",
-        "Master's Degree - NANOTECHNOLOGIES FOR ICTs"
+        "Master's Degree - NANOTECHNOLOGIES FOR ICTs",
+        "2",
+        "CL006"
     ),
     (
         "37-24",
         "Laurea Magistrale - PHYSICS OF COMPLEX SYSTEMS (FISICA DEI SISTEMI COMPLESSI)",
-        "Master's Degree - PHYSICS OF COMPLEX SYSTEMS"
+        "Master's Degree - PHYSICS OF COMPLEX SYSTEMS",
+        "2",
+        "CL006"
     ),
     (
         "37-55",
         "Laurea Magistrale - MECHATRONIC ENGINEERING (INGEGNERIA MECCATRONICA)",
-        "Master's Degree - MECHATRONIC ENGINEERING"
+        "Master's Degree - MECHATRONIC ENGINEERING",
+        "2",
+        "CL003"
+    ),
+    (
+        "37-320",
+        "Laurea Magistrale - DATA SCIENCE AND ENGINEERING",
+        "Master's Degree - DATA SCIENCE AND ENGINEERING",
+        "2",
+        "CL003"
+    ),
+    (
+        "37-930",
+        "Laurea Magistrale - COMMUNICATIONS ENGINEERING",
+        "Master's Degree - COMMUNICATIONS ENGINEERING",
+        "2",
+        "CL006"
     ),
     (
         "38-1",
         "Laurea Magistrale - INGEGNERIA GESTIONALE",
-        "Master's Degree - ENGINEERING AND MANAGEMENT"
+        "Master's Degree - ENGINEERING AND MANAGEMENT",
+        "2",
+        "CL008"
     ),
     (
         "38-3",
         "Laurea Triennale - INGEGNERIA GESTIONALE",
-        "Bachelor's Degree - ENGINEERING AND MANAGEMENT"
+        "Bachelor's Degree - ENGINEERING AND MANAGEMENT",
+        "1",
+        "CL008"
     ),
-    -- ("38-5", "Laurea Triennale - INGEGNERIA GESTIONALE", "Bachelor's Degree - ENGINEERING AND MANAGEMENT"),
+    (   
+        "38-5", 
+        "Laurea Triennale - INGEGNERIA GESTIONALE", 
+        "Bachelor's Degree - ENGINEERING AND MANAGEMENT",
+        "1",
+        "CL008"
+    ),
     (
         "38-10", 
         "Laurea Magistrale - INGEGNERIA GESTIONALE (ENGINEERING AND MANAGEMENT)", 
-        "Master's degree - ENGINEERING AND MANAGEMENT"
+        "Master's degree - ENGINEERING AND MANAGEMENT",
+        "2",
+        "CL008"
+    ),
+    (
+        "38-281",
+        "Laurea Triennale - TECNOLOGIE PER L'INDUSTRIA MANIFATTURIERA",
+        "Bachelor's Degree - INDUSTRIAL MANUFACTURING TECHNOLOGIES",
+        "1",
+        "CL008"
     ),
     (
         "80-1",
         "Laurea Triennale - ARCHITETTURA",
-        "Bachelor's Degree - ARCHITECTURE"
+        "Bachelor's Degree - ARCHITECTURE",
+        "1",
+        "CL016"
     ),
     (   
         "80-2", 
         "Laurea Triennale - ARCHITETTURA (ARCHITECTURE)", 
-        "Bachelor's Degree - ARCHITECTURE"
+        "Bachelor's Degree - ARCHITECTURE",
+        "1",
+        "CL016"
     ),
     (
         "81-4",
         "Laurea Magistrale - DESIGN SISTEMICO",
-        "Master's Degree - SYSTEMIC DESIGN"
+        "Master's Degree - SYSTEMIC DESIGN",
+        "2",
+        "CL016"
     ),
     (
         "81-5",
         "Laurea Magistrale - ARCHITETTURA COSTRUZIONE CITTA'",
-        "Master's Degree - ARCHITECTURE CONSTRUCTION CITY"
+        "Master's Degree - ARCHITECTURE CONSTRUCTION CITY",
+        "2",
+        "CL016"
     ),
     (
         "81-6",
         "Laurea Triennale - DESIGN E COMUNICAZIONE",
-        "Bachelor's Degree - DESIGN AND COMMUNICATION"
+        "Bachelor's Degree - DESIGN AND COMMUNICATION",
+        "1",
+        "CL016"
+    ),
+    (
+        "81-81",
+        "Laurea Magistrale - GEOGRAFIA E SCIENZE TERRITORIALI",
+        "Master's Degree - GEOGRAPHY AND TERRITORIAL SCIENCES",
+        "2",
+        "CL015"
     ),
     (
         "81-83",
         "Laurea Magistrale - DIGITAL SKILLS FOR SUSTAINABLE SOCIETAL TRANSITIONS",
-        "Master's Degree - DIGITAL SKILLS FOR SUSTAINABLE SOCIETAL TRANSITIONS"
+        "Master's Degree - DIGITAL SKILLS FOR SUSTAINABLE SOCIETAL TRANSITIONS",
+        "2",
+        "CL015"
+    ),
+    (
+        "81-84",
+        "Laurea Triennale - DESIGN SOSTENIBILE PER IL SISTEMA ALIMENTARE",
+        "Bachelor's Degree - SUSTAINABLE DESIGN FOR FOOD SYSTEM",
+        "1",
+        "CL016"
+    ),
+    (
+        "81-135",
+        "Laurea Magistrale - ARCHITETTURA DEL PAESAGGIO",
+        "Master's Degree - LANDSCAPE ARCHITECTURE",
+        "2",
+        "CL015"
+    ),
+    (
+        "81-140",
+        "Laurea Magistrale - PIANIFICAZIONE URBANISTICA E TERRITORIALE",
+        "Master's Degree - URBAN AND REGIONAL PLANNING",
+        "2",
+        "CL015" 
     ),
     (
         "82-4",
         "Laurea Magistrale - ARCHITETTURA PER IL PATRIMONIO",
-        "Master's Degree - ARCHITECTURE FOR HERITAGE"
+        "Master's Degree - ARCHITECTURE FOR HERITAGE",
+        "2",
+        "CL016"
     ),
     (
         "82-5",
         "Laurea Triennale - PIANIFICAZIONE TERRITORIALE, URBANISTICA E PAESAGGISTICO-AMBIENTALE",
-        "Bachelor's Degree - TERRITORIAL, URBAN, ENVIRONMENTAL AND LANDSCAPE PLANNING"
+        "Bachelor's Degree - TERRITORIAL, URBAN, ENVIRONMENTAL AND LANDSCAPE PLANNING",
+        "1",
+        "CL015"
     ),
     (
         "82-6",
         "Laurea Magistrale - ARCHITETTURA PER LA SOSTENIBILITA'",
-        "Master's Degree - ARCHITECTURE FOR SUSTAINABILITY"
+        "Master's Degree - ARCHITECTURE FOR SUSTAINABILITY",
+        "2",
+        "CL016"
+    ),
+    (
+        "82-8",
+        "Laurea Magistrale - PROGETTAZIONE DELLE AREE VERDI E DEL PAESAGGIO",
+        "Master's Degree - GREEN AREAS AND LANDSCAPE DESIGN",
+        "2",
+        "CL015"
+    ),
+    (
+        "82-9",
+        "Laurea Magistrale - PIANIFICAZIONE TERRITORIALE, URBANISTICA E PAESAGGISTICO-AMBIENTALE",
+        "Master's Degree - TERRITORIAL, URBAN, ENVIRONMENTAL AND LANDSCAPE PLANNING",
+        "2",
+        "CL015"
+    ),
+    (
+        "82-73",
+        "Laurea Magistrale - ECONOMIA DELL'AMBIENTE, DELLA CULTURA E DEL TERRITORIO",
+        "Master's Degree - ECONOMICS OF THE ENVIRONMENT, CULTURE AND TERRITORY",
+        "2",
+        "CL015"
     );
 
 -- ------------------------------------------------------------
@@ -2566,7 +2845,7 @@ INSERT INTO
         expiration_date,
         is_internal,
         is_abroad,
-        area,
+        id_collegio,
         level,
         attachment_url
     )
@@ -2587,7 +2866,7 @@ VALUES
         "2024-12-07",
         1,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -2611,7 +2890,7 @@ VALUES
         "2025-01-11",
         1,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -2697,7 +2976,7 @@ VALUES
         "2025-02-05",
         1,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -2765,7 +3044,7 @@ VALUES
         "2025-03-09",
         0,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -2814,7 +3093,7 @@ VALUES
         "2025-02-26",
         0,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -2854,7 +3133,7 @@ VALUES
         "2025-10-16",
         1,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -2902,7 +3181,7 @@ VALUES
         "2025-05-31",
         1,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -2950,7 +3229,7 @@ VALUES
         "2024-12-31",
         0,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -3030,7 +3309,7 @@ VALUES
         "2025-09-03",
         0, /* Discrepancy with real value */
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     ),
@@ -3061,7 +3340,7 @@ VALUES
         "2025-09-30",
         0,
         0,
-        "Ingegneria",
+        "CL003",
         "2",
         NULL
     );
