@@ -2,6 +2,7 @@ const { z } = require('zod');
 
 const keywordSchema = require('./Keyword');
 const teacherOverviewSchema = require('./TeacherOverview');
+const typeSchema = require('./Type');
 
 const thesisProposalOverviewSchema = z
   .object({
@@ -13,6 +14,7 @@ const thesisProposalOverviewSchema = z
     is_internal: z.boolean(),
     is_abroad: z.boolean(),
     keywords: z.array(keywordSchema).default([]),
+    types: z.array(typeSchema).default([]),
     teachers: z.array(teacherOverviewSchema).default([]),
   })
   .transform(proposal => {
@@ -37,6 +39,7 @@ const thesisProposalOverviewSchema = z
       isInternal: proposal.is_internal,
       isAbroad: proposal.is_abroad,
       keywords: proposal.keywords,
+      types: proposal.types,
     };
   });
 
