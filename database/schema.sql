@@ -1,7 +1,7 @@
 /**------------------------------------------------------------------------------------------------------------------------------------
  * ?                                             Portale-PoliTO MySQL Schema (MySQL 8.4.3)
  * @createdOn       :   09 November 2024
- * @lastModifiedOn  :   02 December 2024
+ * @lastModifiedOn  :   04 December 2024
  * @description     :   SQL Schema for the Portale-PoliTO Database. Designed for MySQL 8.4.3
  * @note            :   [1681] Integer display width is deprecated and will be removed in a future release.
                         Therefore, we have removed the display width from the INT data type in the provided original schema as well.
@@ -25,12 +25,22 @@ DROP TABLE IF EXISTS keyword;
 DROP TABLE IF EXISTS teacher;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS degree;
+DROP TABLE IF EXISTS collegio;
+
+-- Table for storing collegi data
+CREATE TABLE IF NOT EXISTS collegio (
+    id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
 
 -- Table for storing degrees' data
 CREATE TABLE IF NOT EXISTS degree (
-    id VARCHAR(5) PRIMARY KEY,
+    id VARCHAR(10) PRIMARY KEY,
     description VARCHAR(255) NOT NULL,
-    description_en VARCHAR(255) NOT NULL
+    description_en VARCHAR(255) NOT NULL,
+    level ENUM("1", "2") NOT NULL, -- 1 for Bachelor, 2 for Master
+    id_collegio VARCHAR(10) NOT NULL,
+    FOREIGN KEY (id_collegio) REFERENCES collegio(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a collegio
 );
 
 -- Table for storing students' data 
@@ -40,7 +50,7 @@ CREATE TABLE IF NOT EXISTS student (
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     profile_picture_url VARCHAR(100) DEFAULT NULL,
-    degree_id VARCHAR(5) NOT NULL,
+    degree_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (degree_id) REFERENCES degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
 );
 
@@ -88,15 +98,16 @@ CREATE TABLE IF NOT EXISTS thesis_proposal (
     expiration_date DATETIME NOT NULL,
     is_internal BOOLEAN NOT NULL DEFAULT 1,
     is_abroad BOOLEAN NOT NULL DEFAULT 0,
-    area ENUM("Ingegneria", "Architettura") NOT NULL,
+    attachment_url VARCHAR(100) DEFAULT NULL,
     level ENUM("1", "2") NOT NULL, -- 1 for Bachelor, 2 for Master
-    attachment_url VARCHAR(100) DEFAULT NULL
+    id_collegio VARCHAR(10) NOT NULL,
+    FOREIGN KEY (id_collegio) REFERENCES collegio(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a collegio
 );
 
 -- Table for linking thesis proposals with degrees
 CREATE TABLE IF NOT EXISTS thesis_proposal_degree (
     thesis_proposal_id INT NOT NULL,
-    degree_id VARCHAR(5) NOT NULL,
+    degree_id VARCHAR(10) NOT NULL,
     PRIMARY KEY (thesis_proposal_id, degree_id),
     FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposal(id) ON DELETE CASCADE,
     FOREIGN KEY (degree_id) REFERENCES degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
