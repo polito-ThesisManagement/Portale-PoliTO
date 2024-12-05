@@ -23,32 +23,37 @@ const buildWhereConditions = async (query, lang) => {
     where.is_abroad = isAbroad === 'true';
   }
 
-  let thesisProposalIds = [];
+  let thesisProposalIds = null;
 
   if (supervisor) {
     const filteredProposalIds = await filterBySupervisor(supervisor);
-    thesisProposalIds = thesisProposalIds.length
-      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
-      : filteredProposalIds;
+    thesisProposalIds =
+      thesisProposalIds === null
+        ? filteredProposalIds
+        : thesisProposalIds.filter(id => filteredProposalIds.includes(id));
   }
 
   if (keyword) {
     const filteredProposalIds = await filterByKeyword(keyword);
-    thesisProposalIds = thesisProposalIds.length
-      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
-      : filteredProposalIds;
+    thesisProposalIds =
+      thesisProposalIds === null
+        ? filteredProposalIds
+        : thesisProposalIds.filter(id => filteredProposalIds.includes(id));
   }
 
   if (thesis_type) {
     const filteredProposalIds = await filterByThesisType(thesis_type);
-    thesisProposalIds = thesisProposalIds.length
-      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
-      : filteredProposalIds;
+    thesisProposalIds =
+      thesisProposalIds === null
+        ? filteredProposalIds
+        : thesisProposalIds.filter(id => filteredProposalIds.includes(id));
   }
 
-  if (thesisProposalIds.length) {
+  if (thesisProposalIds !== null) {
     where.id = { [Op.in]: thesisProposalIds };
   }
+
+  where.expiration_date = { [Op.gt]: new Date() };
 
   return where;
 };
