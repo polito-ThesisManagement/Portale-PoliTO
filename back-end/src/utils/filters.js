@@ -1,4 +1,57 @@
+const { Op } = require('sequelize');
 const { ThesisProposalKeyword, ThesisProposalSupervisorCoSupervisor, ThesisProposalType } = require('../models');
+
+const buildWhereConditions = async (query, lang) => {
+  const { search_string, isInternal, isAbroad, supervisor, keyword, thesis_type } = query;
+
+  const topicField = lang === 'it' ? 'topic' : 'topic_en';
+  const descriptionField = lang === 'it' ? 'description' : 'description_en';
+  const where = {};
+
+  if (search_string) {
+    where[Op.or] = [
+      { [topicField]: { [Op.like]: `%${search_string}%` } },
+      { [descriptionField]: { [Op.like]: `%${search_string}%` } },
+    ];
+  }
+
+  if (isInternal !== undefined) {
+    where.is_internal = isInternal === 'true';
+  }
+
+  if (isAbroad !== undefined) {
+    where.is_abroad = isAbroad === 'true';
+  }
+
+  let thesisProposalIds = [];
+
+  if (supervisor) {
+    const filteredProposalIds = await filterBySupervisor(supervisor);
+    thesisProposalIds = thesisProposalIds.length
+      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
+      : filteredProposalIds;
+  }
+
+  if (keyword) {
+    const filteredProposalIds = await filterByKeyword(keyword);
+    thesisProposalIds = thesisProposalIds.length
+      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
+      : filteredProposalIds;
+  }
+
+  if (thesis_type) {
+    const filteredProposalIds = await filterByThesisType(thesis_type);
+    thesisProposalIds = thesisProposalIds.length
+      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
+      : filteredProposalIds;
+  }
+
+  if (thesisProposalIds.length) {
+    where.id = { [Op.in]: thesisProposalIds };
+  }
+
+  return where;
+};
 
 const filterBySupervisor = async supervisor => {
   const thesisIds = await ThesisProposalSupervisorCoSupervisor.findAll({
@@ -34,6 +87,7 @@ const filterByThesisType = async thesis_type => {
 };
 
 module.exports = {
+  buildWhereConditions,
   filterBySupervisor,
   filterByKeyword,
   filterByThesisType,
