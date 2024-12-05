@@ -166,3 +166,120 @@ describe('GET /api/thesis-proposals', () => {
     expect(response.body.thesisProposals.length).toBe(0);
   });
 });
+
+describe('GET /api/thesis-proposals/targeted', () => {
+  test('Should return the list of targeted thesis proposals for the student degree course', async () => {
+    const response = await request(app).get('/api/thesis-proposals/targeted');
+    expect(response.status).toBe(200);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty('count');
+    expect(response.body).toHaveProperty('thesisProposals');
+    expect(response.body).toHaveProperty('currentPage');
+    expect(response.body).toHaveProperty('totalPages');
+    expect(response.body.count).toEqual(5);
+    expect(response.body.thesisProposals).toBeInstanceOf(Array);
+    expect(response.body.thesisProposals.length).toEqual(5);
+    expect(response.body.currentPage).toEqual(1);
+    expect(response.body.totalPages).toEqual(1);
+  });
+
+  test('Should filter targeted thesis proposals by search_string (in english)', async () => {
+    const response = await request(app)
+      .get('/api/thesis-proposals/targeted')
+      .query({ lang: 'en', search_string: 'description' });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(5);
+    response.body.thesisProposals.forEach(proposal => {
+      const topic = proposal.topic.toLowerCase();
+      const description = proposal.description.toLowerCase();
+      expect(topic.includes('description') || description.includes('description')).toBe(true);
+    });
+  });
+
+  test('Should filter targeted thesis proposals by isInternal', async () => {
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ isInternal: 'true' });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(4);
+    response.body.thesisProposals.forEach(proposal => {
+      expect(proposal.isInternal).toBe(true);
+    });
+  });
+
+  test('Should filter targeted thesis proposals by isAbroad', async () => {
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ isAbroad: 'true' });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(1);
+    response.body.thesisProposals.forEach(proposal => {
+      expect(proposal.isAbroad).toBe(true);
+    });
+  });
+
+  test('Should filter targeted thesis proposals by supervisor', async () => {
+    const supervisorId = 3019;
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ supervisor: supervisorId });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(2);
+    response.body.thesisProposals.forEach(proposal => {
+      // the supervisor can be either the supervisor or the co-supervisor
+      const isSupervisor = proposal.supervisor && proposal.supervisor.id === supervisorId;
+      const isCoSupervisor =
+        proposal.internalCoSupervisors &&
+        proposal.internalCoSupervisors.some(supervisor => supervisor.id === supervisorId);
+      expect(isSupervisor || isCoSupervisor).toBe(true);
+    });
+  });
+
+  test('Should filter targeted thesis proposals by keyword', async () => {
+    const keywordId = 1;
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ keyword: keywordId });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(3);
+    response.body.thesisProposals.forEach(proposal => {
+      expect(proposal.keywords.some(keyword => keyword.id === keywordId)).toBe(true);
+    });
+  });
+
+  test('Should filter targeted thesis proposals by thesis_type', async () => {
+    const thesisTypeId = 1;
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ thesis_type: thesisTypeId });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(1);
+    response.body.thesisProposals.forEach(proposal => {
+      expect(proposal.types.some(type => type.id === thesisTypeId)).toBe(true);
+    });
+  });
+
+  test('Should filter targeted thesis proposals by multiple filters (search_string, isInternal, supervisor)', async () => {
+    const response = await request(app)
+      .get('/api/thesis-proposals/targeted')
+      .query({ search_string: 'descrizione', isInternal: 'true', supervisor: 3019 });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(2);
+    response.body.thesisProposals.forEach(proposal => {
+      const topic = proposal.topic.toLowerCase();
+      const description = proposal.description.toLowerCase();
+      expect(topic.includes('descrizione') || description.includes('descrizione')).toBe(true);
+      expect(proposal.isInternal).toBe(true);
+      const isSupervisor = proposal.supervisor && proposal.supervisor.id === 3019;
+      const isCoSupervisor =
+        proposal.internalCoSupervisors && proposal.internalCoSupervisors.some(supervisor => supervisor.id === 3019);
+      expect(isSupervisor || isCoSupervisor).toBe(true);
+    });
+  });
+
+  test('Should filter targeted thesis proposals by multiple filters (supervisor, keyword, type)', async () => {
+    const response = await request(app)
+      .get('/api/thesis-proposals/targeted')
+      .query({ supervisor: 3019, keyword: 8, thesis_type: 1 });
+    expect(response.status).toBe(200);
+    expect(response.body.count).toBe(1);
+    response.body.thesisProposals.forEach(proposal => {
+      const isSupervisor = proposal.supervisor && proposal.supervisor.id === 3019;
+      const isCoSupervisor =
+        proposal.internalCoSupervisors && proposal.internalCoSupervisors.some(supervisor => supervisor.id === 3019);
+      expect(isSupervisor || isCoSupervisor).toBe(true);
+      expect(proposal.keywords.some(keyword => keyword.id === 8)).toBe(true);
+      expect(proposal.types.some(type => type.id === 1)).toBe(true);
+    });
+  });
+});
