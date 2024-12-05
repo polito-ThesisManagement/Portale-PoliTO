@@ -14,6 +14,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      level: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      id_collegio: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        references: {
+          model: 'collegio',
+          key: 'id',
+        },
+      },
     },
     {
       tableName: 'degree',
