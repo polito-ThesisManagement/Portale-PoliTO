@@ -30,7 +30,6 @@ import { getLogo } from '../utils/utils';
 
 export default function PoliNavbar() {
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
-  const { theme, setTheme } = useContext(ThemeContext);
 
   const { t, i18n } = useTranslation();
 
