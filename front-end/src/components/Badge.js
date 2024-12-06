@@ -26,7 +26,6 @@ export default function Badge({ variant, content }) {
         case "teacher":
             return (
                 <span className={`badge teacher_${appliedTheme}`}>
-                    {console.log(appliedTheme)}
                     <FaUser size={16} />
                     {content}
                 </span>
