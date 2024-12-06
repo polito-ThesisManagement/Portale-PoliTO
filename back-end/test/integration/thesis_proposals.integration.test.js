@@ -317,6 +317,46 @@ describe('GET /api/thesis-proposals/:thesisProposalId', () => {
     });
   });
 
+  test('Should return the thesis proposal with the given id (in english)', async () => {
+    const thesisProposalId = 12946;
+    const response = await request(app).get('/api/thesis-proposals/12946').query({ lang: 'en' });
+    expect(response.status).toBe(200);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty('id');
+    expect(response.body.id).toEqual(thesisProposalId);
+    expect(response.body).toHaveProperty('topic');
+    expect(response.body).toHaveProperty('description');
+    expect(response.body).toHaveProperty('link');
+    expect(response.body).toHaveProperty('requiredSkills');
+    expect(response.body).toHaveProperty('additionalNotes');
+    expect(response.body).toHaveProperty('supervisor');
+    expect(response.body).toHaveProperty('internalCoSupervisors');
+    expect(response.body).toHaveProperty('externalCoSupervisors');
+    expect(response.body).toHaveProperty('creationDate');
+    expect(response.body).toHaveProperty('expirationDate');
+    expect(response.body).toHaveProperty('isInternal');
+    expect(response.body).toHaveProperty('isAbroad');
+    expect(response.body).toHaveProperty('attachmentUrl');
+    expect(response.body.supervisor).toHaveProperty('id');
+    expect(response.body.supervisor).toHaveProperty('firstName');
+    expect(response.body.supervisor).toHaveProperty('lastName');
+    expect(response.body.supervisor).toHaveProperty('role');
+    expect(response.body.supervisor).toHaveProperty('email');
+    expect(response.body.supervisor).toHaveProperty('profileUrl');
+    expect(response.body.supervisor).toHaveProperty('profilePictureUrl');
+    expect(response.body.supervisor).toHaveProperty('facilityShortName');
+    response.body.internalCoSupervisors.forEach(teacher => {
+      expect(teacher).toHaveProperty('id');
+      expect(teacher).toHaveProperty('firstName');
+      expect(teacher).toHaveProperty('lastName');
+      expect(teacher).toHaveProperty('role');
+      expect(teacher).toHaveProperty('email');
+      expect(teacher).toHaveProperty('profileUrl');
+      expect(teacher).toHaveProperty('profilePictureUrl');
+      expect(teacher).toHaveProperty('facilityShortName');
+    });
+  });
+
   test('Should return a 404 error if the thesis proposal does not exist', async () => {
     const thesisProposalId = 100;
     const response = await request(app).get(`/api/thesis-proposals/${thesisProposalId}`);
