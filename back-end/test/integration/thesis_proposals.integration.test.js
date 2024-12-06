@@ -33,11 +33,7 @@ describe('GET /api/thesis-proposals/:thesisProposalId', () => {
   test('Should return the thesis proposal with the given id', async () => {
     const thesisProposalId = 12946;
     const response = await request(app).get('/api/thesis-proposals/12946');
-    if (response.body.error) {
-      console.log(response.body.error);
-    }
     expect(response.status).toBe(200);
-    console.log(response.body);
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty('id');
     expect(response.body.id).toEqual(thesisProposalId);
