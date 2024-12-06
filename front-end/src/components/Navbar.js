@@ -11,10 +11,13 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { useTranslation } from 'react-i18next';
 import { FaSignOutAlt } from 'react-icons/fa';
-import { FaCircleHalfStroke, FaKey, FaMoon, FaSun, FaUser } from 'react-icons/fa6';
+import { FaKey, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import { AvvisiContext, ThemeContext } from '../App';
+import Searchbar from './Searchbar';
+import SidebarModal from './SidebarModal';
+import ThemeToggle from './ThemeToggle';
 import Logo from '../assets/logo_polito.svg';
 import Logo2 from '../assets/logo_polito_reduced.svg';
 import Logo2White from '../assets/logo_polito_reduced_white.svg';
@@ -24,8 +27,6 @@ import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import '../styles/Utilities.css';
 import { getLogo } from '../utils/utils';
-import Searchbar from './Searchbar';
-import SidebarModal from './SidebarModal';
 
 export default function PoliNavbar() {
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
@@ -75,10 +76,6 @@ export default function PoliNavbar() {
 
     const updatedAvvisi = avvisi[0].filter(n => n !== notifica);
     setAvvisi([updatedAvvisi]);
-  };
-
-  const updateTheme = newTheme => {
-    setTheme(newTheme);
   };
 
   const popover = (
@@ -176,15 +173,16 @@ export default function PoliNavbar() {
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
           <Searchbar services={Services} mobile={false} />
           <Nav className="my-0 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+            <ThemeToggle />
             <Nav.Link
               as={Link}
               to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX"
               target="_blank"
-              style={{ marginRight: '5px', marginTop: '9px' }}
+              style={{ display: "flex", alignItems: "center" }}
             >
               <Envelope size={28} color="var(--primary)" />
             </Nav.Link>
-            <Nav.Link style={{ marginRight: '0px', marginTop: '9px' }}>
+            <Nav.Link style={{ display: "flex", alignItems: "center" }}>
               {avvisi[0].length === 0 ? (
                 <Bell size={28} color="var(--primary)" />
               ) : (
@@ -209,7 +207,7 @@ export default function PoliNavbar() {
                 color: 'var(--primary)',
               }}
             >
-              <div className="d-none d-md-block" style={{ marginLeft: '12px', marginRight: '12px' }}>
+              <div className="d-none d-md-block" style={{ display: "flex", alignItems: "center", marginLeft: '12px', marginRight: '12px' }}>
                 s123456
                 <br />
                 <span className="truncated">Mario Rossi</span>
@@ -278,35 +276,6 @@ export default function PoliNavbar() {
                     onMouseEnter={() => setShowSubmenu(true)}
                     onMouseLeave={() => setShowSubmenu(false)}
                   >
-                    <Dropdown drop="bottom" show={showSubmenu}>
-                      <Dropdown.Toggle className="medium-weight" as="div">
-                        {theme === 'light' ? <FaSun /> : theme === 'dark' ? <FaMoon /> : <FaCircleHalfStroke />}{' '}
-                        {theme === 'light'
-                          ? t('navbar.tema_chiaro')
-                          : theme === 'dark'
-                            ? t('navbar.tema_scuro')
-                            : t('navbar.tema_automatico')}
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu
-                        style={{
-                          right: 'auto',
-                          left: '0',
-                          marginTop: '30px',
-                          fontFamily: 'var(--font-primary)',
-                        }}
-                        className="submenu"
-                      >
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateTheme('light')}>
-                          <FaSun /> {t('navbar.tema_chiaro')}
-                        </Dropdown.Item>
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateTheme('dark')}>
-                          <FaMoon /> {t('navbar.tema_scuro')}
-                        </Dropdown.Item>
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateTheme('auto')}>
-                          <FaCircleHalfStroke /> {t('navbar.tema_automatico')}
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
