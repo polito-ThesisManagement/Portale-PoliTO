@@ -3,7 +3,7 @@ const selectKeywordAttributes = require('./selectKeywordAttributes');
 const selectTeacherAttributes = require('./selectTeacherAttributes');
 const selectTypeAttributes = require('./selectTypeAttributes');
 
-const getIncludes = lang => [
+const getIncludes = (lang, detailed = false) => [
   {
     model: Keyword,
     through: { attributes: [] },
@@ -17,7 +17,7 @@ const getIncludes = lang => [
   {
     model: Teacher,
     through: { attributes: ['is_supervisor'] },
-    attributes: selectTeacherAttributes(),
+    attributes: selectTeacherAttributes(detailed),
   },
 ];
 

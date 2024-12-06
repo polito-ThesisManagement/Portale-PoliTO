@@ -27,9 +27,7 @@ const buildWhereConditions = async (query, lang) => {
 
   if (supervisor) {
     const filteredProposalIds = await filterBySupervisor(supervisor);
-    thesisProposalIds = Array.isArray(thesisProposalIds)
-      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
-      : filteredProposalIds;
+    thesisProposalIds = filteredProposalIds;
   }
 
   if (keyword) {
