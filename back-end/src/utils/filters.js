@@ -27,26 +27,23 @@ const buildWhereConditions = async (query, lang) => {
 
   if (supervisor) {
     const filteredProposalIds = await filterBySupervisor(supervisor);
-    thesisProposalIds =
-      thesisProposalIds === null
-        ? filteredProposalIds
-        : thesisProposalIds.filter(id => filteredProposalIds.includes(id));
+    thesisProposalIds = Array.isArray(thesisProposalIds)
+      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
+      : filteredProposalIds;
   }
 
   if (keyword) {
     const filteredProposalIds = await filterByKeyword(keyword);
-    thesisProposalIds =
-      thesisProposalIds === null
-        ? filteredProposalIds
-        : thesisProposalIds.filter(id => filteredProposalIds.includes(id));
+    thesisProposalIds = Array.isArray(thesisProposalIds)
+      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
+      : filteredProposalIds;
   }
 
   if (thesis_type) {
     const filteredProposalIds = await filterByThesisType(thesis_type);
-    thesisProposalIds =
-      thesisProposalIds === null
-        ? filteredProposalIds
-        : thesisProposalIds.filter(id => filteredProposalIds.includes(id));
+    thesisProposalIds = Array.isArray(thesisProposalIds)
+      ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
+      : filteredProposalIds;
   }
 
   if (thesisProposalIds !== null) {
