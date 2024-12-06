@@ -30,7 +30,7 @@ const thesisProposalOverviewSchema = z
       id: proposal.id,
       topic: proposal.topic,
       description: proposal.description,
-      supervisor: supervisor ? supervisor : null,
+      supervisor: supervisor,
       internalCoSupervisors,
       creationDate: proposal.creation_date,
       expirationDate: proposal.expiration_date,

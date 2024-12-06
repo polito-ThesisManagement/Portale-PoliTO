@@ -38,7 +38,7 @@ const thesisProposalOverviewSchema = z
       link: proposal.link,
       requiredSkills: proposal.required_skills,
       additionalNotes: proposal.additional_notes,
-      supervisor: supervisor ? supervisor : null,
+      supervisor: supervisor,
       internalCoSupervisors,
       externalCoSupervisors: proposal.external_cosupervisors,
       creationDate: proposal.creation_date,
