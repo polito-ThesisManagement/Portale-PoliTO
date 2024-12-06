@@ -68,11 +68,11 @@ function ThesisProposalDetail(props) {
               content={types.map(type => capitalize(type.type.toLowerCase())).join(', ')}
             />
           )}
-          <MainSupervisor name={supervisor.first_name + ' ' + supervisor.last_name} />
+          <MainSupervisor name={supervisor.firstName + ' ' + supervisor.lastName} />
           {internalCoSupervisors && internalCoSupervisors.length > 1 && (
             <SecondarySupervisors
               names={internalCoSupervisors.map(supervisor => {
-                supervisor.first_name + ' ' + supervisor.last_name;
+                supervisor.firstName + ' ' + supervisor.lastName;
               })}
             />
           )}
@@ -271,18 +271,23 @@ ThesisProposalDetail.propTypes = {
     additionalNotes: PropTypes.string,
     supervisor: PropTypes.shape({
       id: PropTypes.number.isRequired,
-      first_name: PropTypes.string.isRequired,
-      last_name: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
       role: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
-      profile_url: PropTypes.string.isRequired,
-      facility_short_name: PropTypes.string.isRequired,
+      profileUrl: PropTypes.string.isRequired,
+      facilityShortName: PropTypes.string.isRequired,
     }).isRequired,
     internalCoSupervisors: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
-        first_name: PropTypes.string.isRequired,
-        last_name: PropTypes.string.isRequired,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        role: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        profileUrl: PropTypes.string.isRequired,
+        profilePictureUrl: PropTypes.string,
+        facilityShortName: PropTypes.string.isRequired,
       }),
     ),
     externalCoSupervisors: PropTypes.string,

@@ -102,16 +102,13 @@ export default function ThesisProposals({ thesisProposals }) {
         proposal.topic.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proposal.keywords.some(keyword => keyword.keyword.toLowerCase().includes(searchQuery.toLowerCase())) ||
         proposal.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proposal.supervisor.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        proposal.supervisor.last_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        proposal.supervisor.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        proposal.supervisor.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         proposal.internalCoSupervisors.some(coSupervisor => {
           return (
-            coSupervisor.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            coSupervisor.last_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            coSupervisor.first_name
-              .concat(' ', coSupervisor.last_name)
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase())
+            coSupervisor.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            coSupervisor.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            coSupervisor.firstName.concat(' ', coSupervisor.lastName).toLowerCase().includes(searchQuery.toLowerCase())
           );
         }),
     );
@@ -333,14 +330,14 @@ ThesisProposals.propTypes = {
       description: PropTypes.string.isRequired,
       supervisor: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        first_name: PropTypes.string.isRequired,
-        last_name: PropTypes.string.isRequired,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
       }).isRequired,
       internalCoSupervisors: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number.isRequired,
-          first_name: PropTypes.string.isRequired,
-          last_name: PropTypes.string.isRequired,
+          firstName: PropTypes.string.isRequired,
+          lastName: PropTypes.string.isRequired,
         }),
       ).isRequired,
       creationDate: PropTypes.string.isRequired,
