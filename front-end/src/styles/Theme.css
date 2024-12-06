@@ -4,6 +4,7 @@
   /* Colors */
   --black: #000000;
   --dark-navy: #002b49; /* navy.700 - background.dark */
+  --dark-navy-rgb: 0, 43, 73;
   --medium-navy: #004c81; /* navy.600 - primary.600*/
   --navy: #006db9; /* navy.500 - primary.500 */
   --light-navy: #b7e1ff; /* navy.50 - primary.50 */
@@ -17,12 +18,16 @@
   --medium-orange: #ef7b00; /* orange.600 - secondary.600 */
   --medium-orange-rgb: 239, 123, 0;
   --background-light: #f0f3f5; /* background.light */
+  --background-light-rgb: 240, 243, 245;
   --background-dark: var(--dark-navy); /* background.dark */
+  --background-dark-rgb: var(--dark-navy-rgb);
   --surface-light: var(--white); /* surface.light */
   --surface-dark: #143959; /* surface.dark */
   --surface-dark-rgb: 20, 57, 89;
 
   --background: var(--background-light);
+  --background-inverted: var(--background-dark);
+  --background-inverted-rgb: var(--background-dark-rgb);
   --surface: var(--surface-light);
   --primary: var(--dark-navy);
   --text: var(--black);
@@ -65,7 +70,9 @@
 
 /* Dark Theme Colors */
 [data-theme='dark'] {
-  --background: var(--dark-navy);
+  --background: var(--background-dark);
+  --background-inverted: var(--background-light);
+  --background-inverted-rgb: var(--background-light-rgb);
   --surface: #143959;
   --primary: var(--white);
   --text: var(--white);
