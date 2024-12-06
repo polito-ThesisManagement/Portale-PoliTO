@@ -5,6 +5,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import PoliNavbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import FloatingButton from './components/FloatingButton';
 import Avvisi_GC from './data/Avvisi_GC.json';
 import AreaPersonale from './pages/AreaPersonale';
 import Carriera from './pages/Carriera';
@@ -19,7 +20,7 @@ import PropostaDiTesi from './pages/carriera/PropostaDiTesi';
 import ProposteDiTesi from './pages/carriera/ProposteDiTesi';
 import './styles/Theme.css';
 import './styles/Utilities.css';
-import { getSystemTheme } from './utils/utils';
+import { getSystemTheme, scrollTop } from './utils/utils';
 
 export const FavoritesContext = createContext(null);
 export const AvvisiContext = createContext(null);
@@ -32,7 +33,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollTop();
   }, [location]);
 
   useEffect(() => {
@@ -83,6 +84,7 @@ function App() {
                     <Route path="/help" element={<Help />} />
                     <Route path="*" element={<PageNotFound />} />
                   </Routes>
+                  <FloatingButton />
                 </Col>
               </Col>
             </Row>

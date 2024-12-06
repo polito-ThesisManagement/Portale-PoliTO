@@ -13,3 +13,7 @@ export const getLogo = (logoDark, logoLight) => {
   if (theme === 'auto') return getSystemTheme() === 'dark' ? logoLight : logoDark;
   return theme === 'dark' ? logoLight : logoDark;
 };
+
+export function scrollTop(){
+  window.scrollTo(0, 0);
+}
