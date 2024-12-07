@@ -2,7 +2,7 @@ import { React, useContext } from 'react';
 import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaInfoCircle } from 'react-icons/fa';
-import { FaBookOpen, FaBriefcase, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
+import { FaAngleLeft, FaBookOpen, FaBriefcase, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
 import { MdApps } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -24,7 +24,9 @@ function Sidebar() {
   return (
     <>
       <div className={`custom-sidebar-wrapper reduced ${desktopToggle ? 'toggle' : ''}`}>
-        <div className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`}  onClick={handleToggle}/>
+        <div className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`}  onClick={handleToggle}>
+          <FaAngleLeft size={20}/>
+        </div>
       </div>
       <Nav defaultActiveKey="/home" className="flex-column">
         <Col className={`col-md-1 custom-sidebar py-2 reduced ${desktopToggle ? 'toggle' : ''}`}>

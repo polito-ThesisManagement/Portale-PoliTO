@@ -15,12 +15,12 @@
 .sidebar-toggle {
   content: '';
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 50%;
   right: 0;
   width: 20px;
   height: 20px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>') no-repeat center center;
-  background-size: contain;
   transform: translateY(-50%) scaleX(1);
   transform-origin: center;
   transition: transform 0.5s;
