@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { getStudentData } = require('../routers/student');
+const { getStudentData } = require('./student');
 const { ThesisProposal, sequelize } = require('../models');
 const { buildWhereConditions } = require('../utils/filters');
 const formatThesisProposals = require('../utils/formatThesisProposals');

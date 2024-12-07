@@ -17,7 +17,7 @@ const getIncludes = (lang, detailed = false) => [
   {
     model: Teacher,
     through: { attributes: ['is_supervisor'] },
-    attributes: selectTeacherAttributes(detailed),
+    attributes: detailed === true ? selectTeacherAttributes(detailed) : selectTeacherAttributes(),
   },
 ];
 
