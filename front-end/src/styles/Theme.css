@@ -98,3 +98,11 @@
     filter: invert(1) saturate(0);
   }
 }
+
+::-moz-selection { /* Code for Firefox */
+  background: rgba(var(--medium-orange-rgb), 0.6);
+}
+
+::selection {
+  background: rgba(var(--medium-orange-rgb), 0.6);
+}
