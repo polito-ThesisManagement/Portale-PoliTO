@@ -271,12 +271,6 @@ export default function PoliNavbar() {
                       </Dropdown.Menu>
                     </Dropdown>
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    className="dropdown-submenu medium-weight"
-                    onMouseEnter={() => setShowSubmenu(true)}
-                    onMouseLeave={() => setShowSubmenu(false)}
-                  >
-                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Navbar.Brand>
