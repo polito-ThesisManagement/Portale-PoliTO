@@ -71,8 +71,8 @@ function App() {
               <PoliNavbar />
               <Row>
                 <Sidebar />
-                <Col className={`main-space ${desktopToggle ? 'toggle' : 'reduced'}`}>
-                  <Col className={`custom-content ${desktopToggle ? '' : 'reduced'}`}>
+                <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
+                  <Col className={`custom-content reeduced`}>
                     <Routes>
                       <Route path="/" element={<Homepage />} />
                       <Route path="/area_personale" element={<AreaPersonale />} />
