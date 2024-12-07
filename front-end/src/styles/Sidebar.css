@@ -98,7 +98,8 @@
 @media (max-width: 600px) {
   .custom-sidebar-wrapper.reduced,
   .custom-sidebar.reduced {
-    display: none;
+    width:0;
+    transition-duration: 0.5s;
   }
 
   .sidebar-modal-toggler {
