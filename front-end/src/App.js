@@ -25,11 +25,13 @@ import { getSystemTheme, scrollTop } from './utils/utils';
 export const FavoritesContext = createContext(null);
 export const AvvisiContext = createContext(null);
 export const ThemeContext = createContext(null);
+export const DesktopToggleContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState('auto');
   const [favorites, setFavorites] = useState([]);
   const [avvisi, setAvvisi] = useState([Avvisi_GC]);
+  const [desktopToggle, setDesktopToggle] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -63,33 +65,35 @@ function App() {
     <>
       <style>@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap);</style>
       <ThemeContext.Provider value={{ theme, setTheme }}>
-        <FavoritesContext.Provider value={{ favorites, setFavorites }}>
-          <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
-            <PoliNavbar />
-            <Row>
-              <Sidebar />
-              <Col className={'main-space reduced'}>
-                <Col className={'custom-content reduced'}>
-                  <Routes>
-                    <Route path="/" element={<Homepage />} />
-                    <Route path="/area_personale" element={<AreaPersonale />} />
-                    <Route path="/home" element={<Homepage />} />
-                    <Route path="/didattica" element={<Didattica />} />
-                    <Route path="/carriera" element={<Carriera />} />
-                    <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
-                    <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
-                    <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
-                    <Route path="/opportunita" element={<Opportunita />} />
-                    <Route path="/servizi" element={<Servizi />} />
-                    <Route path="/help" element={<Help />} />
-                    <Route path="*" element={<PageNotFound />} />
-                  </Routes>
-                  <FloatingButton />
+        <DesktopToggleContext.Provider value={{ desktopToggle, setDesktopToggle }}>
+          <FavoritesContext.Provider value={{ favorites, setFavorites }}>
+            <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
+              <PoliNavbar />
+              <Row>
+                <Sidebar />
+                <Col className={`main-space ${desktopToggle ? 'toggle' : 'reduced'}`}>
+                  <Col className={`custom-content ${desktopToggle ? '' : 'reduced'}`}>
+                    <Routes>
+                      <Route path="/" element={<Homepage />} />
+                      <Route path="/area_personale" element={<AreaPersonale />} />
+                      <Route path="/home" element={<Homepage />} />
+                      <Route path="/didattica" element={<Didattica />} />
+                      <Route path="/carriera" element={<Carriera />} />
+                      <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                      <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
+                      <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
+                      <Route path="/opportunita" element={<Opportunita />} />
+                      <Route path="/servizi" element={<Servizi />} />
+                      <Route path="/help" element={<Help />} />
+                      <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+                    <FloatingButton />
+                  </Col>
                 </Col>
-              </Col>
-            </Row>
-          </AvvisiContext.Provider>
-        </FavoritesContext.Provider>
+              </Row>
+            </AvvisiContext.Provider>
+          </FavoritesContext.Provider>
+        </DesktopToggleContext.Provider>
       </ThemeContext.Provider>
     </>
   );

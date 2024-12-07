@@ -1,3 +1,19 @@
+.custom-navbar {
+  background-color: var(--surface);
+  color: var(--primary);
+  z-index: 5;
+  width: 100%;
+  position: fixed;
+}
+
+.nav-logo.toggle{
+  display: none;
+}
+
+.nav-logo-reduced.toggle {
+  display: block;
+}
+
 @media (min-width: 1100px) {
   .nav-logo {
     display: block;

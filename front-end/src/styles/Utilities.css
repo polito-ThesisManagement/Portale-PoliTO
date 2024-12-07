@@ -21,6 +21,10 @@
   min-width: 200px;
 }
 
+.main-space.toggle {
+  margin-left: 84px;
+}
+
 @media (max-width: 1100px) {
   .main-space.reduced {
     margin-left: 84px;
@@ -45,14 +49,6 @@
   .custom-content.reduced {
     border-top-left-radius: 0px;
   }
-}
-
-.custom-navbar {
-  background-color: var(--surface);
-  color: var(--primary);
-  z-index: 5;
-  width: 100%;
-  position: fixed;
 }
 
 body {

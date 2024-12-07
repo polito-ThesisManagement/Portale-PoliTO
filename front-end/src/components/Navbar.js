@@ -14,7 +14,8 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { FaKey, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
-import { AvvisiContext, ThemeContext } from '../App';
+import { AvvisiContext } from '../App';
+import { DesktopToggleContext } from '../App';
 import Searchbar from './Searchbar';
 import SidebarModal from './SidebarModal';
 import ThemeToggle from './ThemeToggle';
@@ -25,11 +26,11 @@ import LogoWhite from '../assets/logo_polito_white.svg';
 import Services from '../data/Data.json';
 import '../styles/Navbar.css';
 import '../styles/Theme.css';
-import '../styles/Utilities.css';
 import { getLogo } from '../utils/utils';
 
 export default function PoliNavbar() {
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
+  const { desktopToggle } = useContext(DesktopToggleContext);
 
   const { t, i18n } = useTranslation();
 
@@ -119,7 +120,7 @@ export default function PoliNavbar() {
     <Navbar className="custom-navbar">
       <Container fluid>
         <Navbar.Brand
-          className="nav-logo"
+          className={`nav-logo ${desktopToggle ? 'toggle' : ''}`}
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -134,10 +135,10 @@ export default function PoliNavbar() {
           <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
-          className="nav-logo-reduced"
+          className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''}`}
           as={Link}
           target="_blank"
-          to="https://www.polito.it/"
+          to="https://didattica.polito.it/"
           style={{
             width: 'auto',
             height: '57px',

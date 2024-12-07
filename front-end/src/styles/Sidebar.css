@@ -1,4 +1,36 @@
+.custom-sidebar-wrapper {
+  background-color: transparent;
+  color: var(--primary);
+  width: 224px;
+  padding: 0;
+  margin-top: 78px;
+  height: 100%;
+  z-index: 1000;
+  position: fixed;
+  overflow-y: auto;
+  transition-duration: 0.5s;
+  pointer-events: none;
+}
+
+.sidebar-toggle {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>') no-repeat center center;
+  background-size: contain;
+  transform: translateY(-50%) scaleX(1);
+  transform-origin: center;
+  transition: transform 0.5s;
+  pointer-events: auto;
+}
+
 .custom-sidebar {
+  --r: 20px;  /* rounded part */
+  --s: 20px;  /* size of the cut */
+  --a: 25deg; /* depth of the curvature */
   background-color: var(--surface);
   color: var(--primary);
   z-index: 4;
@@ -9,10 +41,29 @@
   position: fixed;
   overflow-y: auto;
   transition-duration: 0.5s;
+  --_m:/var(--r) calc(2*var(--r)) no-repeat
+    radial-gradient(100% 50% at left,#000 calc(100% - 1px),#0000);
+  --_d:(var(--s) + var(--r))*cos(var(--a));
+  mask:
+    100% calc(50% + var(--_d)) var(--_m),100% calc(50% - var(--_d)) var(--_m),
+    radial-gradient(var(--s) at calc(100% + sin(var(--a))*var(--s)) 50% ,
+    #0000 100%,#000 calc(100% + 1px)) calc(var(--r)*(sin(var(--a)) - 1)) 0 no-repeat,
+    linear-gradient(#000 calc(50% - var(--_d)),#0000 0 calc(50% + var(--_d)),#000 0);
+  pointer-events: auto;
 }
 
 .custom-sidebar::-webkit-scrollbar {
   display: none;
+}
+
+.custom-sidebar-wrapper.toggle,
+.custom-sidebar.toggle {
+  width: 84px;
+}
+
+.sidebar-toggle.rotated {
+  transform: translateY(-50%) scaleX(-1);
+  transition-duration: 0.5s;
 }
 
 @media (min-width: 1100px) {
@@ -24,9 +75,14 @@
 @media (max-width: 1100px) {
   .custom-sidebar.reduced {
     width: 84px;
+    mask: none;
   }
 
-  .sidebar-text {
+  .custom-sidebar-wrapper.reduced {
+    display: none;
+  }
+
+  .sidebar-text.reduced {
     display: none;
   }
 
@@ -36,6 +92,7 @@
 }
 
 @media (max-width: 600px) {
+  .custom-sidebar-wrapper.reduced,
   .custom-sidebar.reduced {
     display: none;
   }
@@ -53,6 +110,7 @@
   margin-bottom: 14px;
   margin-right: 8px;
   display: flex;
+  pointer-events: auto;
 }
 
 .custom-sidebar .nav-link:hover {
@@ -69,6 +127,10 @@
   padding-left: 10px;
   font-weight: var(--font-weight-medium);
   margin-top: 3px;
+}
+
+.sidebar-text.toggle{
+  display: none;
 }
 
 .modal-size {
