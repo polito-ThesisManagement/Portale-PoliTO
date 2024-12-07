@@ -66,6 +66,10 @@
   transition-duration: 0.5s;
 }
 
+.sidebar-modal-toggler {
+  margin-right: 10px;
+}
+
 @media (min-width: 1100px) {
   .sidebar-modal-toggler {
     display: none;
