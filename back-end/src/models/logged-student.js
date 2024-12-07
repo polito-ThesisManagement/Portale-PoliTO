@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
       student_id: {
         type: DataTypes.STRING,
         primaryKey: true,
+        references: {
+          model: 'student',
+          key: 'id',
+        },
       },
     },
     {

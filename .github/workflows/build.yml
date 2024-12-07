@@ -14,6 +14,7 @@ jobs:
       DB_USER: root
       DB_PASSWORD: root
       DB_NAME: polito
+      DB_NAME_TEST: polito_test
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
     steps:
@@ -30,15 +31,15 @@ jobs:
         run: |
           sudo /etc/init.d/mysql start
 
-      - name: Execute schema.sql and data.sql
+      - name: Execute schema_test.sql and data_test.sql
         run: |
-          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/schema.sql || exit 1
-          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/data.sql || exit 1
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/test/schema_test.sql || exit 1
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/test/data_test.sql || exit 1
 
       - name: Run back-end tests
         run: npm test
         working-directory: back-end
-        continue-on-error: true
+        continue-on-error: false
 
   front-end-tests:
     runs-on: ubuntu-latest

@@ -61,14 +61,14 @@ export default function ThesisItem(props) {
             <div key={props.supervisor.id} className={styles.professorTag}>
               <FaUser className={styles.thesisTypeIcon} />
               <span key={props.supervisor.id} className={styles.professorName}>
-                {props.supervisor.first_name} {props.supervisor.last_name}
+                {props.supervisor.firstName} {props.supervisor.lastName}
               </span>
             </div>
             {props.internalCoSupervisors.map(coSupervisor => (
               <div key={coSupervisor.id} className={styles.professorTag}>
                 <FaUser className={styles.thesisTypeIcon} />
                 <span key={coSupervisor.id} className={styles.professorName}>
-                  {coSupervisor.first_name} {coSupervisor.last_name}
+                  {coSupervisor.firstName} {coSupervisor.lastName}
                 </span>
               </div>
             ))}
@@ -109,14 +109,14 @@ ThesisItem.propTypes = {
   description: PropTypes.string.isRequired,
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    first_name: PropTypes.string.isRequired,
-    last_name: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
   }).isRequired,
   internalCoSupervisors: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      first_name: PropTypes.string.isRequired,
-      last_name: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
     }),
   ),
   creationDate: PropTypes.string.isRequired,
