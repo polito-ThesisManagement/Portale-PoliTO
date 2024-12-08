@@ -5,9 +5,10 @@ import { Container } from 'react-bootstrap';
 import { ArrowRightShort } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
-import { FaCalendar, FaEarthAmericas, FaFileLines, FaUser } from 'react-icons/fa6';
+import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
+import Badge from './Badge';
 
 import moment from 'moment';
 import 'moment/locale/it';
@@ -46,17 +47,16 @@ function ThesisProposalDetail(props) {
         icon={<FaFileLines size={26} />}
         sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
       />
-      {/*<WarningBadge content="Attenzione: la proposta di tesi è scaduta" />*/}
       {creationDate && expirationDate && <ExpirationDate creation_date={creationDate} exp_date={expirationDate} />}
       <Container fluid className="custom-container pt-3">
-        {isAbroad && <Abroad />}
+        {isAbroad && <Badge variant="abroad" />}
         {topic && (
           <div className="subsection-title">
             <p>{topic}</p>
           </div>
         )}
         <div className="important-detail">
-          {keywords && keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2"></div>}
+          {keywords && keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
           {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
           {requiredSkills && (
             <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />
@@ -160,15 +160,11 @@ function MyBlock({ title, content }) {
 }
 
 function Keywords({ keywords }) {
-  //const { t } = useTranslation();
-  // if null return a bit of margin
   return (
     <div className="mb-3">
       <div className={styles.tagGroup}>
         {keywords.map(keyword => (
-          <div key={keyword.id} className={styles.tag}>
-            <span className="course-detail">{keyword.keyword}</span>
-          </div>
+          <Badge variant="keyword" key={keyword.id} content={keyword.keyword} />
         ))}
       </div>
     </div>
@@ -181,7 +177,7 @@ function MainSupervisor({ name }) {
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
       <div className={styles.professorTagGroup}>
-        <Supervisor name={name} />
+        <Badge variant="teacher" content={name} />
       </div>
     </div>
   );
@@ -194,18 +190,9 @@ function SecondarySupervisors({ names }) {
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
       <div className={styles.professorTagGroup}>
         {names.map((name, index) => (
-          <Supervisor key={index} name={name} />
+          <Badge variant="teacher" key={index} content={name} />
         ))}
       </div>
-    </div>
-  );
-}
-
-function Supervisor({ name }) {
-  return (
-    <div className={styles.professorTag}>
-      <FaUser className={styles.thesisTypeIcon} />
-      <span className="course-detail">{name}</span>
     </div>
   );
 }
@@ -215,52 +202,11 @@ function Environment({ is_internal }) {
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.ambiente')}:</span>
-      {is_internal ? <Internal /> : <NotInternal />}
-    </div>
-  );
-}
-
-function Internal() {
-  const { t } = useTranslation();
-  return (
-    <div className={styles.thesisTypeTag}>
-      <FaUniversity className={styles.thesisTypeIcon} />
-      <span className="course-detail">{t('carriera.proposte_di_tesi.internal_thesis')}</span>
-    </div>
-  );
-}
-
-function NotInternal() {
-  const { t } = useTranslation();
-  return (
-    <div className={styles.thesisTypeTag}>
-      <HiBuildingOffice2 className={styles.thesisTypeIcon} />
-      <span className="course-detail">{t('carriera.proposte_di_tesi.external_thesis')}</span>
-    </div>
-  );
-}
-
-function Abroad() {
-  const { t } = useTranslation();
-  return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
-      <div className={styles.thesisTypeTag}>
-        <FaEarthAmericas className={styles.thesisTypeIcon} />
-        <span className="course-detail">{t('carriera.proposte_di_tesi.abroad_thesis')}</span>
-      </div>
+      {is_internal ? <Badge variant="internal" /> : <Badge variant="external" />}
     </div>
   );
 }
 /*
-function WarningBadge({ content }) {
-  return (
-    <div className={styles.warningTag}>
-      <FaCircleExclamation className={styles.thesisTypeIcon} />
-      <span className="course-detail">{content}</span>
-    </div>
-  )
-}*/
-
 ThesisProposalDetail.propTypes = {
   thesisProposal: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -322,9 +268,6 @@ MainSupervisor.propTypes = {
 SecondarySupervisors.propTypes = {
   names: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
-
-Supervisor.propTypes = {
-  name: PropTypes.string.isRequired,
-};
+*/
 
 export { ThesisProposalDetail, MyBreadcrumb, ExpirationDate };
