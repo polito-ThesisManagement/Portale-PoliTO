@@ -117,9 +117,7 @@ describe('getStudents', () => {
 
     await getStudents(req, res);
 
-    expect(res.json).toHaveBeenCalledWith({
-      students: result,
-    });
+    expect(res.json).toHaveBeenCalledWith(result);
   });
 
   test('should return 500 status if an error occurred', async () => {
@@ -169,7 +167,7 @@ describe('getLoggedStudent', () => {
 
     await getLoggedStudent(req, res);
 
-    expect(res.json).toHaveBeenCalledWith({ student: result });
+    expect(res.json).toHaveBeenCalledWith(result);
   });
 
   test('should return 404 status if logged student is not found', async () => {
