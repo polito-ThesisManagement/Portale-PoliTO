@@ -50,6 +50,40 @@ async function getThesisProposalById(id, lang) {
   }
 }
 
-const API = { getThesisProposals, getTargetedThesisProposals, getThesisProposalById };
+async function getStudents() {
+  try {
+    const response = await axios.get(`${URL}/students`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching students:', error);
+  }
+}
+
+async function getLoggedStudent() {
+  try {
+    const response = await axios.get(`${URL}/students/logged-student`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching logged student:', error);
+  }
+}
+
+async function updateLoggedStudent(student_id) {
+  try {
+    const response = await axios.put(`${URL}/students/logged-student`, { student_id });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating logged student:', error);
+  }
+}
+
+const API = {
+  getThesisProposals,
+  getTargetedThesisProposals,
+  getThesisProposalById,
+  getStudents,
+  getLoggedStudent,
+  updateLoggedStudent,
+};
 
 export default API;
