@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { Tab, Tabs } from 'react-bootstrap';
 import { Search, SortDown, SortUp } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -11,11 +12,12 @@ import PropTypes from 'prop-types';
 import '../styles/Searchbar.css';
 import '../styles/Theme.css';
 import styles from '../styles/ThesisProposals.module.css';
+import '../styles/Utilities.css';
 import { ThesisItem } from './ThesisItem';
 import Title from './Title';
 
 export default function ThesisProposals({ thesisProposals }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [tab, setTab] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,10 +29,6 @@ export default function ThesisProposals({ thesisProposals }) {
   const [totalPages, setTotalPages] = useState(Math.ceil(thesisProposals.length / proposalsPerPage));
 
   const { t } = useTranslation();
-
-  const handleToggle = () => {
-    setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
-  };
 
   const handlePageChange = pageNumber => {
     if (pageNumber !== currentPage) {
@@ -80,16 +78,16 @@ export default function ThesisProposals({ thesisProposals }) {
     return sortedProposals;
   }
 
-  // Filter proposals based on activeIndex
+  // Filter proposals based on activeTab
   useEffect(() => {
-    if (activeIndex === 0) {
+    if (tab === 'all') {
       setFilteredProposals(filteredProposals);
     } else {
       const filtered = filteredProposals; // Add filter for thesis related to the logged student's degree course
       setFilteredProposals(sortingProposals(filtered));
     }
     setCurrentPage(1);
-  }, [activeIndex]);
+  }, [tab]);
 
   // Filter proposals based on search query
   useEffect(() => {
@@ -202,7 +200,24 @@ export default function ThesisProposals({ thesisProposals }) {
                   marginBottom: '8px',
                 }}
               >
-                <Slider activeIndex={activeIndex} handleToggle={handleToggle} />
+                <Tabs
+                  defaultActiveKey="all"
+                  activeKey={tab}
+                  onSelect={k => setTab(k)}
+                  id="thesis-proposals-tabs"
+                  className="custom-tab"
+                  fill={true}
+                >
+                  <Tab
+                    style={{
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--text)',
+                    }}
+                    eventKey="all"
+                    title={t('carriera.proposte_di_tesi.all_thesis')}
+                  />
+                  <Tab eventKey="course" title={t('carriera.proposte_di_tesi.course_thesis')} />
+                </Tabs>
                 <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Select
@@ -284,8 +299,18 @@ export default function ThesisProposals({ thesisProposals }) {
               </div>
             </div>
           </section>
-          <section className={styles.thesisList}>
-            <div className={styles.thesisListInner}>
+          <section
+            style={{
+              backgroundColor: 'var(--surface)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+              paddingBottom: '6px',
+            }}
+          >
+            <div>
               {pageProposals.map(thesis => {
                 return <ThesisItem key={thesis.id} {...thesis} />;
               })}
@@ -330,10 +355,27 @@ export default function ThesisProposals({ thesisProposals }) {
                 </InputGroup>
               </Form>
             </div>
-            <div className={styles.paginationNumbers}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexGrow: '1',
+              }}
+            >
               {pageNumbers.map((number, index) =>
                 number === '...' ? (
-                  <button key={`ellipsis-${index}`} className={styles.ellipsis} disabled>
+                  <button
+                    key={`ellipsis-${index}`}
+                    style={{
+                      margin: '0 0.5rem',
+                      border: '0.0625rem solid var(--placeholder)',
+                      borderRadius: '0.5rem',
+                      backgroundColor: 'var(--background)',
+                      cursor: 'default',
+                      pointerEvents: 'none',
+                    }}
+                    disabled
+                  >
                     {number}
                   </button>
                 ) : (
@@ -364,30 +406,6 @@ export default function ThesisProposals({ thesisProposals }) {
     </>
   );
 }
-
-const Slider = ({ activeIndex, handleToggle }) => {
-  const { t } = useTranslation();
-  return (
-    <label className={styles.segmentedControl} aria-label="Toggle thesis proposals">
-      <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
-      <span className={styles.slider}>
-        <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
-          {activeIndex === 0 ? t('carriera.proposte_di_tesi.all_thesis') : t('carriera.proposte_di_tesi.all_thesis')}
-        </span>
-        <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
-          {activeIndex === 1
-            ? t('carriera.proposte_di_tesi.course_thesis')
-            : t('carriera.proposte_di_tesi.course_thesis')}
-        </span>
-      </span>
-    </label>
-  );
-};
-
-Slider.propTypes = {
-  activeIndex: PropTypes.number.isRequired,
-  handleToggle: PropTypes.func.isRequired,
-};
 
 ThesisProposals.propTypes = {
   thesisProposals: PropTypes.arrayOf(

@@ -53,6 +53,8 @@
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
+  background-color: var(--background);
+  color: var(--primary);
 }
 
 .custom-tab .active {
