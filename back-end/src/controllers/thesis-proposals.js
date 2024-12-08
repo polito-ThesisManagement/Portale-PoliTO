@@ -106,7 +106,7 @@ const getThesisProposalsTypes = async (req, res) => {
   }
 };
 
-const getThesisProposalKeywords = async (req, res) => {
+const getThesisProposalsKeywords = async (req, res) => {
   try {
     const lang = req.query.lang || 'it';
     const { search = '' } = req.query;
@@ -131,7 +131,7 @@ const getThesisProposalKeywords = async (req, res) => {
   }
 };
 
-const getThesisProposalTeachers = async (req, res) => {
+const getThesisProposalsTeachers = async (req, res) => {
   try {
     const { search = '' } = req.query;
 
@@ -186,7 +186,7 @@ module.exports = {
   getThesisProposals,
   getTargetedThesisProposals,
   getThesisProposalsTypes,
-  getThesisProposalKeywords,
-  getThesisProposalTeachers,
+  getThesisProposalsKeywords,
+  getThesisProposalsTeachers,
   getThesisProposalById,
 };

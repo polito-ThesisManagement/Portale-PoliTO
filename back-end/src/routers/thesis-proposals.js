@@ -4,16 +4,16 @@ const {
   getThesisProposals,
   getTargetedThesisProposals,
   getThesisProposalsTypes,
-  getThesisProposalKeywords,
-  getThesisProposalTeachers,
+  getThesisProposalsKeywords,
+  getThesisProposalsTeachers,
   getThesisProposalById,
 } = require('../controllers/thesis-proposals');
 
 router.get('/', getThesisProposals);
 router.get('/targeted', getTargetedThesisProposals);
 router.get('/types', getThesisProposalsTypes);
-router.get('/keywords', getThesisProposalKeywords);
-router.get('/teachers', getThesisProposalTeachers);
+router.get('/keywords', getThesisProposalsKeywords);
+router.get('/teachers', getThesisProposalsTeachers);
 router.get('/:thesisProposalId', getThesisProposalById);
 
 module.exports = router;
