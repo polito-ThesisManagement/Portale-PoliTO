@@ -7,7 +7,7 @@ const StudentSchema = z
     last_name: z.string(),
     profile_picture_url: z.string().nullable(),
     degree_id: z.string(),
-    isLogged: z.number().optional(),
+    is_logged: z.boolean().optional(),
   })
   .transform(student => {
     return {
@@ -16,7 +16,7 @@ const StudentSchema = z
       lastName: student.last_name,
       profilePictureUrl: student.profile_picture_url,
       degreeId: student.degree_id,
-      isLogged: student.isLogged,
+      isLogged: student.is_logged,
     };
   });
 

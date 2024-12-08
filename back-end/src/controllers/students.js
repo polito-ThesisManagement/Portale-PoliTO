@@ -39,14 +39,17 @@ const getStudents = async (req, res) => {
         CASE 
           WHEN ls.student_id IS NOT NULL THEN true 
           ELSE false 
-        END AS isLogged
+        END AS is_logged
       FROM student s
       LEFT JOIN logged_student ls ON s.id = ls.student_id
       `,
       { type: QueryTypes.SELECT },
     );
     res.json({
-      students: students.map(student => StudentSchema.parse(student)),
+      students: students.map(student => {
+        student.is_logged = Boolean(student.is_logged);
+        return StudentSchema.parse(student);
+      }),
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -78,9 +81,9 @@ const getLoggedStudent = async (req, res) => {
 
 const updateLoggedStudent = async (req, res) => {
   try {
-    const studentId = req.body.studentId;
+    const studentId = req.body.student_id;
     if (!studentId) {
-      return res.status(400).json({ error: 'Missing studentId' });
+      return res.status(400).json({ error: 'Missing student id' });
     }
 
     const student = await sequelize.query(
