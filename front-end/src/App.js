@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import PoliNavbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+import { Sidebar } from './components/Sidebar';
 import FloatingButton from './components/FloatingButton';
 import Avvisi_GC from './data/Avvisi_GC.json';
 import AreaPersonale from './pages/AreaPersonale';

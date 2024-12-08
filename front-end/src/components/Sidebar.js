@@ -1,4 +1,4 @@
-import { React, useContext } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaInfoCircle } from 'react-icons/fa';
@@ -37,12 +37,24 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
-
-export function NavItems({ mobile, handleClose }) {
+function NavItems({ mobile, handleClose }) {
   const { desktopToggle } = useContext(DesktopToggleContext);
   const location = useLocation();
   const { t } = useTranslation();
+  const [toggleText, setToggleText] = useState(false);
+
+  useEffect(() => {
+    if (desktopToggle) {
+      setToggleText(true);
+    } else {
+      const timer = setTimeout(() => {
+        setToggleText(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [desktopToggle]);
+
+
 
   return (
     <>
@@ -53,7 +65,7 @@ export function NavItems({ mobile, handleClose }) {
           onClick={handleClose}
         >
           <FaHouse size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>Homepage</span>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>Homepage</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -63,7 +75,7 @@ export function NavItems({ mobile, handleClose }) {
           onClick={handleClose}
         >
           <FaBookOpen size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.didattica')}</span>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.didattica')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -73,7 +85,7 @@ export function NavItems({ mobile, handleClose }) {
           onClick={handleClose}
         >
           <FaUser size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.area_personale')}</span>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.area_personale')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -83,7 +95,7 @@ export function NavItems({ mobile, handleClose }) {
           onClick={handleClose}
         >
           <FaUserGraduate size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.carriera')}</span>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.carriera')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -93,7 +105,7 @@ export function NavItems({ mobile, handleClose }) {
           onClick={handleClose}
         >
           <FaBriefcase size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.opportunità')}</span>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.opportunità')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -103,7 +115,7 @@ export function NavItems({ mobile, handleClose }) {
           onClick={handleClose}
         >
           <MdApps size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.servizi')}</span>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.servizi')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -113,7 +125,7 @@ export function NavItems({ mobile, handleClose }) {
           onClick={handleClose}
         >
           <FaInfoCircle size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>Help</span>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>Help</span>
         </Link>
       </Nav.Item>
     </>
@@ -124,3 +136,5 @@ NavItems.propTypes = {
   mobile: PropTypes.bool,
   handleClose: PropTypes.func,
 };
+
+export { Sidebar, NavItems };
