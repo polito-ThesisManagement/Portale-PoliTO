@@ -180,7 +180,7 @@ function MainSupervisor({ name }) {
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
-      <div className={styles.professorTagGroup}>
+      <div>
         <Supervisor name={name} />
       </div>
     </div>
@@ -192,7 +192,7 @@ function SecondarySupervisors({ names }) {
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
-      <div className={styles.professorTagGroup}>
+      <div>
         {names.map((name, index) => (
           <Supervisor key={index} name={name} />
         ))}

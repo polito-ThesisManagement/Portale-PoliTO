@@ -9,8 +9,9 @@ import { HiLightBulb } from 'react-icons/hi';
 import PropTypes from 'prop-types';
 
 import '../styles/Searchbar.css';
+import '../styles/Theme.css';
 import styles from '../styles/ThesisProposals.module.css';
-import ThesisItem from './ThesisItem';
+import { ThesisItem } from './ThesisItem';
 import Title from './Title';
 
 export default function ThesisProposals({ thesisProposals }) {
@@ -160,26 +161,48 @@ export default function ThesisProposals({ thesisProposals }) {
   return (
     <>
       <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
-      <div className={styles.container}>
-        <main className={styles.mainContent}>
-          <section className={styles.card}>
-            <div className={styles.cardBody}>
-              <div className={styles.filterRow}>
-                <label className={styles.segmentedControl} aria-label="Toggle thesis proposals">
-                  <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
-                  <span className={styles.slider}>
-                    <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
-                      {activeIndex === 0
-                        ? t('carriera.proposte_di_tesi.all_thesis')
-                        : t('carriera.proposte_di_tesi.all_thesis')}
-                    </span>
-                    <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
-                      {activeIndex === 1
-                        ? t('carriera.proposte_di_tesi.course_thesis')
-                        : t('carriera.proposte_di_tesi.course_thesis')}
-                    </span>
-                  </span>
-                </label>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          paddingBottom: '5.675rem',
+        }}
+      >
+        <main
+          style={{
+            borderRadius: '1rem',
+            display: 'flex',
+            backgroundColor: 'var(--surface)',
+            width: '100%',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            flexGrow: '1',
+            paddingBottom: '2%',
+          }}
+        >
+          <section style={{ marginBottom: '0.5rem' }}>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                flexGrow: '1',
+                padding: '1.75rem',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                  marginBottom: '8px',
+                }}
+              >
+                <Slider activeIndex={activeIndex} handleToggle={handleToggle} />
                 <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Select
@@ -270,7 +293,16 @@ export default function ThesisProposals({ thesisProposals }) {
           </section>
           <div className={styles.pagination}>
             <div style={{ display: 'flex', alignItems: 'center', width: '300px' }}>
-              <b className={styles.bText} style={{ paddingLeft: '2rem', width: '100%' }}>
+              <b
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: 'var(--font-size-sm)',
+                  color: 'var(--text)',
+                  fontWeight: '600',
+                  paddingRight: '2rem',
+                  width: '100%',
+                }}
+              >
                 {t('carriera.proposte_di_tesi.elements_per_page')}:
               </b>
               <Form className="d-flex me-3 w-100" style={{ maxWidth: '80px' }}>
@@ -315,7 +347,15 @@ export default function ThesisProposals({ thesisProposals }) {
                 ),
               )}
             </div>
-            <span className={styles.bText} style={{ paddingRight: '2rem' }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-primary)',
+                fontSize: 'var(--font-size-sm)',
+                color: 'var(--text)',
+                fontWeight: '600',
+                paddingRight: '2rem',
+              }}
+            >
               {t('carriera.proposte_di_tesi.total')} {filteredProposals.length}
             </span>
           </div>
@@ -324,6 +364,30 @@ export default function ThesisProposals({ thesisProposals }) {
     </>
   );
 }
+
+const Slider = ({ activeIndex, handleToggle }) => {
+  const { t } = useTranslation();
+  return (
+    <label className={styles.segmentedControl} aria-label="Toggle thesis proposals">
+      <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
+      <span className={styles.slider}>
+        <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
+          {activeIndex === 0 ? t('carriera.proposte_di_tesi.all_thesis') : t('carriera.proposte_di_tesi.all_thesis')}
+        </span>
+        <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
+          {activeIndex === 1
+            ? t('carriera.proposte_di_tesi.course_thesis')
+            : t('carriera.proposte_di_tesi.course_thesis')}
+        </span>
+      </span>
+    </label>
+  );
+};
+
+Slider.propTypes = {
+  activeIndex: PropTypes.number.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+};
 
 ThesisProposals.propTypes = {
   thesisProposals: PropTypes.arrayOf(
