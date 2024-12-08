@@ -45,12 +45,12 @@ const getStudents = async (req, res) => {
       `,
       { type: QueryTypes.SELECT },
     );
-    res.json({
-      students: students.map(student => {
+    res.json(
+      students.map(student => {
         student.is_logged = Boolean(student.is_logged);
         return StudentSchema.parse(student);
       }),
-    });
+    );
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -73,7 +73,7 @@ const getLoggedStudent = async (req, res) => {
       return res.status(404).json({ error: 'Logged student not found' });
     }
 
-    res.json({ student: StudentSchema.parse(loggedStudent[0]) });
+    res.json(StudentSchema.parse(loggedStudent[0]));
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
