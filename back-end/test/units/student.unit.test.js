@@ -1,7 +1,7 @@
 require('jest');
 
 const { sequelize } = require('../../src/models');
-const { getStudentData } = require('../../src/controllers/student');
+const { getStudentData } = require('../../src/controllers/students');
 
 jest.mock('../../src/models', () => ({
   sequelize: {

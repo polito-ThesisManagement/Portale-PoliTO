@@ -5,10 +5,10 @@ const {
   getTargetedThesisProposals,
   getThesisProposalById,
 } = require('../../src/controllers/thesis-proposals');
-const { getStudentData } = require('../../src/controllers/student');
+const { getStudentData } = require('../../src/controllers/students');
 const { ThesisProposal, sequelize } = require('../../src/models');
 
-jest.mock('../../src/controllers/student', () => ({
+jest.mock('../../src/controllers/students', () => ({
   getStudentData: jest.fn(),
 }));
 
