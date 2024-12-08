@@ -37,6 +37,44 @@ async function getTargetedThesisProposals(lang, page, limit) {
   }
 }
 
+async function getThesisProposalsTypes(lang) {
+  try {
+    const response = await axios.get(`${URL}/thesis-proposals/types`, {
+      params: {
+        lang,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching thesis proposals types:', error);
+  }
+}
+
+async function getThesisProposalsKeywords(lang) {
+  try {
+    const response = await axios.get(`${URL}/thesis-proposals/keywords`, {
+      params: {
+        lang,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching thesis proposals keywords:', error);
+  }
+}
+
+async function getThesisProposalsTeachers() {
+  try {
+    const response = await axios.get(`${URL}/thesis-proposals/teachers`);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching thesis proposals teachers:', error);
+  }
+}
+
 async function getThesisProposalById(id, lang) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/${id}`, {
@@ -50,6 +88,13 @@ async function getThesisProposalById(id, lang) {
   }
 }
 
-const API = { getThesisProposals, getTargetedThesisProposals, getThesisProposalById };
+const API = {
+  getThesisProposals,
+  getTargetedThesisProposals,
+  getThesisProposalsTypes,
+  getThesisProposalsKeywords,
+  getThesisProposalsTeachers,
+  getThesisProposalById,
+};
 
 export default API;
