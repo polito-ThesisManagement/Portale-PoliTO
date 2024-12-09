@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Tab, Tabs } from 'react-bootstrap';
+import { Pagination, Tab, Tabs } from 'react-bootstrap';
 import { Search, SortDown, SortUp } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 
 import '../styles/Searchbar.css';
 import '../styles/Theme.css';
-import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
 import { ThesisItem } from './ThesisItem';
 import Title from './Title';
@@ -316,21 +315,32 @@ export default function ThesisProposals({ thesisProposals }) {
               })}
             </div>
           </section>
-          <div className={styles.pagination}>
-            <div style={{ display: 'flex', alignItems: 'center', width: '300px' }}>
-              <b
-                style={{
-                  fontFamily: 'var(--font-primary)',
-                  fontSize: 'var(--font-size-sm)',
-                  color: 'var(--text)',
-                  fontWeight: '600',
-                  paddingRight: '2rem',
-                  width: '100%',
-                }}
-              >
-                {t('carriera.proposte_di_tesi.elements_per_page')}:
-              </b>
-              <Form className="d-flex me-3 w-100" style={{ maxWidth: '80px' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginTop: '1rem',
+              marginLeft: '1rem',
+              marginRight: '1rem',
+              flexWrap: 'wrap',
+              paddingBottom: '1.5rem',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', width: '180px' }}>
+              <Form className="d-flex me-3 w-100" style={{ maxWidth: '200px' }}>
+                <b
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: 'var(--font-size-sm)',
+                    color: 'var(--text)',
+                    fontWeight: '600',
+                    paddingRight: '0.5rem',
+                    width: '100%',
+                  }}
+                >
+                  {t('carriera.proposte_di_tesi.elements_per_page')}:
+                </b>
                 <InputGroup className="flex-nowrap w-100">
                   <Form.Select
                     label="page_elements"
@@ -340,7 +350,7 @@ export default function ThesisProposals({ thesisProposals }) {
                       color: 'var(--primary)',
                       borderRadius: '8px',
                       lineHeight: '1rem',
-                      paddingRight: '2rem',
+                      paddingRight: '1rem',
                       fontFamily: 'var(--font-family)',
                     }}
                     value={proposalsPerPage}
@@ -355,40 +365,17 @@ export default function ThesisProposals({ thesisProposals }) {
                 </InputGroup>
               </Form>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexGrow: '1',
-              }}
-            >
-              {pageNumbers.map((number, index) =>
-                number === '...' ? (
-                  <button
-                    key={`ellipsis-${index}`}
-                    style={{
-                      margin: '0 0.5rem',
-                      border: '0.0625rem solid var(--placeholder)',
-                      borderRadius: '0.5rem',
-                      backgroundColor: 'var(--background)',
-                      cursor: 'default',
-                      pointerEvents: 'none',
-                    }}
-                    disabled
-                  >
-                    {number}
-                  </button>
-                ) : (
-                  <button
-                    key={`page-${number}`}
-                    onClick={() => handlePageChange(number)}
-                    className={currentPage === number ? styles.activePage : ''}
-                  >
-                    {number}
-                  </button>
-                ),
-              )}
-            </div>
+            {totalPages && (
+              <Pagination activeKey={currentPage} onChange={() => handlePageChange()}>
+                <Pagination.First />
+                <Pagination.Prev />
+                {pageNumbers.map(number => {
+                  return <Pagination.Item key={number}>{number}</Pagination.Item>;
+                })}
+                <Pagination.Next />
+                <Pagination.Last />
+              </Pagination>
+            )}
             <span
               style={{
                 fontFamily: 'var(--font-primary)',

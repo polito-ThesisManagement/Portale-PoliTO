@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import '../styles/Theme.css';
-import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
 
 function formatDate(date) {
@@ -191,7 +190,7 @@ const ProfessorTag = ({ supervisor }) => {
         fontSize: 'var(--font-size-md)',
       }}
     >
-      <FaUser className={styles.thesisTypeIcon} />
+      <FaUser />
       <span
         key={supervisor.id}
         style={{
@@ -293,7 +292,7 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
             fontSize: 'var(--font-size-sm)',
           }}
         >
-          <div className={styles.thesisTypeTag}>
+          <div>
             <GenericTag
               text={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
               icon={<FaCalendar />}
@@ -328,8 +327,6 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
     </>
   );
 };
-
-export { ThesisItem, ProfessorTag };
 
 ProfessorTag.propTypes = {
   supervisor: PropTypes.shape({
@@ -415,3 +412,5 @@ ThesisItem.propTypes = {
     }),
   ),
 };
+
+export { ThesisItem, ProfessorTag, GenericTag, Keyword, ThesisHeader, ThesisFooter, ThesisProfessorTags, ShowMore };

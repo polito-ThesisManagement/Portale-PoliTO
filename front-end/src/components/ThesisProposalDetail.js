@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 import { ArrowRightShort } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
-import { FaCalendar, FaEarthAmericas, FaFileLines, FaUser } from 'react-icons/fa6';
+import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
 
@@ -15,8 +15,8 @@ import PropTypes from 'prop-types';
 
 import Title from '../components/Title';
 import '../styles/Text.css';
-import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
+import { GenericTag, Keyword, ProfessorTag } from './ThesisItem';
 
 moment.locale('it');
 
@@ -68,11 +68,11 @@ function ThesisProposalDetail(props) {
               content={types.map(type => capitalize(type.type.toLowerCase())).join(', ')}
             />
           )}
-          <MainSupervisor name={supervisor.first_name + ' ' + supervisor.last_name} />
+          <MainSupervisor supervisor={supervisor} />
           {internalCoSupervisors && internalCoSupervisors.length > 1 && (
             <SecondarySupervisors
-              names={internalCoSupervisors.map(supervisor => {
-                supervisor.first_name + ' ' + supervisor.last_name;
+              supervisors={internalCoSupervisors.map(supervisor => {
+                supervisor;
               })}
             />
           )}
@@ -164,50 +164,43 @@ function Keywords({ keywords }) {
   // if null return a bit of margin
   return (
     <div className="mb-3">
-      <div className={styles.tagGroup}>
+      <div>
         {keywords.map(keyword => (
-          <div key={keyword.id} className={styles.tag}>
-            <span className="course-detail">{keyword.keyword}</span>
-          </div>
+          <Keyword key={keyword.id} keyword={keyword} />
         ))}
       </div>
     </div>
   );
 }
 
-function MainSupervisor({ name }) {
+function MainSupervisor({ supervisor }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
       <div>
-        <Supervisor name={name} />
+        <Supervisor supervisor={supervisor} />
       </div>
     </div>
   );
 }
 
-function SecondarySupervisors({ names }) {
+function SecondarySupervisors({ supervisors }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
       <div>
-        {names.map((name, index) => (
-          <Supervisor key={index} name={name} />
+        {supervisors.map((supervisor, index) => (
+          <Supervisor key={index} supervisor={supervisor} />
         ))}
       </div>
     </div>
   );
 }
 
-function Supervisor({ name }) {
-  return (
-    <div className={styles.professorTag}>
-      <FaUser className={styles.thesisTypeIcon} />
-      <span className="course-detail">{name}</span>
-    </div>
-  );
+function Supervisor({ supervisor }) {
+  return <ProfessorTag supervisor={supervisor} />;
 }
 
 function Environment({ is_internal }) {
@@ -222,31 +215,20 @@ function Environment({ is_internal }) {
 
 function Internal() {
   const { t } = useTranslation();
-  return (
-    <div className={styles.thesisTypeTag}>
-      <FaUniversity className={styles.thesisTypeIcon} />
-      <span className="course-detail">{t('carriera.proposte_di_tesi.internal_thesis')}</span>
-    </div>
-  );
+  return <GenericTag icon={<FaUniversity />} text={t('carriera.proposte_di_tesi.internal_thesis')} />;
 }
 
 function NotInternal() {
   const { t } = useTranslation();
-  return (
-    <div className={styles.thesisTypeTag}>
-      <HiBuildingOffice2 className={styles.thesisTypeIcon} />
-      <span className="course-detail">{t('carriera.proposte_di_tesi.external_thesis')}</span>
-    </div>
-  );
+  return <GenericTag icon={<HiBuildingOffice2 />} text={t('carriera.proposte_di_tesi.external_thesis')} />;
 }
 
 function Abroad() {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
-      <div className={styles.thesisTypeTag}>
-        <FaEarthAmericas className={styles.thesisTypeIcon} />
-        <span className="course-detail">{t('carriera.proposte_di_tesi.abroad_thesis')}</span>
+      <div>
+        <GenericTag icon={<FaEarthAmericas />} text={t('carriera.proposte_di_tesi.abroad_thesis')} />
       </div>
     </div>
   );
@@ -316,15 +298,31 @@ Environment.propTypes = {
 };
 
 MainSupervisor.propTypes = {
-  name: PropTypes.string.isRequired,
+  supervisor: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    profile_url: PropTypes.string.isRequired,
+    facility_short_name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 SecondarySupervisors.propTypes = {
-  names: PropTypes.arrayOf(PropTypes.string).isRequired,
+  supervisors: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 Supervisor.propTypes = {
-  name: PropTypes.string.isRequired,
+  supervisor: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    profile_url: PropTypes.string.isRequired,
+    facility_short_name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export { ThesisProposalDetail, MyBreadcrumb, ExpirationDate };

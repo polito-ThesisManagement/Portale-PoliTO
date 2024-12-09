@@ -236,3 +236,30 @@ body {
   display: inline-block;
   white-space: nowrap;
 }
+
+.page-item.active .page-link {
+  background-color: var(--background);
+  color: var(--active-page);
+  border-color: var(--active-page-border);
+  font-family: var(--font-primary);
+}
+
+.page-item .page-link {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--text);
+  font-family: var(--font-primary);
+}
+
+.page-link {
+  background-color: var(--primary);
+  color: var(--text);
+  font-family: var(--font-primary);
+}
+
+.page-link:hover {
+  background-color: var(--background);
+  color: var(--active-page);
+  border-color: var(--active-page-border);
+  font-family: var(--font-primary);
+}
