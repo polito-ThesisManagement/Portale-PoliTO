@@ -18,6 +18,7 @@ VALUES
     ("CL016", "Collegio di Architettura e Design"),
     ("CL017", "Collegio di Ingegneria Elettrica ed Energetica"),
     ("CL018", "Collegio di Ingegneria Civile ed Edile");
+
 -- ------------------------------------------------------------
 -- ↓ degree table ↓
 -- ------------------------------------------------------------
@@ -2823,8 +2824,19 @@ VALUES
 -- ------------------------------------------------------------
 INSERT INTO type (id, type, type_en)
 VALUES
-    (1, 'RICERCA', 'RESEARCH'),
-    (2, 'SPERIMENTALE', 'EXPERIMENTAL');
+    ( 1, 'ANALISI DATI', 'DATA ANALYSIS' ),
+    ( 2, 'ANALITICA', 'ANALYTICAL' ),
+    ( 3, 'APPLICATIVA', 'APPLIED' ),
+    ( 4, 'COMPILATIVA', 'BIBLIOGRAPHIC' ),
+    ( 5, 'COMPUTAZIONALE', 'COMPUTATIONAL' ),
+    ( 6, 'PROGETTUALE', 'DESIGN' ),
+    ( 7, 'RICERCA', 'RESEARCH' ),
+    ( 8, 'SIMULATIVA', 'SIMULATION' ),
+    ( 9, 'SPERIMENTALE', 'EXPERIMENTAL' ),
+    ( 10, 'SVILUPPO', 'DEVELOPMENT' ),
+    ( 11, 'TEORICA', 'THEORETICAL' ),
+    ( 12, 'NUMERICA', 'NUMERICAL' );
+
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal table ↓
 -- ------------------------------------------------------------
@@ -2851,6 +2863,77 @@ INSERT INTO
     )
 VALUES
     (
+        10187,
+        "App per il benessere",
+        "Well being app",
+        "Obbiettivo della tesi è sviluppare una app e relativo back end per supportare le persone a perseguire uno stile di vita salutare.
+        La app raccoglie (direttamente, o tramite device esterni tipo smartwatch o fitbit) dati sulla vita della persona (attività fisica, qualità e durata del sonno, pressione, pulsazioni) (nutrizione, tipo e quantità del cibo mangiato e delle bevande). Confrontando i dati raccolti con pattern predefiniti e possibilmente con analisi mediche supplettive la app suggerisce modifiche allo stile di vita (recommendation). Via via che la persona viene monitorata altre modifiche sono suggerite e il loro effetto verificato.
+        La parte back end della app raccoglie in modo anonimo i dati di molti utenti e utilizzando tecniche statistiche e di machine learning costruisce e raffina modelli e pattern predittivi da usare per le recommendation.
+
+        Le recommendation iniziali sono derivate dalla letteratura scientifica su aging e well being (vedere ad esempio Fontana L., The path to longevity). Scopo di lungo termine della app è di raccogliere dati per validare e migliorare le recommendation.
+
+        Il lavoro è svolto in collaborazione con University of Sydney e Azienda Ospedaliera Verona. Il lavoro supporta una tesi lato app e una lato backend.",
+        "Goal of the project is to develop a mobile app + backend to support people in having a healthy lifestyle. The mobile app collects (directly or using wearable devices) information about a person's life: physical status and activity (walking running and any physical activity, heart rate, pressure, sleeping times etc), nutrition (type and quantity of food eaten). Starting from the data collected and using predefined patterns the app proposes recommendations to improve the lifestyle. The effect of recommendations is monitored in ters of changes to the lifestyle, in function of changes recommendations are recomputed.
+        The back end side of the app collects, anonymously, data about all users, analyses them via statistic and machine learning models, in order to build models to characterize and predict the effects of behaviours and recommendations.
+
+        At start recommendations are derived from the existing scientific literature about aging and well being (ex Fontana L., The path to longevity). On the long run the data collected and analysed is used to further validate and improve the recommendations, and the models they are built on.
+
+        This project is developed with University of Sydney and Azienda Ospedaliera Verona.",
+        NULL,
+        "Sviluppo di applicazioni web (lato client, lato server). Flutter / React",
+        "Web application development (client side, server side). Flutter / React",
+        NULL,
+        NULL,
+        NULL,
+        "2024-09-30",
+        "2025-09-30",
+        0,
+        0,
+        "CL003",
+        "2",
+        NULL
+    ),
+    (
+        12946,
+        "Gamification applicata al test refactoring",
+        "Gamification for test refactoring",
+        "Il test refactoring rappresenta una pratica essenziale nello sviluppo del software, mirata a ottimizzare e migliorare la qualità dei test automatizzati senza alterarne la funzionalità. Questo processo coinvolge la riscrittura del codice dei test al fine di renderlo più efficiente, manutenibile e adatto agli scopi di testing. Tuttavia, implementare con successo il test refactoring richiede un elevato livello di competenza tecnica e una comprensione approfondita del sistema in esame.
+
+        La gamification è una strategia che applica elementi tipici dei giochi, come punti, sfide e ricompense, in contesti non ludici per motivare e coinvolgere gli utenti. L'obiettivo della gamification è trasformare compiti complessi o noiosi in attività coinvolgenti e gratificanti.
+
+        La presente tesi propone un'indagine approfondita sull'applicazione della gamification nel contesto del test refactoring. L'obiettivo principale è esplorare come l'introduzione di elementi ludici possa influenzare positivamente l'efficacia e l'efficienza del processo di test refactoring.
+
+        Gli aspetti chiave della ricerca includeranno:
+        - Studio dei Metodi di Test Refactoring: Analisi delle diverse tecniche e metodologie di test refactoring attualmente utilizzate nello sviluppo del software.
+        - Analisi dei Problemi Comuni: Identificazione e analisi dei problemi comuni riscontrati nello svolgimento del test refactoring, come la resistenza agli aggiornamenti e la complessità del processo.
+        - Gamification Applicata: Progettazione e implementazione di un sistema di gamification per incentivare e migliorare l'adozione del test refactoring. Ciò potrebbe includere la definizione di obiettivi, la creazione di sfide e la valutazione delle ricompense.
+        - Valutazione dell'Impatto: Valutazione dell'efficacia della gamification attraverso indicatori chiave di prestazione, confrontando i risultati con gruppi di controllo che seguono approcci tradizionali di test refactoring.",
+        "Test refactoring is an essential practice in software development aimed at optimizing and improving the quality of automated tests without altering their functionality. This process involves rewriting test code to make it more efficient, maintainable, and suitable for testing purposes. However, successfully implementing test refactoring requires a high level of technical expertise and a deep understanding of the system under consideration.
+
+        On the other hand, gamification is a strategy that applies typical game elements, such as points, challenges, and rewards, in non-game contexts to motivate and engage users. The goal of gamification is to transform complex or tedious tasks into engaging and rewarding activities.
+
+        This thesis proposes an in-depth investigation into the application of gamification in the context of test refactoring. The main objective is to explore how the introduction of playful elements can positively influence the effectiveness and efficiency of the test refactoring process.
+
+        Key aspects of the research will include:
+        - Study of Test Refactoring Methods: Analysis of different techniques and methodologies of test refactoring currently used in software development.
+        - Analysis of Common Issues: Identification and analysis of common problems encountered in test refactoring, such as resistance to updates and process complexity.
+        - Applied Gamification: Design and implementation of a gamification system to encourage and improve the adoption of test refactoring. This may include goal definition, challenge creation, and reward evaluation.
+        - Impact Evaluation: Assessment of the effectiveness of gamification through key performance indicators, comparing results with control groups following traditional approaches to test refactoring.",
+        NULL,
+        "Sviluppo con linguaggi di programmazione a oggetti (preferibilmente Java), Fondamenti del software testing",
+        "Development with OOP languages (preferably Java), Testing fundamentals",
+        NULL,
+        NULL,
+        NULL,
+        "2024-10-16",
+        "2025-10-16",
+        1,
+        0,
+        "CL003",
+        "2",
+        NULL
+    ),
+    (
         13169,
         "Studio esplorativo delle soluzioni IA-based per la generazione del codice",
         "An exploration of the solutions for AI-based code generation",
@@ -2865,6 +2948,54 @@ VALUES
         "2023-12-07",
         "2024-12-07",
         1,
+        0,
+        "CL003",
+        "2",
+        NULL
+    ),
+    (
+        13253,
+        "Test automatizzato per soluzioni Virtual Reality Content Management System e piattaforme di VR streaming",
+        "Test automation for an enterprise VR (Virtual Reality) CMS and VR streaming platforms",
+        "Questa proposta di tesi si concentra sullo studio e lo sviluppo di un innovativo approccio all'automazione dei test per migliorare la stabilità e l'affidabilità di un sistema di gestione dei contenuti VR (Virtual Reality) e di una piattaforma di streaming VR per le imprese. I componenti necessari per la piattaforma includono una piattaforma web, client VR Android e servizi AWS per l'orchestrazione e il rendering nel cloud.
+
+        L'obiettivo principale della tesi è lo sviluppo un'applicazione Unity VR in grado di fornire feedback sulle performance dello streaming e sul comportamento atteso della piattaforma. Con un approccio bottom-up in mente, lo studio si concentrerà poi su come le applicazioni vengono avviate sia dai client VR Android che dai browser web e su come questo processo possa essere automatizzato per scopi di testing.
+
+        La tesi prevede una revisione dello stato attuale dell'arte dell'automazione dei test in VR, esplorando approcci innovativi su come affrontare le sfide dell'interazione umana, come ad esempio: simulare l'uso di visori VR di vari produttori (Meta, HTC, Pico), incorporare movimenti della testa e interazioni con i controller. Un prototipo, costruito con componenti Lego, potrebbe aiutare a dimostrare la fattibilità di tali simulazioni.
+
+        La ricerca esplorerà infine le sfide potenziali per raggiungere una soluzione completa di automazione dei test end-to-end per l'intera piattaforma, considerando il percorso tipico dell'utente. Saranno esplorati sia strumenti tradizionali (Windows Forms, Selenium) che soluzioni all'avanguardia (come modelli di linguaggio e OpenAI) per valutarne l'efficacia nel affrontare queste sfide.
+
+        La tesi aspira dunque a contribuire non solo al campo dei test VR, ma anche al più ampio settore dei sistemi di gestione dei contenuti e delle piattaforme di streaming a livello aziendale introducendo metodologie innovative di automazione dei test.
+
+        La tesi sarà condotta tramite lavoro da remoto in collaborazione con l'azienda innoactive.io (referente aziendale: Dr. Edgar Pironti)",
+        "This thesis proposal focuses on the study and development of an innovative testing automation approach to enhance the stability and reliability of an enterprise VR Content Management System and VR streaming platform. The encompassed components include a web platform, Android VR clients, and AWS services for cloud orchestration and rendering.
+
+        The primary objective is to develop a Unity VR application capable of providing feedback on streaming performances and expected platform behavior. With a bottom-up approach in mind, the study will then focus on how applications are launched from both Android VR clients and web browsers and how this process can be automated for testing purposes.
+
+
+        The thesis involves a review of the current state of the art of testing automation in VR, exploring innovative approaches on how to address human interaction challenges, such as: simulating wearing VR headsets from various manufacturers (Meta, HTC, Pico), incorporating head movements and hand interactions with controllers. A prototype, constructed using Lego components, may aid in demonstrating the feasibility of these simulations.
+
+
+        The research will explore the potential challenges to achieve a complete end-to-end testing automation solution for the entire platform, considering the typical user journey. Both traditional tools (Windows Forms, Selenium) and cutting-edge solutions (such as leveraging OpenAI) will be explored to assess their efficacy in addressing these challenges.
+
+        This thesis aspires to contribute not only to the domain of VR testing but also to the broader field of enterprise-level content management systems and streaming platforms by introducing innovative testing automation methodologies.
+
+        The thesis will be conducted remotely in collaboration with innoactive.io (industrial mentor: Dr. Edgar Pironti)",
+        NULL,
+        "soft skill necessarie: padronanza della lingua inglese, capacità di lavoro da remoto, buona connessione a internet (almeno 50Mbps in download)
+
+        hard skill (opzionali): Unity, C#, software testing, OpenAI, Selenium",
+        "mandatory soft skills: English proficiency, Ability to work remotely, Good internet connection (more than 50Mbps download)
+
+        technical optional skills: Unity, C#, Software testing.
+
+        Nice to have: OpenAI, Selenium, Lego passion",
+        NULL,
+        NULL,
+        "Edgar Pironti - innoactive.io",
+        "2023-12-31",
+        "2024-12-31",
+        0,
         0,
         "CL003",
         "2",
@@ -2981,74 +3112,6 @@ VALUES
         NULL
     ),
     (
-        14027,
-        "Migliorare il Testing del Software attraverso l'IA Generativa",
-        "Enhancing Software Testing Through Generative AI",
-        "Tesi presso Concept Quality Reply
-
-        Contesto:
-        Nel dominio specifico della diagnostica dei veicoli e dell'IoT, ottenere una valida End-to-End (E2E) è fondamentale per garantire l'affidabilità e le prestazioni dei sistemi integrati. Questo richiede approcci innovativi al testing del software, e l'Intelligenza Artificiale Generativa (Generative AI) emerge come uno strumento promettente per ottimizzare e potenziare i processi di testing.
-
-        Descrizione:
-        Questa tesi esplora l'integrazione e l'applicazione dell'IA Generativa nel campo del testing del software. Sfruttando il potere della Generative AI, questa ricerca mira a migliorare l'efficienza, l'accuratezza e la completezza delle attività di testing, soprattutto nel contesto dell'IoT e dei veicoli connessi.
-
-        Obiettivi:
-
-        Esplorare il potenziale della Generative AI nella generazione di test case completi e diversificati per sistemi software complessi.
-        Indagare come la Generative AI possa accelerare la creazione di scenari di test e dati, simulando l'uso reale e migliorando la copertura dei test.
-        Valutare l'impatto della Generative AI sull'efficienza e sull'efficacia complessiva dei processi di validazione End-to-End (E2E), in particolare nei sistemi IoT e nei veicoli connessi.
-        Sviluppare metodologie per integrare l'IA Generativa nel ciclo di vita del testing del software, con un focus sull'ottimizzazione dell'utilizzo delle risorse e sulla riduzione dei tempi di testing.
-        Prerequisiti:
-
-        Competenza nello sviluppo software e nelle metodologie di testing.
-        Familiarità con i concetti e i principi della Generative AI.
-        Conoscenza delle tecnologie IoT e dei veicoli connessi.
-        Competenze acquisite:
-
-        Java, Postman, Selenium, CANalyzer, CAPL, framework di Generative AI (es. GPT-3, GPT-4), Python, librerie di Machine Learning (es. TensorFlow, PyTorch), framework e protocolli IoT, tecnologie per veicoli connessi, strumenti di testing automatizzato.",
-        "Thesis work at Concept Quality Reply
-
-        Context:
-        In the specific domain of vehicle diagnostics and IoT, achieving thorough End-to-End (E2E) validation is critical for ensuring the reliability and
-        performance of integrated systems. This necessitates innovative approaches to software testing, and Generative Artificial Int elligence (Generative AI)
-        emerges as a promising tool to streamline and augment testing processes.
-
-        Description:
-        This thesis delves into the integration and application of Generative AI in the field of software testing. y harnessing the p ower of Generative AI, this
-        research aims to enhance the efficiency, accuracy, and comprehensiveness of testing activities, especially within the context of IoT and connected
-        vehicles.
-
-        Objectives:
-        • Explore the potential of Generative AI in generating comprehensive and diverse test cases for intricate software systems.
-        • Investigate how Generative AI can expedite the creation of test scenarios and data, mimicking real-world usage and improving test coverage.
-        • Assess the impact of Generative AI on the overall efficiency and effectiveness of End-to-End (E2E) validation processes, particularly in IoT and
-        connected vehicle systems.
-        • Develop methodologies to integrate Generative AI seamlessly into the software testing life cycle, with a focus on optimizing resource utilization and
-        reducing testing time.
-
-        • Pre-requisites:
-        • Proficiency in software development and testing methodologies.
-        • Familiarity with Generative AI concepts and principles.
-        • Understanding of IoT and connected vehicle technologies.
-
-        • Skills acquired:
-        • Java, Postman, Selenium, CANalyzer, CAPL, Generative AI frameworks (e.g., GPT-3, GPT-4), Python, Machine Learning libraries (e.g.,
-        TensorFlow, PyTorch), IoT frameworks and protocols, Connected vehicle technologies, Automated testing tools.",
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        "2024-03-09",
-        "2025-03-09",
-        0,
-        0,
-        "CL003",
-        "2",
-        NULL
-    ),
-    (
         13470,
         "IA Generativa per la Creazione di OpenScenario e OpenDrive da Serie di Immagini del Traffico",
         "Generative AI for Generation of OpenScenario and OpenDrive from series of traffic images",
@@ -3098,46 +3161,6 @@ VALUES
         NULL
     ),
     (
-        12946,
-        "Gamification applicata al test refactoring",
-        "Gamification for test refactoring",
-        "Il test refactoring rappresenta una pratica essenziale nello sviluppo del software, mirata a ottimizzare e migliorare la qualità dei test automatizzati senza alterarne la funzionalità. Questo processo coinvolge la riscrittura del codice dei test al fine di renderlo più efficiente, manutenibile e adatto agli scopi di testing. Tuttavia, implementare con successo il test refactoring richiede un elevato livello di competenza tecnica e una comprensione approfondita del sistema in esame.
-
-        La gamification è una strategia che applica elementi tipici dei giochi, come punti, sfide e ricompense, in contesti non ludici per motivare e coinvolgere gli utenti. L'obiettivo della gamification è trasformare compiti complessi o noiosi in attività coinvolgenti e gratificanti.
-
-        La presente tesi propone un'indagine approfondita sull'applicazione della gamification nel contesto del test refactoring. L'obiettivo principale è esplorare come l'introduzione di elementi ludici possa influenzare positivamente l'efficacia e l'efficienza del processo di test refactoring.
-
-        Gli aspetti chiave della ricerca includeranno:
-        - Studio dei Metodi di Test Refactoring: Analisi delle diverse tecniche e metodologie di test refactoring attualmente utilizzate nello sviluppo del software.
-        - Analisi dei Problemi Comuni: Identificazione e analisi dei problemi comuni riscontrati nello svolgimento del test refactoring, come la resistenza agli aggiornamenti e la complessità del processo.
-        - Gamification Applicata: Progettazione e implementazione di un sistema di gamification per incentivare e migliorare l'adozione del test refactoring. Ciò potrebbe includere la definizione di obiettivi, la creazione di sfide e la valutazione delle ricompense.
-        - Valutazione dell'Impatto: Valutazione dell'efficacia della gamification attraverso indicatori chiave di prestazione, confrontando i risultati con gruppi di controllo che seguono approcci tradizionali di test refactoring.",
-        "Test refactoring is an essential practice in software development aimed at optimizing and improving the quality of automated tests without altering their functionality. This process involves rewriting test code to make it more efficient, maintainable, and suitable for testing purposes. However, successfully implementing test refactoring requires a high level of technical expertise and a deep understanding of the system under consideration.
-
-        On the other hand, gamification is a strategy that applies typical game elements, such as points, challenges, and rewards, in non-game contexts to motivate and engage users. The goal of gamification is to transform complex or tedious tasks into engaging and rewarding activities.
-
-        This thesis proposes an in-depth investigation into the application of gamification in the context of test refactoring. The main objective is to explore how the introduction of playful elements can positively influence the effectiveness and efficiency of the test refactoring process.
-
-        Key aspects of the research will include:
-        - Study of Test Refactoring Methods: Analysis of different techniques and methodologies of test refactoring currently used in software development.
-        - Analysis of Common Issues: Identification and analysis of common problems encountered in test refactoring, such as resistance to updates and process complexity.
-        - Applied Gamification: Design and implementation of a gamification system to encourage and improve the adoption of test refactoring. This may include goal definition, challenge creation, and reward evaluation.
-        - Impact Evaluation: Assessment of the effectiveness of gamification through key performance indicators, comparing results with control groups following traditional approaches to test refactoring.",
-        NULL,
-        "Sviluppo con linguaggi di programmazione a oggetti (preferibilmente Java), Fondamenti del software testing",
-        "Development with OOP languages (preferably Java), Testing fundamentals",
-        NULL,
-        NULL,
-        NULL,
-        "2024-10-16",
-        "2025-10-16",
-        1,
-        0,
-        "CL003",
-        "2",
-        NULL
-    ),
-    (
         13837,
         "Coach personale basato sull'IA generativa",
         "Personal coach based on generative AI",
@@ -3180,54 +3203,6 @@ VALUES
         "2024-05-31",
         "2025-05-31",
         1,
-        0,
-        "CL003",
-        "2",
-        NULL
-    ),
-    (
-        13253,
-        "Test automatizzato per soluzioni Virtual Reality Content Management System e piattaforme di VR streaming",
-        "Test automation for an enterprise VR (Virtual Reality) CMS and VR streaming platforms",
-        "Questa proposta di tesi si concentra sullo studio e lo sviluppo di un innovativo approccio all'automazione dei test per migliorare la stabilità e l'affidabilità di un sistema di gestione dei contenuti VR (Virtual Reality) e di una piattaforma di streaming VR per le imprese. I componenti necessari per la piattaforma includono una piattaforma web, client VR Android e servizi AWS per l'orchestrazione e il rendering nel cloud.
-
-        L'obiettivo principale della tesi è lo sviluppo un'applicazione Unity VR in grado di fornire feedback sulle performance dello streaming e sul comportamento atteso della piattaforma. Con un approccio bottom-up in mente, lo studio si concentrerà poi su come le applicazioni vengono avviate sia dai client VR Android che dai browser web e su come questo processo possa essere automatizzato per scopi di testing.
-
-        La tesi prevede una revisione dello stato attuale dell'arte dell'automazione dei test in VR, esplorando approcci innovativi su come affrontare le sfide dell'interazione umana, come ad esempio: simulare l'uso di visori VR di vari produttori (Meta, HTC, Pico), incorporare movimenti della testa e interazioni con i controller. Un prototipo, costruito con componenti Lego, potrebbe aiutare a dimostrare la fattibilità di tali simulazioni.
-
-        La ricerca esplorerà infine le sfide potenziali per raggiungere una soluzione completa di automazione dei test end-to-end per l'intera piattaforma, considerando il percorso tipico dell'utente. Saranno esplorati sia strumenti tradizionali (Windows Forms, Selenium) che soluzioni all'avanguardia (come modelli di linguaggio e OpenAI) per valutarne l'efficacia nel affrontare queste sfide.
-
-        La tesi aspira dunque a contribuire non solo al campo dei test VR, ma anche al più ampio settore dei sistemi di gestione dei contenuti e delle piattaforme di streaming a livello aziendale introducendo metodologie innovative di automazione dei test.
-
-        La tesi sarà condotta tramite lavoro da remoto in collaborazione con l'azienda innoactive.io (referente aziendale: Dr. Edgar Pironti)",
-        "This thesis proposal focuses on the study and development of an innovative testing automation approach to enhance the stability and reliability of an enterprise VR Content Management System and VR streaming platform. The encompassed components include a web platform, Android VR clients, and AWS services for cloud orchestration and rendering.
-
-        The primary objective is to develop a Unity VR application capable of providing feedback on streaming performances and expected platform behavior. With a bottom-up approach in mind, the study will then focus on how applications are launched from both Android VR clients and web browsers and how this process can be automated for testing purposes.
-
-
-        The thesis involves a review of the current state of the art of testing automation in VR, exploring innovative approaches on how to address human interaction challenges, such as: simulating wearing VR headsets from various manufacturers (Meta, HTC, Pico), incorporating head movements and hand interactions with controllers. A prototype, constructed using Lego components, may aid in demonstrating the feasibility of these simulations.
-
-
-        The research will explore the potential challenges to achieve a complete end-to-end testing automation solution for the entire platform, considering the typical user journey. Both traditional tools (Windows Forms, Selenium) and cutting-edge solutions (such as leveraging OpenAI) will be explored to assess their efficacy in addressing these challenges.
-
-        This thesis aspires to contribute not only to the domain of VR testing but also to the broader field of enterprise-level content management systems and streaming platforms by introducing innovative testing automation methodologies.
-
-        The thesis will be conducted remotely in collaboration with innoactive.io (industrial mentor: Dr. Edgar Pironti)",
-        NULL,
-        "soft skill necessarie: padronanza della lingua inglese, capacità di lavoro da remoto, buona connessione a internet (almeno 50Mbps in download)
-
-        hard skill (opzionali): Unity, C#, software testing, OpenAI, Selenium",
-        "mandatory soft skills: English proficiency, Ability to work remotely, Good internet connection (more than 50Mbps download)
-
-        technical optional skills: Unity, C#, Software testing.
-
-        Nice to have: OpenAI, Selenium, Lego passion",
-        NULL,
-        NULL,
-        "Edgar Pironti - innoactive.io",
-        "2023-12-31",
-        "2024-12-31",
-        0,
         0,
         "CL003",
         "2",
@@ -3314,30 +3289,67 @@ VALUES
         NULL
     ),
     (
-        10187,
-        "App per il benessere",
-        "Well being app",
-        "Obbiettivo della tesi è sviluppare una app e relativo back end per supportare le persone a perseguire uno stile di vita salutare.
-        La app raccoglie (direttamente, o tramite device esterni tipo smartwatch o fitbit) dati sulla vita della persona (attività fisica, qualità e durata del sonno, pressione, pulsazioni) (nutrizione, tipo e quantità del cibo mangiato e delle bevande). Confrontando i dati raccolti con pattern predefiniti e possibilmente con analisi mediche supplettive la app suggerisce modifiche allo stile di vita (recommendation). Via via che la persona viene monitorata altre modifiche sono suggerite e il loro effetto verificato.
-        La parte back end della app raccoglie in modo anonimo i dati di molti utenti e utilizzando tecniche statistiche e di machine learning costruisce e raffina modelli e pattern predittivi da usare per le recommendation.
+        14027,
+        "Migliorare il Testing del Software attraverso l'IA Generativa",
+        "Enhancing Software Testing Through Generative AI",
+        "Tesi presso Concept Quality Reply
 
-        Le recommendation iniziali sono derivate dalla letteratura scientifica su aging e well being (vedere ad esempio Fontana L., The path to longevity). Scopo di lungo termine della app è di raccogliere dati per validare e migliorare le recommendation.
+        Contesto:
+        Nel dominio specifico della diagnostica dei veicoli e dell'IoT, ottenere una valida End-to-End (E2E) è fondamentale per garantire l'affidabilità e le prestazioni dei sistemi integrati. Questo richiede approcci innovativi al testing del software, e l'Intelligenza Artificiale Generativa (Generative AI) emerge come uno strumento promettente per ottimizzare e potenziare i processi di testing.
 
-        Il lavoro è svolto in collaborazione con University of Sydney e Azienda Ospedaliera Verona. Il lavoro supporta una tesi lato app e una lato backend.",
-        "Goal of the project is to develop a mobile app + backend to support people in having a healthy lifestyle. The mobile app collects (directly or using wearable devices) information about a person's life: physical status and activity (walking running and any physical activity, heart rate, pressure, sleeping times etc), nutrition (type and quantity of food eaten). Starting from the data collected and using predefined patterns the app proposes recommendations to improve the lifestyle. The effect of recommendations is monitored in ters of changes to the lifestyle, in function of changes recommendations are recomputed.
-        The back end side of the app collects, anonymously, data about all users, analyses them via statistic and machine learning models, in order to build models to characterize and predict the effects of behaviours and recommendations.
+        Descrizione:
+        Questa tesi esplora l'integrazione e l'applicazione dell'IA Generativa nel campo del testing del software. Sfruttando il potere della Generative AI, questa ricerca mira a migliorare l'efficienza, l'accuratezza e la completezza delle attività di testing, soprattutto nel contesto dell'IoT e dei veicoli connessi.
 
-        At start recommendations are derived from the existing scientific literature about aging and well being (ex Fontana L., The path to longevity). On the long run the data collected and analysed is used to further validate and improve the recommendations, and the models they are built on.
+        Obiettivi:
 
-        This project is developed with University of Sydney and Azienda Ospedaliera Verona.",
+        Esplorare il potenziale della Generative AI nella generazione di test case completi e diversificati per sistemi software complessi.
+        Indagare come la Generative AI possa accelerare la creazione di scenari di test e dati, simulando l'uso reale e migliorando la copertura dei test.
+        Valutare l'impatto della Generative AI sull'efficienza e sull'efficacia complessiva dei processi di validazione End-to-End (E2E), in particolare nei sistemi IoT e nei veicoli connessi.
+        Sviluppare metodologie per integrare l'IA Generativa nel ciclo di vita del testing del software, con un focus sull'ottimizzazione dell'utilizzo delle risorse e sulla riduzione dei tempi di testing.
+        Prerequisiti:
+
+        Competenza nello sviluppo software e nelle metodologie di testing.
+        Familiarità con i concetti e i principi della Generative AI.
+        Conoscenza delle tecnologie IoT e dei veicoli connessi.
+        Competenze acquisite:
+
+        Java, Postman, Selenium, CANalyzer, CAPL, framework di Generative AI (es. GPT-3, GPT-4), Python, librerie di Machine Learning (es. TensorFlow, PyTorch), framework e protocolli IoT, tecnologie per veicoli connessi, strumenti di testing automatizzato.",
+        "Thesis work at Concept Quality Reply
+
+        Context:
+        In the specific domain of vehicle diagnostics and IoT, achieving thorough End-to-End (E2E) validation is critical for ensuring the reliability and
+        performance of integrated systems. This necessitates innovative approaches to software testing, and Generative Artificial Int elligence (Generative AI)
+        emerges as a promising tool to streamline and augment testing processes.
+
+        Description:
+        This thesis delves into the integration and application of Generative AI in the field of software testing. y harnessing the p ower of Generative AI, this
+        research aims to enhance the efficiency, accuracy, and comprehensiveness of testing activities, especially within the context of IoT and connected
+        vehicles.
+
+        Objectives:
+        • Explore the potential of Generative AI in generating comprehensive and diverse test cases for intricate software systems.
+        • Investigate how Generative AI can expedite the creation of test scenarios and data, mimicking real-world usage and improving test coverage.
+        • Assess the impact of Generative AI on the overall efficiency and effectiveness of End-to-End (E2E) validation processes, particularly in IoT and
+        connected vehicle systems.
+        • Develop methodologies to integrate Generative AI seamlessly into the software testing life cycle, with a focus on optimizing resource utilization and
+        reducing testing time.
+
+        • Pre-requisites:
+        • Proficiency in software development and testing methodologies.
+        • Familiarity with Generative AI concepts and principles.
+        • Understanding of IoT and connected vehicle technologies.
+
+        • Skills acquired:
+        • Java, Postman, Selenium, CANalyzer, CAPL, Generative AI frameworks (e.g., GPT-3, GPT-4), Python, Machine Learning libraries (e.g.,
+        TensorFlow, PyTorch), IoT frameworks and protocols, Connected vehicle technologies, Automated testing tools.",
         NULL,
-        "Sviluppo di applicazioni web (lato client, lato server). Flutter / React",
-        "Web application development (client side, server side). Flutter / React",
         NULL,
         NULL,
         NULL,
-        "2024-09-30",
-        "2025-09-30",
+        NULL,
+        NULL,
+        "2024-03-09",
+        "2025-03-09",
         0,
         0,
         "CL003",
@@ -3351,16 +3363,16 @@ VALUES
 INSERT INTO
     thesis_proposal_degree (thesis_proposal_id, degree_id)
 VALUES
+    (10187, "37-18"),
+    (12946, "37-18"),
     (13169, "37-18"),
+    (13253, "37-18"),
     (13275, "37-18"),
     (13363, "37-18"),
-    (14027, "37-18"),
     (13470, "37-18"),
-    (12946, "37-18"),
     (13837, "37-18"),
-    (13253, "37-18"),
     (14026, "37-18"),
-    (10187, "37-18");
+    (14027, "37-18");
 
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_keyword table ↓
@@ -3368,6 +3380,12 @@ VALUES
 INSERT INTO
     thesis_proposal_keyword (thesis_proposal_id, keyword_id)
 VALUES
+    (10187, 11),
+    (10187, 12),
+    (10187, 13),
+    (12946, 8),
+    (13253, 8),
+    (13253, 10),
     (13275, 1),
     (13275, 2),
     (13275, 3),
@@ -3376,22 +3394,16 @@ VALUES
     (13363, 6),
     (13363, 7),
     (13363, 8),
-    (14027, 1),
-    (14027, 8),
-    (14027, 9),
     (13470, 1),
     (13470, 8),
     (13470, 9),
-    (12946, 8),
     (13837, 1),
     (13837, 4),
-    (13253, 8),
-    (13253, 10),
     (14026, 1),
     (14026, 8),
-    (10187, 11),
-    (10187, 12),
-    (10187, 13);
+    (14027, 1),
+    (14027, 8),
+    (14027, 9);
 
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_type table ↓
@@ -3399,29 +3411,31 @@ VALUES
 INSERT INTO
     thesis_proposal_type (thesis_proposal_id, type_id)
 VALUES
-    (13169, 1),
-    (13275, 2),
-    (13363, 2),
-    (12946, 1),
-    (13837, 2),
-    (10187, 2);
+    (10187, 9),
+    (12946, 7),
+    (13169, 7),
+    (13275, 9),
+    (13363, 9),
+    (13837, 9);
+
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_supervisor_cosupervisor table ↓
 -- ------------------------------------------------------------
 INSERT INTO
     thesis_proposal_supervisor_cosupervisor (thesis_proposal_id, teacher_id, is_supervisor)
 VALUES
-    (13169, 38485, 1),
-    (13275, 3019, 1),
-    (13363, 23270, 1),
-    (14027, 38485, 1),
-    (13470, 38485, 1),
+    (10187, 1921, 1),
     (12946, 38485, 1),
     (12946, 3019, 0),
-    (13837, 1921, 1),
+    (13169, 38485, 1),
     (13253, 38485, 1),
+    (13275, 3019, 1),
+    (13363, 23270, 1),
+    (13470, 38485, 1),
+    (13837, 1921, 1),
     (14026, 38485, 1),
-    (10187, 1921, 1);
+    (14027, 38485, 1);
+
 -- ------------------------------------------------------------
 -- ↓ logged_student table ↓
 -- ------------------------------------------------------------
