@@ -118,6 +118,9 @@ async function updateLoggedStudent(student_id) {
 const API = {
   getThesisProposals,
   getTargetedThesisProposals,
+  getThesisProposalsTypes,
+  getThesisProposalsKeywords,
+  getThesisProposalsTeachers,
   getThesisProposalById,
   getStudents,
   getLoggedStudent,
