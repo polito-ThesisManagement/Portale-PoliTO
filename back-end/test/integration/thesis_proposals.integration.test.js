@@ -20,7 +20,7 @@ afterAll(async () => {
 });
 
 describe('GET /api/thesis-proposals', () => {
-  test('Should return the list of all active thesis proposals ordered by creation_date', async () => {
+  test('Should return the list of all active thesis proposals ordered by id', async () => {
     const response = await request(app).get('/api/thesis-proposals');
     expect(response.status).toBe(200);
     expect(response.body).toBeInstanceOf(Object);
@@ -33,20 +33,16 @@ describe('GET /api/thesis-proposals', () => {
     expect(response.body.thesisProposals.length).toEqual(7);
     expect(response.body.currentPage).toEqual(1);
     expect(response.body.totalPages).toEqual(1);
-    const now = new Date();
-    let previousCreationDate = null;
+    let previousId = null;
 
     response.body.thesisProposals.forEach(proposal => {
-      const expirationDate = proposal.expirationDate ? new Date(proposal.expirationDate) : null;
-      const creationDate = proposal.creationDate ? new Date(proposal.creationDate) : null;
+      const id = proposal.id;
 
-      expect(expirationDate.getTime()).toBeGreaterThan(now.getTime());
-
-      if (previousCreationDate && creationDate && !isNaN(creationDate.getTime())) {
+      if (previousId) {
         // eslint-disable-next-line jest/no-conditional-expect
-        expect(creationDate.getTime()).toBeLessThanOrEqual(previousCreationDate.getTime());
+        expect(id).toBeGreaterThan(previousId);
       }
-      previousCreationDate = creationDate;
+      previousId = id;
     });
   });
 
@@ -281,6 +277,22 @@ describe('GET /api/thesis-proposals/targeted', () => {
       expect(proposal.keywords.some(keyword => keyword.id === 8)).toBe(true);
       expect(proposal.types.some(type => type.id === 1)).toBe(true);
     });
+  });
+
+  test('Should return a 500 error if orderBy is not valid', async () => {
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ orderBy: 'invalid' });
+    expect(response.status).toBe(500);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty('error');
+    expect(response.body.error).toEqual('Invalid orderBy parameter');
+  });
+
+  test('Should return a 500 error if sortBy is not valid', async () => {
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ sortBy: 'invalid' });
+    expect(response.status).toBe(500);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty('error');
+    expect(response.body.error).toEqual('Invalid sortBy parameter');
   });
 });
 
