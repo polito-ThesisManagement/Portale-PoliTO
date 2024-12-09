@@ -21,17 +21,20 @@ import ProposteDiTesi from './pages/carriera/ProposteDiTesi';
 import './styles/Theme.css';
 import './styles/Utilities.css';
 import { getSystemTheme, scrollTop } from './utils/utils';
+import Users from './data/Users';
 
 export const FavoritesContext = createContext(null);
 export const AvvisiContext = createContext(null);
 export const ThemeContext = createContext(null);
 export const DesktopToggleContext = createContext(null);
+export const UserContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState('auto');
   const [favorites, setFavorites] = useState([]);
   const [avvisi, setAvvisi] = useState([Avvisi_GC]);
   const [desktopToggle, setDesktopToggle] = useState(false);
+  const [user, setUser] = useState(Users[0]);
   const location = useLocation();
 
   useEffect(() => {
@@ -65,35 +68,37 @@ function App() {
     <>
       <style>@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap);</style>
       <ThemeContext.Provider value={{ theme, setTheme }}>
-        <DesktopToggleContext.Provider value={{ desktopToggle, setDesktopToggle }}>
-          <FavoritesContext.Provider value={{ favorites, setFavorites }}>
-            <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
-              <PoliNavbar />
-              <Row>
-                <Sidebar />
-                <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
-                  <Col className={`custom-content reeduced`}>
-                    <Routes>
-                      <Route path="/" element={<Homepage />} />
-                      <Route path="/area_personale" element={<AreaPersonale />} />
-                      <Route path="/home" element={<Homepage />} />
-                      <Route path="/didattica" element={<Didattica />} />
-                      <Route path="/carriera" element={<Carriera />} />
-                      <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
-                      <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
-                      <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
-                      <Route path="/opportunita" element={<Opportunita />} />
-                      <Route path="/servizi" element={<Servizi />} />
-                      <Route path="/help" element={<Help />} />
-                      <Route path="*" element={<PageNotFound />} />
-                    </Routes>
-                    <FloatingButton />
+        <UserContext.Provider value={{ user, setUser }}>
+          <DesktopToggleContext.Provider value={{ desktopToggle, setDesktopToggle }}>
+            <FavoritesContext.Provider value={{ favorites, setFavorites }}>
+              <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
+                <PoliNavbar />
+                <Row>
+                  <Sidebar />
+                  <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
+                    <Col className={`custom-content reeduced`}>
+                      <Routes>
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/area_personale" element={<AreaPersonale />} />
+                        <Route path="/home" element={<Homepage />} />
+                        <Route path="/didattica" element={<Didattica />} />
+                        <Route path="/carriera" element={<Carriera />} />
+                        <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                        <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
+                        <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
+                        <Route path="/opportunita" element={<Opportunita />} />
+                        <Route path="/servizi" element={<Servizi />} />
+                        <Route path="/help" element={<Help />} />
+                        <Route path="*" element={<PageNotFound />} />
+                      </Routes>
+                      <FloatingButton />
+                    </Col>
                   </Col>
-                </Col>
-              </Row>
-            </AvvisiContext.Provider>
-          </FavoritesContext.Provider>
-        </DesktopToggleContext.Provider>
+                </Row>
+              </AvvisiContext.Provider>
+            </FavoritesContext.Provider>
+          </DesktopToggleContext.Provider>
+        </UserContext.Provider>
       </ThemeContext.Provider>
     </>
   );

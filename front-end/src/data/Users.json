@@ -1,0 +1,23 @@
+[
+    {
+        "id": 320213,
+        "first_name": "Luca",
+        "last_name": "Barbato",
+        "profile_picture_url": "https://avatars.githubusercontent.com/u/59212611",
+        "degree_id": "37-18"
+    },
+    {
+        "id": 314796,
+        "first_name": "Daniele",
+        "last_name": "De Rossi",
+        "profile_picture_url": "https://avatars.githubusercontent.com/u/114685212",
+        "degree_id": "37-18"
+    },
+    {
+        "id": 318952,
+        "first_name": "Sylvie",
+        "last_name": "Molinatto",
+        "profile_picture_url": "https://avatars.githubusercontent.com/u/126864619",
+        "degree_id": "37-18"
+    }
+]

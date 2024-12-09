@@ -15,7 +15,7 @@
 
 .teacher_light {
     color: var(--warning-700);
-    background-color: var(--warning-50);
+    background-color: var(--warning-100);
     border-color: var(--warning-600);
 }
 
@@ -33,13 +33,13 @@
 
 .teacher_dark:hover {
     color: var(--warning-700);
-    background-color: var(--warning-50);
+    background-color: var(--warning-100);
     border-color: var(--warning-600);
 }
 
 .keyword_light {
     color: var(--text-700);
-    background-color: var(--text-50);
+    background-color: var(--text-100);
     border-color: var(--text-600);
 }
 
@@ -57,14 +57,14 @@
 
 .keyword_dark:hover {
     color: var(--text-700);
-    background-color: var(--text-50);
+    background-color: var(--text-100);
     border-color: var(--text-600);
 }
 
 .environment_light {
-    color: var(--secondary-700);
-    background-color: var(--secondary-50);
-    border-color: var(--secondary-600);
+    color: var(--primary-700);
+    background-color: var(--primary-100);
+    border-color: var(--primary-600);
 }
 
 .environment_dark {
@@ -74,20 +74,20 @@
 }
 
 .environment_light:hover {
-    color: var(--secondary-800);
-    background-color: var(--secondary-200);
-    border-color: var(--secondary-600);
+    color: var(--primary-800);
+    background-color: var(--primary-200);
+    border-color: var(--primary-600);
 }
 
 .environment_dark:hover {
     color: var(--primary-700);
-    background-color: var(--primary-50);
+    background-color: var(--primary-100);
     border-color: var(--primary-600);
 }
 
 .abroad_light {
     color: var(--danger-700);
-    background-color: var(--danger-50);
+    background-color: var(--danger-100);
     border-color: var(--danger-600);
 }
 
@@ -105,6 +105,6 @@
 
 .abroad_dark:hover {
     color: var(--danger-700);
-    background-color: var(--danger-50);
+    background-color: var(--danger-100);
     border-color: var(--danger-600);
 }

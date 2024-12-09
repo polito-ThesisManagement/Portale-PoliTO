@@ -14,16 +14,17 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { FaKey, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
-import { AvvisiContext } from '../App';
-import { DesktopToggleContext } from '../App';
+import { AvvisiContext, DesktopToggleContext, UserContext } from '../App';
 import Searchbar from './Searchbar';
 import SidebarModal from './SidebarModal';
 import ThemeToggle from './ThemeToggle';
+import users from '../App'
 import Logo from '../assets/logo_polito.svg';
 import Logo2 from '../assets/logo_polito_reduced.svg';
 import Logo2White from '../assets/logo_polito_reduced_white.svg';
 import LogoWhite from '../assets/logo_polito_white.svg';
 import Services from '../data/Data.json';
+import Users from '../data/Users';
 import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import { getLogo } from '../utils/utils';
@@ -31,6 +32,7 @@ import { getLogo } from '../utils/utils';
 export default function PoliNavbar() {
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
   const { desktopToggle } = useContext(DesktopToggleContext);
+  const { user, setUser } = useContext(UserContext);
 
   const { t, i18n } = useTranslation();
 
@@ -211,7 +213,7 @@ export default function PoliNavbar() {
                     paddingRight: '0',
                   }}
                 >
-                  <PersonCircle height={48} width={46} color="var(--primary)" />
+                  <Image roundedCircle src={user.profile_picture_url} height={48} width={48} color="var(--primary)" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu
                   style={{
@@ -220,23 +222,40 @@ export default function PoliNavbar() {
                     fontFamily: 'var(--font-primary)',
                   }}
                 >
-                  <Dropdown.Item className="medium-weight">
-                    <FaUser /> {t('navbar.profilo_utente')}
+                  <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <FaUser size={16} /> {t('navbar.profilo_utente')}
                   </Dropdown.Item>
-                  <Dropdown.Item className="medium-weight">
-                    <FaKey /> {t('navbar.cambio_password')}
+                  <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <FaKey size={16} /> {t('navbar.cambio_password')}
                   </Dropdown.Item>
-                  <Dropdown.Item className="medium-weight">
-                    <FaSignOutAlt /> Logout
+                  {Users.filter(u => u.id !== user.id).map((u) => (
+                    <Dropdown.Item
+                      key={u.id}
+                      className="medium-weight"
+                      onClick={() => setUser(u)}
+                      style={{ display: "flex", alignItems: "center", gap: "9px" }}
+                    >
+                      <Image
+                        src={u.profile_picture_url}
+                        alt="Profile picture url"
+                        roundedCircle
+                        style={{ width: '20px', height: '20px', marginLeft: '-2px' }}
+                      />
+                      {u.first_name} {u.last_name}
+                    </Dropdown.Item>
+                  ))}
+                  <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "9px" }}>
+                    <FaSignOutAlt size={17} style={{ marginLeft: "1px" }} /> Logout
                   </Dropdown.Item>
                   <Dropdown.Item
                     className="dropdown-submenu medium-weight"
+                    style={{ display: "flex", alignItems: "center", gap: "10px" }}
                     onMouseEnter={() => setShowSubmenu(true)}
                     onMouseLeave={() => setShowSubmenu(false)}
                   >
                     <Dropdown drop="bottom" show={showSubmenu}>
-                      <Dropdown.Toggle className="medium-weight" as="div">
-                        <span className={`flag ${languageOptions[selectedLanguage].flag}`} />{' '}
+                      <Dropdown.Toggle className="medium-weight" as="div" style={{ display: "flex", alignItems: "center" }}>
+                        <span className={`flag ${languageOptions[selectedLanguage].flag}`} style={{ marginRight: "10px" }} />{' '}
                         {languageOptions[selectedLanguage].label}
                       </Dropdown.Toggle>
                       <Dropdown.Menu
@@ -248,10 +267,10 @@ export default function PoliNavbar() {
                         }}
                         className="submenu"
                       >
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateLanguage('it')}>
+                        <Dropdown.Item className="medium-weight" as="div" style={{ display: "flex", alignItems: "center", gap: "10px" }} onClick={() => updateLanguage('it')}>
                           <span className="flag flag-it" /> Italiano
                         </Dropdown.Item>
-                        <Dropdown.Item className="medium-weight" as="div" onClick={() => updateLanguage('en')}>
+                        <Dropdown.Item className="medium-weight" as="div" style={{ display: "flex", alignItems: "center", gap: "10px" }} onClick={() => updateLanguage('en')}>
                           <span className="flag flag-gb" /> English
                         </Dropdown.Item>
                       </Dropdown.Menu>
