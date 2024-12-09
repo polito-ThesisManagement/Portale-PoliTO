@@ -199,20 +199,6 @@ export default function PoliNavbar() {
                 </OverlayTrigger>
               )}
             </Nav.Link>
-            <Navbar.Text
-              className="text-style"
-              style={{
-                fontWeight: 'var(--font-weight-medium)',
-                fontSize: 'var(--font-size-base)',
-                color: 'var(--primary)',
-              }}
-            >
-              <div className="d-none d-md-block" style={{ display: "flex", alignItems: "center", marginLeft: '12px', marginRight: '12px' }}>
-                s123456
-                <br />
-                <span className="truncated">Mario Rossi</span>
-              </div>
-            </Navbar.Text>
             <Navbar.Brand style={{ marginRight: '0' }}>
               <Dropdown>
                 <Dropdown.Toggle
