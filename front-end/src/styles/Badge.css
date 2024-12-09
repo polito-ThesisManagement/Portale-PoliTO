@@ -62,9 +62,9 @@
 }
 
 .environment_light {
-    color: var(--primary-700);
-    background-color: var(--primary-50);
-    border-color: var(--primary-600);
+    color: var(--secondary-700);
+    background-color: var(--secondary-50);
+    border-color: var(--secondary-600);
 }
 
 .environment_dark {
@@ -74,9 +74,9 @@
 }
 
 .environment_light:hover {
-    color: var(--primary-800);
-    background-color: var(--primary-200);
-    border-color: var(--primary-600);
+    color: var(--secondary-800);
+    background-color: var(--secondary-200);
+    border-color: var(--secondary-600);
 }
 
 .environment_dark:hover {

@@ -1,7 +1,7 @@
 .custom-card {
   background-color: var(--surface);
   color: var(--primary);
-  border-radius: 12px;
+  border-radius: 10px;
   margin-bottom: 6px;
   padding-left: 16px;
   padding-right: 16px;
@@ -9,6 +9,7 @@
   padding-bottom: 12px;
   min-height: 200px;
   height: auto;
+  font-family: var(--font-primary);
 }
 
 /* unused */
@@ -27,8 +28,7 @@
 }
 
 .card-icon {
-  margin-right: 20px;
-  margin-bottom: 2px;
+  margin-right: 10px;
 }
 
 .card-button {

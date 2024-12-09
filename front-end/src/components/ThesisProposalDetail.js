@@ -48,7 +48,7 @@ function ThesisProposalDetail(props) {
         sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
       />
       {creationDate && expirationDate && <ExpirationDate creation_date={creationDate} exp_date={expirationDate} />}
-      <Container fluid className="custom-container pt-3">
+      <Container fluid className="custom-container">
         {isAbroad && <Badge variant="abroad" />}
         {topic && (
           <div className="subsection-title">
@@ -89,34 +89,6 @@ function ThesisProposalDetail(props) {
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function MyBreadcrumb() {
-  const { t } = useTranslation();
-
-  return (
-    <div className="d-flex mt-2">
-      <Link to="/" className="breadcrumb-link">
-        Homepage
-      </Link>
-      <span className="mx-2">
-        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
-      </span>
-      <Link to="/carriera" className="breadcrumb-link">
-        {t('sidebar.carriera')}
-      </Link>
-      <span className="mx-2">
-        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
-      </span>
-      <Link to="/carriera/proposte_di_tesi" className="breadcrumb-link">
-        {t('carriera.proposte_di_tesi.title_half_lowercase')}
-      </Link>
-      <span className="mx-2">
-        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
-      </span>
-      <span className="breadcrumb">{t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}</span>
-    </div>
-  );
 }
 
 function ExpirationDate({ creation_date, exp_date }) {
@@ -270,4 +242,4 @@ SecondarySupervisors.propTypes = {
 };
 */
 
-export { ThesisProposalDetail, MyBreadcrumb, ExpirationDate };
+export { ThesisProposalDetail, ExpirationDate };

@@ -24,8 +24,8 @@ function Sidebar() {
   return (
     <>
       <div className={`custom-sidebar-wrapper reduced ${desktopToggle ? 'toggle' : ''}`}>
-        <div className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`}  onClick={handleToggle}>
-          <FaAngleLeft size={20}/>
+        <div className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`} onClick={handleToggle}>
+          <FaAngleLeft size={20} />
         </div>
       </div>
       <Nav defaultActiveKey="/home" className="flex-column">
@@ -54,8 +54,6 @@ function NavItems({ mobile, handleClose }) {
     }
   }, [desktopToggle]);
 
-
-
   return (
     <>
       <Nav.Item>
@@ -64,7 +62,7 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaHouse size={28} />
+          <FaHouse size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
           <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>Homepage</span>
         </Link>
       </Nav.Item>
@@ -74,7 +72,7 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaBookOpen size={28} />
+          <FaBookOpen size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
           <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.didattica')}</span>
         </Link>
       </Nav.Item>
@@ -84,7 +82,7 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaUser size={28} />
+          <FaUser size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
           <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.area_personale')}</span>
         </Link>
       </Nav.Item>
@@ -94,7 +92,7 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaUserGraduate size={28} />
+          <FaUserGraduate size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
           <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.carriera')}</span>
         </Link>
       </Nav.Item>
@@ -104,7 +102,7 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaBriefcase size={28} />
+          <FaBriefcase size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
           <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.opportunità')}</span>
         </Link>
       </Nav.Item>
@@ -114,7 +112,7 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/servizi') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <MdApps size={28} />
+          <MdApps size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
           <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.servizi')}</span>
         </Link>
       </Nav.Item>
@@ -124,7 +122,7 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/help') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaInfoCircle size={28} />
+          <FaInfoCircle size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
           <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>Help</span>
         </Link>
       </Nav.Item>

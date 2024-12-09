@@ -70,19 +70,34 @@
   color: var(--link);
 }
 
-.breadcrumb {
+.mybreadcrumb {
   font-family: var(--font-primary);
   color: var(--placeholder);
-  margin-top: 1px;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
+  height: auto;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.breadcrumb-link {
-  font-family: var(--font-primary);
-  color: var(--link);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+.mybreadcrumb-element {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  height: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mybreadcrumb-separator {
+  height: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .pol-headline.pol-headline--with-bar > h3:before {
