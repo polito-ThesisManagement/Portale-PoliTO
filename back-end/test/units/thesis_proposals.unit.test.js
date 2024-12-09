@@ -5,10 +5,10 @@ const {
   getTargetedThesisProposals,
   getThesisProposalById,
 } = require('../../src/controllers/thesis-proposals');
-const { getStudentData } = require('../../src/controllers/student');
+const { getStudentData } = require('../../src/controllers/students');
 const { ThesisProposal, sequelize } = require('../../src/models');
 
-jest.mock('../../src/controllers/student', () => ({
+jest.mock('../../src/controllers/students', () => ({
   getStudentData: jest.fn(),
 }));
 
@@ -211,7 +211,7 @@ describe('getThesisProposals', () => {
     });
   });
 
-  test('should return an error if an exception is thrown', async () => {
+  test('should return 500 status if an error occurred', async () => {
     ThesisProposal.findAndCountAll.mockRejectedValueOnce(new Error('Database error'));
 
     const req = { query: { lang: 'en', page: 1, limit: 10 } };
@@ -254,7 +254,7 @@ describe('getTargetedThesisProposals', () => {
     });
   });
 
-  test('should return an error if an exception is thrown inside getStudentData', async () => {
+  test('should return 500 status if an error occurred', async () => {
     getStudentData.mockRejectedValueOnce(new Error('Database error'));
 
     const req = { query: { lang: 'en', page: 1, limit: 10 } };
@@ -510,7 +510,7 @@ describe('getThesisProposalById', () => {
     });
   });
 
-  test('should return an error if the thesis proposal is not found', async () => {
+  test('should return 404 status if the thesis proposal is not found', async () => {
     ThesisProposal.findByPk.mockResolvedValueOnce(null);
 
     const req = { query: { lang: 'en' }, params: { thesisProposalId: 1 } };
@@ -523,7 +523,7 @@ describe('getThesisProposalById', () => {
     expect(res.json).toHaveBeenCalledWith({ error: 'Thesis proposal not found' });
   });
 
-  test('should return an error if an exception is thrown', async () => {
+  test('should return 500 status if an error occurred', async () => {
     ThesisProposal.findByPk.mockRejectedValueOnce(new Error('Database error'));
 
     const req = { query: { lang: 'en' }, params: { thesisProposalId: 1 } };
