@@ -199,7 +199,7 @@ const ProfessorTag = ({ supervisor }) => {
           margin: 'auto 0',
         }}
       >
-        {supervisor.first_name} {supervisor.last_name}
+        {supervisor.firstName} {supervisor.lastName}
       </span>
     </div>
   );
@@ -331,8 +331,8 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
 ProfessorTag.propTypes = {
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    first_name: PropTypes.string.isRequired,
-    last_name: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -364,14 +364,14 @@ ThesisFooter.propTypes = {
 ThesisProfessorTags.propTypes = {
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    first_name: PropTypes.string.isRequired,
-    last_name: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
   }).isRequired,
   internalCoSupervisors: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      first_name: PropTypes.string.isRequired,
-      last_name: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
     }),
   ),
 };
@@ -391,14 +391,14 @@ ThesisItem.propTypes = {
   description: PropTypes.string.isRequired,
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    first_name: PropTypes.string.isRequired,
-    last_name: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
   }).isRequired,
   internalCoSupervisors: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      first_name: PropTypes.string.isRequired,
-      last_name: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
     }),
   ),
   creationDate: PropTypes.string.isRequired,

@@ -305,8 +305,8 @@ Environment.propTypes = {
 MainSupervisor.propTypes = {
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    first_name: PropTypes.string.isRequired,
-    last_name: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     profile_url: PropTypes.string.isRequired,
@@ -321,8 +321,8 @@ SecondarySupervisors.propTypes = {
 Supervisor.propTypes = {
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    first_name: PropTypes.string.isRequired,
-    last_name: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     profile_url: PropTypes.string.isRequired,
