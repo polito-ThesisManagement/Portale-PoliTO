@@ -37,7 +37,7 @@ async function getTargetedThesisProposals(lang, page, limit) {
   }
 }
 
-async function getThesisProposalsTypes(lang) {
+/*async function getThesisProposalsTypes(lang) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/types`, {
       params: {
@@ -73,7 +73,7 @@ async function getThesisProposalsTeachers() {
   } catch (error) {
     console.error('Error fetching thesis proposals teachers:', error);
   }
-}
+}*/
 
 async function getThesisProposalById(id, lang) {
   try {

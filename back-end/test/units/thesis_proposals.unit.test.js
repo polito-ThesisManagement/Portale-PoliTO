@@ -8,7 +8,7 @@ const {
   getThesisProposalsTeachers,
   getThesisProposalById,
 } = require('../../src/controllers/thesis-proposals');
-const { getStudentData } = require('../../src/controllers/student');
+const { getStudentData } = require('../../src/controllers/students');
 const { ThesisProposal, sequelize, Type, Keyword, Teacher } = require('../../src/models');
 
 jest.mock('../../src/controllers/students', () => ({
