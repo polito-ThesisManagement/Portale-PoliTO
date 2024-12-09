@@ -23,7 +23,6 @@ const thesisProposalOverviewSchema = z
     teachers: z.array(teacherSchema).default([]),
   })
   .transform(proposal => {
-    console.log(proposal);
     const teachers = proposal.teachers;
     const supervisor = teachers.find(teacher => teacher.isSupervisor);
     const internalCoSupervisors = teachers.filter(teacher => !teacher.isSupervisor);

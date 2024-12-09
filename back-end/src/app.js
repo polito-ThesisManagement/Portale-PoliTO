@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const thesisProposalsRouter = require('./routers/thesis-proposals');
+const studentsRouter = require('./routers/students');
 
 require('dotenv').config();
 
@@ -16,5 +17,7 @@ app.use('/api/thesis-proposals/types', thesisProposalsRouter);
 app.use('/api/thesis-proposals/keywords', thesisProposalsRouter);
 app.use('/api/thesis-proposals/teachers', thesisProposalsRouter);
 app.use('/api/thesis-proposals/{:thesisProposalId}', thesisProposalsRouter);
+app.use('/api/students', studentsRouter);
+app.use('/api/students/logged-student', studentsRouter);
 
 module.exports = { app };
