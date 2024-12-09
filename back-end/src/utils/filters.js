@@ -2,16 +2,16 @@ const { Op } = require('sequelize');
 const { ThesisProposalKeyword, ThesisProposalSupervisorCoSupervisor, ThesisProposalType } = require('../models');
 
 const buildWhereConditions = async (query, lang) => {
-  const { search_string, isInternal, isAbroad, supervisor, keyword, thesis_type } = query;
+  const { search, isInternal, isAbroad, teacherId, keywordId, typeId } = query;
 
   const topicField = lang === 'it' ? 'topic' : 'topic_en';
   const descriptionField = lang === 'it' ? 'description' : 'description_en';
   const where = {};
 
-  if (search_string) {
+  if (search) {
     where[Op.or] = [
-      { [topicField]: { [Op.like]: `%${search_string}%` } },
-      { [descriptionField]: { [Op.like]: `%${search_string}%` } },
+      { [topicField]: { [Op.like]: `%${search}%` } },
+      { [descriptionField]: { [Op.like]: `%${search}%` } },
     ];
   }
 
@@ -25,20 +25,20 @@ const buildWhereConditions = async (query, lang) => {
 
   let thesisProposalIds = null;
 
-  if (supervisor) {
-    const filteredProposalIds = await filterBySupervisor(supervisor);
+  if (teacherId) {
+    const filteredProposalIds = await filterBySupervisor(teacherId);
     thesisProposalIds = filteredProposalIds;
   }
 
-  if (keyword) {
-    const filteredProposalIds = await filterByKeyword(keyword);
+  if (keywordId) {
+    const filteredProposalIds = await filterByKeyword(keywordId);
     thesisProposalIds = Array.isArray(thesisProposalIds)
       ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
       : filteredProposalIds;
   }
 
-  if (thesis_type) {
-    const filteredProposalIds = await filterByThesisType(thesis_type);
+  if (typeId) {
+    const filteredProposalIds = await filterByThesisType(typeId);
     thesisProposalIds = Array.isArray(thesisProposalIds)
       ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
       : filteredProposalIds;
