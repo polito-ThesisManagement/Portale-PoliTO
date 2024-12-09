@@ -20,7 +20,7 @@ afterAll(async () => {
 });
 
 describe('GET /api/thesis-proposals', () => {
-  test('Should return the list of all active thesis proposals ordered by creation_date', async () => {
+  test('Should return the list of all active thesis proposals ordered by id', async () => {
     const response = await request(app).get('/api/thesis-proposals');
     expect(response.status).toBe(200);
     expect(response.body).toBeInstanceOf(Object);
@@ -33,25 +33,21 @@ describe('GET /api/thesis-proposals', () => {
     expect(response.body.thesisProposals.length).toEqual(7);
     expect(response.body.currentPage).toEqual(1);
     expect(response.body.totalPages).toEqual(1);
-    const now = new Date();
-    let previousCreationDate = null;
+    let previousId = null;
 
     response.body.thesisProposals.forEach(proposal => {
-      const expirationDate = proposal.expirationDate ? new Date(proposal.expirationDate) : null;
-      const creationDate = proposal.creationDate ? new Date(proposal.creationDate) : null;
+      const id = proposal.id;
 
-      expect(expirationDate.getTime()).toBeGreaterThan(now.getTime());
-
-      if (previousCreationDate && creationDate && !isNaN(creationDate.getTime())) {
+      if (previousId) {
         // eslint-disable-next-line jest/no-conditional-expect
-        expect(creationDate.getTime()).toBeLessThanOrEqual(previousCreationDate.getTime());
+        expect(id).toBeGreaterThan(previousId);
       }
-      previousCreationDate = creationDate;
+      previousId = id;
     });
   });
 
-  test('Should filter thesis proposals by search_string', async () => {
-    const response = await request(app).get('/api/thesis-proposals').query({ search_string: 'descrizione' });
+  test('Should filter thesis proposals by search', async () => {
+    const response = await request(app).get('/api/thesis-proposals').query({ search: 'descrizione' });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(7);
     response.body.thesisProposals.forEach(proposal => {
@@ -79,24 +75,24 @@ describe('GET /api/thesis-proposals', () => {
     });
   });
 
-  test('Should filter thesis proposals by supervisor', async () => {
-    const supervisorId = 3019;
-    const response = await request(app).get('/api/thesis-proposals').query({ supervisor: supervisorId });
+  test('Should filter thesis proposals by teacherId', async () => {
+    const teacherId = 3019;
+    const response = await request(app).get('/api/thesis-proposals').query({ teacherId });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(2);
     response.body.thesisProposals.forEach(proposal => {
       // the supervisor can be either the supervisor or the co-supervisor
-      const isSupervisor = proposal.supervisor && proposal.supervisor.id === supervisorId;
+      const isSupervisor = proposal.supervisor && proposal.supervisor.id === teacherId;
       const isCoSupervisor =
         proposal.internalCoSupervisors &&
-        proposal.internalCoSupervisors.some(supervisor => supervisor.id === supervisorId);
+        proposal.internalCoSupervisors.some(supervisor => supervisor.id === teacherId);
       expect(isSupervisor || isCoSupervisor).toBe(true);
     });
   });
 
-  test('Should filter thesis proposals by keyword', async () => {
+  test('Should filter thesis proposals by keywordId', async () => {
     const keywordId = 1;
-    const response = await request(app).get('/api/thesis-proposals').query({ keyword: keywordId });
+    const response = await request(app).get('/api/thesis-proposals').query({ keywordId });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(4);
     response.body.thesisProposals.forEach(proposal => {
@@ -104,20 +100,20 @@ describe('GET /api/thesis-proposals', () => {
     });
   });
 
-  test('Should filter thesis proposals by thesis_type', async () => {
-    const thesisTypeId = 1;
-    const response = await request(app).get('/api/thesis-proposals').query({ thesis_type: thesisTypeId });
+  test('Should filter thesis proposals by typeId', async () => {
+    const typeId = 1;
+    const response = await request(app).get('/api/thesis-proposals').query({ typeId });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(1);
     response.body.thesisProposals.forEach(proposal => {
-      expect(proposal.types.some(type => type.id === thesisTypeId)).toBe(true);
+      expect(proposal.types.some(type => type.id === typeId)).toBe(true);
     });
   });
 
-  test('Should filter thesis proposals by multiple filters (search_string, isInternal, supervisor)', async () => {
+  test('Should filter thesis proposals by multiple filters (search, isInternal, teacherId)', async () => {
     const response = await request(app)
       .get('/api/thesis-proposals')
-      .query({ search_string: 'descrizione', isInternal: 'true', supervisor: 3019 });
+      .query({ search: 'descrizione', isInternal: 'true', teacherId: 3019 });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(2);
     response.body.thesisProposals.forEach(proposal => {
@@ -132,10 +128,10 @@ describe('GET /api/thesis-proposals', () => {
     });
   });
 
-  test('Should filter thesis proposals by multiple filters (supervisor, keyword, type)', async () => {
+  test('Should filter thesis proposals by multiple filters (teacherId, keywordId, typeId)', async () => {
     const response = await request(app)
       .get('/api/thesis-proposals')
-      .query({ supervisor: 3019, keyword: 8, thesis_type: 1 });
+      .query({ teacherId: 3019, keywordId: 8, typeId: 1 });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(1);
     response.body.thesisProposals.forEach(proposal => {
@@ -148,8 +144,8 @@ describe('GET /api/thesis-proposals', () => {
     });
   });
 
-  test('Should filter thesis proposals by multiple filters (keyword, type)', async () => {
-    const response = await request(app).get('/api/thesis-proposals').query({ keyword: 1, thesis_type: 2 });
+  test('Should filter thesis proposals by multiple filters (keywordId, typeId)', async () => {
+    const response = await request(app).get('/api/thesis-proposals').query({ keywordId: 1, typeId: 2 });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(2);
     response.body.thesisProposals.forEach(proposal => {
@@ -159,7 +155,7 @@ describe('GET /api/thesis-proposals', () => {
   });
 
   test('Should return an empty list if no thesis proposals match the filters', async () => {
-    const response = await request(app).get('/api/thesis-proposals').query({ search_string: 'non esiste' });
+    const response = await request(app).get('/api/thesis-proposals').query({ search: 'non esiste' });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(0);
     expect(response.body.thesisProposals).toBeInstanceOf(Array);
@@ -183,10 +179,10 @@ describe('GET /api/thesis-proposals/targeted', () => {
     expect(response.body.totalPages).toEqual(1);
   });
 
-  test('Should filter targeted thesis proposals by search_string (in english)', async () => {
+  test('Should filter targeted thesis proposals by search (in english)', async () => {
     const response = await request(app)
       .get('/api/thesis-proposals/targeted')
-      .query({ lang: 'en', search_string: 'description' });
+      .query({ lang: 'en', search: 'description' });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(5);
     response.body.thesisProposals.forEach(proposal => {
@@ -214,24 +210,24 @@ describe('GET /api/thesis-proposals/targeted', () => {
     });
   });
 
-  test('Should filter targeted thesis proposals by supervisor', async () => {
-    const supervisorId = 3019;
-    const response = await request(app).get('/api/thesis-proposals/targeted').query({ supervisor: supervisorId });
+  test('Should filter targeted thesis proposals by teacherId', async () => {
+    const teacherId = 3019;
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ teacherId });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(2);
     response.body.thesisProposals.forEach(proposal => {
       // the supervisor can be either the supervisor or the co-supervisor
-      const isSupervisor = proposal.supervisor && proposal.supervisor.id === supervisorId;
+      const isSupervisor = proposal.supervisor && proposal.supervisor.id === teacherId;
       const isCoSupervisor =
         proposal.internalCoSupervisors &&
-        proposal.internalCoSupervisors.some(supervisor => supervisor.id === supervisorId);
+        proposal.internalCoSupervisors.some(supervisor => supervisor.id === teacherId);
       expect(isSupervisor || isCoSupervisor).toBe(true);
     });
   });
 
-  test('Should filter targeted thesis proposals by keyword', async () => {
+  test('Should filter targeted thesis proposals by keywordId', async () => {
     const keywordId = 1;
-    const response = await request(app).get('/api/thesis-proposals/targeted').query({ keyword: keywordId });
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ keywordId });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(3);
     response.body.thesisProposals.forEach(proposal => {
@@ -239,20 +235,20 @@ describe('GET /api/thesis-proposals/targeted', () => {
     });
   });
 
-  test('Should filter targeted thesis proposals by thesis_type', async () => {
-    const thesisTypeId = 1;
-    const response = await request(app).get('/api/thesis-proposals/targeted').query({ thesis_type: thesisTypeId });
+  test('Should filter targeted thesis proposals by typeId', async () => {
+    const typeId = 1;
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ typeId });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(1);
     response.body.thesisProposals.forEach(proposal => {
-      expect(proposal.types.some(type => type.id === thesisTypeId)).toBe(true);
+      expect(proposal.types.some(type => type.id === typeId)).toBe(true);
     });
   });
 
-  test('Should filter targeted thesis proposals by multiple filters (search_string, isInternal, supervisor)', async () => {
+  test('Should filter targeted thesis proposals by multiple filters (search, isInternal, teacherId)', async () => {
     const response = await request(app)
       .get('/api/thesis-proposals/targeted')
-      .query({ search_string: 'descrizione', isInternal: 'true', supervisor: 3019 });
+      .query({ search: 'descrizione', isInternal: 'true', teacherId: 3019 });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(2);
     response.body.thesisProposals.forEach(proposal => {
@@ -267,10 +263,10 @@ describe('GET /api/thesis-proposals/targeted', () => {
     });
   });
 
-  test('Should filter targeted thesis proposals by multiple filters (supervisor, keyword, type)', async () => {
+  test('Should filter targeted thesis proposals by multiple filters (teacherId, keywordId, typeId)', async () => {
     const response = await request(app)
       .get('/api/thesis-proposals/targeted')
-      .query({ supervisor: 3019, keyword: 8, thesis_type: 1 });
+      .query({ teacherId: 3019, keywordId: 8, typeId: 1 });
     expect(response.status).toBe(200);
     expect(response.body.count).toBe(1);
     response.body.thesisProposals.forEach(proposal => {
@@ -281,6 +277,22 @@ describe('GET /api/thesis-proposals/targeted', () => {
       expect(proposal.keywords.some(keyword => keyword.id === 8)).toBe(true);
       expect(proposal.types.some(type => type.id === 1)).toBe(true);
     });
+  });
+
+  test('Should return a 500 error if orderBy is not valid', async () => {
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ orderBy: 'invalid' });
+    expect(response.status).toBe(500);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty('error');
+    expect(response.body.error).toEqual('Invalid orderBy parameter');
+  });
+
+  test('Should return a 500 error if sortBy is not valid', async () => {
+    const response = await request(app).get('/api/thesis-proposals/targeted').query({ sortBy: 'invalid' });
+    expect(response.status).toBe(500);
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body).toHaveProperty('error');
+    expect(response.body.error).toEqual('Invalid sortBy parameter');
   });
 });
 

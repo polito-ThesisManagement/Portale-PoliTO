@@ -226,7 +226,27 @@ describe('getThesisProposals', () => {
     });
   });
 
-  test('should return 500 status if an error occurred', async () => {
+  test('should return an error if an exception is thrown inside fetchThesisProposals (orderBy)', async () => {
+    const req = { query: { lang: 'en', page: 1, limit: 10, orderBy: 'AS' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposals(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Invalid orderBy parameter' });
+  });
+
+  test('should return an error if an exception is thrown inside fetchThesisProposals (sortBy)', async () => {
+    const req = { query: { lang: 'en', page: 1, limit: 10, sortBy: 'creation_date' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposals(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Invalid sortBy parameter' });
+  });
+
+  test('should return an error if an exception is thrown', async () => {
     ThesisProposal.findAndCountAll.mockRejectedValueOnce(new Error('Database error'));
 
     const req = { query: { lang: 'en', page: 1, limit: 10 } };
