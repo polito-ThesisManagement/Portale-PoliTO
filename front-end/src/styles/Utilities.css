@@ -237,9 +237,9 @@ body {
   position: fixed;
   z-index: 100;
   right: 3%;
-  bottom:3%;
-  height: 40px;
-  width: 40px;
+  bottom: 4%;
+  height: 50px;
+  width: 50px;
   border-radius: 30px;
   background-color: rgba(var(--medium-orange-rgb), 0.7);
   color: var(--background-light);
