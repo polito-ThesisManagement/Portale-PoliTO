@@ -3,7 +3,6 @@ const { Keyword, sequelize, Teacher, ThesisProposal, Type } = require('../models
 const { getStudentData } = require('./students');
 const { buildWhereConditions } = require('../utils/filters');
 const { getIncludes } = require('../utils/includes');
-const { getStudentData } = require('./student');
 const formatThesisProposals = require('../utils/formatThesisProposals');
 const selectThesisProposalAttributes = require('../utils/selectThesisProposalAttributes');
 const getPaginationParams = require('../utils/paginationParams');
