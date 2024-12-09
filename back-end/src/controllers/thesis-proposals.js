@@ -1,11 +1,16 @@
 const { Op } = require('sequelize');
+const { Keyword, sequelize, Teacher, ThesisProposal, Type } = require('../models');
 const { getStudentData } = require('./students');
-const { ThesisProposal, sequelize } = require('../models');
 const { buildWhereConditions } = require('../utils/filters');
+const { getIncludes } = require('../utils/includes');
+const { getStudentData } = require('./student');
 const formatThesisProposals = require('../utils/formatThesisProposals');
 const selectThesisProposalAttributes = require('../utils/selectThesisProposalAttributes');
-const { getIncludes } = require('../utils/includes');
 const getPaginationParams = require('../utils/paginationParams');
+const selectTypeAttributes = require('../utils/selectTypeAttributes');
+const selectKeywordAttributes = require('../utils/selectKeywordAttributes');
+const selectTeacherAttributes = require('../utils/selectTeacherAttributes');
+const teacherOverviewSchema = require('../schemas/TeacherOverview');
 
 const fetchThesisProposals = async (where, includes, lang, pagination) => {
   const { limit, offset, orderBy, sortBy } = pagination;
@@ -77,6 +82,87 @@ const getTargetedThesisProposals = async (req, res) => {
   }
 };
 
+const getThesisProposalsTypes = async (req, res) => {
+  try {
+    const lang = req.query.lang || 'it';
+    const { search = '' } = req.query;
+
+    const where = search
+      ? {
+          type: {
+            [Op.like]: `%${search}%`,
+          },
+        }
+      : {};
+
+    const types = await Type.findAll({
+      attributes: selectTypeAttributes(lang),
+      where,
+      order: [['type', 'ASC']],
+    });
+
+    res.json(types);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const getThesisProposalsKeywords = async (req, res) => {
+  try {
+    const lang = req.query.lang || 'it';
+    const { search = '' } = req.query;
+
+    const where = search
+      ? {
+          keyword: {
+            [Op.like]: `%${search}%`,
+          },
+        }
+      : {};
+
+    const keywords = await Keyword.findAll({
+      attributes: selectKeywordAttributes(lang),
+      where,
+      order: [['keyword', 'ASC']],
+    });
+
+    res.json(keywords);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const getThesisProposalsTeachers = async (req, res) => {
+  try {
+    const { search = '' } = req.query;
+
+    const where = search
+      ? {
+          [Op.or]: [
+            { first_name: { [Op.like]: `%${search}%` } },
+            { last_name: { [Op.like]: `%${search}%` } },
+            sequelize.where(sequelize.fn('concat', sequelize.col('first_name'), ' ', sequelize.col('last_name')), {
+              [Op.like]: `%${search}%`,
+            }),
+            sequelize.where(sequelize.fn('concat', sequelize.col('last_name'), ' ', sequelize.col('first_name')), {
+              [Op.like]: `%${search}%`,
+            }),
+          ],
+        }
+      : {};
+
+    const teachers = await Teacher.findAll({
+      attributes: selectTeacherAttributes(),
+      where,
+      order: [[sequelize.fn('concat', sequelize.col('first_name'), ' ', sequelize.col('last_name')), 'ASC']],
+    });
+
+    res.json(teachers.map(teacher => teacherOverviewSchema.parse(teacher)));
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const getThesisProposalById = async (req, res) => {
   try {
     const lang = req.query.lang || 'it';
@@ -100,5 +186,8 @@ const getThesisProposalById = async (req, res) => {
 module.exports = {
   getThesisProposals,
   getTargetedThesisProposals,
+  getThesisProposalsTypes,
+  getThesisProposalsKeywords,
+  getThesisProposalsTeachers,
   getThesisProposalById,
 };

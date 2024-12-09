@@ -13,6 +13,9 @@ app.use(cors());
 
 app.use('/api/thesis-proposals', thesisProposalsRouter);
 app.use('/api/thesis-proposals/targeted', thesisProposalsRouter);
+app.use('/api/thesis-proposals/types', thesisProposalsRouter);
+app.use('/api/thesis-proposals/keywords', thesisProposalsRouter);
+app.use('/api/thesis-proposals/teachers', thesisProposalsRouter);
 app.use('/api/thesis-proposals/{:thesisProposalId}', thesisProposalsRouter);
 app.use('/api/students', studentsRouter);
 app.use('/api/students/logged-student', studentsRouter);
