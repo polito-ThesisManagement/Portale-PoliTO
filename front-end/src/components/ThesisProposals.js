@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
 import { HiLightBulb } from 'react-icons/hi';
+import Select from 'react-select';
 
 import PropTypes from 'prop-types';
 
@@ -29,6 +30,13 @@ export default function ThesisProposals({ thesisProposals }) {
 
   const { t } = useTranslation();
 
+  const optionsPage = [
+    { value: 5, label: '5' },
+    { value: 10, label: '10' },
+    { value: 20, label: '20' },
+    { value: 50, label: '50' },
+  ];
+
   const handlePageChange = pageNumber => {
     if (pageNumber !== currentPage) {
       setCurrentPage(pageNumber);
@@ -37,7 +45,7 @@ export default function ThesisProposals({ thesisProposals }) {
   };
 
   const handleProposalsPerPageChange = event => {
-    setProposalsPerPage(Number(event.target.value));
+    setProposalsPerPage(Number(event.value));
     setCurrentPage(1); // Reset to first page when changing proposals per page
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -170,7 +178,6 @@ export default function ThesisProposals({ thesisProposals }) {
             backgroundColor: 'var(--surface)',
             width: '100%',
             flexDirection: 'column',
-            overflow: 'hidden',
             flexGrow: '1',
             paddingBottom: '2%',
           }}
@@ -324,46 +331,42 @@ export default function ThesisProposals({ thesisProposals }) {
               paddingBottom: '1.5rem',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', width: '180px' }}>
-              <Form className="d-flex me-3 w-100" style={{ maxWidth: '200px' }}>
-                <b
-                  style={{
-                    fontFamily: 'var(--font-primary)',
-                    fontSize: 'var(--font-size-sm)',
-                    color: 'var(--text)',
-                    fontWeight: '600',
-                    paddingRight: '0.5rem',
-                    width: '100%',
-                  }}
-                >
-                  {t('carriera.proposte_di_tesi.elements_per_page')}:
-                </b>
+            <div style={{ display: 'flex', alignItems: 'center', width: '300px', justifyContent: 'flex-start' }}>
+              {/*<Form className="d-flex me-3 w-100">
                 <InputGroup className="flex-nowrap w-100">
                   <Form.Select
                     label="page_elements"
                     style={{
-                      height: '2rem',
+                      height: '2.6rem',
                       backgroundColor: 'var(--background)',
                       color: 'var(--primary)',
                       borderRadius: '8px',
-                      lineHeight: '1rem',
-                      paddingRight: '1rem',
                       fontFamily: 'var(--font-family)',
+                      fontSize: 'var(--font-size-sm)',
+                      fontWeight: '600',
                     }}
                     value={proposalsPerPage}
                     onChange={handleProposalsPerPageChange}
                     onSubmit={e => e.preventDefault()}
+                    aria-label={t('carriera.proposte_di_tesi.elements_per_page')}
                   >
-                    <option value={5}>5</option>
-                    <option value={10}>10</option>
-                    <option value={20}>20</option>
-                    <option value={50}>50</option>
+                    <option value={5}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 5'}</option>
+                    <option value={10}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 10'}</option>
+                    <option value={20}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 20'}</option>
+                    <option value={50}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 50'}</option>
                   </Form.Select>
                 </InputGroup>
-              </Form>
+              </Form>*/}
+              <Select
+                options={optionsPage}
+                value={proposalsPerPage}
+                onChange={handleProposalsPerPageChange}
+                placeholder={t('carriera.proposte_di_tesi.elements_per_page') + ': ' + proposalsPerPage}
+                defaultInputValue={'5'}
+              />
             </div>
             {totalPages && (
-              <Pagination activeKey={currentPage} onChange={() => handlePageChange()}>
+              <Pagination activeKey={currentPage} onChange={handlePageChange}>
                 <Pagination.First />
                 <Pagination.Prev />
                 {pageNumbers.map(number => {
