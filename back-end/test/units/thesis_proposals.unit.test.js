@@ -3,12 +3,15 @@ require('jest');
 const {
   getThesisProposals,
   getTargetedThesisProposals,
+  getThesisProposalsTypes,
+  getThesisProposalsKeywords,
+  getThesisProposalsTeachers,
   getThesisProposalById,
 } = require('../../src/controllers/thesis-proposals');
 const { getStudentData } = require('../../src/controllers/student');
-const { ThesisProposal, sequelize } = require('../../src/models');
+const { ThesisProposal, sequelize, Type, Keyword, Teacher } = require('../../src/models');
 
-jest.mock('../../src/controllers/student', () => ({
+jest.mock('../../src/controllers/students', () => ({
   getStudentData: jest.fn(),
 }));
 
@@ -17,8 +20,20 @@ jest.mock('../../src/models', () => ({
     findAndCountAll: jest.fn(),
     findByPk: jest.fn(),
   },
+  Type: {
+    findAll: jest.fn(),
+  },
+  Keyword: {
+    findAll: jest.fn(),
+  },
+  Teacher: {
+    findAll: jest.fn(),
+  },
   sequelize: {
     literal: jest.fn(),
+    fn: jest.fn(),
+    col: jest.fn(),
+    where: jest.fn(),
   },
 }));
 
@@ -274,7 +289,7 @@ describe('getTargetedThesisProposals', () => {
     });
   });
 
-  test('should return an error if an exception is thrown inside getStudentData', async () => {
+  test('should return 500 status if an error occurred', async () => {
     getStudentData.mockRejectedValueOnce(new Error('Database error'));
 
     const req = { query: { lang: 'en', page: 1, limit: 10 } };
@@ -283,6 +298,164 @@ describe('getTargetedThesisProposals', () => {
     await getTargetedThesisProposals(req, res);
 
     expect(ThesisProposal.findAndCountAll).toHaveBeenCalledTimes(0);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Database error' });
+  });
+});
+
+describe('getThesisProposalsTypes', () => {
+  const types = [
+    { id: 1, type: 'Type 1' },
+    { id: 2, type: 'Type 2' },
+  ];
+  test('should return the list of thesis proposals types in English', async () => {
+    Type.findAll.mockResolvedValueOnce(types);
+
+    const req = { query: { lang: 'en' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsTypes(req, res);
+
+    expect(Type.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(types);
+  });
+
+  test('should return the list of thesis proposals types in Italian (without lang query param)', async () => {
+    Type.findAll.mockResolvedValueOnce(types);
+
+    const req = { query: {} };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsTypes(req, res);
+
+    expect(Type.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(types);
+  });
+
+  test('should return the list of thesis proposals types filtered by search query param', async () => {
+    Type.findAll.mockResolvedValueOnce(types);
+
+    const req = { query: { lang: 'en', search: 'Type' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsTypes(req, res);
+
+    expect(Type.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(types);
+  });
+
+  test('should return 500 status if an error occurred', async () => {
+    Type.findAll.mockRejectedValueOnce(new Error('Database error'));
+
+    const req = { query: { lang: 'en', search: '' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsTypes(req, res);
+
+    expect(Type.findAll).toHaveBeenCalledTimes(1);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Database error' });
+  });
+});
+
+describe('getThesisProposalsKeywords', () => {
+  const keywords = [
+    { id: 1, keyword: 'Keyword 1' },
+    { id: 2, keyword: 'Keyword 2' },
+  ];
+  test('should return the list of thesis proposals keywords in English', async () => {
+    Keyword.findAll.mockResolvedValueOnce(keywords);
+
+    const req = { query: { lang: 'en' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsKeywords(req, res);
+
+    expect(Keyword.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(keywords);
+  });
+
+  test('should return the list of thesis proposals keywords in Italian (without lang query param)', async () => {
+    Keyword.findAll.mockResolvedValueOnce(keywords);
+
+    const req = { query: {} };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsKeywords(req, res);
+
+    expect(Keyword.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(keywords);
+  });
+
+  test('should return the list of thesis proposals keywords filtered by search query param', async () => {
+    Keyword.findAll.mockResolvedValueOnce(keywords);
+
+    const req = { query: { lang: 'en', search: 'Keyword' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsKeywords(req, res);
+
+    expect(Keyword.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(keywords);
+  });
+
+  test('should return 500 status if an error occurred', async () => {
+    Keyword.findAll.mockRejectedValueOnce(new Error('Database error'));
+
+    const req = { query: { lang: 'en', search: '' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsKeywords(req, res);
+
+    expect(Keyword.findAll).toHaveBeenCalledTimes(1);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Database error' });
+  });
+});
+
+describe('getThesisProposalsTeachers', () => {
+  const teachers = [
+    { id: 1, first_name: 'John', last_name: 'Doe' },
+    { id: 2, first_name: 'Jane', last_name: 'Doe' },
+  ];
+
+  const result = [
+    { id: 1, firstName: 'John', lastName: 'Doe' },
+    { id: 2, firstName: 'Jane', lastName: 'Doe' },
+  ];
+  test('should return the list of thesis proposals teachers', async () => {
+    Teacher.findAll.mockResolvedValueOnce(teachers);
+
+    const req = { query: {} };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsTeachers(req, res);
+
+    expect(Teacher.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(result);
+  });
+
+  test('should return the list of thesis proposals teachers filtered by search query param', async () => {
+    Teacher.findAll.mockResolvedValueOnce(teachers);
+
+    const req = { query: { search: 'Doe' } };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsTeachers(req, res);
+
+    expect(Teacher.findAll).toHaveBeenCalledTimes(1);
+    expect(res.json).toHaveBeenCalledWith(result);
+  });
+
+  test('should return 500 status if an error occurred', async () => {
+    Teacher.findAll.mockRejectedValueOnce(new Error('Database error'));
+
+    const req = { query: {} };
+    const res = { json: jest.fn(), status: jest.fn(() => res) };
+
+    await getThesisProposalsTeachers(req, res);
+
+    expect(Teacher.findAll).toHaveBeenCalledTimes(1);
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ error: 'Database error' });
   });
@@ -530,7 +703,7 @@ describe('getThesisProposalById', () => {
     });
   });
 
-  test('should return an error if the thesis proposal is not found', async () => {
+  test('should return 404 status if the thesis proposal is not found', async () => {
     ThesisProposal.findByPk.mockResolvedValueOnce(null);
 
     const req = { query: { lang: 'en' }, params: { thesisProposalId: 1 } };
@@ -543,7 +716,7 @@ describe('getThesisProposalById', () => {
     expect(res.json).toHaveBeenCalledWith({ error: 'Thesis proposal not found' });
   });
 
-  test('should return an error if an exception is thrown', async () => {
+  test('should return 500 status if an error occurred', async () => {
     ThesisProposal.findByPk.mockRejectedValueOnce(new Error('Database error'));
 
     const req = { query: { lang: 'en' }, params: { thesisProposalId: 1 } };

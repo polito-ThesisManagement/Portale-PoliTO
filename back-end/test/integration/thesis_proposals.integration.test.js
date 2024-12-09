@@ -296,6 +296,85 @@ describe('GET /api/thesis-proposals/targeted', () => {
   });
 });
 
+describe('GET /api/thesis-proposals/types', () => {
+  test('Should return the list of all thesis types', async () => {
+    const response = await request(app).get('/api/thesis-proposals/types');
+    expect(response.status).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.body.length).toBe(2);
+    expect(response.body).toEqual([
+      { id: 1, type: 'RICERCA' },
+      { id: 2, type: 'SPERIMENTALE' },
+    ]);
+  });
+
+  test('Should filter thesis types by search_string', async () => {
+    const response = await request(app).get('/api/thesis-proposals/types').query({ search: 'ricerca' });
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0]).toEqual({ id: 1, type: 'RICERCA' });
+  });
+});
+
+describe('GET /api/thesis-proposals/keywords', () => {
+  test('Should return the list of all keywords', async () => {
+    const response = await request(app).get('/api/thesis-proposals/keywords');
+    expect(response.status).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.body.length).toBe(13);
+    expect(response.body).toEqual([
+      { id: 13, keyword: 'APPLICAZIONI WEB' },
+      { id: 9, keyword: 'AUTOMOTIVE' },
+      { id: 5, keyword: 'DOMOTICA' },
+      { id: 2, keyword: 'GENERAZIONE DI CODICE' },
+      { id: 1, keyword: 'IA' },
+      { id: 6, keyword: 'IOT' },
+      { id: 3, keyword: 'ISTRUZIONE' },
+      { id: 4, keyword: 'LLM' },
+      { id: 10, keyword: 'REALTÀ' },
+      { id: 7, keyword: 'SIMULATORE' },
+      { id: 11, keyword: 'SVILUPPO APPLICAZIONI MOBILI' },
+      { id: 12, keyword: 'SVILUPPO WEB' },
+      { id: 8, keyword: 'TESTING' },
+    ]);
+  });
+
+  test('Should filter keywords by search_string', async () => {
+    const response = await request(app).get('/api/thesis-proposals/keywords').query({ search: 'web' });
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(2);
+    expect(response.body).toEqual([
+      { id: 13, keyword: 'APPLICAZIONI WEB' },
+      { id: 12, keyword: 'SVILUPPO WEB' },
+    ]);
+  });
+});
+
+describe('GET /api/thesis-proposals/teachers', () => {
+  test('Should return the list of all teachers', async () => {
+    const response = await request(app).get('/api/thesis-proposals/teachers');
+    expect(response.status).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.body.length).toBe(220);
+    response.body.forEach(teacher => {
+      expect(teacher).toHaveProperty('id');
+      expect(teacher).toHaveProperty('firstName');
+      expect(teacher).toHaveProperty('lastName');
+    });
+  });
+
+  test('Should filter teachers by search_string', async () => {
+    const response = await request(app).get('/api/thesis-proposals/teachers').query({ search: 'mario' });
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(2);
+    response.body.forEach(teacher => {
+      const firstName = teacher.firstName.toLowerCase();
+      const lastName = teacher.lastName.toLowerCase();
+      expect(firstName.includes('mario') || lastName.includes('mario')).toBe(true);
+    });
+  });
+});
+
 describe('GET /api/thesis-proposals/:thesisProposalId', () => {
   test('Should return the thesis proposal with the given id', async () => {
     const thesisProposalId = 12946;
