@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api/thesis-proposals', thesisProposalsRouter);
+app.use('/api/thesis-proposals/targeted', thesisProposalsRouter);
 app.use('/api/thesis-proposals/{:thesisProposalId}', thesisProposalsRouter);
 
 module.exports = { app };

@@ -9,9 +9,9 @@
  *------------------------------------------------------------------------------------------------------------------------------------**/
 
 -- Drop database if it already exists
-DROP DATABASE IF EXISTS polito;
-CREATE DATABASE IF NOT EXISTS polito;
-USE polito;
+DROP DATABASE IF EXISTS polito_test;
+CREATE DATABASE IF NOT EXISTS polito_test;
+USE polito_test;
 
 -- Drop tables if they already exist
 DROP TABLE IF EXISTS logged_student;
