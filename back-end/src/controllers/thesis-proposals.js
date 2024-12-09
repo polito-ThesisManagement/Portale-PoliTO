@@ -7,14 +7,33 @@ const selectThesisProposalAttributes = require('../utils/selectThesisProposalAtt
 const { getIncludes } = require('../utils/includes');
 const getPaginationParams = require('../utils/paginationParams');
 
+const camelToSnakeCase = str => str.replace(/([A-Z])/g, '_$1').toLowerCase();
+
 const fetchThesisProposals = async (where, includes, lang, pagination) => {
   const { limit, offset, orderBy, sortBy } = pagination;
+
+  if (orderBy && orderBy !== 'ASC' && orderBy !== 'DESC') {
+    throw new Error('Invalid orderBy parameter');
+  }
+
+  if (
+    sortBy &&
+    sortBy !== 'creationDate' &&
+    sortBy !== 'expirationDate' &&
+    sortBy !== 'topic' &&
+    sortBy !== 'description' &&
+    sortBy !== 'id'
+  ) {
+    throw new Error('Invalid sortBy parameter');
+  }
+
+  const sortBySnakeCase = camelToSnakeCase(sortBy);
 
   const { count, rows } = await ThesisProposal.findAndCountAll({
     attributes: selectThesisProposalAttributes(lang),
     include: includes,
     where,
-    order: [[sortBy, orderBy]],
+    order: [[sortBySnakeCase, orderBy]],
     limit,
     offset,
     distinct: true,
