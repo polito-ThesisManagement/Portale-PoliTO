@@ -2837,7 +2837,18 @@ VALUES
     (30, "GAMIFICATION", "GAMIFICATION"),
     (31, "PRIVACY", "PRIVACY"),
     (32, "SECURITY TESTING", "SECURITY TESTING"),
-    (33, "ANDROID", "ANDROID");
+    (33, "ANDROID", "ANDROID"),
+    (34, "GRASPING AND DEXTEROUS MANIPULATION", "GRASPING AND DEXTEROUS MANIPULATION"),
+    (35, "MACHINE LEARNING", "MACHINE LEARNING"),
+    (36, "REINFORCEMENT LEARNING", "REINFORCEMENT LEARNING"),
+    (37, "ROBOT LEARNING", "ROBOT LEARNING"),
+    (38, "ROBOTICA", "ROBOTICS"),
+    (39, "ROBOTICA UMANOIDE", "HUMANOID ROBOTICS"),
+    (40, "PIANIFICAZIONE DELLA TRAIETTORIA", "TRAJECTORY PLANNING"),
+    (41, "DEEP LEARNING", "DEEP LEARNING"),
+    (42, "COMPUTER VISION", "COMPUTER VISION"),
+    (43, "CLONAZIONE DEL COMPORTAMENTO", "BEHAVIOUR CLONING"),
+    (44, "MULTI-FINGERED MANIPULATION", "MULTI-FINGERED MANIPULATION");
 
 -- ------------------------------------------------------------
 -- ↓ type table ↓
@@ -2901,6 +2912,26 @@ VALUES
         "CL003",
         "2",
         NULL
+    ),
+    (
+        12358, 
+        "Deep Reinforcement Learning per il Grasping Generalizzato di Oggetti con Mani Robotiche a molti Gradi di Libertà",
+        "Generalizing Deep Reinforcement Learning for multi-DoF Robotic Grasping Across Objects",
+        "L'obiettivo di questa tesi è di investigare metodi efficienti di Deep Reinforcement Learning (DRL) model-free per l'apprendimento del grasping di molteplici categorie di oggetti con mani robotiche a molti gradi di libertà. In particolare, il candidato indagherà e svilupperà metodi di DRL all'avanguardia per l'addestramento di controllori di grasping multimodali in grado di generalizzare su diverse geometrie degli oggetti, basato solo input visivi 2D e informazioni tattili. L'agente RL sarà addestrato congiuntamente su molteplici categorie di oggetti, esplorando le capacità di vari algoritmi DRL e rappresentazioni multimodali degli oggetti, con un focus specifico sul miglioramento dell'efficienza e della generalizzazione. La piattaforma robotica obiettivo di questo studio è il robot umanoide iCub con la sua mano multi-DoF, che comporta uno spazio d'azione a 20 dimensioni.\r\n\r\nPer maggiori dettagli si prega di consultare la descrizione della proposta di tesi allegata (PDF).",
+        "The goal of this thesis is to investigate efficient model-free Deep Reinforcement Learning (DRL) methods for learning to grasp multiple object categories with multi-DoF robotic hands. In particular, the candidate will investigate and develop state-of-the-art DRL methods for training multimodal grasping policies capable of generalizing across different object geometries, only given 2D visual input and tactile information. The RL agent will be jointly trained on multiple object categories, exploring the capabilities of various DRL algorithms and multimodal object representations, with a specific focus on improving data efficiency and generalization. The target robotic platform is the iCub humanoid robot with its dexterous multi-DoF hand, resulting in a 20-dimensional action space.\r\n\r\nSee the attached thesis proposal description PDF for more details.",
+        "https://drive.google.com/file/d/1Oiinsrs_9ljlmw5TPFeEg76YVE4yn_p3/view?usp=share_link",
+        "- Buona proattività, esperienza di lavoro di squadra e capacità di comunicazione sono necessarie;\r\n- Sono richieste ottime competenze di programmazione e ingegneria del software;\r\n- È richiesta una forte esperienza con Python, preferibilmente con librerie di manipolazione dei dati e di visualizzazione all'avanguardia (ad esempio, PyTorch, OpenAI Gym, RLLib, stable-baselines, mushroom, ...);\r\n- Esperienza o forte motivazione nel lavorare con simulatori robotici (ad esempio Mujoco, Bullet, Gazebo, ...) e potenzialmente con robot umanoidi avanzati sono un plus;\r\n- Esperienza con sistemi di version control del codice (GIT) e software di gestione e visualizzazione degli esperimenti (ad esempio WandB, TensorBoard, ...) è un vantaggio;\r\n- È prevista una conoscenza fondamentale del paradigma di Reinforcement Learning o deve essere acquisita prima dell'inizio della tesi;\r\n- La conoscenza dei fondamenti della robotica e/o esperienza pratica sono un vantaggio.",
+        "- Good proactivity, teamwork experience, and communication skills are a must;\r\n- Excellent programming and software engineering skills are required;\r\n- Strong experience with Python is required, preferably including state-of-the-art ML, RL, data manipulation, and visualization libraries (e.g., PyTorch, OpenAI Gym, RLLib, stable baselines, mushroom, …);\r\n- Experience or strong motivation in working with robotics simulators (e.g. Mujoco,\r\nBullet, Gazebo, …), and potentially with advanced humanoid robots, are welcome;\r\n- Experience with version control (GIT) and experiment management and visualization\r\nsoftware (e.g., WandB, TensorBoard, …) are a plus;\r\n- Foundational knowledge of the Reinforcement learning paradigm is either expected or\r\nneeds to be gained prior to the start of the thesis;\r\n- Knowledge of robotics fundamentals and/or hands-on experience are a plus.",
+        "Carico previsto: tempo pieno, minimo 6 mesi, suddiviso in:\r\n- Studio della letteratura - 20%\r\n- Implementazione - 40%\r\n- Esperimenti - 40%\r\n\r\nOrganizzazione:\r\n- La maggior parte delle attività può essere svolta in modalità ibrida. Il candidato avrà accesso alle strutture del laboratorio VANDAL, con riunioni settimanali di aggiornamento;\r\n- Saranno possibili anche attività in presenza e sessioni di lavoro presso il Center for Robotics and Intelligent Systems dell'Istituto Italiano di Tecnologia a Genova, dove si trovano fisicamente il gruppo di ricerca HSP e il robot iCub. Soggiorni più lunghi sono opzionali e condizionati dalle risorse disponibili e dall'interesse.",
+        "Expected load: Full-time, covering a minimum of 6 months, split in: \r\n- Literature and study – 20%  \r\n- Implementation – 40%  \r\n- Experiments – 40%\r\n\r\nOrganization: \r\n- Most activities can be carried out in hybrid mode. The candidate will have access to the VANDAL laboratory premises, with weekly update meetings; \r\n- In-person activities and working sessions at the Center for Robotics and Intelligent Systems of Istituto Italiano di Tecnologia in Genoa, where the HSP research group and the iCub robot are physically located, will also be possible. Potential longer stays are optional and conditioned on available resources and interest. ",
+        "Lorenzo Natale – Istituto Italiano di Tecnologia, Genova\r\nElisa Maiettini – Istituto Italiano di Tecnologia, Genova\r\nFederico Ceola – Istituto Italiano di Tecnologia, Genova",
+        "2024-04-05",
+        "2025-04-05", 
+        1,
+        0,
+        "CL003", 
+        "2", 
+        "rl_icub_grasping_thesis_polito_iit.pdf"
     ),
     (
         12469,
@@ -3153,7 +3184,7 @@ VALUES
         "• Basic knowledge of the Android operating system\r\n• Good programming skills\r\n• Curiosity",
         NULL,
         NULL,
-        "Lorenzo Laudadio", -- why is there am external reference person if the thesis in internal?
+        "Lorenzo Laudadio", -- why is there an external reference person if the thesis in internal?
         "2024-12-06",
         "2025-12-06",
         1,
@@ -3163,24 +3194,24 @@ VALUES
         NULL
     ),
     (
-        14026,
-        "Utilizzo dell'IA per la generazione automatizzata di script di test",
-        "Use of AI for automated test script generation",
-        "Tesi presso Concept Quality Reply\r\n\r\nQuesta tesi riconosce il ruolo fondamentale della generazione di test case utilizzando l’IA generativa per garantire la qualità e l'affidabilità del prodotto durante l'intero ciclo di vita, migliorando la soddisfazione degli utenti e riducendo i costi.\r\n\r\nDescrizione:\r\nEcco una breve descrizione delle attività che il candidato per la tesi potrebbe svolgere all'interno del team sotto la guida di un tutor esperto:\r\n\r\nRivedere la ricerca rilevante su IA generativa e test automatizzati.\r\nDefinire l'ambito e le sfide della generazione di test case basata su IA.\r\nRaccogliere dataset per l'addestramento e la valutazione del modello.\r\nCreare modelli di IA per la generazione di test case.\r\nProgettare esperimenti per valutare le prestazioni del modello.\r\nAnalizzare i risultati degli esperimenti per misurare l'efficacia del sistema.\r\nRaffinare il modello di IA basandosi sui feedback delle valutazioni.\r\nFamiliarità con diversi framework di test per vari aspetti del testing di app mobili (ad esempio, test UI, test di integrazione).\r\nEsperienza pratica con framework di test popolari (es. Selenium, Appium).\r\nScrivere e presentare i risultati della ricerca in una tesi.\r\nObiettivi:\r\nUtilizzare l'IA generativa per trasformare requisiti in linguaggio naturale da diversi formati (PDF, PPT, Word) in un set completo di test case e generare lo script automatizzato finale (Appium, Selenium) dei test automatizzati corrispondenti.\r\n\r\nPrerequisiti:\r\n\r\nConoscenza di Java, Python, JavaScript, HTML, CSS\r\nConoscenza del testing automatizzato (ad esempio, Selenium, Appium)\r\nConoscenza di approcci di IA e Machine Learning\r\nInteresse dimostrato per il testing automatizzato, algoritmi di IA generativa\r\nCompetenze acquisite:\r\n\r\nApprendimento sull’IA generativa per velocizzare i processi di testing e validazione\r\nApprendimento del processo generativo automatizzato dai requisiti funzionali ai test case per i servizi finanziari",
-        "Thesis work at Concept Quality Reply\r\n\r\nContext:\r\nThis thesis recognizes the pivotal role of test case generation, using generative AI, to ensure product quality and reliability throughout the entire product lifecycle, ultimately \r\nenhancing user satisfaction and reducing cost.\r\n\r\nDescription:\r\nHere's a brief description of the activities the candidate for the thesis might undertake within the team under the guidance of an expert tutor:\r\n• Review relevant research on generative AI and automated testing.\r\n• Define the scope and challenges of AI-based test case generation.\r\n• Gather datasets for model training and evaluation.\r\n• Create AI models for test case generation.\r\n• Design experiments to assess model performance.\r\n• Analyze experiment results to measure system effectiveness.\r\n• Refine the AI model based on evaluation feedback.\r\n• Familiarity with various test frameworks for different aspects of mobile app testing (e.g., UI testing, integration testing).\r\n• Hands-on experience with popular testing frameworks (e.g., Selenium, Appium).\r\n• Write and present the research findings in a thesis.\r\n\r\nObjectives:\r\nUse generative AI to transform natural language requirements from different formats (PDF, PPT, Word) into a complete set of test cases, and to generate the final automated script \r\n(Appium, Selenium) of the corresponding automated tests.\r\n\r\nPre-requisites:\r\n• Knowledge of Java, python, javascript, html, css\r\n• Knowledge of automated testing (e.g., Selenium, Appium).\r\n• Knowledge of AI and Machine learning approaches\r\n• Demonstrated interest in automated testing, Generative AI algorithms\r\nSkills acquired:\r\n• Learning about Generative AI to speed-up testing and validation processes\r\n• Learning about automated generative process from functional requirements to test\r\ncases for financial services",
+        13923, 
+        "Apprendimento delle forze di contatto per la generazione di traiettorie umanoidi",
+        "Learning Contact Forces for Humanoid Trajectory Generation",
+        "CONTESTO\r\nQuesto progetto di tesi è proposto dal Laboratorio di Intelligenza Artificiale e Meccanica (AMI) dell'Istituto Italiano di Tecnologia - Centro di Robotica e Sistemi Intelligenti di Genova, in collaborazione con il Laboratorio VANDAL del Politecnico di Torino.\r\nIl progetto si concentrerà sull'apprendimento delle forze di contatto e dello stato di contatto dei piedi del robot umanoide ergoCub. Il robot ergoCub è un robot alto 150 cm e pesante 55,7 kg, destinato a essere utilizzato per migliorare l'ergonomia dei compiti dei lavoratori umani. Alcuni esempi dei suoi casi d'uso includono il sollevamento collaborativo e la navigazione autonoma.\r\nAttualmente il laboratorio utilizza il framework ADHERENT [1] per generare traiettorie di camminata apprese per il robot, basate sull'architettura di apprendimento MANN [2]. Questo approccio utilizza i dati raccolti da un essere umano che indossa una tuta di sensori per addestrare la rete. I parametri appresi includono varie informazioni sullo stato del robot, ma nonostante il robot sia dotato di sensori di forza di contatto, il framework esistente per la generazione di traiettorie non sfrutta attualmente questi dati.\r\nLe informazioni di contatto possono essere estremamente utili per rendere più fluide le traiettorie generate, oltre ad aprire la possibilità di camminare su terreni accidentati o di adattarsi a disturbi esterni [4]. L'uso dei dati di forza registrati non è banale, poiché richiede la conversione delle forze associate all'uomo su cui sono stati rilevati i dati nelle forze previste sul robot per un movimento simile. Per migliorare la qualità delle forze apprese, lo studente può trovare utile studiare metodi di apprendimento informati dalla fisica [5]. L'apprendimento informato dalla fisica è una branca dell'apprendimento automatico che si concentra specificamente sull'iniezione di informazioni fisiche nell'architettura di apprendimento, sia 1) modellando il set di dati, 2) modificando l'architettura o 3) coinvolgendo le ODE/PDE che governano il sistema nella funzione di perdita.\r\nTutti questi metodi sono progettati per aiutare l'apprendimento a convergere verso risultati che imitano i dati di addestramento e seguono le leggi fisiche conosciute.\r\n\r\nOBIETTIVO\r\nGli obiettivi di questa tesi sono i seguenti:\r\n\r\n1.\tRaccogliere dati sulla locomozione umana con informazioni sulla forza utilizzando la tuta con sensore iFeel e le scarpe con sensore di forza.\r\n2.\tReindirizzare (elaborare) i dati dell'uomo sul modello del robot ergoCub.\r\n3.\tUtilizzare strategie di codifica degli eventi [3] per consentire al framework ADHERENT di apprendere le informazioni di contatto in aggiunta ai parametri esistenti.\r\n4.\tValutare il successo delle traiettorie risultanti addestrate utilizzando i dati di forza sia in simulazione che sul robot reale.\r\n5.\t(Opzionale) Migliorare la qualità delle traiettorie di contatto apprese utilizzando l'apprendimento informato dalla fisica.\r\n\r\n\r\nRIFERIMENTI\r\n[1] P. M. Viceconte, R. Camoriano, G. Romualdi, D. Ferigo, S. Dafarra, S. Traversaro, G. Oriolo, L. Rosasco e D. Pucci, “ADHERENT: Learning human-like trajectory generators for whole-body control of humanoid robots,” IEEE Robotics and Automation Letters, vol. 7,\r\nno. 2, pp. 2779-2786, aprile 2022.\r\n[2] Zhang, He & Starke, Sebastian & Komura, Taku & Saito, Jun. (2018). Reti neurali adattive al modo per il controllo del movimento dei quadrupedi. ACM Transactions on Graphics. 37. 1-11. 10.1145/3197517.3201366.\r\n[3] D. Holden, “Encoding Events for Neural Networks”, theorangeduck.com. https://theorangeduck.com/page/encoding-events-neural-networks.\r\n[4] Tsounis, Vassilios & Alge, Mitja & Lee, Joonho & Farshidian, Farbod & Hutter, Marco. (2020). DeepGait: Planning and Control of Quadrupedal Gaits Using Deep Reinforcement Learning. IEEE Robotics and Automation Letters. PP. 1-1. 10.1109/LRA.2020.2979660.\r\n[5] Cuomo, Salvatore & Schiano Di Cola, Vincenzo & Giampaolo, Fabio & Rozza, Gianluigi & Raissi, Maziar & Piccialli, Francesco. (2022). Apprendimento automatico scientifico attraverso reti neurali informate dalla fisica: Dove siamo e cosa ci aspetta. Journal of Scientific Computing. 92. 10.1007/s10915-022-01",
+        "CONTEXT\r\nThis thesis project is proposed by the Artificial and Mechanical Intelligence (AMI) Lab at Istituto Italiano di Tecnologia, - Center for Robotics and Intelligent Systems located in Genoa, in collaboration with the VANDAL Laboratory at Politecnico di Torino.\r\nThe project will focus on incorporating the learning of contact forces and contact status of the feet of the humanoid ergoCub robot. The ergoCub robot is a 150 cm tall, 55.7 Kg heavy robot intended to be used for purposes which improve the ergonomy of human workers’ tasks. Some examples of its use cases include collaborative lifting and autonomous navigation.\r\nCurrently, the lab is using the ADHERENT framework [1] to generate learned walking trajectories for the robot, based on the MANN learning architecture [2]. This approach uses data collected by a human wearing a sensor suit to train the network. The learned parameters include various information about the state of the robot, but despite the robot being equipped with contact force sensors, the existing trajectory generation framework does not currently take advantage of this data.\r\nContact information can be extremely useful for making generated trajectories smoother, and also opens up the possibilities for walking on rough terrain or adapting to external disturbances [4]. Use of recorded force data is nontrivial as it requires the conversion of the forces associated with the human on which the data is taken to the expected forces on the robot for a similar motion. The student may also find it helpful to investigate physics-informed learning methods [5] for improving the quality of the learned forces. Physics-informed learning is a branch of machine learning that focuses specifically on injecting physics information into the learning architecture, either by 1) shaping the dataset, 2) modifying the architecture, or 3) involving the ODEs/PDEs that govern the system in the loss function.\r\nAll these methods are designed to help the learning converge to outputs that mimic the training data and follow known physical laws.\r\n\r\n\r\nGOAL\r\nThe goals of this thesis are the following:\r\n\r\n1.\tCollect human locomotion data with force information using the iFeel sensor suit and force-sensing shoes.\r\n2.\tRetarget (process) the data from the human onto the ergoCub robot model.\r\n3.\tUse event encoding strategies [3] to allow the ADHERENT framework to learn the contact information in addition to the existing parameters.\r\n4.\tEvaluate the success of the resultant trajectories trained using force data in both simulation and on the real robot.\r\n5.\t(Optional) Improve quality of learned contact trajectories using phsyics-informed learning.\r\n\r\n\r\nREFERENCES\r\n[1] P. M. Viceconte, R. Camoriano, G. Romualdi, D. Ferigo, S. Dafarra, S. Traversaro, G. Oriolo, L. Rosasco, and D. Pucci, “ADHERENT: Learning human-like trajectory generators for whole-body control of humanoid robots,” IEEE Robotics and Automation Letters, vol. 7,\r\nno. 2, pp. 2779–2786, apr 2022.\r\n[2] Zhang, He & Starke, Sebastian & Komura, Taku & Saito, Jun. (2018). Mode-adaptive neural networks for quadruped motion control. ACM Transactions on Graphics. 37. 1-11. 10.1145/3197517.3201366. \r\n[3] D. Holden, “Encoding Events for Neural Networks,” theorangeduck.com. https://theorangeduck.com/page/encoding-events-neural-networks.\r\n[4] Tsounis, Vassilios & Alge, Mitja & Lee, Joonho & Farshidian, Farbod & Hutter, Marco. (2020). DeepGait: Planning and Control of Quadrupedal Gaits Using Deep Reinforcement Learning. IEEE Robotics and Automation Letters. PP. 1-1. 10.1109/LRA.2020.2979660. \r\n[5] Cuomo, Salvatore & Schiano Di Cola, Vincenzo & Giampaolo, Fabio & Rozza, Gianluigi & Raissi, Maziar & Piccialli, Francesco. (2022). Scientific Machine Learning Through Physics–Informed Neural Networks: Where we are and What’s Next. Journal of Scientific Computing. 92. 10.1007/s10915-022-01939-z. \r\n",
         NULL,
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        "2024-09-03",
-        "2025-09-03",
-        0, /* Discrepancy with real value */
+        "PROFILO\r\n• È richiesta una conoscenza e un corso precedente sull'apprendimento supervisionato di Machine Learning\r\n• Un background o interesse nel lavorare con robot è molto apprezzato\r\n• Sono richieste ottime competenze di programmazione (Python)\r\n• È richiesta l'attitudine e l'interesse per la realizzazione di progetti basati sulla ricerca\r\n• È richiesta la disponibilità a trasferirsi per un periodo prolungato per lavorare con il robot umanoide del mondo reale e i sistemi di sensori presso il centro di ricerca nazionale Istituto Italiano di Tecnologia a Genova, Italia.\r\n\r\nSuddivisione delle attività previste:\r\n• Studio della letteratura e studio – 20%\r\n• Implementazione – 60%\r\n• Esperimenti – 20%",
+        "PROFILE\r\n• Prior knowledge and coursework on supervised Machine Learning are required\r\n• A background or interest in working with robots is highly appreciated\r\n• Excellent programming skills are required (Python)\r\n• Attitude for and interest in carrying out research-driven projects are a plus\r\n• Availability to relocate for an extended period for working with the real-world humanoid robot and sensing systems at Istituto Italiano di Tecnologia national research center in Genoa, Italy, is required.\r\n\r\nExpected activities breakdown:\r\n• Literature and study – 20%\r\n• Implementation – 60%\r\n• Experiments – 20%",
+        "La prima parte della tesi sarà dedicata a una revisione della letteratura sui seguenti argomenti:\r\n• Metodi di apprendimento delle forze di contatto per la locomozione (quadrupedi, bipedi, ecc.)\r\n• Codifica degli eventi nell'apprendimento automatico [3]\r\n• (Opzionale) Tecniche di apprendimento automatico informate dalla fisica\r\nLo studente che accetta il progetto proposto dovrebbe inizialmente concentrarsi sulla raccolta e l'elaborazione dei dati di contatto, utilizzando la tuta sensoriale iFeel e le scarpe. Successivamente, lo studente incorporerà l'apprendimento delle informazioni di forza nel framework di generazione delle traiettorie esistente. Alcune opzioni su come farlo includono la progettazione di un'altra rete parallela per apprendere le informazioni di contatto, o la codifica delle informazioni di contatto in modo che possano essere apprese efficacemente.\r\nUna volta implementato il metodo scelto, lo studente valuterà l'efficacia dell'approccio e l'accuratezza delle informazioni di forza apprese sul robot simulato e testerà le traiettorie generate sul robot reale ergoCub.\r\n\r\n",
+        "The first part of the thesis will be devoted to performing a literature review on the following topics:\r\n•\tMethods of learning contact forces for locomotion (quadruped, biped, etc.)\r\n•\tEvent encoding in machine learning [3]\r\n•\t(Optional) Physics-informed machine learning techniques\r\nThe student who accepts the proposed project should first focus on the gathering and processing of contact data, using the iFeel sensor suit and shoes. The student will then incorporate the learning of force information into the existing trajectory generation framework. Some options for how to do this include designing another, parallel network to learn the contact information, or encoding the contact information such that it can be learned effectively.\r\nOnce the chosen method is implemented, the student will evaluate the efficacy of the approach and the accuracy of the learned force information on the simulated robot as well as test the generated trajectories on the real ergoCub robot.\r\n\r\n",
+        "Evelyn D'Elia, Istituto Italiano di Tecnologia, Genoa, Italy\r\nDaniele Pucci, Istituto Italiano di Tecnologia, Genoa, Italy",
+        "2024-07-15",
+        "2025-07-15", 
         0,
-        "CL003",
-        "2",
-        NULL
+        0,
+        "CL003", 
+        "2", 
+        "learning force information for humanoid trajectories - polito iit thesis proposal.pdf "
     ),
     (
         14024,
@@ -3208,6 +3239,26 @@ VALUES
         "AI-based solutions for web site automated monitoring & regression testing",
         "Tesi presso Concept Quality Reply\r\n\r\nContesto:\r\nNel contesto di progetti altamente innovativi e tecnicamente stimolanti, vogliamo sviluppare una soluzione capace di eseguire il monitoraggio e i test di non regressione su un sito web in modo completamente automatizzato, sfruttando tecniche di Intelligenza Artificiale e Computer Vision. La soluzione sarà in grado di analizzare automaticamente un sito web tramite web crawler che indicizzano tutti i contenuti/pagine, monitorando e verificando automaticamente attraverso tecniche di Computer Vision/IA le variazioni rispetto a una baseline definita, al fine di individuare possibili deviazioni (ad esempio, temporanea indisponibilità, regressioni software dopo un nuovo deploy, ecc.), escludendo i falsi positivi (ad esempio, contenuti dinamici).\r\n\r\nDescrizione:\r\nIl candidato farà parte di un team dedicato alla stesura di innovazioni su tematiche di IA/ML (comunità di pratica interna), avendo quindi un supporto costante e la possibilità di confrontarsi con altri colleghi. Il candidato contribuirà all'architettura della soluzione, allo scouting degli strumenti e delle tecniche disponibili sul mercato che si adattano alla soluzione progettata, all'implementazione e validazione di un proof-of-concept, e alla sperimentazione su siti web esistenti per gettare le basi per un MVP (Minimum Viable Product). Considerando la natura innovativa del progetto, questo sarà gestito con una metodologia Agile per mantenere un controllo ravvicinato della pianificazione/progresso delle attività e, al contempo, essere in grado di indirizzarlo nel modo più efficiente.\r\n\r\nFasi:\r\n\r\nDefinizione dell'architettura di base della soluzione\r\nScouting degli strumenti e delle tecniche esistenti sul mercato che si adattano alla soluzione progettata\r\nImplementazione e validazione di un primo PoC (proof-of-concept)\r\nSperimentazione su siti web esistenti per valutare la qualità e la robustezza del PoC\r\nMVP (Minimum Viable Product)\r\nPrerequisiti:\r\n\r\nDimostrato interesse nei campi dell'IA/Computer Vision/Low-Code (progetti universitari, attività extracurriculari, ecc.)\r\nInteresse per le tecniche di Quality Assurance e automazione dei test (progetti universitari, attività extracurriculari, ecc.)\r\nCapacità di apprendimento autonomo\r\nCompetenze acquisite:\r\n\r\nIA, Computer Vision, Web Crawler, tecniche di Monitoraggio QA e Testing di Regressione, approccio di delivery Agile",
         "Thesis work at Concept Quality Reply\r\n\r\nContext: \r\nIn the context of highly innovative and technically inspiring projects, we want to build a solution capable to run monitoring & non regression testing over a web site, in \r\na completely automated fashion, leveraging AI & Computer Vision techniques. The solution is meant to automatically analyze a web site through web crawlers \r\nindexing all content / pages, and to automatically monitor and check through Computer Vision / AI techniques for variations w ith respect to a given baseline, in order \r\nto point out possible deviations (e.g. temporary unavailability, sw regressions after a new deploy, etc.), excluding false positives (e.g. dynamic content).\r\n\r\nDescription: \r\nThe candidate will take part of a dedicated team drafting innovation on AI / ML topics (internal community of practice), ther efore having constant support and \r\npossibility for confrontation with other colleagues. The candidate should contribute to solution architecture, to the scouting of existing tools and techniques available \r\nin the market that can fit to the designed solution, to implementation and validation of a proof-of-concept, to piloting on existing web sites in order to set the basis for \r\nan MVP (Minimum Viable Product). According to the innovative nature of the project, the project will be run with an Agile met hodology in order to keep close control \r\nof task planning/progress and at the same time be able to direct it in the most efficient way\r\n\r\nPhases: \r\n• Drafting of baseline solution architecture\r\n• Scouting of existing tools and techniques available in the market that can fit to the designed solution \r\n• Implementation and validation of a first POC (proof-of-concept)\r\n• Piloting on existing web sites in order to assess POC quality, robustness, etc.\r\n• MVP (Minimum Viable Product)\r\n\r\nPre-requisites: \r\n• Demonstrated interest in AI / Computer Vision / Low-Code fields (university projects, extracurricular activities..)\r\n• Interest in Quality Assurance techniques and test automation (university projects, extracurricular activities..)\r\n• Self-directed learning skills\r\n\r\nSkills acquired: \r\n• AI, Computer Vision, Web Crawlers, QA Monitoring & Regression testing techniques, Agile delivery approach\r\n",
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        "2024-09-03",
+        "2025-09-03",
+        0, /* Discrepancy with real value */
+        0,
+        "CL003",
+        "2",
+        NULL
+    ),
+    (
+        14026,
+        "Utilizzo dell'IA per la generazione automatizzata di script di test",
+        "Use of AI for automated test script generation",
+        "Tesi presso Concept Quality Reply\r\n\r\nQuesta tesi riconosce il ruolo fondamentale della generazione di test case utilizzando l’IA generativa per garantire la qualità e l'affidabilità del prodotto durante l'intero ciclo di vita, migliorando la soddisfazione degli utenti e riducendo i costi.\r\n\r\nDescrizione:\r\nEcco una breve descrizione delle attività che il candidato per la tesi potrebbe svolgere all'interno del team sotto la guida di un tutor esperto:\r\n\r\nRivedere la ricerca rilevante su IA generativa e test automatizzati.\r\nDefinire l'ambito e le sfide della generazione di test case basata su IA.\r\nRaccogliere dataset per l'addestramento e la valutazione del modello.\r\nCreare modelli di IA per la generazione di test case.\r\nProgettare esperimenti per valutare le prestazioni del modello.\r\nAnalizzare i risultati degli esperimenti per misurare l'efficacia del sistema.\r\nRaffinare il modello di IA basandosi sui feedback delle valutazioni.\r\nFamiliarità con diversi framework di test per vari aspetti del testing di app mobili (ad esempio, test UI, test di integrazione).\r\nEsperienza pratica con framework di test popolari (es. Selenium, Appium).\r\nScrivere e presentare i risultati della ricerca in una tesi.\r\nObiettivi:\r\nUtilizzare l'IA generativa per trasformare requisiti in linguaggio naturale da diversi formati (PDF, PPT, Word) in un set completo di test case e generare lo script automatizzato finale (Appium, Selenium) dei test automatizzati corrispondenti.\r\n\r\nPrerequisiti:\r\n\r\nConoscenza di Java, Python, JavaScript, HTML, CSS\r\nConoscenza del testing automatizzato (ad esempio, Selenium, Appium)\r\nConoscenza di approcci di IA e Machine Learning\r\nInteresse dimostrato per il testing automatizzato, algoritmi di IA generativa\r\nCompetenze acquisite:\r\n\r\nApprendimento sull’IA generativa per velocizzare i processi di testing e validazione\r\nApprendimento del processo generativo automatizzato dai requisiti funzionali ai test case per i servizi finanziari",
+        "Thesis work at Concept Quality Reply\r\n\r\nContext:\r\nThis thesis recognizes the pivotal role of test case generation, using generative AI, to ensure product quality and reliability throughout the entire product lifecycle, ultimately \r\nenhancing user satisfaction and reducing cost.\r\n\r\nDescription:\r\nHere's a brief description of the activities the candidate for the thesis might undertake within the team under the guidance of an expert tutor:\r\n• Review relevant research on generative AI and automated testing.\r\n• Define the scope and challenges of AI-based test case generation.\r\n• Gather datasets for model training and evaluation.\r\n• Create AI models for test case generation.\r\n• Design experiments to assess model performance.\r\n• Analyze experiment results to measure system effectiveness.\r\n• Refine the AI model based on evaluation feedback.\r\n• Familiarity with various test frameworks for different aspects of mobile app testing (e.g., UI testing, integration testing).\r\n• Hands-on experience with popular testing frameworks (e.g., Selenium, Appium).\r\n• Write and present the research findings in a thesis.\r\n\r\nObjectives:\r\nUse generative AI to transform natural language requirements from different formats (PDF, PPT, Word) into a complete set of test cases, and to generate the final automated script \r\n(Appium, Selenium) of the corresponding automated tests.\r\n\r\nPre-requisites:\r\n• Knowledge of Java, python, javascript, html, css\r\n• Knowledge of automated testing (e.g., Selenium, Appium).\r\n• Knowledge of AI and Machine learning approaches\r\n• Demonstrated interest in automated testing, Generative AI algorithms\r\nSkills acquired:\r\n• Learning about Generative AI to speed-up testing and validation processes\r\n• Learning about automated generative process from functional requirements to test\r\ncases for financial services",
         NULL,
         NULL,
         NULL,
@@ -3261,6 +3312,26 @@ VALUES
         "CL003",
         "2",
         NULL
+    ),
+    (
+        14299, 
+        "Scalare la Raccolta di Dati per l'Apprendimento di Robot Multi-Dita",
+        "Scaling-up Data Collection for Multi-Fingered Robot Learning",
+        "La disponibilità di dataset diversificati ed eterogenei è stata la chiave per raggiungere gli ultimi successi nel Natural Language Processing (NLP) e nella Computer Vision (CV).\r\nRaccogliere dataset che dimostrino robot che eseguono compiti di manipolazione reali per addestrare l'equivalente per la robotica di un modello di Computer Vision pre-addestrato su ImageNet è stato un problema aperto di lunga data a causa della complessità della raccolta di dati robotici reali. Il problema è stato recentemente affrontato dal progetto Open X-Embodiment. Questo progetto ha portato alla raccolta di un dataset comprendente un gran numero di dataset più piccoli che mostrano robot che eseguono un'ampia gamma di compiti di manipolazione. Tuttavia, pur essendo il più grande dataset aperto per compiti di manipolazione robotica, i dataset nella collaborazione Open X-Embodiment considerano generalmente pinze a due dita e una limitata multi-modalità dei sensori.\r\nInoltre, la raccolta di dati di addestramento per la robotica viene solitamente eseguita tramite tele-operazione, che è estremamente dispendiosa in termini di tempo e difficile da implementare in ambienti quotidiani, poiché richiederebbe di spostare il robot in tali ambienti per la raccolta dei dati.\r\nUniversal Manipulation Interface (UMI) supera questi problemi presentando un framework che consente di raccogliere dati in-the-wild da dimostrazioni umane raccolte con una pinza a due dita portatile e il trasferimento zero-shot delle politiche addestrate con tali dati sul robot.\r\nQuesta tesi si concentra sull'implementazione di un nuovo framework per la raccolta di dati multi-dita in ambienti quotidiani e sull'apprendimento delle politiche robotiche su tali dati. Il lavoro di tesi indagherà le metodologie per raccogliere tali dimostrazioni con una mano antropomorfa portatile LEAP e implementare le politiche apprese su un manipolatore Franka Panda. La tesi mira a consentire al robot di eseguire autonomamente compiti di manipolazione impegnativi, come ordinare oggetti da un disordine di articoli simili (ad esempio, oggetti in un cestino del supermercato) o compiti a lungo termine come la preparazione dei pasti.\r\n\r\nVedi allegato per dettagli e competenze richieste.",
+        "The availability of diverse and heterogeneous datasets has been the key to achieve the latest success in Natural Language Processing (NLP) and Computer Vision (CV).\r\nCollecting datasets that demonstrate robots performing real manipulation tasks to train the equivalent for robotics of a Computer Vision model pre-trained on ImageNet has been a long-standing open problem due to the complexity of collecting real robotic data.  The problem has recently been tackled by the Open X-Embodiment project. This project led to the collection of a dataset comprising a large number of smaller datasets showing robots performing a wide number of manipulation tasks. However, while being the largest open dataset for robotic manipulation tasks, datasets in the Open X-Embodiment collaboration generally consider two-fingered grippers and limited sensor multi-modality.\r\nMoreover, collection of training data for robotics is usually performed via tele-operation, which is extremely time consuming and is difficult to deploy in everyday environments, since it would require moving the robot in such settings for data collection. \r\nUniversal Manipulation Interface (UMI) overcomes these problems presenting a framework that allows to collect data in-the-wild from human demonstrations collected with a hand-held two-fingered gripper, and zero-shot transfer of policies trained with such data on the robot. \r\nThis thesis focuses on the deployment of a new framework for multi-fingered data collection in everyday environments and robot policy learning on such data. The thesis work will investigate methodologies to collect such demonstrations with a hand-held LEAP anthropomorphic hand and deploy the learned policies on a Franka Panda manipulator. The thesis aims at enabling the robot to autonomously perform challenging manipulation tasks, such as sorting objects from a clutter of similar items (e.g. objects in a supermarket basket), or long-horizon tasks as meal preparation.\r\n\r\nSee attachment for details and required skills.",
+        NULL,
+        "Lo studente è tenuto a svolgere la tesi in presenza presso il Centro per la Robotica e i Sistemi Intelligenti dell'IIT situato a Genova.\r\n\r\nSono richieste conoscenze pregresse e corsi su Machine Learning e Computer Vision.\r\nSono richieste buone competenze di programmazione (Python). La conoscenza della robotica è un plus.\r\nSuddivisione delle attività previste:\r\n● Studio della letteratura – 20%\r\n● Implementazione – 40%\r\n● Esperimenti – 40%",
+        "The student is required to carry out the thesis in presence at the IIT Center for Robotics and Intelligent Systems located in Genoa.\r\n\r\nPrior knowledge and coursework on Machine Learning and Computer Vision are required.\r\nGood programming skills are required (Python). Knowledge of robotics is a plus.\r\nExpected activities breakdown:\r\n● Literature and study – 20%\r\n● Implementation – 40%\r\n● Experiments – 40%",
+        "Se interessato, è possibile candidarsi tramite il seguente modulo: https://forms.gle/83hfp8uAQQcTpssVA\r\nContatta raffaello.camoriano@polito.it se hai domande.",
+        "If interested, you can apply via the following form: https://forms.gle/83hfp8uAQQcTpssVA\r\nContact raffaello.camoriano@polito.it if you have questions. ",
+        "Federico Ceola, Ph. D. (Istituto Italiano di Tecnologia)\r\nProf. Lorenzo Natale (Istituto Italiano di Tecnologia)",
+        "2024-11-22",
+        "2025-11-22", 
+        0,
+        0,
+        "CL003", 
+        "2", 
+        "thesis ideas polito-iit - a.a. 2024-25.pdf"
     );
 
 -- ------------------------------------------------------------
@@ -3289,6 +3360,12 @@ VALUES
     (10187, 11),
     (10187, 12),
     (10187, 13),
+    (12358, 34),
+    (12358, 35),
+    (12358, 36),
+    (12358, 37),
+    (12358, 38),
+    (12358, 39),
     (12469, 14),
     (12469, 15),
     (12469, 16),
@@ -3345,6 +3422,10 @@ VALUES
     (13872, 33),
     (13837, 1),
     (13837, 4),
+    (13923, 35),
+    (13923, 37),
+    (13923, 38),
+    (13923, 40),
     (14024, 1),
     (14024, 8),
     (14025, 1),
@@ -3355,7 +3436,13 @@ VALUES
     (14027, 8),
     (14027, 9),
     (14137, 4),
-    (14137, 8);
+    (14137, 8),
+    (14299, 37),
+    (14299, 38),
+    (14299, 41),
+    (14299, 42),
+    (14299, 43),
+    (14299, 44);
 
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_type table ↓
@@ -3364,6 +3451,8 @@ INSERT INTO
     thesis_proposal_type (thesis_proposal_id, type_id)
 VALUES
     (10187, 9),
+    (12358, 7),
+    (12358, 9),
     (12946, 7),
     (13169, 7),
     (13275, 9),
@@ -3374,7 +3463,11 @@ VALUES
     (13860, 9),
     (13872, 7),
     (13837, 9),
-    (14137, 7);
+    (13923, 7),
+    (13923, 9),
+    (14137, 7),
+    (14299, 7),
+    (14299, 9);
 
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_supervisor_cosupervisor table ↓
@@ -3383,6 +3476,7 @@ INSERT INTO
     thesis_proposal_supervisor_cosupervisor (thesis_proposal_id, teacher_id, is_supervisor)
 VALUES
     (10187, 1921, 1),
+    (12358, 94713, 1),
     (12469, 38485, 1),
     (12469, 16873, 0),
     (12946, 38485, 1),
@@ -3400,11 +3494,13 @@ VALUES
     (13860, 38485, 1),
     (13860, 16873, 0),
     (13872, 38485, 1),
-    (14026, 38485, 1),
+    (13923, 94713, 1),
     (14024, 38485, 1),
     (14025, 38485, 1),
+    (14026, 38485, 1),
     (14027, 38485, 1),
-    (14137, 38485, 1);
+    (14137, 38485, 1),
+    (14299, 94713, 1);
 
 -- ------------------------------------------------------------
 -- ↓ logged_student table ↓
