@@ -83,9 +83,10 @@ export default function PoliNavbar(props) {
     try {
       props.setNavbarDataLoading(true);
       await API.updateLoggedStudent(newStudent);
-      setLoggedStudent(newStudent);
     } catch (error) {
       console.error('Error updating logged student:', error);
+    } finally {
+      props.setRefresh(!props.refresh);
     }
   };
 

@@ -38,6 +38,7 @@ function App() {
   const [allStudents, setAllStudents] = useState([]);
   const [loggedStudent, setLoggedStudent] = useState(null);
   const [navbarDataLoading, setNavbarDataLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -72,10 +73,15 @@ function App() {
       try {
         if (navbarDataLoading) {
           const allStudents = await API.getAllStudents();
-          setAllStudents(allStudents);
-          console.log(allStudents)
+          if (allStudents && allStudents.length > 0)
+            setAllStudents(allStudents);
+          else
+            setAllStudents([]);
           const loggedStudent = await API.getLoggedStudent();
-          setLoggedStudent(loggedStudent);
+          if (loggedStudent)
+            setLoggedStudent(loggedStudent);
+          else
+            setLoggedStudent(null);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -84,7 +90,7 @@ function App() {
       }
     };
     fetchData();
-  }, [loggedStudent]);
+  }, [refresh]);
 
   return (
     <>
@@ -95,7 +101,7 @@ function App() {
             <FavoritesContext.Provider value={{ favorites, setFavorites }}>
               <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
                 <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
-                <PoliNavbar allStudents={allStudents} setNavbarDataLoading={setNavbarDataLoading} />
+                <PoliNavbar allStudents={allStudents} setNavbarDataLoading={setNavbarDataLoading} refresh={refresh} setRefresh={setRefresh}/>
                 <Row>
                   <Sidebar />
                   <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
