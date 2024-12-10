@@ -51,10 +51,11 @@
   color: var(--background);
 }
 
-.card-button:active:focus {
-  border-color: var(--primary);
-  background-color: var(--primary);
-  color: var(--background);
+.card-button:active,
+.card-button:focus {
+  border-color: var(--primary) !important;
+  background-color: var(--primary) !important;
+  color: var(--background) !important;
 }
 
 .card-link {

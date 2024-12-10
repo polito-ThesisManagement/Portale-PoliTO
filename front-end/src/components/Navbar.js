@@ -28,6 +28,8 @@ import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import { getLogo } from '../utils/utils';
 
+import PropTypes from 'prop-types';
+
 export default function PoliNavbar(props) {
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
   const { desktopToggle } = useContext(DesktopToggleContext);
@@ -304,3 +306,10 @@ export default function PoliNavbar(props) {
     </Navbar>
   );
 }
+
+PoliNavbar.propTypes = {
+  allStudents: PropTypes.array,
+  setNavbarDataLoading: PropTypes.func,
+  refresh: PropTypes.bool,
+  setRefresh: PropTypes.func,
+};
