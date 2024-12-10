@@ -14,6 +14,6 @@ export const getLogo = (logoDark, logoLight) => {
   return theme === 'dark' ? logoLight : logoDark;
 };
 
-export function scrollTop(){
+export function scrollTop() {
   window.scrollTo(0, 0);
 }

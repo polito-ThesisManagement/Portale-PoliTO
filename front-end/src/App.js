@@ -4,10 +4,10 @@ import { Col, Row } from 'react-bootstrap';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import API from './API';
+import FloatingButton from './components/FloatingButton';
 import LoadingModal from './components/LoadingModal';
 import PoliNavbar from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
-import FloatingButton from './components/FloatingButton';
 import Avvisi_GC from './data/Avvisi_GC.json';
 import AreaPersonale from './pages/AreaPersonale';
 import Carriera from './pages/Carriera';
@@ -73,15 +73,11 @@ function App() {
       try {
         if (navbarDataLoading) {
           const allStudents = await API.getStudents();
-          if (allStudents && allStudents.length > 0)
-            setAllStudents(allStudents);
-          else
-            setAllStudents([]);
+          if (allStudents && allStudents.length > 0) setAllStudents(allStudents);
+          else setAllStudents([]);
           const loggedStudent = await API.getLoggedStudent();
-          if (loggedStudent)
-            setLoggedStudent(loggedStudent);
-          else
-            setLoggedStudent(null);
+          if (loggedStudent) setLoggedStudent(loggedStudent);
+          else setLoggedStudent(null);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -101,7 +97,12 @@ function App() {
             <FavoritesContext.Provider value={{ favorites, setFavorites }}>
               <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
                 <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
-                <PoliNavbar allStudents={allStudents} setNavbarDataLoading={setNavbarDataLoading} refresh={refresh} setRefresh={setRefresh}/>
+                <PoliNavbar
+                  allStudents={allStudents}
+                  setNavbarDataLoading={setNavbarDataLoading}
+                  refresh={refresh}
+                  setRefresh={setRefresh}
+                />
                 <Row>
                   <Sidebar />
                   <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>

@@ -28,8 +28,8 @@
 }
 
 .custom-sidebar {
-  --r: 20px;  /* rounded part */
-  --s: 20px;  /* size of the cut */
+  --r: 20px; /* rounded part */
+  --s: 20px; /* size of the cut */
   --a: 25deg; /* depth of the curvature */
   background-color: var(--surface);
   color: var(--primary);
@@ -41,14 +41,14 @@
   position: fixed;
   overflow-y: auto;
   transition-duration: 0.5s;
-  --_m:/var(--r) calc(2*var(--r)) no-repeat
-    radial-gradient(100% 50% at left,#000 calc(100% - 1px),#0000);
-  --_d:(var(--s) + var(--r))*cos(var(--a));
+  --_m: /var(--r) calc(2 * var(--r)) no-repeat radial-gradient(100% 50% at left, #000 calc(100% - 1px), #0000);
+  --_d: (var(--s) + var(--r)) * cos(var(--a));
   mask:
-    100% calc(50% + var(--_d)) var(--_m),100% calc(50% - var(--_d)) var(--_m),
-    radial-gradient(var(--s) at calc(100% + sin(var(--a))*var(--s)) 50% ,
-    #0000 100%,#000 calc(100% + 1px)) calc(var(--r)*(sin(var(--a)) - 1)) 0 no-repeat,
-    linear-gradient(#000 calc(50% - var(--_d)),#0000 0 calc(50% + var(--_d)),#000 0);
+    100% calc(50% + var(--_d)) var(--_m),
+    100% calc(50% - var(--_d)) var(--_m),
+    radial-gradient(var(--s) at calc(100% + sin(var(--a)) * var(--s)) 50%, #0000 100%, #000 calc(100% + 1px))
+      calc(var(--r) * (sin(var(--a)) - 1)) 0 no-repeat,
+    linear-gradient(#000 calc(50% - var(--_d)), #0000 0 calc(50% + var(--_d)), #000 0);
   pointer-events: auto;
 }
 
@@ -87,7 +87,7 @@
     transition-duration: 0.5s;
   }
 
-  .sidebar-toggle{
+  .sidebar-toggle {
     display: none;
   }
 
@@ -103,7 +103,7 @@
 @media (max-width: 600px) {
   .custom-sidebar-wrapper.reduced,
   .custom-sidebar.reduced {
-    width:0;
+    width: 0;
     transition-duration: 0.5s;
   }
 
@@ -155,7 +155,7 @@
   white-space: nowrap;
 }
 
-.sidebar-text.toggle{
+.sidebar-text.toggle {
   display: none;
 }
 

@@ -1,6 +1,7 @@
 // add attachments, thesis type, review prop types, handle null fields better + call to db in parent + API.jsx for mapping
 import React from 'react';
 
+/*
 import { Container } from 'react-bootstrap';
 import { ArrowRightShort } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +9,6 @@ import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
-import Badge from './Badge';
 
 import moment from 'moment';
 import 'moment/locale/it';
@@ -18,9 +18,14 @@ import Title from '../components/Title';
 import '../styles/Text.css';
 import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
+import Badge from './Badge';
 
 moment.locale('it');
-
+*/
+function ThesisProposalDetail() {
+  <></>;
+}
+/*
 function ThesisProposalDetail(props) {
   const { t } = useTranslation();
   const {
@@ -178,7 +183,7 @@ function Environment({ is_internal }) {
     </div>
   );
 }
-/*
+
 ThesisProposalDetail.propTypes = {
   thesisProposal: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -245,6 +250,10 @@ MainSupervisor.propTypes = {
 SecondarySupervisors.propTypes = {
   names: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
-*/
+
 
 export { ThesisProposalDetail, ExpirationDate };
+
+*/
+
+export { ThesisProposalDetail };

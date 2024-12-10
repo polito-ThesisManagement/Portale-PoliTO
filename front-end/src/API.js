@@ -126,7 +126,7 @@ const API = {
   getThesisProposalsTypes,
   getThesisProposalsKeywords,
   getThesisProposalsTeachers,
-  getThesisProposalById
+  getThesisProposalById,
 };
 
 export default API;
