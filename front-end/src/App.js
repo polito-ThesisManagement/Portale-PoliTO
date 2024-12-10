@@ -72,7 +72,7 @@ function App() {
     const fetchData = async () => {
       try {
         if (navbarDataLoading) {
-          const allStudents = await API.getAllStudents();
+          const allStudents = await API.getStudents();
           if (allStudents && allStudents.length > 0)
             setAllStudents(allStudents);
           else
