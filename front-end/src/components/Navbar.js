@@ -235,7 +235,7 @@ export default function PoliNavbar(props) {
                 <Dropdown.Menu
                   style={{
                     right: 'auto',
-                    left: props.allStudents ? '-150px' : '-100px',
+                    left: (props.allStudents && props.allStudents.length > 0) ? '-150px' : '-100px',
                     fontFamily: 'var(--font-primary)',
                   }}
                 >
