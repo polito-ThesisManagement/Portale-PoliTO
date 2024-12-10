@@ -5,7 +5,7 @@ const URL = 'http://localhost:3001/api';
 
 /****** User APIs ******/
 
-async function getAllStudents() {
+async function getStudents() {
   try {
     const response = await axios.get(`${URL}/students`);
     return response.data;
@@ -50,6 +50,60 @@ async function getThesisProposals(lang, page, limit) {
   }
 }
 
+async function getTargetedThesisProposals(lang, page, limit) {
+  try {
+    const response = await axios.get(`${URL}/thesis-proposals/targeted`, {
+      params: {
+        lang,
+        page,
+        limit,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching targeted thesis proposals:', error);
+  }
+}
+
+async function getThesisProposalsTypes(lang) {
+  try {
+    const response = await axios.get(`${URL}/thesis-proposals/types`, {
+      params: {
+        lang,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching thesis proposals types:', error);
+  }
+}
+
+async function getThesisProposalsKeywords(lang) {
+  try {
+    const response = await axios.get(`${URL}/thesis-proposals/keywords`, {
+      params: {
+        lang,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching thesis proposals keywords:', error);
+  }
+}
+
+async function getThesisProposalsTeachers() {
+  try {
+    const response = await axios.get(`${URL}/thesis-proposals/teachers`);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching thesis proposals teachers:', error);
+  }
+}
+
 async function getThesisProposalById(id, lang) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/${id}`, {
@@ -63,6 +117,16 @@ async function getThesisProposalById(id, lang) {
   }
 }
 
-const API = { getThesisProposals, getThesisProposalById, getAllStudents, getLoggedStudent, updateLoggedStudent };
+const API = {
+  getStudents,
+  getLoggedStudent,
+  updateLoggedStudent,
+  getThesisProposals,
+  getTargetedThesisProposals,
+  getThesisProposalsTypes,
+  getThesisProposalsKeywords,
+  getThesisProposalsTeachers,
+  getThesisProposalById,
+};
 
 export default API;

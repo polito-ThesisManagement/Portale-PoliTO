@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
 
+const Collegio = require('./collegio')(sequelize, Sequelize.DataTypes);
 const ThesisProposal = require('./thesis-proposal')(sequelize, Sequelize.DataTypes);
 const Degree = require('./degree')(sequelize, Sequelize.DataTypes);
 const ThesisProposalDegree = require('./thesis-proposal-degree')(sequelize, Sequelize.DataTypes);
@@ -20,6 +21,7 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+db.Collegio = Collegio;
 db.ThesisProposal = ThesisProposal;
 db.Degree = Degree;
 db.ThesisProposalDegree = ThesisProposalDegree;
@@ -32,11 +34,17 @@ db.ThesisProposalSupervisorCoSupervisor = ThesisProposalSupervisorCoSupervisor;
 db.Student = Student;
 
 // Define relationships
+
+Degree.belongsTo(Collegio, {
+  foreignKey: 'id_collegio',
+});
+
 ThesisProposal.belongsToMany(Degree, {
   through: ThesisProposalDegree,
   foreignKey: 'thesis_proposal_id',
   otherKey: 'degree_id',
 });
+
 Degree.belongsToMany(ThesisProposal, {
   through: ThesisProposalDegree,
   foreignKey: 'degree_id',
@@ -48,6 +56,7 @@ ThesisProposal.belongsToMany(Keyword, {
   foreignKey: 'thesis_proposal_id',
   otherKey: 'keyword_id',
 });
+
 Keyword.belongsToMany(ThesisProposal, {
   through: ThesisProposalKeyword,
   foreignKey: 'keyword_id',
@@ -59,6 +68,7 @@ ThesisProposal.belongsToMany(Type, {
   foreignKey: 'thesis_proposal_id',
   otherKey: 'type_id',
 });
+
 Type.belongsToMany(ThesisProposal, {
   through: ThesisProposalType,
   foreignKey: 'type_id',
@@ -70,6 +80,7 @@ ThesisProposal.belongsToMany(Teacher, {
   foreignKey: 'thesis_proposal_id',
   otherKey: 'teacher_id',
 });
+
 Teacher.belongsToMany(ThesisProposal, {
   through: ThesisProposalSupervisorCoSupervisor,
   foreignKey: 'teacher_id',
@@ -79,6 +90,7 @@ Teacher.belongsToMany(ThesisProposal, {
 Student.hasOne(Degree, {
   foreignKey: 'degree_id',
 });
+
 Degree.hasMany(Student, {
   foreignKey: 'degree_id',
 });
@@ -86,6 +98,7 @@ Degree.hasMany(Student, {
 Student.hasOne(LoggedStudent, {
   foreignKey: 'student_id',
 });
+
 LoggedStudent.hasOne(Student, {
   foreignKey: 'student_id',
 });

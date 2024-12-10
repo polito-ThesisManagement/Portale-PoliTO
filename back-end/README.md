@@ -25,6 +25,7 @@ This is the back end of the project. It is a REST API that provides the data for
     
     ```env
     DB_NAME=polito
+    DB_NAME_TEST=polito_test
     DB_USER=your_username
     DB_PASSWORD=your_password
     DB_HOST=localhost
@@ -45,6 +46,29 @@ into 2 folders:
 - unit
 - integration
 
+#### How to run the tests
+1. **Import the test database into MySQL and load data:**
+    - Open MySQL Workbench
+    - Connect to the MySQL Server -> Create a new connection
+    - Open the `database/test/schema_test.sql` file and execute the script
+    - Open the `database/test/data_test.sql` file and execute the script
+2. **Verify that the `.env` file contains the following content:**
+
+    ```env
+    DB_NAME=polito
+    DB_NAME_TEST=polito_test
+    DB_USER=your_username
+    DB_PASSWORD=your_password
+    DB_HOST=localhost
+    DB_PORT=your_port
+    ```
+    - Note: the `DB_NAME_TEST` variable is used to connect to the test database, while the `DB_NAME` variable is
+    used to connect to the development database.
+    - Note: you can rename the .env.example file in the back-end directory to .env and fill in the required
+    fields.
+3. **Run the tests:**
+    - Run `npm test` in the back-end directory
+
 ### Source code (directory)
 The source has been divided into different folder to simplify the readability of the code:
 - `config` => contains the file to configure and initialize the database connection using Sequelize.
@@ -59,7 +83,19 @@ The `server.js` file is the entry point where the HTTP server is created/set up.
 ## APIs
 
 - GET `/api/thesis-proposals`
-    - Get all thesis proposals, accepts query parameter `lang` to get the thesis proposals in a specific language (it | en)
+    - Get all thesis proposals, accepts query parameter `lang` to get the thesis proposals in a specific language (it | en) and some other query parameters to filter and sort the results
+
+- GET `/api/thesis-proposals/targeted`
+    - Get all targeted thesis proposals, accepts query parameter `lang` to get the thesis proposals in a specific language (it | en) and some other query parameters to filter and sort the results
+
+- GET `/api/thesis-proposals/types`
+    - Get all thesis proposals types, accepts query parameter `lang` to get the thesis proposal types in a specific language (it | en) and one query parameter `search` to filter the results
+
+- GET `/api/thesis-proposals/keywords`
+    - Get all thesis proposals keywords, accepts query parameter `lang` to get the thesis proposal keywords in a specific language (it | en) and one query parameter `search` to filter the results
+
+- GET `/api/thesis-proposals/teachers`
+    - Get all thesis proposals teachers, accepts one query parameter `search` to filter the results
 
 - GET `/api/thesis-proposals/:thesisProposalId`
     - Get a thesis proposal by id, accepts query parameter `lang` to get the thesis proposal in a specific language (it | en)
