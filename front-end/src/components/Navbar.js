@@ -14,25 +14,24 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { FaKey, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
-import { AvvisiContext, DesktopToggleContext, UserContext } from '../App';
+import API from '../API';
+import { AvvisiContext, DesktopToggleContext, LoggedStudentContext } from '../App';
 import Searchbar from './Searchbar';
 import SidebarModal from './SidebarModal';
 import ThemeToggle from './ThemeToggle';
-import users from '../App'
 import Logo from '../assets/logo_polito.svg';
 import Logo2 from '../assets/logo_polito_reduced.svg';
 import Logo2White from '../assets/logo_polito_reduced_white.svg';
 import LogoWhite from '../assets/logo_polito_white.svg';
 import Services from '../data/Data.json';
-import Users from '../data/Users';
 import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import { getLogo } from '../utils/utils';
 
-export default function PoliNavbar() {
+export default function PoliNavbar(props) {
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
   const { desktopToggle } = useContext(DesktopToggleContext);
-  const { user, setUser } = useContext(UserContext);
+  const { loggedStudent, setLoggedStudent } = useContext(LoggedStudentContext);
 
   const { t, i18n } = useTranslation();
 
@@ -78,6 +77,16 @@ export default function PoliNavbar() {
 
     const updatedAvvisi = avvisi[0].filter(n => n !== notifica);
     setAvvisi([updatedAvvisi]);
+  };
+
+  const handleLoggedStudentChange = async (newStudent) => {
+    try {
+      props.setNavbarDataLoading(true);
+      await API.updateLoggedStudent(newStudent);
+      setLoggedStudent(newStudent);
+    } catch (error) {
+      console.error('Error updating logged student:', error);
+    }
   };
 
   const popover = (
@@ -213,40 +222,49 @@ export default function PoliNavbar() {
                     paddingRight: '0',
                   }}
                 >
-                  <Image roundedCircle src={user.profile_picture_url} height={48} width={48} color="var(--primary)" />
+                  {
+                    loggedStudent ?
+                      <Image roundedCircle src={loggedStudent.profilePictureUrl} height={48} width={48} color="var(--primary)" />
+                      :
+                      <PersonCircle height={48} width={46} color="var(--primary)" />
+                  }
                 </Dropdown.Toggle>
                 <Dropdown.Menu
                   style={{
                     right: 'auto',
-                    left: '-150px',
+                    left: props.allStudents ? '-150px' : '-100px',
                     fontFamily: 'var(--font-primary)',
                   }}
                 >
-                  <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                    <FaUser size={16} /> {t('navbar.profilo_utente')}
-                  </Dropdown.Item>
-                  <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                    <FaKey size={16} /> {t('navbar.cambio_password')}
-                  </Dropdown.Item>
-                  {Users.filter(u => u.id !== user.id).map((u) => (
-                    <Dropdown.Item
-                      key={u.id}
-                      className="medium-weight"
-                      onClick={() => setUser(u)}
-                      style={{ display: "flex", alignItems: "center", gap: "9px" }}
-                    >
-                      <Image
-                        src={u.profile_picture_url}
-                        alt="Profile picture url"
-                        roundedCircle
-                        style={{ width: '20px', height: '20px', marginLeft: '-2px' }}
-                      />
-                      {u.first_name} {u.last_name}
-                    </Dropdown.Item>
-                  ))}
-                  <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "9px" }}>
-                    <FaSignOutAlt size={17} style={{ marginLeft: "1px" }} /> Logout
-                  </Dropdown.Item>
+                  {loggedStudent && (
+                    <>
+                      <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                        <FaUser size={16} /> {t('navbar.profilo_utente')}
+                      </Dropdown.Item>
+                      <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                        <FaKey size={16} /> {t('navbar.cambio_password')}
+                      </Dropdown.Item>
+                      {props.allStudents && props.allStudents.filter(student => student.id !== loggedStudent.id).map((student) => (
+                        <Dropdown.Item
+                          key={student.id}
+                          className="medium-weight"
+                          onClick={() => handleLoggedStudentChange(student)}
+                          style={{ display: "flex", alignItems: "center", gap: "9px" }}
+                        >
+                          <Image
+                            src={student.profilePictureUrl}
+                            alt="Profile picture"
+                            roundedCircle
+                            style={{ width: '20px', height: '20px', marginLeft: '-2px' }}
+                          />
+                          {student.firstName} {student.lastName}
+                        </Dropdown.Item>
+                      ))}
+                      <Dropdown.Item className="medium-weight" style={{ display: "flex", alignItems: "center", gap: "9px" }}>
+                        <FaSignOutAlt size={17} style={{ marginLeft: "1px" }} /> Logout
+                      </Dropdown.Item>
+                    </>
+                  )}
                   <Dropdown.Item
                     className="dropdown-submenu medium-weight"
                     style={{ display: "flex", alignItems: "center", gap: "10px" }}

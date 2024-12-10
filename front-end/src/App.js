@@ -3,6 +3,8 @@ import React, { createContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
+import API from './API';
+import LoadingModal from './components/LoadingModal';
 import PoliNavbar from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 import FloatingButton from './components/FloatingButton';
@@ -21,20 +23,21 @@ import ProposteDiTesi from './pages/carriera/ProposteDiTesi';
 import './styles/Theme.css';
 import './styles/Utilities.css';
 import { getSystemTheme, scrollTop } from './utils/utils';
-import Users from './data/Users';
 
 export const FavoritesContext = createContext(null);
 export const AvvisiContext = createContext(null);
 export const ThemeContext = createContext(null);
 export const DesktopToggleContext = createContext(null);
-export const UserContext = createContext(null);
+export const LoggedStudentContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState('auto');
   const [favorites, setFavorites] = useState([]);
   const [avvisi, setAvvisi] = useState([Avvisi_GC]);
   const [desktopToggle, setDesktopToggle] = useState(false);
-  const [user, setUser] = useState(Users[0]);
+  const [allStudents, setAllStudents] = useState([]);
+  const [loggedStudent, setLoggedStudent] = useState(null);
+  const [navbarDataLoading, setNavbarDataLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -64,15 +67,35 @@ function App() {
       );
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (navbarDataLoading) {
+          const allStudents = await API.getAllStudents();
+          setAllStudents(allStudents);
+          console.log(allStudents)
+          const loggedStudent = await API.getLoggedStudent();
+          setLoggedStudent(loggedStudent);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setNavbarDataLoading(false);
+      }
+    };
+    fetchData();
+  }, [loggedStudent]);
+
   return (
     <>
       <style>@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap);</style>
       <ThemeContext.Provider value={{ theme, setTheme }}>
-        <UserContext.Provider value={{ user, setUser }}>
+        <LoggedStudentContext.Provider value={{ loggedStudent, setLoggedStudent }}>
           <DesktopToggleContext.Provider value={{ desktopToggle, setDesktopToggle }}>
             <FavoritesContext.Provider value={{ favorites, setFavorites }}>
               <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
-                <PoliNavbar />
+                <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
+                <PoliNavbar allStudents={allStudents} setNavbarDataLoading={setNavbarDataLoading} />
                 <Row>
                   <Sidebar />
                   <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
@@ -98,7 +121,7 @@ function App() {
               </AvvisiContext.Provider>
             </FavoritesContext.Provider>
           </DesktopToggleContext.Provider>
-        </UserContext.Provider>
+        </LoggedStudentContext.Provider>
       </ThemeContext.Provider>
     </>
   );
