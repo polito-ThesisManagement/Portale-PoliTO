@@ -2,7 +2,7 @@
   height: auto;
   margin-top: 86px;
   background-color: var(--surface);
-  margin-left: 224px;
+  margin-left: 220px;
   display: flex;
   padding-left: 0px !important;
   transition-duration: 0.5s;
@@ -21,9 +21,13 @@
   min-width: 200px;
 }
 
+.main-space.toggle {
+  margin-left: 80px;
+}
+
 @media (max-width: 1100px) {
   .main-space.reduced {
-    margin-left: 84px;
+    margin-left: 80px;
   }
 }
 
@@ -45,14 +49,6 @@
   .custom-content.reduced {
     border-top-left-radius: 0px;
   }
-}
-
-.custom-navbar {
-  background-color: var(--surface);
-  color: var(--primary);
-  z-index: 5;
-  width: 100%;
-  position: fixed;
 }
 
 body {
@@ -83,11 +79,11 @@ body {
 
 .custom-container {
   background-color: var(--surface);
-  border-radius: 12px;
+  border-radius: 10px;
   margin-bottom: 16px;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 6px;
+  padding-top: 12px;
   padding-bottom: 8px;
 }
 
@@ -235,4 +231,29 @@ body {
 .no-break {
   display: inline-block;
   white-space: nowrap;
+}
+
+.floating-button {
+  position: fixed;
+  z-index: 100;
+  right: 3%;
+  bottom: 4%;
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  background-color: rgba(var(--medium-orange-rgb), 0.7);
+  color: var(--background-light);
+  border-width: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-button:hover {
+  background-color: rgba(var(--medium-orange-rgb), 0.85);
+  box-shadow: 0 4px 10px rgba(var(--medium-orange-rgb), 0.25);
+}
+
+.floating-button:active {
+  background-color: rgba(var(--medium-orange-rgb), 1) !important;
 }

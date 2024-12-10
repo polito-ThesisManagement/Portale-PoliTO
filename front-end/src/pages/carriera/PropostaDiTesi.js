@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 
 import API from '../../API';
 import LoadingModal from '../../components/LoadingModal';
-import { MyBreadcrumb, ThesisProposalDetail } from '../../components/ThesisProposalDetail';
+import MyBreadcrumb from '../../components/MyBreadcrumb';
+import { ThesisProposalDetail } from '../../components/ThesisProposalDetail';
 
 function PropostaDiTesi() {
   const id = useParams().id;

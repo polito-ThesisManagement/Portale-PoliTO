@@ -64,7 +64,7 @@ export default function BaseCard(props) {
             )}
           </div>
         </div>
-        <div style={{ color: 'var(--text)' }}>{props.description}</div>
+        <div style={{ color: 'var(--text)', marginTop: '12px' }}>{props.description}</div>
         {props.link && props.linkText ? (
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link

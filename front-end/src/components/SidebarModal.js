@@ -16,18 +16,14 @@ import { NavItems } from './Sidebar';
 
 export default function SidebarModal({ show, handleClose }) {
   return (
-    <Modal show={show} onHide={handleClose} dialogClassName="modal-85vw" fullscreen={true}>
-      <Modal.Header closeButton={true}>
-        <Modal.Title
-          style={{
-            width: 'auto',
-            minWidth: '166.3px',
-            height: '57px',
-            marginLeft: '-3px',
-            marginRight: '36px',
-          }}
-        >
-          <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
+    <Modal dialogClassName="modal-size" show={show} onHide={handleClose} fullscreen={true}>
+      <Modal.Header closeButton={true} style={{ height: '87px' }}>
+        <Modal.Title>
+          <Image
+            src={getLogo(Logo, LogoWhite)}
+            alt="Logo PoliTo"
+            style={{ height: '55px', width: 'auto', objectFit: 'contain' }}
+          />
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

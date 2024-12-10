@@ -1,31 +1,56 @@
-import { React } from 'react';
+import React, { useContext } from 'react';
 
 import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaInfoCircle } from 'react-icons/fa';
-import { FaBookOpen, FaBriefcase, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
+import { FaAngleLeft, FaBookOpen, FaBriefcase, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
 import { MdApps } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
+import { DesktopToggleContext } from '../App';
 import '../styles/Sidebar.css';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
 
 function Sidebar() {
+  const { desktopToggle, setDesktopToggle } = useContext(DesktopToggleContext);
+
+  const handleToggle = () => {
+    setDesktopToggle(!desktopToggle);
+  };
+
+  const handleKeyDown = event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleToggle();
+    }
+  };
+
   return (
-    <Nav defaultActiveKey="/home" className="flex-column">
-      <Col className={`col-md-1 custom-sidebar py-2 reduced`}>
-        <NavItems />
-      </Col>
-    </Nav>
+    <>
+      <div className={`custom-sidebar-wrapper reduced ${desktopToggle ? 'toggle' : ''}`}>
+        <div
+          className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`}
+          onClick={handleToggle}
+          onKeyDown={handleKeyDown}
+          role="button"
+          tabIndex={0}
+        >
+          <FaAngleLeft size={20} />
+        </div>
+      </div>
+      <Nav defaultActiveKey="/home" className="flex-column">
+        <Col className={`col-md-1 custom-sidebar py-2 reduced ${desktopToggle ? 'toggle' : ''}`}>
+          <NavItems />
+        </Col>
+      </Nav>
+    </>
   );
 }
 
-export default Sidebar;
-
-export function NavItems({ mobile, handleClose }) {
+function NavItems({ mobile, handleClose }) {
+  const { desktopToggle } = useContext(DesktopToggleContext);
   const location = useLocation();
   const { t } = useTranslation();
 
@@ -37,8 +62,10 @@ export function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaHouse size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : 'sidebar-text'}>Homepage</span>
+          <FaHouse size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+            Homepage
+          </span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -47,8 +74,10 @@ export function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaBookOpen size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : 'sidebar-text'}>{t('sidebar.didattica')}</span>
+          <FaBookOpen size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+            {t('sidebar.didattica')}
+          </span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -57,8 +86,10 @@ export function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaUser size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : 'sidebar-text'}>{t('sidebar.area_personale')}</span>
+          <FaUser size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+            {t('sidebar.area_personale')}
+          </span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -67,8 +98,10 @@ export function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaUserGraduate size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : 'sidebar-text'}>{t('sidebar.carriera')}</span>
+          <FaUserGraduate size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+            {t('sidebar.carriera')}
+          </span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -77,8 +110,10 @@ export function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaBriefcase size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : 'sidebar-text'}>{t('sidebar.opportunità')}</span>
+          <FaBriefcase size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+            {t('sidebar.opportunità')}
+          </span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -87,8 +122,10 @@ export function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/servizi') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <MdApps size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : 'sidebar-text'}>{t('sidebar.servizi')}</span>
+          <MdApps size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+            {t('sidebar.servizi')}
+          </span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -97,8 +134,10 @@ export function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/help') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaInfoCircle size={28} />
-          <span className={mobile ? 'modal-sidebar-text' : 'sidebar-text'}>Help</span>
+          <FaInfoCircle size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+            Help
+          </span>
         </Link>
       </Nav.Item>
     </>
@@ -109,3 +148,5 @@ NavItems.propTypes = {
   mobile: PropTypes.bool,
   handleClose: PropTypes.func,
 };
+
+export { Sidebar, NavItems };

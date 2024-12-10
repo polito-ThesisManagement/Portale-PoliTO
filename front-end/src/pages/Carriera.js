@@ -20,37 +20,37 @@ export default function Carriera() {
       <Container className="card-container">
         <Row>
           <BaseCard
-            icon={<BsCreditCard2BackFill size="42" className="card-icon" />}
+            icon={<BsCreditCard2BackFill size="32" className="card-icon" />}
             service={t('carriera.tasse_e_agevolazioni.title')}
             description={t('carriera.tasse_e_agevolazioni.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
-            icon={<IoIosListBox size="42" className="card-icon" />}
+            icon={<IoIosListBox size="32" className="card-icon" />}
             service={t('carriera.piano_carriera.title')}
             description={t('carriera.piano_carriera.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
-            icon={<MdEditDocument size="42" className="card-icon" />}
+            icon={<MdEditDocument size="32" className="card-icon" />}
             service={t('carriera.gestione_carriera.title')}
             description={t('carriera.gestione_carriera.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
-            icon={<FaUserEdit size="42" className="card-icon" />}
+            icon={<FaUserEdit size="32" className="card-icon" />}
             service={t('carriera.apply.title')}
             description={t('carriera.apply.description')}
             servicePath={'/carriera'}
           />
           <BaseCard
-            icon={<FaGraduationCap size="42" className="card-icon" />}
+            icon={<FaGraduationCap size="32" className="card-icon" />}
             service={t('carriera.laurea_ed_esame_finale.title')}
             description={t('carriera.laurea_ed_esame_finale.description')}
             servicePath={'/carriera/laurea_ed_esame_finale'}
           />
           <BaseCard
-            icon={<HiLightBulb size="42" className="card-icon" />}
+            icon={<HiLightBulb size="32" className="card-icon" />}
             service={t('carriera.proposte_di_tesi.title')}
             description={t('carriera.proposte_di_tesi.description')}
             servicePath={'/carriera/proposte_di_tesi'}

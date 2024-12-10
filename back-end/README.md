@@ -74,8 +74,7 @@ The source has been divided into different folder to simplify the readability of
 - `config` => contains the file to configure and initialize the database connection using Sequelize.
 - `controllers` => each file contains one or more functions used in routers ONLY to handle the request and response.
 - `models` => each file contains a class representing a model of an entity
-- `routers` => each file contains one router exported as default. The router contains all API endpoint related to his domain.
-  - They are used in the `server.js` file to register the router to the express application
+- `routers` => each file contains one router exported as default. The router contains all API endpoint related to his domain. They are used in the `server.js` file to register the router to the express application
 - `schemas` => each file contains one or more "zod" schemas object used to validate user input
 - `utils` => contains utility functions used in the project
 
