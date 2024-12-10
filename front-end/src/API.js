@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // API URL Endpoint
-const URL = 'http://localhost:3002/api';
+const URL = 'http://localhost:3001/api';
 
 /****** User APIs ******/
 
