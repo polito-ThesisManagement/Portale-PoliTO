@@ -41,18 +41,6 @@ function NavItems({ mobile, handleClose }) {
   const { desktopToggle } = useContext(DesktopToggleContext);
   const location = useLocation();
   const { t } = useTranslation();
-  const [toggleText, setToggleText] = useState(false);
-
-  useEffect(() => {
-    if (desktopToggle) {
-      setToggleText(true);
-    } else {
-      const timer = setTimeout(() => {
-        setToggleText(false);
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [desktopToggle]);
 
   return (
     <>
@@ -62,8 +50,8 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaHouse size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>Homepage</span>
+          <FaHouse size={22} style={mobile ? { marginLeft: "12px" } : {flexShrink: 0}}/>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>Homepage</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -72,8 +60,8 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaBookOpen size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.didattica')}</span>
+          <FaBookOpen size={22} style={mobile ? { marginLeft: "12px" } : {flexShrink: 0}}/>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.didattica')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -82,8 +70,8 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaUser size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.area_personale')}</span>
+          <FaUser size={22} style={mobile ? { marginLeft: "12px" } : {flexShrink: 0}}/>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.area_personale')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -92,8 +80,8 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaUserGraduate size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.carriera')}</span>
+          <FaUserGraduate size={22} style={mobile ? { marginLeft: "12px" } : {flexShrink: 0}}/>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.carriera')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -102,8 +90,8 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaBriefcase size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.opportunità')}</span>
+          <FaBriefcase size={22} style={mobile ? { marginLeft: "12px" } : {flexShrink: 0}}/>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.opportunità')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -112,8 +100,8 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/servizi') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <MdApps size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>{t('sidebar.servizi')}</span>
+          <MdApps size={22} style={mobile ? { marginLeft: "12px" } : {flexShrink: 0}}/>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>{t('sidebar.servizi')}</span>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -122,8 +110,8 @@ function NavItems({ mobile, handleClose }) {
           className={`nav-link text-style ${location.pathname.includes('/help') ? 'active' : ''}`}
           onClick={handleClose}
         >
-          <FaInfoCircle size={22} style={mobile ? { marginLeft: "12px" } : {}}/>
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${toggleText ? 'toggle' : ''}`}>Help</span>
+          <FaInfoCircle size={22} style={mobile ? { marginLeft: "12px" } : {flexShrink: 0}}/>
+          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>Help</span>
         </Link>
       </Nav.Item>
     </>

@@ -83,6 +83,11 @@
   }
 
   .custom-sidebar-wrapper.reduced {
+    width: 80px;
+    transition-duration: 0.5s;
+  }
+
+  .sidebar-toggle{
     display: none;
   }
 
@@ -147,6 +152,7 @@
   padding-left: 10px;
   font-weight: var(--font-weight-medium);
   margin-top: 3px;
+  white-space: nowrap;
 }
 
 .sidebar-text.toggle{
