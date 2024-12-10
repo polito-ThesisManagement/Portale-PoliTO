@@ -33,7 +33,7 @@ import PropTypes from 'prop-types';
 export default function PoliNavbar(props) {
   const { avvisi, setAvvisi } = useContext(AvvisiContext);
   const { desktopToggle } = useContext(DesktopToggleContext);
-  const { loggedStudent, setLoggedStudent } = useContext(LoggedStudentContext);
+  const { loggedStudent } = useContext(LoggedStudentContext);
 
   const { t, i18n } = useTranslation();
 
