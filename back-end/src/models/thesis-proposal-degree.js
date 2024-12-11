@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       degree_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         primaryKey: true,
         references: {
           model: 'degree',
