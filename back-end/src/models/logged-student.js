@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     'logged_student',
     {
       student_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(6),
         primaryKey: true,
         references: {
           model: 'student',

@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS thesis_proposal (
     required_skills_en TEXT DEFAULT NULL,
     additional_notes TEXT DEFAULT NULL,
     additional_notes_en TEXT DEFAULT NULL,
-    external_cosupervisors VARCHAR(255) DEFAULT NULL,
+    external_cosupervisors VARCHAR(500) DEFAULT NULL,
     creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     expiration_date DATETIME NOT NULL,
     is_internal BOOLEAN NOT NULL DEFAULT 1,
