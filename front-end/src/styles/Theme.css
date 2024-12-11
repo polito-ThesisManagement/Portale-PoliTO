@@ -103,6 +103,50 @@
   --text-800: #1f282e;
   --text-900: #12181c;
 
+  --purple-50: #f3e8ff;
+  --purple-100: #e0c4ff;
+  --purple-200: #c79dff;
+  --purple-300: #b278ff;
+  --purple-400: #9e50ff;
+  --purple-500: #8a23ff;
+  --purple-600: #7318cc;
+  --purple-700: #5e14a3;
+  --purple-800: #4a1181;
+  --purple-900: #3b0e66;
+
+  --teal-50: #e1f9f8;
+  --teal-100: #b3f4f2;
+  --teal-200: #80edea;
+  --teal-300: #4de7e2;
+  --teal-400: #1ae0d9;
+  --teal-500: #00cbb2;
+  --teal-600: #00a18c;
+  --teal-700: #007a6b;
+  --teal-800: #005f51;
+  --teal-900: #00433f;
+
+  --steel-50: #f2f4f6;
+  --steel-100: #d4d9de;
+  --steel-200: #b0b4c6;
+  --steel-300: #8c8ea5;
+  --steel-400: #6b6f85;
+  --steel-500: #4a5265;
+  --steel-600: #373f4c;
+  --steel-700: #262b3b;
+  --steel-800: #1a2027;
+  --steel-900: #0f1318;
+
+  --golden-50: #fff9e1;
+  --golden-100: #fff0b3;
+  --golden-200: #ffeb80;
+  --golden-300: #ffdd4d;
+  --golden-400: #ffcf1a;
+  --golden-500: #ffbf00;
+  --golden-600: #e6a900;
+  --golden-700: #cc9500;
+  --golden-800: #b38b00;
+  --golden-900: #997d00;
+
   --black: #000000;
   --dark-navy: #002b49; /* navy.700 - background.dark */
   --dark-navy-rgb: 0, 43, 73;

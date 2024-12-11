@@ -69,7 +69,8 @@
             "tipo": "Type",
             "relatore_principale": "Main Supervisor",
             "relatori_secondari": "Secondary Supervisors",
-            "relatori_esterni": "External Supervisors"
+            "relatori_esterni": "External Supervisors",
+            "badge_errato": "Invalid badge"
         }
     },
     "Accedi": "Login",

@@ -69,7 +69,8 @@
             "tipo": "Tipo",
             "relatore_principale": "Relatore principale",
             "relatori_secondari": "Relatori secondari",
-            "relatori_esterni": "Relatori esterni"
+            "relatori_esterni": "Relatori esterni",
+            "badge_errato": "Badge non valido"
         }
     },
     "Accedi": "Accedi",
