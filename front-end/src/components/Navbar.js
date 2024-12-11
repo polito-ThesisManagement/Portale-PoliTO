@@ -258,25 +258,22 @@ export default function PoliNavbar(props) {
                       >
                         <FaKey size={16} /> {t('navbar.cambio_password')}
                       </Dropdown.Item>
-                      {props.allStudents &&
-                        props.allStudents
-                          .filter(student => student.id !== loggedStudent.id)
-                          .map(student => (
-                            <Dropdown.Item
-                              key={student.id}
-                              className="medium-weight"
-                              onClick={() => handleLoggedStudentChange(student)}
-                              style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
-                            >
-                              <Image
-                                src={student.profilePictureUrl}
-                                alt="Profile picture"
-                                roundedCircle
-                                style={{ width: '20px', height: '20px', marginLeft: '-2px' }}
-                              />
-                              {student.firstName} {student.lastName}
-                            </Dropdown.Item>
-                          ))}
+                      {props.allStudents?.filter(student => student.id !== loggedStudent.id).map(student => (
+                        <Dropdown.Item
+                          key={student.id}
+                          className="medium-weight"
+                          onClick={() => handleLoggedStudentChange(student)}
+                          style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
+                        >
+                          <Image
+                            src={student.profilePictureUrl}
+                            alt="Profile picture"
+                            roundedCircle
+                            style={{ width: '20px', height: '20px', marginLeft: '-2px' }}
+                          />
+                          {student.firstName} {student.lastName}
+                        </Dropdown.Item>
+                      ))}
                       <Dropdown.Item
                         className="medium-weight"
                         style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
