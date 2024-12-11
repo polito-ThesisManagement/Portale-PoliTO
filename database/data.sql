@@ -2549,6 +2549,16 @@ VALUES
         'DIST'
     ),
     (
+        40637,
+        'Alberto',
+        'Monge Raffaello',
+        'Docente',
+        'alberto.monge@polito.it',
+        'https://www.dauin.polito.it/personale/scheda/(matricola)/040637',
+        NULL,
+        'DAUIN'
+    ),
+    (
         40641,
         'Federico',
         'Barravecchia',
@@ -2921,7 +2931,16 @@ VALUES
     (74, "ANALISI DEL MOVIMENTO", "MOVEMENT ANALYSIS"),
     (75, "PROGRAMMAZIONE", "PROGRAMMING"),
     (76, "SENSORI", "SENSORS"),
-    (77, "SIMULAZIONE", "SIMULATION");
+    (77, "SIMULAZIONE", "SIMULATION"),
+    (78, "PATTERN PER LA CATTURA DELL'ATTENZIONE", "ATTENTION CAPTURE DESIGN PATTERNS"),
+    (79, "BENESSERE DIGITALE", "DIGITAL WELLBEING"),
+    (80, "MODELLI, ADATTATIVI", "ADAPTATIVE MODELS"),
+    (81, "METRICHE DI VALUTAZIONE AUTOMATICA", "AUTOMATIC EVALUATION METRICS"),
+    (82, "DESIGN-TO-CODE", "DESIGN-TO-CODE"),
+    (83, "REINFORCEMENT LEARNING", "REINFORCEMENT LEARNING"),
+    (84, "ESPERIENZA UTENTE", "USER EXPERIENCE"),
+    (85, "SENSO DI AUTO-INIZIATIVA", "SENSE OF AGENCY"),
+    (86, "SOCIAL MEDIA", "SOCIAL MEDIA");
 
 -- ------------------------------------------------------------
 -- ↓ type table ↓
@@ -3847,6 +3866,46 @@ VALUES
         NULL
     ),
     (
+        14176, 
+        "Sganciati dallo smartphone: Sfruttare modelli linguistici di grandi dimensioni per rilevare le trappole dell'attenzione",
+        "Unhooked From the Smartphone: Leveraging Large Language Models to Detect Attention Traps",
+        "Man mano che le piattaforme digitali si affidano sempre più a modelli di progettazione che catturano l'attenzione, come lo scorrimento infinito o la riproduzione automatica dei contenuti, gli utenti spesso si trovano a trascorrere più tempo del previsto sulle app. Questi modelli sfruttano i bias cognitivi, attirando gli utenti in un coinvolgimento prolungato e minando la loro autonomia digitale. Sebbene esistano varie soluzioni per aiutare gli utenti a gestire il tempo di utilizzo dello schermo, poche offrono un rilevamento proattivo e in tempo reale di questi elementi di design manipolativi. Sfruttando i progressi nei modelli linguistici di grandi dimensioni (LLM), ora abbiamo l'opportunità di creare sistemi intelligenti che riconoscano questi modelli e forniscano agli utenti interventi tempestivi, promuovendo abitudini digitali più sane.\r\n\r\nQuesta tesi esplora lo sviluppo di un'applicazione mobile progettata per migliorare il benessere digitale sfruttando i modelli linguistici di grandi dimensioni (LLM) per rilevare in tempo reale i modelli di progettazione che catturano l'attenzione. La ricerca mira a identificare i momenti in cui gli utenti sono soggetti a elementi di design manipolativi che minano il loro controllo sul tempo trascorso sulle piattaforme digitali. Rilevando questi modelli, l'app fornirà interventi per aiutare gli utenti a recuperare l'autonomia e gestire le loro abitudini digitali in modo più consapevole. Operativamente, l'app sarà ideata e prototipata per il sistema operativo Android e valutata attraverso un esperimento sul campo che misurerà gli impatti quantitativi e qualitativi sulle abitudini degli utenti con lo smartphone. Il risultato contribuirà alla ricerca sul benessere digitale e proporrà nuove strategie di progettazione che si allineano con principi etici e centrati sull'utente nella progettazione di app mobili.\r\n\r\nSe soddisfacente, il risultato della tesi sarà rilasciato come progetto open-source.\r\n",
+        "As digital platforms increasingly rely on attention-capture design patterns, such as infinite scrolling or content autoplay, users often find themselves spending more time than intended on apps. These patterns exploit cognitive biases, drawing users into prolonged engagement and undermining their digital autonomy. While various solutions exist to help users manage screen time, few offer proactive, real-time detection of these manipulative design elements. Leveraging advancements in large language models (LLMs), we now have the opportunity to create intelligent systems that recognize these patterns and provide users with timely interventions, promoting healthier digital habits.\r\n\r\nThis thesis explores the development of a mobile application designed to enhance digital well-being by leveraging large language models (LLMs) to detect attention-capture design patterns in real time. The research aims to identify moments when users are subject to manipulative design elements that undermine their control over time spent on digital platforms. By detecting these patterns, the app will provide interventions to help users regain agency and manage their digital habits more consciously. Operatively, the app will be ideated and prototyped for the Android operating system, and assessed through a field experiment measuring quantitative and qualitative impacts on users' smartphone habits. The outcome will contribute to digital well-being research and propose novel design strategies that align with ethical, user-centered principles in mobile app design.\r\n\r\nIf satisfactory, the result of the thesis will be released as an open-source project.\r\n",
+        NULL,
+        "Sono richieste buone competenze di programmazione e comprensione dello sviluppo di app Android.",
+        "Good programming skills and understanding of Android app development are required.",
+        NULL,
+        NULL,
+        NULL,
+        "2024-10-14",
+        "2025-10-14", 
+        1,
+        0,
+        "CL003", 
+        "2", 
+        NULL
+    ),
+    (
+        14206, 
+        "Modello Design-to-Code Adattivo: Approccio Di Apprendimento Per Rinforzo Utilizzando Metriche Di Valutazione Automatica",
+        "Adaptive Design-to-Code Model: Reinforcement Learning Approach Using Automatic Evaluation Metrics",
+        "I recenti progressi nello sviluppo web assistito dall'IA, in particolare nel dominio Design2Code, hanno mostrato risultati promettenti nella generazione automatica di codice HTML e CSS da screenshot di pagine web. Tuttavia, gli approcci attuali spesso mancano di adattabilità alle preferenze di design individuali e faticano con layout complessi. Questa tesi propone di sfruttare le tecniche di apprendimento per rinforzo (RL) per creare un modello Design2Code adattivo che possa apprendere e migliorare dalle proprie generazioni utilizzando le metriche di valutazione automatica sviluppate nel paper di benchmark Design2Code.\r\n\r\nFrammentando il processo di generazione del codice come un problema decisionale sequenziale e utilizzando le metriche automatiche come segnale di ricompensa, possiamo potenzialmente creare un sistema più flessibile e adattivo. Questo approccio potrebbe portare a modelli che non solo generano implementazioni di codice accurate, ma imparano anche ad adattarsi a stili e preferenze di design specifici nel tempo, superando potenzialmente lo stato dell'arte attuale in termini di accuratezza del layout e sfumature stilistiche.\r\n\r\nLa tesi si propone di:\r\n- Sviluppare un framework di apprendimento per rinforzo per il compito Design2Code, utilizzando le metriche di valutazione automatica (Block-Match, Text, Position, Color e CLIP similarity) come funzione di ricompensa multi-obiettivo.\r\n- Implementare un modello Design2Code adattivo che possa apprendere e migliorare le sue capacità di generazione di codice attraverso il fine-tuning basato su RL.\r\n- Investigare l'impatto di diversi algoritmi RL (ad es. PPO, A2C, SAC) sulle prestazioni e l'adattabilità del modello.\r\n- Valutare il modello potenziato da RL rispetto a baselines all'avanguardia sul benchmark Design2Code, concentrandosi",
+        "Recent advancements in AI-assisted web development, particularly in the Design2Code domain, have shown promising results in automatically generating HTML and CSS code from webpage screenshots. However, current approaches often lack adaptability to individual design preferences and struggle with complex layouts. This thesis proposes to leverage reinforcement learning (RL) techniques to create an adaptive Design2Code model that can learn and improve from its own generations using the automatic evaluation metrics developed in the Design2Code benchmark paper.\r\nBy framing the code generation process as a sequential decision-making problem and using the automatic metrics as a reward signal, we can potentially create a more flexible and adaptive system. This approach could lead to models that not only generate accurate code implementations but also learn to adapt to specific design styles and preferences over time, potentially surpassing the current state-of-the-art in terms of layout accuracy and stylistic nuance.\r\n\r\nThe thesis will aim to:\r\n- Develop a reinforcement learning framework for the Design2Code task, using the automatic evaluation metrics (Block-Match, Text, Position, Color, and CLIP similarity) as a multi-objective reward function.\r\n- Implement an adaptive Design2Code model that can learn and improve its code generation capabilities through RL-based fine-tuning.\r\n- Investigate the impact of different RL algorithms (e.g., PPO, A2C, SAC) on the model's performance and adaptability.\r\n- Evaluate the RL-enhanced model against state-of-the-art baselines on the Design2Code benchmark, focusing on improvements in layout accuracy and style fidelity.\r\n\r\nIf satisfactory, the result of the thesis will be released as an open-source project.",
+        NULL,
+        "Buone competenze di programmazione in Python.\r\nEsperienza con framework di deep learning (es. PyTorch, TensorFlow).\r\nFamiliarità con concetti e algoritmi di apprendimento per rinforzo.\r\nComprensione delle tecnologie di sviluppo web (HTML, CSS).\r\nConoscenza di base di visione artificiale e elaborazione del linguaggio naturale.",
+        "Strong programming skills in Python.\r\nExperience with deep learning frameworks (e.g., PyTorch, TensorFlow).\r\nFamiliarity with reinforcement learning concepts and algorithms.\r\nUnderstanding of web development technologies (HTML, CSS).\r\nBasic knowledge of computer vision and natural language processing.",
+        "Esperienza utile:\r\n- Lavoro precedente con modelli linguistici di grandi dimensioni o modelli visione-linguaggio\r\n- Esperienza nell'implementazione di algoritmi RL\r\n- Familiarità con i principi di progettazione UI/UX\r\n- Conoscenza dei concetti di interazione uomo-computer",
+        "Beneficial experience:\r\n- Prior work with large language models or vision-language models\r\n- Experience in implementing RL algorithms\r\n- Familiarity with UI/UX design principles\r\n- Knowledge of human-computer interaction concepts",
+        "Tommaso Calò",
+        "2024-10-21",
+        "2025-10-21", 
+        1,
+        0,
+        "CL003",
+        "2",
+        NULL
+    ),
+    (
         14208, 
         "Studio di sistemi indossabili per l'acquisizione di dati metabolici e loro applicazione nella progettazione e controllo di protesi",
         "Study of wearable systems for acquiring metabolic data and their application in the design and control of prostheses",
@@ -3885,6 +3944,26 @@ VALUES
         "CL003", 
         "2", 
         "thesis ideas polito-iit - a.a. 2024-25.pdf"
+    ),
+    (
+        14365, 
+        "Come I Social Media Influenzano Il Nostro Senso Di Auto-Iniziativa",
+        "How Social Media Influences Our Sense of Agency",
+        "Poichè le piattaforme di social media si affidano sempre più alla cura algoritmica e ai modelli di progettazione che catturano l'attenzione, come lo scorrimento infinito e la riproduzione automatica infinita, gli utenti possono sperimentare un senso di auto-iniziativa ridotto sulle loro interazioni. Questi modelli, sebbene progettati per massimizzare l'interazione, possono minare il controllo percepito degli utenti, sollevando preoccupazioni etiche sul loro impatto sull'autonomia digitale. Sebbene studi esistenti abbiano evidenziato i rischi potenziali della cura degli alimenti algoritmici e dei modelli di progettazione che catturano l'attenzione, esiste poca evidenza empirica su come questi meccanismi influenzino il senso di auto-iniziativa degli utenti nelle interazioni in tempo reale sui social media.\r\n\r\nQuesta tesi esplora l'impatto delle raccomandazioni curate dall'IA e dei modelli di progettazione che catturano l'attenzione sul senso di auto-iniziativa degli utenti sulle piattaforme di social media. La ricerca mira a indagare come questi meccanismi influenzino il controllo percepito degli utenti, in particolare in contesti in cui la piattaforma introduce contenuti inaspettati, come post o annunci consigliati. Studiando diversi modelli di interazione e modalità di consumo, la tesi fornirà spunti per ottimizzare la progettazione dei social media per bilanciare l'interazione e l'autonomia dell'utente. Operativamente, la ricerca coinvolgerà la progettazione di una piattaforma sperimentale controllata per simulare elementi chiave delle interfacce dei social media e valutare il loro impatto sull'auto-iniziativa dell'utente attraverso metodi quantitativi e qualitativi.\r\n\r\nSe soddisfacente, i risultati della tesi contribuiranno alla ricerca HCI e saranno rilasciati come un framework open",
+        "As social media platforms increasingly rely on algorithmic curation and attention-capture design patterns, such as infinite scrolling and neverending autoplay, users may experience a diminished sense of agency over their interactions. These patterns, while designed to maximize engagement, can undermine users' perceived control, raising ethical concerns about their impact on digital autonomy. Although existing studies have highlighted the potential risks of algorithmic feed curation and attention-capture design patterns, little empirical evidence exists regarding how these mechanisms influence users' sense of agency in real-time social media interactions.\r\n\r\nThis thesis explores the impact of AI-curated recommendations and attention-capture design patterns on users’ sense of agency in social media platforms. The research aims to investigate how these mechanisms affect users' perceived control, particularly in contexts where the platform introduces unexpected content, such as recommended posts or advertisements. By studying different interaction patterns and consumption modes, the thesis will provide insights into optimizing social media design to balance engagement and user autonomy. Operatively, the research will involve the design of a controlled experimental platform to simulate key elements of social media interfaces and assess their impact on user agency through quantitative and qualitative methods.\r\n\r\nIf satisfactory, the results of the thesis will contribute to HCI research and be released as an open-source framework to inspire ethical design practices in social media development.",
+        NULL,
+        "È richiesta una comprensione di base dei concetti di HCI e competenze di programmazione per sviluppare prototipi interattivi per piattaforme web e mobili.",
+        "Basic understanding of HCI concepts and programming skills to develop interactive prototypes for both web and mobile platforms.",
+        NULL,
+        NULL,
+        NULL,
+        "2024-12-09",
+        "2025-12-09", 
+        1,
+        0,
+        "CL003",
+        "2",
+        NULL
     );
 
 -- ------------------------------------------------------------
@@ -4038,6 +4117,19 @@ VALUES
     (14027, 9),
     (14137, 4),
     (14137, 8),
+    (14176, 1),
+    (14176, 4),
+    (14176, 11),
+    (14176, 78),
+    (14176, 79),
+    (14206, 12),
+    (14206, 26),
+    (14206, 35),
+    (14206, 80),
+    (14206, 81),
+    (14206, 82),
+    (14206, 83),
+    (14206, 84),
     (14208, 74),
     (14208, 75),
     (14208, 76),
@@ -4046,7 +4138,12 @@ VALUES
     (14299, 41),
     (14299, 42),
     (14299, 43),
-    (14299, 44);
+    (14299, 44),
+    (14365, 1),
+    (14365, 78),
+    (14365, 79),
+    (14365, 85),
+    (14365, 86);
 
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_type table ↓
@@ -4094,10 +4191,16 @@ VALUES
     (13923, 7),
     (13923, 9),
     (14137, 7),
+    (14176, 7),
+    (14176, 9),
+    (14206, 7),
+    (14206, 9),
     (14208, 6),
     (14208, 9),
     (14299, 7),
-    (14299, 9);
+    (14299, 9),
+    (14365, 7),
+    (14365, 9);
 
 -- ------------------------------------------------------------
 -- ↓ thesis_proposal_supervisor_cosupervisor table ↓
@@ -4173,8 +4276,11 @@ VALUES
     (14026, 38485, 1),
     (14027, 38485, 1),
     (14137, 38485, 1),
+    (14176, 40637, 1),
+    (14206, 25734, 1),
     (14208, 3670, 1),
-    (14299, 94713, 1);
+    (14299, 94713, 1),
+    (14365, 40637, 1);
 
 -- ------------------------------------------------------------
 -- ↓ logged_student table ↓
