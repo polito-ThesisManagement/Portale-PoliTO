@@ -95,4 +95,18 @@ function NavItems({ mobile, handleClose }) {
   );
 }
 
+NavItem.propTypes = {
+  to: PropTypes.string.isRequired,
+  icon: PropTypes.elementType.isRequired,
+  textKey: PropTypes.string.isRequired,
+  mobile: PropTypes.bool,
+  handleClose: PropTypes.func,
+  isActive: PropTypes.bool.isRequired,
+};
+
+NavItems.propTypes = {
+  mobile: PropTypes.bool,
+  handleClose: PropTypes.func,
+};
+
 export { Sidebar, NavItems };
