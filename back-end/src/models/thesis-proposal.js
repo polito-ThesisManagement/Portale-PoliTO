@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       external_cosupervisors: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(500),
         allowNull: true,
       },
       creation_date: {
@@ -64,15 +64,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       attachment_url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: true,
       },
       level: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('1', '2'),
         allowNull: false,
       },
       id_collegio: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(10),
         allowNull: false,
         references: {
           model: 'collegio',
