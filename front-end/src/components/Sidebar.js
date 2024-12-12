@@ -34,10 +34,7 @@ function Sidebar() {
   return (
     <>
       <div className={`custom-sidebar-wrapper reduced ${desktopToggle ? 'toggle' : ''}`}>
-        <button
-          className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`}
-          onClick={handleToggle}
-        >
+        <button className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`} onClick={handleToggle}>
           <FaAngleLeft size={20} />
         </button>
       </div>
@@ -55,11 +52,7 @@ function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
 
   return (
     <Nav.Item>
-      <Link
-        to={to}
-        className={`nav-link text-style ${isActive ? 'active' : ''}`}
-        onClick={handleClose}
-      >
+      <Link to={to} className={`nav-link text-style ${isActive ? 'active' : ''}`} onClick={handleClose}>
         <Icon size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
         <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
           {t(textKey)}
