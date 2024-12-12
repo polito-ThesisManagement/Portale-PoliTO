@@ -9,7 +9,7 @@ const breadcrumbConfig = {
   carriera: { icon: <FaUserGraduate size={14} />, label: 'sidebar.carriera', path: '/carriera' },
   didattica: { icon: <FaBookOpen size={14} />, label: 'sidebar.didattica', path: '/didattica' },
   proposte_di_tesi: {
-    icon: <HiLightBulb size={17} />,
+    icon: <HiLightBulb size={17} style={{ marginTop: '-1px' }} />,
     label: 'carriera.proposte_di_tesi.title_half_lowercase',
     path: '/carriera/proposte_di_tesi',
   },
@@ -21,12 +21,6 @@ export default function MyBreadcrumb() {
   const navigate = useNavigate();
   const pathnames = location.pathname.split('/').filter(x => x);
 
-  const handleKeyDown = (event, path) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      navigate(path);
-    }
-  };
-
   const renderBreadcrumbElement = (value, index) => {
     const config = breadcrumbConfig[value];
     const isLast = index === pathnames.length - 1;
@@ -34,16 +28,10 @@ export default function MyBreadcrumb() {
     if (config) {
       return (
         <React.Fragment key={index}>
-          <div
-            className="mybreadcrumb-element"
-            onClick={() => navigate(config.path)}
-            onKeyDown={event => handleKeyDown(event, config.path)}
-            role="button"
-            tabIndex={0}
-          >
+          <button className="mybreadcrumb-element" onClick={() => navigate(config.path)}>
             {config.icon}
             {t(config.label)}
-          </div>
+          </button>
           {!isLast && <div className="mybreadcrumb-separator"> / </div>}
         </React.Fragment>
       );
@@ -53,16 +41,10 @@ export default function MyBreadcrumb() {
     if (index > 0 && pathnames[index - 1] === 'proposte_di_tesi' && !isNaN(value)) {
       return (
         <React.Fragment key={index}>
-          <div
-            className="mybreadcrumb-element"
-            onClick={() => navigate(`/carriera/proposte_di_tesi/${value}`)}
-            onKeyDown={event => handleKeyDown(event, `/carriera/proposte_di_tesi/${value}`)}
-            role="button"
-            tabIndex={0}
-          >
+          <button className="mybreadcrumb-element" onClick={() => navigate(`/carriera/proposte_di_tesi/${value}`)}>
             <FaFileLines size={14} />
             {t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
-          </div>
+          </button>
           {!isLast && <div className="mybreadcrumb-separator"> / </div>}
         </React.Fragment>
       );

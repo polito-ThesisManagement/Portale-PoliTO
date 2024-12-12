@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useMemo, useState } from 'react';
 
 import { Col, Row } from 'react-bootstrap';
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -88,14 +88,20 @@ function App() {
     fetchData();
   }, [refresh]);
 
+  const loggedStudentValue = useMemo(() => ({ loggedStudent, setLoggedStudent }), [loggedStudent]);
+  const desktopToggleValue = useMemo(() => ({ desktopToggle, setDesktopToggle }), [desktopToggle]);
+  const favoritesValue = useMemo(() => ({ favorites, setFavorites }), [favorites]);
+  const avvisiValue = useMemo(() => ({ avvisi, setAvvisi }), [avvisi]);
+  const themeValue = useMemo(() => ({ theme, setTheme }), [theme]);
+
   return (
     <>
       <style>@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap);</style>
-      <ThemeContext.Provider value={{ theme, setTheme }}>
-        <LoggedStudentContext.Provider value={{ loggedStudent, setLoggedStudent }}>
-          <DesktopToggleContext.Provider value={{ desktopToggle, setDesktopToggle }}>
-            <FavoritesContext.Provider value={{ favorites, setFavorites }}>
-              <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
+      <ThemeContext.Provider value={themeValue}>
+        <LoggedStudentContext.Provider value={loggedStudentValue}>
+          <DesktopToggleContext.Provider value={desktopToggleValue}>
+            <FavoritesContext.Provider value={favoritesValue}>
+              <AvvisiContext.Provider value={avvisiValue}>
                 <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
                 <PoliNavbar
                   allStudents={allStudents}

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     'degree',
     {
       id: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         primaryKey: true,
       },
       description: {
@@ -15,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       level: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('1', '2'),
         allowNull: false,
       },
       id_collegio: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         allowNull: false,
         references: {
           model: 'collegio',

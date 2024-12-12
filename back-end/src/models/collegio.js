@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
     'collegio',
     {
       id: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         primaryKey: true,
       },
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
     },

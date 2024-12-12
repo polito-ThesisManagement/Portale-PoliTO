@@ -14,6 +14,16 @@ import '../styles/Sidebar.css';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
 
+const navLinks = [
+  { to: '/', icon: FaHouse, textKey: 'Homepage', exact: true },
+  { to: '/didattica', icon: FaBookOpen, textKey: 'sidebar.didattica' },
+  { to: '/area_personale', icon: FaUser, textKey: 'sidebar.area_personale' },
+  { to: '/carriera', icon: FaUserGraduate, textKey: 'sidebar.carriera' },
+  { to: '/opportunita', icon: FaBriefcase, textKey: 'sidebar.opportunità' },
+  { to: '/servizi', icon: MdApps, textKey: 'sidebar.servizi' },
+  { to: '/help', icon: FaInfoCircle, textKey: 'Help' },
+];
+
 function Sidebar() {
   const { desktopToggle, setDesktopToggle } = useContext(DesktopToggleContext);
 
@@ -21,24 +31,12 @@ function Sidebar() {
     setDesktopToggle(!desktopToggle);
   };
 
-  const handleKeyDown = event => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleToggle();
-    }
-  };
-
   return (
     <>
       <div className={`custom-sidebar-wrapper reduced ${desktopToggle ? 'toggle' : ''}`}>
-        <div
-          className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`}
-          onClick={handleToggle}
-          onKeyDown={handleKeyDown}
-          role="button"
-          tabIndex={0}
-        >
+        <button className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`} onClick={handleToggle}>
           <FaAngleLeft size={20} />
-        </div>
+        </button>
       </div>
       <Nav defaultActiveKey="/home" className="flex-column">
         <Col className={`col-md-1 custom-sidebar py-2 reduced ${desktopToggle ? 'toggle' : ''}`}>
@@ -48,101 +46,56 @@ function Sidebar() {
     </>
   );
 }
-
-function NavItems({ mobile, handleClose }) {
+function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
   const { desktopToggle } = useContext(DesktopToggleContext);
-  const location = useLocation();
   const { t } = useTranslation();
 
   return (
+    <Nav.Item>
+      <Link to={to} className={`nav-link text-style ${isActive ? 'active' : ''}`} onClick={handleClose}>
+        <Icon size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+        <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
+          {t(textKey)}
+        </span>
+      </Link>
+    </Nav.Item>
+  );
+}
+
+function NavItems({ mobile, handleClose }) {
+  const location = useLocation();
+
+  // Determine the active link by sorting navLinks by the length of the 'to' property in descending order
+  const activeLink = navLinks
+    .slice()
+    .sort((a, b) => b.to.length - a.to.length)
+    .find(({ to, exact }) => (exact ? location.pathname === to : location.pathname.startsWith(to)));
+
+  return (
     <>
-      <Nav.Item>
-        <Link
-          to="/"
-          className={`nav-link text-style ${location.pathname === '/' ? 'active' : ''}`}
-          onClick={handleClose}
-        >
-          <FaHouse size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-            Homepage
-          </span>
-        </Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link
-          to="/didattica"
-          className={`nav-link text-style ${location.pathname.includes('/didattica') ? 'active' : ''}`}
-          onClick={handleClose}
-        >
-          <FaBookOpen size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-            {t('sidebar.didattica')}
-          </span>
-        </Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link
-          to="/area_personale"
-          className={`nav-link text-style ${location.pathname.includes('/area_personale') ? 'active' : ''}`}
-          onClick={handleClose}
-        >
-          <FaUser size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-            {t('sidebar.area_personale')}
-          </span>
-        </Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link
-          to="/carriera"
-          className={`nav-link text-style ${location.pathname.includes('/carriera') ? 'active' : ''}`}
-          onClick={handleClose}
-        >
-          <FaUserGraduate size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-            {t('sidebar.carriera')}
-          </span>
-        </Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link
-          to="/opportunita"
-          className={`nav-link text-style ${location.pathname.includes('/opportunita') ? 'active' : ''}`}
-          onClick={handleClose}
-        >
-          <FaBriefcase size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-            {t('sidebar.opportunità')}
-          </span>
-        </Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link
-          to="/servizi"
-          className={`nav-link text-style ${location.pathname.includes('/servizi') ? 'active' : ''}`}
-          onClick={handleClose}
-        >
-          <MdApps size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-            {t('sidebar.servizi')}
-          </span>
-        </Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Link
-          to="/help"
-          className={`nav-link text-style ${location.pathname.includes('/help') ? 'active' : ''}`}
-          onClick={handleClose}
-        >
-          <FaInfoCircle size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-          <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-            Help
-          </span>
-        </Link>
-      </Nav.Item>
+      {navLinks.map(({ to, icon, textKey }) => (
+        <NavItem
+          key={to}
+          to={to}
+          icon={icon}
+          textKey={textKey}
+          mobile={mobile}
+          handleClose={handleClose}
+          isActive={activeLink && activeLink.to === to}
+        />
+      ))}
     </>
   );
 }
+
+NavItem.propTypes = {
+  to: PropTypes.string.isRequired,
+  icon: PropTypes.elementType.isRequired,
+  textKey: PropTypes.string.isRequired,
+  mobile: PropTypes.bool,
+  handleClose: PropTypes.func,
+  isActive: PropTypes.bool.isRequired,
+};
 
 NavItems.propTypes = {
   mobile: PropTypes.bool,

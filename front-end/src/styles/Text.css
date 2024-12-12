@@ -84,15 +84,24 @@
   gap: 10px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  vertical-align: middle;
 }
 
 .mybreadcrumb-element {
+  font-family: var(--font-primary);
+  color: var(--placeholder);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
   display: flex;
   gap: 4px;
   align-items: center;
+  vertical-align: middle;
   height: 20px;
   cursor: pointer;
   white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .mybreadcrumb-separator {
