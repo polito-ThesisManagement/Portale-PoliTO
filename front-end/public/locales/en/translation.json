@@ -70,7 +70,7 @@
             "relatore_principale": "Main Supervisor",
             "relatori_secondari": "Secondary Supervisors",
             "relatori_esterni": "External Supervisors",
-            "badge_errato": "Invalid badge"
+            "badge_errato": "Invalid badge/s"
         }
     },
     "Accedi": "Login",

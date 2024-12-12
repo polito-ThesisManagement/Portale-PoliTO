@@ -2,13 +2,23 @@ import React, { useContext } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import {
+  FaBook,
   FaBuildingCircleArrowRight,
   FaBuildingColumns,
+  FaCalculator,
+  FaChartBar,
+  FaChartColumn,
+  FaChartPie,
   FaCircleXmark,
+  FaCode,
   FaEarthAmericas,
-  FaFolder,
+  FaFlask,
   FaKey,
+  FaMagnifyingGlassChart,
+  FaPenToSquare,
+  FaUncharted,
   FaUser,
+  FaWhmcs,
 } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
@@ -25,11 +35,53 @@ import { getSystemTheme } from '../utils/utils';
  *  - "internal": Renders a badge with an internal thesis icon.
  *  - "external": Renders a badge with an external thesis icon.
  *  - "abroad": Renders a badge with an abroad thesis icon.
- *  - "type": Renders a badge with a thesis type icon. Requires a "content".
+ *  - "type": Renders a badge with a thesis type icon. Requires a "content". Valid content values are:
+ *    - "ANALISI DATI" or "DATA ANALYSIS"
+ *    - "ANALITICA" or "ANALYTICAL"
+ *    - "APPLICATIVA" or "APPLIED"
+ *    - "COMPILATIVA" or "BIBLIOGRAPHIC"
+ *    - "COMPUTAZIONALE" or "COMPUTATIONAL"
+ *    - "PROGETTUALE" or "DESIGN"
+ *    - "RICERCA" or "RESEARCH"
+ *    - "SIMULATIVA" or "SIMULATION"
+ *    - "SPERIMENTALE" or "EXPERIMENTAL"
+ *    - "SVILUPPO" or "DEVELOPMENT"
+ *    - "TEORICA" or "THEORETICAL"
+ *    - "NUMERICA" or "NUMERICAL"
  * @param {string|array<string>} content - If available, populate the content of the badge. It could be a single string or an array of strings.
- * If you provide an array the component will automatically render a tag for every string item.
+ * If you provide an array, the component will automatically render a tag for every string item.
  * @returns {JSX.Element} - The badge component.
+ * @note The content of variant="type" badges can be provided in UPPERCASE or lowercase or a mix of them.
+ * Regardless, they'll be always showed in UPPERCASE format. Beware that you must maintain spaces between words!
  */
+
+const validVariants = ['teacher', 'keyword', 'internal', 'external', 'abroad', 'type'];
+const validTypeContent = [
+  'analisi dati',
+  'data analysis',
+  'analitica',
+  'analytical',
+  'applicativa',
+  'applied',
+  'compilativa',
+  'bibliographic',
+  'computazionale',
+  'computational',
+  'progettuale',
+  'design',
+  'ricerca',
+  'research',
+  'simulativa',
+  'simulation',
+  'sperimentale',
+  'experimental',
+  'sviluppo',
+  'development',
+  'teorica',
+  'theoretical',
+  'numerica',
+  'numerical',
+];
 
 export default function Badge({ variant, content }) {
   const { theme } = useContext(ThemeContext);
@@ -40,20 +92,20 @@ export default function Badge({ variant, content }) {
     if (Array.isArray(content)) {
       return content.map((item, index) => (
         <span key={index} className={`badge ${variant}_${appliedTheme}`}>
-          {renderIcon()}
-          {item}
+          {renderIcon(item)}
+          {variant === 'type' ? item.toUpperCase() : item}
         </span>
       ));
     }
     return (
       <span className={`badge ${variant}_${appliedTheme}`}>
-        {renderIcon()}
-        {content}
+        {renderIcon(content)}
+        {variant === 'type' ? content.toUpperCase() : content}
       </span>
     );
   };
 
-  const renderIcon = () => {
+  const renderIcon = contentItem => {
     switch (variant) {
       case 'teacher':
         return <FaUser size={16} />;
@@ -66,7 +118,58 @@ export default function Badge({ variant, content }) {
       case 'abroad':
         return <FaEarthAmericas size={16} />;
       case 'type':
-        return <FaFolder size={16} />;
+        switch (contentItem.toLowerCase()) {
+          // analisi dati
+          case 'analisi dati':
+          case 'data analysis':
+            return <FaChartColumn size={16} />;
+          // analitica
+          case 'analitica':
+          case 'analytical':
+            return <FaChartBar size={16} />;
+          // applicativa
+          case 'applicativa':
+          case 'applied':
+            return <FaWhmcs size={16} />;
+          // compilativa
+          case 'compilativa':
+          case 'bibliographic':
+            return <FaPenToSquare size={16} />;
+          // computazionale
+          case 'computazionale':
+          case 'computational':
+            return <FaCalculator size={16} />;
+          // progettuale
+          case 'progettuale':
+          case 'design':
+            return <FaUncharted size={16} />;
+          // ricerca
+          case 'ricerca':
+          case 'research':
+            return <FaMagnifyingGlassChart size={16} />;
+          // simulativa
+          case 'simulativa':
+          case 'simulation':
+            return <FaChartPie size={16} />;
+          // sperimentale
+          case 'sperimentale':
+          case 'experimental':
+            return <FaFlask size={16} />;
+          // sviluppo
+          case 'sviluppo':
+          case 'development':
+            return <FaCode size={16} />;
+          // teorica
+          case 'teorica':
+          case 'theoretical':
+            return <FaBook size={16} />;
+          // numerica
+          case 'numerica':
+          case 'numerical':
+            return <FaCalculator size={16} />;
+          default:
+            return <FaCircleXmark size={16} />;
+        }
       default:
         return <FaCircleXmark size={16} />;
     }
@@ -85,10 +188,18 @@ export default function Badge({ variant, content }) {
     }
   };
 
-  const validVariants = ['teacher', 'keyword', 'internal', 'external', 'abroad', 'type'];
-  const requiresContent = ['teacher', 'keyword', 'type'].includes(variant);
+  const isValidTypeContent = content => {
+    if (Array.isArray(content)) {
+      return content.every(item => validTypeContent.includes(item.toLowerCase()));
+    }
+    return validTypeContent.includes(content.toLowerCase());
+  };
 
-  if (!validVariants.includes(variant) || (requiresContent && !content)) {
+  if (
+    !validVariants.includes(variant) ||
+    (['teacher', 'keyword', 'type'].includes(variant) && !content) ||
+    (variant === 'type' && !isValidTypeContent(content))
+  ) {
     return (
       <div className="badge-container">
         <span className={`badge error_${appliedTheme}`}>
@@ -103,7 +214,7 @@ export default function Badge({ variant, content }) {
     <div className="badge-container">
       {variant === 'internal' || variant === 'external' || variant === 'abroad' ? (
         <span className={`badge ${variant}_${appliedTheme}`}>
-          {renderIcon()}
+          {renderIcon(content)}
           {renderTranslatedContent()}
         </span>
       ) : (
