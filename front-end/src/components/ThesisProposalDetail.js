@@ -1,14 +1,11 @@
 // add attachments, thesis type, review prop types, handle null fields better + call to db in parent + API.jsx for mapping
 import React from 'react';
 
-/*
 import { Container } from 'react-bootstrap';
-import { ArrowRightShort } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
-import { Link } from 'react-router-dom';
 
 import moment from 'moment';
 import 'moment/locale/it';
@@ -16,19 +13,15 @@ import PropTypes from 'prop-types';
 
 import Title from '../components/Title';
 import '../styles/Text.css';
-import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
-import Badge from './Badge';
+import { GenericTag, Keyword, ProfessorTag } from './ThesisItem';
 
 moment.locale('it');
-*/
-function ThesisProposalDetail() {
-  <></>;
-}
-/*
+
 function ThesisProposalDetail(props) {
   const { t } = useTranslation();
   const {
+    id,
     topic,
     description,
     link,
@@ -43,7 +36,17 @@ function ThesisProposalDetail(props) {
     isAbroad,
     keywords,
     types,
+    attachmentUrl,
   } = props.thesisProposal;
+
+  const handleDownloadAttachment = proposalId => {
+    const apiUrl = `https://didattica.polito.it/pls/portal30/sviluppo.tesi_proposte.download_alleg?idts=${proposalId}&lang=IT`;
+    const link = document.createElement('a');
+    link.href = apiUrl;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -52,39 +55,43 @@ function ThesisProposalDetail(props) {
         icon={<FaFileLines size={26} />}
         sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
       />
+      {/*<WarningBadge content="Attenzione: la proposta di tesi è scaduta" />*/}
       {creationDate && expirationDate && <ExpirationDate creation_date={creationDate} exp_date={expirationDate} />}
-      <Container fluid className="custom-container">
-        {isAbroad && <Badge variant="abroad" />}
+      <Container fluid className="custom-container pt-3">
+        {isAbroad && <Abroad />}
         {topic && (
           <div className="subsection-title">
             <p>{topic}</p>
           </div>
         )}
         <div className="important-detail">
-          {keywords && keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
+          {keywords && keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2"></div>}
           {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
           {requiredSkills && (
             <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />
           )}
           {link && <MyBlock title="Link" content={link} />}
+          {attachmentUrl && (
+            <MyBlock
+              title="Allegato"
+              content={attachmentUrl}
+              onDownloadAttachment={() => handleDownloadAttachment(id)}
+            />
+          )}
           {types.length > 0 && (
             <MyBlock
               title="carriera.proposta_di_tesi.tipo"
               content={types.map(type => capitalize(type.type.toLowerCase())).join(', ')}
             />
           )}
-          <MainSupervisor name={supervisor.firstName + ' ' + supervisor.lastName} />
-          {internalCoSupervisors && internalCoSupervisors.length > 1 && (
-            <SecondarySupervisors
-              names={internalCoSupervisors.map(supervisor => {
-                supervisor.firstName + ' ' + supervisor.lastName;
-              })}
-            />
+          <MainSupervisor supervisor={supervisor} />
+          {internalCoSupervisors && internalCoSupervisors.length > 0 && (
+            <SecondarySupervisors supervisors={internalCoSupervisors} />
           )}
           {externalCoSupervisors && (
             <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
           )}
-          {isInternal && <Environment is_internal={isInternal} />}
+          <Environment is_internal={isInternal} />
           {additionalNotes && <MyBlock title="carriera.proposta_di_tesi.note" content={additionalNotes} />}
         </div>
       </Container>
@@ -126,52 +133,103 @@ function capitalizeMonth(dateString) {
   return parts.join(' ');
 }
 
-function MyBlock({ title, content }) {
+function MyBlock({ title, content, onDownloadAttachment }) {
   const { t } = useTranslation();
+
+  const renderContent = () => {
+    if (title === 'Link') {
+      return (
+        <a
+          href={content}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="course-detail"
+          style={{ color: '#007bff', textDecoration: 'underline' }}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    if (title === 'Allegato') {
+      return (
+        <button
+          className="course-detail"
+          style={{
+            color: '#007bff',
+            textDecoration: 'underline',
+            background: 'none',
+            border: 'none',
+            padding: 0,
+            cursor: 'pointer',
+          }}
+          onClick={onDownloadAttachment}
+        >
+          {content}
+        </button>
+      );
+    }
+
+    return <span className="course-detail">{content}</span>;
+  };
+
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+    <div
+      className="detail-row"
+      style={{
+        display: 'flex',
+        alignItems: 'first baseline',
+        marginBottom: '8px',
+      }}
+    >
       <span className="detail-title">{t(title)}:</span>
-      <span className="course-detail">{content}</span>
+      {renderContent()}
     </div>
   );
 }
 
 function Keywords({ keywords }) {
+  //const { t } = useTranslation();
+  // if null return a bit of margin
   return (
     <div className="mb-3">
-      <div className={styles.tagGroup}>
+      <div>
         {keywords.map(keyword => (
-          <Badge variant="keyword" key={keyword.id} content={keyword.keyword} />
+          <Keyword key={keyword.id} keyword={keyword} />
         ))}
       </div>
     </div>
   );
 }
 
-function MainSupervisor({ name }) {
+function MainSupervisor({ supervisor }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
-      <div className={styles.professorTagGroup}>
-        <Badge variant="teacher" content={name} />
+      <div>
+        <Supervisor supervisor={supervisor} />
       </div>
     </div>
   );
 }
 
-function SecondarySupervisors({ names }) {
+function SecondarySupervisors({ supervisors }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
-      <div className={styles.professorTagGroup}>
-        {names.map((name, index) => (
-          <Badge variant="teacher" key={index} content={name} />
+      <div>
+        {supervisors.map((supervisor, index) => (
+          <Supervisor key={index} supervisor={supervisor} />
         ))}
       </div>
     </div>
   );
+}
+
+function Supervisor({ supervisor }) {
+  return <ProfessorTag supervisor={supervisor} />;
 }
 
 function Environment({ is_internal }) {
@@ -179,10 +237,40 @@ function Environment({ is_internal }) {
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.ambiente')}:</span>
-      {is_internal ? <Badge variant="internal" /> : <Badge variant="external" />}
+      {is_internal ? <Internal /> : <NotInternal />}
     </div>
   );
 }
+
+function Internal() {
+  const { t } = useTranslation();
+  return <GenericTag icon={<FaUniversity />} text={t('carriera.proposte_di_tesi.internal_thesis')} />;
+}
+
+function NotInternal() {
+  const { t } = useTranslation();
+  return <GenericTag icon={<HiBuildingOffice2 />} text={t('carriera.proposte_di_tesi.external_thesis')} />;
+}
+
+function Abroad() {
+  const { t } = useTranslation();
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
+      <div>
+        <GenericTag icon={<FaEarthAmericas />} text={t('carriera.proposte_di_tesi.abroad_thesis')} />
+      </div>
+    </div>
+  );
+}
+/*
+function WarningBadge({ content }) {
+  return (
+    <div className={styles.warningTag}>
+      <FaCircleExclamation className={styles.thesisTypeIcon} />
+      <span className="course-detail">{content}</span>
+    </div>
+  )
+}*/
 
 ThesisProposalDetail.propTypes = {
   thesisProposal: PropTypes.shape({
@@ -222,6 +310,7 @@ ThesisProposalDetail.propTypes = {
       PropTypes.shape({ id: PropTypes.number.isRequired, keyword: PropTypes.string.isRequired }),
     ),
     types: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number.isRequired, type: PropTypes.string.isRequired })),
+    attachmentUrl: PropTypes.string,
   }).isRequired,
 };
 
@@ -233,6 +322,7 @@ ExpirationDate.propTypes = {
 MyBlock.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  onDownloadAttachment: PropTypes.func,
 };
 
 Keywords.propTypes = {
@@ -244,16 +334,31 @@ Environment.propTypes = {
 };
 
 MainSupervisor.propTypes = {
-  name: PropTypes.string.isRequired,
+  supervisor: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    profile_url: PropTypes.string.isRequired,
+    facility_short_name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 SecondarySupervisors.propTypes = {
-  names: PropTypes.arrayOf(PropTypes.string).isRequired,
+  supervisors: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
+Supervisor.propTypes = {
+  supervisor: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    profile_url: PropTypes.string.isRequired,
+    facility_short_name: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export { ThesisProposalDetail, ExpirationDate };
-
-*/
-
-export { ThesisProposalDetail };
