@@ -35,20 +35,13 @@ describe('General configuration settings', () => {
 
   it('changes theme from default to Dark, then to Light', () => {
     // Step 1: Change theme to dark
-    cy.get('#dropdown-icon').should('be.visible').click();
-    cy.get('.dropdown-submenu.dropdown-item').eq(1).should('be.visible').trigger('mouseover');
-    cy.get('.submenu.dropdown-menu').eq(1).invoke('show').should('be.visible');
-
-    cy.get('.dropdown-item').contains('Tema scuro').click();
+    cy.get('label[for="theme-toggle-radio3"]').should('be.visible').click();
 
     // Verify using the data-theme attribute
     cy.get('html').should('have.attr', 'data-theme', 'dark');
 
     // Step 2: Change theme to light without resetting
-    cy.get('#dropdown-icon').should('be.visible').click();
-    cy.get('.dropdown-submenu.dropdown-item').eq(1).should('be.visible').trigger('mouseover');
-    cy.get('.submenu.dropdown-menu').eq(1).invoke('show').should('be.visible');
-    cy.get('.dropdown-item').contains('Tema chiaro').click();
+    cy.get('label[for="theme-toggle-radio2"]').should('be.visible').click();
 
     // Verify using the data-theme attribute
     cy.get('html').should('have.attr', 'data-theme', 'light');

@@ -44,8 +44,12 @@ export default function Searchbar(props) {
 
   return (
     <Form
-      className={props.mobile ? 'd-flex m-2 mb-4 w-100' : 'custom-searchbar d-flex me-3 w-100'}
-      style={props.mobile ? { maxWidth: 'none', position: 'relative' } : { maxWidth: '400px', position: 'relative' }}
+      className={props.mobile ? 'd-flex mt-2 mb-4' : 'custom-searchbar d-flex w-100'}
+      style={
+        props.mobile
+          ? { maxWidth: 'none', position: 'relative', marginLeft: '6px' }
+          : { maxWidth: '400px', position: 'relative' }
+      }
     >
       <InputGroup className="flex-nowrap w-100">
         <Form.Control
@@ -58,7 +62,7 @@ export default function Searchbar(props) {
             height: '40px',
             backgroundColor: 'var(--background)',
             color: 'var(--primary)',
-            borderRadius: '12px',
+            borderRadius: '10px',
           }}
           value={searchWord}
           onChange={handleChange}
@@ -74,7 +78,7 @@ export default function Searchbar(props) {
         />
       </InputGroup>
       {searchWord !== '' && (
-        <ListGroup className="custom-list-group w-100">
+        <ListGroup className="custom-list-group w-100" style={{ zIndex: '3' }}>
           {filteredData.slice(0, 3).map(service => (
             <ListGroup.Item
               className="medium-weight custom-list-group-item"

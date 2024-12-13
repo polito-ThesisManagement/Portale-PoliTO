@@ -40,6 +40,7 @@
   font-family: var(--font-primary);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-md);
+  white-space: pre-wrap;
 }
 
 /* unused */
@@ -72,19 +73,43 @@
   color: var(--link);
 }
 
-.breadcrumb {
+.mybreadcrumb {
   font-family: var(--font-primary);
   color: var(--placeholder);
-  margin-top: 1px;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
+  height: auto;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  vertical-align: middle;
 }
 
-.breadcrumb-link {
+.mybreadcrumb-element {
   font-family: var(--font-primary);
-  color: var(--link);
+  color: var(--placeholder);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  vertical-align: middle;
+  height: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.mybreadcrumb-separator {
+  height: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .pol-headline.pol-headline--with-bar > h3:before {
