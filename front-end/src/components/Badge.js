@@ -94,20 +94,14 @@ export default function Badge({ variant, content }) {
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   const renderContent = () => {
-    if (Array.isArray(content)) {
-      return content.map((item, index) => (
-        <span key={index} className={`badge ${variant}_${appliedTheme}`}>
-          {renderIcon(item)}
-          {variant === 'type' ? item.toUpperCase() : item}
-        </span>
-      ));
-    }
-    return (
-      <span className={`badge ${variant}_${appliedTheme}`}>
-        {renderIcon(content)}
-        {variant === 'type' ? content.toUpperCase() : content}
+    const contentArray = Array.isArray(content) ? content : [content];
+
+    return contentArray.map((item, index) => (
+      <span key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
+        {renderIcon(item)}
+        {variant === 'type' ? item.toUpperCase() : item}
       </span>
-    );
+    ));
   };
 
   const renderIcon = contentItem => {

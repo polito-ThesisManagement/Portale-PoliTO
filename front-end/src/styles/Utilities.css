@@ -180,10 +180,6 @@ body {
   overflow-y: auto;
 }
 
-.modal-body-scrollable::-webkit-scrollbar {
-  display: none;
-}
-
 .modal-body-scrollable {
   scrollbar-width: none;
 }
