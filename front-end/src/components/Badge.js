@@ -3,12 +3,15 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   FaBook,
+  FaBrain,
   FaBuildingCircleArrowRight,
   FaBuildingColumns,
   FaCalculator,
   FaChartBar,
   FaChartColumn,
   FaChartPie,
+  FaCircleCheck,
+  FaCircleExclamation,
   FaCircleXmark,
   FaCode,
   FaEarthAmericas,
@@ -35,6 +38,8 @@ import { getSystemTheme } from '../utils/utils';
  *  - "internal": Renders a badge with an internal thesis icon.
  *  - "external": Renders a badge with an external thesis icon.
  *  - "abroad": Renders a badge with an abroad thesis icon.
+ *  - "success": Renders a badge with a success icon.
+ *  - "warning": Renders a badge with a warning icon.
  *  - "type": Renders a badge with a thesis type icon. Requires a "content". Valid content values are:
  *    - "ANALISI DATI" or "DATA ANALYSIS"
  *    - "ANALITICA" or "ANALYTICAL"
@@ -55,7 +60,7 @@ import { getSystemTheme } from '../utils/utils';
  * Regardless, they'll be always showed in UPPERCASE format. Beware that you must maintain spaces between words!
  */
 
-const validVariants = ['teacher', 'keyword', 'internal', 'external', 'abroad', 'type'];
+const validVariants = ['teacher', 'keyword', 'internal', 'external', 'abroad', 'type', 'warning', 'success'];
 const validTypeContent = [
   'analisi dati',
   'data analysis',
@@ -117,6 +122,10 @@ export default function Badge({ variant, content }) {
         return <FaBuildingCircleArrowRight size={16} />;
       case 'abroad':
         return <FaEarthAmericas size={16} />;
+      case 'success':
+        return <FaCircleCheck size={16} />;
+      case 'warning':
+        return <FaCircleExclamation size={16} />;
       case 'type':
         switch (contentItem.toLowerCase()) {
           // analisi dati
@@ -138,7 +147,7 @@ export default function Badge({ variant, content }) {
           // computazionale
           case 'computazionale':
           case 'computational':
-            return <FaCalculator size={16} />;
+            return <FaBrain size={16} />;
           // progettuale
           case 'progettuale':
           case 'design':
@@ -197,7 +206,7 @@ export default function Badge({ variant, content }) {
 
   if (
     !validVariants.includes(variant) ||
-    (['teacher', 'keyword', 'type'].includes(variant) && !content) ||
+    (['teacher', 'keyword', 'type', 'warning', 'success'].includes(variant) && !content) ||
     (variant === 'type' && !isValidTypeContent(content))
   ) {
     return (
