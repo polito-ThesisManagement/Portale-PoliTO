@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
+import Linkify from 'react-linkify';
 
 import moment from 'moment';
 import 'moment/locale/it';
@@ -170,7 +171,11 @@ function MyBlock({ title, content, onDownloadAttachment }) {
       );
     }
 
-    return <span className="course-detail">{content}</span>;
+    return (
+      <span className="course-detail">
+        <Linkify>{content}</Linkify>
+      </span>
+    );
   };
 
   return (
@@ -340,8 +345,9 @@ MainSupervisor.propTypes = {
     lastName: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    profile_url: PropTypes.string.isRequired,
-    facility_short_name: PropTypes.string.isRequired,
+    profileUrl: PropTypes.string.isRequired,
+    profilePictureUrl: PropTypes.string,
+    facilityShortName: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -356,8 +362,9 @@ Supervisor.propTypes = {
     lastName: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    profile_url: PropTypes.string.isRequired,
-    facility_short_name: PropTypes.string.isRequired,
+    profileUrl: PropTypes.string.isRequired,
+    profilePictureUrl: PropTypes.string,
+    facilityShortName: PropTypes.string.isRequired,
   }).isRequired,
 };
 
