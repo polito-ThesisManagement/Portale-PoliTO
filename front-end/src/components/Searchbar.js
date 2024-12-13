@@ -109,7 +109,7 @@ export default function Searchbar(props) {
               setSearchWord('');
             }}
           >
-            Cerca <span className="medium-weight">{searchWord}</span> su polito.it...
+            {t('navbar.cerca')} <span className="medium-weight">{searchWord}</span> {t('navbar.su_polito')}
           </ListGroup.Item>
         </ListGroup>
       )}

@@ -10,7 +10,9 @@
         "anticipo_fine_lezione_descrizione": "Today's lesson will end half an hour early.",
         "tema_chiaro": "Light Theme",
         "tema_scuro": "Dark Theme",
-        "tema_automatico": "Automatic Theme"
+        "tema_automatico": "Automatic Theme",
+        "cerca": "Search",
+        "su_polito": "on polito.it..."
     },
     "sidebar": {
         "didattica": "Education",

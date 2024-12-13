@@ -10,7 +10,9 @@
         "anticipo_fine_lezione_descrizione": "La lezione di oggi terminerà con mezz'ora d'anticipo.",
         "tema_chiaro": "Tema chiaro",
         "tema_scuro": "Tema scuro",
-        "tema_automatico": "Tema automatico"
+        "tema_automatico": "Tema automatico",
+        "cerca": "Cerca",
+        "su_polito": "su polito.it..."
     },
     "sidebar": {
         "didattica": "Didattica",
