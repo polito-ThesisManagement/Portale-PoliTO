@@ -174,16 +174,6 @@ body {
   box-shadow: none;
 }
 
-/* unused */
-.modal-body-scrollable {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.modal-body-scrollable {
-  scrollbar-width: none;
-}
-
 .click-notifica {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
