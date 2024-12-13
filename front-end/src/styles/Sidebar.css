@@ -59,6 +59,10 @@
   display: none;
 }
 
+.custom-sidebar {
+  scrollbar-width: none;
+}
+
 .custom-sidebar-wrapper.toggle,
 .custom-sidebar.toggle {
   width: 80px;
@@ -154,7 +158,7 @@
 .sidebar-text {
   padding-left: 10px;
   font-weight: var(--font-weight-medium);
-  margin-top: 3px;
+  margin-top: 2px;
   white-space: nowrap;
 }
 
@@ -211,5 +215,4 @@
 .modal-sidebar-text {
   padding-left: 10px;
   font-weight: var(--font-weight-medium);
-  margin-top: 2px;
 }

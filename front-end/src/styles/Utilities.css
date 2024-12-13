@@ -62,7 +62,7 @@ body {
 .title {
   color: var(--primary);
   display: flex;
-  align-items: start;
+  align-items: center;
   text-align: start;
 }
 
@@ -182,6 +182,10 @@ body {
 
 .modal-body-scrollable::-webkit-scrollbar {
   display: none;
+}
+
+.modal-body-scrollable {
+  scrollbar-width: none;
 }
 
 .click-notifica {

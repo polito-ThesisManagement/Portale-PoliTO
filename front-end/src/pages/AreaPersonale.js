@@ -7,5 +7,5 @@ import Title from '../components/Title';
 
 export default function AreaPersonale() {
   const { t } = useTranslation();
-  return <Title icon={<FaUser size={32} />} sectionName={t('sidebar.area_personale')} />;
+  return <Title icon={<FaUser size={30} />} sectionName={t('sidebar.area_personale')} />;
 }

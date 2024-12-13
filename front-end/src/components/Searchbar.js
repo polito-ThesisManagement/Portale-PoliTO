@@ -71,8 +71,8 @@ export default function Searchbar(props) {
           style={{
             position: 'relative',
             zIndex: '3',
-            right: '28',
-            top: '12',
+            right: '28px',
+            top: '12px',
             color: 'var(--primary)',
           }}
         />

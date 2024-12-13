@@ -7,5 +7,5 @@ import Title from '../components/Title';
 
 export default function Didattica() {
   const { t } = useTranslation();
-  return <Title icon={<FaBookOpen size={32} />} sectionName={t('sidebar.didattica')} />;
+  return <Title icon={<FaBookOpen size={30} />} sectionName={t('sidebar.didattica')} />;
 }
