@@ -1,10 +1,13 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useMemo, useState } from 'react';
 
 import { Col, Row } from 'react-bootstrap';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
+import API from './API';
+import FloatingButton from './components/FloatingButton';
+import LoadingModal from './components/LoadingModal';
 import PoliNavbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+import { Sidebar } from './components/Sidebar';
 import Avvisi_GC from './data/Avvisi_GC.json';
 import AreaPersonale from './pages/AreaPersonale';
 import Carriera from './pages/Carriera';
@@ -19,20 +22,27 @@ import PropostaDiTesi from './pages/carriera/PropostaDiTesi';
 import ProposteDiTesi from './pages/carriera/ProposteDiTesi';
 import './styles/Theme.css';
 import './styles/Utilities.css';
-import { getSystemTheme } from './utils/utils';
+import { getSystemTheme, scrollTop } from './utils/utils';
 
 export const FavoritesContext = createContext(null);
 export const AvvisiContext = createContext(null);
 export const ThemeContext = createContext(null);
+export const DesktopToggleContext = createContext(null);
+export const LoggedStudentContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState('auto');
   const [favorites, setFavorites] = useState([]);
   const [avvisi, setAvvisi] = useState([Avvisi_GC]);
+  const [desktopToggle, setDesktopToggle] = useState(false);
+  const [allStudents, setAllStudents] = useState([]);
+  const [loggedStudent, setLoggedStudent] = useState(null);
+  const [navbarDataLoading, setNavbarDataLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollTop();
   }, [location]);
 
   useEffect(() => {
@@ -58,36 +68,73 @@ function App() {
       );
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (navbarDataLoading) {
+          const allStudents = await API.getStudents();
+          if (allStudents && allStudents.length > 0) setAllStudents(allStudents);
+          else setAllStudents([]);
+          const loggedStudent = await API.getLoggedStudent();
+          if (loggedStudent) setLoggedStudent(loggedStudent);
+          else setLoggedStudent(null);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setNavbarDataLoading(false);
+      }
+    };
+    fetchData();
+  }, [refresh]);
+
+  const loggedStudentValue = useMemo(() => ({ loggedStudent, setLoggedStudent }), [loggedStudent]);
+  const desktopToggleValue = useMemo(() => ({ desktopToggle, setDesktopToggle }), [desktopToggle]);
+  const favoritesValue = useMemo(() => ({ favorites, setFavorites }), [favorites]);
+  const avvisiValue = useMemo(() => ({ avvisi, setAvvisi }), [avvisi]);
+  const themeValue = useMemo(() => ({ theme, setTheme }), [theme]);
+
   return (
     <>
       <style>@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap);</style>
-      <ThemeContext.Provider value={{ theme, setTheme }}>
-        <FavoritesContext.Provider value={{ favorites, setFavorites }}>
-          <AvvisiContext.Provider value={{ avvisi, setAvvisi }}>
-            <PoliNavbar />
-            <Row>
-              <Sidebar />
-              <Col className={'main-space reduced'}>
-                <Col className={'custom-content reduced'}>
-                  <Routes>
-                    <Route path="/" element={<Homepage />} />
-                    <Route path="/area_personale" element={<AreaPersonale />} />
-                    <Route path="/home" element={<Homepage />} />
-                    <Route path="/didattica" element={<Didattica />} />
-                    <Route path="/carriera" element={<Carriera />} />
-                    <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
-                    <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
-                    <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
-                    <Route path="/opportunita" element={<Opportunita />} />
-                    <Route path="/servizi" element={<Servizi />} />
-                    <Route path="/help" element={<Help />} />
-                    <Route path="*" element={<PageNotFound />} />
-                  </Routes>
-                </Col>
-              </Col>
-            </Row>
-          </AvvisiContext.Provider>
-        </FavoritesContext.Provider>
+      <ThemeContext.Provider value={themeValue}>
+        <LoggedStudentContext.Provider value={loggedStudentValue}>
+          <DesktopToggleContext.Provider value={desktopToggleValue}>
+            <FavoritesContext.Provider value={favoritesValue}>
+              <AvvisiContext.Provider value={avvisiValue}>
+                <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
+                <PoliNavbar
+                  allStudents={allStudents}
+                  setNavbarDataLoading={setNavbarDataLoading}
+                  refresh={refresh}
+                  setRefresh={setRefresh}
+                />
+                <Row>
+                  <Sidebar />
+                  <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
+                    <Col className={`custom-content reeduced`}>
+                      <Routes>
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/area_personale" element={<AreaPersonale />} />
+                        <Route path="/home" element={<Homepage />} />
+                        <Route path="/didattica" element={<Didattica />} />
+                        <Route path="/carriera" element={<Carriera />} />
+                        <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                        <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
+                        <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
+                        <Route path="/opportunita" element={<Opportunita />} />
+                        <Route path="/servizi" element={<Servizi />} />
+                        <Route path="/help" element={<Help />} />
+                        <Route path="*" element={<PageNotFound />} />
+                      </Routes>
+                      <FloatingButton />
+                    </Col>
+                  </Col>
+                </Row>
+              </AvvisiContext.Provider>
+            </FavoritesContext.Provider>
+          </DesktopToggleContext.Provider>
+        </LoggedStudentContext.Provider>
       </ThemeContext.Provider>
     </>
   );
