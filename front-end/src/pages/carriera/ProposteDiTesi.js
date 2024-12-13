@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { ArrowRightShort } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
 import API from '../../API';
 import LoadingModal from '../../components/LoadingModal';
+import MyBreadcrumb from '../../components/MyBreadcrumb';
 import ThesisProposals from '../../components/ThesisProposals';
 
 export default function ProposteDiTesi() {
@@ -34,27 +33,5 @@ export default function ProposteDiTesi() {
         </>
       )}
     </>
-  );
-}
-
-function MyBreadcrumb() {
-  const { t } = useTranslation();
-
-  return (
-    <div className="d-flex mt-2">
-      <Link to="/" className="breadcrumb-link">
-        Homepage
-      </Link>
-      <span className="mx-2">
-        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
-      </span>
-      <Link to="/carriera" className="breadcrumb-link">
-        {t('sidebar.carriera')}
-      </Link>
-      <span className="mx-2">
-        <ArrowRightShort color="var(--placeholder)" style={{ marginTop: '-4px' }} />
-      </span>
-      <span className="breadcrumb">{t('carriera.proposte_di_tesi.title_half_lowercase')}</span>
-    </div>
   );
 }

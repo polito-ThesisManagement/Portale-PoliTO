@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Pagination, Tab, Tabs } from 'react-bootstrap';
+import { Pagination } from 'react-bootstrap';
 import { Search, SortDown, SortUp } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -27,6 +27,8 @@ export default function ThesisProposals({ thesisProposals }) {
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
   const [filteredProposals, setFilteredProposals] = useState(thesisProposals);
   const [totalPages, setTotalPages] = useState(Math.ceil(thesisProposals.length / proposalsPerPage));
+  const [thesisTypes, setThesisTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState('');
 
   const { t } = useTranslation();
 
@@ -85,6 +87,26 @@ export default function ThesisProposals({ thesisProposals }) {
     return sortedProposals;
   }
 
+  const handleSelectedType = event => {
+    console.log(event);
+    if (event.target.value === t('carriera.proposte_di_tesi.internal_thesis')) {
+      setSelectedType('internal');
+    } else if (event.target.value === t('carriera.proposte_di_tesi.abroad_thesis')) {
+      setSelectedType('abroad');
+    } else if (event.target.value === t('carriera.proposte_di_tesi.external_thesis')) {
+      setSelectedType('external');
+    }
+  };
+
+  useEffect(() => {
+    const types = [
+      t('carriera.proposte_di_tesi.internal_thesis'),
+      t('carriera.proposte_di_tesi.abroad_thesis'),
+      t('carriera.proposte_di_tesi.external_thesis'),
+    ];
+    setThesisTypes(types);
+  }, []);
+
   // Filter proposals based on activeTab
   useEffect(() => {
     if (tab === 'all') {
@@ -128,6 +150,26 @@ export default function ThesisProposals({ thesisProposals }) {
     setFilteredProposals(sortedProposals);
     setPageProposals(sortedProposals.slice(0, proposalsPerPage));
   }, [sortBy, orderBy]);
+
+  // Filter proposals based on selected type
+  useEffect(() => {
+    if (selectedType === '') {
+      setFilteredProposals(thesisProposals);
+      setCurrentPage(1);
+      return;
+    }
+    const filtered = thesisProposals.filter(proposal => {
+      if (selectedType === 'internal') {
+        return proposal.isInternal;
+      } else if (selectedType === 'abroad') {
+        return proposal.isAbroad;
+      } else if (selectedType === 'external') {
+        return !proposal.isInternal;
+      }
+    });
+    setFilteredProposals(sortingProposals(filtered));
+    setCurrentPage(1);
+  }, [selectedType]);
 
   // Set page numbers
   useEffect(() => {
@@ -203,7 +245,7 @@ export default function ThesisProposals({ thesisProposals }) {
                   marginBottom: '8px',
                 }}
               >
-                <Tabs
+                {/*<Tabs
                   defaultActiveKey="all"
                   activeKey={tab}
                   onSelect={k => setTab(k)}
@@ -220,7 +262,8 @@ export default function ThesisProposals({ thesisProposals }) {
                     title={t('carriera.proposte_di_tesi.all_thesis')}
                   />
                   <Tab eventKey="course" title={t('carriera.proposte_di_tesi.course_thesis')} />
-                </Tabs>
+                </Tabs>*/}
+                <TextToggle tab={tab} setTab={setTab} />
                 <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Select
@@ -299,6 +342,42 @@ export default function ThesisProposals({ thesisProposals }) {
                     />
                   </InputGroup>
                 </Form>
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                  marginBottom: '8px',
+                }}
+              >
+                <InputGroup className="flex-nowrap w-100">
+                  <Form.Select
+                    style={{
+                      height: '2.6rem',
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--primary)',
+                      borderRadius: '8px',
+                      fontFamily: 'var(--font-family)',
+                      fontSize: 'var(--font-size-sm)',
+                      fontWeight: '600',
+                      width: '220px',
+                    }}
+                    value={selectedType}
+                    onChange={handleSelectedType}
+                  >
+                    <option value="">Tutte le tipologie</option>
+                    {thesisTypes.map((thesisType, index) => {
+                      return (
+                        <option key={index} value={thesisType}>
+                          {thesisType}
+                        </option>
+                      );
+                    })}
+                  </Form.Select>
+                </InputGroup>
               </div>
             </div>
           </section>
@@ -394,6 +473,37 @@ export default function ThesisProposals({ thesisProposals }) {
   );
 }
 
+function TextToggle({ tab, setTab }) {
+  const { t } = useTranslation();
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="text-toggle-container">
+        <div className="text-toggle">
+          <input
+            type="radio"
+            id="text-toggle-radio1"
+            name="radio"
+            style={{ display: 'none' }}
+            checked={tab === 'all'}
+            onChange={() => setTab('all')}
+          />
+          <label htmlFor="text-toggle-radio1">{t('carriera.proposte_di_tesi.all_thesis')}</label>
+          <input
+            type="radio"
+            id="text-toggle-radio2"
+            name="radio"
+            style={{ display: 'none' }}
+            checked={tab === 'course'}
+            onChange={() => setTab('course')}
+          />
+          <label htmlFor="text-toggle-radio2">{t('carriera.proposte_di_tesi.course_thesis')}</label>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 ThesisProposals.propTypes = {
   thesisProposals: PropTypes.arrayOf(
     PropTypes.shape({
@@ -424,4 +534,9 @@ ThesisProposals.propTypes = {
       ),
     }),
   ),
+};
+
+TextToggle.propTypes = {
+  tab: PropTypes.string.isRequired,
+  setTab: PropTypes.func.isRequired,
 };
