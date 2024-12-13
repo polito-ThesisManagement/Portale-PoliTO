@@ -54,9 +54,9 @@
             "external_thesis": "Tesi in azienda",
             "abroad_thesis": "Tesi all'estero",
             "total": "Totale:",
-            "elements_per_page": "Elementi per pagina",
-            "all_thesis": "Tutte le tesi",
-            "course_thesis": "Tesi per il tuo corso di studi",
+            "page": "pagina",
+            "all_thesis": "Tutte le proposte",
+            "course_thesis": "Proposte per il tuo corso di studi",
             "search": "Ricerca tra le proposte..."
         },
         "proposta_di_tesi": {

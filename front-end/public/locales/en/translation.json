@@ -54,9 +54,9 @@
             "external_thesis": "Company thesis",
             "abroad_thesis": "Abroad thesis",
             "total": "Total:",
-            "elements_per_page": "Elements per page",
-            "all_thesis": "All thesis",
-            "course_thesis": "Thesis for your study course",
+            "page": "page",
+            "all_thesis": "All proposals",
+            "course_thesis": "Proposals for your study course",
             "search": "Search proposals..."
         },
         "proposta_di_tesi": {
