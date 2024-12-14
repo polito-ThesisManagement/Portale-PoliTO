@@ -72,7 +72,8 @@
             "relatore_principale": "Main Supervisor",
             "relatori_secondari": "Secondary Supervisors",
             "relatori_esterni": "External Supervisors",
-            "badge_errato": "Invalid badge/s"
+            "badge_errato": "Invalid badge/s",
+            "errore_proposta_di_tesi": "Error while rendering the thesis proposal"
         }
     },
     "Accedi": "Login",
