@@ -7,5 +7,5 @@ import Title from '../components/Title';
 
 export default function Opportunita() {
   const { t } = useTranslation();
-  return <Title icon={<FaBriefcase size={32} />} sectionName={t('sidebar.opportunità')} />;
+  return <Title icon={<FaBriefcase size={30} />} sectionName={t('sidebar.opportunità')} />;
 }

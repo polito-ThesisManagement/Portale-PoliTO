@@ -6,5 +6,5 @@ import Title from '../components/Title';
 import '../styles/Utilities.css';
 
 export default function Help() {
-  return <Title icon={<FaInfoCircle size={32} />} sectionName="Help" />;
+  return <Title icon={<FaInfoCircle size={30} />} sectionName="Help" />;
 }

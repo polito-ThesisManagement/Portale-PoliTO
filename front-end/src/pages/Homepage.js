@@ -7,5 +7,5 @@ import '../styles/Text.css';
 import '../styles/Utilities.css';
 
 export default function Homepage() {
-  return <Title icon={<FaHouse size={32} />} sectionName="Homepage" />;
+  return <Title icon={<FaHouse size={30} />} sectionName="Homepage" />;
 }
