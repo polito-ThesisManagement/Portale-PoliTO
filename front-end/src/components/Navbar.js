@@ -131,9 +131,9 @@ export default function PoliNavbar(props) {
               onMouseLeave={() => setHoveredIcon(null)}
             >
               {hoveredIcon === 'envelope' ? (
-                <FaEnvelope size={24} color="var(--primary)" />
+                <FaEnvelope size={26} color="var(--primary)" />
               ) : (
-                <FaRegEnvelope size={24} color="var(--primary)" />
+                <FaRegEnvelope size={26} color="var(--primary)" />
               )}
             </Nav.Link>
             <Nav.Link
@@ -142,9 +142,9 @@ export default function PoliNavbar(props) {
               onMouseLeave={() => setHoveredIcon(null)}
             >
               {hoveredIcon === 'bell' ? (
-                <FaBell size={24} color="var(--primary)" />
+                <FaBell size={26} color="var(--primary)" />
               ) : (
-                <FaRegBell size={24} color="var(--primary)" />
+                <FaRegBell size={26} color="var(--primary)" />
               )}
             </Nav.Link>
             <Navbar.Brand style={{ display: 'flex', alignItems: 'center', marginRight: '0' }}>
