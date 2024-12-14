@@ -365,7 +365,7 @@ export default function ThesisProposals({ thesisProposals }) {
                 defaultInputValue={'5'}
               />
             </div>
-            {totalPages && (
+            {!!totalPages && (
               <Pagination activeKey={currentPage} onChange={handlePageChange}>
                 <Pagination.First />
                 <Pagination.Prev />

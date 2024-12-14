@@ -255,8 +255,9 @@ const ThesisProfessorTags = ({ supervisor, internalCoSupervisors }) => {
       }}
     >
       <ProfessorTag supervisor={supervisor} />
-      {internalCoSupervisors &&
-        internalCoSupervisors.map(coSupervisor => <ProfessorTag key={coSupervisor.id} supervisor={coSupervisor} />)}
+      {internalCoSupervisors?.map(coSupervisor => (
+        <ProfessorTag key={coSupervisor.id} supervisor={coSupervisor} />
+      ))}
     </div>
   );
 };
