@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
+import { Pagination, Tab, Tabs } from 'react-bootstrap';
 import { Search, SortDown, SortUp } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
 import { HiLightBulb } from 'react-icons/hi';
+import Select from 'react-select';
 
 import PropTypes from 'prop-types';
 
 import '../styles/Searchbar.css';
-import styles from '../styles/ThesisProposals.module.css';
-import ThesisItem from './ThesisItem';
+import '../styles/Theme.css';
+import '../styles/Utilities.css';
+import { ThesisItem } from './ThesisItem';
 import Title from './Title';
 
 export default function ThesisProposals({ thesisProposals }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [tab, setTab] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,9 +30,12 @@ export default function ThesisProposals({ thesisProposals }) {
 
   const { t } = useTranslation();
 
-  const handleToggle = () => {
-    setActiveIndex(prevIndex => (prevIndex === 0 ? 1 : 0));
-  };
+  const optionsPage = [
+    { value: 5, label: '5' },
+    { value: 10, label: '10' },
+    { value: 20, label: '20' },
+    { value: 50, label: '50' },
+  ];
 
   const handlePageChange = pageNumber => {
     if (pageNumber !== currentPage) {
@@ -39,7 +45,7 @@ export default function ThesisProposals({ thesisProposals }) {
   };
 
   const handleProposalsPerPageChange = event => {
-    setProposalsPerPage(Number(event.target.value));
+    setProposalsPerPage(Number(event.value));
     setCurrentPage(1); // Reset to first page when changing proposals per page
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -79,16 +85,16 @@ export default function ThesisProposals({ thesisProposals }) {
     return sortedProposals;
   }
 
-  // Filter proposals based on activeIndex
+  // Filter proposals based on activeTab
   useEffect(() => {
-    if (activeIndex === 0) {
+    if (tab === 'all') {
       setFilteredProposals(filteredProposals);
     } else {
       const filtered = filteredProposals; // Add filter for thesis related to the logged student's degree course
       setFilteredProposals(sortingProposals(filtered));
     }
     setCurrentPage(1);
-  }, [activeIndex]);
+  }, [tab]);
 
   // Filter proposals based on search query
   useEffect(() => {
@@ -157,26 +163,64 @@ export default function ThesisProposals({ thesisProposals }) {
   return (
     <>
       <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
-      <div className={styles.container}>
-        <main className={styles.mainContent}>
-          <section className={styles.card}>
-            <div className={styles.cardBody}>
-              <div className={styles.filterRow}>
-                <label className={styles.segmentedControl} aria-label="Toggle thesis proposals">
-                  <input type="checkbox" checked={activeIndex === 1} onChange={handleToggle} />
-                  <span className={styles.slider}>
-                    <span className={`${styles.toggleText} ${styles.toggleTextLeft}`}>
-                      {activeIndex === 0
-                        ? t('carriera.proposte_di_tesi.all_thesis')
-                        : t('carriera.proposte_di_tesi.all_thesis')}
-                    </span>
-                    <span className={`${styles.toggleText} ${styles.toggleTextRight}`}>
-                      {activeIndex === 1
-                        ? t('carriera.proposte_di_tesi.course_thesis')
-                        : t('carriera.proposte_di_tesi.course_thesis')}
-                    </span>
-                  </span>
-                </label>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          paddingBottom: '5.675rem',
+        }}
+      >
+        <main
+          style={{
+            borderRadius: '1rem',
+            display: 'flex',
+            backgroundColor: 'var(--surface)',
+            width: '100%',
+            flexDirection: 'column',
+            flexGrow: '1',
+            paddingBottom: '2%',
+          }}
+        >
+          <section style={{ marginBottom: '0.5rem' }}>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                flexGrow: '1',
+                padding: '1.75rem',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                  marginBottom: '8px',
+                }}
+              >
+                <Tabs
+                  defaultActiveKey="all"
+                  activeKey={tab}
+                  onSelect={k => setTab(k)}
+                  id="thesis-proposals-tabs"
+                  className="custom-tab"
+                  fill={true}
+                >
+                  <Tab
+                    style={{
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--text)',
+                    }}
+                    eventKey="all"
+                    title={t('carriera.proposte_di_tesi.all_thesis')}
+                  />
+                  <Tab eventKey="course" title={t('carriera.proposte_di_tesi.course_thesis')} />
+                </Tabs>
                 <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Select
@@ -227,7 +271,7 @@ export default function ThesisProposals({ thesisProposals }) {
                     )}
                   </InputGroup>
                 </Form>
-                <Form className="d-flex me-3 w-100" style={{ maxWidth: '250px' }} onSubmit={e => e.preventDefault()}>
+                <Form className="d-flex w-100" style={{ maxWidth: '250px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Control
                       className="truncated"
@@ -245,10 +289,10 @@ export default function ThesisProposals({ thesisProposals }) {
                     />
                     <Search
                       style={{
-                        position: 'relative',
+                        position: 'absolute',
                         zIndex: '3',
-                        right: '30',
-                        top: '8',
+                        right: '13px',
+                        top: '7px',
                         color: 'var(--primary)',
                         height: '1.1rem',
                       }}
@@ -258,61 +302,89 @@ export default function ThesisProposals({ thesisProposals }) {
               </div>
             </div>
           </section>
-          <section className={styles.thesisList}>
-            <div className={styles.thesisListInner}>
+          <section
+            style={{
+              backgroundColor: 'var(--surface)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+              paddingBottom: '6px',
+            }}
+          >
+            <div>
               {pageProposals.map(thesis => {
                 return <ThesisItem key={thesis.id} {...thesis} />;
               })}
             </div>
           </section>
-          <div className={styles.pagination}>
-            <div style={{ display: 'flex', alignItems: 'center', width: '300px' }}>
-              <b className={styles.bText} style={{ paddingLeft: '2rem', width: '100%' }}>
-                {t('carriera.proposte_di_tesi.elements_per_page')}:
-              </b>
-              <Form className="d-flex me-3 w-100" style={{ maxWidth: '80px' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginTop: '1rem',
+              marginLeft: '1rem',
+              marginRight: '1rem',
+              flexWrap: 'wrap',
+              paddingBottom: '1.5rem',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', width: '300px', justifyContent: 'flex-start' }}>
+              {/*<Form className="d-flex me-3 w-100">
                 <InputGroup className="flex-nowrap w-100">
                   <Form.Select
                     label="page_elements"
                     style={{
-                      height: '2rem',
+                      height: '2.6rem',
                       backgroundColor: 'var(--background)',
                       color: 'var(--primary)',
                       borderRadius: '8px',
-                      lineHeight: '1rem',
-                      paddingRight: '2rem',
                       fontFamily: 'var(--font-family)',
+                      fontSize: 'var(--font-size-sm)',
+                      fontWeight: '600',
                     }}
                     value={proposalsPerPage}
                     onChange={handleProposalsPerPageChange}
                     onSubmit={e => e.preventDefault()}
+                    aria-label={t('carriera.proposte_di_tesi.elements_per_page')}
                   >
-                    <option value={5}>5</option>
-                    <option value={10}>10</option>
-                    <option value={20}>20</option>
-                    <option value={50}>50</option>
+                    <option value={5}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 5'}</option>
+                    <option value={10}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 10'}</option>
+                    <option value={20}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 20'}</option>
+                    <option value={50}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 50'}</option>
                   </Form.Select>
                 </InputGroup>
-              </Form>
+              </Form>*/}
+              <Select
+                options={optionsPage}
+                value={proposalsPerPage}
+                onChange={handleProposalsPerPageChange}
+                placeholder={t('carriera.proposte_di_tesi.elements_per_page') + ': ' + proposalsPerPage}
+                defaultInputValue={'5'}
+              />
             </div>
-            <div className={styles.paginationNumbers}>
-              {pageNumbers.map((number, index) =>
-                number === '...' ? (
-                  <button key={`ellipsis-${index}`} className={styles.ellipsis} disabled>
-                    {number}
-                  </button>
-                ) : (
-                  <button
-                    key={`page-${number}`}
-                    onClick={() => handlePageChange(number)}
-                    className={currentPage === number ? styles.activePage : ''}
-                  >
-                    {number}
-                  </button>
-                ),
-              )}
-            </div>
-            <span className={styles.bText} style={{ paddingRight: '2rem' }}>
+            {!!totalPages && (
+              <Pagination activeKey={currentPage} onChange={handlePageChange}>
+                <Pagination.First />
+                <Pagination.Prev />
+                {pageNumbers.map(number => {
+                  return <Pagination.Item key={number}>{number}</Pagination.Item>;
+                })}
+                <Pagination.Next />
+                <Pagination.Last />
+              </Pagination>
+            )}
+            <span
+              style={{
+                fontFamily: 'var(--font-primary)',
+                fontSize: 'var(--font-size-sm)',
+                color: 'var(--text)',
+                fontWeight: '600',
+                paddingRight: '2rem',
+              }}
+            >
               {t('carriera.proposte_di_tesi.total')} {filteredProposals.length}
             </span>
           </div>

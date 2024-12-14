@@ -56,7 +56,7 @@ export default function Searchbar(props) {
           : { maxWidth: '400px', position: 'relative' }
       }
     >
-      <InputGroup className="flex-nowrap w-100">
+      <InputGroup className="flex-nowrap w-100 me-3">
         <Form.Control
           className="truncated"
           type="search"
@@ -74,10 +74,10 @@ export default function Searchbar(props) {
         />
         <Search
           style={{
-            position: 'relative',
+            position: 'absolute',
             zIndex: '3',
-            right: '28px',
-            top: '12px',
+            right: '13px',
+            top: '11px',
             color: 'var(--primary)',
           }}
         />

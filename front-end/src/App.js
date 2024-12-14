@@ -8,7 +8,6 @@ import FloatingButton from './components/FloatingButton';
 import LoadingModal from './components/LoadingModal';
 import PoliNavbar from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
-import Avvisi_GC from './data/Avvisi_GC.json';
 import AreaPersonale from './pages/AreaPersonale';
 import Carriera from './pages/Carriera';
 import Didattica from './pages/Didattica';
@@ -25,7 +24,6 @@ import './styles/Utilities.css';
 import { getSystemTheme, scrollTop } from './utils/utils';
 
 export const FavoritesContext = createContext(null);
-export const AvvisiContext = createContext(null);
 export const ThemeContext = createContext(null);
 export const DesktopToggleContext = createContext(null);
 export const LoggedStudentContext = createContext(null);
@@ -33,7 +31,6 @@ export const LoggedStudentContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState('auto');
   const [favorites, setFavorites] = useState([]);
-  const [avvisi, setAvvisi] = useState([Avvisi_GC]);
   const [desktopToggle, setDesktopToggle] = useState(false);
   const [allStudents, setAllStudents] = useState([]);
   const [loggedStudent, setLoggedStudent] = useState(null);
@@ -91,7 +88,6 @@ function App() {
   const loggedStudentValue = useMemo(() => ({ loggedStudent, setLoggedStudent }), [loggedStudent]);
   const desktopToggleValue = useMemo(() => ({ desktopToggle, setDesktopToggle }), [desktopToggle]);
   const favoritesValue = useMemo(() => ({ favorites, setFavorites }), [favorites]);
-  const avvisiValue = useMemo(() => ({ avvisi, setAvvisi }), [avvisi]);
   const themeValue = useMemo(() => ({ theme, setTheme }), [theme]);
 
   return (
@@ -101,37 +97,35 @@ function App() {
         <LoggedStudentContext.Provider value={loggedStudentValue}>
           <DesktopToggleContext.Provider value={desktopToggleValue}>
             <FavoritesContext.Provider value={favoritesValue}>
-              <AvvisiContext.Provider value={avvisiValue}>
-                <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
-                <PoliNavbar
-                  allStudents={allStudents}
-                  setNavbarDataLoading={setNavbarDataLoading}
-                  refresh={refresh}
-                  setRefresh={setRefresh}
-                />
-                <Row>
-                  <Sidebar />
-                  <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
-                    <Col className={`custom-content reeduced`}>
-                      <Routes>
-                        <Route path="/" element={<Homepage />} />
-                        <Route path="/area_personale" element={<AreaPersonale />} />
-                        <Route path="/home" element={<Homepage />} />
-                        <Route path="/didattica" element={<Didattica />} />
-                        <Route path="/carriera" element={<Carriera />} />
-                        <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
-                        <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
-                        <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
-                        <Route path="/opportunita" element={<Opportunita />} />
-                        <Route path="/servizi" element={<Servizi />} />
-                        <Route path="/help" element={<Help />} />
-                        <Route path="*" element={<PageNotFound />} />
-                      </Routes>
-                      <FloatingButton />
-                    </Col>
+              <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
+              <PoliNavbar
+                allStudents={allStudents}
+                setNavbarDataLoading={setNavbarDataLoading}
+                refresh={refresh}
+                setRefresh={setRefresh}
+              />
+              <Row>
+                <Sidebar />
+                <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
+                  <Col className={`custom-content reeduced`}>
+                    <Routes>
+                      <Route path="/" element={<Homepage />} />
+                      <Route path="/area_personale" element={<AreaPersonale />} />
+                      <Route path="/home" element={<Homepage />} />
+                      <Route path="/didattica" element={<Didattica />} />
+                      <Route path="/carriera" element={<Carriera />} />
+                      <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                      <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
+                      <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
+                      <Route path="/opportunita" element={<Opportunita />} />
+                      <Route path="/servizi" element={<Servizi />} />
+                      <Route path="/help" element={<Help />} />
+                      <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+                    <FloatingButton />
                   </Col>
-                </Row>
-              </AvvisiContext.Provider>
+                </Col>
+              </Row>
             </FavoritesContext.Provider>
           </DesktopToggleContext.Provider>
         </LoggedStudentContext.Provider>

@@ -16,7 +16,6 @@ import PropTypes from 'prop-types';
 
 import Title from '../components/Title';
 import '../styles/Text.css';
-import styles from '../styles/ThesisProposals.module.css';
 import '../styles/Utilities.css';
 import Badge from './Badge';
 
@@ -73,11 +72,11 @@ function ThesisProposalDetail(props) {
               content={types.map(type => capitalize(type.type.toLowerCase())).join(', ')}
             />
           )}
-          <MainSupervisor name={supervisor.firstName + ' ' + supervisor.lastName} />
+          <MainSupervisor supervisor={supervisor} />
           {internalCoSupervisors && internalCoSupervisors.length > 1 && (
             <SecondarySupervisors
-              names={internalCoSupervisors.map(supervisor => {
-                supervisor.firstName + ' ' + supervisor.lastName;
+              supervisors={internalCoSupervisors.map(supervisor => {
+                supervisor;
               })}
             />
           )}
@@ -139,7 +138,7 @@ function MyBlock({ title, content }) {
 function Keywords({ keywords }) {
   return (
     <div className="mb-3">
-      <div className={styles.tagGroup}>
+      <div>
         {keywords.map(keyword => (
           <Badge variant="keyword" key={keyword.id} content={keyword.keyword} />
         ))}
@@ -148,7 +147,7 @@ function Keywords({ keywords }) {
   );
 }
 
-function MainSupervisor({ name }) {
+function MainSupervisor({ supervisor }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
@@ -160,7 +159,7 @@ function MainSupervisor({ name }) {
   );
 }
 
-function SecondarySupervisors({ names }) {
+function SecondarySupervisors({ supervisors }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
@@ -244,11 +243,19 @@ Environment.propTypes = {
 };
 
 MainSupervisor.propTypes = {
-  name: PropTypes.string.isRequired,
+  supervisor: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    profile_url: PropTypes.string.isRequired,
+    facility_short_name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 SecondarySupervisors.propTypes = {
-  names: PropTypes.arrayOf(PropTypes.string).isRequired,
+  supervisors: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 
