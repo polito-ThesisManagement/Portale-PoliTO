@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 
-import { Bell, BellFill, Envelope, PersonCircle } from 'react-bootstrap-icons';
+import { PersonCircle } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -11,7 +11,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { useTranslation } from 'react-i18next';
 import { FaSignOutAlt } from 'react-icons/fa';
-import { FaKey, FaUser } from 'react-icons/fa6';
+import { FaBell, FaKey, FaRegBell, FaRegEnvelope, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -194,11 +194,11 @@ export default function PoliNavbar(props) {
               target="_blank"
               style={{ display: 'flex', alignItems: 'center' }}
             >
-              <Envelope size={28} color="var(--primary)" />
+              <FaRegEnvelope size={26} color="var(--primary)" />
             </Nav.Link>
             <Nav.Link style={{ display: 'flex', alignItems: 'center' }}>
               {avvisi[0].length === 0 ? (
-                <Bell size={28} color="var(--primary)" />
+                <FaRegBell size={26} color="var(--primary)" />
               ) : (
                 <OverlayTrigger
                   show={showPopover}
@@ -208,7 +208,7 @@ export default function PoliNavbar(props) {
                   overlay={popover}
                 >
                   <span ref={targetRef}>
-                    <BellFill size={28} color="var(--primary)" onClick={handleBellClick} />
+                    <FaBell size={26} color="var(--primary)" onClick={handleBellClick} />
                   </span>
                 </OverlayTrigger>
               )}
