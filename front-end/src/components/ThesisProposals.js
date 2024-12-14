@@ -271,7 +271,7 @@ export default function ThesisProposals({ thesisProposals }) {
                     )}
                   </InputGroup>
                 </Form>
-                <Form className="d-flex me-3 w-100" style={{ maxWidth: '250px' }} onSubmit={e => e.preventDefault()}>
+                <Form className="d-flex w-100" style={{ maxWidth: '250px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Control
                       className="truncated"
@@ -289,10 +289,10 @@ export default function ThesisProposals({ thesisProposals }) {
                     />
                     <Search
                       style={{
-                        position: 'relative',
+                        position: 'absolute',
                         zIndex: '3',
-                        right: '30',
-                        top: '8',
+                        right: '13px',
+                        top: '7px',
                         color: 'var(--primary)',
                         height: '1.1rem',
                       }}
