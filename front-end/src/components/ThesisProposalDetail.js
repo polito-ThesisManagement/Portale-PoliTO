@@ -1,6 +1,8 @@
 // add attachments, thesis type, review prop types, handle null fields better + call to db in parent + API.jsx for mapping
 import React from 'react';
 
+import MyDropdown from './MyDropdown';
+
 /*
 import { Container } from 'react-bootstrap';
 import { ArrowRightShort } from 'react-bootstrap-icons';
@@ -22,7 +24,7 @@ import Badge from './Badge';
 moment.locale('it');
 */
 function ThesisProposalDetail() {
-  <></>;
+  return <MyDropdown />;
 }
 /*
 function ThesisProposalDetail(props) {
