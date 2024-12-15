@@ -210,7 +210,7 @@ export default function ThesisProposals({ thesisProposals }) {
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          paddingBottom: '5.675rem',
+          paddingBottom: '8.675rem',
         }}
       >
         <main
@@ -483,7 +483,7 @@ function TextToggle({ tab, setTab }) {
           <input
             type="radio"
             id="text-toggle-radio1"
-            name="radio"
+            name="radio-text-toggle"
             style={{ display: 'none' }}
             checked={tab === 'all'}
             onChange={() => setTab('all')}
@@ -492,7 +492,7 @@ function TextToggle({ tab, setTab }) {
           <input
             type="radio"
             id="text-toggle-radio2"
-            name="radio"
+            name="radio-text-toggle"
             style={{ display: 'none' }}
             checked={tab === 'course'}
             onChange={() => setTab('course')}
