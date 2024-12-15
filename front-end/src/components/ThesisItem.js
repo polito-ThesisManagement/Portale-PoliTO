@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaUniversity } from 'react-icons/fa';
-import { FaCalendar, FaEarthAmericas, FaUser } from 'react-icons/fa6';
+import { FaCalendar, FaEarthAmericas } from 'react-icons/fa6';
 import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 
 import '../styles/Theme.css';
 import '../styles/Utilities.css';
+import Badge from './Badge';
 
 function formatDate(date) {
   const dateObj = new Date(date);
@@ -121,7 +122,7 @@ const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
           }}
         >
           {keywords.map(keyword => (
-            <Keyword key={keyword.id} keyword={keyword} />
+            <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
           ))}
         </div>
       </h3>
@@ -148,60 +149,6 @@ const GenericTag = ({ text, icon }) => {
     >
       {icon} <span style={{ marginLeft: '0.25rem' }}>{text}</span>
     </span>
-  );
-};
-
-const Keyword = ({ keyword }) => {
-  return (
-    <span
-      key={keyword.id}
-      style={{
-        alignSelf: 'stretch',
-        borderRadius: '0.5rem',
-        border: '0.0625rem solid var(--tag-border)',
-        backgroundColor: 'var(--tag-bg)',
-        color: 'var(--tag-text)',
-        gap: '0.25rem',
-        overflow: 'hidden',
-        fontFamily: 'var(--font-primary)',
-        padding: '0px 6px',
-        fontSize: 'var(--font-size-md)',
-      }}
-    >
-      {keyword.keyword}
-    </span>
-  );
-};
-
-const ProfessorTag = ({ supervisor }) => {
-  return (
-    <div
-      key={supervisor.id}
-      style={{
-        alignItems: 'center',
-        borderRadius: '0.375rem',
-        border: '0.0625rem solid rgba(var(--professor-tag), 0.8)',
-        backgroundColor: 'rgba(var(--professor-tag), 0.25)',
-        display: 'flex',
-        justifyContent: 'flex-start',
-        color: 'rgba(var(--professor-tag), 1)',
-        padding: '0px 6px',
-        fontFamily: 'var(--font-primary)',
-        fontSize: 'var(--font-size-md)',
-      }}
-    >
-      <FaUser />
-      <span
-        key={supervisor.id}
-        style={{
-          alignSelf: 'stretch',
-          overflow: 'hidden',
-          margin: 'auto 0',
-        }}
-      >
-        {supervisor.firstName} {supervisor.lastName}
-      </span>
-    </div>
   );
 };
 
@@ -254,10 +201,15 @@ const ThesisProfessorTags = ({ supervisor, internalCoSupervisors }) => {
         gap: '0.5rem',
       }}
     >
-      <ProfessorTag supervisor={supervisor} />
-      {internalCoSupervisors?.map(coSupervisor => (
-        <ProfessorTag key={coSupervisor.id} supervisor={coSupervisor} />
-      ))}
+      <Badge key={supervisor.id} variant={'teacher'} content={supervisor.firstName + ' ' + supervisor.lastName} />
+      {internalCoSupervisors &&
+        internalCoSupervisors.map(coSupervisor => (
+          <Badge
+            key={coSupervisor.id}
+            variant={'teacher'}
+            content={coSupervisor.firstName + ' ' + coSupervisor.lastName}
+          />
+        ))}
     </div>
   );
 };
@@ -327,21 +279,6 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
       </div>
     </>
   );
-};
-
-ProfessorTag.propTypes = {
-  supervisor: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-Keyword.propTypes = {
-  keyword: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    keyword: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 ThesisHeader.propTypes = {
@@ -414,4 +351,4 @@ ThesisItem.propTypes = {
   ),
 };
 
-export { ThesisItem, ProfessorTag, GenericTag, Keyword, ThesisHeader, ThesisFooter, ThesisProfessorTags, ShowMore };
+export { ThesisItem, GenericTag, ThesisHeader, ThesisFooter, ThesisProfessorTags, ShowMore };

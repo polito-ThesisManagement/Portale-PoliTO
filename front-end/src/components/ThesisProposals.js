@@ -268,6 +268,37 @@ export default function ThesisProposals() {
   );
 }
 
+function TextToggle({ tab, setTab }) {
+  const { t } = useTranslation();
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="text-toggle-container">
+        <div className="text-toggle">
+          <input
+            type="radio"
+            id="text-toggle-radio1"
+            name="radio"
+            style={{ display: 'none' }}
+            checked={tab === 'all'}
+            onChange={() => setTab('all')}
+          />
+          <label htmlFor="text-toggle-radio1">{t('carriera.proposte_di_tesi.all_thesis')}</label>
+          <input
+            type="radio"
+            id="text-toggle-radio2"
+            name="radio"
+            style={{ display: 'none' }}
+            checked={tab === 'course'}
+            onChange={() => setTab('course')}
+          />
+          <label htmlFor="text-toggle-radio2">{t('carriera.proposte_di_tesi.course_thesis')}</label>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 ThesisProposals.propTypes = {
   thesisProposals: PropTypes.arrayOf(
     PropTypes.shape({
@@ -298,4 +329,9 @@ ThesisProposals.propTypes = {
       ),
     }),
   ),
+};
+
+TextToggle.propTypes = {
+  tab: PropTypes.string.isRequired,
+  setTab: PropTypes.func.isRequired,
 };

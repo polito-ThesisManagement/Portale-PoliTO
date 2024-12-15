@@ -15,7 +15,8 @@ import PropTypes from 'prop-types';
 import Title from '../components/Title';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
-import { GenericTag, Keyword, ProfessorTag } from './ThesisItem';
+import Badge from './Badge';
+import { GenericTag } from './ThesisItem';
 
 moment.locale('it');
 
@@ -200,7 +201,7 @@ function Keywords({ keywords }) {
     <div className="mb-3">
       <div>
         {keywords.map(keyword => (
-          <Keyword key={keyword.id} keyword={keyword} />
+          <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
         ))}
       </div>
     </div>
@@ -234,7 +235,7 @@ function SecondarySupervisors({ supervisors }) {
 }
 
 function Supervisor({ supervisor }) {
-  return <ProfessorTag supervisor={supervisor} />;
+  return <Badge key={supervisor.id} variant={'teacher'} content={supervisor.firstName + ' ' + supervisor.lastName} />;
 }
 
 function Environment({ is_internal }) {
