@@ -72,7 +72,7 @@ export default function ThesisProposals() {
         .catch(error => console.error('Error fetching thesis proposals:', error))
         .finally(() => setLoading(false));
     } else {
-      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage)
+      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
