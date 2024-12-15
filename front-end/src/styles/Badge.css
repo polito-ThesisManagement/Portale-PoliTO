@@ -11,35 +11,33 @@
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
   transition: 0.3s;
+  cursor: pointer;
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .teacher_light {
-  color: var(--warning-700);
-  background-color: var(--warning-100);
-  border-color: var(--warning-600);
+  color: var(--ocean-700);
+  background-color: var(--ocean-50);
+  border-color: var(--ocean-600);
 }
 
 .teacher_dark {
-  color: var(--warning-800);
-  background-color: var(--warning-200);
-  border-color: var(--warning-600);
-}
-
-.teacher_light:hover {
-  color: var(--warning-800);
-  background-color: var(--warning-200);
-  border-color: var(--warning-600);
-}
-
-.teacher_dark:hover {
-  color: var(--warning-700);
-  background-color: var(--warning-100);
-  border-color: var(--warning-600);
+  color: var(--ocean-800);
+  background-color: var(--ocean-100);
+  border-color: var(--ocean-600);
 }
 
 .keyword_light {
   color: var(--text-700);
-  background-color: var(--text-100);
+  background-color: var(--text-50);
   border-color: var(--text-600);
 }
 
@@ -49,62 +47,85 @@
   border-color: var(--text-600);
 }
 
-.keyword_light:hover {
-  color: var(--text-800);
-  background-color: var(--text-200);
-  border-color: var(--text-600);
-}
-
-.keyword_dark:hover {
-  color: var(--text-700);
-  background-color: var(--text-100);
-  border-color: var(--text-600);
-}
-
-.environment_light {
+.internal_light {
   color: var(--primary-700);
+  background-color: var(--primary-50);
+  border-color: var(--primary-600);
+}
+
+.internal_dark {
+  color: var(--primary-800);
   background-color: var(--primary-100);
   border-color: var(--primary-600);
 }
 
-.environment_dark {
-  color: var(--primary-800);
-  background-color: var(--primary-200);
-  border-color: var(--primary-600);
+.external_light {
+  color: var(--candypink-700);
+  background-color: var(--candypink-50);
+  border-color: var(--candypink-600);
 }
 
-.environment_light:hover {
-  color: var(--primary-800);
-  background-color: var(--primary-200);
-  border-color: var(--primary-600);
-}
-
-.environment_dark:hover {
-  color: var(--primary-700);
-  background-color: var(--primary-100);
-  border-color: var(--primary-600);
+.external_dark {
+  color: var(--candypink-800);
+  background-color: var(--candypink-100);
+  border-color: var(--candypink-600);
 }
 
 .abroad_light {
-  color: var(--danger-700);
-  background-color: var(--danger-100);
-  border-color: var(--danger-600);
+  color: var(--purple-700);
+  background-color: var(--purple-50);
+  border-color: var(--purple-600);
 }
 
 .abroad_dark {
-  color: var(--danger-800);
-  background-color: var(--danger-200);
-  border-color: var(--danger-600);
+  color: var(--purple-800);
+  background-color: var(--purple-100);
+  border-color: var(--purple-600);
 }
 
-.abroad_light:hover {
-  color: var(--danger-800);
-  background-color: var(--danger-200);
-  border-color: var(--danger-600);
+.type_light {
+  color: var(--steel-700);
+  background-color: var(--steel-50);
+  border-color: var(--steel-600);
 }
 
-.abroad_dark:hover {
-  color: var(--danger-700);
-  background-color: var(--danger-100);
-  border-color: var(--danger-600);
+.type_dark {
+  color: var(--steel-800);
+  background-color: var(--steel-100);
+  border-color: var(--steel-600);
+}
+
+.success_light {
+  color: var(--success-700);
+  background-color: var(--success-50);
+  border-color: var(--success-600);
+}
+
+.success_dark {
+  color: var(--success-800);
+  background-color: var(--success-200);
+  border-color: var(--success-600);
+}
+
+.warning_light {
+  color: var(--warning-700);
+  background-color: var(--warning-50);
+  border-color: var(--warning-600);
+}
+
+.warning_dark {
+  color: var(--warning-800);
+  background-color: var(--warning-200);
+  border-color: var(--warning-600);
+}
+.error_light {
+  color: var(--error-700);
+  background-color: var(--error-50);
+  border-color: var(--error-600);
+}
+
+.error_dark {
+  color: var(--error-800);
+  background-color: var(--error-200);
+  border-color: var(--error-600);
 }

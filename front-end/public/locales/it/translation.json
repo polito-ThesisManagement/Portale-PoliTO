@@ -10,7 +10,9 @@
         "anticipo_fine_lezione_descrizione": "La lezione di oggi terminerà con mezz'ora d'anticipo.",
         "tema_chiaro": "Tema chiaro",
         "tema_scuro": "Tema scuro",
-        "tema_automatico": "Tema automatico"
+        "tema_automatico": "Tema automatico",
+        "cerca": "Cerca",
+        "su_polito": "su polito.it..."
     },
     "sidebar": {
         "didattica": "Didattica",
@@ -69,7 +71,8 @@
             "tipo": "Tipo",
             "relatore_principale": "Relatore principale",
             "relatori_secondari": "Relatori secondari",
-            "relatori_esterni": "Relatori esterni"
+            "relatori_esterni": "Relatori esterni",
+            "badge_errato": "Badge non valido/i"
         }
     },
     "Accedi": "Accedi",

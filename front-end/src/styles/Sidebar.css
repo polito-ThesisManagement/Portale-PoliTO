@@ -53,6 +53,7 @@
       calc(var(--r) * (sin(var(--a)) - 1)) 0 no-repeat,
     linear-gradient(#000 calc(50% - var(--_d)), #0000 0 calc(50% + var(--_d)), #000 0);
   pointer-events: auto;
+  scrollbar-width: none;
 }
 
 .custom-sidebar::-webkit-scrollbar {
@@ -154,7 +155,7 @@
 .sidebar-text {
   padding-left: 10px;
   font-weight: var(--font-weight-medium);
-  margin-top: 3px;
+  margin-top: 2px;
   white-space: nowrap;
 }
 
@@ -211,5 +212,4 @@
 .modal-sidebar-text {
   padding-left: 10px;
   font-weight: var(--font-weight-medium);
-  margin-top: 2px;
 }

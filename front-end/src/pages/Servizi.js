@@ -8,5 +8,5 @@ import '../styles/Utilities.css';
 
 export default function Servizi() {
   const { t } = useTranslation();
-  return <Title icon={<MdApps size={32} />} sectionName={t('sidebar.servizi')} />;
+  return <Title icon={<MdApps size={30} />} sectionName={t('sidebar.servizi')} />;
 }

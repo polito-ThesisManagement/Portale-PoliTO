@@ -14,7 +14,12 @@ import '../styles/Searchbar.css';
 export default function Searchbar(props) {
   const [filteredData, setFilteredData] = useState([]);
   const [searchWord, setSearchWord] = useState('');
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const searchUrl =
+    i18n.language === 'it'
+      ? `https://www.polito.it/cerca?q=${searchWord}`
+      : `https://www.polito.it/en/search?q=${searchWord}`;
 
   const handleChange = event => {
     const word = event.target.value;
@@ -51,7 +56,7 @@ export default function Searchbar(props) {
           : { maxWidth: '400px', position: 'relative' }
       }
     >
-      <InputGroup className="flex-nowrap w-100">
+      <InputGroup className="flex-nowrap w-100 me-3">
         <Form.Control
           className="truncated"
           type="search"
@@ -69,10 +74,10 @@ export default function Searchbar(props) {
         />
         <Search
           style={{
-            position: 'relative',
+            position: 'absolute',
             zIndex: '3',
-            right: '28',
-            top: '12',
+            right: '13px',
+            top: '11px',
             color: 'var(--primary)',
           }}
         />
@@ -102,14 +107,14 @@ export default function Searchbar(props) {
             className="custom-list-group-item"
             action
             as={Link}
-            to={'https://www.polito.it/en/search?q=+' + searchWord + '&lang=it'}
+            to={searchUrl}
             target="_blank"
             variant="light"
             onClick={() => {
               setSearchWord('');
             }}
           >
-            Cerca <span className="medium-weight">{searchWord}</span> su polito.it...
+            {t('navbar.cerca')} <span className="medium-weight">{searchWord}</span> {t('navbar.su_polito')}
           </ListGroup.Item>
         </ListGroup>
       )}
