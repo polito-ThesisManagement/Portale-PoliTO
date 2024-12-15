@@ -257,3 +257,58 @@ body {
 .floating-button:active {
   background-color: rgba(var(--medium-orange-rgb), 1) !important;
 }
+
+.text-toggle-container {
+  border: 1px solid var(--background);
+  border-radius: 10px;
+  background-color: var(--background);
+  height: 42px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25);
+}
+
+.text-toggle {
+  position: relative;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.text-toggle label {
+  padding: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}
+
+.text-toggle::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: var(--surface);
+  border: var(--background) solid 1px;
+  border-radius: 9px;
+  transition: 0.5s left ease;
+  left: 0%; /* Ensure the toggle starts from the left */
+}
+
+.text-toggle:has(#text-toggle-radio1:checked)::before {
+  left: 0%;
+}
+
+.text-toggle:has(#text-toggle-radio2:checked)::before {
+  left: 50%;
+}
