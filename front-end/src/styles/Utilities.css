@@ -62,7 +62,7 @@ body {
 .title {
   color: var(--primary);
   display: flex;
-  align-items: start;
+  align-items: center;
   text-align: start;
 }
 
@@ -172,16 +172,6 @@ body {
   border-color: var(--primary);
   border-width: 2px;
   box-shadow: none;
-}
-
-/* unused */
-.modal-body-scrollable {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.modal-body-scrollable::-webkit-scrollbar {
-  display: none;
 }
 
 .click-notifica {

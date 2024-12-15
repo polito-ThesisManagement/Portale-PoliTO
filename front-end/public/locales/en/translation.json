@@ -10,7 +10,9 @@
         "anticipo_fine_lezione_descrizione": "Today's lesson will end half an hour early.",
         "tema_chiaro": "Light Theme",
         "tema_scuro": "Dark Theme",
-        "tema_automatico": "Automatic Theme"
+        "tema_automatico": "Automatic Theme",
+        "cerca": "Search",
+        "su_polito": "on polito.it..."
     },
     "sidebar": {
         "didattica": "Education",
@@ -71,7 +73,8 @@
             "tipo": "Type",
             "relatore_principale": "Main Supervisor",
             "relatori_secondari": "Secondary Supervisors",
-            "relatori_esterni": "External Supervisors"
+            "relatori_esterni": "External Supervisors",
+            "badge_errato": "Invalid badge/s"
         }
     },
     "Accedi": "Login",
