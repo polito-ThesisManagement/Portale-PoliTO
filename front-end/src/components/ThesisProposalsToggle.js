@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 import '../styles/ThesisProposals.css';
 
 export default function ThesisProposalsToggle({ tab, handleTabChange }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <div className="proposals-toggle-container">
-        <div className={`proposals-toggle proposals-toggle-${tab}`}>
+        <div className={`proposals-toggle proposals-toggle-${tab}-${i18n.language} proposals-toggle-${i18n.language}`}>
           <label htmlFor="proposals-toggle-radio1">{t('carriera.proposte_di_tesi.course_thesis')}</label>
           <input
             type="radio"

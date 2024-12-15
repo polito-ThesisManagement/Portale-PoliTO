@@ -53,8 +53,10 @@
             "internal_thesis": "Internal thesis",
             "external_thesis": "Company thesis",
             "abroad_thesis": "Abroad thesis",
-            "total": "Total:",
-            "page": "page",
+            "per_page": "Per page",
+            "showing": "Showing",
+            "to": "to",
+            "of": "of",
             "all_thesis": "All proposals",
             "course_thesis": "Proposals for your study course",
             "search": "Search proposals..."

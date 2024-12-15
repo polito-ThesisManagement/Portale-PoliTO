@@ -53,8 +53,10 @@
             "internal_thesis": "Tesi interna",
             "external_thesis": "Tesi in azienda",
             "abroad_thesis": "Tesi all'estero",
-            "total": "Totale:",
-            "page": "pagina",
+            "per_page": "Per pagina:",
+            "showing": "Risultati da",
+            "to": "a",  
+            "of": "di",
             "all_thesis": "Tutte le proposte",
             "course_thesis": "Proposte per il tuo corso di studi",
             "search": "Ricerca tra le proposte..."

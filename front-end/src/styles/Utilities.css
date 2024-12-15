@@ -257,32 +257,3 @@ body {
 .floating-button:active {
   background-color: rgba(var(--medium-orange-rgb), 1) !important;
 }
-
-.page-item .page-link {
-  margin: 0 3px;
-  border-radius: 8px;
-}
-
-.page-item.active .page-link {
-  color: var(--active-page);
-  border-color: var(--active-page-border);
-  font-family: var(--font-primary);
-}
-
-.page-item .page-link {
-  background-color: var(--surface);
-  color: var(--text);
-  font-family: var(--font-primary);
-}
-
-.page-link {
-  background-color: var(--primary);
-  color: var(--text);
-  font-family: var(--font-primary);
-}
-
-.page-link:hover {
-  background-color: var(--background);
-  color: var(--active-page);
-  font-family: var(--font-primary);
-}

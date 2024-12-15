@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Badge, Form, InputGroup, Pagination } from 'react-bootstrap';
+import { Form, InputGroup, Pagination } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import PropTypes from 'prop-types';
@@ -16,30 +16,20 @@ export default function PaginationItem({
 }) {
   const { t } = useTranslation();
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: '1rem',
-        marginLeft: '1rem',
-        marginRight: '1rem',
-        flexWrap: 'wrap',
-        paddingBottom: '1.5rem',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flex: 1 }}>
-        <Form className="d-flex me-3 w-100" style={{ maxWidth: '80px' }}>
+    <div className="pagination-container">
+      <div className="pagination-info">
+        <span style={{ color: 'var(--text)' }}> {t('carriera.proposte_di_tesi.per_page')} </span>
+        <Form className="d-flex me-3 w-100" style={{ maxWidth: '85px' }}>
           <InputGroup className="flex-nowrap w-100">
             <Form.Select
               label="page_elements"
               style={{
                 height: '2.4rem',
-                backgroundColor: 'var(--background)',
-                color: 'var(--primary)',
+                color: 'var(--text)',
+                backgroundColor: 'var(--surface)',
                 borderRadius: '8px',
                 lineHeight: '1rem',
-                paddingRight: '2rem',
+                marginLeft: '1rem',
                 fontFamily: 'var(--font-family)',
               }}
               value={proposalsPerPage}
@@ -53,8 +43,14 @@ export default function PaginationItem({
             </Form.Select>
           </InputGroup>
         </Form>
+        <span style={{ color: 'var(--text)' }}>
+          {t('carriera.proposte_di_tesi.showing')} {currentPage === 1 ? 1 : (currentPage - 1) * proposalsPerPage + 1}{' '}
+          {t('carriera.proposte_di_tesi.to')}{' '}
+          {currentPage * proposalsPerPage > count ? count : currentPage * proposalsPerPage}{' '}
+          {t('carriera.proposte_di_tesi.of')} {count}
+        </span>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', flex: 1 }}>
+      <div className="pagination-controls">
         {totalPages && (
           <Pagination activeKey={currentPage} onChange={handlePageChange} style={{ margin: '0' }}>
             <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1 ? true : false} />
@@ -77,24 +73,6 @@ export default function PaginationItem({
             />
           </Pagination>
         )}
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', flex: 1, alignItems: 'center' }}>
-        <Badge
-          style={{
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-base)',
-            fontWeight: '400',
-            color: 'var(--primary)',
-            height: '2.4rem',
-            backgroundColor: 'var(--background) !important',
-            border: 'var(--bs-border-width) solid var(--bs-border-color)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          {t('carriera.proposte_di_tesi.total')} {count}
-        </Badge>
       </div>
     </div>
   );
