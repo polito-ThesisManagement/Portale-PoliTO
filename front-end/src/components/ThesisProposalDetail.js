@@ -3,9 +3,7 @@ import React from 'react';
 
 import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
-import { HiBuildingOffice2 } from 'react-icons/hi2';
 import Linkify from 'react-linkify';
 
 import moment from 'moment';
@@ -198,12 +196,23 @@ function Keywords({ keywords }) {
   //const { t } = useTranslation();
   // if null return a bit of margin
   return (
-    <div className="mb-3">
-      <div>
-        {keywords.map(keyword => (
-          <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
-        ))}
-      </div>
+    <div
+      style={{
+        display: 'flex',
+        marginTop: '0.6rem',
+        marginBottom: '0.6rem',
+        width: '100%',
+        alignItems: 'flex-start',
+        gap: '0.375rem',
+        color: 'var(--background)',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+      }}
+    >
+      {' '}
+      {keywords.map(keyword => (
+        <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
+      ))}
     </div>
   );
 }
@@ -249,13 +258,11 @@ function Environment({ is_internal }) {
 }
 
 function Internal() {
-  const { t } = useTranslation();
-  return <GenericTag icon={<FaUniversity />} text={t('carriera.proposte_di_tesi.internal_thesis')} />;
+  return <Badge variant={'internal'} />;
 }
 
 function NotInternal() {
-  const { t } = useTranslation();
-  return <GenericTag icon={<HiBuildingOffice2 />} text={t('carriera.proposte_di_tesi.external_thesis')} />;
+  return <Badge variant={'external'} />;
 }
 
 function Abroad() {

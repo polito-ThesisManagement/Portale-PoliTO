@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaUniversity } from 'react-icons/fa';
 import { FaCalendar, FaEarthAmericas } from 'react-icons/fa6';
-import { HiBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -102,11 +100,7 @@ const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
             gap: '0.5rem',
           }}
         >
-          {isInternal ? (
-            <GenericTag text={t('carriera.proposte_di_tesi.internal_thesis')} icon={<FaUniversity />} />
-          ) : (
-            <GenericTag text={t('carriera.proposte_di_tesi.external_thesis')} icon={<HiBuildingOffice2 />} />
-          )}
+          {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
           {isAbroad && <GenericTag text={t('carriera.proposte_di_tesi.abroad_thesis')} icon={<FaEarthAmericas />} />}
         </div>
         <div
