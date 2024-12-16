@@ -52,9 +52,11 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 8px;
+  gap: 0.5rem;
+  margin-bottom: 4px;
   width: 100%;
+  padding-left: 3rem;
+  padding-right: 5rem;
 }
 
 .search-icon {
@@ -115,7 +117,7 @@
 }
 
 .accordion-body {
-  padding: none;
+  padding-top: 1rem;
   width: 100%;
 }
 
@@ -152,4 +154,11 @@
 
 .accordion-button::after {
   display: none !important;
+}
+
+.accordion-title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
 }

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import { Accordion, Pagination } from 'react-bootstrap';
+import { Accordion, Button, Container, Pagination } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
-import { FaFilter } from 'react-icons/fa6';
+import { FaFilter, FaRectangleXmark } from 'react-icons/fa6';
 import { HiLightBulb } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -43,32 +44,37 @@ export default function ThesisProposals() {
 
   useEffect(() => {
     setLoading(true);
-    API.getThesisProposals(i18n.language, currentPage, proposalsPerPage) //fetch thesisProposals based on the current page and the number of proposals per page
-      .then(data => {
-        setThesisProposals(data.thesisProposals);
-        setCount(data.count);
-        setTotalPages(data.totalPages);
-        if (data.totalPages > 5) {
-          if (currentPage <= 3) {
-            setPageNumbers([1, 2, 3, 4, 5]);
-          } else if (currentPage >= data.totalPages - 2) {
-            setPageNumbers([
-              data.totalPages - 4,
-              data.totalPages - 3,
-              data.totalPages - 2,
-              data.totalPages - 1,
-              data.totalPages,
-            ]);
-          } else {
-            setPageNumbers([currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2]);
-          }
-        } else {
-          setPageNumbers(Array.from({ length: data.totalPages }, (_, i) => i + 1));
-        }
-      })
-      .catch(error => console.error('Error fetching thesis proposals:', error))
-      .finally(() => setLoading(false));
-  }, [i18n.language, currentPage, proposalsPerPage]);
+    if (tab === 'all') {
+      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage) //fetch thesisProposals based on the current page and the number of proposals per page
+        .then(data => {
+          setThesisProposals(data.thesisProposals);
+          setCount(data.count);
+          setTotalPages(data.totalPages);
+        })
+        .catch(error => console.error('Error fetching thesis proposals:', error))
+        .finally(() => setLoading(false));
+    } else {
+      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage) //fetch thesisProposals based on the current page and the number of proposals per page
+        .then(data => {
+          setThesisProposals(data.thesisProposals);
+          setCount(data.count);
+          setTotalPages(data.totalPages);
+        })
+        .catch(error => console.error('Error fetching targeted thesis proposals:', error))
+        .finally(() => setLoading(false));
+    }
+    if (totalPages > 5) {
+      if (currentPage <= 3) {
+        setPageNumbers([1, 2, 3, 4, 5]);
+      } else if (currentPage >= totalPages - 2) {
+        setPageNumbers([totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]);
+      } else {
+        setPageNumbers([currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2]);
+      }
+    } else {
+      setPageNumbers(Array.from({ length: totalPages }, (_, i) => i + 1));
+    }
+  }, [i18n.language, currentPage, proposalsPerPage, tab]);
 
   const { t } = useTranslation();
 
@@ -203,7 +209,7 @@ export default function ThesisProposals() {
     <>
       {loading ? (
         <LoadingModal show={loading} onHide={() => setLoading(false)} />
-      ) : (
+      ) : thesisProposals.length > 0 ? (
         <>
           <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
           <div className="proposals-container">
@@ -213,11 +219,30 @@ export default function ThesisProposals() {
                   <Accordion defaultActiveKey="0">
                     <Accordion.Item>
                       <Accordion.Header>
-                        <Title icon={<FaFilter size={24} />} sectionName={t('carriera.proposte_di_tesi.filter')} />{' '}
+                        <div className="accordion-title">
+                          <FaFilter /> {t('carriera.proposte_di_tesi.filter')}
+                        </div>
                       </Accordion.Header>
                       <Accordion.Body>
                         <div className="filter-section">
                           <TextToggle tab={tab} setTab={setTab} />
+                          <FilterDropdown
+                            title={t('carriera.proposte_di_tesi.order_by')}
+                            options={[
+                              t('carriera.proposte_di_tesi.created_order'),
+                              t('carriera.proposte_di_tesi.exp_order'),
+                            ]}
+                            selectedOption={sortBy}
+                            setSelectedOption={setSortBy}
+                            orderBy={orderBy}
+                            setOrderBy={setOrderBy}
+                          />
+                          <MyDropdown
+                            title={t('carriera.proposte_di_tesi.type_filter')}
+                            options={thesisTypes}
+                            selectedOption={selectedType}
+                            setSelectedOption={handleSelectedType}
+                          />
                           <Form
                             className="d-flex w-100"
                             style={{ maxWidth: '250px' }}
@@ -234,7 +259,7 @@ export default function ThesisProposals() {
                                   backgroundColor: 'var(--background)',
                                   color: 'var(--primary)',
                                   borderRadius: '3px',
-                                  border: '0.5px solid var(--primary)',
+                                  border: '1px solid var(--primary)',
                                   fontFamily: 'var(--font-primary)',
                                   fontSize: 'var(--font-size-sm)',
                                 }}
@@ -244,25 +269,6 @@ export default function ThesisProposals() {
                               <Search className="search-icon" />
                             </InputGroup>
                           </Form>
-                          <FilterDropdown
-                            title={t('carriera.proposte_di_tesi.order_by')}
-                            options={[
-                              t('carriera.proposte_di_tesi.created_order'),
-                              t('carriera.proposte_di_tesi.exp_order'),
-                            ]}
-                            selectedOption={sortBy}
-                            setSelectedOption={setSortBy}
-                            orderBy={orderBy}
-                            setOrderBy={setOrderBy}
-                          />
-                        </div>
-                        <div className="filter-section" style={{ paddingTop: '1rem' }}>
-                          <MyDropdown
-                            title={t('carriera.proposte_di_tesi.type_filter')}
-                            options={thesisTypes}
-                            selectedOption={selectedType}
-                            setSelectedOption={handleSelectedType}
-                          />
                         </div>
                       </Accordion.Body>
                     </Accordion.Item>
@@ -313,6 +319,26 @@ export default function ThesisProposals() {
               </div>
             </main>
           </div>
+        </>
+      ) : (
+        <>
+          <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5em' }}>
+            <div
+              className="pol-headline pol-headline--with-bar"
+              style={{ fontFamily: 'var(--font-primary)', color: 'var(--primary)' }}
+            >
+              <h3 className="bold-weight">{t('carriera.proposte_di_tesi.not_found')}</h3>
+            </div>
+            <FaRectangleXmark size={100} style={{ color: 'var(--primary)' }} strokeWidth={1} />
+            <div className="mb-3" style={{ color: 'var(--text)' }}>
+              <p> {t('carriera.proposte_di_tesi.message_not_found')} </p>
+            </div>
+            <div>
+              <Link to="/">
+                <Button className="card-button"> {t('page_not_found.back')} </Button>
+              </Link>
+            </div>
+          </Container>
         </>
       )}
     </>
