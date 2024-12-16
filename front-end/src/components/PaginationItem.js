@@ -52,7 +52,7 @@ export default function PaginationItem({
         </span>
       </div>
       <div className="pagination-controls">
-        {totalPages.length > 0 && (
+        {totalPages > 0 && (
           <Pagination activeKey={currentPage} onChange={handlePageChange} style={{ margin: '0' }}>
             <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1 ? true : false} />
             <Pagination.Prev

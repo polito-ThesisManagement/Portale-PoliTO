@@ -65,6 +65,7 @@ export default function ThesisProposals() {
       ...prevFilters,
       [itemType]: selectedItems,
     }));
+    setCurrentPage(1); // Reset to first page when applying filters
   };
 
   useEffect(() => {
