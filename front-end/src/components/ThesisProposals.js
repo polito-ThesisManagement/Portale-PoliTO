@@ -29,8 +29,7 @@ export default function ThesisProposals() {
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
   const [searchQuery, setSearchQuery] = useState('');
   const [tab, setTab] = useState('course');
-  const [totalPages, setTotalPages] = useState(Math.ceil(count / proposalsPerPage));
-  console.log('totalPages:', totalPages);
+  const [totalPages, setTotalPages] = useState(0);
   const { t, i18n } = useTranslation();
 
   const handleTabChange = newTab => {
@@ -67,7 +66,7 @@ export default function ThesisProposals() {
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
-          setTotalPages(data.count / proposalsPerPage);
+          setTotalPages(data.totalPages);
         })
         .catch(error => console.error('Error fetching thesis proposals:', error))
         .finally(() => setLoading(false));
@@ -76,7 +75,7 @@ export default function ThesisProposals() {
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
-          setTotalPages(data.count / proposalsPerPage);
+          setTotalPages(data.totalPages);
         })
         .catch(error => console.error('Error fetching thesis proposals:', error))
         .finally(() => {
@@ -129,12 +128,12 @@ export default function ThesisProposals() {
             const data = await API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
-            setTotalPages(data.count / proposalsPerPage);
+            setTotalPages(data.totalPages);
           } else {
             const data = await API.getThesisProposals(i18n.language, currentPage, proposalsPerPage);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
-            setTotalPages(data.count / proposalsPerPage);
+            setTotalPages(data.totalPages);
           }
         } catch (error) {
           console.error('Error fetching thesis proposals:', error);
