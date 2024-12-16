@@ -30,7 +30,7 @@ export default function ThesisProposals() {
   const [searchQuery, setSearchQuery] = useState('');
   const [tab, setTab] = useState('course');
   const [totalPages, setTotalPages] = useState(Math.ceil(count / proposalsPerPage));
-
+  console.log('totalPages:', totalPages);
   const { t, i18n } = useTranslation();
 
   const handleTabChange = newTab => {
@@ -278,7 +278,7 @@ function TextToggle({ tab, setTab }) {
           <input
             type="radio"
             id="text-toggle-radio1"
-            name="radio"
+            name="radio-text-toggle"
             style={{ display: 'none' }}
             checked={tab === 'all'}
             onChange={() => setTab('all')}
@@ -287,7 +287,7 @@ function TextToggle({ tab, setTab }) {
           <input
             type="radio"
             id="text-toggle-radio2"
-            name="radio"
+            name="radio-text-toggle"
             style={{ display: 'none' }}
             checked={tab === 'course'}
             onChange={() => setTab('course')}
