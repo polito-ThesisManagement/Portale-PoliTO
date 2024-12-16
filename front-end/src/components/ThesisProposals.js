@@ -1,45 +1,83 @@
 import React, { useEffect, useState } from 'react';
 
-import { Pagination } from 'react-bootstrap';
+import { Accordion, Pagination } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
+import { FaFilter } from 'react-icons/fa6';
 import { HiLightBulb } from 'react-icons/hi';
 
 import PropTypes from 'prop-types';
 
+import API from '../API';
 import '../styles/Searchbar.css';
 import '../styles/Theme.css';
+import '../styles/ThesisProposals.css';
 import '../styles/Utilities.css';
 import FilterDropdown from './FilterDropdown';
 import MyDropdown from './GenericDropdown';
+import LoadingModal from './LoadingModal';
 import { ThesisItem } from './ThesisItem';
 import Title from './Title';
 
-export default function ThesisProposals({ thesisProposals }) {
+export default function ThesisProposals() {
   const [tab, setTab] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('');
   const [orderBy, setOrderBy] = useState('asc');
-  const [pageProposals, setPageProposals] = useState([]);
-  const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
-  const [filteredProposals, setFilteredProposals] = useState(thesisProposals);
-  const [totalPages, setTotalPages] = useState(Math.ceil(thesisProposals.length / proposalsPerPage));
+  const [pageNumbers, setPageNumbers] = useState([]);
+  const [filteredProposals, setFilteredProposals] = useState([]);
   const [thesisTypes, setThesisTypes] = useState([]);
   const [selectedType, setSelectedType] = useState('');
+  const [thesisProposals, setThesisProposals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [proposalsPerPage, setProposalsPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [count, setCount] = useState(0);
 
   const elementsPerPage = [5, 10, 20, 50];
+
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    setLoading(true);
+    API.getThesisProposals(i18n.language, currentPage, proposalsPerPage) //fetch thesisProposals based on the current page and the number of proposals per page
+      .then(data => {
+        setThesisProposals(data.thesisProposals);
+        setCount(data.count);
+        setTotalPages(data.totalPages);
+        if (data.totalPages > 5) {
+          if (currentPage <= 3) {
+            setPageNumbers([1, 2, 3, 4, 5]);
+          } else if (currentPage >= data.totalPages - 2) {
+            setPageNumbers([
+              data.totalPages - 4,
+              data.totalPages - 3,
+              data.totalPages - 2,
+              data.totalPages - 1,
+              data.totalPages,
+            ]);
+          } else {
+            setPageNumbers([currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2]);
+          }
+        } else {
+          setPageNumbers(Array.from({ length: data.totalPages }, (_, i) => i + 1));
+        }
+      })
+      .catch(error => console.error('Error fetching thesis proposals:', error))
+      .finally(() => setLoading(false));
+  }, [i18n.language, currentPage, proposalsPerPage]);
 
   const { t } = useTranslation();
 
   const handlePageChange = pageNumber => {
-    if (pageNumber !== currentPage) {
+    return () => {
       setCurrentPage(pageNumber);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+      console.log(currentPage);
+      console.log(pageNumber);
+    };
   };
 
   const handleSearchbarChange = event => {
@@ -139,7 +177,6 @@ export default function ThesisProposals({ thesisProposals }) {
   useEffect(() => {
     const sortedProposals = sortingProposals(filteredProposals);
     setFilteredProposals(sortedProposals);
-    setPageProposals(sortedProposals.slice(0, proposalsPerPage));
   }, [sortBy, orderBy]);
 
   // Filter proposals based on selected type
@@ -162,218 +199,122 @@ export default function ThesisProposals({ thesisProposals }) {
     setCurrentPage(1);
   }, [selectedType]);
 
-  // Set page numbers
-  useEffect(() => {
-    setTotalPages(Math.ceil(filteredProposals.length / proposalsPerPage));
-    if (totalPages <= 5) {
-      const array = [];
-      for (let i = 1; i <= totalPages; i++) {
-        array.push(i);
-      }
-      setPageNumbers(array);
-    } else {
-      if (currentPage <= 3) {
-        setPageNumbers([1, 2, 3, 4, '...', totalPages]);
-      } else if (currentPage > totalPages - 3) {
-        setPageNumbers([1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages]);
-      } else {
-        setPageNumbers([
-          1,
-          '...',
-          currentPage - 2,
-          currentPage - 1,
-          currentPage,
-          currentPage + 1,
-          currentPage + 2,
-          '...',
-          totalPages,
-        ]);
-      }
-    }
-    setPageProposals(filteredProposals.slice((currentPage - 1) * proposalsPerPage, currentPage * proposalsPerPage));
-  }, [currentPage, totalPages, proposalsPerPage, filteredProposals]);
-
   return (
     <>
-      <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          paddingBottom: '8.675rem',
-        }}
-      >
-        <main
-          style={{
-            borderRadius: '5px',
-            display: 'flex',
-            backgroundColor: 'var(--surface)',
-            width: '100%',
-            flexDirection: 'column',
-            flexGrow: '1',
-            paddingBottom: '2%',
-          }}
-        >
-          <section style={{ marginBottom: '0.5rem' }}>
-            <div
-              style={{
-                display: 'flex',
-                width: '100%',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                flexGrow: '1',
-                padding: '1.75rem',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '1rem',
-                  marginBottom: '8px',
-                }}
-              >
-                <TextToggle tab={tab} setTab={setTab} />
-                <FilterDropdown
-                  title={t('carriera.proposte_di_tesi.order_by')}
-                  options={[t('carriera.proposte_di_tesi.created_order'), t('carriera.proposte_di_tesi.exp_order')]}
-                  selectedOption={sortBy}
-                  setSelectedOption={setSortBy}
-                  orderBy={orderBy}
-                  setOrderBy={setOrderBy}
-                />
-                <Form className="d-flex w-100" style={{ maxWidth: '250px' }} onSubmit={e => e.preventDefault()}>
-                  <InputGroup className="flex-nowrap w-100">
-                    <Form.Control
-                      className="truncated"
-                      type="search"
-                      placeholder={t('carriera.proposte_di_tesi.search')}
-                      aria-label="search_proposals"
-                      style={{
-                        height: '2rem',
-                        backgroundColor: 'var(--background)',
-                        color: 'var(--primary)',
-                        borderRadius: '8px',
-                      }}
-                      value={searchQuery}
-                      onChange={handleSearchbarChange}
-                    />
-                    <Search
-                      style={{
-                        position: 'absolute',
-                        zIndex: '3',
-                        right: '13px',
-                        top: '7px',
-                        color: 'var(--primary)',
-                        height: '1.1rem',
-                      }}
-                    />
-                  </InputGroup>
-                </Form>
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '1rem',
-                  marginBottom: '8px',
-                }}
-              >
-                <InputGroup className="flex-nowrap w-100">
-                  <Form.Select
-                    style={{
-                      height: '2.6rem',
-                      backgroundColor: 'var(--background)',
-                      color: 'var(--primary)',
-                      borderRadius: '8px',
-                      fontFamily: 'var(--font-family)',
-                      fontSize: 'var(--font-size-sm)',
-                      fontWeight: '600',
-                      width: '220px',
-                    }}
-                    value={selectedType}
-                    onChange={handleSelectedType}
-                  >
-                    <option value="">Tutte le tipologie</option>
-                    {thesisTypes.map((thesisType, index) => {
+      {loading ? (
+        <LoadingModal show={loading} onHide={() => setLoading(false)} />
+      ) : (
+        <>
+          <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
+          <div className="proposals-container">
+            <main className="proposals-main">
+              <section>
+                <div className="filter-container">
+                  <Accordion defaultActiveKey="0">
+                    <Accordion.Item>
+                      <Accordion.Header>
+                        <Title icon={<FaFilter size={24} />} sectionName={t('carriera.proposte_di_tesi.filter')} />{' '}
+                      </Accordion.Header>
+                      <Accordion.Body>
+                        <div className="filter-section">
+                          <TextToggle tab={tab} setTab={setTab} />
+                          <Form
+                            className="d-flex w-100"
+                            style={{ maxWidth: '250px' }}
+                            onSubmit={e => e.preventDefault()}
+                          >
+                            <InputGroup className="flex-nowrap w-100">
+                              <Form.Control
+                                className="truncated"
+                                type="search"
+                                placeholder={t('carriera.proposte_di_tesi.search')}
+                                aria-label="search_proposals"
+                                style={{
+                                  height: '2rem',
+                                  backgroundColor: 'var(--background)',
+                                  color: 'var(--primary)',
+                                  borderRadius: '3px',
+                                  border: '0.5px solid var(--primary)',
+                                  fontFamily: 'var(--font-primary)',
+                                  fontSize: 'var(--font-size-sm)',
+                                }}
+                                value={searchQuery}
+                                onChange={handleSearchbarChange}
+                              />
+                              <Search className="search-icon" />
+                            </InputGroup>
+                          </Form>
+                          <FilterDropdown
+                            title={t('carriera.proposte_di_tesi.order_by')}
+                            options={[
+                              t('carriera.proposte_di_tesi.created_order'),
+                              t('carriera.proposte_di_tesi.exp_order'),
+                            ]}
+                            selectedOption={sortBy}
+                            setSelectedOption={setSortBy}
+                            orderBy={orderBy}
+                            setOrderBy={setOrderBy}
+                          />
+                        </div>
+                        <div className="filter-section" style={{ paddingTop: '1rem' }}>
+                          <MyDropdown
+                            title={t('carriera.proposte_di_tesi.type_filter')}
+                            options={thesisTypes}
+                            selectedOption={selectedType}
+                            setSelectedOption={handleSelectedType}
+                          />
+                        </div>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                </div>
+              </section>
+              <section className="list-section">
+                <div>
+                  {thesisProposals.map(thesis => {
+                    return <ThesisItem key={thesis.id} {...thesis} />;
+                  })}
+                </div>
+              </section>
+              <div className="list-footer">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                  <MyDropdown
+                    title={t('carriera.proposte_di_tesi.elements_per_page') + ':'}
+                    options={elementsPerPage}
+                    selectedOption={proposalsPerPage}
+                    setSelectedOption={setProposalsPerPage}
+                  />
+                </div>
+                {totalPages > 0 && (
+                  <Pagination activeLabel={currentPage}>
+                    <Pagination.First onClick={handlePageChange(1)} />
+                    <Pagination.Prev onClick={handlePageChange(currentPage - 1 > 0 ? currentPage - 1 : currentPage)} />
+                    {pageNumbers.map(number => {
                       return (
-                        <option key={index} value={thesisType}>
-                          {thesisType}
-                        </option>
+                        <Pagination.Item
+                          active={number === currentPage}
+                          key={number}
+                          label={number}
+                          onClick={handlePageChange(number)}
+                        >
+                          {number}
+                        </Pagination.Item>
                       );
                     })}
-                  </Form.Select>
-                </InputGroup>
+                    <Pagination.Next
+                      onClick={handlePageChange(currentPage + 1 > totalPages ? totalPages : currentPage + 1)}
+                    />
+                    <Pagination.Last onClick={handlePageChange(totalPages)} />
+                  </Pagination>
+                )}
+                <span className="total-count">
+                  {t('carriera.proposte_di_tesi.total')} {count}
+                </span>
               </div>
-            </div>
-          </section>
-          <section
-            style={{
-              backgroundColor: 'var(--surface)',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-start',
-              paddingLeft: '1rem',
-              paddingRight: '1rem',
-              paddingBottom: '6px',
-            }}
-          >
-            <div>
-              {pageProposals.map(thesis => {
-                return <ThesisItem key={thesis.id} {...thesis} />;
-              })}
-            </div>
-          </section>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginTop: '1rem',
-              marginLeft: '1rem',
-              marginRight: '1rem',
-              flexWrap: 'wrap',
-              paddingBottom: '1.5rem',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', width: '300px', justifyContent: 'flex-start' }}>
-              <MyDropdown
-                title={t('carriera.proposte_di_tesi.elements_per_page') + ':'}
-                options={elementsPerPage}
-                selectedOption={proposalsPerPage}
-                setSelectedOption={setProposalsPerPage}
-              />
-            </div>
-            {!!totalPages && (
-              <Pagination activeKey={currentPage} onChange={handlePageChange}>
-                <Pagination.First />
-                <Pagination.Prev />
-                {pageNumbers.map(number => {
-                  return <Pagination.Item key={number}>{number}</Pagination.Item>;
-                })}
-                <Pagination.Next />
-                <Pagination.Last />
-              </Pagination>
-            )}
-            <span
-              style={{
-                fontFamily: 'var(--font-primary)',
-                fontSize: 'var(--font-size-sm)',
-                color: 'var(--text)',
-                fontWeight: '600',
-                paddingRight: '2rem',
-              }}
-            >
-              {t('carriera.proposte_di_tesi.total')} {filteredProposals.length}
-            </span>
+            </main>
           </div>
-        </main>
-      </div>
+        </>
+      )}
     </>
   );
 }
@@ -408,38 +349,6 @@ function TextToggle({ tab, setTab }) {
     </div>
   );
 }
-
-ThesisProposals.propTypes = {
-  thesisProposals: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      topic: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      supervisor: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        firstName: PropTypes.string.isRequired,
-        lastName: PropTypes.string.isRequired,
-      }).isRequired,
-      internalCoSupervisors: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          firstName: PropTypes.string.isRequired,
-          lastName: PropTypes.string.isRequired,
-        }),
-      ).isRequired,
-      creationDate: PropTypes.string.isRequired,
-      expirationDate: PropTypes.string.isRequired,
-      isInternal: PropTypes.bool.isRequired,
-      isAbroad: PropTypes.bool.isRequired,
-      keywords: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          keyword: PropTypes.string.isRequired,
-        }),
-      ),
-    }),
-  ),
-};
 
 TextToggle.propTypes = {
   tab: PropTypes.string.isRequired,

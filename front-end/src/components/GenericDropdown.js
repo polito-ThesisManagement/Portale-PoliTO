@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import '../styles/Dropdown.css';
 
-const MyDropdown = ({ title, options, selectedOption, setSelectedOption }) => {
+const GenericDropdown = ({ title, options, selectedOption, setSelectedOption }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -56,7 +56,7 @@ function DropdownTitle({ title, selectedOption }) {
   );
 }
 
-MyDropdown.propTypes = {
+GenericDropdown.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedOption: PropTypes.string.isRequired,
@@ -69,4 +69,4 @@ DropdownTitle.propTypes = {
   type: PropTypes.string,
 };
 
-export default MyDropdown;
+export default GenericDropdown;

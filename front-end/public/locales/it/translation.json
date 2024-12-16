@@ -59,7 +59,9 @@
             "elements_per_page": "Elementi per pagina",
             "all_thesis": "Tutte le tesi",
             "course_thesis": "Tesi per il tuo corso di studi",
-            "search": "Ricerca tra le proposte..."
+            "search": "Ricerca tra le proposte...",
+            "filter": "Filtri di ricerca",
+            "type_filter": "Filtra per tipologia"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",

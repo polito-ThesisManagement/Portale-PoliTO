@@ -10,12 +10,12 @@
 .dropdown-button {
   height: 32px;
   background-color: var(--background);
-  border: 1px solid var(--text);
+  border: 1px solid var(--primary);
   border-radius: 3px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  color: var(--text);
+  color: var(--primary);
   cursor: pointer;
 }
 
@@ -26,7 +26,7 @@
   left: 0;
   background-color: var(--background);
   min-width: 145px;
-  border: 1px solid var(--text);
+  border: 1px solid var(--primary);
   border-radius: 3px;
   z-index: 1000; /* Assicura che il menu sia in primo piano */
   flex-direction: column;
@@ -59,7 +59,7 @@
   cursor: pointer;
   background: none;
   border: none;
-  border-bottom: 0.5px solid var(--text);
+  border-bottom: 0.5px solid var(--primary);
   width: 100%;
   text-align: left;
 }
@@ -75,7 +75,7 @@
 .order-button {
   background: none;
   border: none;
-  color: var(--text);
+  color: var(--primary);
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;

@@ -1,6 +1,5 @@
 .thesis-article {
-  border: 0.0625rem solid var(--background);
-  border-radius: 5px;
+  border-bottom: 0.0625rem solid var(--background);
   align-items: flex-start;
   background-color: var(--surface);
   display: flex;

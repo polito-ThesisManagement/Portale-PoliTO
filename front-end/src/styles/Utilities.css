@@ -249,11 +249,11 @@ body {
 }
 
 .text-toggle-container {
-  border: 1px solid var(--background);
-  border-radius: 10px;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
   background-color: var(--background);
-  height: 42px;
-  margin-right: 10px;
+  height: 32px;
+  margin-right: 11px;
   display: flex;
   align-items: center;
   box-shadow: 0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25);
@@ -261,7 +261,7 @@ body {
 
 .text-toggle {
   position: relative;
-  height: 40px;
+  height: 30px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -276,9 +276,9 @@ body {
   flex: 1;
   justify-content: center;
   cursor: pointer;
-  color: var(--text);
+  color: var(--primary);
   font-family: var(--font-primary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   text-align: center;
 }
@@ -289,8 +289,8 @@ body {
   width: 50%;
   height: 100%;
   background: var(--surface);
-  border: var(--background) solid 1px;
-  border-radius: 9px;
+  border: none;
+  border-radius: 3px;
   transition: 0.5s left ease;
   left: 0%; /* Ensure the toggle starts from the left */
 }

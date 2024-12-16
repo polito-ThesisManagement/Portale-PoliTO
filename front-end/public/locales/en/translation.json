@@ -59,7 +59,9 @@
             "elements_per_page": "Elements per page",
             "all_thesis": "All thesis",
             "course_thesis": "Thesis for your study course",
-            "search": "Search proposals..."
+            "search": "Search proposals...",
+            "filter": "Search filters",
+            "type_filter": "Filter by thesis type"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Thesis Proposal Details",
