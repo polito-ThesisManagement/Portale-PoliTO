@@ -62,6 +62,9 @@
             "all_thesis": "Tutte le proposte",
             "course_thesis": "Proposte per il tuo corso di studi",
             "search": "Ricerca tra le proposte...",
+            "keywords": "Parole chiave",
+            "teachers": "Docenti",
+            "types": "Tipologie",
             "no_item_found": "Nessun elemento trovato",
             "loading": "Caricamento..."
         },

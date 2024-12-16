@@ -27,7 +27,6 @@ export default function FilterComponent({
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    // Sincronizza il valore dei selectedItems con il genitore
     setSelectedItems(parentSelectedItems || []);
   }, [parentSelectedItems]);
 
@@ -105,7 +104,11 @@ export default function FilterComponent({
               margin: '0px 0.5rem',
             }}
           >
-            {itemType.charAt(0).toUpperCase() + itemType.slice(1) + 's'}
+            {itemType === 'keyword'
+              ? t('carriera.proposte_di_tesi.keywords')
+              : itemType === 'teacher'
+                ? t('carriera.proposte_di_tesi.teachers')
+                : t('carriera.proposte_di_tesi.types')}
           </span>
           {/* Display the count of applied filters */}
           {filters.length > 0 && (
@@ -130,7 +133,7 @@ export default function FilterComponent({
         as={CustomMenu}
         key={selectedItems.join(',')}
         style={{
-          width: itemType == 'keyword' ? '350px' : '300px',
+          width: '300px',
           boxShadow: '0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25)',
         }}
       >

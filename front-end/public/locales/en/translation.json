@@ -62,6 +62,9 @@
             "all_thesis": "All proposals",
             "course_thesis": "Proposals for your study course",
             "search": "Search proposals...",
+            "keywords": "Keywords",
+            "teachers": "Teachers",
+            "types": "Types",
             "no_item_found": "No item found",
             "loading": "Loading..."
         },
