@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import '../styles/Theme.css';
+import '../styles/ThesisItem.css';
 import '../styles/Utilities.css';
 import Badge from './Badge';
 
@@ -19,23 +20,7 @@ function formatDate(date) {
 }
 function ThesisItem(props) {
   return (
-    <article
-      style={{
-        border: '0.0625rem solid var(--background)',
-        borderRadius: '1rem',
-        alignItems: 'flex-start',
-        backgroundColor: 'var(--surface)',
-        display: 'flex',
-        gap: '40px',
-        maxWidth: '100%',
-        overflow: 'hidden',
-        justifyContent: 'flex-start',
-        paddingLeft: '1rem',
-        paddingRight: '1rem',
-        paddingBottom: '1.75rem',
-        paddingTop: '1.75rem',
-      }}
-    >
+    <article className="thesis-article">
       <div>
         <ThesisHeader
           topic={props.topic}
@@ -43,28 +28,8 @@ function ThesisItem(props) {
           isAbroad={props.isAbroad}
           keywords={props.keywords}
         />
-        <p
-          style={{
-            color: 'var(--text)',
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-sm)',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'normal',
-            wordBreak: 'break-word',
-          }}
-        >
-          {props.description.slice(0, 350) + '...'}
-        </p>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1rem',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+        <p className="thesis-description">{props.description.slice(0, 350) + '...'}</p>
+        <div className="thesis-professor-tags">
           <ThesisProfessorTags supervisor={props.supervisor} internalCoSupervisors={props.internalCoSupervisors} />
         </div>
         <ThesisFooter id={props.id} creationDate={props.creationDate} expirationDate={props.expirationDate} />
@@ -78,30 +43,10 @@ const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
 
   return (
     <div>
-      <h3
-        style={{
-          width: '100%',
-          overflow: 'hidden',
-          color: 'var(--text)',
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--font-size-lg)',
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.5rem',
-          justifyContent: 'space-between',
-        }}
-      >
+      <h3 className="thesis-topic">
         {' '}
         {topic}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            gap: '0.5rem',
-          }}
-        >
+        <div className="thesis-type-tags">
           {isInternal ? (
             <GenericTag text={t('carriera.proposte_di_tesi.internal_thesis')} icon={<FaUniversity />} />
           ) : (
@@ -109,18 +54,7 @@ const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
           )}
           {isAbroad && <GenericTag text={t('carriera.proposte_di_tesi.abroad_thesis')} icon={<FaEarthAmericas />} />}
         </div>
-        <div
-          style={{
-            display: 'flex',
-            marginTop: '0.6rem',
-            width: '100%',
-            alignItems: 'flex-start',
-            gap: '0.375rem',
-            color: 'var(--background)',
-            justifyContent: 'flex-start',
-            flexWrap: 'wrap',
-          }}
-        >
+        <div className="thesis-keyword-tags">
           {keywords.map(keyword => (
             <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
           ))}
@@ -132,21 +66,7 @@ const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
 
 const GenericTag = ({ text, icon }) => {
   return (
-    <span
-      style={{
-        alignItems: 'center',
-        borderRadius: '0.375rem',
-        border: '0.0625rem solid var(--type-tag-border)',
-        padding: '0px 6px',
-        backgroundColor: 'var(--type-tag-bg)',
-        color: 'var(--type-tag-text)',
-        display: 'flex',
-        justifyContent: 'center',
-        fontFamily: 'var(--font-primary)',
-        fontSize: 'var(--font-size-sm)',
-        height: '1.5rem',
-      }}
-    >
+    <span className="thesis-tag">
       {icon} <span style={{ marginLeft: '0.25rem' }}>{text}</span>
     </span>
   );
@@ -154,40 +74,10 @@ const GenericTag = ({ text, icon }) => {
 
 const ShowMore = ({ id }) => {
   const { t } = useTranslation();
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  const buttonStyle = {
-    border: '0.0625rem solid var(--text)',
-    borderRadius: '0.5rem',
-    backgroundColor: 'var(--surface)',
-    minHeight: '1.375rem',
-    color: 'var(--text)',
-    textAlign: 'center',
-    padding: '0 6px',
-    cursor: 'pointer',
-    maxWidth: '200px',
-    transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
-    fontFamily: 'var(--font-primary)',
-    fontSize: 'var(--font-size-sm)',
-    ...(isHovered && {
-      backgroundColor: 'var(--background)',
-      color: 'var(--text)',
-    }),
-  };
 
   return (
     <Link to={`${id}`}>
-      <Button style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        {t('carriera.proposte_di_tesi.show_more')}
-      </Button>
+      <Button className="show-more-button">{t('carriera.proposte_di_tesi.show_more')}</Button>
     </Link>
   );
 };
@@ -219,32 +109,8 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
 
   return (
     <>
-      <footer
-        style={{
-          position: 'relative',
-          display: 'flex',
-          flexWrap: 'wrap',
-          marginTop: '0.5rem',
-          minHeight: '22px',
-          width: '100%',
-          alignItems: 'flex-start',
-          gap: '1rem',
-          justifyContent: 'flex-start',
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--font-size-sm)',
-        }}
-      >
-        <div
-          style={{
-            position: 'relative',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            marginLeft: 'auto',
-            color: 'var(--text)',
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-sm)',
-          }}
-        >
+      <footer className="thesis-footer-container>">
+        <div className="thesis-dates">
           <div>
             <GenericTag
               text={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
@@ -253,20 +119,7 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
           </div>
         </div>
       </footer>
-      <div
-        style={{
-          position: 'relative',
-          overflow: 'hidden',
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--font-size-sm)',
-          fontWeight: '400',
-          color: 'var(--text)',
-          marginRight: '0',
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginTop: '6px',
-        }}
-      >
+      <div className="thesis-footer-lower">
         <ShowMore id={id} />
         <div>
           <div>

@@ -8,7 +8,6 @@
 }
 
 .dropdown-button {
-  width: 122px;
   height: 32px;
   background-color: var(--background);
   border: 1px solid var(--text);
@@ -71,4 +70,14 @@
 
 .show {
   display: flex;
+}
+
+.order-button {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
 }

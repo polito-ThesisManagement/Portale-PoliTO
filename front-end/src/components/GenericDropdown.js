@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { FaChevronDown } from 'react-icons/fa';
+
+import PropTypes from 'prop-types';
+
 import '../styles/Dropdown.css';
 
-const MyDropdown = () => {
+const MyDropdown = ({ title, options, selectedOption, setSelectedOption }) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('Ordina per');
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
@@ -12,7 +15,7 @@ const MyDropdown = () => {
   };
 
   const handleOptionClick = option => {
-    setSelectedOption(option === 'Reset' ? 'Ordina per' : option);
+    setSelectedOption(option === 'Reset' ? title : option);
     setShowDropdown(false);
   };
 
@@ -32,16 +35,38 @@ const MyDropdown = () => {
   return (
     <div className="dropdown" ref={dropdownRef}>
       <button className="dropdown-button" onClick={toggleDropdown}>
-        {selectedOption}
+        <DropdownTitle title={title} selectedOption={selectedOption} /> <FaChevronDown />
       </button>
       <div className={`dropdown-content ${showDropdown ? 'show' : ''}`}>
-        <button onClick={() => handleOptionClick('Option 1')}>Option 1</button>
-        <button onClick={() => handleOptionClick('Option 2')}>Option 2</button>
-        <button onClick={() => handleOptionClick('Option 3')}>Option 3</button>
-        <button onClick={() => handleOptionClick('Reset')}>Reset</button>
+        {options.map(option => (
+          <button key={option} onClick={() => handleOptionClick(option)}>
+            {option}
+          </button>
+        ))}
       </div>
     </div>
   );
+};
+
+function DropdownTitle({ title, selectedOption }) {
+  return (
+    <span>
+      {title}: {selectedOption}
+    </span>
+  );
+}
+
+MyDropdown.propTypes = {
+  title: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedOption: PropTypes.string.isRequired,
+  setSelectedOption: PropTypes.func.isRequired,
+};
+
+DropdownTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  selectedOption: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 export default MyDropdown;

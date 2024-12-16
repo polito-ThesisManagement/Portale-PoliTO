@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 import { Pagination } from 'react-bootstrap';
-import { Search, SortDown, SortUp } from 'react-bootstrap-icons';
+import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
 import { HiLightBulb } from 'react-icons/hi';
-import Select from 'react-select';
 
 import PropTypes from 'prop-types';
 
 import '../styles/Searchbar.css';
 import '../styles/Theme.css';
 import '../styles/Utilities.css';
+import FilterDropdown from './FilterDropdown';
+import MyDropdown from './GenericDropdown';
 import { ThesisItem } from './ThesisItem';
 import Title from './Title';
 
@@ -30,38 +31,14 @@ export default function ThesisProposals({ thesisProposals }) {
   const [thesisTypes, setThesisTypes] = useState([]);
   const [selectedType, setSelectedType] = useState('');
 
-  const { t } = useTranslation();
+  const elementsPerPage = [5, 10, 20, 50];
 
-  const optionsPage = [
-    { value: 5, label: '5' },
-    { value: 10, label: '10' },
-    { value: 20, label: '20' },
-    { value: 50, label: '50' },
-  ];
+  const { t } = useTranslation();
 
   const handlePageChange = pageNumber => {
     if (pageNumber !== currentPage) {
       setCurrentPage(pageNumber);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  const handleProposalsPerPageChange = event => {
-    setProposalsPerPage(Number(event.value));
-    setCurrentPage(1); // Reset to first page when changing proposals per page
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleSortByChange = event => {
-    setSortBy(event.target.value);
-  };
-
-  const handleOrderByChange = () => {
-    if (sortBy !== '' && orderBy === 'asc') {
-      setOrderBy('desc');
-    }
-    if (sortBy !== '' && orderBy === 'desc') {
-      setOrderBy('asc');
     }
   };
 
@@ -97,6 +74,20 @@ export default function ThesisProposals({ thesisProposals }) {
       setSelectedType('external');
     }
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [proposalsPerPage]);
+
+  useEffect(() => {
+    if (sortBy !== '' && orderBy === 'asc') {
+      setOrderBy('desc');
+    }
+    if (sortBy !== '' && orderBy === 'desc') {
+      setOrderBy('asc');
+    }
+  }, [orderBy]);
 
   useEffect(() => {
     const types = [
@@ -215,7 +206,7 @@ export default function ThesisProposals({ thesisProposals }) {
       >
         <main
           style={{
-            borderRadius: '1rem',
+            borderRadius: '5px',
             display: 'flex',
             backgroundColor: 'var(--surface)',
             width: '100%',
@@ -245,75 +236,15 @@ export default function ThesisProposals({ thesisProposals }) {
                   marginBottom: '8px',
                 }}
               >
-                {/*<Tabs
-                  defaultActiveKey="all"
-                  activeKey={tab}
-                  onSelect={k => setTab(k)}
-                  id="thesis-proposals-tabs"
-                  className="custom-tab"
-                  fill={true}
-                >
-                  <Tab
-                    style={{
-                      backgroundColor: 'var(--background)',
-                      color: 'var(--text)',
-                    }}
-                    eventKey="all"
-                    title={t('carriera.proposte_di_tesi.all_thesis')}
-                  />
-                  <Tab eventKey="course" title={t('carriera.proposte_di_tesi.course_thesis')} />
-                </Tabs>*/}
                 <TextToggle tab={tab} setTab={setTab} />
-                <Form className="d-flex me-3 w-100" style={{ maxWidth: '220px' }} onSubmit={e => e.preventDefault()}>
-                  <InputGroup className="flex-nowrap w-100">
-                    <Form.Select
-                      label="order_by"
-                      style={{
-                        height: '2rem',
-                        backgroundColor: 'var(--background)',
-                        color: 'var(--primary)',
-                        borderRadius: '8px',
-                        lineHeight: '1rem',
-                        paddingRight: '2rem',
-                        fontFamily: 'var(--font-family)',
-                        fontSize: 'var(--font-size-md)',
-                      }}
-                      value={sortBy}
-                      onChange={handleSortByChange}
-                    >
-                      <option value="" disabled={sortBy !== ''}>
-                        {t('carriera.proposte_di_tesi.order_by')}
-                      </option>
-                      <option value="creationDate">{t('carriera.proposte_di_tesi.created_order')}</option>
-                      <option value="expirationDate">{t('carriera.proposte_di_tesi.exp_order')}</option>
-                    </Form.Select>
-                    {orderBy === 'asc' ? (
-                      <SortUp
-                        style={{
-                          color: 'var(--primary)',
-                          height: '2.2rem',
-                          width: '2.2rem',
-                          cursor: 'pointer',
-                          padding: '0 0.5rem',
-                        }}
-                        onClick={handleOrderByChange}
-                        disabled={sortBy === ''}
-                      />
-                    ) : (
-                      <SortDown
-                        style={{
-                          color: 'var(--primary)',
-                          height: '2.2rem',
-                          width: '2.2rem',
-                          cursor: 'pointer',
-                          padding: '0 0.5rem',
-                        }}
-                        onClick={handleOrderByChange}
-                        disabled={sortBy === ''}
-                      />
-                    )}
-                  </InputGroup>
-                </Form>
+                <FilterDropdown
+                  title={t('carriera.proposte_di_tesi.order_by')}
+                  options={[t('carriera.proposte_di_tesi.created_order'), t('carriera.proposte_di_tesi.exp_order')]}
+                  selectedOption={sortBy}
+                  setSelectedOption={setSortBy}
+                  orderBy={orderBy}
+                  setOrderBy={setOrderBy}
+                />
                 <Form className="d-flex w-100" style={{ maxWidth: '250px' }} onSubmit={e => e.preventDefault()}>
                   <InputGroup className="flex-nowrap w-100">
                     <Form.Control
@@ -411,37 +342,11 @@ export default function ThesisProposals({ thesisProposals }) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', width: '300px', justifyContent: 'flex-start' }}>
-              {/*<Form className="d-flex me-3 w-100">
-                <InputGroup className="flex-nowrap w-100">
-                  <Form.Select
-                    label="page_elements"
-                    style={{
-                      height: '2.6rem',
-                      backgroundColor: 'var(--background)',
-                      color: 'var(--primary)',
-                      borderRadius: '8px',
-                      fontFamily: 'var(--font-family)',
-                      fontSize: 'var(--font-size-sm)',
-                      fontWeight: '600',
-                    }}
-                    value={proposalsPerPage}
-                    onChange={handleProposalsPerPageChange}
-                    onSubmit={e => e.preventDefault()}
-                    aria-label={t('carriera.proposte_di_tesi.elements_per_page')}
-                  >
-                    <option value={5}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 5'}</option>
-                    <option value={10}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 10'}</option>
-                    <option value={20}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 20'}</option>
-                    <option value={50}> {t('carriera.proposte_di_tesi.elements_per_page') + ': 50'}</option>
-                  </Form.Select>
-                </InputGroup>
-              </Form>*/}
-              <Select
-                options={optionsPage}
-                value={proposalsPerPage}
-                onChange={handleProposalsPerPageChange}
-                placeholder={t('carriera.proposte_di_tesi.elements_per_page') + ': ' + proposalsPerPage}
-                defaultInputValue={'5'}
+              <MyDropdown
+                title={t('carriera.proposte_di_tesi.elements_per_page') + ':'}
+                options={elementsPerPage}
+                selectedOption={proposalsPerPage}
+                setSelectedOption={setProposalsPerPage}
               />
             </div>
             {!!totalPages && (
