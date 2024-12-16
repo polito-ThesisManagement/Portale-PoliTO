@@ -10,13 +10,13 @@
 .dropdown-button {
   width: 122px;
   height: 32px;
-  background-color: #f3f5f7;
-  border: 1px solid #e0e6eb;
+  background-color: var(--background);
+  border: 1px solid var(--text);
   border-radius: 3px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  color: #404040;
+  color: var(--text);
   cursor: pointer;
 }
 
@@ -25,9 +25,9 @@
   position: absolute;
   top: 100%; /* Posiziona il menu appena sotto il pulsante */
   left: 0;
-  background-color: #f0f3f5;
+  background-color: var(--background);
   min-width: 145px;
-  border: 1px solid #e0e6eb;
+  border: 1px solid var(--text);
   border-radius: 3px;
   z-index: 1000; /* Assicura che il menu sia in primo piano */
   flex-direction: column;
@@ -36,7 +36,7 @@
 }
 
 .dropdown-content a {
-  color: #404040;
+  color: var(--text);
   padding: 8px 12px;
   text-decoration: none;
   display: block;
@@ -46,11 +46,11 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: var(--surface);
 }
 
 .dropdown-content button {
-  color: #404040;
+  color: var(--text);
   padding: 8px 12px;
   text-decoration: none;
   display: block;
@@ -60,12 +60,13 @@
   cursor: pointer;
   background: none;
   border: none;
+  border-bottom: 0.5px solid var(--text);
   width: 100%;
   text-align: left;
 }
 
 .dropdown-content button:hover {
-  background-color: #ddd;
+  background-color: var(--surface);
 }
 
 .show {

@@ -12,7 +12,7 @@ const MyDropdown = () => {
   };
 
   const handleOptionClick = option => {
-    setSelectedOption(option);
+    setSelectedOption(option === 'Reset' ? 'Ordina per' : option);
     setShowDropdown(false);
   };
 
@@ -38,6 +38,7 @@ const MyDropdown = () => {
         <button onClick={() => handleOptionClick('Option 1')}>Option 1</button>
         <button onClick={() => handleOptionClick('Option 2')}>Option 2</button>
         <button onClick={() => handleOptionClick('Option 3')}>Option 3</button>
+        <button onClick={() => handleOptionClick('Reset')}>Reset</button>
       </div>
     </div>
   );

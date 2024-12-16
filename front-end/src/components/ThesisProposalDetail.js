@@ -24,7 +24,11 @@ import Badge from './Badge';
 moment.locale('it');
 */
 function ThesisProposalDetail() {
-  return <MyDropdown />;
+  return (
+    <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <MyDropdown />
+    </div>
+  );
 }
 /*
 function ThesisProposalDetail(props) {
