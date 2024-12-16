@@ -61,7 +61,9 @@
             "of": "of",
             "all_thesis": "All proposals",
             "course_thesis": "Proposals for your study course",
-            "search": "Search proposals..."
+            "search": "Search proposals...",
+            "no_item_found": "No item found",
+            "loading": "Loading..."
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Thesis Proposal Details",

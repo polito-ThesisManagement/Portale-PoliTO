@@ -44,14 +44,15 @@ export default function PaginationItem({
           </InputGroup>
         </Form>
         <span style={{ color: 'var(--text)' }}>
-          {t('carriera.proposte_di_tesi.showing')} {currentPage === 1 ? 1 : (currentPage - 1) * proposalsPerPage + 1}{' '}
+          {t('carriera.proposte_di_tesi.showing')}{' '}
+          {totalPages === 0 ? 0 : currentPage === 1 ? 1 : (currentPage - 1) * proposalsPerPage + 1}{' '}
           {t('carriera.proposte_di_tesi.to')}{' '}
           {currentPage * proposalsPerPage > count ? count : currentPage * proposalsPerPage}{' '}
           {t('carriera.proposte_di_tesi.of')} {count}
         </span>
       </div>
       <div className="pagination-controls">
-        {totalPages && (
+        {totalPages.length > 0 && (
           <Pagination activeKey={currentPage} onChange={handlePageChange} style={{ margin: '0' }}>
             <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1 ? true : false} />
             <Pagination.Prev

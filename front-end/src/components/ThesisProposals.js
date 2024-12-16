@@ -4,6 +4,7 @@ import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
+import { FaKey, FaUser } from 'react-icons/fa';
 import { HiLightBulb } from 'react-icons/hi';
 
 import PropTypes from 'prop-types';
@@ -12,7 +13,7 @@ import API from '../API';
 import '../styles/Searchbar.css';
 import '../styles/Theme.css';
 import '../styles/Utilities.css';
-import FilterComponents from './FilterComponents';
+import FilterComponent from './FilterComponent';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import { ThesisItem } from './ThesisItem';
@@ -20,6 +21,7 @@ import ThesisProposalsToggle from './ThesisProposalsToggle';
 import Title from './Title';
 
 export default function ThesisProposals() {
+  const [filters, setFilters] = useState({ keyword: [], teacher: [], type: [] });
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -58,11 +60,18 @@ export default function ThesisProposals() {
     setSearchQuery(event.target.value);
   };
 
+  const applyFilters = (itemType, selectedItems) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [itemType]: selectedItems,
+    }));
+  };
+
   useEffect(() => {
     setLoading(true);
     const startTime = Date.now();
     if (tab === 'course') {
-      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage)
+      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
@@ -71,7 +80,7 @@ export default function ThesisProposals() {
         .catch(error => console.error('Error fetching thesis proposals:', error))
         .finally(() => setLoading(false));
     } else {
-      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage)
+      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
@@ -87,7 +96,7 @@ export default function ThesisProposals() {
           }, remainingTime);
         });
     }
-  }, [i18n.language, currentPage, proposalsPerPage]);
+  }, [i18n.language, currentPage, proposalsPerPage, filters]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(count / proposalsPerPage));
@@ -125,12 +134,12 @@ export default function ThesisProposals() {
       const fetchProposals = async () => {
         try {
           if (tab === 'course') {
-            const data = await API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage);
+            const data = await API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
           } else {
-            const data = await API.getThesisProposals(i18n.language, currentPage, proposalsPerPage);
+            const data = await API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
@@ -230,7 +239,35 @@ export default function ThesisProposals() {
                       </InputGroup>
                     </Form>
                   </div>
-                  <FilterComponents />
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <FilterComponent
+                      api={API.getThesisProposalsKeywords}
+                      filters={filters.keyword}
+                      icon={<FaKey style={{ width: '20px' }} />}
+                      itemType={'keyword'}
+                      onApplyFilters={applyFilters}
+                      onResetFilters={() => applyFilters('keyword', [])}
+                      selectedItems={filters.keyword}
+                    />
+                    <FilterComponent
+                      api={API.getThesisProposalsTeachers}
+                      filters={filters.teacher}
+                      icon={<FaUser style={{ width: '20px' }} />}
+                      itemType={'teacher'}
+                      onApplyFilters={applyFilters}
+                      onResetFilters={() => applyFilters('teacher', [])}
+                      selectedItems={filters.teacher}
+                    />
+                    <FilterComponent
+                      api={API.getThesisProposalsTypes}
+                      filters={filters.type}
+                      icon={<></>}
+                      itemType={'type'}
+                      onApplyFilters={applyFilters}
+                      onResetFilters={() => applyFilters('type', [])}
+                      selectedItems={filters.type}
+                    />
+                  </div>
                 </div>
               </section>
               <section

@@ -187,3 +187,15 @@
   color: var(--active-page);
   font-family: var(--font-primary);
 }
+
+.form-check-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+}
+
+#dropdown-button {
+  border-color: transparent !important;
+}
