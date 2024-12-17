@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import { FaFilter, FaKey, FaUser } from 'react-icons/fa';
 import { FaRectangleXmark, FaSort } from 'react-icons/fa6';
 import { HiLightBulb } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
 
 import API from '../API';
 import '../styles/Searchbar.css';
@@ -142,12 +141,14 @@ export default function ThesisProposals() {
       const fetchProposals = async () => {
         try {
           if (tab === 'course') {
+            console.log(filters);
             const data = await API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
           } else {
             const data = await API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters);
+            console.log(filters);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
@@ -312,9 +313,10 @@ export default function ThesisProposals() {
               <p> {t('carriera.proposte_di_tesi.message_not_found')} </p>
             </div>
             <div>
-              <Link to="/">
-                <Button className="card-button"> {t('page_not_found.back')} </Button>
-              </Link>
+              <Button className="card-button" onClick={() => setFilters({ keyword: [], teacher: [], type: [] })}>
+                {' '}
+                {t('carriera.proposte_di_tesi.reload')}{' '}
+              </Button>
             </div>
           </Container>
         </>

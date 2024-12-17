@@ -63,7 +63,8 @@
             "filter": "Filtri di ricerca avanzata",
             "type_filter": "Filtra per tipologia",
             "not_found": "È vuoto qui...",
-            "message_not_found": "Non ci sono proposte di tesi disponibili in questo momento."
+            "message_not_found": "Non ci sono proposte di tesi disponibili in questo momento.",
+            "reload": "Ricarica questa pagina"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",

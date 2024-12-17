@@ -6,6 +6,7 @@ const { getIncludes } = require('../utils/includes');
 const formatThesisProposals = require('../utils/formatThesisProposals');
 const selectThesisProposalAttributes = require('../utils/selectThesisProposalAttributes');
 const getPaginationParams = require('../utils/paginationParams');
+const getFilterParams = require('../utils/filterParams');
 const selectTypeAttributes = require('../utils/selectTypeAttributes');
 const selectKeywordAttributes = require('../utils/selectKeywordAttributes');
 const selectTeacherAttributes = require('../utils/selectTeacherAttributes');
@@ -54,8 +55,45 @@ const getThesisProposals = async (req, res) => {
   try {
     const lang = req.query.lang || 'it';
     const pagination = getPaginationParams(req.query);
-    const where = await buildWhereConditions(req.query, lang);
     const includes = getIncludes(lang).filter(Boolean);
+    const { keywordIds, teacherIds, typeIds } = getFilterParams(req.query);
+
+    const where = await buildWhereConditions(req.query, lang);
+
+    where[Op.and] = where[Op.and] || [];
+    if (teacherIds && teacherIds.length > 0) {
+      where[Op.and].push({
+        id: {
+          [Op.in]: sequelize.literal(
+            `(SELECT thesis_proposal_id FROM thesis_proposal_supervisor_cosupervisor WHERE teacher_id IN (${teacherIds}))`,
+          ),
+        },
+      });
+    }
+
+    if (keywordIds && keywordIds.length > 0) {
+      where[Op.and].push({
+        id: {
+          [Op.in]: sequelize.literal(
+            `(SELECT thesis_proposal_id FROM thesis_proposal_keyword WHERE keyword_id IN (${keywordIds}))`,
+          ),
+        },
+      });
+    }
+
+    if (typeIds && typeIds.length > 0) {
+      where[Op.and].push({
+        id: {
+          [Op.in]: sequelize.literal(
+            `(SELECT thesis_proposal_id FROM thesis_proposal_type WHERE type_id IN (${typeIds}))`,
+          ),
+        },
+      });
+    }
+
+    if (where[Op.and].length === 0) {
+      delete where[Op.and];
+    }
 
     const { count, formattedProposals, totalPages } = await fetchThesisProposals(where, includes, lang, pagination);
 
@@ -76,8 +114,12 @@ const getTargetedThesisProposals = async (req, res) => {
     const pagination = getPaginationParams(req.query);
     const { collegioId, level, studentThesisProposalIdArray } = await getStudentData();
     const includes = getIncludes(lang).filter(Boolean);
+    const { keywordIds, teacherIds, typeIds } = getFilterParams(req.query);
+    console.log(req);
+    console.log(keywordIds);
 
     const where = await buildWhereConditions(req.query, lang);
+
     where[Op.or] = [
       {
         id_collegio: collegioId,
@@ -86,6 +128,39 @@ const getTargetedThesisProposals = async (req, res) => {
       },
       { id: { [Op.in]: studentThesisProposalIdArray } },
     ];
+
+    where[Op.and] = where[Op.and] || [];
+    if (teacherIds && teacherIds.length > 0) {
+      where[Op.and].push({
+        id: {
+          [Op.in]: sequelize.literal(
+            `(SELECT thesis_proposal_id FROM thesis_proposal_supervisor_cosupervisor WHERE teacher_id IN (${teacherIds}))`,
+          ),
+        },
+      });
+    }
+
+    if (keywordIds && keywordIds.length > 0) {
+      where[Op.and].push({
+        id: {
+          [Op.in]: sequelize.literal(
+            `(SELECT thesis_proposal_id FROM thesis_proposal_keyword WHERE keyword_id IN (${keywordIds}))`,
+          ),
+        },
+      });
+    }
+
+    if (typeIds && typeIds.length > 0) {
+      where[Op.and].push({
+        id: {
+          [Op.in]: sequelize.literal(
+            `(SELECT thesis_proposal_id FROM thesis_proposal_type WHERE type_id IN (${typeIds}))`,
+          ),
+        },
+      });
+    }
+
+    console.log(where);
 
     const { count, formattedProposals, totalPages } = await fetchThesisProposals(where, includes, lang, pagination);
 
