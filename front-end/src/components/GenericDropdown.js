@@ -51,7 +51,7 @@ const GenericDropdown = ({ title, options, selectedOption, setSelectedOption }) 
 function DropdownTitle({ title, selectedOption }) {
   return (
     <span>
-      {title}: {selectedOption}
+      {title} {selectedOption}
     </span>
   );
 }

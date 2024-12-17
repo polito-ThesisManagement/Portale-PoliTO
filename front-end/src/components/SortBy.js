@@ -56,7 +56,9 @@ export default function SortBy({ sortFields, orderByFields, icon, sorting, onApp
             style={{
               margin: '0px 0.5rem',
             }}
-          ></span>
+          >
+            Ordina per:
+          </span>
           {isOpen ? <FaAngleUp /> : <FaAngleDown />}
         </div>
       </Dropdown.Toggle>

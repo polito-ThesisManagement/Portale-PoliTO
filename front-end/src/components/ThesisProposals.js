@@ -31,7 +31,7 @@ export default function ThesisProposals() {
   const [loading, setLoading] = useState(true);
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [pageProposals, setPageProposals] = useState([]);
-  const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
+  const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4, 5]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sorting, setSorting] = useState({ order: 'asc', sort: 'id' });
   const [tab, setTab] = useState('course');
@@ -57,9 +57,8 @@ export default function ThesisProposals() {
     };
   };
 
-  const handleProposalsPerPageChange = event => {
-    const value = parseInt(event.target.value, 10);
-    setProposalsPerPage(value);
+  const handleProposalsPerPageChange = option => {
+    setProposalsPerPage(option);
     setCurrentPage(1); // Reset to first page when changing proposals per page
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -127,21 +126,11 @@ export default function ThesisProposals() {
       setPageNumbers(array);
     } else {
       if (currentPage <= 3) {
-        setPageNumbers([1, 2, 3, 4, '...', totalPages]);
-      } else if (currentPage > totalPages - 3) {
-        setPageNumbers([1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages]);
+        setPageNumbers([1, 2, 3, 4, 5]);
+      } else if (currentPage >= totalPages - 2) {
+        setPageNumbers([totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]);
       } else {
-        setPageNumbers([
-          1,
-          '...',
-          currentPage - 2,
-          currentPage - 1,
-          currentPage,
-          currentPage + 1,
-          currentPage + 2,
-          '...',
-          totalPages,
-        ]);
+        setPageNumbers([currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2]);
       }
     }
   }, [currentPage, totalPages, proposalsPerPage]);
