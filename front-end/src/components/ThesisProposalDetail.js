@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
+import { FaCalendar, FaFileLines } from 'react-icons/fa6';
 import Linkify from 'react-linkify';
 
 import moment from 'moment';
@@ -14,7 +14,6 @@ import Title from '../components/Title';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
 import Badge from './Badge';
-import { GenericTag } from './ThesisItem';
 
 moment.locale('it');
 
@@ -266,12 +265,9 @@ function NotInternal() {
 }
 
 function Abroad() {
-  const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
-      <div>
-        <GenericTag icon={<FaEarthAmericas />} text={t('carriera.proposte_di_tesi.abroad_thesis')} />
-      </div>
+      <Badge variant={'abroad'} />
     </div>
   );
 }
