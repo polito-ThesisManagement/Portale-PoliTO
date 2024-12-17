@@ -60,9 +60,9 @@
             "all_thesis": "Tutte le tesi",
             "course_thesis": "Tesi per il tuo corso di studi",
             "search": "Ricerca tra le proposte...",
-            "filter": "Filtri di ricerca",
+            "filter": "Filtri di ricerca avanzata",
             "type_filter": "Filtra per tipologia",
-                        "not_found": "È vuoto qui...",
+            "not_found": "È vuoto qui...",
             "message_not_found": "Non ci sono proposte di tesi disponibili in questo momento."
         },
         "proposta_di_tesi": {

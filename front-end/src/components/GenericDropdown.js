@@ -58,14 +58,14 @@ function DropdownTitle({ title, selectedOption }) {
 
 GenericDropdown.propTypes = {
   title: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedOption: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  selectedOption: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   setSelectedOption: PropTypes.func.isRequired,
 };
 
 DropdownTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  selectedOption: PropTypes.string.isRequired,
+  selectedOption: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   type: PropTypes.string,
 };
 
