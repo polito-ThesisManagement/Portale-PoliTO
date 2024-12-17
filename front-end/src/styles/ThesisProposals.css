@@ -1,3 +1,150 @@
+.proposals-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 8.675rem;
+}
+
+.proposals-main {
+  border-radius: 5px;
+  display: flex;
+  background-color: var(--surface);
+  width: 100%;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-bottom: 2%;
+}
+
+.filter-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 4px;
+  width: 100%;
+  padding-left: 3rem;
+  padding-right: 5rem;
+}
+
+.search-icon {
+  position: absolute;
+  z-index: 3;
+  right: 13px;
+  top: 7px;
+  color: var(--primary);
+  height: 1.1rem;
+}
+
+.list-section {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.list-proposals {
+  background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.list-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.5rem;
+}
+
+.total-count {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  color: var(--primary);
+  font-weight: 600;
+  padding-right: 2rem;
+}
+
+.accordion {
+  --bs-accordion-color: var(--surface);
+  --bs-accordion-bg: var(--surface);
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-color: var(--bs-accordion-border-color);
+  --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+  --bs-accordion-border-color: none;
+  --bs-accordion-inner-border-radius: none;
+  --bs-accordion-btn-padding-x: 0rem;
+  --bs-accordion-btn-padding-y: 0rem;
+  --bs-accordion-btn-bg: var(--surface);
+  --bs-accordion-btn-icon: var(--accordion-arrow);
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-btn-icon-transform: rotate(-180deg);
+  --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
+  --bs-accordion-btn-active-icon: var(--accordion-arrow-active);
+  --bs-accordion-body-padding-x: 0rem;
+  --bs-accordion-body-padding-y: 0rem;
+  --bs-accordion-active-bg: var(--surface);
+}
+
+.accordion-body {
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.accordion-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: none;
+  font-size: 1rem;
+  color: var(--primary);
+  text-align: left;
+  border: 0;
+  border-radius: 0;
+  overflow-anchor: none;
+  transition: var(--bs-accordion-transition);
+}
+
+.accordion-button::before {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 1rem;
+  content: '';
+  background-image: var(--bs-accordion-btn-icon);
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button:not(.collapsed)::before {
+  transform: rotate(180deg);
+}
+
+.accordion-button::after {
+  display: none !important;
+}
+
+.accordion-title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+}
+
 .proposals-toggle-container {
   border: 1px solid var(--background);
   border-radius: 10px;

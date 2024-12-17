@@ -46,7 +46,7 @@
             "title": "Proposte di Tesi",
             "title_half_lowercase": "Proposte di tesi",
             "description": "Elenco delle proposte di tesi.",
-            "order_by": "Ordina per:",
+            "order_by": "Ordina per",
             "expires": "Scade il",
             "exp_order": "Data di scadenza",
             "created": "Creata il",
@@ -66,7 +66,11 @@
             "teachers": "Docenti",
             "types": "Tipologie",
             "no_item_found": "Nessun elemento trovato",
-            "loading": "Caricamento..."
+            "loading": "Caricamento...",
+            "filter": "Filtri di ricerca",
+            "type_filter": "Filtra per tipologia",
+            "not_found": "È vuoto qui...",
+            "message_not_found": "Non ci sono proposte di tesi disponibili in questo momento."
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",
