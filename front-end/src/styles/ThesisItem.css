@@ -15,10 +15,12 @@
   color: var(--text);
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal;
-  word-break: break-word;
 }
 
 .thesis-professor-tags {

@@ -26,7 +26,7 @@ function ThesisItem(props) {
           isAbroad={props.isAbroad}
           keywords={props.keywords}
         />
-        <p className="thesis-description">{props.description.slice(0, 350) + '...'}</p>
+        <p className="thesis-description">{props.description}</p>
         <div className="thesis-professor-tags">
           <ThesisProfessorTags supervisor={props.supervisor} internalCoSupervisors={props.internalCoSupervisors} />
         </div>
