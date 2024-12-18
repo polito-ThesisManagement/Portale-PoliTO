@@ -19,17 +19,15 @@ export default function PaginationItem({
     <div className="pagination-container">
       <div className="pagination-info">
         <span style={{ color: 'var(--text)' }}> {t('carriera.proposte_di_tesi.per_page')} </span>
-        <Form className="d-flex me-3 w-100" style={{ maxWidth: '85px' }}>
+        <Form className="d-flex ms-3 w-100" style={{ maxWidth: '70px' }}>
           <InputGroup className="flex-nowrap w-100">
             <Form.Select
               label="page_elements"
               style={{
-                height: '2.4rem',
                 color: 'var(--text)',
                 backgroundColor: 'var(--surface)',
                 borderRadius: '8px',
                 lineHeight: '1rem',
-                marginLeft: '1rem',
                 fontFamily: 'var(--font-family)',
               }}
               value={proposalsPerPage}
@@ -43,7 +41,7 @@ export default function PaginationItem({
             </Form.Select>
           </InputGroup>
         </Form>
-        <span style={{ color: 'var(--text)' }}>
+        <span style={{ color: 'var(--text)' }} className="ms-3 me-3 pagination-text">
           {t('carriera.proposte_di_tesi.showing')}{' '}
           {totalPages === 0 ? 0 : currentPage === 1 ? 1 : (currentPage - 1) * proposalsPerPage + 1}{' '}
           {t('carriera.proposte_di_tesi.to')}{' '}
@@ -53,7 +51,7 @@ export default function PaginationItem({
       </div>
       <div className="pagination-controls">
         {totalPages > 0 && (
-          <Pagination onChange={handlePageChange} style={{ margin: '0' }}>
+          <Pagination onChange={handlePageChange} style={{ margin: '0' }} size="sm">
             <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1 ? true : false} />
             <Pagination.Prev
               onClick={() => handlePageChange(currentPage - 1)}
