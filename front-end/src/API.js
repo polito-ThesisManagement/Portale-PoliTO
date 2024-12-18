@@ -34,13 +34,30 @@ async function updateLoggedStudent(student) {
 
 /****** Thesis Proposal APIs ******/
 
-async function getThesisProposals(lang, page, limit) {
+async function getThesisProposals(lang, page, limit, filterObj, sorting, searchQuery) {
   try {
+    const { keyword, teacher, type } = filterObj;
+    const keywordIds = keyword ? keyword.join(',') : '';
+    const teacherIds = teacher ? teacher.join(',') : '';
+    const typeIds = type ? type.join(',') : '';
+
+    if (searchQuery) {
+      searchQuery.trim().toLowerCase();
+    }
+
+    console.log(sorting);
+
     const response = await axios.get(`${URL}/thesis-proposals`, {
       params: {
         lang,
         page,
         limit,
+        keywordIds: keywordIds || '',
+        teacherIds: teacherIds || '',
+        typeIds: typeIds || '',
+        sortBy: sorting.field || '',
+        orderBy: sorting.order || '',
+        searchQuery,
       },
     });
     console.log(response.data);
@@ -50,13 +67,29 @@ async function getThesisProposals(lang, page, limit) {
   }
 }
 
-async function getTargetedThesisProposals(lang, page, limit) {
+async function getTargetedThesisProposals(lang, page, limit, filterObj, sorting, searchQuery) {
   try {
+    console.log(filterObj);
+    const { keyword, teacher, type } = filterObj;
+    const keywordIds = keyword ? keyword.join(',') : '';
+    const teacherIds = teacher ? teacher.join(',') : '';
+    const typeIds = type ? type.join(',') : '';
+
+    if (searchQuery) {
+      searchQuery.trim().toLowerCase();
+    }
+
     const response = await axios.get(`${URL}/thesis-proposals/targeted`, {
       params: {
         lang,
         page,
         limit,
+        keywordIds: keywordIds || '',
+        teacherIds: teacherIds || '',
+        typeIds: typeIds || '',
+        sortBy: sorting.field || '',
+        orderBy: sorting.order || '',
+        searchQuery,
       },
     });
     console.log(response.data);
@@ -73,7 +106,6 @@ async function getThesisProposalsTypes(lang) {
         lang,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals types:', error);
@@ -87,7 +119,6 @@ async function getThesisProposalsKeywords(lang) {
         lang,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals keywords:', error);
@@ -97,7 +128,6 @@ async function getThesisProposalsKeywords(lang) {
 async function getThesisProposalsTeachers() {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/teachers`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals teachers:', error);

@@ -4,6 +4,7 @@ const getPaginationParams = query => {
   const offset = (page - 1) * limit;
   const orderBy = query.orderBy || 'ASC';
   const sortBy = query.sortBy || 'id';
+  console.log(query);
   return { page, limit, offset, orderBy, sortBy };
 };
 
