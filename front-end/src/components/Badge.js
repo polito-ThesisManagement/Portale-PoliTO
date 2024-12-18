@@ -98,10 +98,10 @@ export default function Badge({ variant, content }) {
     const contentArray = Array.isArray(content) ? content : [content];
 
     return contentArray.map((item, index) => (
-      <span key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
-        {renderIcon(item)}
-        {variant === 'type' ? item.toUpperCase() : item}
-      </span>
+      <div key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
+        <div className="badge-icon">{renderIcon(item)}</div>
+        <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
+      </div>
     ));
   };
 
@@ -208,10 +208,12 @@ export default function Badge({ variant, content }) {
   ) {
     return (
       <div className="badge-container">
-        <span className={`badge error_${appliedTheme}`}>
-          <FaCircleXmark size={16} />
-          {t('carriera.proposta_di_tesi.badge_errato')}
-        </span>
+        <div className={`badge error_${appliedTheme}`}>
+          <div className="badge-icon">
+            <FaCircleXmark size={15} />
+          </div>
+          <div className="badge-text">{t('carriera.proposta_di_tesi.badge_errato')}</div>
+        </div>
       </div>
     );
   }
@@ -219,10 +221,10 @@ export default function Badge({ variant, content }) {
   return (
     <div className="badge-container">
       {variant === 'internal' || variant === 'external' || variant === 'abroad' ? (
-        <span className={`badge ${variant}_${appliedTheme}`}>
+        <div className={`badge ${variant}_${appliedTheme}`}>
           {renderIcon(content)}
           {renderTranslatedContent()}
-        </span>
+        </div>
       ) : (
         renderContent()
       )}
