@@ -91,6 +91,7 @@ function App() {
   const desktopToggleValue = useMemo(() => ({ desktopToggle, setDesktopToggle }), [desktopToggle]);
   const favoritesValue = useMemo(() => ({ favorites, setFavorites }), [favorites]);
   const themeValue = useMemo(() => ({ theme, setTheme }), [theme]);
+  const bodyDataLoadingValue = useMemo(() => ({ bodyDataLoading, setBodyDataLoading }), [bodyDataLoading]);
 
   return (
     <>
@@ -99,7 +100,7 @@ function App() {
         <LoggedStudentContext.Provider value={loggedStudentValue}>
           <DesktopToggleContext.Provider value={desktopToggleValue}>
             <FavoritesContext.Provider value={favoritesValue}>
-              <BodyDataLoadingContext.Provider value={{ bodyDataLoading, setBodyDataLoading }}>
+              <BodyDataLoadingContext.Provider value={bodyDataLoadingValue}>
                 <LoadingModal show={navbarDataLoading || bodyDataLoading} onHide={() => setNavbarDataLoading(false)} />
                 <PoliNavbar
                   allStudents={allStudents}
