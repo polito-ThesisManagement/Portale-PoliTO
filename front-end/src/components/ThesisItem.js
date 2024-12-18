@@ -2,9 +2,7 @@ import React from 'react';
 
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaUniversity } from 'react-icons/fa';
-import { FaCalendar, FaEarthAmericas } from 'react-icons/fa6';
-import { HiBuildingOffice2 } from 'react-icons/hi2';
+import { FaCalendar } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -28,7 +26,7 @@ function ThesisItem(props) {
           isAbroad={props.isAbroad}
           keywords={props.keywords}
         />
-        <p className="thesis-description">{props.description.slice(0, 350) + '...'}</p>
+        <p className="thesis-description">{props.description}</p>
         <div className="thesis-professor-tags">
           <ThesisProfessorTags supervisor={props.supervisor} internalCoSupervisors={props.internalCoSupervisors} />
         </div>
@@ -39,20 +37,14 @@ function ThesisItem(props) {
 }
 
 const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
-  const { t } = useTranslation();
-
   return (
     <div>
       <h3 className="thesis-topic">
         {' '}
         {topic}
         <div className="thesis-type-tags">
-          {isInternal ? (
-            <GenericTag text={t('carriera.proposte_di_tesi.internal_thesis')} icon={<FaUniversity />} />
-          ) : (
-            <GenericTag text={t('carriera.proposte_di_tesi.external_thesis')} icon={<HiBuildingOffice2 />} />
-          )}
-          {isAbroad && <GenericTag text={t('carriera.proposte_di_tesi.abroad_thesis')} icon={<FaEarthAmericas />} />}
+          {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
+          {isAbroad && <Badge variant={'abroad'} />}
         </div>
         <div className="thesis-keyword-tags">
           {keywords.map(keyword => (

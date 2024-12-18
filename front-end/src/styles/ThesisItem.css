@@ -1,5 +1,6 @@
 .thesis-article {
-  border-bottom: 0.0625rem solid var(--background);
+  border: 2px solid var(--background);
+  border-radius: 10px;
   align-items: flex-start;
   background-color: var(--surface);
   display: flex;
@@ -7,20 +8,19 @@
   max-width: 100%;
   overflow: hidden;
   justify-content: flex-start;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1.75rem;
-  padding-top: 1.75rem;
+  padding: 1.75rem 1rem;
 }
 
 .thesis-description {
   color: var(--text);
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal;
-  word-break: break-word;
 }
 
 .thesis-professor-tags {
@@ -96,6 +96,11 @@
 .show-more-button:hover {
   background-color: var(--background);
   color: var(--text);
+}
+
+.show-more-button:active {
+  background-color: var(--background) !important;
+  color: var(--text) !important;
 }
 
 .thesis-footer-container {

@@ -109,7 +109,6 @@ async function getThesisProposalsTypes(lang) {
         lang,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals types:', error);
@@ -123,7 +122,6 @@ async function getThesisProposalsKeywords(lang) {
         lang,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals keywords:', error);
@@ -133,7 +131,6 @@ async function getThesisProposalsKeywords(lang) {
 async function getThesisProposalsTeachers() {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/teachers`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals teachers:', error);

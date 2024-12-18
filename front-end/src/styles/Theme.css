@@ -178,9 +178,8 @@
   --type-tag-border: var(--dark-navy);
   --type-tag-bg: var(--background-light);
   --type-tag-text: var(--dark-navy);
-  --page-bg: var(--background);
-  --active-page: var(--primary-200);
-  --page-border: var(--medium-gray);
+  --active-page: var(--primary-300);
+  --active-page-border: var(--primary-300);
   /* Font Family */
   --font-primary: 'Montserrat', sans-serif;
   --accordion-arrow: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23002b49%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M2 5L8 11L14 5%27/%3e%3c/svg%3e');
@@ -244,5 +243,12 @@
 
   .form-select {
     --bs-form-select-bg-img: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+  }
+
+  .accordion-button::after {
+    filter: invert(1) saturate(0);
+  }
+  .accordion-button:not(.collapsed)::after {
+    filter: invert(1) saturate(0);
   }
 }
