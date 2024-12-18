@@ -40,18 +40,29 @@ function ThesisItem(props) {
 const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords }) => {
   return (
     <div>
-      <h3 className="thesis-topic"> {topic}</h3>
-      <div className="thesis-tags" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
-        <div className="thesis-type-tags">
-          {types.map(type => (
-            <Badge key={type.id} variant={'type'} content={type.type} />
-          ))}
+      <h3 className="thesis-topic">
+        {' '}
+        {topic}
+        {types.length === 0 && (
+          <div className="thesis-position-tags">
+            {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
+            {isAbroad && <Badge variant={'abroad'} />}
+          </div>
+        )}
+      </h3>
+      {types.length > 0 && (
+        <div className="thesis-tags" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+          <div className="thesis-type-tags">
+            {types.map(type => (
+              <Badge key={type.id} variant={'type'} content={type.type} />
+            ))}
+          </div>
+          <div className="thesis-position-tags">
+            {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
+            {isAbroad && <Badge variant={'abroad'} />}
+          </div>
         </div>
-        <div className="thesis-position-tags">
-          {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
-          {isAbroad && <Badge variant={'abroad'} />}
-        </div>
-      </div>
+      )}
       <div className="thesis-keyword-tags">
         {keywords.map(keyword => (
           <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
