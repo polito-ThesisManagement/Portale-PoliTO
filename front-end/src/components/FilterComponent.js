@@ -7,6 +7,7 @@ import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 
+import '../styles/FilterDropdown.css';
 import Badge from './Badge';
 
 export default function FilterComponent({

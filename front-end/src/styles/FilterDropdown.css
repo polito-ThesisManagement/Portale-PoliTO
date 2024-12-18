@@ -1,0 +1,34 @@
+button.btn-primary {
+  color: var(--white);
+  background-color: var(--dark-navy);
+  border: 1px solid var(--white) !important;
+  font-family: var(--font-primary);
+}
+
+button.btn-primary:hover {
+  color: var(--white);
+  background-color: var(--medium-navy);
+  border: 1px solid var(--white) !important;
+  font-family: var(--font-primary);
+}
+
+button.btn-link {
+  color: var(--primary);
+  font-family: var(--font-primary);
+}
+
+.dropdown-menu {
+  background-color: var(--background);
+  border: 1px solid var(--text);
+}
+
+.dropdown-item {
+  font-family: var(--font-primary);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: var(--text);
+  text-decoration: none;
+  background-color: var(--background);
+}

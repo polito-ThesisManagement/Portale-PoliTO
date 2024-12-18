@@ -96,7 +96,14 @@ const getThesisProposals = async (req, res) => {
 
     if (searchQuery && searchQuery.length > 0) {
       where[Op.and].push({
-        [Op.or]: [{ topic: { [Op.like]: `%${searchQuery}%` } }, { description: { [Op.like]: `%${searchQuery}%` } }],
+        [Op.or]: [
+          sequelize.where(sequelize.fn('lower', sequelize.col('topic')), {
+            [Op.like]: `%${searchQuery.toLowerCase()}%`,
+          }),
+          sequelize.where(sequelize.fn('lower', sequelize.col('description')), {
+            [Op.like]: `%${searchQuery.toLowerCase()}%`,
+          }),
+        ],
       });
     }
 
@@ -170,7 +177,14 @@ const getTargetedThesisProposals = async (req, res) => {
 
     if (searchQuery && searchQuery.length > 0) {
       where[Op.and].push({
-        [Op.or]: [{ topic: { [Op.like]: `%${searchQuery}%` } }, { description: { [Op.like]: `%${searchQuery}%` } }],
+        [Op.or]: [
+          sequelize.where(sequelize.fn('lower', sequelize.col('topic')), {
+            [Op.like]: `%${searchQuery.toLowerCase()}%`,
+          }),
+          sequelize.where(sequelize.fn('lower', sequelize.col('description')), {
+            [Op.like]: `%${searchQuery.toLowerCase()}%`,
+          }),
+        ],
       });
     }
 

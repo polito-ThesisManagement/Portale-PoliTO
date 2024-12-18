@@ -121,6 +121,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: var(--background);
 }
 
 .proposals-toggle label {
@@ -129,6 +130,8 @@
   display: flex;
   align-items: center;
   color: var(--text);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
 }
 
 .proposals-toggle-course-en::before {
@@ -231,7 +234,7 @@
   width: 100%;
 }
 
-@media (min-width: 862px) {
+@media (min-width: 885px) {
   .pagination-container {
     flex-direction: row;
   }
@@ -249,19 +252,27 @@
   }
 }
 
-@media (max-width: 861px) {
+@media (max-width: 884px) {
   .pagination-container {
     flex-direction: column;
   }
 
   .pagination-info {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
   .pagination-controls {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 432px) {
+  .pagination-text {
+    margin-top: 1rem;
   }
 }
 

@@ -19,7 +19,7 @@ function formatDate(date) {
 function ThesisItem(props) {
   return (
     <article className="thesis-article">
-      <div>
+      <div style={{ width: '100%' }}>
         <ThesisHeader
           topic={props.topic}
           isInternal={props.isInternal}
