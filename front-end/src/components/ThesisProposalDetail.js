@@ -59,11 +59,6 @@ function ThesisProposalDetail(props) {
             <p>{topic}</p>
           </div>
         )}
-        {/*isAbroad && (
-          <div style={{ marginBottom: '8px' }}>
-            <Badge variant="abroad" />
-          </div>
-        )*/}
         <div className="important-detail">
           {keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
           {types.length > 0 && <Types types={types} />}
@@ -100,19 +95,19 @@ function Attachment({ id, attachmentUrl }) {
     const extension = attachmentUrl?.split('.').pop().toLowerCase().trim();
     switch (extension) {
       case 'pdf':
-        return <FaFilePdf size={28} style={{ color: 'var(--primary)' }} />;
+        return <FaFilePdf size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
       case 'xls':
       case 'xlsx':
-        return <FaFileExcel size={28} style={{ color: 'var(--primary)' }} />;
+        return <FaFileExcel size={25} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
       case 'doc':
       case 'docx':
-        return <FaFileWord size={28} style={{ color: 'var(--primary)' }} />;
+        return <FaFileWord size={25} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
       case 'zip':
       case 'rar':
       case '7z':
-        return <FaFileZipper size={28} style={{ color: 'var(--primary)' }} />;
+        return <FaFileZipper size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
       default:
-        return <FaFile size={28} style={{ color: 'var(--primary)' }} />;
+        return <FaFile size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
     }
   };
 
@@ -299,7 +294,7 @@ function TimeLeft({ expirationDate }) {
 
 ThesisProposalDetail.propTypes = {
   thesisProposal: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     topic: PropTypes.string,
     description: PropTypes.string,
     link: PropTypes.string,
@@ -319,7 +314,7 @@ ThesisProposalDetail.propTypes = {
 };
 
 Attachment.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   attachmentUrl: PropTypes.string.isRequired,
 };
 
