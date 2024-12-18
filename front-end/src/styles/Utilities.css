@@ -250,9 +250,9 @@ body {
 
 .text-toggle-container {
   border: 1px solid var(--background);
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: var(--background);
-  height: 42px;
+  height: 24px;
   margin-right: 10px;
   display: flex;
   align-items: center;
@@ -261,7 +261,7 @@ body {
 
 .text-toggle {
   position: relative;
-  height: 40px;
+  height: 22px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -276,21 +276,21 @@ body {
   flex: 1;
   justify-content: center;
   cursor: pointer;
-  color: var(--text);
+  color: var(--primary);
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-regular);
   text-align: center;
 }
 
 .text-toggle::before {
   content: '';
   position: absolute;
-  width: 50%;
+  width: 45%;
   height: 100%;
   background: var(--surface);
   border: var(--background) solid 1px;
-  border-radius: 9px;
+  border-radius: 4px;
   transition: 0.5s left ease;
   left: 0%; /* Ensure the toggle starts from the left */
 }
@@ -300,5 +300,6 @@ body {
 }
 
 .text-toggle:has(#text-toggle-radio2:checked)::before {
-  left: 50%;
+  left: 45%;
+  width: 55%;
 }

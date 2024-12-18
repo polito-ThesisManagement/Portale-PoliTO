@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
 import { Button, Dropdown } from 'react-bootstrap';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown, FaAngleUp, FaSortAmountDownAlt, FaSortAmountUpAlt } from 'react-icons/fa';
 
 import PropTypes from 'prop-types';
 
-export default function SortBy({ sortFields, orderByFields, icon, sorting, onApplySorting, onResetSorting }) {
+import TextToggle from './TextToggle';
+
+export default function SortBy({ sortFields, sorting, onApplySorting, onResetSorting }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(sorting || '');
+  const [selectedSort, setSelectedSort] = useState(sorting.sort || '');
+  const [selectedOrder, setSelectedOrder] = useState(sorting.order || '');
 
   useEffect(() => {
     // Sincronizza il valore del selectedItem con il genitore
@@ -16,10 +20,6 @@ export default function SortBy({ sortFields, orderByFields, icon, sorting, onApp
 
   const handleToggle = isOpen => {
     setIsOpen(isOpen);
-  };
-
-  const handleItemSelect = ({ order, sort }) => {
-    setSelectedItem({ sort: sort, order: order });
   };
 
   const handleReset = () => {
@@ -44,19 +44,33 @@ export default function SortBy({ sortFields, orderByFields, icon, sorting, onApp
             display: 'flex',
             justifyContent: 'flex-start',
             color: 'var(--tag-text)',
-            padding: '0px 6px',
+            padding: '10px 6px',
             fontFamily: 'var(--font-primary)',
             fontSize: 'var(--font-size-md)',
             width: 'fit-content',
             height: '2rem',
           }}
         >
-          {icon}
           <span
             style={{
               margin: '0px 0.5rem',
             }}
           >
+            {selectedOrder === 'ASC' ? (
+              <FaSortAmountUpAlt
+                onClick={e => {
+                  e.stopPropagation();
+                  setSelectedOrder('DESC');
+                }}
+              />
+            ) : (
+              <FaSortAmountDownAlt
+                onClick={e => {
+                  e.stopPropagation();
+                  setSelectedOrder('ASC');
+                }}
+              />
+            )}{' '}
             Ordina per:
           </span>
           {isOpen ? <FaAngleUp /> : <FaAngleDown />}
@@ -68,30 +82,22 @@ export default function SortBy({ sortFields, orderByFields, icon, sorting, onApp
         style={{
           width: 'fit-content',
           boxShadow: '0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25)',
+          paddingLeft: '0.5rem',
         }}
       >
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           <>
             <div>
+              <TextToggle field={selectedOrder} handleFieldChange={setSelectedOrder} />
+            </div>
+            <Dropdown.Divider />
+            <div>
               <strong>Sort By Fields</strong>
               {sortFields.map((field, index) => (
                 <Dropdown.Item
                   key={index}
-                  onClick={() => handleItemSelect({ sort: field, order: sorting.order })}
-                  active={selectedItem === field}
-                >
-                  {field}
-                </Dropdown.Item>
-              ))}
-            </div>
-            <Dropdown.Divider />
-            <div>
-              <strong>Order By Fields</strong>
-              {orderByFields.map((field, index) => (
-                <Dropdown.Item
-                  key={index}
-                  onClick={() => handleItemSelect({ order: field, sort: sorting.sort })}
-                  active={selectedItem === field}
+                  onClick={() => setSelectedSort({ sort: field, order: sorting.order })}
+                  active={selectedSort === field}
                 >
                   {field}
                 </Dropdown.Item>
@@ -154,7 +160,6 @@ CustomMenu.propTypes = {
 SortBy.propTypes = {
   sortFields: PropTypes.array.isRequired,
   onApplySorting: PropTypes.func.isRequired,
-  orderByFields: PropTypes.array.isRequired,
   sorting: PropTypes.object.isRequired,
   icon: PropTypes.node.isRequired,
   onResetSorting: PropTypes.func.isRequired,

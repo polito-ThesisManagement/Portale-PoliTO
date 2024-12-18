@@ -15,11 +15,10 @@ import '../styles/Theme.css';
 import '../styles/ThesisProposals.css';
 import '../styles/Utilities.css';
 import FilterComponent from './FilterComponent';
-import FilterDropdown from './FilterDropdown';
-import MyDropdown from './GenericDropdown';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
+import SortBy from './SortBy';
 import { ThesisItem } from './ThesisItem';
 import ThesisProposalsToggle from './ThesisProposalsToggle';
 import Title from './Title';
@@ -31,16 +30,15 @@ export default function ThesisProposals() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [orderBy, setOrderBy] = useState('asc');
   const [proposalsPerPage, setProposalsPerPage] = useState(5);
   const [pageProposals, setPageProposals] = useState([]);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
-  const [thesisTypes, setThesisTypes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedType, setSelectedType] = useState('');
-  const [sortBy, setSortBy] = useState('');
   const [tab, setTab] = useState('course');
   const [totalPages, setTotalPages] = useState(0);
+  const [sorting, setSorting] = useState({ field: '', order: '' });
+
+  const sortFields = ['id', 'topic', 'creationDate', 'expirationDate'];
 
   const { t, i18n } = useTranslation();
 
@@ -70,17 +68,6 @@ export default function ThesisProposals() {
     setSearchQuery(event.target.value);
   };
 
-  const handleSelectedType = event => {
-    console.log(event);
-    if (event.target.value === t('carriera.proposte_di_tesi.internal_thesis')) {
-      setSelectedType('internal');
-    } else if (event.target.value === t('carriera.proposte_di_tesi.abroad_thesis')) {
-      setSelectedType('abroad');
-    } else if (event.target.value === t('carriera.proposte_di_tesi.external_thesis')) {
-      setSelectedType('external');
-    }
-  };
-
   const handleTabChange = newTab => {
     setIsAnimating(true);
     setTab(newTab);
@@ -89,28 +76,18 @@ export default function ThesisProposals() {
     }, 500);
   };
 
+  const onApplySorting = selectedSorting => {
+    setSorting(selectedSorting);
+  };
+
+  const onResetSorting = () => {
+    setSorting({ field: '', order: 'ASC' });
+  };
+
   useEffect(() => {
     setCurrentPage(1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [proposalsPerPage]);
-
-  useEffect(() => {
-    if (sortBy !== '' && orderBy === 'asc') {
-      setOrderBy('desc');
-    }
-    if (sortBy !== '' && orderBy === 'desc') {
-      setOrderBy('asc');
-    }
-  }, [orderBy]);
-
-  useEffect(() => {
-    const types = [
-      t('carriera.proposte_di_tesi.internal_thesis'),
-      t('carriera.proposte_di_tesi.abroad_thesis'),
-      t('carriera.proposte_di_tesi.external_thesis'),
-    ];
-    setThesisTypes(types);
-  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -141,7 +118,7 @@ export default function ThesisProposals() {
           }, remainingTime);
         });
     }
-  }, [i18n.language, currentPage, proposalsPerPage, filters]);
+  }, [i18n.language, currentPage, proposalsPerPage, filters, sorting]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(count / proposalsPerPage));
@@ -266,22 +243,11 @@ export default function ThesisProposals() {
                             onResetFilters={() => applyFilters('type', [])}
                             selectedItems={filters.type}
                           />
-                          <MyDropdown
-                            title={t('carriera.proposte_di_tesi.type_filter')}
-                            options={thesisTypes}
-                            selectedOption={selectedType}
-                            setSelectedOption={handleSelectedType}
-                          />
-                          <FilterDropdown
-                            title={t('carriera.proposte_di_tesi.order_by')}
-                            options={[
-                              t('carriera.proposte_di_tesi.created_order'),
-                              t('carriera.proposte_di_tesi.exp_order'),
-                            ]}
-                            selectedOption={sortBy}
-                            setSelectedOption={setSortBy}
-                            orderBy={orderBy}
-                            setOrderBy={setOrderBy}
+                          <SortBy
+                            sortFields={sortFields}
+                            sorting={sorting}
+                            onApplySorting={onApplySorting}
+                            onResetSorting={onResetSorting}
                           />
                         </div>
                       </Accordion.Body>
