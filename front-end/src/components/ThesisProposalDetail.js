@@ -179,7 +179,14 @@ function TimeMap({ creationDate, expirationDate }) {
           <ProgressBar
             animated
             now={progress}
-            style={{ backgroundColor: remainingDuration >= 168 ? 'var(--success-600)' : 'var(--warning-500)' }}
+            style={{
+              backgroundColor:
+                remainingDuration >= 168
+                  ? 'var(--success-600)'
+                  : remainingDuration >= 0
+                    ? 'var(--warning-500)'
+                    : 'var(--danger-500)',
+            }}
           />
         </ProgressBar>
       </div>
