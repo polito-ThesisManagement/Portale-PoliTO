@@ -7,7 +7,7 @@ import API from '../../API';
 import { BodyDataLoadingContext } from '../../App';
 import Badge from '../../components/Badge';
 import MyBreadcrumb from '../../components/MyBreadcrumb';
-import { ThesisProposalDetail } from '../../components/ThesisProposalDetail';
+import ThesisProposalDetail from '../../components/ThesisProposalDetail';
 
 function PropostaDiTesi() {
   const id = useParams().id;
@@ -18,6 +18,7 @@ function PropostaDiTesi() {
 
   useEffect(() => {
     setBodyDataLoading(true);
+    setIsLoading(true);
     API.getThesisProposalById(id, i18n.language)
       .then(thesis => {
         setThesisProposal(thesis);
