@@ -65,23 +65,38 @@ export default function ThesisProposals() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const debounceSearch = debounce(() => {
+  function useDebounceSearch(callback, delay) {
+    const [timeoutId, setTimeoutId] = useState(null);
+
+    const debounce = (...args) => {
+      // Se esiste un timeout attivo, lo cancelliamo
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+
+      // Creiamo un nuovo timeout che invoca la callback
+      const newTimeoutId = setTimeout(() => {
+        callback(...args);
+      }, delay);
+
+      // Salviamo il nuovo timeoutId
+      setTimeoutId(newTimeoutId);
+    };
+
+    return debounce;
+  }
+
+  const debounceSearch = useDebounceSearch(() => {
     setSearching(true);
-  }, 500); // Reduced debounce delay to 500ms for more responsive search
+  }, 500); // 500ms per il debounce
 
   const handleSearchbarChange = event => {
-    const value = event.target.value.trim();
+    const value = event.target.value;
     setSearchQuery(value);
-    debounceSearch();
-  };
 
-  function debounce(func, wait) {
-    let timeout;
-    return function (...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  }
+    // Avvia il debouncing solo quando l'utente smette di scrivere
+    debounceSearch(value);
+  };
 
   const handleTabChange = newTab => {
     setIsAnimating(true);
