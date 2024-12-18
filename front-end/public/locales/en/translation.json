@@ -63,8 +63,11 @@
             "filter": "Advanced search filters",
             "type_filter": "Filter by thesis type",
             "not_found": "It's empty here...",
-            "message_not_found": "There are no thesis proposals available at the moment.",
-            "reload": "Reload this page"
+            "message_not_found": "There are no thesis proposals matching your query or available at the moment. Please reload this page or change your search query.",
+            "reload": "Reload this page",
+            "teachers": "Filter by teachers",
+            "types": "Filter by types",
+            "keywords": "Filter by keywords"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Thesis Proposal Details",

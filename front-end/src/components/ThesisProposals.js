@@ -88,7 +88,7 @@ export default function ThesisProposals() {
     setLoading(true);
     const startTime = Date.now();
     if (tab === 'course') {
-      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting)
+      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, searchQuery, sorting)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
@@ -97,7 +97,7 @@ export default function ThesisProposals() {
         .catch(error => console.error('Error fetching thesis proposals:', error))
         .finally(() => setLoading(false));
     } else {
-      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting)
+      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, searchQuery, sorting)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
@@ -172,7 +172,7 @@ export default function ThesisProposals() {
     <>
       {loading ? (
         <LoadingModal show={loading} onHide={() => setLoading(false)} />
-      ) : pageProposals.length > 0 ? (
+      ) : (
         <>
           <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
           <div className="proposals-container">
@@ -254,71 +254,75 @@ export default function ThesisProposals() {
                   </Accordion>
                 </div>
               </section>
-              <section className="list-section">
-                <div>
-                  {pageProposals.map(thesis => {
-                    return <ThesisItem key={thesis.id} {...thesis} />;
-                  })}
-                </div>
-              </section>
-              <div className="list-footer">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-                  <GenericDropdown
-                    title={t('carriera.proposte_di_tesi.elements_per_page') + ':'}
-                    options={elementsPerPage}
-                    selectedOption={proposalsPerPage}
-                    setSelectedOption={handleProposalsPerPageChange}
-                  />
-                </div>
-                {totalPages > 0 && (
-                  <Pagination active={currentPage}>
-                    <Pagination.First onClick={handlePageChange(1)} />
-                    <Pagination.Prev onClick={handlePageChange(currentPage - 1 > 0 ? currentPage - 1 : currentPage)} />
-                    {pageNumbers.map(number => {
-                      return (
-                        <Pagination.Item
-                          active={number === currentPage}
-                          key={number}
-                          label={number}
-                          onClick={handlePageChange(number)}
-                        >
-                          {number}
-                        </Pagination.Item>
-                      );
-                    })}
-                    <Pagination.Next
-                      onClick={handlePageChange(currentPage + 1 > totalPages ? totalPages : currentPage + 1)}
-                    />
-                    <Pagination.Last onClick={handlePageChange(totalPages)} />
-                  </Pagination>
-                )}
-                <span className="total-count">
-                  {t('carriera.proposte_di_tesi.total')} {count}
-                </span>
-              </div>
+              {pageProposals.length > 0 ? (
+                <>
+                  <section className="list-section">
+                    <div>
+                      {pageProposals.map(thesis => {
+                        return <ThesisItem key={thesis.id} {...thesis} />;
+                      })}
+                    </div>
+                  </section>
+                  <div className="list-footer">
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                      <GenericDropdown
+                        title={t('carriera.proposte_di_tesi.elements_per_page') + ':'}
+                        options={elementsPerPage}
+                        selectedOption={proposalsPerPage}
+                        setSelectedOption={handleProposalsPerPageChange}
+                      />
+                    </div>
+                    {totalPages > 0 && (
+                      <Pagination active={currentPage}>
+                        <Pagination.First onClick={handlePageChange(1)} />
+                        <Pagination.Prev
+                          onClick={handlePageChange(currentPage - 1 > 0 ? currentPage - 1 : currentPage)}
+                        />
+                        {pageNumbers.map(number => {
+                          return (
+                            <Pagination.Item
+                              active={number === currentPage}
+                              key={number}
+                              label={number}
+                              onClick={handlePageChange(number)}
+                            >
+                              {number}
+                            </Pagination.Item>
+                          );
+                        })}
+                        <Pagination.Next
+                          onClick={handlePageChange(currentPage + 1 > totalPages ? totalPages : currentPage + 1)}
+                        />
+                        <Pagination.Last onClick={handlePageChange(totalPages)} />
+                      </Pagination>
+                    )}
+                    <span className="total-count">
+                      {t('carriera.proposte_di_tesi.total')} {count}
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5em' }}>
+                  <div
+                    className="pol-headline pol-headline--with-bar"
+                    style={{ fontFamily: 'var(--font-primary)', color: 'var(--primary)' }}
+                  >
+                    <h3 className="bold-weight">{t('carriera.proposte_di_tesi.not_found')}</h3>
+                  </div>
+                  <FaRectangleXmark size={100} style={{ color: 'var(--primary)' }} strokeWidth={1} />
+                  <div className="mb-3" style={{ color: 'var(--text)', textAlign: 'center' }}>
+                    <p> {t('carriera.proposte_di_tesi.message_not_found')} </p>
+                  </div>
+                  <div>
+                    <Button className="card-button" onClick={() => setFilters({ keyword: [], teacher: [], type: [] })}>
+                      {' '}
+                      {t('carriera.proposte_di_tesi.reload')}{' '}
+                    </Button>
+                  </div>
+                </Container>
+              )}
             </main>
           </div>
-        </>
-      ) : (
-        <>
-          <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5em' }}>
-            <div
-              className="pol-headline pol-headline--with-bar"
-              style={{ fontFamily: 'var(--font-primary)', color: 'var(--primary)' }}
-            >
-              <h3 className="bold-weight">{t('carriera.proposte_di_tesi.not_found')}</h3>
-            </div>
-            <FaRectangleXmark size={100} style={{ color: 'var(--primary)' }} strokeWidth={1} />
-            <div className="mb-3" style={{ color: 'var(--text)' }}>
-              <p> {t('carriera.proposte_di_tesi.message_not_found')} </p>
-            </div>
-            <div>
-              <Button className="card-button" onClick={() => setFilters({ keyword: [], teacher: [], type: [] })}>
-                {' '}
-                {t('carriera.proposte_di_tesi.reload')}{' '}
-              </Button>
-            </div>
-          </Container>
         </>
       )}
     </>

@@ -56,7 +56,7 @@ const getThesisProposals = async (req, res) => {
     const lang = req.query.lang || 'it';
     const pagination = getPaginationParams(req.query);
     const includes = getIncludes(lang).filter(Boolean);
-    const { keywordIds, teacherIds, typeIds } = getFilterParams(req.query);
+    const { keywordIds, teacherIds, typeIds, searchQuery } = getFilterParams(req.query);
 
     const where = await buildWhereConditions(req.query, lang);
 
@@ -91,6 +91,12 @@ const getThesisProposals = async (req, res) => {
       });
     }
 
+    if (searchQuery && searchQuery.length > 0) {
+      where[Op.and].push({
+        [Op.or]: [{ topic: { [Op.like]: `%${searchQuery}%` } }, { description: { [Op.like]: `%${searchQuery}%` } }],
+      });
+    }
+
     if (where[Op.and].length === 0) {
       delete where[Op.and];
     }
@@ -114,7 +120,7 @@ const getTargetedThesisProposals = async (req, res) => {
     const pagination = getPaginationParams(req.query);
     const { collegioId, level, studentThesisProposalIdArray } = await getStudentData();
     const includes = getIncludes(lang).filter(Boolean);
-    const { keywordIds, teacherIds, typeIds } = getFilterParams(req.query);
+    const { keywordIds, teacherIds, typeIds, searchQuery } = getFilterParams(req.query);
     console.log(req);
     console.log(keywordIds);
 
@@ -160,7 +166,11 @@ const getTargetedThesisProposals = async (req, res) => {
       });
     }
 
-    console.log(where);
+    if (searchQuery && searchQuery.length > 0) {
+      where[Op.and].push({
+        [Op.or]: [{ topic: { [Op.like]: `%${searchQuery}%` } }, { description: { [Op.like]: `%${searchQuery}%` } }],
+      });
+    }
 
     const { count, formattedProposals, totalPages } = await fetchThesisProposals(where, includes, lang, pagination);
 

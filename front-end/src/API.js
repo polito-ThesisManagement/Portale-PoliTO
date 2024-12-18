@@ -34,20 +34,26 @@ async function updateLoggedStudent(student) {
 
 /****** Thesis Proposal APIs ******/
 
-async function getThesisProposals(lang, page, limit, filterObj) {
+async function getThesisProposals(lang, page, limit, filterObj, searchQuery) {
   try {
     const { keyword, teacher, type } = filterObj;
     const keywordIds = keyword ? keyword.join(',') : '';
     const teacherIds = teacher ? teacher.join(',') : '';
     const typeIds = type ? type.join(',') : '';
+
+    if (searchQuery) {
+      searchQuery.trim().toLowerCase();
+    }
+
     const response = await axios.get(`${URL}/thesis-proposals`, {
       params: {
         lang,
         page,
         limit,
-        keywordIds,
-        teacherIds,
-        typeIds,
+        keywordIds: keywordIds || '',
+        teacherIds: teacherIds || '',
+        typeIds: typeIds || '',
+        searchQuery,
       },
     });
     console.log(response.data);
@@ -57,7 +63,7 @@ async function getThesisProposals(lang, page, limit, filterObj) {
   }
 }
 
-async function getTargetedThesisProposals(lang, page, limit, filterObj) {
+async function getTargetedThesisProposals(lang, page, limit, filterObj, searchQuery) {
   try {
     console.log(filterObj);
     const { keyword, teacher, type } = filterObj;
@@ -73,6 +79,11 @@ async function getTargetedThesisProposals(lang, page, limit, filterObj) {
     if (type && type.length > 0) {
       typeIds = type.join(',');
     }
+
+    if (searchQuery) {
+      searchQuery.trim().toLowerCase();
+    }
+
     const response = await axios.get(`${URL}/thesis-proposals/targeted`, {
       params: {
         lang,
@@ -81,6 +92,7 @@ async function getTargetedThesisProposals(lang, page, limit, filterObj) {
         keywordIds: keywordIds || '',
         teacherIds: teacherIds || '',
         typeIds: typeIds || '',
+        searchQuery,
       },
     });
     console.log(response.data);
