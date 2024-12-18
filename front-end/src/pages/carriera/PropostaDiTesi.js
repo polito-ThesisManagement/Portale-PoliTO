@@ -1,39 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import API from '../../API';
-import LoadingModal from '../../components/LoadingModal';
+import { BodyDataLoadingContext } from '../../App';
+import Badge from '../../components/Badge';
 import MyBreadcrumb from '../../components/MyBreadcrumb';
-import { ThesisProposalDetail } from '../../components/ThesisProposalDetail';
+import ThesisProposalDetail from '../../components/ThesisProposalDetail';
 
 function PropostaDiTesi() {
   const id = useParams().id;
-  const { i18n } = useTranslation();
+  const { setBodyDataLoading } = useContext(BodyDataLoadingContext);
   const [thesisProposal, setThesisProposal] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    setLoading(true);
+    setBodyDataLoading(true);
+    setIsLoading(true);
     API.getThesisProposalById(id, i18n.language)
-      .then(data => {
-        setThesisProposal(data);
+      .then(thesis => {
+        setThesisProposal(thesis);
       })
       .catch(error => console.error('Error fetching thesis proposal by ID:', error))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setBodyDataLoading(false);
+        setIsLoading(false);
+      });
   }, [id, i18n.language]);
+
+  const renderContent = () => {
+    if (isLoading) {
+      return <></>;
+    } else if (thesisProposal) {
+      return <ThesisProposalDetail thesisProposal={thesisProposal} />;
+    } else {
+      return <Badge variant="error" content={t('carriera.proposta_di_tesi.errore_proposta_di_tesi')} />;
+    }
+  };
 
   return (
     <>
-      {loading ? (
-        <LoadingModal show={loading} onHide={() => setLoading(false)} />
-      ) : (
-        <>
-          <MyBreadcrumb />
-          <ThesisProposalDetail id={id} thesisProposal={thesisProposal} />
-        </>
-      )}
+      <MyBreadcrumb />
+      {renderContent()}
     </>
   );
 }

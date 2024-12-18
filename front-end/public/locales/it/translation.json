@@ -86,7 +86,16 @@
             "relatore_principale": "Relatore principale",
             "relatori_secondari": "Relatori secondari",
             "relatori_esterni": "Relatori esterni",
-            "badge_errato": "Badge non valido/i"
+            "badge_errato": "Badge non valido/i",
+            "errore_proposta_di_tesi": "Errore durante il rendering della proposta di tesi",
+            "disponibile_ancora_per_piu_di": "Disponibile ancora per più di",
+            "giorno": "giorno",
+            "giorni": "giorni",
+            "scadra_tra_meno_di": "Scadrà tra meno di",
+            "ora": "ora",
+            "ore": "ore",
+            "risulta_scaduta": "La proposta di tesi risulta scaduta",
+            "stato": "Stato della proposta"
         }
     },
     "Accedi": "Accedi",

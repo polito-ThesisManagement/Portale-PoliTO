@@ -34,6 +34,7 @@
 @media (max-width: 850px) {
   .detail-title {
     min-width: 100%;
+    margin-bottom: 1px;
   }
 
   .detail-row {
@@ -83,8 +84,19 @@ body {
   margin-bottom: 16px;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 12px;
+  padding-top: 10px;
   padding-bottom: 8px;
+  position: relative;
+}
+
+.straight-line {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: var(--background);
+  height: 4px;
 }
 
 .list-group-item-action:hover {
