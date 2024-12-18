@@ -37,6 +37,7 @@ export default function ThesisProposals() {
   const [tab, setTab] = useState('course');
   const [totalPages, setTotalPages] = useState(0);
   const [sorting, setSorting] = useState({ field: '', order: '' });
+  const [searching, setSearching] = useState(false);
 
   const sortFields = ['id', 'topic', 'creationDate', 'expirationDate'];
 
@@ -64,9 +65,23 @@ export default function ThesisProposals() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const debounceSearch = debounce(() => {
+    setSearching(true);
+  }, 500); // Reduced debounce delay to 500ms for more responsive search
+
   const handleSearchbarChange = event => {
-    setSearchQuery(event.target.value);
+    const value = event.target.value.trim();
+    setSearchQuery(value);
+    debounceSearch();
   };
+
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
 
   const handleTabChange = newTab => {
     setIsAnimating(true);
@@ -76,12 +91,12 @@ export default function ThesisProposals() {
     }, 500);
   };
 
-  const onApplySorting = selectedSorting => {
-    setSorting(selectedSorting);
+  const applySorting = (selectedItem, sorting) => {
+    setSorting(selectedItem !== sorting ? selectedItem : sorting);
   };
 
   const onResetSorting = () => {
-    setSorting({ field: '', order: 'ASC' });
+    setSorting({ sort: 'id', order: 'ASC' });
   };
 
   useEffect(() => {
@@ -93,16 +108,20 @@ export default function ThesisProposals() {
     setLoading(true);
     const startTime = Date.now();
     if (tab === 'course') {
-      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters)
+      console.log(sorting);
+      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting, searchQuery)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
           setTotalPages(data.totalPages);
         })
         .catch(error => console.error('Error fetching thesis proposals:', error))
-        .finally(() => setLoading(false));
+        .finally(() => {
+          setLoading(false);
+          setSearching(false);
+        });
     } else {
-      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters)
+      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting, searchQuery)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
@@ -115,10 +134,11 @@ export default function ThesisProposals() {
 
           setTimeout(() => {
             setLoading(false);
+            setSearching(false);
           }, remainingTime);
         });
     }
-  }, [i18n.language, currentPage, proposalsPerPage, filters, sorting]);
+  }, [i18n.language, currentPage, proposalsPerPage, filters, sorting, searching]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(count / proposalsPerPage));
@@ -130,11 +150,11 @@ export default function ThesisProposals() {
         }
       } else {
         if (currentPage <= 3) {
-          pages.push(1, 2, 3, 4, '...', totalPages);
+          pages.push(1, 2, 3, 4);
         } else if (currentPage > totalPages - 3) {
-          pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+          pages.push(totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
         } else {
-          pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+          pages.push(currentPage - 2, currentPage - 1, currentPage, currentPage + 1);
         }
       }
       return pages;
@@ -149,12 +169,18 @@ export default function ThesisProposals() {
       const fetchProposals = async () => {
         try {
           if (tab === 'course') {
-            const data = await API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters);
+            const data = await API.getTargetedThesisProposals(
+              i18n.language,
+              currentPage,
+              proposalsPerPage,
+              filters,
+              sorting,
+            );
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
           } else {
-            const data = await API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters);
+            const data = await API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
@@ -176,111 +202,118 @@ export default function ThesisProposals() {
 
   return (
     <>
-      {loading ? (
-        <LoadingModal show={loading} onHide={() => setLoading(false)} />
-      ) : (
-        <>
-          <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
-          <div className="proposals-container">
-            <main className="proposals-main">
-              <section>
-                <div className="filters-container">
-                  <div className="simple-filters-container">
-                    <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
-                    <Form className="d-flex w-100" style={{ maxWidth: '300px' }} onSubmit={e => e.preventDefault()}>
-                      <InputGroup className="flex-nowrap w-100">
-                        <Form.Control
-                          className="truncated"
-                          type="search"
-                          placeholder={t('carriera.proposte_di_tesi.search')}
-                          aria-label="search_proposals"
-                          style={{
-                            height: '38px',
-                            backgroundColor: 'var(--background)',
-                            color: 'var(--primary)',
-                            borderRadius: '10px',
-                          }}
-                          value={searchQuery}
-                          onChange={handleSearchbarChange}
-                        />
-                        <Search className="search-icon" />
-                      </InputGroup>
-                    </Form>
-                  </div>
-                  <Accordion activeKey={accordionOpen ? '0' : null} onSelect={() => setAccordionOpen(!accordionOpen)}>
-                    <Accordion.Item eventKey="0">
-                      <Accordion.Header>
-                        <div className="accordion-title">
-                          <FaFilter /> {t('carriera.proposte_di_tesi.filter')}
-                        </div>
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        <div className="filters-section">
-                          <FilterComponent
-                            api={API.getThesisProposalsKeywords}
-                            filters={filters.keyword}
-                            icon={<FaKey style={{ width: '20px' }} />}
-                            itemType={'keyword'}
-                            onApplyFilters={applyFilters}
-                            onResetFilters={() => applyFilters('keyword', [])}
-                            selectedItems={filters.keyword}
-                          />
-                          <FilterComponent
-                            api={API.getThesisProposalsTeachers}
-                            filters={filters.teacher}
-                            icon={<FaUser style={{ width: '20px' }} />}
-                            itemType={'teacher'}
-                            onApplyFilters={applyFilters}
-                            onResetFilters={() => applyFilters('teacher', [])}
-                            selectedItems={filters.teacher}
-                          />
-                          <FilterComponent
-                            api={API.getThesisProposalsTypes}
-                            filters={filters.type}
-                            icon={<></>}
-                            itemType={'type'}
-                            onApplyFilters={applyFilters}
-                            onResetFilters={() => applyFilters('type', [])}
-                            selectedItems={filters.type}
-                          />
-                          <SortBy
-                            sortFields={sortFields}
-                            sorting={sorting}
-                            onApplySorting={onApplySorting}
-                            onResetSorting={onResetSorting}
-                          />
-                        </div>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
+      <>
+        <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
+        <div className="proposals-container">
+          <main className="proposals-main">
+            <section>
+              <div className="filters-container">
+                <div className="simple-filters-container">
+                  <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
+                  <Form className="d-flex w-100" style={{ maxWidth: '300px' }} onSubmit={e => e.preventDefault()}>
+                    <InputGroup className="flex-nowrap w-100">
+                      <Form.Control
+                        className="truncated"
+                        type="search"
+                        placeholder={t('carriera.proposte_di_tesi.search')}
+                        aria-label="search_proposals"
+                        style={{
+                          height: '38px',
+                          backgroundColor: 'var(--background)',
+                          color: 'var(--primary)',
+                          borderRadius: '10px',
+                        }}
+                        value={searchQuery}
+                        onChange={handleSearchbarChange}
+                      />
+                      <Search className="search-icon" />
+                    </InputGroup>
+                  </Form>
                 </div>
-              </section>
-              {pageProposals.length > 0 ? (
-                <>
-                  <section className="list-section">
-                    <div>
-                      {pageProposals.map(thesis => {
-                        return <ThesisItem key={thesis.id} {...thesis} />;
-                      })}
-                    </div>
-                  </section>
-                  <PaginationItem
-                    count={count}
-                    currentPage={currentPage}
-                    handleProposalsPerPageChange={handleProposalsPerPageChange}
-                    handlePageChange={handlePageChange}
-                    pageNumbers={pageNumbers}
-                    proposalsPerPage={proposalsPerPage}
-                    totalPages={totalPages}
+                <Accordion activeKey={accordionOpen ? '0' : null} onSelect={() => setAccordionOpen(!accordionOpen)}>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>
+                      <div className="accordion-title">
+                        <FaFilter /> {t('carriera.proposte_di_tesi.filter')}
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="filters-section">
+                        <FilterComponent
+                          api={API.getThesisProposalsKeywords}
+                          filters={filters.keyword}
+                          icon={<FaKey style={{ width: '20px' }} />}
+                          itemType={'keyword'}
+                          onApplyFilters={applyFilters}
+                          onResetFilters={() => applyFilters('keyword', [])}
+                          selectedItems={filters.keyword}
+                        />
+                        <FilterComponent
+                          api={API.getThesisProposalsTeachers}
+                          filters={filters.teacher}
+                          icon={<FaUser style={{ width: '20px' }} />}
+                          itemType={'teacher'}
+                          onApplyFilters={applyFilters}
+                          onResetFilters={() => applyFilters('teacher', [])}
+                          selectedItems={filters.teacher}
+                        />
+                        <FilterComponent
+                          api={API.getThesisProposalsTypes}
+                          filters={filters.type}
+                          icon={<></>}
+                          itemType={'type'}
+                          onApplyFilters={applyFilters}
+                          onResetFilters={() => applyFilters('type', [])}
+                          selectedItems={filters.type}
+                        />
+                        <SortBy
+                          sortFields={sortFields}
+                          sorting={sorting}
+                          onApplySorting={applySorting}
+                          onResetSorting={onResetSorting}
+                        />
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              </div>
+            </section>
+            {loading ? (
+              <LoadingModal show={loading} onHide={() => setLoading(false)} />
+            ) : (
+              <>
+                {pageProposals.length > 0 ? (
+                  <>
+                    <section className="list-section">
+                      <div>
+                        {pageProposals.map(thesis => {
+                          return <ThesisItem key={thesis.id} {...thesis} />;
+                        })}
+                      </div>
+                    </section>
+                    <PaginationItem
+                      count={count}
+                      currentPage={currentPage}
+                      handleProposalsPerPageChange={handleProposalsPerPageChange}
+                      handlePageChange={handlePageChange}
+                      pageNumbers={pageNumbers}
+                      proposalsPerPage={proposalsPerPage}
+                      totalPages={totalPages}
+                    />
+                  </>
+                ) : (
+                  <ProposalsNotFound
+                    resetFilters={() => {
+                      setFilters({ keyword: [], teacher: [], type: [] });
+                      setSearchQuery('');
+                    }}
                   />
-                </>
-              ) : (
-                <ProposalsNotFound resetFilters={() => setFilters({ keyword: [], teacher: [], type: [] })} />
-              )}
-            </main>
-          </div>
-        </>
-      )}
+                )}
+              </>
+            )}
+          </main>
+        </div>
+      </>
     </>
   );
 }

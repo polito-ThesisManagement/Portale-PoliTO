@@ -34,7 +34,7 @@ async function updateLoggedStudent(student) {
 
 /****** Thesis Proposal APIs ******/
 
-async function getThesisProposals(lang, page, limit, filterObj, searchQuery) {
+async function getThesisProposals(lang, page, limit, filterObj, sorting, searchQuery) {
   try {
     const { keyword, teacher, type } = filterObj;
     const keywordIds = keyword ? keyword.join(',') : '';
@@ -45,6 +45,8 @@ async function getThesisProposals(lang, page, limit, filterObj, searchQuery) {
       searchQuery.trim().toLowerCase();
     }
 
+    console.log(sorting);
+
     const response = await axios.get(`${URL}/thesis-proposals`, {
       params: {
         lang,
@@ -53,6 +55,8 @@ async function getThesisProposals(lang, page, limit, filterObj, searchQuery) {
         keywordIds: keywordIds || '',
         teacherIds: teacherIds || '',
         typeIds: typeIds || '',
+        sortBy: sorting.field || '',
+        orderBy: sorting.order || '',
         searchQuery,
       },
     });
@@ -63,22 +67,13 @@ async function getThesisProposals(lang, page, limit, filterObj, searchQuery) {
   }
 }
 
-async function getTargetedThesisProposals(lang, page, limit, filterObj, searchQuery) {
+async function getTargetedThesisProposals(lang, page, limit, filterObj, sorting, searchQuery) {
   try {
     console.log(filterObj);
     const { keyword, teacher, type } = filterObj;
-    let keywordIds = '';
-    let teacherIds = '';
-    let typeIds = '';
-    if (keyword && keyword.length > 0) {
-      keywordIds = keyword.join(',');
-    }
-    if (teacher && teacher.length > 0) {
-      teacherIds = teacher.join(',');
-    }
-    if (type && type.length > 0) {
-      typeIds = type.join(',');
-    }
+    const keywordIds = keyword ? keyword.join(',') : '';
+    const teacherIds = teacher ? teacher.join(',') : '';
+    const typeIds = type ? type.join(',') : '';
 
     if (searchQuery) {
       searchQuery.trim().toLowerCase();
@@ -92,6 +87,8 @@ async function getTargetedThesisProposals(lang, page, limit, filterObj, searchQu
         keywordIds: keywordIds || '',
         teacherIds: teacherIds || '',
         typeIds: typeIds || '',
+        sortBy: sorting.field || '',
+        orderBy: sorting.order || '',
         searchQuery,
       },
     });

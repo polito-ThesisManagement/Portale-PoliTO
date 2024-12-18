@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Button, Dropdown } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { FaAngleDown, FaAngleUp, FaSortAmountDownAlt, FaSortAmountUpAlt } from 'react-icons/fa';
 
 import PropTypes from 'prop-types';
@@ -10,8 +11,10 @@ import TextToggle from './TextToggle';
 export default function SortBy({ sortFields, sorting, onApplySorting, onResetSorting }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(sorting || '');
-  const [selectedSort, setSelectedSort] = useState(sorting.sort || '');
+  const [selectedSort, setSelectedSort] = useState(sorting.field || '');
   const [selectedOrder, setSelectedOrder] = useState(sorting.order || '');
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Sincronizza il valore del selectedItem con il genitore
@@ -27,9 +30,22 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
     onResetSorting();
   };
 
-  const handleApply = () => {
+  const handleApply = ({ field: selectedSort, order: selectedOrder }) => {
     setIsOpen(false);
-    onApplySorting(sorting);
+    const newSorting = { field: selectedSort, order: selectedOrder };
+    console.log(newSorting);
+    setSelectedItem(newSorting);
+    onApplySorting(newSorting, sorting);
+  };
+
+  const handleChangeOrderExternal = order => {
+    setSelectedOrder(order);
+    if (selectedSort) {
+      handleApply({ field: selectedSort, order });
+    } else {
+      setSelectedSort(sorting.field);
+      handleApply({ field: sorting.field, order });
+    }
   };
 
   return (
@@ -60,18 +76,20 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
               <FaSortAmountUpAlt
                 onClick={e => {
                   e.stopPropagation();
-                  setSelectedOrder('DESC');
+                  handleChangeOrderExternal('DESC');
                 }}
               />
             ) : (
               <FaSortAmountDownAlt
                 onClick={e => {
                   e.stopPropagation();
-                  setSelectedOrder('ASC');
+                  handleChangeOrderExternal('ASC');
                 }}
               />
             )}{' '}
-            Ordina per:
+            {t('carriera.proposte_di_tesi.order_by')}
+            {': '}
+            {selectedItem.field ? t(`carriera.proposte_di_tesi.${selectedItem.field}`) : ''}
           </span>
           {isOpen ? <FaAngleUp /> : <FaAngleDown />}
         </div>
@@ -92,14 +110,13 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
             </div>
             <Dropdown.Divider />
             <div>
-              <strong>Sort By Fields</strong>
               {sortFields.map((field, index) => (
                 <Dropdown.Item
                   key={index}
-                  onClick={() => setSelectedSort({ sort: field, order: sorting.order })}
-                  active={selectedSort === field}
+                  onClick={() => setSelectedSort(field)}
+                  active={selectedSort ? selectedSort === field : sorting.field === field}
                 >
-                  {field}
+                  {t(`carriera.proposte_di_tesi.${field}`)}
                 </Dropdown.Item>
               ))}
             </div>
@@ -112,7 +129,12 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
           <Button variant="link" onClick={handleReset} size="sm">
             Reset
           </Button>
-          <Button variant="primary" onClick={handleApply} size="sm" id="dropdown-button">
+          <Button
+            variant="primary"
+            onClick={() => handleApply({ field: selectedSort, order: selectedOrder })}
+            size="sm"
+            id="dropdown-button"
+          >
             OK
           </Button>
         </div>
@@ -161,6 +183,5 @@ SortBy.propTypes = {
   sortFields: PropTypes.array.isRequired,
   onApplySorting: PropTypes.func.isRequired,
   sorting: PropTypes.object.isRequired,
-  icon: PropTypes.node.isRequired,
   onResetSorting: PropTypes.func.isRequired,
 };

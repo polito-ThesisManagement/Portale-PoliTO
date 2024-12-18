@@ -17,6 +17,9 @@ const camelToSnakeCase = str => str.replace(/([A-Z])/g, '_$1').toLowerCase();
 const fetchThesisProposals = async (where, includes, lang, pagination) => {
   const { limit, offset, orderBy, sortBy } = pagination;
 
+  console.log(orderBy);
+  console.log(sortBy);
+
   if (orderBy && orderBy !== 'ASC' && orderBy !== 'DESC') {
     throw new Error('Invalid orderBy parameter');
   }
@@ -118,11 +121,10 @@ const getTargetedThesisProposals = async (req, res) => {
   try {
     const lang = req.query.lang || 'it';
     const pagination = getPaginationParams(req.query);
+    console.log(pagination);
     const { collegioId, level, studentThesisProposalIdArray } = await getStudentData();
     const includes = getIncludes(lang).filter(Boolean);
     const { keywordIds, teacherIds, typeIds, searchQuery } = getFilterParams(req.query);
-    console.log(req);
-    console.log(keywordIds);
 
     const where = await buildWhereConditions(req.query, lang);
 
