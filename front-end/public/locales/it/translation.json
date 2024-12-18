@@ -73,7 +73,9 @@
             "type_filter": "Filtra per tipologia",
             "not_found": "È vuoto qui...",
             "message_not_found": "Nessuna proposta di tesi trovata",
-            "reset_filters": "Resetta filtri"
+            "reset_filters": "Resetta filtri",
+            "ascending": "Crescente",
+            "descending": "Decrescente"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",

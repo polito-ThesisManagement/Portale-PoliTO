@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useTranslation } from 'react-i18next';
 import { FaSortAmountDownAlt, FaSortAmountUpAlt } from 'react-icons/fa';
 
 import PropTypes from 'prop-types';
@@ -7,12 +8,13 @@ import PropTypes from 'prop-types';
 import '../styles/ThesisProposals.css';
 
 export default function TextToggle({ field, handleFieldChange }) {
+  const { t } = useTranslation();
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <div className="text-toggle-container">
         <div className="text-toggle">
           <label htmlFor="text-toggle-radio1">
-            <FaSortAmountUpAlt /> Crescente
+            <FaSortAmountUpAlt /> {t('carriera.proposte_di_tesi.ascending')}
           </label>
           <input
             type="radio"
@@ -23,7 +25,7 @@ export default function TextToggle({ field, handleFieldChange }) {
             onChange={() => handleFieldChange('ASC')}
           />
           <label htmlFor="text-toggle-radio2">
-            Decrescente <FaSortAmountDownAlt />
+            {t('carriera.proposte_di_tesi.descending')} <FaSortAmountDownAlt />
           </label>
           <input
             type="radio"
