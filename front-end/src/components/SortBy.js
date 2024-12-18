@@ -89,7 +89,9 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
             )}{' '}
             {t('carriera.proposte_di_tesi.order_by')}
             {': '}
-            {selectedItem.field ? t(`carriera.proposte_di_tesi.${selectedItem.field}`) : ''}
+            {selectedItem.field
+              ? t(`carriera.proposte_di_tesi.${selectedItem.field}`)
+              : t(`carriera.proposte_di_tesi.${sorting.field}`)}
           </span>
           {isOpen ? <FaAngleUp /> : <FaAngleDown />}
         </div>

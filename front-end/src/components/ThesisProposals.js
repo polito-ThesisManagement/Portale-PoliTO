@@ -36,7 +36,7 @@ export default function ThesisProposals() {
   const [searchQuery, setSearchQuery] = useState('');
   const [tab, setTab] = useState('course');
   const [totalPages, setTotalPages] = useState(0);
-  const [sorting, setSorting] = useState({ field: '', order: '' });
+  const [sorting, setSorting] = useState({ field: 'id', order: 'ASC' });
   const [searching, setSearching] = useState(false);
 
   const sortFields = ['id', 'topic', 'creationDate', 'expirationDate'];
@@ -111,7 +111,7 @@ export default function ThesisProposals() {
   };
 
   const onResetSorting = () => {
-    setSorting({ sort: 'id', order: 'ASC' });
+    setSorting({ field: 'id', order: 'ASC' });
   };
 
   useEffect(() => {
