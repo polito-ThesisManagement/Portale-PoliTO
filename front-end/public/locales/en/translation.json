@@ -72,7 +72,16 @@
             "relatore_principale": "Main Supervisor",
             "relatori_secondari": "Secondary Supervisors",
             "relatori_esterni": "External Supervisors",
-            "badge_errato": "Invalid badge/s"
+            "badge_errato": "Invalid badge/s",
+            "errore_proposta_di_tesi": "Error while rendering the thesis proposal",
+            "disponibile_ancora_per_piu_di": "Still available for more than",
+            "giorno": "day",
+            "giorni": "days",
+            "scadra_tra_meno_di": "Expires in less than",
+            "ora": "hour",
+            "ore": "hours",
+            "risulta_scaduta": "The thesis proposal has expired",
+            "stato": "Proposal status"
         }
     },
     "Accedi": "Login",

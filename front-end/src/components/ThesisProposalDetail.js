@@ -1,33 +1,34 @@
-// add attachments, thesis type, review prop types, handle null fields better + call to db in parent + API.jsx for mapping
 import React from 'react';
 
-/*
-import { Container } from 'react-bootstrap';
-import { ArrowRightShort } from 'react-bootstrap-icons';
+import { Container, ProgressBar } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaUniversity } from 'react-icons/fa';
-import { FaCalendar, FaEarthAmericas, FaFileLines } from 'react-icons/fa6';
-import { HiBuildingOffice2 } from 'react-icons/hi2';
-import { Link } from 'react-router-dom';
+import {
+  FaFile,
+  FaFileExcel,
+  FaFileLines,
+  FaFilePdf,
+  FaFileWord,
+  FaFileZipper,
+  FaFlag,
+  FaLocationDot,
+} from 'react-icons/fa6';
+import Linkify from 'react-linkify';
 
 import moment from 'moment';
 import 'moment/locale/it';
 import PropTypes from 'prop-types';
 
+import Badge from '../components/Badge';
 import Title from '../components/Title';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
-import Badge from './Badge';
 
 moment.locale('it');
-*/
-function ThesisProposalDetail() {
-  <></>;
-}
-/*
+
 function ThesisProposalDetail(props) {
   const { t } = useTranslation();
   const {
+    id,
     topic,
     description,
     link,
@@ -40,6 +41,7 @@ function ThesisProposalDetail(props) {
     expirationDate,
     isInternal,
     isAbroad,
+    attachmentUrl,
     keywords,
     types,
   } = props.thesisProposal;
@@ -51,78 +53,145 @@ function ThesisProposalDetail(props) {
         icon={<FaFileLines size={26} />}
         sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
       />
-      {creationDate && expirationDate && <ExpirationDate creation_date={creationDate} exp_date={expirationDate} />}
       <Container fluid className="custom-container">
-        {isAbroad && <Badge variant="abroad" />}
         {topic && (
-          <div className="subsection-title">
+          <div className="subsection-proposal-title">
             <p>{topic}</p>
           </div>
         )}
         <div className="important-detail">
-          {keywords && keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
+          {keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
+          {types.length > 0 && <Types types={types} />}
+          {<Environment isInternal={isInternal} isAbroad={isAbroad} />}
+          <MainSupervisor supervisor={supervisor} />
+          {internalCoSupervisors.length > 0 && <SecondarySupervisors internalCoSupervisors={internalCoSupervisors} />}
+          {externalCoSupervisors && (
+            <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
+          )}
           {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
           {requiredSkills && (
             <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />
           )}
-          {link && <MyBlock title="Link" content={link} />}
-          {types.length > 0 && (
-            <MyBlock
-              title="carriera.proposta_di_tesi.tipo"
-              content={types.map(type => capitalize(type.type.toLowerCase())).join(', ')}
-            />
-          )}
-          <MainSupervisor supervisor={supervisor} />
-          {internalCoSupervisors && internalCoSupervisors.length > 1 && (
-            <SecondarySupervisors
-              supervisors={internalCoSupervisors.map(supervisor => {
-                supervisor;
-              })}
-            />
-          )}
-          {externalCoSupervisors && (
-            <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
-          )}
-          {isInternal && <Environment is_internal={isInternal} />}
           {additionalNotes && <MyBlock title="carriera.proposta_di_tesi.note" content={additionalNotes} />}
+          {link && <MyBlock title="Link" content={link} />}
+          {attachmentUrl && <Attachment id={id} attachmentUrl={attachmentUrl} />}
+        </div>
+        <div style={{ paddingTop: '10px', paddingBottom: '20px' }}>
+          <div className="straight-line" />
+        </div>
+        <div className="important-detail">
+          {expirationDate && <Status expirationDate={expirationDate} />}
+          {creationDate && expirationDate && <TimeMap creationDate={creationDate} expirationDate={expirationDate} />}
         </div>
       </Container>
     </>
   );
 }
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function ExpirationDate({ creation_date, exp_date }) {
+function Attachment({ id, attachmentUrl }) {
   const { t } = useTranslation();
-  const formattedCreationDate = capitalizeMonth(moment(creation_date).format('DD MMMM YYYY'));
-  const formattedExpDate = capitalizeMonth(moment(exp_date).format('DD MMMM YYYY'));
+
+  const switchIcon = attachmentUrl => {
+    const extension = attachmentUrl?.split('.').pop().toLowerCase().trim();
+    switch (extension) {
+      case 'pdf':
+        return <FaFilePdf size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+      case 'xls':
+      case 'xlsx':
+        return <FaFileExcel size={25} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+      case 'doc':
+      case 'docx':
+        return <FaFileWord size={25} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+      case 'zip':
+      case 'rar':
+      case '7z':
+        return <FaFileZipper size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+      default:
+        return <FaFile size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+    }
+  };
+
   return (
-    <div className="d-flex mb-2" style={{ justifyContent: 'space-between' }}>
-      <div className="expire-section">
-        <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-        <span className="course-detail">
-          {t('carriera.proposte_di_tesi.created')} <span className="no-break">{formattedCreationDate}</span>
-        </span>
-      </div>
-      <div className="expire-section" style={{ marginLeft: '4px' }}>
-        <FaCalendar size={14} style={{ marginRight: '4px', verticalAlign: 'baseline' }} />
-        <span className="course-detail">
-          {t('carriera.proposte_di_tesi.expires')} <span className="no-break">{formattedExpDate}</span>
-        </span>
-      </div>
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.allegato')}:</span>
+      <a
+        href={`https://didattica.polito.it/pls/portal30/sviluppo.tesi_proposte.download_alleg?idts=${id}&lang=IT`}
+        className="course-detail"
+        style={{ display: 'flex', alignItems: 'center' }}
+      >
+        {switchIcon(attachmentUrl)}
+        <div style={{ marginLeft: '4px' }}>{attachmentUrl}</div>
+      </a>
     </div>
   );
 }
 
-function capitalizeMonth(dateString) {
-  const parts = dateString.split(' ');
-  if (parts.length === 3) {
-    parts[1] = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
-  }
-  return parts.join(' ');
+function TimeMap({ creationDate, expirationDate }) {
+  const { t } = useTranslation();
+  const start = moment(creationDate);
+  const end = moment(expirationDate);
+  const now = moment();
+  const totalDuration = end.diff(start, 'hours');
+  const elapsedDuration = now.diff(start, 'hours');
+  const remainingDuration = end.diff(now, 'hours');
+  const progress = Math.min((elapsedDuration / totalDuration) * 100, 100);
+
+  const formattedCreationDate = start.format('DD/MM/YYYY');
+  const formattedExpDate = end.format('DD/MM/YYYY');
+
+  return (
+    <>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+          <FaLocationDot size={20} style={{ color: 'var(--primary)', flexShrink: '0' }} />
+          <span
+            className="course-detail"
+            style={{ marginLeft: '4px', textAlign: 'left', fontWeight: 'var(--font-weight-medium)' }}
+          >
+            {t('carriera.proposte_di_tesi.created')} <span className="no-break">{formattedCreationDate}</span>
+          </span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+          <span
+            className="course-detail"
+            style={{ marginRight: '8px', textAlign: 'right', fontWeight: 'var(--font-weight-medium)' }}
+          >
+            {t('carriera.proposte_di_tesi.expires')} <span className="no-break">{formattedExpDate}</span>
+          </span>
+          <FaFlag
+            size={20}
+            style={{ color: 'var(--primary)', flexShrink: '0', transform: 'ScaleX(-1)', marginRight: '6px' }}
+          />
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+        <ProgressBar
+          animated
+          now={progress}
+          style={{
+            marginBottom: '6px',
+            marginTop: '4px',
+            backgroundColor: 'var(--background)',
+            height: '8px',
+            width: '100%',
+          }}
+        >
+          <ProgressBar
+            animated
+            now={progress}
+            style={{
+              backgroundColor:
+                remainingDuration >= 168
+                  ? 'var(--success-600)'
+                  : remainingDuration >= 0
+                    ? 'var(--warning-500)'
+                    : 'var(--danger-500)',
+            }}
+          />
+        </ProgressBar>
+      </div>
+    </>
+  );
 }
 
 function MyBlock({ title, content }) {
@@ -130,7 +199,9 @@ function MyBlock({ title, content }) {
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t(title)}:</span>
-      <span className="course-detail">{content}</span>
+      <span className="course-detail">
+        <Linkify>{content}</Linkify>
+      </span>
     </div>
   );
 }
@@ -138,11 +209,7 @@ function MyBlock({ title, content }) {
 function Keywords({ keywords }) {
   return (
     <div className="mb-3">
-      <div>
-        {keywords.map(keyword => (
-          <Badge variant="keyword" key={keyword.id} content={keyword.keyword} />
-        ))}
-      </div>
+      <Badge variant="keyword" content={keywords.map(item => item.keyword)} />
     </div>
   );
 }
@@ -152,81 +219,115 @@ function MainSupervisor({ supervisor }) {
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
-      <div className={styles.professorTagGroup}>
-        <Badge variant="teacher" content={name} />
-      </div>
+      <Badge variant="teacher" content={supervisor.firstName + ' ' + supervisor.lastName} />
     </div>
   );
 }
 
-function SecondarySupervisors({ supervisors }) {
+function SecondarySupervisors({ internalCoSupervisors }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
-      <div className={styles.professorTagGroup}>
-        {names.map((name, index) => (
-          <Badge variant="teacher" key={index} content={name} />
-        ))}
-      </div>
+      <Badge
+        variant="teacher"
+        content={internalCoSupervisors.map(supervisor => supervisor.firstName + ' ' + supervisor.lastName)}
+      />
     </div>
   );
 }
 
-function Environment({ is_internal }) {
+function Types({ types }) {
+  const { t } = useTranslation();
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.tipo')}:</span>
+      <Badge variant="type" content={types.map(item => item.type)} />
+    </div>
+  );
+}
+
+function Environment({ isInternal, isAbroad }) {
   const { t } = useTranslation();
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.ambiente')}:</span>
-      {is_internal ? <Badge variant="internal" /> : <Badge variant="external" />}
+      {isInternal ? <Badge variant="internal" /> : <Badge variant="external" />}
+      {isAbroad && (
+        <div style={{ marginLeft: '4px' }}>
+          <Badge variant="abroad" />
+        </div>
+      )}
     </div>
   );
+}
+
+function Status({ expirationDate }) {
+  const { t } = useTranslation();
+
+  return (
+    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
+      <span className="detail-title">{t('carriera.proposta_di_tesi.stato')}:</span>
+      <TimeLeft expirationDate={expirationDate} />
+    </div>
+  );
+}
+
+function TimeLeft({ expirationDate }) {
+  const { t } = useTranslation();
+  const start = moment();
+  const end = moment(expirationDate);
+  const remainingDays = end.diff(start, 'days');
+  const remainingHours = end.diff(start, 'hours');
+
+  if (remainingDays >= 7) {
+    return (
+      <Badge
+        variant="success"
+        content={`${t('carriera.proposta_di_tesi.disponibile_ancora_per_piu_di')} ${remainingDays} ${remainingDays === 1 ? t('carriera.proposta_di_tesi.giorno') : t('carriera.proposta_di_tesi.giorni')}`}
+      />
+    );
+  } else if (remainingHours >= 0) {
+    return (
+      <Badge
+        variant="warning"
+        content={`${t('carriera.proposta_di_tesi.scadra_tra_meno_di')} ${remainingHours + 1} ${remainingHours + 1 === 1 ? t('carriera.proposta_di_tesi.ora') : t('carriera.proposta_di_tesi.ore')}`}
+      />
+    );
+  } else {
+    return <Badge variant="error" content={t('carriera.proposta_di_tesi.risulta_scaduta')} />;
+  }
 }
 
 ThesisProposalDetail.propTypes = {
   thesisProposal: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    topic: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    topic: PropTypes.string,
+    description: PropTypes.string,
     link: PropTypes.string,
     requiredSkills: PropTypes.string,
     additionalNotes: PropTypes.string,
-    supervisor: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
-      role: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      profileUrl: PropTypes.string.isRequired,
-      facilityShortName: PropTypes.string.isRequired,
-    }).isRequired,
-    internalCoSupervisors: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        firstName: PropTypes.string.isRequired,
-        lastName: PropTypes.string.isRequired,
-        role: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        profileUrl: PropTypes.string.isRequired,
-        profilePictureUrl: PropTypes.string,
-        facilityShortName: PropTypes.string.isRequired,
-      }),
-    ),
+    supervisor: PropTypes.object,
+    internalCoSupervisors: PropTypes.array,
     externalCoSupervisors: PropTypes.string,
-    creationDate: PropTypes.string.isRequired,
-    expirationDate: PropTypes.string.isRequired,
-    isInternal: PropTypes.bool.isRequired,
-    isAbroad: PropTypes.bool.isRequired,
-    keywords: PropTypes.arrayOf(
-      PropTypes.shape({ id: PropTypes.number.isRequired, keyword: PropTypes.string.isRequired }),
-    ),
-    types: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number.isRequired, type: PropTypes.string.isRequired })),
+    creationDate: PropTypes.string,
+    expirationDate: PropTypes.string,
+    isInternal: PropTypes.bool,
+    isAbroad: PropTypes.bool,
+    attachmentUrl: PropTypes.string,
+    keywords: PropTypes.array,
+    types: PropTypes.array,
   }).isRequired,
 };
 
-ExpirationDate.propTypes = {
-  creation_date: PropTypes.string.isRequired,
-  exp_date: PropTypes.string.isRequired,
+Attachment.propTypes = {
+  id: PropTypes.number.isRequired,
+  attachmentUrl: PropTypes.string.isRequired,
+};
+
+TimeMap.propTypes = {
+  creationDate: PropTypes.string.isRequired,
+  expirationDate: PropTypes.string.isRequired,
 };
 
 MyBlock.propTypes = {
@@ -235,32 +336,48 @@ MyBlock.propTypes = {
 };
 
 Keywords.propTypes = {
-  keywords: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, keyword: PropTypes.string })).isRequired,
-};
-
-Environment.propTypes = {
-  is_internal: PropTypes.bool.isRequired,
+  keywords: PropTypes.arrayOf(
+    PropTypes.shape({
+      keyword: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 MainSupervisor.propTypes = {
   supervisor: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    profile_url: PropTypes.string.isRequired,
-    facility_short_name: PropTypes.string.isRequired,
   }).isRequired,
 };
 
 SecondarySupervisors.propTypes = {
-  supervisors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  internalCoSupervisors: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
+Types.propTypes = {
+  types: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 
-export { ThesisProposalDetail, ExpirationDate };
+Environment.propTypes = {
+  isInternal: PropTypes.bool.isRequired,
+  isAbroad: PropTypes.bool,
+};
 
-*/
+Status.propTypes = {
+  expirationDate: PropTypes.string.isRequired,
+};
 
-export { ThesisProposalDetail };
+TimeLeft.propTypes = {
+  expirationDate: PropTypes.string.isRequired,
+};
+
+export default ThesisProposalDetail;
