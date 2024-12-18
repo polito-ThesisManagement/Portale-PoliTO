@@ -16,6 +16,14 @@
   font-size: var(--font-size-lg);
 }
 
+.subsection-proposal-title {
+  color: var(--primary);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
+  margin-bottom: 8px;
+}
+
 .truncated {
   overflow: hidden;
   white-space: nowrap;

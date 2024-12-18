@@ -38,8 +38,9 @@ import { getSystemTheme } from '../utils/utils';
  *  - "internal": Renders a badge with an internal thesis icon.
  *  - "external": Renders a badge with an external thesis icon.
  *  - "abroad": Renders a badge with an abroad thesis icon.
- *  - "success": Renders a badge with a success icon.
- *  - "warning": Renders a badge with a warning icon.
+ *  - "success": Renders a badge with a success icon. Requires a "content".
+ *  - "warning": Renders a badge with a warning icon. Requires a "content".
+ *  - "error": Renders a badge with an error icon. Requires a "content".
  *  - "type": Renders a badge with a thesis type icon. Requires a "content". Valid content values are:
  *    - "ANALISI DATI" or "DATA ANALYSIS"
  *    - "ANALITICA" or "ANALYTICAL"
@@ -60,7 +61,7 @@ import { getSystemTheme } from '../utils/utils';
  * Regardless, they'll be always showed in UPPERCASE format. Beware that you must maintain spaces between words!
  */
 
-const validVariants = ['teacher', 'keyword', 'internal', 'external', 'abroad', 'type', 'warning', 'success'];
+const validVariants = ['teacher', 'keyword', 'internal', 'external', 'abroad', 'type', 'warning', 'success', 'error'];
 const validTypeContent = [
   'analisi dati',
   'data analysis',
@@ -97,84 +98,86 @@ export default function Badge({ variant, content }) {
     const contentArray = Array.isArray(content) ? content : [content];
 
     return contentArray.map((item, index) => (
-      <span key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
-        {renderIcon(item)}
-        {variant === 'type' ? item.toUpperCase() : item}
-      </span>
+      <div key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
+        <div className="badge-icon">{renderIcon(item)}</div>
+        <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
+      </div>
     ));
   };
 
   const renderIcon = contentItem => {
     switch (variant) {
       case 'teacher':
-        return <FaUser size={16} />;
+        return <FaUser size={15} />;
       case 'keyword':
-        return <FaKey size={16} />;
+        return <FaKey size={15} />;
       case 'internal':
-        return <FaBuildingColumns size={16} />;
+        return <FaBuildingColumns size={15} />;
       case 'external':
-        return <FaBuildingCircleArrowRight size={16} />;
+        return <FaBuildingCircleArrowRight size={15} />;
       case 'abroad':
-        return <FaEarthAmericas size={16} />;
+        return <FaEarthAmericas size={15} />;
       case 'success':
-        return <FaCircleCheck size={16} />;
+        return <FaCircleCheck size={15} />;
       case 'warning':
-        return <FaCircleExclamation size={16} />;
+        return <FaCircleExclamation size={15} />;
+      case 'error':
+        return <FaCircleXmark size={15} />;
       case 'type':
         switch (contentItem.toLowerCase()) {
           // analisi dati
           case 'analisi dati':
           case 'data analysis':
-            return <FaChartColumn size={16} />;
+            return <FaChartColumn size={15} />;
           // analitica
           case 'analitica':
           case 'analytical':
-            return <FaChartBar size={16} />;
+            return <FaChartBar size={15} />;
           // applicativa
           case 'applicativa':
           case 'applied':
-            return <FaWhmcs size={16} />;
+            return <FaWhmcs size={15} />;
           // compilativa
           case 'compilativa':
           case 'bibliographic':
-            return <FaPenToSquare size={16} />;
+            return <FaPenToSquare size={15} />;
           // computazionale
           case 'computazionale':
           case 'computational':
-            return <FaBrain size={16} />;
+            return <FaBrain size={15} />;
           // progettuale
           case 'progettuale':
           case 'design':
-            return <FaUncharted size={16} />;
+            return <FaUncharted size={15} />;
           // ricerca
           case 'ricerca':
           case 'research':
-            return <FaMagnifyingGlassChart size={16} />;
+            return <FaMagnifyingGlassChart size={15} />;
           // simulativa
           case 'simulativa':
           case 'simulation':
-            return <FaChartPie size={16} />;
+            return <FaChartPie size={15} />;
           // sperimentale
           case 'sperimentale':
           case 'experimental':
-            return <FaFlask size={16} />;
+            return <FaFlask size={15} />;
           // sviluppo
           case 'sviluppo':
           case 'development':
-            return <FaCode size={16} />;
+            return <FaCode size={15} />;
           // teorica
           case 'teorica':
           case 'theoretical':
-            return <FaBook size={16} />;
+            return <FaBook size={15} />;
           // numerica
           case 'numerica':
           case 'numerical':
-            return <FaCalculator size={16} />;
+            return <FaCalculator size={15} />;
           default:
-            return <FaCircleXmark size={16} />;
+            return <FaCircleXmark size={15} />;
         }
       default:
-        return <FaCircleXmark size={16} />;
+        return <FaCircleXmark size={15} />;
     }
   };
 
@@ -200,15 +203,17 @@ export default function Badge({ variant, content }) {
 
   if (
     !validVariants.includes(variant) ||
-    (['teacher', 'keyword', 'type', 'warning', 'success'].includes(variant) && !content) ||
+    (['teacher', 'keyword', 'type', 'success', 'warning', 'error'].includes(variant) && !content) ||
     (variant === 'type' && !isValidTypeContent(content))
   ) {
     return (
       <div className="badge-container">
-        <span className={`badge error_${appliedTheme}`}>
-          <FaCircleXmark size={16} />
-          {t('carriera.proposta_di_tesi.badge_errato')}
-        </span>
+        <div className={`badge error_${appliedTheme}`}>
+          <div className="badge-icon">
+            <FaCircleXmark size={15} />
+          </div>
+          <div className="badge-text">{t('carriera.proposta_di_tesi.badge_errato')}</div>
+        </div>
       </div>
     );
   }
@@ -216,10 +221,10 @@ export default function Badge({ variant, content }) {
   return (
     <div className="badge-container">
       {variant === 'internal' || variant === 'external' || variant === 'abroad' ? (
-        <span className={`badge ${variant}_${appliedTheme}`}>
+        <div className={`badge ${variant}_${appliedTheme}`}>
           {renderIcon(content)}
           {renderTranslatedContent()}
-        </span>
+        </div>
       ) : (
         renderContent()
       )}

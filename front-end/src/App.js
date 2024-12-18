@@ -27,6 +27,7 @@ export const FavoritesContext = createContext(null);
 export const ThemeContext = createContext(null);
 export const DesktopToggleContext = createContext(null);
 export const LoggedStudentContext = createContext(null);
+export const BodyDataLoadingContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState('auto');
@@ -35,6 +36,7 @@ function App() {
   const [allStudents, setAllStudents] = useState([]);
   const [loggedStudent, setLoggedStudent] = useState(null);
   const [navbarDataLoading, setNavbarDataLoading] = useState(true);
+  const [bodyDataLoading, setBodyDataLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const location = useLocation();
 
@@ -89,6 +91,7 @@ function App() {
   const desktopToggleValue = useMemo(() => ({ desktopToggle, setDesktopToggle }), [desktopToggle]);
   const favoritesValue = useMemo(() => ({ favorites, setFavorites }), [favorites]);
   const themeValue = useMemo(() => ({ theme, setTheme }), [theme]);
+  const bodyDataLoadingValue = useMemo(() => ({ bodyDataLoading, setBodyDataLoading }), [bodyDataLoading]);
 
   return (
     <>
@@ -97,35 +100,37 @@ function App() {
         <LoggedStudentContext.Provider value={loggedStudentValue}>
           <DesktopToggleContext.Provider value={desktopToggleValue}>
             <FavoritesContext.Provider value={favoritesValue}>
-              <LoadingModal show={navbarDataLoading} onHide={() => setNavbarDataLoading(false)} />
-              <PoliNavbar
-                allStudents={allStudents}
-                setNavbarDataLoading={setNavbarDataLoading}
-                refresh={refresh}
-                setRefresh={setRefresh}
-              />
-              <Row>
-                <Sidebar />
-                <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
-                  <Col className={`custom-content reeduced`}>
-                    <Routes>
-                      <Route path="/" element={<Homepage />} />
-                      <Route path="/area_personale" element={<AreaPersonale />} />
-                      <Route path="/home" element={<Homepage />} />
-                      <Route path="/didattica" element={<Didattica />} />
-                      <Route path="/carriera" element={<Carriera />} />
-                      <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
-                      <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
-                      <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
-                      <Route path="/opportunita" element={<Opportunita />} />
-                      <Route path="/servizi" element={<Servizi />} />
-                      <Route path="/help" element={<Help />} />
-                      <Route path="*" element={<PageNotFound />} />
-                    </Routes>
-                    <FloatingButton />
+              <BodyDataLoadingContext.Provider value={bodyDataLoadingValue}>
+                <LoadingModal show={navbarDataLoading || bodyDataLoading} onHide={() => setNavbarDataLoading(false)} />
+                <PoliNavbar
+                  allStudents={allStudents}
+                  setNavbarDataLoading={setNavbarDataLoading}
+                  refresh={refresh}
+                  setRefresh={setRefresh}
+                />
+                <Row>
+                  <Sidebar />
+                  <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
+                    <Col className={`custom-content reeduced`}>
+                      <Routes>
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/area_personale" element={<AreaPersonale />} />
+                        <Route path="/home" element={<Homepage />} />
+                        <Route path="/didattica" element={<Didattica />} />
+                        <Route path="/carriera" element={<Carriera />} />
+                        <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                        <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
+                        <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
+                        <Route path="/opportunita" element={<Opportunita />} />
+                        <Route path="/servizi" element={<Servizi />} />
+                        <Route path="/help" element={<Help />} />
+                        <Route path="*" element={<PageNotFound />} />
+                      </Routes>
+                      <FloatingButton />
+                    </Col>
                   </Col>
-                </Col>
-              </Row>
+                </Row>
+              </BodyDataLoadingContext.Provider>
             </FavoritesContext.Provider>
           </DesktopToggleContext.Provider>
         </LoggedStudentContext.Provider>

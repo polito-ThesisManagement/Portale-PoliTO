@@ -7,6 +7,11 @@ p {
   margin-left: 0px;
 }
 
+a {
+  color: var(--primary);
+  word-break: break-word !important;
+}
+
 body {
   margin: 0;
   padding: 0 !important;
