@@ -30,16 +30,20 @@ function PropostaDiTesi() {
       });
   }, [id, i18n.language]);
 
+  const renderContent = () => {
+    if (isLoading) {
+      return <></>;
+    } else if (thesisProposal) {
+      return <ThesisProposalDetail thesisProposal={thesisProposal} />;
+    } else {
+      return <Badge variant="error" content={t('carriera.proposta_di_tesi.errore_proposta_di_tesi')} />;
+    }
+  };
+
   return (
     <>
       <MyBreadcrumb />
-      {isLoading ? (
-        <></>
-      ) : thesisProposal ? (
-        <ThesisProposalDetail thesisProposal={thesisProposal} />
-      ) : (
-        <Badge variant="error" content={t('carriera.proposta_di_tesi.errore_proposta_di_tesi')} />
-      )}
+      {renderContent()}
     </>
   );
 }
