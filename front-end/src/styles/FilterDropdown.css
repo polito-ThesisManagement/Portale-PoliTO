@@ -1,14 +1,16 @@
-button.btn-primary {
+.btn-secondary {
   color: var(--white);
   background-color: var(--dark-navy);
   border: 1px solid var(--white) !important;
+  border-color: var(--white) !important;
   font-family: var(--font-primary);
 }
 
-button.btn-primary:hover {
+.btn-secondary:hover {
   color: var(--white);
   background-color: var(--medium-navy);
   border: 1px solid var(--white) !important;
+  border-color: var(--white) !important;
   font-family: var(--font-primary);
 }
 

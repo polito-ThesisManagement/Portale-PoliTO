@@ -26,7 +26,6 @@
 .thesis-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -61,6 +60,20 @@
 }
 
 .thesis-type-tags {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+
+.thesis-tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .thesis-keyword-tags {

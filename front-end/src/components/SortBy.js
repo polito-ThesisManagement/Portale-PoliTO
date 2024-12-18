@@ -132,7 +132,7 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
             Reset
           </Button>
           <Button
-            variant="primary"
+            variant="secondary"
             onClick={() => handleApply({ field: selectedSort, order: selectedOrder })}
             size="sm"
             id="dropdown-button"

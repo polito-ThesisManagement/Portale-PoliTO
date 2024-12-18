@@ -22,6 +22,7 @@ function ThesisItem(props) {
       <div style={{ width: '100%' }}>
         <ThesisHeader
           topic={props.topic}
+          types={props.types}
           isInternal={props.isInternal}
           isAbroad={props.isAbroad}
           keywords={props.keywords}
@@ -36,22 +37,26 @@ function ThesisItem(props) {
   );
 }
 
-const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
+const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords }) => {
   return (
     <div>
-      <h3 className="thesis-topic">
-        {' '}
-        {topic}
+      <h3 className="thesis-topic"> {topic}</h3>
+      <div className="thesis-tags" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
         <div className="thesis-type-tags">
+          {types.map(type => (
+            <Badge key={type.id} variant={'type'} content={type.type} />
+          ))}
+        </div>
+        <div className="thesis-position-tags">
           {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
           {isAbroad && <Badge variant={'abroad'} />}
         </div>
-        <div className="thesis-keyword-tags">
-          {keywords.map(keyword => (
-            <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
-          ))}
-        </div>
-      </h3>
+      </div>
+      <div className="thesis-keyword-tags">
+        {keywords.map(keyword => (
+          <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
+        ))}
+      </div>
     </div>
   );
 };
@@ -136,6 +141,12 @@ ThesisHeader.propTypes = {
       keyword: PropTypes.string.isRequired,
     }),
   ),
+  types: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 ThesisFooter.propTypes = {
@@ -172,6 +183,12 @@ ThesisItem.propTypes = {
   id: PropTypes.number.isRequired,
   topic: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+    }),
+  ),
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
     firstName: PropTypes.string.isRequired,

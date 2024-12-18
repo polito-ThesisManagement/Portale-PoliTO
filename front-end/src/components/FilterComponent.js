@@ -238,7 +238,7 @@ export default function FilterComponent({
           <Button variant="link" onClick={handleReset} size="sm">
             Reset
           </Button>
-          <Button variant="primary" onClick={handleApply} size="sm" id="dropdown-button">
+          <Button variant="secondary" onClick={handleApply} size="sm" id="dropdown-button">
             OK
           </Button>
         </div>
