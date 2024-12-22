@@ -232,7 +232,11 @@ export default function ThesisProposals() {
               <div className="filters-container">
                 <div className="simple-filters-container">
                   <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
-                  <Form className="d-flex w-100" style={{ maxWidth: '300px' }} onSubmit={e => e.preventDefault()}>
+                  <Form
+                    className="d-flex w-100"
+                    style={{ maxWidth: '300px', zIndex: '1' }}
+                    onSubmit={e => e.preventDefault()}
+                  >
                     <InputGroup className="flex-nowrap w-100">
                       <Form.Control
                         className="truncated"
