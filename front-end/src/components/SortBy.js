@@ -11,13 +11,13 @@ import TextToggle from './TextToggle';
 export default function SortBy({ sortFields, sorting, onApplySorting, onResetSorting }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(sorting || '');
-  const [selectedSort, setSelectedSort] = useState(sorting.field || '');
-  const [selectedOrder, setSelectedOrder] = useState(sorting.order || '');
+  const [selectedSort, setSelectedSort] = useState(sorting.sortBy || '');
+  const [selectedOrder, setSelectedOrder] = useState(sorting.orderBy || '');
 
   const { t } = useTranslation();
 
   useEffect(() => {
-    // Sincronizza il valore del selectedItem con il genitore
+    // Sync sorting with the parent component
     setSelectedItem(sorting || '');
   }, [sorting]);
 
@@ -30,10 +30,9 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
     onResetSorting();
   };
 
-  const handleApply = ({ field: selectedSort, order: selectedOrder }) => {
+  const handleApply = ({ sortBy: selectedSort, orderBy: selectedOrder }) => {
     setIsOpen(false);
-    const newSorting = { field: selectedSort, order: selectedOrder };
-    console.log(newSorting);
+    const newSorting = { sortBy: selectedSort, orderBy: selectedOrder };
     setSelectedItem(newSorting);
     onApplySorting(newSorting, sorting);
   };
@@ -41,15 +40,15 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
   const handleChangeOrderExternal = order => {
     setSelectedOrder(order);
     if (selectedSort) {
-      handleApply({ field: selectedSort, order });
+      handleApply({ sortBy: selectedSort, orderBy: order });
     } else {
-      setSelectedSort(sorting.field);
-      handleApply({ field: sorting.field, order });
+      setSelectedSort(sorting.sortBy);
+      handleApply({ sortBy: sorting.sortBy, orderBy: order });
     }
   };
 
   return (
-    <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside">
+    <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id="dropdown-sort">
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         <div
           style={{
@@ -90,8 +89,8 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
             {t('carriera.proposte_di_tesi.order_by')}
             {': '}
             {selectedItem.field
-              ? t(`carriera.proposte_di_tesi.${selectedItem.field}`)
-              : t(`carriera.proposte_di_tesi.${sorting.field}`)}
+              ? t(`carriera.proposte_di_tesi.${selectedItem.sortBy}`)
+              : t(`carriera.proposte_di_tesi.${sorting.sortBy}`)}
           </span>
           {isOpen ? <FaAngleUp /> : <FaAngleDown />}
         </div>
@@ -112,13 +111,13 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
             </div>
             <Dropdown.Divider />
             <div>
-              {sortFields.map((field, index) => (
+              {sortFields.map((sortBy, index) => (
                 <Dropdown.Item
                   key={index}
-                  onClick={() => setSelectedSort(field)}
-                  active={selectedSort ? selectedSort === field : sorting.field === field}
+                  onClick={() => setSelectedSort(sortBy)}
+                  active={selectedSort ? selectedSort === sortBy : sorting.sortBy === sortBy}
                 >
-                  {t(`carriera.proposte_di_tesi.${field}`)}
+                  {t(`carriera.proposte_di_tesi.${sortBy}`)}
                 </Dropdown.Item>
               ))}
             </div>
@@ -133,7 +132,7 @@ export default function SortBy({ sortFields, sorting, onApplySorting, onResetSor
           </Button>
           <Button
             variant="outline-primary"
-            onClick={() => handleApply({ field: selectedSort, order: selectedOrder })}
+            onClick={() => handleApply({ sortBy: selectedSort, orderBy: selectedOrder })}
             size="sm"
             id="dropdown-button"
           >

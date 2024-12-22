@@ -34,65 +34,20 @@ async function updateLoggedStudent(student) {
 
 /****** Thesis Proposal APIs ******/
 
-async function getThesisProposals(lang, page, limit, filterObj, sorting, searchQuery) {
+async function getThesisProposals(lang, page, limit, filters, search, sorting) {
   try {
-    const { keyword, teacher, type } = filterObj;
-    const keywordIds = keyword ? keyword.join(',') : '';
-    const teacherIds = teacher ? teacher.join(',') : '';
-    const typeIds = type ? type.join(',') : '';
-
-    if (searchQuery) {
-      searchQuery.trim().toLowerCase();
-    }
-
-    console.log(sorting);
-
-    const response = await axios.get(`${URL}/thesis-proposals`, {
-      params: {
-        lang,
-        page,
-        limit,
-        keywordIds: keywordIds || '',
-        teacherIds: teacherIds || '',
-        typeIds: typeIds || '',
-        sortBy: sorting.field || '',
-        orderBy: sorting.order || '',
-        searchQuery,
-      },
-    });
-    console.log(response.data);
+    const params = buildParams(lang, page, limit, filters, search, sorting);
+    const response = await axios.get(`${URL}/thesis-proposals`, { params });
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals:', error);
   }
 }
 
-async function getTargetedThesisProposals(lang, page, limit, filterObj, sorting, searchQuery) {
+async function getTargetedThesisProposals(lang, page, limit, filters, search, sorting) {
   try {
-    console.log(filterObj);
-    const { keyword, teacher, type } = filterObj;
-    const keywordIds = keyword ? keyword.join(',') : '';
-    const teacherIds = teacher ? teacher.join(',') : '';
-    const typeIds = type ? type.join(',') : '';
-
-    if (searchQuery) {
-      searchQuery.trim().toLowerCase();
-    }
-
-    const response = await axios.get(`${URL}/thesis-proposals/targeted`, {
-      params: {
-        lang,
-        page,
-        limit,
-        keywordIds: keywordIds || '',
-        teacherIds: teacherIds || '',
-        typeIds: typeIds || '',
-        sortBy: sorting.field || '',
-        orderBy: sorting.order || '',
-        searchQuery,
-      },
-    });
-    console.log(response.data);
+    const params = buildParams(lang, page, limit, filters, search, sorting);
+    const response = await axios.get(`${URL}/thesis-proposals/targeted`, { params });
     return response.data;
   } catch (error) {
     console.error('Error fetching targeted thesis proposals:', error);
@@ -146,6 +101,39 @@ async function getThesisProposalById(id, lang) {
     console.error('Error fetching thesis proposal by ID:', error);
   }
 }
+
+const buildParams = (lang, page, limit, filters, search, sorting) => {
+  const params = {
+    lang,
+    page,
+    limit,
+  };
+
+  if (filters.keyword.length > 0) {
+    filters.keyword.forEach(keyword => {
+      params[`keywordId`] = params[`keywordId`] ? [...params[`keywordId`], keyword] : [keyword];
+    });
+  }
+  if (filters.teacher.length > 0) {
+    filters.teacher.forEach(teacher => {
+      params[`teacherId`] = params[`teacherId`] ? [...params[`teacherId`], teacher] : [teacher];
+    });
+  }
+  if (filters.type.length > 0) {
+    filters.type.forEach(type => {
+      params[`typeId`] = params[`typeId`] ? [...params[`typeId`], type] : [type];
+    });
+  }
+  if (search) {
+    params.search = search;
+  }
+  if (sorting) {
+    params.sortBy = sorting.sortBy;
+    params.orderBy = sorting.orderBy;
+  }
+
+  return params;
+};
 
 const API = {
   getStudents,

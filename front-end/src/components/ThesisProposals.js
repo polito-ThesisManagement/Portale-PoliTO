@@ -36,7 +36,7 @@ export default function ThesisProposals() {
   const [searchQuery, setSearchQuery] = useState('');
   const [tab, setTab] = useState('course');
   const [totalPages, setTotalPages] = useState(0);
-  const [sorting, setSorting] = useState({ field: 'id', order: 'ASC' });
+  const [sorting, setSorting] = useState({ sortBy: 'id', orderBy: 'ASC' });
   const [searching, setSearching] = useState(false);
 
   const sortFields = ['id', 'topic', 'creationDate', 'expirationDate'];
@@ -69,17 +69,17 @@ export default function ThesisProposals() {
     const [timeoutId, setTimeoutId] = useState(null);
 
     const debounce = (...args) => {
-      // Se esiste un timeout attivo, lo cancelliamo
+      // Clear the timeout if it exists
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
 
-      // Creiamo un nuovo timeout che invoca la callback
+      // Create a new timeout that invokes the callback after the specified delay
       const newTimeoutId = setTimeout(() => {
         callback(...args);
       }, delay);
 
-      // Salviamo il nuovo timeoutId
+      // Save the timeoutId for cleanup
       setTimeoutId(newTimeoutId);
     };
 
@@ -88,13 +88,13 @@ export default function ThesisProposals() {
 
   const debounceSearch = useDebounceSearch(() => {
     setSearching(true);
-  }, 500); // 500ms per il debounce
+  }, 500); // 500ms of debounce
 
   const handleSearchbarChange = event => {
     const value = event.target.value;
     setSearchQuery(value);
 
-    // Avvia il debouncing solo quando l'utente smette di scrivere
+    // Start the debounce only when the user stops typing
     debounceSearch(value);
   };
 
@@ -111,7 +111,7 @@ export default function ThesisProposals() {
   };
 
   const onResetSorting = () => {
-    setSorting({ field: 'id', order: 'ASC' });
+    setSorting({ sortBy: 'id', orderBy: 'ASC' });
   };
 
   useEffect(() => {
@@ -123,8 +123,7 @@ export default function ThesisProposals() {
     setLoading(true);
     const startTime = Date.now();
     if (tab === 'course') {
-      console.log(sorting);
-      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting, searchQuery)
+      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, searchQuery, sorting)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
@@ -136,7 +135,7 @@ export default function ThesisProposals() {
           setSearching(false);
         });
     } else {
-      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting, searchQuery)
+      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, searchQuery, sorting)
         .then(data => {
           setPageProposals(data.thesisProposals);
           setCount(data.count);
@@ -189,13 +188,21 @@ export default function ThesisProposals() {
               currentPage,
               proposalsPerPage,
               filters,
+              searchQuery,
               sorting,
             );
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
           } else {
-            const data = await API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, sorting);
+            const data = await API.getThesisProposals(
+              i18n.language,
+              currentPage,
+              proposalsPerPage,
+              filters,
+              searchQuery,
+              sorting,
+            );
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
