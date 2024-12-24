@@ -45,14 +45,14 @@
         "proposte_di_tesi": {
             "title": "Proposte di Tesi",
             "title_half_lowercase": "Proposte di tesi",
-            "description": "Elenco delle proposte di tesi.",
-            "order_by": "Ordina per",
+            "section_description": "Elenco delle proposte di tesi.",
+            "order": "Ordina",
             "expires": "Scade il",
             "expirationDate": "Data di scadenza",
             "created": "Creata il",
             "creationDate": "Data di creazione",
             "topic": "Argomento",
-            "id": "ID",
+            "description": "Descrizione",
             "show_more": "Mostra di più",
             "internal_thesis": "Tesi interna",
             "external_thesis": "Tesi in azienda",
@@ -73,9 +73,7 @@
             "type_filter": "Filtra per tipologia",
             "not_found": "È vuoto qui...",
             "message_not_found": "Nessuna proposta di tesi trovata",
-            "reset_filters": "Resetta filtri",
-            "ascending": "Crescente",
-            "descending": "Decrescente"
+            "reset_filters": "Resetta filtri"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",

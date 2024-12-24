@@ -45,14 +45,14 @@
         "proposte_di_tesi": {
             "title": "Thesis Proposals",
             "title_half_lowercase": "Thesis proposals",
-            "description": "List of thesis proposals.",
-            "order_by": "Order by",
+            "section_description": "List of thesis proposals.",
+            "order": "Sort",
             "expires": "Expires on",
             "expirationDate": "Expiration date",
             "created": "Created on",
             "creationDate": "Creation date",
             "topic": "Topic",
-            "id": "ID",
+            "description": "Description",
             "show_more": "Show more",
             "internal_thesis": "Internal thesis",
             "external_thesis": "Company thesis",
@@ -73,9 +73,7 @@
             "type_filter": "Filter by thesis type",
             "not_found": "It's empty here...",
             "message_not_found": "No thesis proposal found",
-            "reset_filters": "Reset filters",
-            "ascending": "Ascending",
-            "descending": "Descending"
+            "reset_filters": "Reset filters"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Thesis Proposal Details",
