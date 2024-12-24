@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 
 import PropTypes from 'prop-types';
 
+import '../styles/Pagination.css';
+
 export default function PaginationItem({
   count,
   currentPage,
@@ -32,7 +34,6 @@ export default function PaginationItem({
               }}
               value={proposalsPerPage}
               onChange={handleProposalsPerPageChange}
-              onSubmit={e => e.preventDefault()}
             >
               <option value={5}>5</option>
               <option value={10}>10</option>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import PropTypes from 'prop-types';
 
-import '../styles/ThesisProposals.css';
+import '../styles/ThesisProposalsToggle.css';
 
 export default function ThesisProposalsToggle({ tab, handleTabChange }) {
   const { t, i18n } = useTranslation();

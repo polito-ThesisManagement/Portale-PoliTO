@@ -1,0 +1,106 @@
+.proposals-toggle-container {
+  border: 1px solid var(--background);
+  border-radius: 10px;
+  background-color: var(--background);
+  height: 38px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25);
+}
+
+.proposals-toggle {
+  position: relative;
+  height: 34px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  align-items: center;
+  background-color: var(--background);
+}
+
+.proposals-toggle label {
+  padding: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+}
+
+.proposals-toggle-course-en::before {
+  width: 69%;
+}
+
+.proposals-toggle-all-en::before {
+  width: 31%;
+}
+
+.proposals-toggle-course-it::before {
+  width: 64.5%;
+}
+
+.proposals-toggle-all-it::before {
+  width: 35.5%;
+}
+
+.proposals-toggle::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  background: var(--surface);
+  border: var(--background) solid 1px;
+  border-radius: 9px;
+  transition: 0.5s left ease;
+}
+
+.proposals-toggle:has(#proposals-toggle-radio1:checked)::before {
+  left: 0%;
+}
+
+.proposals-toggle-it:has(#proposals-toggle-radio2:checked)::before {
+  left: 64.5%;
+}
+
+.proposals-toggle-en:has(#proposals-toggle-radio2:checked)::before {
+  left: 69%;
+}
+
+@media (max-width: 460px) {
+  .proposals-toggle-container {
+    height: 50px;
+  }
+
+  .proposals-toggle {
+    height: 46px;
+  }
+
+  .proposals-toggle-course-en::before {
+    width: 69%;
+  }
+
+  .proposals-toggle-all-en::before {
+    width: 31%;
+  }
+
+  .proposals-toggle-course-it::before {
+    width: 62%;
+  }
+
+  .proposals-toggle-all-it::before {
+    width: 38%;
+  }
+
+  .proposals-toggle:has(#proposals-toggle-radio1:checked)::before {
+    left: 0%;
+  }
+
+  .proposals-toggle-it:has(#proposals-toggle-radio2:checked)::before {
+    left: 62%;
+  }
+
+  .proposals-toggle-en:has(#proposals-toggle-radio2:checked)::before {
+    left: 69%;
+  }
+}
