@@ -32,7 +32,6 @@ export default function BaseCard(props) {
       const service = props.service;
       const path = props.servicePath;
       const obj = { service, path };
-      console.log(obj);
       const favorite = JSON.stringify(obj);
       setFavorites([...favorites, favorite]);
     } else {
