@@ -14,11 +14,11 @@ import '../styles/Searchbar.css';
 import '../styles/Theme.css';
 import '../styles/ThesisProposals.css';
 import '../styles/Utilities.css';
-import FilterComponent from './FilterComponent';
+import FilterDropdown from './FilterDropdown';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
-import SortBy from './SortBy';
+import SortDropdown from './SortDropdown';
 import { ThesisItem } from './ThesisItem';
 import ThesisProposalsToggle from './ThesisProposalsToggle';
 import Title from './Title';
@@ -39,7 +39,7 @@ export default function ThesisProposals() {
   const [sorting, setSorting] = useState({ sortBy: 'id', orderBy: 'ASC' });
   const [searching, setSearching] = useState(false);
 
-  const sortFields = ['id', 'topic', 'creationDate', 'expirationDate'];
+  const sortFields = ['topic', 'description', 'creationDate', 'expirationDate'];
 
   const { t, i18n } = useTranslation();
 
@@ -265,7 +265,7 @@ export default function ThesisProposals() {
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="filters-section">
-                        <FilterComponent
+                        <FilterDropdown
                           api={API.getThesisProposalsKeywords}
                           filters={filters.keyword}
                           icon={<FaKey style={{ width: '20px' }} />}
@@ -274,7 +274,7 @@ export default function ThesisProposals() {
                           onResetFilters={() => applyFilters('keyword', [])}
                           selectedItems={filters.keyword}
                         />
-                        <FilterComponent
+                        <FilterDropdown
                           api={API.getThesisProposalsTeachers}
                           filters={filters.teacher}
                           icon={<FaUser style={{ width: '20px' }} />}
@@ -283,7 +283,7 @@ export default function ThesisProposals() {
                           onResetFilters={() => applyFilters('teacher', [])}
                           selectedItems={filters.teacher}
                         />
-                        <FilterComponent
+                        <FilterDropdown
                           api={API.getThesisProposalsTypes}
                           filters={filters.type}
                           icon={<></>}
@@ -292,7 +292,7 @@ export default function ThesisProposals() {
                           onResetFilters={() => applyFilters('type', [])}
                           selectedItems={filters.type}
                         />
-                        <SortBy
+                        <SortDropdown
                           sortFields={sortFields}
                           sorting={sorting}
                           onApplySorting={applySorting}

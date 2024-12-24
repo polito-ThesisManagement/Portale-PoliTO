@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Button, Dropdown, Form, InputGroup, Spinner } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
@@ -7,10 +7,12 @@ import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 
-import '../styles/FilterDropdown.css';
+import { ThemeContext } from '../App';
+import '../styles/CustomDropdown.css';
+import { getSystemTheme } from '../utils/utils';
 import Badge from './Badge';
 
-export default function FilterComponent({
+export default function FilterDropdown({
   api,
   filters,
   icon,
@@ -33,6 +35,9 @@ export default function FilterComponent({
 
   const handleToggle = isOpen => {
     setIsOpen(isOpen);
+    if (!isOpen) {
+      setSearchValue('');
+    }
   };
 
   const handleItemSelect = id => {
@@ -80,63 +85,47 @@ export default function FilterComponent({
     }
   });
 
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+
   return (
-    <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside">
-      <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-        <div
+    <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id={`dropdown-${itemType}`}>
+      <Dropdown.Toggle as={CustomToggle} active={isOpen}>
+        {icon}
+        <span
           style={{
-            alignItems: 'center',
-            borderRadius: '0.375rem',
-            border: '0.0625rem solid var(--tag-border)',
-            backgroundColor: 'var(--tag-bg)',
-            display: 'flex',
-            justifyContent: 'flex-start',
-            color: 'var(--tag-text)',
-            padding: '0px 6px',
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-md)',
-            width: 'fit-content',
-            height: '2rem',
+            margin: '0 0.5rem',
           }}
         >
-          {icon}
+          {itemType === 'keyword'
+            ? t('carriera.proposte_di_tesi.keywords')
+            : itemType === 'teacher'
+              ? t('carriera.proposte_di_tesi.teachers')
+              : t('carriera.proposte_di_tesi.types')}
+        </span>
+        {/* Display the count of applied filters */}
+        {filters.length > 0 && (
           <span
             style={{
-              margin: '0px 0.5rem',
+              backgroundColor: 'var(--medium-orange)',
+              color: 'var(--white)',
+              borderRadius: '50rem',
+              padding: '0px 0.5rem',
+              marginRight: '0.5rem',
+              fontSize: 'var(--font-size-sm)',
             }}
           >
-            {itemType === 'keyword'
-              ? t('carriera.proposte_di_tesi.keywords')
-              : itemType === 'teacher'
-                ? t('carriera.proposte_di_tesi.teachers')
-                : t('carriera.proposte_di_tesi.types')}
+            {filters.length}
           </span>
-          {/* Display the count of applied filters */}
-          {filters.length > 0 && (
-            <span
-              style={{
-                backgroundColor: 'var(--medium-orange)',
-                color: 'var(--white)',
-                borderRadius: '50rem',
-                padding: '0px 0.5rem',
-                marginRight: '0.5rem',
-                fontSize: 'var(--font-size-sm)',
-              }}
-            >
-              {filters.length}
-            </span>
-          )}
-          {isOpen ? <FaAngleUp /> : <FaAngleDown />}
-        </div>
+        )}
+        {isOpen ? <FaAngleUp /> : <FaAngleDown />}
       </Dropdown.Toggle>
 
       <Dropdown.Menu
         as={CustomMenu}
         key={selectedItems.join(',')}
-        style={{
-          width: '300px',
-          boxShadow: '0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25)',
-        }}
+        style={{ width: '300px' }}
+        className="custom-dropdown-menu"
       >
         <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
           <InputGroup className="flex-nowrap w-100">
@@ -167,7 +156,7 @@ export default function FilterComponent({
         </div>
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           {loading ? (
-            <Dropdown.Item disabled style={{ textAlign: 'center' }}>
+            <Dropdown.Item disabled style={{ textAlign: 'center' }} className="custom-dropdown-item">
               <div
                 style={{
                   display: 'flex',
@@ -192,6 +181,8 @@ export default function FilterComponent({
                       ? item.firstName + ' ' + item.lastName
                       : item.type
                 }
+                className="custom-dropdown-item"
+                onClick={() => handleItemSelect(item.id)}
               >
                 <div className="d-flex justify-content-between align-items-center">
                   <Form.Check
@@ -204,7 +195,7 @@ export default function FilterComponent({
                       />
                     }
                     checked={selectedItems.includes(item.id)}
-                    onChange={() => handleItemSelect(item.id)}
+                    readOnly
                     style={{
                       whiteSpace: 'nowrap',
                       overflow: 'visible',
@@ -235,10 +226,16 @@ export default function FilterComponent({
         <Dropdown.Divider style={{ margin: '0' }} />
         {/* Buttons outside the scrollable area */}
         <div className="d-flex justify-content-between ms-2 me-3 mt-2">
-          <Button variant="link" onClick={handleReset} size="sm">
+          <Button className={`link-${appliedTheme}-dropdown`} onClick={handleReset} variant="link" size="sm">
             Reset
           </Button>
-          <Button variant="outline-primary" onClick={handleApply} size="sm" id="dropdown-button">
+          <Button
+            className={`btn-${appliedTheme} btn-dropdown`}
+            id="dropdown-button"
+            onClick={handleApply}
+            variant="outline-primary"
+            size="sm"
+          >
             OK
           </Button>
         </div>
@@ -247,23 +244,29 @@ export default function FilterComponent({
   );
 }
 
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  <button
-    type="button"
-    ref={ref}
-    onClick={e => {
-      e.preventDefault();
-      onClick(e);
-    }}
-    style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-  >
-    {children}
-  </button>
-));
+const CustomToggle = React.forwardRef(({ active, children, onClick }, ref) => {
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+  return (
+    <Button
+      active={active}
+      className={`btn-${appliedTheme}`}
+      onClick={e => {
+        e.preventDefault();
+        onClick(e);
+      }}
+      ref={ref}
+      size="sm"
+    >
+      {children}
+    </Button>
+  );
+});
 
 CustomToggle.displayName = 'CustomToggle';
 
 CustomToggle.propTypes = {
+  active: PropTypes.bool,
   children: PropTypes.node,
   onClick: PropTypes.func,
 };
@@ -283,7 +286,7 @@ CustomMenu.propTypes = {
   'aria-labelledby': PropTypes.string,
 };
 
-FilterComponent.propTypes = {
+FilterDropdown.propTypes = {
   api: PropTypes.func.isRequired,
   filters: PropTypes.array.isRequired,
   icon: PropTypes.node.isRequired,
