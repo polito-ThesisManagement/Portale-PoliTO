@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
+import { ThemeContext } from '../App';
 import '../styles/Theme.css';
 import '../styles/ThesisItem.css';
 import '../styles/Utilities.css';
+import { getSystemTheme } from '../utils/utils';
 import Badge from './Badge';
 
 function formatDate(date) {
@@ -82,10 +84,13 @@ const GenericTag = ({ text, icon }) => {
 
 const ShowMore = ({ id }) => {
   const { t } = useTranslation();
-
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
   return (
     <Link to={`${id}`}>
-      <Button className="show-more-button">{t('carriera.proposte_di_tesi.show_more')}</Button>
+      <Button className={`btn-${appliedTheme}`} size="sm">
+        {t('carriera.proposte_di_tesi.show_more')}
+      </Button>
     </Link>
   );
 };
@@ -119,24 +124,18 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
     <>
       <footer className="thesis-footer-container>">
         <div className="thesis-dates">
-          <div>
-            <GenericTag
-              text={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
-              icon={<FaCalendar />}
-            />
-          </div>
+          <GenericTag
+            text={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
+            icon={<FaCalendar />}
+          />
         </div>
       </footer>
       <div className="thesis-footer-lower">
         <ShowMore id={id} />
-        <div>
-          <div>
-            <GenericTag
-              text={t('carriera.proposte_di_tesi.expires') + ' ' + formatDate(expirationDate)}
-              icon={<FaCalendar />}
-            />
-          </div>
-        </div>
+        <GenericTag
+          text={t('carriera.proposte_di_tesi.expires') + ' ' + formatDate(expirationDate)}
+          icon={<FaCalendar />}
+        />
       </div>
     </>
   );
