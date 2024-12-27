@@ -260,60 +260,33 @@ body {
   background-color: rgba(var(--medium-orange-rgb), 1) !important;
 }
 
-.text-toggle-container {
-  border: 1px solid var(--background);
-  border-radius: 5px;
-  background-color: var(--background);
-  height: 24px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25);
-}
-
-.text-toggle {
-  position: relative;
-  height: 22px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
-
-.text-toggle label {
-  padding: 8px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--primary);
+.btn-light {
   font-family: var(--font-primary);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
-  text-align: center;
+  font-size: var(--font-size-md);
+  border-radius: 0.375rem;
+  border-color: var(--text-200) !important;
+  background-color: var(--text-100) !important;
+  color: var(--text-700) !important;
+}
+.btn-light:hover,
+.btn-light.active {
+  background-color: var(--text-200) !important;
+  color: var(--text-800) !important;
 }
 
-.text-toggle::before {
-  content: '';
-  position: absolute;
-  width: 45%;
-  height: 100%;
-  background: var(--surface);
-  border: var(--background) solid 1px;
-  border-radius: 4px;
-  transition: 0.5s left ease;
-  left: 0%; /* Ensure the toggle starts from the left */
+.btn-dark {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  border-radius: 0.375rem;
+  border-color: var(--primary-800) !important;
+  background-color: var(--primary-700) !important;
+  color: var(--white) !important;
 }
 
-.text-toggle:has(#text-toggle-radio1:checked)::before {
-  left: 0%;
-}
-
-.text-toggle:has(#text-toggle-radio2:checked)::before {
-  left: 45%;
-  width: 55%;
+.btn-dark:hover,
+.btn-dark.active {
+  border-color: var(--white) !important;
+  color: var(--white) !important;
 }
 
 /*scrollbar si vede solo se sopra brakpoint lg*/
