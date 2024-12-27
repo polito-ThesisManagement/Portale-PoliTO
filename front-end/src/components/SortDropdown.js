@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import { ThemeContext } from '../App';
 import '../styles/CustomDropdown.css';
 import { getSystemTheme } from '../utils/utils';
+import CustomMenu from './CustomMenu';
+import CustomToggle from './CustomToggle';
 
 export default function SortDropdown({ sortFields, sorting, onApplySorting, onResetSorting }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,8 +106,8 @@ export default function SortDropdown({ sortFields, sorting, onApplySorting, onRe
       </Dropdown.Toggle>
       <Dropdown.Menu as={CustomMenu} key={selectedItem} className="custom-dropdown-menu">
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
-          {sortFields.map((sortBy, index) => (
-            <Dropdown.Item className="custom-dropdown-item" key={index} onClick={() => handleSelect(sortBy)}>
+          {sortFields.map(sortBy => (
+            <Dropdown.Item className="custom-dropdown-item" key={'sort' + sortBy} onClick={() => handleSelect(sortBy)}>
               <div className="d-flex align-items-center" style={{ width: '100%' }}>
                 <div style={{ width: '1.5em' }}>
                   {(selectedSort ? selectedSort === sortBy : sorting.sortBy === sortBy) && (
@@ -147,49 +149,6 @@ export default function SortDropdown({ sortFields, sorting, onApplySorting, onRe
     </Dropdown>
   );
 }
-
-const CustomToggle = React.forwardRef(({ active, children, onClick }, ref) => {
-  const { theme } = useContext(ThemeContext);
-  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
-  return (
-    <Button
-      active={active}
-      className={`btn-${appliedTheme}`}
-      onClick={e => {
-        e.preventDefault();
-        onClick(e);
-      }}
-      ref={ref}
-      size="sm"
-      style={{ display: 'flex', alignItems: 'center' }}
-    >
-      {children}
-    </Button>
-  );
-});
-
-CustomToggle.displayName = 'CustomToggle';
-
-CustomToggle.propTypes = {
-  active: PropTypes.bool,
-  children: PropTypes.node,
-  onClick: PropTypes.func,
-};
-
-const CustomMenu = React.forwardRef(({ children, style, className, 'aria-labelledby': labeledBy }, ref) => (
-  <div ref={ref} style={style} className={className} aria-labelledby={labeledBy}>
-    {children}
-  </div>
-));
-
-CustomMenu.displayName = 'CustomMenu';
-
-CustomMenu.propTypes = {
-  children: PropTypes.node,
-  style: PropTypes.object,
-  className: PropTypes.string,
-  'aria-labelledby': PropTypes.string,
-};
 
 SortDropdown.propTypes = {
   sortFields: PropTypes.array.isRequired,

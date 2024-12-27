@@ -104,15 +104,14 @@ const ThesisProfessorTags = ({ supervisor, internalCoSupervisors }) => {
         gap: '0.5rem',
       }}
     >
-      <Badge key={supervisor.id} variant={'teacher'} content={supervisor.firstName + ' ' + supervisor.lastName} />
-      {internalCoSupervisors &&
-        internalCoSupervisors.map(coSupervisor => (
-          <Badge
-            key={coSupervisor.id}
-            variant={'teacher'}
-            content={coSupervisor.firstName + ' ' + coSupervisor.lastName}
-          />
-        ))}
+      <Badge key={supervisor?.id} variant={'teacher'} content={supervisor?.firstName + ' ' + supervisor?.lastName} />
+      {internalCoSupervisors?.map(coSupervisor => (
+        <Badge
+          key={coSupervisor?.id}
+          variant={'teacher'}
+          content={coSupervisor?.firstName + ' ' + coSupervisor?.lastName}
+        />
+      ))}
     </div>
   );
 };

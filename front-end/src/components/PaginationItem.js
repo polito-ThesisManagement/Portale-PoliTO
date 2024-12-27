@@ -16,6 +16,14 @@ export default function PaginationItem({
   proposalsPerPage,
   totalPages,
 }) {
+  let startIndex;
+  if (totalPages === 0) {
+    startIndex = 0;
+  } else if (currentPage === 1) {
+    startIndex = 1;
+  } else {
+    startIndex = (currentPage - 1) * proposalsPerPage + 1;
+  }
   const { t } = useTranslation();
   return (
     <div className="pagination-container">
@@ -43,8 +51,7 @@ export default function PaginationItem({
           </InputGroup>
         </Form>
         <span style={{ color: 'var(--text)' }} className="ms-3 me-3 pagination-text">
-          {t('carriera.proposte_di_tesi.showing')}{' '}
-          {totalPages === 0 ? 0 : currentPage === 1 ? 1 : (currentPage - 1) * proposalsPerPage + 1}{' '}
+          {t('carriera.proposte_di_tesi.showing')} {totalPages === 0 ? 0 : startIndex}{' '}
           {t('carriera.proposte_di_tesi.to')}{' '}
           {currentPage * proposalsPerPage > count ? count : currentPage * proposalsPerPage}{' '}
           {t('carriera.proposte_di_tesi.of')} {count}
@@ -53,24 +60,15 @@ export default function PaginationItem({
       <div className="pagination-controls">
         {totalPages > 0 && (
           <Pagination onChange={handlePageChange} style={{ margin: '0' }} size="sm">
-            <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1 ? true : false} />
-            <Pagination.Prev
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1 ? true : false}
-            />
+            <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1} />
+            <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
             {pageNumbers.map(number => (
               <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
                 {number}
               </Pagination.Item>
             ))}
-            <Pagination.Next
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages ? true : false}
-            />
-            <Pagination.Last
-              onClick={() => handlePageChange(totalPages)}
-              disabled={currentPage === totalPages ? true : false}
-            />
+            <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
+            <Pagination.Last onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} />
           </Pagination>
         )}
       </div>

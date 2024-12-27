@@ -11,6 +11,8 @@ import { ThemeContext } from '../App';
 import '../styles/CustomDropdown.css';
 import { getSystemTheme } from '../utils/utils';
 import Badge from './Badge';
+import CustomMenu from './CustomMenu';
+import CustomToggle from './CustomToggle';
 
 export default function FilterDropdown({
   api,
@@ -48,6 +50,7 @@ export default function FilterDropdown({
 
   const handleReset = () => {
     setIsOpen(false);
+    setSearchValue('');
     onResetFilters(itemType);
   };
 
@@ -88,6 +91,72 @@ export default function FilterDropdown({
   const { theme } = useContext(ThemeContext);
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
+  let label;
+  if (itemType === 'keyword') {
+    label = t('carriera.proposte_di_tesi.keywords');
+  } else if (itemType === 'teacher') {
+    label = t('carriera.proposte_di_tesi.teachers');
+  } else {
+    label = t('carriera.proposte_di_tesi.types');
+  }
+
+  const getEventKey = item => {
+    if (itemType === 'keyword') {
+      return item.keyword;
+    } else if (itemType === 'teacher') {
+      return item.firstName + ' ' + item.lastName;
+    } else {
+      return item.type;
+    }
+  };
+
+  const dropdownItems =
+    filteredItems && filteredItems.length > 0 ? (
+      filteredItems.map(item => (
+        <Dropdown.Item
+          key={item.id}
+          eventKey={getEventKey(item)}
+          className="custom-dropdown-item"
+          onClick={() => handleItemSelect(item.id)}
+        >
+          <div className="d-flex justify-content-between align-items-center">
+            <Form.Check
+              type="checkbox"
+              id={item.id}
+              label={
+                <Badge
+                  variant={itemType}
+                  content={itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType]}
+                />
+              }
+              checked={selectedItems.includes(item.id)}
+              readOnly
+              style={{
+                whiteSpace: 'nowrap',
+                overflow: 'visible',
+                display: 'inline-block',
+                width: '100%',
+                fontSize: 'var(--font-size-sm)',
+              }}
+            />
+          </div>
+        </Dropdown.Item>
+      ))
+    ) : (
+      <Dropdown.Item
+        disabled
+        style={{
+          fontSize: 'var(--font-size-sm)',
+          color: 'var(--primary)',
+          textAlign: 'center',
+          marginBottom: '1rem',
+          marginTop: '.5rem',
+        }}
+      >
+        {t('carriera.proposte_di_tesi.no_item_found')}
+      </Dropdown.Item>
+    );
+
   return (
     <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id={`dropdown-${itemType}`}>
       <Dropdown.Toggle as={CustomToggle} active={isOpen}>
@@ -97,11 +166,7 @@ export default function FilterDropdown({
             margin: '0 0.5rem',
           }}
         >
-          {itemType === 'keyword'
-            ? t('carriera.proposte_di_tesi.keywords')
-            : itemType === 'teacher'
-              ? t('carriera.proposte_di_tesi.teachers')
-              : t('carriera.proposte_di_tesi.types')}
+          {label}
         </span>
         {/* Display the count of applied filters */}
         {filters.length > 0 && (
@@ -165,61 +230,13 @@ export default function FilterDropdown({
                   height: '2rem',
                 }}
               >
-                <Spinner animation="border" size="sm" role="status" style={{ color: 'var(--primary)' }}>
-                  <span className="visually-hidden">{t('carriera.proposte_di_tesi.loading')}</span>
+                <Spinner animation="border" size="sm" style={{ color: 'var(--primary)' }}>
+                  <output className="visually-hidden">{t('carriera.proposte_di_tesi.loading')}</output>
                 </Spinner>
               </div>
             </Dropdown.Item>
-          ) : filteredItems && filteredItems.length > 0 ? (
-            filteredItems.map(item => (
-              <Dropdown.Item
-                key={item.id}
-                eventKey={
-                  itemType === 'keyword'
-                    ? item.keyword
-                    : itemType === 'teacher'
-                      ? item.firstName + ' ' + item.lastName
-                      : item.type
-                }
-                className="custom-dropdown-item"
-                onClick={() => handleItemSelect(item.id)}
-              >
-                <div className="d-flex justify-content-between align-items-center">
-                  <Form.Check
-                    type="checkbox"
-                    id={item.id}
-                    label={
-                      <Badge
-                        variant={itemType}
-                        content={itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType]}
-                      />
-                    }
-                    checked={selectedItems.includes(item.id)}
-                    readOnly
-                    style={{
-                      whiteSpace: 'nowrap',
-                      overflow: 'visible',
-                      display: 'inline-block',
-                      width: '100%',
-                      fontSize: 'var(--font-size-sm)',
-                    }}
-                  />
-                </div>
-              </Dropdown.Item>
-            ))
           ) : (
-            <Dropdown.Item
-              disabled
-              style={{
-                fontSize: 'var(--font-size-sm)',
-                color: 'var(--primary)',
-                textAlign: 'center',
-                marginBottom: '1rem',
-                marginTop: '.5rem',
-              }}
-            >
-              {t('carriera.proposte_di_tesi.no_item_found')}
-            </Dropdown.Item>
+            dropdownItems
           )}
         </div>
 
@@ -243,49 +260,6 @@ export default function FilterDropdown({
     </Dropdown>
   );
 }
-
-const CustomToggle = React.forwardRef(({ active, children, onClick }, ref) => {
-  const { theme } = useContext(ThemeContext);
-  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
-  return (
-    <Button
-      active={active}
-      className={`btn-${appliedTheme}`}
-      onClick={e => {
-        e.preventDefault();
-        onClick(e);
-      }}
-      ref={ref}
-      size="sm"
-      style={{ display: 'flex', alignItems: 'center' }}
-    >
-      {children}
-    </Button>
-  );
-});
-
-CustomToggle.displayName = 'CustomToggle';
-
-CustomToggle.propTypes = {
-  active: PropTypes.bool,
-  children: PropTypes.node,
-  onClick: PropTypes.func,
-};
-
-const CustomMenu = React.forwardRef(({ children, style, className, 'aria-labelledby': labeledBy }, ref) => (
-  <div ref={ref} style={style} className={className} aria-labelledby={labeledBy}>
-    {children}
-  </div>
-));
-
-CustomMenu.displayName = 'CustomMenu';
-
-CustomMenu.propTypes = {
-  children: PropTypes.node,
-  style: PropTypes.object,
-  className: PropTypes.string,
-  'aria-labelledby': PropTypes.string,
-};
 
 FilterDropdown.propTypes = {
   api: PropTypes.func.isRequired,

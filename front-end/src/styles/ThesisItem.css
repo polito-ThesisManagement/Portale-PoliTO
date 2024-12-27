@@ -25,13 +25,6 @@
   text-overflow: ellipsis;
 }
 
-.thesis-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .thesis-position-tags {
   display: flex;
   flex-wrap: wrap;
@@ -139,7 +132,6 @@
   font-weight: 400;
   color: var(--text);
   margin-right: 0;
-  display: flex;
   justify-content: space-between;
   margin-top: 6px;
 }

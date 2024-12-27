@@ -64,11 +64,6 @@
   }
 }
 
-.page-item .page-link {
-  margin: 0 3px;
-  border-radius: 8px;
-}
-
 .page-item.active .page-link {
   color: var(--active-page);
   border-color: var(--active-page-border);
@@ -79,6 +74,8 @@
   background-color: var(--surface);
   color: var(--text);
   font-family: var(--font-primary);
+  margin: 0 3px;
+  border-radius: 8px;
 }
 
 .page-link {
