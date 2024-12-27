@@ -234,7 +234,7 @@ export default function ThesisProposals() {
                   <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
                   <Form
                     className="d-flex w-100"
-                    style={{ maxWidth: '300px', zIndex: '1' }}
+                    style={{ maxWidth: '380px', zIndex: '1' }}
                     onSubmit={e => e.preventDefault()}
                   >
                     <InputGroup className="flex-nowrap w-100">

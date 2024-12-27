@@ -10,7 +10,7 @@ export default function ThesisProposalsToggle({ tab, handleTabChange }) {
   const { t, i18n } = useTranslation();
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: '380px' }}>
       <div className="proposals-toggle-container">
         <div className={`proposals-toggle proposals-toggle-${tab}-${i18n.language} proposals-toggle-${i18n.language}`}>
           <label htmlFor="proposals-toggle-radio1">{t('carriera.proposte_di_tesi.course_thesis')}</label>
