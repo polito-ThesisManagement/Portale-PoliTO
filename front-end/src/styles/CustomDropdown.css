@@ -27,16 +27,6 @@
   border-color: var(--tag-border);
 }
 
-.dropdown-button {
-  background-color: var(--tag-bg);
-  color: var(--tag-text);
-  border-color: var(--tag-border);
-}
-
-.dropdown-button:hover {
-  background-color: var(--tag-hover);
-}
-
 .form-check-label {
   white-space: nowrap;
   overflow: hidden;

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaAngleDown, FaAngleUp, FaArrowDownShortWide, FaArrowUpShortWide, FaCheck } from 'react-icons/fa6';
+import { FaArrowDownShortWide, FaArrowUpShortWide, FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 
@@ -100,7 +100,7 @@ export default function SortDropdown({ sortFields, sorting, onApplySorting, onRe
             1
           </span>
         )}
-        {isOpen ? <FaAngleUp /> : <FaAngleDown />}
+        {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
       </Dropdown.Toggle>
       <Dropdown.Menu as={CustomMenu} key={selectedItem} className="custom-dropdown-menu">
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
@@ -159,8 +159,9 @@ const CustomToggle = React.forwardRef(({ active, children, onClick }, ref) => {
         e.preventDefault();
         onClick(e);
       }}
-      size="sm"
       ref={ref}
+      size="sm"
+      style={{ display: 'flex', alignItems: 'center' }}
     >
       {children}
     </Button>

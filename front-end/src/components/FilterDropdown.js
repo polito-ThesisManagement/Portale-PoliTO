@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Button, Dropdown, Form, InputGroup, Spinner } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 
@@ -118,7 +118,7 @@ export default function FilterDropdown({
             {filters.length}
           </span>
         )}
-        {isOpen ? <FaAngleUp /> : <FaAngleDown />}
+        {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
       </Dropdown.Toggle>
 
       <Dropdown.Menu
@@ -257,6 +257,7 @@ const CustomToggle = React.forwardRef(({ active, children, onClick }, ref) => {
       }}
       ref={ref}
       size="sm"
+      style={{ display: 'flex', alignItems: 'center' }}
     >
       {children}
     </Button>
