@@ -38,6 +38,24 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.hr-light {
+  border: 0;
+  height: 1px;
+  background-color: var(--text-300);
+}
+
+.hr-dark {
+  border: 0;
+  height: 1px;
+  background-color: var(--primary-900);
+}
+
+.reset-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .search-icon {

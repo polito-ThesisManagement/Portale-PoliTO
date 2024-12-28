@@ -31,28 +31,20 @@
   margin-right: 10px;
 }
 
-.card-button {
-  height: 40px;
+.card-button,
+.card-button:focus {
   background-color: var(--surface);
   color: var(--primary);
   border-color: var(--primary);
-  padding-top: 6px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-  border-radius: 6px;
+  font-size: var(--font-size-sm);
   overflow: hidden;
   text-align: end;
 }
 
-.card-button:hover {
-  border-color: var(--primary);
-  background-color: var(--primary);
-  color: var(--background);
-}
-
-.card-button:active,
-.card-button:focus {
+.card-button:hover,
+.card-button:active {
   border-color: var(--primary) !important;
   background-color: var(--primary) !important;
   color: var(--background) !important;

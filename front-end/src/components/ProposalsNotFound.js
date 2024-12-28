@@ -1,13 +1,16 @@
 import React from 'react';
 
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaRectangleXmark } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 
+import ResetButton from './ResetButton';
+
 export default function ProposalsNotFound({ resetFilters }) {
   const { t } = useTranslation();
+
   return (
     <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2em' }}>
       <div
@@ -21,10 +24,7 @@ export default function ProposalsNotFound({ resetFilters }) {
         <p> {t('carriera.proposte_di_tesi.message_not_found')} </p>
       </div>
       <div>
-        <Button className="card-button" onClick={() => resetFilters()}>
-          {' '}
-          {t('carriera.proposte_di_tesi.reset_filters')}{' '}
-        </Button>
+        <ResetButton resetFilters={resetFilters} />
       </div>
     </Container>
   );

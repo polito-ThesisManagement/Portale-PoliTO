@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 import { ButtonGroup, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -16,38 +16,31 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
   const { t } = useTranslation();
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
-  const [checked, setChecked] = useState(isAbroad);
-  const [radioValue, setRadioValue] = useState(isInternal);
-
   const radios = [
     { name: t('carriera.proposte_di_tesi.all_theses'), value: 0 },
     { name: t('carriera.proposte_di_tesi.internal_theses'), value: 1, icon: FaBuildingColumns },
     { name: t('carriera.proposte_di_tesi.external_theses'), value: 2, icon: FaBuildingCircleArrowRight },
   ];
 
-  useEffect(() => {
-    setChecked(isAbroad);
-  }, [isAbroad]);
-
   return (
     <>
       <ToggleButtonGroup name="options" size="sm" type="radio">
         {radios.map(radio => (
           <ToggleButton
-            checked={radioValue === radio.value}
-            className={`radio-${radio.value}-${appliedTheme} ${radioValue === radio.value ? 'checked' : ''}`}
+            checked={isInternal === radio.value}
+            className={`radio-${radio.value}-${appliedTheme} ${isInternal === radio.value ? 'checked' : ''}`}
             id={`radio-${radio.value}`}
             key={radio.value}
             name="radio"
             onChange={e => {
-              setRadioValue(Number(e.currentTarget.value));
-              handleRadioChange(e.currentTarget.value);
+              handleRadioChange(Number(e.currentTarget.value));
             }}
             style={{
               display: 'flex',
               alignItems: 'center',
               fontFamily: 'var(--font-primary)',
               fontSize: 'var(--font-size-md)',
+              textAlign: 'left',
             }}
             type="radio"
             value={radio.value}
@@ -55,6 +48,7 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
             <>
               {radio.icon && (
                 <radio.icon
+                  className="radio-icon"
                   size={radio.icon === FaBuildingColumns ? 14 : 16}
                   style={{ marginRight: '5px', alignItems: 'center' }}
                 />
@@ -67,13 +61,12 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
       <ButtonGroup>
         <ToggleButton
           id="toggle-check"
-          checked={checked}
-          className={`toggle-check-${appliedTheme} ${checked ? 'checked' : ''}`}
+          checked={isAbroad}
+          className={`toggle-check-${appliedTheme} ${isAbroad ? 'checked' : ''}`}
           type="checkbox"
           variant="secondary"
           value="1"
           onChange={e => {
-            setChecked(e.currentTarget.checked);
             handleCheckChange(e.currentTarget.checked);
           }}
           size="sm"

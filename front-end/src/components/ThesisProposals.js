@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Accordion } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
@@ -6,19 +6,22 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
 import { FaKey, FaUser } from 'react-icons/fa';
-import { FaFilter } from 'react-icons/fa6';
+import { FaFilter, FaTags } from 'react-icons/fa6';
 import { HiLightBulb } from 'react-icons/hi';
 
 import API from '../API';
+import { ThemeContext } from '../App';
 import '../styles/Searchbar.css';
 import '../styles/Theme.css';
 import '../styles/ThesisProposals.css';
 import '../styles/Utilities.css';
+import { getSystemTheme } from '../utils/utils';
 import FilterDropdown from './FilterDropdown';
 import FilterGroup from './FilterGroup';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
+import ResetButton from './ResetButton';
 import SortDropdown from './SortDropdown';
 import { ThesisItem } from './ThesisItem';
 import ThesisProposalsToggle from './ThesisProposalsToggle';
@@ -41,6 +44,9 @@ export default function ThesisProposals() {
   const [searching, setSearching] = useState(false);
 
   const sortFields = ['topic', 'description', 'creationDate', 'expirationDate'];
+
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   const { t, i18n } = useTranslation();
 
@@ -264,10 +270,11 @@ export default function ThesisProposals() {
                   <Accordion.Body>
                     <div className="filters-section">
                       <FilterGroup
+                        key={`${filters.isInternal}-${filters.isAbroad}`}
                         isAbroad={filters.isAbroad}
                         isInternal={filters.isInternal}
                         handleCheckChange={value => applyFilters('isAbroad', value)}
-                        handleRadioChange={value => applyFilters('isInternal', Number(value))}
+                        handleRadioChange={value => applyFilters('isInternal', value)}
                       />
                       <FilterDropdown
                         api={API.getThesisProposalsKeywords}
@@ -290,7 +297,7 @@ export default function ThesisProposals() {
                       <FilterDropdown
                         api={API.getThesisProposalsTypes}
                         filters={filters.type}
-                        icon={<></>}
+                        icon={<FaTags style={{ width: '20px' }} />}
                         itemType={'type'}
                         onApplyFilters={applyFilters}
                         onResetFilters={() => applyFilters('type', [])}
@@ -301,6 +308,15 @@ export default function ThesisProposals() {
                         sorting={sorting}
                         onApplySorting={applySorting}
                         onResetSorting={onResetSorting}
+                      />
+                    </div>
+                    <hr className={`hr-${appliedTheme}`} />
+                    <div className="reset-button-container">
+                      <ResetButton
+                        resetFilters={() => {
+                          setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
+                          setSearchQuery('');
+                        }}
                       />
                     </div>
                   </Accordion.Body>
