@@ -23,7 +23,7 @@ import LogoWhite from '../assets/logo_polito_white.svg';
 import Services from '../data/Data.json';
 import '../styles/Navbar.css';
 import '../styles/Theme.css';
-import { getLogo } from '../utils/utils';
+import { useLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
 import SidebarModal from './SidebarModal';
 import ThemeToggle from './ThemeToggle';
@@ -48,9 +48,7 @@ export default function PoliNavbar(props) {
     i18n.changeLanguage(lng);
     setSelectedLanguage(lng);
     document.documentElement.setAttribute('lang', lng);
-    {
-      document.querySelector('meta[name="description"]').setAttribute('content', t('descrizione'));
-    }
+    document.querySelector('meta[name="description"]').setAttribute('content', t('descrizione'));
   };
 
   const handleLoggedStudentChange = async newStudent => {
@@ -80,7 +78,7 @@ export default function PoliNavbar(props) {
             marginRight: '36px',
           }}
         >
-          <Image src={getLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
+          <Image src={useLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
           className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''}`}
@@ -94,7 +92,7 @@ export default function PoliNavbar(props) {
             marginRight: '12px',
           }}
         >
-          <Image src={getLogo(Logo2, Logo2White)} alt="Logo PoliTo" style={{ width: '51.44px', height: '100%' }} />
+          <Image src={useLogo(Logo2, Logo2White)} alt="Logo PoliTo" style={{ width: '51.44px', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand className="d-none d-lg-block">
           <span

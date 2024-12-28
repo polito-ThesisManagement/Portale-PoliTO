@@ -48,15 +48,15 @@ function Sidebar() {
 }
 function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
   const { desktopToggle } = useContext(DesktopToggleContext);
+  const baseClassName = mobile ? 'modal-sidebar-text' : 'sidebar-text reduced';
+  const spanClassName = desktopToggle && !mobile ? `${baseClassName} toggle` : baseClassName;
   const { t } = useTranslation();
 
   return (
     <Nav.Item>
       <Link to={to} className={`nav-link text-style ${isActive ? 'active' : ''}`} onClick={handleClose}>
         <Icon size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
-        <span className={mobile ? 'modal-sidebar-text' : `sidebar-text reduced ${desktopToggle ? 'toggle' : ''}`}>
-          {t(textKey)}
-        </span>
+        <span className={spanClassName}>{t(textKey)}</span>
       </Link>
     </Nav.Item>
   );

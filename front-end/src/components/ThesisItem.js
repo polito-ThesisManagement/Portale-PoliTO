@@ -66,9 +66,7 @@ const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords }) => {
         </div>
       )}
       <div className="thesis-keyword-tags">
-        {keywords.map(keyword => (
-          <Badge key={keyword.id} variant={'keyword'} content={keyword.keyword} />
-        ))}
+        <Badge variant="keyword" content={keywords.map(item => item.keyword)} />
       </div>
     </div>
   );

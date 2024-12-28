@@ -9,8 +9,8 @@ export default function LoadingModal({ show, onHide }) {
     <Modal show={show} onHide={onHide} backdrop="static" keyboard={false} animation={true}>
       <Modal.Body>
         <div className="text-center">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
+          <Spinner animation="border">
+            <output className="visually-hidden">Loading...</output>
           </Spinner>
           <div className="text-center mt-2">
             <span>Loading...</span>

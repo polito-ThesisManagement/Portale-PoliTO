@@ -11,7 +11,7 @@ import Services from '../data/Data.json';
 import '../styles/Sidebar.css';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
-import { getLogo, getSystemTheme } from '../utils/utils';
+import { getSystemTheme, useLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
 import { NavItems } from './Sidebar';
 
@@ -28,7 +28,7 @@ export default function SidebarModal({ show, handleClose }) {
       >
         <Modal.Title>
           <Image
-            src={getLogo(Logo, LogoWhite)}
+            src={useLogo(Logo, LogoWhite)}
             alt="Logo PoliTo"
             style={{ height: '55px', width: 'auto', objectFit: 'contain' }}
           />
