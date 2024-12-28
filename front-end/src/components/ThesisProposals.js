@@ -15,6 +15,7 @@ import '../styles/Theme.css';
 import '../styles/ThesisProposals.css';
 import '../styles/Utilities.css';
 import FilterDropdown from './FilterDropdown';
+import FilterGroup from './FilterGroup';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
@@ -25,7 +26,7 @@ import Title from './Title';
 
 export default function ThesisProposals() {
   const [accordionOpen, setAccordionOpen] = useState(false);
-  const [filters, setFilters] = useState({ keyword: [], teacher: [], type: [] });
+  const [filters, setFilters] = useState({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -262,6 +263,12 @@ export default function ThesisProposals() {
                   </Accordion.Header>
                   <Accordion.Body>
                     <div className="filters-section">
+                      <FilterGroup
+                        isAbroad={filters.isAbroad}
+                        isInternal={filters.isInternal}
+                        handleCheckChange={value => applyFilters('isAbroad', value)}
+                        handleRadioChange={value => applyFilters('isInternal', Number(value))}
+                      />
                       <FilterDropdown
                         api={API.getThesisProposalsKeywords}
                         filters={filters.keyword}
@@ -327,7 +334,7 @@ export default function ThesisProposals() {
               ) : (
                 <ProposalsNotFound
                   resetFilters={() => {
-                    setFilters({ keyword: [], teacher: [], type: [] });
+                    setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
                     setSearchQuery('');
                   }}
                 />

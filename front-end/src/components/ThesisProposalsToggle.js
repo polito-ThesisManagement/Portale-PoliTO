@@ -13,7 +13,7 @@ export default function ThesisProposalsToggle({ tab, handleTabChange }) {
     <div style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: '380px' }}>
       <div className="proposals-toggle-container">
         <div className={`proposals-toggle proposals-toggle-${tab}-${i18n.language} proposals-toggle-${i18n.language}`}>
-          <label htmlFor="proposals-toggle-radio1">{t('carriera.proposte_di_tesi.course_thesis')}</label>
+          <label htmlFor="proposals-toggle-radio1">{t('carriera.proposte_di_tesi.course_proposals')}</label>
           <input
             type="radio"
             id="proposals-toggle-radio1"
@@ -22,7 +22,7 @@ export default function ThesisProposalsToggle({ tab, handleTabChange }) {
             style={{ display: 'none' }}
             onChange={() => handleTabChange('course')}
           />
-          <label htmlFor="proposals-toggle-radio2">{t('carriera.proposte_di_tesi.all_thesis')}</label>
+          <label htmlFor="proposals-toggle-radio2">{t('carriera.proposte_di_tesi.all_proposals')}</label>
           <input
             type="radio"
             id="proposals-toggle-radio2"

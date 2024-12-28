@@ -109,6 +109,16 @@ const buildParams = (lang, page, limit, filters, search, sorting) => {
     limit,
   };
 
+  if (filters.isAbroad) {
+    params.isAbroad = filters.isAbroad;
+  }
+  if (filters.isInternal) {
+    if (filters.isInternal === 1) {
+      params.isInternal = true;
+    } else if (filters.isInternal === 2) {
+      params.isInternal = false;
+    }
+  }
   if (filters.keyword.length > 0) {
     filters.keyword.forEach(keyword => {
       params[`keywordId`] = params[`keywordId`] ? [...params[`keywordId`], keyword] : [keyword];
