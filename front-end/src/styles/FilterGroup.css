@@ -31,28 +31,28 @@
 .radio-1-light.checked,
 .radio-1-light:hover {
   color: var(--primary-700) !important;
-  background-color: var(--primary-100) !important;
+  background-color: var(--primary-50) !important;
   border-color: var(--text-200) !important;
 }
 
 .radio-1-dark.checked,
 .radio-1-dark:hover {
   color: var(--primary-800) !important;
-  background-color: var(--primary-200) !important;
+  background-color: var(--primary-100) !important;
   border-color: var(--primary-800) !important;
 }
 
 .radio-2-light.checked,
 .radio-2-light:hover {
   color: var(--candypink-700) !important;
-  background-color: var(--candypink-100) !important;
+  background-color: var(--candypink-50) !important;
   border-color: var(--text-200) !important;
 }
 
 .radio-2-dark.checked,
 .radio-2-dark:hover {
   color: var(--candypink-800) !important;
-  background-color: var(--candypink-200) !important;
+  background-color: var(--candypink-100) !important;
   border-color: var(--primary-800) !important;
 }
 
