@@ -64,7 +64,6 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
           checked={isAbroad}
           className={`toggle-check-${appliedTheme} ${isAbroad ? 'checked' : ''}`}
           type="checkbox"
-          variant="secondary"
           value="1"
           onChange={e => {
             handleCheckChange(e.currentTarget.checked);
