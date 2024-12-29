@@ -51,7 +51,7 @@ jobs:
           mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/data.sql
 
       - name: Start backend
-        run: npm start
+        run: npm start &
         working-directory: back-end
 
       - name: Run Cypress tests
