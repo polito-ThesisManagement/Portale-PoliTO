@@ -28,7 +28,7 @@
     "start": "react-scripts start",
     "start-instrumented": "react-app-rewired start",
     "build": "react-scripts build",
-    "test": "start-server-and-test start-instrumented http://localhost:3000 test-cypress",
+    "test": "start-server-and-test start-instrumented http://127.0.0.1:3000 test-cypress",
     "test-cypress": "cypress run",
     "eject": "react-scripts eject"
   },
@@ -54,7 +54,7 @@
     "cypress": "^13.15.2",
     "nyc": "^17.1.0",
     "react-app-rewired": "^2.2.1",
-    "start-server-and-test": "^2.0.8"
+    "start-server-and-test": "^2.0.9"
   },
   "nyc": {
     "all": true,

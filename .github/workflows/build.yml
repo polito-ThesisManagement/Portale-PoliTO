@@ -29,7 +29,7 @@ jobs:
         run: npm install
         working-directory: back-end
 
-      - name: Start MySQL (or use a service like Docker for better isolation)
+      - name: Start MySQL
         run: |
           sudo /etc/init.d/mysql start || sudo service mysql start
 
@@ -43,6 +43,16 @@ jobs:
         run: npm test
         working-directory: back-end
         continue-on-error: false
+
+      - name: Prepare database for E2E tests
+        run: |
+          set -e
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/schema.sql
+          mysql -h ${{ env.DB_HOST }} -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} --default-character-set=utf8mb4 < ./database/data.sql
+
+      - name: Start backend
+        run: npm start &
+        working-directory: back-end
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
