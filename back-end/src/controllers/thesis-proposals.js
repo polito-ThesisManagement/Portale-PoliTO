@@ -77,15 +77,22 @@ const getTargetedThesisProposals = async (req, res) => {
     const { collegioId, level, studentThesisProposalIdArray } = await getStudentData();
     const includes = getIncludes(lang).filter(Boolean);
 
-    const where = await buildWhereConditions(req.query, lang);
-    where[Op.or] = [
-      {
-        id_collegio: collegioId,
-        level,
-        id: { [Op.notIn]: sequelize.literal(`(SELECT thesis_proposal_id FROM thesis_proposal_degree)`) },
-      },
-      { id: { [Op.in]: studentThesisProposalIdArray } },
-    ];
+    const baseWhere = await buildWhereConditions(req.query, lang);
+
+    const additionalWhere = {
+      [Op.or]: [
+        {
+          id_collegio: collegioId,
+          level,
+          id: { [Op.notIn]: sequelize.literal(`(SELECT thesis_proposal_id FROM thesis_proposal_degree)`) },
+        },
+        { id: { [Op.in]: studentThesisProposalIdArray } },
+      ],
+    };
+
+    const where = {
+      [Op.and]: [baseWhere, additionalWhere],
+    };
 
     const { count, formattedProposals, totalPages } = await fetchThesisProposals(where, includes, lang, pagination);
 

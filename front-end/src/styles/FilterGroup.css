@@ -1,0 +1,89 @@
+.radio-0-light,
+.radio-1-light,
+.radio-2-light {
+  color: var(--text-700) !important;
+  background-color: var(--text-100) !important;
+  border-color: var(--text-200) !important;
+}
+
+.radio-0-light.checked,
+.radio-0-light:hover {
+  color: var(--text-700) !important;
+  background-color: var(--text-200) !important;
+  border-color: var(--text-200) !important;
+}
+
+.radio-0-dark,
+.radio-1-dark,
+.radio-2-dark {
+  color: var(--white) !important;
+  background-color: var(--primary-700) !important;
+  border-color: var(--primary-800) !important;
+}
+
+.radio-0-dark.checked,
+.radio-0-dark:hover {
+  color: var(--white) !important;
+  background-color: var(--primary-800) !important;
+  border-color: var(--primary-800) !important;
+}
+
+.radio-1-light.checked,
+.radio-1-light:hover {
+  color: var(--primary-700) !important;
+  background-color: var(--primary-50) !important;
+  border-color: var(--text-200) !important;
+}
+
+.radio-1-dark.checked,
+.radio-1-dark:hover {
+  color: var(--primary-800) !important;
+  background-color: var(--primary-100) !important;
+  border-color: var(--primary-800) !important;
+}
+
+.radio-2-light.checked,
+.radio-2-light:hover {
+  color: var(--candypink-700) !important;
+  background-color: var(--candypink-50) !important;
+  border-color: var(--text-200) !important;
+}
+
+.radio-2-dark.checked,
+.radio-2-dark:hover {
+  color: var(--candypink-800) !important;
+  background-color: var(--candypink-100) !important;
+  border-color: var(--primary-800) !important;
+}
+
+.toggle-check-light {
+  color: var(--text-700) !important;
+  background-color: var(--text-100) !important;
+  border-color: var(--text-200) !important;
+}
+
+.toggle-check-light.checked,
+.toggle-check-light:hover {
+  color: var(--purple-700) !important;
+  background-color: var(--purple-50) !important;
+  border-color: var(--text-200) !important;
+}
+
+.toggle-check-dark {
+  color: var(--white) !important;
+  background-color: var(--primary-700) !important;
+  border-color: var(--primary-800) !important;
+}
+
+.toggle-check-dark.checked,
+.toggle-check-dark:hover {
+  color: var(--purple-800) !important;
+  background-color: var(--purple-100) !important;
+  border-color: var(--primary-800) !important;
+}
+
+@media (max-width: 480px) {
+  .radio-icon {
+    display: none;
+  }
+}

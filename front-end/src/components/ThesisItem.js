@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaUniversity } from 'react-icons/fa';
-import { FaCalendar, FaEarthAmericas, FaUser } from 'react-icons/fa6';
-import { HiBuildingOffice2 } from 'react-icons/hi2';
+import { FaCalendar } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
+import { ThemeContext } from '../App';
 import '../styles/Theme.css';
+import '../styles/ThesisItem.css';
 import '../styles/Utilities.css';
+import { getSystemTheme } from '../utils/utils';
+import Badge from './Badge';
 
 function formatDate(date) {
   const dateObj = new Date(date);
@@ -18,52 +20,17 @@ function formatDate(date) {
 }
 function ThesisItem(props) {
   return (
-    <article
-      style={{
-        border: '0.0625rem solid var(--background)',
-        borderRadius: '1rem',
-        alignItems: 'flex-start',
-        backgroundColor: 'var(--surface)',
-        display: 'flex',
-        gap: '40px',
-        maxWidth: '100%',
-        overflow: 'hidden',
-        justifyContent: 'flex-start',
-        paddingLeft: '1rem',
-        paddingRight: '1rem',
-        paddingBottom: '1.75rem',
-        paddingTop: '1.75rem',
-      }}
-    >
-      <div>
+    <article className="thesis-article">
+      <div style={{ width: '100%' }}>
         <ThesisHeader
           topic={props.topic}
+          types={props.types}
           isInternal={props.isInternal}
           isAbroad={props.isAbroad}
           keywords={props.keywords}
         />
-        <p
-          style={{
-            color: 'var(--text)',
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-sm)',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'normal',
-            wordBreak: 'break-word',
-          }}
-        >
-          {props.description.slice(0, 350) + '...'}
-        </p>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1rem',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+        <p className="thesis-description">{props.description}</p>
+        <div className="thesis-professor-tags">
           <ThesisProfessorTags supervisor={props.supervisor} internalCoSupervisors={props.internalCoSupervisors} />
         </div>
         <ThesisFooter id={props.id} creationDate={props.creationDate} expirationDate={props.expirationDate} />
@@ -72,173 +39,54 @@ function ThesisItem(props) {
   );
 }
 
-const ThesisHeader = ({ topic, isInternal, isAbroad, keywords }) => {
-  const { t } = useTranslation();
-
+const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords }) => {
   return (
     <div>
-      <h3
-        style={{
-          width: '100%',
-          overflow: 'hidden',
-          color: 'var(--text)',
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--font-size-lg)',
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.5rem',
-          justifyContent: 'space-between',
-        }}
-      >
+      <h3 className="thesis-topic">
         {' '}
         {topic}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            gap: '0.5rem',
-          }}
-        >
-          {isInternal ? (
-            <GenericTag text={t('carriera.proposte_di_tesi.internal_thesis')} icon={<FaUniversity />} />
-          ) : (
-            <GenericTag text={t('carriera.proposte_di_tesi.external_thesis')} icon={<HiBuildingOffice2 />} />
-          )}
-          {isAbroad && <GenericTag text={t('carriera.proposte_di_tesi.abroad_thesis')} icon={<FaEarthAmericas />} />}
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            marginTop: '0.6rem',
-            width: '100%',
-            alignItems: 'flex-start',
-            gap: '0.375rem',
-            color: 'var(--background)',
-            justifyContent: 'flex-start',
-            flexWrap: 'wrap',
-          }}
-        >
-          {keywords.map(keyword => (
-            <Keyword key={keyword.id} keyword={keyword} />
-          ))}
-        </div>
+        {types.length === 0 && (
+          <div className="thesis-position-tags">
+            {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
+            {isAbroad && <Badge variant={'abroad'} />}
+          </div>
+        )}
       </h3>
+      {types.length > 0 && (
+        <div className="thesis-tags" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+          <div className="thesis-type-tags">
+            {types.map(type => (
+              <Badge key={type.id} variant={'type'} content={type.type} />
+            ))}
+          </div>
+          <div className="thesis-position-tags">
+            {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
+            {isAbroad && <Badge variant={'abroad'} />}
+          </div>
+        </div>
+      )}
+      <div className="thesis-keyword-tags">
+        <Badge variant="keyword" content={keywords.map(item => item.keyword)} />
+      </div>
     </div>
   );
 };
 
 const GenericTag = ({ text, icon }) => {
   return (
-    <span
-      style={{
-        alignItems: 'center',
-        borderRadius: '0.375rem',
-        border: '0.0625rem solid var(--type-tag-border)',
-        padding: '0px 6px',
-        backgroundColor: 'var(--type-tag-bg)',
-        color: 'var(--type-tag-text)',
-        display: 'flex',
-        justifyContent: 'center',
-        fontFamily: 'var(--font-primary)',
-        fontSize: 'var(--font-size-sm)',
-        height: '1.5rem',
-      }}
-    >
+    <span className="thesis-tag">
       {icon} <span style={{ marginLeft: '0.25rem' }}>{text}</span>
     </span>
   );
 };
 
-const Keyword = ({ keyword }) => {
-  return (
-    <span
-      key={keyword.id}
-      style={{
-        alignSelf: 'stretch',
-        borderRadius: '0.5rem',
-        border: '0.0625rem solid var(--tag-border)',
-        backgroundColor: 'var(--tag-bg)',
-        color: 'var(--tag-text)',
-        gap: '0.25rem',
-        overflow: 'hidden',
-        fontFamily: 'var(--font-primary)',
-        padding: '0px 6px',
-        fontSize: 'var(--font-size-md)',
-      }}
-    >
-      {keyword.keyword}
-    </span>
-  );
-};
-
-const ProfessorTag = ({ supervisor }) => {
-  return (
-    <div
-      key={supervisor.id}
-      style={{
-        alignItems: 'center',
-        borderRadius: '0.375rem',
-        border: '0.0625rem solid rgba(var(--professor-tag), 0.8)',
-        backgroundColor: 'rgba(var(--professor-tag), 0.25)',
-        display: 'flex',
-        justifyContent: 'flex-start',
-        color: 'rgba(var(--professor-tag), 1)',
-        padding: '0px 6px',
-        fontFamily: 'var(--font-primary)',
-        fontSize: 'var(--font-size-md)',
-      }}
-    >
-      <FaUser />
-      <span
-        key={supervisor.id}
-        style={{
-          alignSelf: 'stretch',
-          overflow: 'hidden',
-          margin: 'auto 0',
-        }}
-      >
-        {supervisor.firstName} {supervisor.lastName}
-      </span>
-    </div>
-  );
-};
-
 const ShowMore = ({ id }) => {
   const { t } = useTranslation();
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  const buttonStyle = {
-    border: '0.0625rem solid var(--text)',
-    borderRadius: '0.5rem',
-    backgroundColor: 'var(--surface)',
-    minHeight: '1.375rem',
-    color: 'var(--text)',
-    textAlign: 'center',
-    padding: '0 6px',
-    cursor: 'pointer',
-    maxWidth: '200px',
-    transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
-    fontFamily: 'var(--font-primary)',
-    fontSize: 'var(--font-size-sm)',
-    ...(isHovered && {
-      backgroundColor: 'var(--background)',
-      color: 'var(--text)',
-    }),
-  };
-
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
   return (
     <Link to={`${id}`}>
-      <Button style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Button className={`btn-${appliedTheme}`} size="sm">
         {t('carriera.proposte_di_tesi.show_more')}
       </Button>
     </Link>
@@ -254,9 +102,13 @@ const ThesisProfessorTags = ({ supervisor, internalCoSupervisors }) => {
         gap: '0.5rem',
       }}
     >
-      <ProfessorTag supervisor={supervisor} />
+      <Badge key={supervisor?.id} variant={'teacher'} content={supervisor?.firstName + ' ' + supervisor?.lastName} />
       {internalCoSupervisors?.map(coSupervisor => (
-        <ProfessorTag key={coSupervisor.id} supervisor={coSupervisor} />
+        <Badge
+          key={coSupervisor?.id}
+          variant={'teacher'}
+          content={coSupervisor?.firstName + ' ' + coSupervisor?.lastName}
+        />
       ))}
     </div>
   );
@@ -267,81 +119,23 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
 
   return (
     <>
-      <footer
-        style={{
-          position: 'relative',
-          display: 'flex',
-          flexWrap: 'wrap',
-          marginTop: '0.5rem',
-          minHeight: '22px',
-          width: '100%',
-          alignItems: 'flex-start',
-          gap: '1rem',
-          justifyContent: 'flex-start',
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--font-size-sm)',
-        }}
-      >
-        <div
-          style={{
-            position: 'relative',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            marginLeft: 'auto',
-            color: 'var(--text)',
-            fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-sm)',
-          }}
-        >
-          <div>
-            <GenericTag
-              text={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
-              icon={<FaCalendar />}
-            />
-          </div>
+      <footer className="thesis-footer-container>">
+        <div className="thesis-dates">
+          <GenericTag
+            text={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
+            icon={<FaCalendar />}
+          />
         </div>
       </footer>
-      <div
-        style={{
-          position: 'relative',
-          overflow: 'hidden',
-          fontFamily: 'var(--font-primary)',
-          fontSize: 'var(--font-size-sm)',
-          fontWeight: '400',
-          color: 'var(--text)',
-          marginRight: '0',
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginTop: '6px',
-        }}
-      >
+      <div className="thesis-footer-lower">
         <ShowMore id={id} />
-        <div>
-          <div>
-            <GenericTag
-              text={t('carriera.proposte_di_tesi.expires') + ' ' + formatDate(expirationDate)}
-              icon={<FaCalendar />}
-            />
-          </div>
-        </div>
+        <GenericTag
+          text={t('carriera.proposte_di_tesi.expires') + ' ' + formatDate(expirationDate)}
+          icon={<FaCalendar />}
+        />
       </div>
     </>
   );
-};
-
-ProfessorTag.propTypes = {
-  supervisor: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-Keyword.propTypes = {
-  keyword: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    keyword: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 ThesisHeader.propTypes = {
@@ -352,6 +146,12 @@ ThesisHeader.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       keyword: PropTypes.string.isRequired,
+    }),
+  ),
+  types: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
     }),
   ),
 };
@@ -390,6 +190,12 @@ ThesisItem.propTypes = {
   id: PropTypes.number.isRequired,
   topic: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+    }),
+  ),
   supervisor: PropTypes.shape({
     id: PropTypes.number.isRequired,
     firstName: PropTypes.string.isRequired,
@@ -414,4 +220,4 @@ ThesisItem.propTypes = {
   ),
 };
 
-export { ThesisItem, ProfessorTag, GenericTag, Keyword, ThesisHeader, ThesisFooter, ThesisProfessorTags, ShowMore };
+export { ThesisItem, GenericTag, ThesisHeader, ThesisFooter, ThesisProfessorTags, ShowMore };

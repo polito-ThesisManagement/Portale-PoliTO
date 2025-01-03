@@ -1,0 +1,41 @@
+.btn-dark.btn-dropdown {
+  background-color: var(--primary-600) !important;
+}
+
+.link-light-dropdown {
+  color: var(--text-700) !important;
+}
+
+.link-dark-dropdown {
+  color: var(--white) !important;
+}
+
+.custom-dropdown-menu,
+.custom-dropdown-item {
+  background-color: var(--tag-bg);
+}
+
+.custom-dropdown-menu {
+  box-shadow: 0 4px 8px var(--tag-shadow);
+}
+
+.custom-dropdown-item:hover {
+  background-color: var(--tag-hover);
+}
+
+.dropdown-divider {
+  border-color: var(--tag-border);
+}
+
+.form-check-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-500);
+  border-color: var(--primary-600);
+}

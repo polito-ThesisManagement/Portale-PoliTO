@@ -139,6 +139,15 @@ function TimeMap({ creationDate, expirationDate }) {
   const formattedCreationDate = start.format('DD/MM/YYYY');
   const formattedExpDate = end.format('DD/MM/YYYY');
 
+  let progressBarColor;
+  if (remainingDuration >= 168) {
+    progressBarColor = 'var(--success-600)';
+  } else if (remainingDuration >= 0) {
+    progressBarColor = 'var(--warning-500)';
+  } else {
+    progressBarColor = 'var(--danger-500)';
+  }
+
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -180,12 +189,7 @@ function TimeMap({ creationDate, expirationDate }) {
             animated
             now={progress}
             style={{
-              backgroundColor:
-                remainingDuration >= 168
-                  ? 'var(--success-600)'
-                  : remainingDuration >= 0
-                    ? 'var(--warning-500)'
-                    : 'var(--danger-500)',
+              backgroundColor: progressBarColor,
             }}
           />
         </ProgressBar>

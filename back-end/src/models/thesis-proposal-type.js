@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const ThesisProposalType = sequelize.define(
-    'thesi-proposal-type',
+    'thesis-proposal-type',
     {
       thesis_proposal_id: {
         type: DataTypes.INTEGER,

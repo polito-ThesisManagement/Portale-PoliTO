@@ -7,8 +7,7 @@ export const getSystemTheme = () => {
   return 'light';
 };
 
-export const getLogo = (logoDark, logoLight) => {
-  // eslint-disable-next-line
+export const useLogo = (logoDark, logoLight) => {
   const { theme } = useContext(ThemeContext);
   if (theme === 'auto') return getSystemTheme() === 'dark' ? logoLight : logoDark;
   return theme === 'dark' ? logoLight : logoDark;

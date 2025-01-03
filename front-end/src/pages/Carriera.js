@@ -52,7 +52,7 @@ export default function Carriera() {
           <BaseCard
             icon={<HiLightBulb size="30" className="card-icon" />}
             service={t('carriera.proposte_di_tesi.title')}
-            description={t('carriera.proposte_di_tesi.description')}
+            description={t('carriera.proposte_di_tesi.section_description')}
             servicePath={'/carriera/proposte_di_tesi'}
           />
         </Row>

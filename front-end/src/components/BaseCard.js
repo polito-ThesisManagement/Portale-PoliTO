@@ -4,6 +4,7 @@ import { Button, Col, Container } from 'react-bootstrap';
 import { Star, StarFill } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
 import { PiUserListFill } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 
@@ -32,7 +33,6 @@ export default function BaseCard(props) {
       const service = props.service;
       const path = props.servicePath;
       const obj = { service, path };
-      console.log(obj);
       const favorite = JSON.stringify(obj);
       setFavorites([...favorites, favorite]);
     } else {
@@ -64,7 +64,9 @@ export default function BaseCard(props) {
             )}
           </div>
         </div>
-        <div style={{ color: 'var(--text)', marginTop: '12px' }}>{props.description}</div>
+        <div style={{ color: 'var(--text)', marginTop: '12px', fontSize: 'var(--font-size-xs)' }}>
+          {props.description}
+        </div>
         {props.link && props.linkText ? (
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Link
@@ -86,8 +88,11 @@ export default function BaseCard(props) {
             marginRight: '8px',
           }}
         >
-          <Link to={props.servicePath}>
-            <Button className="card-button">{t('Accedi')}</Button>
+          <Link to={props.servicePath} style={{ textDecoration: 'none' }}>
+            <Button className="card-button">
+              <FaArrowUpRightFromSquare className="me-2" />
+              {t('Accedi')}
+            </Button>
           </Link>
         </div>
       </Container>

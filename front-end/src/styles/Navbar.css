@@ -68,11 +68,13 @@
 .dropdown-menu {
   color: var(--primary);
   background-color: var(--surface);
+  border: 1px solid var(--tag-border);
 }
 
 .dropdown-item {
   color: var(--primary);
   background-color: var(--surface);
+  font-family: var(--font-primary);
 }
 
 .dropdown-item:hover {

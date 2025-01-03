@@ -1,7 +1,7 @@
 .custom-card {
   background-color: var(--surface);
   color: var(--primary);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   margin-bottom: 6px;
   padding-left: 16px;
   padding-right: 16px;
@@ -12,47 +12,24 @@
   font-family: var(--font-primary);
 }
 
-/* unused */
-.card-title {
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-lg);
-  padding-left: 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-items: center;
-  word-wrap: break-word;
-  margin-bottom: 8px;
-  width: 100%;
-}
-
 .card-icon {
   margin-right: 10px;
 }
 
-.card-button {
-  height: 40px;
+.card-button,
+.card-button:focus {
   background-color: var(--surface);
   color: var(--primary);
   border-color: var(--primary);
-  padding-top: 6px;
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-  border-radius: 6px;
-  overflow: hidden;
-  text-align: end;
+  font-size: var(--font-size-md);
+  display: flex;
+  align-items: center;
 }
 
-.card-button:hover {
-  border-color: var(--primary);
-  background-color: var(--primary);
-  color: var(--background);
-}
-
-.card-button:active,
-.card-button:focus {
+.card-button:hover,
+.card-button:active {
   border-color: var(--primary) !important;
   background-color: var(--primary) !important;
   color: var(--background) !important;
@@ -80,5 +57,5 @@
 }
 
 .star-fill {
-  color: var(--medium-orange);
+  color: var(--secondary-600);
 }
