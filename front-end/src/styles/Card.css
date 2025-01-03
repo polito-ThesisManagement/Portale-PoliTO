@@ -24,8 +24,8 @@
   font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-md);
-  overflow: hidden;
-  text-align: end;
+  display: flex;
+  align-items: center;
 }
 
 .card-button:hover,
