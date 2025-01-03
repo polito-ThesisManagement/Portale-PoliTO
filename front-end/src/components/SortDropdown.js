@@ -91,7 +91,7 @@ export default function SortDropdown({ sortFields, sorting, onApplySorting, onRe
         {sorting.sortBy !== 'id' && (
           <span
             style={{
-              backgroundColor: 'var(--medium-orange)',
+              backgroundColor: 'var(--secondary-600)',
               color: 'var(--white)',
               borderRadius: '50rem',
               padding: '0px 0.5rem',

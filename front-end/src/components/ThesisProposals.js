@@ -264,7 +264,7 @@ export default function ThesisProposals() {
                 <Accordion.Item eventKey="0">
                   <Accordion.Header>
                     <div className="accordion-title">
-                      <FaFilter /> {t('carriera.proposte_di_tesi.filter')}
+                      <FaFilter className="me-2" /> {t('carriera.proposte_di_tesi.filter')}
                     </div>
                   </Accordion.Header>
                   <Accordion.Body>

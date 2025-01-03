@@ -32,12 +32,6 @@
   display: block;
 }
 
-/* unused */
-.detail {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
-}
-
 .important-detail {
   color: var(--primary);
   font-family: var(--font-primary);
@@ -49,27 +43,6 @@
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-md);
   white-space: pre-wrap;
-}
-
-/* unused */
-.custom-tab {
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-}
-
-.custom-tab .nav-link {
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-  background-color: var(--background);
-  color: var(--primary);
-}
-
-.custom-tab .active {
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-base);
 }
 
 .custom-link {
