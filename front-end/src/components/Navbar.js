@@ -101,7 +101,7 @@ export default function PoliNavbar(props) {
               display: 'inline-block',
               fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-extrabold)',
-              fontSize: 'var(--font-size-xxl)',
+              fontSize: 'var(--font-size-2xl)',
             }}
           >
             {t('navbar.portale_della_didattica')}

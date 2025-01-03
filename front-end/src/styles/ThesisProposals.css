@@ -99,7 +99,7 @@
   --bs-accordion-btn-bg: var(--surface);
   --bs-accordion-btn-focus-box-shadow: none;
   --bs-accordion-active-bg: var(--background);
-  --bs-accordion-inner-border-radius: 8px;
+  --bs-accordion-inner-border-radius: var(--border-radius);
 }
 
 .accordion-title {

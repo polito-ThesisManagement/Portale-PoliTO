@@ -172,7 +172,7 @@ export default function FilterDropdown({
         {filters.length > 0 && (
           <span
             style={{
-              backgroundColor: 'var(--medium-orange)',
+              backgroundColor: 'var(--secondary-600)',
               color: 'var(--white)',
               borderRadius: '50rem',
               padding: '0px 0.5rem',

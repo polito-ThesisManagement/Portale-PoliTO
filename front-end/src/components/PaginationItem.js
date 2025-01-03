@@ -36,7 +36,7 @@ export default function PaginationItem({
               style={{
                 color: 'var(--text)',
                 backgroundColor: 'var(--surface)',
-                borderRadius: '8px',
+                borderRadius: 'var(--border-radius)',
                 lineHeight: '1rem',
                 fontFamily: 'var(--font-family)',
               }}
