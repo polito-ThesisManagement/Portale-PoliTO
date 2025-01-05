@@ -12,7 +12,15 @@ export default function ProposalsNotFound({ resetFilters }) {
   const { t } = useTranslation();
 
   return (
-    <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '2em' }}>
+    <Container
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingBottom: '2em',
+        paddingTop: '1em',
+      }}
+    >
       <div
         className="pol-headline pol-headline--with-bar"
         style={{ fontFamily: 'var(--font-primary)', color: 'var(--primary)' }}

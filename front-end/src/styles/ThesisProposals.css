@@ -1,18 +1,7 @@
 .proposals-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-bottom: 8.675rem;
-}
-
-.proposals-main {
+  margin-bottom: 1rem;
   border-radius: 10px;
-  display: flex;
   background-color: var(--surface);
-  width: 100%;
-  flex-direction: column;
-  flex-grow: 1;
-  padding-bottom: 2%;
 }
 
 .filters-container {

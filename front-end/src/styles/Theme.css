@@ -172,9 +172,6 @@
   --tag-bg: var(--white);
   --tag-hover: var(--background);
   --tag-shadow: var(--placeholder);
-  --type-tag-border: var(--primary-700);
-  --type-tag-bg: var(--background-light);
-  --type-tag-text: var(--primary-700);
   --active-page: var(--primary-300);
   --active-page-border: var(--primary-300);
 
@@ -228,9 +225,6 @@
   --tag-bg: var(--background);
   --tag-hover: var(--surface);
   --tag-shadow: var(--background);
-  --type-tag-border: var(--text);
-  --type-tag-bg: var(--background);
-  --type-tag-text: var(--text);
   --page-bg: var(--background);
   --page-border: var(--text);
   --active-page: var(--primary-200);

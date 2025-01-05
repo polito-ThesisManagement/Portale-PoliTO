@@ -7,6 +7,7 @@ import {
   FaBuildingCircleArrowRight,
   FaBuildingColumns,
   FaCalculator,
+  FaCalendar,
   FaChartBar,
   FaChartColumn,
   FaChartPie,
@@ -38,6 +39,7 @@ import { getSystemTheme } from '../utils/utils';
  *  - "internal": Renders a badge with an internal thesis icon.
  *  - "external": Renders a badge with an external thesis icon.
  *  - "abroad": Renders a badge with an abroad thesis icon.
+ *  - "date": Renders a badge with a calendar icon. Requires a "content".
  *  - "success": Renders a badge with a success icon. Requires a "content".
  *  - "warning": Renders a badge with a warning icon. Requires a "content".
  *  - "error": Renders a badge with an error icon. Requires a "content".
@@ -61,7 +63,18 @@ import { getSystemTheme } from '../utils/utils';
  * Regardless, they'll be always showed in UPPERCASE format. Beware that you must maintain spaces between words!
  */
 
-const validVariants = ['teacher', 'keyword', 'internal', 'external', 'abroad', 'type', 'warning', 'success', 'error'];
+const validVariants = [
+  'teacher',
+  'keyword',
+  'internal',
+  'external',
+  'abroad',
+  'date',
+  'type',
+  'warning',
+  'success',
+  'error',
+];
 const validTypeContent = [
   'analisi dati',
   'data analysis',
@@ -108,76 +121,78 @@ export default function Badge({ variant, content }) {
   const renderIcon = contentItem => {
     switch (variant) {
       case 'teacher':
-        return <FaUser size={15} />;
+        return <FaUser size={14} className="me-1" />;
       case 'keyword':
-        return <FaKey size={15} />;
+        return <FaKey size={14} className="me-1" />;
       case 'internal':
-        return <FaBuildingColumns size={15} />;
+        return <FaBuildingColumns size={14} className="me-1" />;
       case 'external':
-        return <FaBuildingCircleArrowRight size={15} />;
+        return <FaBuildingCircleArrowRight size={14} className="me-1" />;
       case 'abroad':
-        return <FaEarthAmericas size={15} />;
+        return <FaEarthAmericas size={14} className="me-1" />;
+      case 'date':
+        return <FaCalendar size={14} className="me-1" />;
       case 'success':
-        return <FaCircleCheck size={15} />;
+        return <FaCircleCheck size={14} className="me-1" />;
       case 'warning':
-        return <FaCircleExclamation size={15} />;
+        return <FaCircleExclamation size={14} className="me-1" />;
       case 'error':
-        return <FaCircleXmark size={15} />;
+        return <FaCircleXmark size={14} className="me-1" />;
       case 'type':
         switch (contentItem.toLowerCase()) {
           // analisi dati
           case 'analisi dati':
           case 'data analysis':
-            return <FaChartColumn size={15} />;
+            return <FaChartColumn size={14} className="me-1" />;
           // analitica
           case 'analitica':
           case 'analytical':
-            return <FaChartBar size={15} />;
+            return <FaChartBar size={14} className="me-1" />;
           // applicativa
           case 'applicativa':
           case 'applied':
-            return <FaWhmcs size={15} />;
+            return <FaWhmcs size={14} className="me-1" />;
           // compilativa
           case 'compilativa':
           case 'bibliographic':
-            return <FaPenToSquare size={15} />;
+            return <FaPenToSquare size={14} className="me-1" />;
           // computazionale
           case 'computazionale':
           case 'computational':
-            return <FaBrain size={15} />;
+            return <FaBrain size={14} className="me-1" />;
           // progettuale
           case 'progettuale':
           case 'design':
-            return <FaUncharted size={15} />;
+            return <FaUncharted size={14} className="me-1" />;
           // ricerca
           case 'ricerca':
           case 'research':
-            return <FaMagnifyingGlassChart size={15} />;
+            return <FaMagnifyingGlassChart size={14} className="me-1" />;
           // simulativa
           case 'simulativa':
           case 'simulation':
-            return <FaChartPie size={15} />;
+            return <FaChartPie size={14} className="me-1" />;
           // sperimentale
           case 'sperimentale':
           case 'experimental':
-            return <FaFlask size={15} />;
+            return <FaFlask size={14} className="me-1" />;
           // sviluppo
           case 'sviluppo':
           case 'development':
-            return <FaCode size={15} />;
+            return <FaCode size={14} className="me-1" />;
           // teorica
           case 'teorica':
           case 'theoretical':
-            return <FaBook size={15} />;
+            return <FaBook size={14} className="me-1" />;
           // numerica
           case 'numerica':
           case 'numerical':
-            return <FaCalculator size={15} />;
+            return <FaCalculator size={14} className="me-1" />;
           default:
-            return <FaCircleXmark size={15} />;
+            return <FaCircleXmark size={14} className="me-1" />;
         }
       default:
-        return <FaCircleXmark size={15} />;
+        return <FaCircleXmark size={14} className="me-1" />;
     }
   };
 
@@ -210,7 +225,7 @@ export default function Badge({ variant, content }) {
       <div className="badge-container">
         <div className={`badge error_${appliedTheme}`}>
           <div className="badge-icon">
-            <FaCircleXmark size={15} />
+            <FaCircleXmark size={14} />
           </div>
           <div className="badge-text">{t('carriera.proposta_di_tesi.badge_errato')}</div>
         </div>

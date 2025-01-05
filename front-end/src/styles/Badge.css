@@ -1,14 +1,11 @@
 .badge {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  padding: 4px 6px;
-  gap: 6px;
+  display: flex;
+  padding: 4px;
   border: 1px solid;
   border-radius: 4px;
   font-family: var(--font-primary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
 }
 
@@ -19,7 +16,9 @@
 }
 
 .badge-icon {
+  display: flex;
   flex-shrink: 0;
+  width: 16px;
 }
 
 .badge-text {
@@ -35,10 +34,24 @@
   border-color: var(--ocean-600);
 }
 
+.teacher_light:hover {
+  color: var(--ocean-700);
+  background-color: var(--ocean-100);
+  border-color: var(--ocean-600);
+  cursor: pointer;
+}
+
 .teacher_dark {
   color: var(--ocean-800);
   background-color: var(--ocean-100);
   border-color: var(--ocean-600);
+}
+
+.teacher_dark:hover {
+  color: var(--ocean-800);
+  background-color: var(--ocean-200);
+  border-color: var(--ocean-600);
+  cursor: pointer;
 }
 
 .keyword_light {
@@ -47,10 +60,24 @@
   border-color: var(--text-600);
 }
 
+.keyword_light:hover {
+  color: var(--text-700);
+  background-color: var(--text-200);
+  border-color: var(--text-600);
+  cursor: pointer;
+}
+
 .keyword_dark {
   color: var(--text-800);
   background-color: var(--text-200);
   border-color: var(--text-600);
+}
+
+.keyword_dark:hover {
+  color: var(--text-800);
+  background-color: var(--text-300);
+  border-color: var(--text-600);
+  cursor: pointer;
 }
 
 .internal_light {
@@ -59,10 +86,24 @@
   border-color: var(--primary-600);
 }
 
+.internal_light:hover {
+  color: var(--primary-700);
+  background-color: var(--primary-100);
+  border-color: var(--primary-600);
+  cursor: pointer;
+}
+
 .internal_dark {
   color: var(--primary-800);
   background-color: var(--primary-100);
   border-color: var(--primary-600);
+}
+
+.internal_dark:hover {
+  color: var(--primary-800);
+  background-color: var(--primary-200);
+  border-color: var(--primary-600);
+  cursor: pointer;
 }
 
 .external_light {
@@ -71,10 +112,24 @@
   border-color: var(--candypink-600);
 }
 
+.external_light:hover {
+  color: var(--candypink-700);
+  background-color: var(--candypink-100);
+  border-color: var(--candypink-600);
+  cursor: pointer;
+}
+
 .external_dark {
   color: var(--candypink-800);
   background-color: var(--candypink-100);
   border-color: var(--candypink-600);
+}
+
+.external_dark:hover {
+  color: var(--candypink-800);
+  background-color: var(--candypink-200);
+  border-color: var(--candypink-600);
+  cursor: pointer;
 }
 
 .abroad_light {
@@ -83,10 +138,24 @@
   border-color: var(--purple-600);
 }
 
+.abroad_light:hover {
+  color: var(--purple-700);
+  background-color: var(--purple-100);
+  border-color: var(--purple-600);
+  cursor: pointer;
+}
+
 .abroad_dark {
   color: var(--purple-800);
   background-color: var(--purple-100);
   border-color: var(--purple-600);
+}
+
+.abroad_dark:hover {
+  color: var(--purple-800);
+  background-color: var(--purple-200);
+  border-color: var(--purple-600);
+  cursor: pointer;
 }
 
 .type_light {
@@ -95,10 +164,31 @@
   border-color: var(--steel-600);
 }
 
+.type_light:hover {
+  color: var(--steel-700);
+  background-color: var(--steel-100);
+  border-color: var(--steel-600);
+  cursor: pointer;
+}
+
 .type_dark {
   color: var(--steel-800);
   background-color: var(--steel-100);
   border-color: var(--steel-600);
+}
+
+.type_dark:hover {
+  color: var(--steel-800);
+  background-color: var(--steel-200);
+  border-color: var(--steel-600);
+  cursor: pointer;
+}
+
+.date_light,
+.date-dark {
+  color: var(--primary);
+  background-color: var(--surface);
+  border-color: var(--primary);
 }
 
 .success_light {
@@ -124,6 +214,7 @@
   background-color: var(--warning-200);
   border-color: var(--warning-600);
 }
+
 .error_light {
   color: var(--error-700);
   background-color: var(--error-50);

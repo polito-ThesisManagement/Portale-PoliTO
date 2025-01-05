@@ -231,133 +231,127 @@ export default function ThesisProposals() {
     <>
       <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
       <div className="proposals-container">
-        <main className="proposals-main">
-          <section>
-            <div className="filters-container">
-              <div className="simple-filters-container">
-                <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
-                <Form
-                  className="d-flex w-100"
-                  style={{ maxWidth: '380px', zIndex: '1' }}
-                  onSubmit={e => e.preventDefault()}
-                >
-                  <InputGroup className="flex-nowrap w-100">
-                    <Form.Control
-                      className="truncated"
-                      type="search"
-                      placeholder={t('carriera.proposte_di_tesi.search')}
-                      aria-label="search_proposals"
-                      style={{
-                        height: '38px',
-                        backgroundColor: 'var(--background)',
-                        color: 'var(--primary)',
-                        borderRadius: '10px',
-                      }}
-                      value={searchQuery}
-                      onChange={handleSearchbarChange}
-                    />
-                    <Search className="search-icon" />
-                  </InputGroup>
-                </Form>
-              </div>
-              <Accordion activeKey={accordionOpen ? '0' : null} onSelect={() => setAccordionOpen(!accordionOpen)}>
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>
-                    <div className="accordion-title">
-                      <FaFilter className="me-2" /> {t('carriera.proposte_di_tesi.filter')}
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <div className="filters-section">
-                      <FilterGroup
-                        key={`${filters.isInternal}-${filters.isAbroad}`}
-                        isAbroad={filters.isAbroad}
-                        isInternal={filters.isInternal}
-                        handleCheckChange={value => applyFilters('isAbroad', value)}
-                        handleRadioChange={value => applyFilters('isInternal', value)}
-                      />
-                      <FilterDropdown
-                        api={API.getThesisProposalsKeywords}
-                        filters={filters.keyword}
-                        icon={<FaKey style={{ width: '20px' }} />}
-                        itemType={'keyword'}
-                        onApplyFilters={applyFilters}
-                        onResetFilters={() => applyFilters('keyword', [])}
-                        selectedItems={filters.keyword}
-                      />
-                      <FilterDropdown
-                        api={API.getThesisProposalsTeachers}
-                        filters={filters.teacher}
-                        icon={<FaUser style={{ width: '20px' }} />}
-                        itemType={'teacher'}
-                        onApplyFilters={applyFilters}
-                        onResetFilters={() => applyFilters('teacher', [])}
-                        selectedItems={filters.teacher}
-                      />
-                      <FilterDropdown
-                        api={API.getThesisProposalsTypes}
-                        filters={filters.type}
-                        icon={<FaTags style={{ width: '20px' }} />}
-                        itemType={'type'}
-                        onApplyFilters={applyFilters}
-                        onResetFilters={() => applyFilters('type', [])}
-                        selectedItems={filters.type}
-                      />
-                      <SortDropdown
-                        sortFields={sortFields}
-                        sorting={sorting}
-                        onApplySorting={applySorting}
-                        onResetSorting={onResetSorting}
-                      />
-                    </div>
-                    <hr className={`hr-${appliedTheme}`} />
-                    <div className="reset-button-container">
-                      <ResetButton
-                        resetFilters={() => {
-                          setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
-                          setSearchQuery('');
-                        }}
-                      />
-                    </div>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-          </section>
-          {loading ? (
-            <LoadingModal show={loading} onHide={() => setLoading(false)} />
-          ) : (
-            <>
-              {pageProposals.length > 0 ? (
-                <>
-                  <section className="list-section">
-                    <div>
-                      {pageProposals.map(thesis => {
-                        return <ThesisItem key={thesis.id} {...thesis} />;
-                      })}
-                    </div>
-                  </section>
-                  <PaginationItem
-                    count={count}
-                    currentPage={currentPage}
-                    handleProposalsPerPageChange={handleProposalsPerPageChange}
-                    handlePageChange={handlePageChange}
-                    pageNumbers={pageNumbers}
-                    proposalsPerPage={proposalsPerPage}
-                    totalPages={totalPages}
-                  />
-                </>
-              ) : (
-                <ProposalsNotFound
-                  resetFilters={() => {
-                    setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
-                    setSearchQuery('');
+        <div className="filters-container">
+          <div className="simple-filters-container">
+            <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
+            <Form
+              className="d-flex w-100"
+              style={{ maxWidth: '380px', zIndex: '1' }}
+              onSubmit={e => e.preventDefault()}
+            >
+              <InputGroup className="flex-nowrap w-100">
+                <Form.Control
+                  className="truncated"
+                  type="search"
+                  placeholder={t('carriera.proposte_di_tesi.search')}
+                  aria-label="search_proposals"
+                  style={{
+                    height: '38px',
+                    backgroundColor: 'var(--background)',
+                    color: 'var(--primary)',
+                    borderRadius: '10px',
                   }}
+                  value={searchQuery}
+                  onChange={handleSearchbarChange}
                 />
-              )}
-            </>
-          )}
-        </main>
+                <Search className="search-icon" />
+              </InputGroup>
+            </Form>
+          </div>
+          <Accordion activeKey={accordionOpen ? '0' : null} onSelect={() => setAccordionOpen(!accordionOpen)}>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                <div className="accordion-title">
+                  <FaFilter className="me-2" /> {t('carriera.proposte_di_tesi.filter')}
+                </div>
+              </Accordion.Header>
+              <Accordion.Body>
+                <div className="filters-section">
+                  <FilterGroup
+                    key={`${filters.isInternal}-${filters.isAbroad}`}
+                    isAbroad={filters.isAbroad}
+                    isInternal={filters.isInternal}
+                    handleCheckChange={value => applyFilters('isAbroad', value)}
+                    handleRadioChange={value => applyFilters('isInternal', value)}
+                  />
+                  <FilterDropdown
+                    api={API.getThesisProposalsKeywords}
+                    filters={filters.keyword}
+                    icon={<FaKey style={{ width: '20px' }} />}
+                    itemType={'keyword'}
+                    onApplyFilters={applyFilters}
+                    onResetFilters={() => applyFilters('keyword', [])}
+                    selectedItems={filters.keyword}
+                  />
+                  <FilterDropdown
+                    api={API.getThesisProposalsTeachers}
+                    filters={filters.teacher}
+                    icon={<FaUser style={{ width: '20px' }} />}
+                    itemType={'teacher'}
+                    onApplyFilters={applyFilters}
+                    onResetFilters={() => applyFilters('teacher', [])}
+                    selectedItems={filters.teacher}
+                  />
+                  <FilterDropdown
+                    api={API.getThesisProposalsTypes}
+                    filters={filters.type}
+                    icon={<FaTags style={{ width: '20px' }} />}
+                    itemType={'type'}
+                    onApplyFilters={applyFilters}
+                    onResetFilters={() => applyFilters('type', [])}
+                    selectedItems={filters.type}
+                  />
+                  <SortDropdown
+                    sortFields={sortFields}
+                    sorting={sorting}
+                    onApplySorting={applySorting}
+                    onResetSorting={onResetSorting}
+                  />
+                </div>
+                <hr className={`hr-${appliedTheme}`} />
+                <div className="reset-button-container">
+                  <ResetButton
+                    resetFilters={() => {
+                      setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
+                      setSearchQuery('');
+                    }}
+                  />
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </div>
+        {loading ? (
+          <LoadingModal show={loading} onHide={() => setLoading(false)} />
+        ) : (
+          <>
+            {pageProposals.length > 0 ? (
+              <>
+                <div className="list-section">
+                  {pageProposals.map(thesis => {
+                    return <ThesisItem key={thesis.id} {...thesis} />;
+                  })}
+                </div>
+                <PaginationItem
+                  count={count}
+                  currentPage={currentPage}
+                  handleProposalsPerPageChange={handleProposalsPerPageChange}
+                  handlePageChange={handlePageChange}
+                  pageNumbers={pageNumbers}
+                  proposalsPerPage={proposalsPerPage}
+                  totalPages={totalPages}
+                />
+              </>
+            ) : (
+              <ProposalsNotFound
+                resetFilters={() => {
+                  setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
+                  setSearchQuery('');
+                }}
+              />
+            )}
+          </>
+        )}
       </div>
     </>
   );
