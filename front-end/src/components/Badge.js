@@ -267,34 +267,39 @@ export default function Badge({ variant, content, filters, applyFilters }) {
     );
   }
 
-  return (
-    <div className="badge-container">
-      {(variant === 'internal' || variant === 'external' || variant === 'abroad') && applyFilters ? (
-        <Button
-          className={`badge ${variant}_${appliedTheme} ${applyFilters ? 'clickable' : ''}`}
-          onClick={() => {
-            if (variant === 'internal') {
-              applyFilters('isInternal', 1);
-            } else if (variant === 'external') {
-              applyFilters('isInternal', 2);
-            } else {
-              applyFilters('isAbroad', true);
-            }
-          }}
-        >
-          {renderIcon(content)}
-          {renderTranslatedContent()}
-        </Button>
-      ) : (variant === 'internal' || variant === 'external' || variant === 'abroad') && !applyFilters ? (
-        <div className={`badge ${variant}_${appliedTheme}`}>
-          {renderIcon(content)}
-          {renderTranslatedContent()}
-        </div>
-      ) : (
-        renderContent()
-      )}
-    </div>
-  );
+  const renderBadge = () => {
+    if (variant === 'internal' || variant === 'external' || variant === 'abroad') {
+      if (applyFilters) {
+        return (
+          <Button
+            className={`badge ${variant}_${appliedTheme} ${applyFilters ? 'clickable' : ''}`}
+            onClick={() => {
+              if (variant === 'internal') {
+                applyFilters('isInternal', 1);
+              } else if (variant === 'external') {
+                applyFilters('isInternal', 2);
+              } else {
+                applyFilters('isAbroad', true);
+              }
+            }}
+          >
+            {renderIcon(content)}
+            {renderTranslatedContent()}
+          </Button>
+        );
+      } else {
+        return (
+          <div className={`badge ${variant}_${appliedTheme}`}>
+            {renderIcon(content)}
+            {renderTranslatedContent()}
+          </div>
+        );
+      }
+    }
+    return renderContent();
+  };
+
+  return <div className="badge-container">{renderBadge()}</div>;
 }
 
 Badge.propTypes = {

@@ -264,7 +264,7 @@ export default function ThesisProposals() {
                 <div className="accordion-title">
                   <FaFilter className="me-2" /> {t('carriera.proposte_di_tesi.filter')}
                   {(filters.isInternal != 0 ||
-                    filters.isAbroad != false ||
+                    filters.isAbroad ||
                     filters.keyword.length > 0 ||
                     filters.type.length > 0 ||
                     filters.teacher.length > 0) && (
@@ -284,7 +284,7 @@ export default function ThesisProposals() {
                         filters.type.length +
                         filters.teacher.length +
                         (filters.isInternal != 0 ? 1 : 0) +
-                        (filters.isAbroad != false ? 1 : 0)}
+                        (filters.isAbroad ? 1 : 0)}
                     </span>
                   )}
                 </div>
