@@ -12,8 +12,8 @@ describe('Thesis proposal details page', () => {
     cy.get('a[href="/carriera/proposte_di_tesi"]').should('be.visible').click();
 
     // Step 2: Click on the first thesis proposal
-    cy.get('.list-section .thesis-article').should('have.length.greaterThan', 0);
-    cy.get('.list-section .thesis-article .btn-primary').first().click();
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+    cy.get('.list-section .thesis-overview .show-more-button').first().click();
 
     // Step 3: Check the page Title
     cy.get('.section-title').should('contain', 'Dettagli proposta di tesi');
@@ -85,8 +85,8 @@ describe('Thesis proposal details page - responsiveness', () => {
     cy.get('a[href="/carriera/proposte_di_tesi"]').click();
 
     // Step 3: Click on the first thesis proposal
-    cy.get('.list-section .thesis-article').should('have.length.greaterThan', 0);
-    cy.get('.list-section .thesis-article .btn-primary').first().click();
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+    cy.get('.list-section .thesis-overview .show-more-button').first().click();
 
     // Step 4: Check the page Title
     cy.get('.section-title').should('contain', 'Dettagli proposta di tesi');
