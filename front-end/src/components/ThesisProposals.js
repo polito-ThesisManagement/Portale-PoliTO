@@ -263,6 +263,30 @@ export default function ThesisProposals() {
               <Accordion.Header>
                 <div className="accordion-title">
                   <FaFilter className="me-2" /> {t('carriera.proposte_di_tesi.filter')}
+                  {(filters.isInternal != 0 ||
+                    filters.isAbroad != false ||
+                    filters.keyword.length > 0 ||
+                    filters.type.length > 0 ||
+                    filters.teacher.length > 0) && (
+                    <span
+                      style={{
+                        backgroundColor: 'var(--secondary-600)',
+                        color: 'var(--white)',
+                        borderRadius: '50rem',
+                        padding: '0.2rem 0.5rem',
+                        marginLeft: '0.5rem',
+                        marginRight: '0.5rem',
+                        fontSize: 'var(--font-size-sm)',
+                        fontWeight: 'var(--font-weight-regular)',
+                      }}
+                    >
+                      {filters.keyword.length +
+                        filters.type.length +
+                        filters.teacher.length +
+                        (filters.isInternal != 0 ? 1 : 0) +
+                        (filters.isAbroad != false ? 1 : 0)}
+                    </span>
+                  )}
                 </div>
               </Accordion.Header>
               <Accordion.Body>
@@ -329,7 +353,7 @@ export default function ThesisProposals() {
               <>
                 <div className="list-section">
                   {pageProposals.map(thesis => {
-                    return <ThesisItem key={thesis.id} {...thesis} />;
+                    return <ThesisItem key={thesis.id} {...thesis} filters={filters} applyFilters={applyFilters} />;
                   })}
                 </div>
                 <PaginationItem

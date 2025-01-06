@@ -18,6 +18,7 @@ function formatDate(date) {
   return dateObj.toLocaleDateString('it-IT', { year: 'numeric', month: 'numeric', day: 'numeric' });
 }
 function ThesisItem(props) {
+  const teachers = [props.supervisor, ...props.internalCoSupervisors];
   return (
     <div className="thesis-overview">
       <ThesisHeader
@@ -26,32 +27,53 @@ function ThesisItem(props) {
         isInternal={props.isInternal}
         isAbroad={props.isAbroad}
         keywords={props.keywords}
+        filters={props.filters}
+        applyFilters={props.applyFilters}
       />
       <p className="thesis-description">{props.description}</p>
       <div className="thesis-professor-tags">
-        <ThesisProfessorTags supervisor={props.supervisor} internalCoSupervisors={props.internalCoSupervisors} />
+        <Badge
+          variant={'teacher'}
+          content={teachers.map(teacher => ({ content: teacher.firstName + ' ' + teacher.lastName, id: teacher.id }))}
+          filters={props.filters}
+          applyFilters={props.applyFilters}
+        />
       </div>
       <ThesisFooter id={props.id} creationDate={props.creationDate} expirationDate={props.expirationDate} />
     </div>
   );
 }
 
-const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords }) => {
+const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords, filters, applyFilters }) => {
   return (
     <>
       <div className="thesis-header">
         <h3 className="thesis-topic">{topic}</h3>
         <div className="thesis-position-tags">
-          {isInternal ? <Badge variant={'internal'} /> : <Badge variant={'external'} />}
-          {isAbroad && <Badge variant={'abroad'} />}
+          {isInternal ? (
+            <Badge variant={'internal'} applyFilters={applyFilters} />
+          ) : (
+            <Badge variant={'external'} applyFilters={applyFilters} />
+          )}
+          {isAbroad && <Badge variant={'abroad'} applyFilters={applyFilters} />}
         </div>
       </div>
       {types.length > 0 && (
         <div className="thesis-type-tags">
-          <Badge variant="type" content={types.map(item => item.type)} />
+          <Badge
+            variant="type"
+            content={types.map(type => ({ content: type.type, id: type.id }))}
+            filters={filters}
+            applyFilters={applyFilters}
+          />
         </div>
       )}
-      <Badge variant="keyword" content={keywords.map(item => item.keyword)} />
+      <Badge
+        variant="keyword"
+        content={keywords.map(keyword => ({ content: keyword.keyword, id: keyword.id }))}
+        filters={filters}
+        applyFilters={applyFilters}
+      />
     </>
   );
 };
@@ -67,11 +89,6 @@ const ShowMore = ({ id }) => {
       </Button>
     </Link>
   );
-};
-
-const ThesisProfessorTags = ({ supervisor, internalCoSupervisors }) => {
-  const teachers = [supervisor, ...internalCoSupervisors];
-  return <Badge variant={'teacher'} content={teachers.map(teacher => teacher.firstName + ' ' + teacher.lastName)} />;
 };
 
 const ThesisFooter = ({ id, creationDate, expirationDate }) => {
@@ -103,27 +120,14 @@ ThesisHeader.propTypes = {
       type: PropTypes.string.isRequired,
     }),
   ),
+  filters: PropTypes.object,
+  applyFilters: PropTypes.func,
 };
 
 ThesisFooter.propTypes = {
   id: PropTypes.number.isRequired,
   creationDate: PropTypes.string.isRequired,
   expirationDate: PropTypes.string.isRequired,
-};
-
-ThesisProfessorTags.propTypes = {
-  supervisor: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-  }).isRequired,
-  internalCoSupervisors: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
-    }),
-  ),
 };
 
 ShowMore.propTypes = {
@@ -162,6 +166,8 @@ ThesisItem.propTypes = {
       keyword: PropTypes.string.isRequired,
     }),
   ),
+  filters: PropTypes.object,
+  applyFilters: PropTypes.func,
 };
 
-export { ThesisItem, ThesisHeader, ThesisFooter, ThesisProfessorTags, ShowMore };
+export { ThesisItem, ThesisHeader, ThesisFooter, ShowMore };

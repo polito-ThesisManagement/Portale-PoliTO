@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 
+import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import {
   FaBook,
@@ -56,8 +57,10 @@ import { getSystemTheme } from '../utils/utils';
  *    - "SVILUPPO" or "DEVELOPMENT"
  *    - "TEORICA" or "THEORETICAL"
  *    - "NUMERICA" or "NUMERICAL"
- * @param {string|array<string>} content - If available, populate the content of the badge. It could be a single string or an array of strings.
- * If you provide an array, the component will automatically render a tag for every string item.
+ * @param {object|array<object>!string|array<string>} content - If available, populate the content of the badge. It could be a single object (with 'content' and 'id' attributes) or an array of objects, a single string or an array of strings.
+ * If you provide an array, the component will automatically render a tag for every item.
+ * @param {object} filters - The filters object. It's required only if the badge is a filter.
+ * @param {function} applyFilters - The function to apply filters. It's required only if the badge is a filter (e.g. a teacher or a keyword filter).
  * @returns {JSX.Element} - The badge component.
  * @note The content of variant="type" badges can be provided in UPPERCASE or lowercase or a mix of them.
  * Regardless, they'll be always showed in UPPERCASE format. Beware that you must maintain spaces between words!
@@ -102,7 +105,7 @@ const validTypeContent = [
   'numerical',
 ];
 
-export default function Badge({ variant, content }) {
+export default function Badge({ variant, content, filters, applyFilters }) {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
@@ -110,12 +113,35 @@ export default function Badge({ variant, content }) {
   const renderContent = () => {
     const contentArray = Array.isArray(content) ? content : [content];
 
-    return contentArray.map((item, index) => (
-      <div key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
-        <div className="badge-icon">{renderIcon(item)}</div>
-        <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
-      </div>
-    ));
+    if (variant === 'date' || variant === 'success' || variant === 'warning' || variant === 'error' || !applyFilters) {
+      return contentArray.map((item, index) => (
+        <div key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
+          <div className="badge-icon">{renderIcon(item)}</div>
+          <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
+        </div>
+      ));
+    } else {
+      return contentArray.map((item, index) => (
+        <Button
+          key={`${item.content}-${index}`}
+          className={`badge ${variant}_${appliedTheme} ${applyFilters ? 'clickable' : ''}`}
+          onClick={() => {
+            if (applyFilters) {
+              if (variant === 'type') {
+                applyFilters('type', [...filters.type, item.id]);
+              } else if (variant === 'keyword') {
+                applyFilters('keyword', [...filters.keyword, item.id]);
+              } else if (variant === 'teacher') {
+                applyFilters('teacher', [...filters.teacher, item.id]);
+              }
+            }
+          }}
+        >
+          <div className="badge-icon">{renderIcon(item.content)}</div>
+          <div className="badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</div>
+        </Button>
+      ));
+    }
   };
 
   const renderIcon = contentItem => {
@@ -211,9 +237,17 @@ export default function Badge({ variant, content }) {
 
   const isValidTypeContent = content => {
     if (Array.isArray(content)) {
-      return content.every(item => validTypeContent.includes(item.toLowerCase()));
+      if (applyFilters) {
+        return content.every(item => validTypeContent.includes(item.content.toLowerCase()));
+      } else {
+        return content.every(item => validTypeContent.includes(item.toLowerCase()));
+      }
     }
-    return validTypeContent.includes(content.toLowerCase());
+    if (applyFilters) {
+      return validTypeContent.includes(content.content.toLowerCase());
+    } else {
+      return validTypeContent.includes(content.toLowerCase());
+    }
   };
 
   if (
@@ -235,7 +269,23 @@ export default function Badge({ variant, content }) {
 
   return (
     <div className="badge-container">
-      {variant === 'internal' || variant === 'external' || variant === 'abroad' ? (
+      {(variant === 'internal' || variant === 'external' || variant === 'abroad') && applyFilters ? (
+        <Button
+          className={`badge ${variant}_${appliedTheme} ${applyFilters ? 'clickable' : ''}`}
+          onClick={() => {
+            if (variant === 'internal') {
+              applyFilters('isInternal', 1);
+            } else if (variant === 'external') {
+              applyFilters('isInternal', 2);
+            } else {
+              applyFilters('isAbroad', true);
+            }
+          }}
+        >
+          {renderIcon(content)}
+          {renderTranslatedContent()}
+        </Button>
+      ) : (variant === 'internal' || variant === 'external' || variant === 'abroad') && !applyFilters ? (
         <div className={`badge ${variant}_${appliedTheme}`}>
           {renderIcon(content)}
           {renderTranslatedContent()}
@@ -249,5 +299,12 @@ export default function Badge({ variant, content }) {
 
 Badge.propTypes = {
   variant: PropTypes.string.isRequired,
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  content: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.object),
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+  filters: PropTypes.object,
+  applyFilters: PropTypes.func,
 };
