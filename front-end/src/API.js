@@ -121,17 +121,17 @@ const buildParams = (lang, page, limit, filters, search, sorting) => {
   }
   if (filters.keyword.length > 0) {
     filters.keyword.forEach(keyword => {
-      params[`keywordId`] = params[`keywordId`] ? [...params[`keywordId`], keyword] : [keyword];
+      params[`keywordId`] = params[`keywordId`] ? [...params[`keywordId`], keyword.id] : [keyword.id];
     });
   }
   if (filters.teacher.length > 0) {
     filters.teacher.forEach(teacher => {
-      params[`teacherId`] = params[`teacherId`] ? [...params[`teacherId`], teacher] : [teacher];
+      params[`teacherId`] = params[`teacherId`] ? [...params[`teacherId`], teacher.id] : [teacher.id];
     });
   }
   if (filters.type.length > 0) {
     filters.type.forEach(type => {
-      params[`typeId`] = params[`typeId`] ? [...params[`typeId`], type] : [type];
+      params[`typeId`] = params[`typeId`] ? [...params[`typeId`], type.id] : [type.id];
     });
   }
   if (search) {

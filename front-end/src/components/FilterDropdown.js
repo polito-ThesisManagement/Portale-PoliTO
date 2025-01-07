@@ -42,9 +42,14 @@ export default function FilterDropdown({
     }
   };
 
-  const handleItemSelect = id => {
+  const handleItemSelect = item => {
     setSelectedItems(prevSelected =>
-      prevSelected.includes(id) ? prevSelected.filter(k => k !== id) : [...prevSelected, id],
+      prevSelected.includes(item.id)
+        ? prevSelected.filter(i => i.id !== item.id)
+        : [
+            ...prevSelected,
+            { id: item.id, content: itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType] },
+          ],
     );
   };
 
@@ -117,7 +122,7 @@ export default function FilterDropdown({
           key={item.id}
           eventKey={getEventKey(item)}
           className="custom-dropdown-item"
-          onClick={() => handleItemSelect(item.id)}
+          onClick={() => handleItemSelect(item)}
         >
           <div className="d-flex justify-content-between align-items-center">
             <Form.Check
@@ -129,7 +134,7 @@ export default function FilterDropdown({
                   content={itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType]}
                 />
               }
-              checked={selectedItems.includes(item.id)}
+              checked={selectedItems.map(i => i.id).includes(item.id)}
               readOnly
               style={{
                 whiteSpace: 'nowrap',

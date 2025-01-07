@@ -16,6 +16,7 @@ import '../styles/Theme.css';
 import '../styles/ThesisProposals.css';
 import '../styles/Utilities.css';
 import { getSystemTheme } from '../utils/utils';
+import Badge from './Badge';
 import FilterDropdown from './FilterDropdown';
 import FilterGroup from './FilterGroup';
 import LoadingModal from './LoadingModal';
@@ -299,6 +300,15 @@ export default function ThesisProposals() {
                     handleRadioChange={value => applyFilters('isInternal', value)}
                   />
                   <FilterDropdown
+                    api={API.getThesisProposalsTypes}
+                    filters={filters.type}
+                    icon={<FaTags style={{ width: '20px' }} />}
+                    itemType={'type'}
+                    onApplyFilters={applyFilters}
+                    onResetFilters={() => applyFilters('type', [])}
+                    selectedItems={filters.type}
+                  />
+                  <FilterDropdown
                     api={API.getThesisProposalsKeywords}
                     filters={filters.keyword}
                     icon={<FaKey style={{ width: '20px' }} />}
@@ -316,15 +326,6 @@ export default function ThesisProposals() {
                     onResetFilters={() => applyFilters('teacher', [])}
                     selectedItems={filters.teacher}
                   />
-                  <FilterDropdown
-                    api={API.getThesisProposalsTypes}
-                    filters={filters.type}
-                    icon={<FaTags style={{ width: '20px' }} />}
-                    itemType={'type'}
-                    onApplyFilters={applyFilters}
-                    onResetFilters={() => applyFilters('type', [])}
-                    selectedItems={filters.type}
-                  />
                   <SortDropdown
                     sortFields={sortFields}
                     sorting={sorting}
@@ -333,13 +334,56 @@ export default function ThesisProposals() {
                   />
                 </div>
                 <hr className={`hr-${appliedTheme}`} />
-                <div className="reset-button-container">
-                  <ResetButton
-                    resetFilters={() => {
-                      setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
-                      setSearchQuery('');
-                    }}
-                  />
+                <div className="applied-filters-container">
+                  <div className="badge-group">
+                    {(filters.isInternal != 0 ||
+                      filters.isAbroad ||
+                      filters.keyword.length > 0 ||
+                      filters.teacher.length > 0 ||
+                      filters.type.length > 0) && (
+                      <span className="applied-filters-label">{t('carriera.proposte_di_tesi.applied_filters')}</span>
+                    )}
+                    {filters.isInternal === 1 && <Badge variant="internal" type="reset" applyFilters={applyFilters} />}
+                    {filters.isInternal === 2 && <Badge variant="external" type="reset" applyFilters={applyFilters} />}
+                    {filters.isAbroad && <Badge variant="abroad" type="reset" applyFilters={applyFilters} />}
+                    {filters.type.map(type => (
+                      <Badge
+                        key={type.id}
+                        variant="type"
+                        content={type}
+                        type="reset"
+                        filters={filters}
+                        applyFilters={applyFilters}
+                      />
+                    ))}
+                    {filters.keyword.map(keyword => (
+                      <Badge
+                        key={keyword.id}
+                        variant="keyword"
+                        content={keyword}
+                        type="reset"
+                        filters={filters}
+                        applyFilters={applyFilters}
+                      />
+                    ))}
+                    {filters.teacher.map(teacher => (
+                      <Badge
+                        key={teacher.id}
+                        variant="teacher"
+                        content={teacher}
+                        type="reset"
+                        filters={filters}
+                        applyFilters={applyFilters}
+                      />
+                    ))}
+                  </div>
+                  <div className="reset-button-container">
+                    <ResetButton
+                      resetFilters={() => {
+                        setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
+                      }}
+                    />
+                  </div>
                 </div>
               </Accordion.Body>
             </Accordion.Item>

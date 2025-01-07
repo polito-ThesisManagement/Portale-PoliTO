@@ -59,6 +59,7 @@ import { getSystemTheme } from '../utils/utils';
  *    - "NUMERICA" or "NUMERICAL"
  * @param {object|array<object>!string|array<string>} content - If available, populate the content of the badge. It could be a single object (with 'content' and 'id' attributes) or an array of objects, a single string or an array of strings.
  * If you provide an array, the component will automatically render a tag for every item.
+ * @param {type} - Optional. It is used to specify if the badge is a 'reset' badge. If it is, the badge will be rendered as a button with a 'delete' icon at the end and will reset the filters when clicked.
  * @param {object} filters - The filters object. It's required only if the badge is a filter.
  * @param {function} applyFilters - The function to apply filters. It's required only if the badge is a filter (e.g. a teacher or a keyword filter).
  * @returns {JSX.Element} - The badge component.
@@ -105,7 +106,7 @@ const validTypeContent = [
   'numerical',
 ];
 
-export default function Badge({ variant, content, filters, applyFilters }) {
+export default function Badge({ variant, content, type, filters, applyFilters }) {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
@@ -113,6 +114,19 @@ export default function Badge({ variant, content, filters, applyFilters }) {
   const renderContent = () => {
     const contentArray = Array.isArray(content) ? content : [content];
     const elements = [];
+
+    const handleApplyFilters = (filterType, filterArray, item) => {
+      if (!filterArray.map(filter => filter.id).includes(item.id)) {
+        applyFilters(filterType, [...filterArray, { id: item.id, content: item.content }]);
+      }
+    };
+
+    const handleRemoveFilter = (filterType, filterArray, item) => {
+      applyFilters(
+        filterType,
+        filterArray.filter(filter => filter.id !== item.id),
+      );
+    };
 
     contentArray.forEach((item, index) => {
       if (
@@ -128,6 +142,30 @@ export default function Badge({ variant, content, filters, applyFilters }) {
             <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
           </div>,
         );
+      } else if (type === 'reset') {
+        elements.push(
+          <Button
+            key={`${item.content}-${index}`}
+            className={`badge ${variant}_${appliedTheme} clickable`}
+            onClick={() => {
+              if (applyFilters) {
+                if (variant === 'type') {
+                  handleRemoveFilter('type', filters.type, item);
+                } else if (variant === 'keyword') {
+                  handleRemoveFilter('keyword', filters.keyword, item);
+                } else if (variant === 'teacher') {
+                  handleRemoveFilter('teacher', filters.teacher, item);
+                }
+              }
+            }}
+          >
+            <div className="badge-icon">{renderIcon(item.content)}</div>
+            <span className="badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</span>
+            <div className="badge-icon">
+              <FaCircleXmark size={14} className="ms-1" />
+            </div>
+          </Button>,
+        );
       } else {
         elements.push(
           <Button
@@ -136,17 +174,11 @@ export default function Badge({ variant, content, filters, applyFilters }) {
             onClick={() => {
               if (applyFilters) {
                 if (variant === 'type') {
-                  if (!filters.type.includes(item.id)) {
-                    applyFilters('type', [...filters.type, item.id]);
-                  }
+                  handleApplyFilters('type', filters.type, item);
                 } else if (variant === 'keyword') {
-                  if (!filters.keyword.includes(item.id)) {
-                    applyFilters('keyword', [...filters.keyword, item.id]);
-                  }
+                  handleApplyFilters('keyword', filters.keyword, item);
                 } else if (variant === 'teacher') {
-                  if (!filters.teacher.includes(item.id)) {
-                    applyFilters('teacher', [...filters.teacher, item.id]);
-                  }
+                  handleApplyFilters('teacher', filters.teacher, item);
                 }
               }
             }}
@@ -288,7 +320,7 @@ export default function Badge({ variant, content, filters, applyFilters }) {
     const elements = [];
 
     if (variant === 'internal' || variant === 'external' || variant === 'abroad') {
-      if (applyFilters) {
+      if (!type && applyFilters) {
         elements.push(
           <Button
             key="badge-button"
@@ -305,6 +337,26 @@ export default function Badge({ variant, content, filters, applyFilters }) {
           >
             {renderIcon(content)}
             {renderTranslatedContent()}
+          </Button>,
+        );
+      } else if (type === 'reset' && applyFilters) {
+        elements.push(
+          <Button
+            key="badge-button"
+            className={`badge ${variant}_${appliedTheme} clickable`}
+            onClick={() => {
+              if (variant === 'internal') {
+                applyFilters('isInternal', 0);
+              } else if (variant === 'external') {
+                applyFilters('isInternal', 0);
+              } else {
+                applyFilters('isAbroad', false);
+              }
+            }}
+          >
+            {renderIcon(content)}
+            {renderTranslatedContent()}
+            <FaCircleXmark size={14} className="ms-1" />
           </Button>,
         );
       } else {
@@ -333,6 +385,7 @@ Badge.propTypes = {
     PropTypes.arrayOf(PropTypes.object),
     PropTypes.arrayOf(PropTypes.string),
   ]),
+  type: PropTypes.string,
   filters: PropTypes.object,
   applyFilters: PropTypes.func,
 };

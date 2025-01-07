@@ -42,9 +42,41 @@
   background-color: var(--primary-900);
 }
 
-.reset-button-container {
+.applied-filters-container {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.applied-filters-label {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  margin-right: 0.5rem;
+  color: var(--primary);
+}
+
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.reset-button-container {
+  margin-left: auto;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .applied-filters-container {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
 .search-icon {
