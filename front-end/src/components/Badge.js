@@ -112,36 +112,53 @@ export default function Badge({ variant, content, filters, applyFilters }) {
 
   const renderContent = () => {
     const contentArray = Array.isArray(content) ? content : [content];
+    const elements = [];
 
-    if (variant === 'date' || variant === 'success' || variant === 'warning' || variant === 'error' || !applyFilters) {
-      return contentArray.map((item, index) => (
-        <div key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
-          <div className="badge-icon">{renderIcon(item)}</div>
-          <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
-        </div>
-      ));
-    } else {
-      return contentArray.map((item, index) => (
-        <Button
-          key={`${item.content}-${index}`}
-          className={`badge ${variant}_${appliedTheme} ${applyFilters ? 'clickable' : ''}`}
-          onClick={() => {
-            if (applyFilters) {
-              if (variant === 'type') {
-                applyFilters('type', [...filters.type, item.id]);
-              } else if (variant === 'keyword') {
-                applyFilters('keyword', [...filters.keyword, item.id]);
-              } else if (variant === 'teacher') {
-                applyFilters('teacher', [...filters.teacher, item.id]);
+    contentArray.forEach((item, index) => {
+      if (
+        variant === 'date' ||
+        variant === 'success' ||
+        variant === 'warning' ||
+        variant === 'error' ||
+        !applyFilters
+      ) {
+        elements.push(
+          <div key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
+            <div className="badge-icon">{renderIcon(item)}</div>
+            <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
+          </div>,
+        );
+      } else {
+        elements.push(
+          <Button
+            key={`${item.content}-${index}`}
+            className={`badge ${variant}_${appliedTheme} clickable`}
+            onClick={() => {
+              if (applyFilters) {
+                if (variant === 'type') {
+                  if (!filters.type.includes(item.id)) {
+                    applyFilters('type', [...filters.type, item.id]);
+                  }
+                } else if (variant === 'keyword') {
+                  if (!filters.keyword.includes(item.id)) {
+                    applyFilters('keyword', [...filters.keyword, item.id]);
+                  }
+                } else if (variant === 'teacher') {
+                  if (!filters.teacher.includes(item.id)) {
+                    applyFilters('teacher', [...filters.teacher, item.id]);
+                  }
+                }
               }
-            }
-          }}
-        >
-          <div className="badge-icon">{renderIcon(item.content)}</div>
-          <div className="badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</div>
-        </Button>
-      ));
-    }
+            }}
+          >
+            <div className="badge-icon">{renderIcon(item.content)}</div>
+            <div className="badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</div>
+          </Button>,
+        );
+      }
+    });
+
+    return elements;
   };
 
   const renderIcon = contentItem => {
@@ -268,11 +285,14 @@ export default function Badge({ variant, content, filters, applyFilters }) {
   }
 
   const renderBadge = () => {
+    const elements = [];
+
     if (variant === 'internal' || variant === 'external' || variant === 'abroad') {
       if (applyFilters) {
-        return (
+        elements.push(
           <Button
-            className={`badge ${variant}_${appliedTheme} ${applyFilters ? 'clickable' : ''}`}
+            key="badge-button"
+            className={`badge ${variant}_${appliedTheme} clickable`}
             onClick={() => {
               if (variant === 'internal') {
                 applyFilters('isInternal', 1);
@@ -285,18 +305,21 @@ export default function Badge({ variant, content, filters, applyFilters }) {
           >
             {renderIcon(content)}
             {renderTranslatedContent()}
-          </Button>
+          </Button>,
         );
       } else {
-        return (
-          <div className={`badge ${variant}_${appliedTheme}`}>
+        elements.push(
+          <div key="badge-div" className={`badge ${variant}_${appliedTheme}`}>
             {renderIcon(content)}
             {renderTranslatedContent()}
-          </div>
+          </div>,
         );
       }
+    } else {
+      elements.push(renderContent());
     }
-    return renderContent();
+
+    return elements;
   };
 
   return <div className="badge-container">{renderBadge()}</div>;
