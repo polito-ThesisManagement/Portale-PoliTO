@@ -26,11 +26,20 @@ function ThesisItem(props) {
         types={props.types}
         isInternal={props.isInternal}
         isAbroad={props.isAbroad}
-        keywords={props.keywords}
         filters={props.filters}
         applyFilters={props.applyFilters}
       />
       <p className="thesis-description">{props.description}</p>
+      {props.keywords.length > 0 && (
+        <div className="thesis-keyword-tags">
+          <Badge
+            variant="keyword"
+            content={props.keywords.map(keyword => ({ content: keyword.keyword, id: keyword.id }))}
+            filters={props.filters}
+            applyFilters={props.applyFilters}
+          />
+        </div>
+      )}
       <div className="thesis-professor-tags">
         <Badge
           variant={'teacher'}
@@ -44,7 +53,7 @@ function ThesisItem(props) {
   );
 }
 
-const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords, filters, applyFilters }) => {
+const ThesisHeader = ({ topic, types, isInternal, isAbroad, filters, applyFilters }) => {
   return (
     <>
       <div className="thesis-header">
@@ -68,12 +77,6 @@ const ThesisHeader = ({ topic, types, isInternal, isAbroad, keywords, filters, a
           />
         </div>
       )}
-      <Badge
-        variant="keyword"
-        content={keywords.map(keyword => ({ content: keyword.keyword, id: keyword.id }))}
-        filters={filters}
-        applyFilters={applyFilters}
-      />
     </>
   );
 };
@@ -108,12 +111,6 @@ ThesisHeader.propTypes = {
   topic: PropTypes.string.isRequired,
   isInternal: PropTypes.bool.isRequired,
   isAbroad: PropTypes.bool.isRequired,
-  keywords: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      keyword: PropTypes.string.isRequired,
-    }),
-  ),
   types: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

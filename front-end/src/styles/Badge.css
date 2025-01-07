@@ -1,9 +1,9 @@
 .badge {
   align-items: center;
   display: flex;
-  padding: 4px;
-  border: 1px solid;
-  border-radius: 4px;
+  padding: 0.25rem;
+  border: 0.0625rem solid;
+  border-radius: 0.25rem;
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -12,13 +12,13 @@
 .badge-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .badge-icon {
   display: flex;
   flex-shrink: 0;
-  width: 16px;
+  width: 1rem;
 }
 
 .badge-text {
