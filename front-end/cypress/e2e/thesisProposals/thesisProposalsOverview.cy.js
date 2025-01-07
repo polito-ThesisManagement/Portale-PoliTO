@@ -84,6 +84,7 @@ describe('Thesis proposals overview page', () => {
       });
     };
 
+    // Function to process the description text of an article
     const processDescriptionText = (article, topicText) => {
       getDescriptionText(article).then(descriptionText => {
         verifyTextContainsTest(topicText, descriptionText);
@@ -130,6 +131,39 @@ describe('Thesis proposals overview page', () => {
     });
   });
 
+  it('should filter internal proposals (by clicking on badge)', () => {
+    // Step 1: Verify that there are thesis proposals listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 2: Intercept the network request
+    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
+
+    // Step 3: Toggle to all proposals
+    cy.get('.proposals-toggle label').eq(1).click();
+
+    // Step 4: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 5: Filter internal proposals by clicking on the badge
+    cy.get('.badge-container .clickable').contains('Tesi interna').first().click();
+
+    // Step 6: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 7: Verify that the filtered proposals are listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 8: Verify that each proposal contains the tag 'Internal thesis'
+    cy.get('.list-section .thesis-overview').each(article => {
+      cy.wrap(article)
+        .find('.thesis-position-tags')
+        .then($tag => {
+          const tag = $tag.text().toLowerCase();
+          expect(tag.includes('tesi interna')).to.be.true;
+        });
+    });
+  });
+
   it('should toggle between all proposals and external proposals', () => {
     // Step 1: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -163,6 +197,42 @@ describe('Thesis proposals overview page', () => {
     });
   });
 
+  it('should filter external proposals (by clicking on badge)', () => {
+    // Step 1: Verify that there are thesis proposals listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 2: Intercept the network request
+    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
+
+    // Step 3: Toggle to all proposals
+    cy.get('.proposals-toggle label').eq(1).click();
+
+    // Step 4: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 5: Go to the second page
+    cy.get('a.page-link').contains('2').click();
+
+    // Step 6: Filter external proposals by clicking on the badge
+    cy.get('.badge-container .clickable').contains('Tesi in azienda').first().click();
+
+    // Step 7: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 8: Verify that the filtered proposals are listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 9: Verify that each proposal contains the tag 'Company thesis'
+    cy.get('.list-section .thesis-overview').each(article => {
+      cy.wrap(article)
+        .find('.thesis-position-tags')
+        .then($tag => {
+          const tag = $tag.text().toLowerCase();
+          expect(tag.includes('tesi in azienda')).to.be.true;
+        });
+    });
+  });
+
   it('should filter abroad proposals', () => {
     // Step 1: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -180,6 +250,36 @@ describe('Thesis proposals overview page', () => {
     cy.wait('@getTargetedThesisProposals');
 
     // Step 6: Verify that there proposals listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 7: Verify that each proposal contains the tag 'Abroad thesis'
+    cy.get('.list-section .thesis-overview').each(article => {
+      cy.wrap(article)
+        .find('.thesis-position-tags')
+        .then($tag => {
+          const tag = $tag.text().toLowerCase();
+          expect(tag.includes("tesi all'estero")).to.be.true;
+        });
+    });
+  });
+
+  it('should filter abroad proposals (by clicking on badge)', () => {
+    // Step 1: Verify that there are thesis proposals listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 2: Intercept the network request
+    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
+
+    // Step 3: Toggle to all proposals
+    cy.get('.proposals-toggle label').eq(1).click();
+
+    // Step 4: Filter abroad proposals by clicking on the badge
+    cy.get('.badge-container .clickable').contains("Tesi all'estero").first().click();
+
+    // Step 5: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 6: Verify that the filtered proposals are listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
 
     // Step 7: Verify that each proposal contains the tag 'Abroad thesis'
@@ -254,6 +354,39 @@ describe('Thesis proposals overview page', () => {
         .then($keywordTags => {
           const keywordTags = $keywordTags.text().toLowerCase();
           expect(keywordTags.includes('europeizzazione')).to.be.true;
+        });
+    });
+  });
+
+  it('should filter proposals by keyword (clicking on badge)', () => {
+    // Step 1: Verify that there are thesis proposals listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 2: Intercept the network request
+    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
+
+    // Step 3: Toggle to all proposals
+    cy.get('.proposals-toggle label').eq(1).click();
+
+    // Step 4: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 5: Filter proposals by keyword 'SMART CITY'
+    cy.get('.badge-container .clickable').contains('SMART CITY').first().click();
+
+    // Step 6: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 7: Verify that the filtered proposals are listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 8: Verify that the proposal contains the keyword 'SMART CITY'
+    cy.get('.list-section .thesis-overview').each(article => {
+      cy.wrap(article)
+        .find('.badge-container')
+        .then($tags => {
+          const tags = $tags.text().toLowerCase();
+          expect(tags.includes('smart city')).to.be.true;
         });
     });
   });
@@ -367,20 +500,82 @@ describe('Thesis proposals overview page', () => {
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
   });
 
+  it('should apply multiple filters by clicking on badges', () => {
+    // Step 1: Verify that there are thesis proposals listed
+    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
+
+    // Step 2: Intercept the network request
+    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
+
+    // Step 3: Toggle to all proposals
+    cy.get('.proposals-toggle label').eq(1).click();
+
+    // Step 4: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 5: Filter proposals by type 'Ricerca'
+    cy.get('.badge-container .clickable').contains('RICERCA').first().click();
+
+    // Step 6: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 7: Filter external proposals by clicking on the badge
+    cy.get('.badge-container .clickable').contains('Tesi in azienda').first().click();
+
+    // Step 8: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 9: Filter proposals with 'Raffaello Camoriano' as teacher by clicking on the badge
+    cy.get('.badge-container .clickable').contains('Raffaello Camoriano').first().click();
+
+    // Step 10: Wait for the network request to complete
+    cy.wait('@getThesisProposals');
+
+    // Step 11: Verify that the filtered proposals are listed
+    cy.get('.list-section .thesis-overview').should('have.length', 2);
+
+    // Step 12: Verify the number of filters applied is correct
+    cy.get('.accordion-title').contains(3);
+
+    // Step 13: check that each proposal contains the type 'Ricerca', the tag 'Tesi in azienda' and the teacher 'Raffaello Camoriano'
+    cy.get('.list-section .thesis-overview').each(article => {
+      cy.wrap(article)
+        .find('.thesis-type-tags')
+        .then($tags => {
+          const tags = $tags.text().toLowerCase();
+          expect(tags.includes('ricerca')).to.be.true;
+        });
+      cy.wrap(article)
+        .find('.thesis-position-tags')
+        .then($tags => {
+          const tags = $tags.text().toLowerCase();
+          expect(tags.includes('tesi in azienda')).to.be.true;
+        });
+      cy.wrap(article)
+        .find('.thesis-professor-tags')
+        .then($tags => {
+          const tags = $tags.text().toLowerCase();
+          expect(tags.includes('raffaello camoriano')).to.be.true;
+        });
+    });
+  });
+
   it('should sort proposals by topic', () => {
     // Step 1: Open advanced filters accordion
     cy.get('.accordion-button.collapsed').should('be.visible').click();
 
+    // Step 2: Intercept the network request
     cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
 
-    // Step 2: Open the sort dropdown, select topic and apply the sort
+    // Step 3: Open the sort dropdown, select topic and apply the sort
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Argomento').click();
     cy.get('#dropdown-button').contains('OK').click();
 
+    // Step 4: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 3: Verify that the sorted proposals are listed and alphabetically ordered by topic in ascending order
+    // Step 5: Verify that the sorted proposals are listed and alphabetically ordered by topic in ascending order
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
     cy.get('.list-section .thesis-overview .thesis-topic').then($topics => {
       const topics = $topics.map((index, el) => Cypress.$(el).text().toLowerCase()).get();
@@ -388,24 +583,23 @@ describe('Thesis proposals overview page', () => {
       expect(topics).to.deep.equal(sortedTopics);
     });
 
-    cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
-
-    // Step 4: Change the order to descending
+    // Step 6: Change the order to descending
     cy.get('#dropdown-sort > button > svg:nth-child(1)').click();
 
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 5: Verify that the sorted proposals are listed and alphabetically ordered by topic
+    // Step 8: Verify that the sorted proposals are listed and alphabetically ordered by topic
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
 
-    // Step 6: Extract all topics and verify they are sorted
+    // Step 9: Extract all topics and verify they are sorted
     cy.get('.list-section .thesis-overview .thesis-topic').then($topics => {
       const topics = $topics.map((index, el) => Cypress.$(el).text().toLowerCase()).get();
       const sortedTopics = [...topics].sort((a, b) => b.localeCompare(a));
       expect(topics).to.deep.equal(sortedTopics);
     });
 
-    // Step 7: Open the sort dropdown and reset the sort
+    // Step 10: Open the sort dropdown and reset the sort
     cy.get('#dropdown-sort').click();
     cy.get('button.btn.btn-link.btn-sm').click();
   });
@@ -414,16 +608,18 @@ describe('Thesis proposals overview page', () => {
     // Step 1: Open advanced filters accordion
     cy.get('.accordion-button.collapsed').should('be.visible').click();
 
+    // Step 2: Intercept the network request
     cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
 
-    // Step 2: Open the sort dropdown and select description
+    // Step 3: Open the sort dropdown and select description
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Descrizione').click();
     cy.get('#dropdown-button').contains('OK').click();
 
+    // Step 4: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 3: Verify that the sorted proposals are listed and alphabetically ordered by description in ascending order
+    // Step 5: Verify that the sorted proposals are listed and alphabetically ordered by description in ascending order
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
     cy.get('.list-section .thesis-overview .thesis-description').then($descriptions => {
       const descriptions = $descriptions.map((index, el) => Cypress.$(el).text().toLowerCase()).get();
@@ -431,14 +627,13 @@ describe('Thesis proposals overview page', () => {
       expect(descriptions).to.deep.equal(sortedDescriptions);
     });
 
-    cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
-
-    // Step 4: Change the order to descending
+    // Step 6: Change the order to descending
     cy.get('#dropdown-sort > button > svg:nth-child(1)').click();
 
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 5: Verify that the sorted proposals are listed and alphabetically ordered by description in descending order
+    // Step 8: Verify that the sorted proposals are listed and alphabetically ordered by description in descending order
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
     cy.get('.list-section .thesis-overview .thesis-description').then($descriptions => {
       const descriptions = $descriptions.map((index, el) => Cypress.$(el).text().toLowerCase()).get();
@@ -451,16 +646,18 @@ describe('Thesis proposals overview page', () => {
     // Step 1: Open advanced filters accordion
     cy.get('.accordion-button.collapsed').should('be.visible').click();
 
+    // Step 2: Intercept the network request
     cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
 
-    // Step 2: Open the sort dropdown and select creation date
+    // Step 3: Open the sort dropdown and select creation date
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Data di creazione').click();
     cy.get('#dropdown-button').contains('OK').click();
 
+    // Step 4: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 3: Verify that the sorted proposals are listed and ordered by creation date in ascending order
+    // Step 5: Verify that the sorted proposals are listed and ordered by creation date in ascending order
     cy.get('.list-section .thesis-overview .thesis-footer .thesis-dates').then($dates => {
       const dates = $dates.map((index, el) => Cypress.$(el).text().split('Creata il ')[1]).get();
       const parsedDates = dates.map(date => {
@@ -471,14 +668,13 @@ describe('Thesis proposals overview page', () => {
       expect(parsedDates).to.deep.equal(sortedDates);
     });
 
-    cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
-
-    // Step 4: Change the order to descending
+    // Step 6: Change the order to descending
     cy.get('#dropdown-sort > button > svg:nth-child(1)').click();
 
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 5: Verify that the sorted proposals are listed and ordered by creation date in descending order
+    // Step 8: Verify that the sorted proposals are listed and ordered by creation date in descending order
     cy.get('.list-section .thesis-overview .thesis-footer .thesis-dates').then($dates => {
       const dates = $dates.map((index, el) => Cypress.$(el).text().split('Creata il ')[1]).get();
       const parsedDates = dates.map(date => {
@@ -494,16 +690,18 @@ describe('Thesis proposals overview page', () => {
     // Step 1: Open advanced filters accordion
     cy.get('.accordion-button.collapsed').should('be.visible').click();
 
+    // Step 2: Intercept the network request
     cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
 
-    // Step 2: Open the sort dropdown and select expiration date
+    // Step 3: Open the sort dropdown and select expiration date
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Data di scadenza').click();
     cy.get('#dropdown-button').contains('OK').click();
 
+    // Step 4: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 3: Verify that the sorted proposals are listed and ordered by expiration date in ascending order
+    // Step 5: Verify that the sorted proposals are listed and ordered by expiration date in ascending order
     cy.get('.list-section .thesis-overview .thesis-footer .thesis-dates').then($dates => {
       const dates = $dates.map((index, el) => Cypress.$(el).text().split('Scade il ')[1]).get();
       const parsedDates = dates.map(date => {
@@ -514,14 +712,13 @@ describe('Thesis proposals overview page', () => {
       expect(parsedDates).to.deep.equal(sortedDates);
     });
 
-    cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
-
-    // Step 4: Change the order to descending
+    // Step 6: Change the order to descending
     cy.get('#dropdown-sort > button > svg:nth-child(1)').click();
 
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 5: Verify that the sorted proposals are listed and ordered by expiration date in descending order
+    // Step 8: Verify that the sorted proposals are listed and ordered by expiration date in descending order
     cy.get('.list-section .thesis-overview .thesis-footer .thesis-dates').then($dates => {
       const dates = $dates.map((index, el) => Cypress.$(el).text().split('Scade il ')[1]).get();
       const parsedDates = dates.map(date => {
@@ -531,8 +728,6 @@ describe('Thesis proposals overview page', () => {
       const sortedDates = [...parsedDates].sort((a, b) => new Date(b) - new Date(a));
       expect(parsedDates).to.deep.equal(sortedDates);
     });
-
-    cy.intercept('GET', '**/api/thesis-proposals/targeted*').as('getTargetedThesisProposals');
   });
 
   it('should move across the pages of the thesis proposals list', () => {
@@ -561,7 +756,7 @@ describe('Thesis proposals overview page', () => {
     cy.wait('@getThesisProposals');
 
     // Step 9: Move to the last page
-    cy.get('a.page-link').contains('»').click({ force: true });
+    cy.get('a.page-link').contains('»').click();
 
     // Step 10: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -589,44 +784,43 @@ describe('Thesis proposals overview page', () => {
   });
 
   it('should change the number of proposals per page', () => {
+    // Step 1: Intercept the network request
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
-    // Step 1: Toggle to all proposals
+    // Step 2: Toggle to all proposals
     cy.get('.proposals-toggle label').eq(1).click();
 
+    // Step 3: Wait for the network request to complete
     cy.wait('@getThesisProposals');
 
-    // Step 2: Verify that there are 5 proposals listed
+    // Step 4: Verify that there are 5 proposals listed
     cy.get('.list-section .thesis-overview').should('have.length', 5);
 
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Change the number of proposals per page to 10
+    // Step 5: Change the number of proposals per page to 10
     cy.get('select.form-select').select('10');
 
+    // Step 6: Wait for the network request to complete
     cy.wait('@getThesisProposals');
 
-    // Step 4: Verify that there are 10 proposals listed
+    // Step 7: Verify that there are 10 proposals listed
     cy.get('.list-section .thesis-overview').should('have.length', 10);
 
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 5: Change the number of proposals per page to 20
+    // Step 8: Change the number of proposals per page to 20
     cy.get('select.form-select').select('20');
 
+    // Step 9: Wait for the network request to complete
     cy.wait('@getThesisProposals');
 
-    // Step 6: Verify that there are 20 proposals listed
+    // Step 10: Verify that there are 20 proposals listed
     cy.get('.list-section .thesis-overview').should('have.length', 20);
 
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 7: Change the number of proposals per page to 50
+    // Step 11: Change the number of proposals per page to 50
     cy.get('select.form-select').select('50');
 
+    // Step 12: Wait for the network request to complete
     cy.wait('@getThesisProposals');
 
-    // Step 8: Verify that there are 50 proposals listed
+    // Step 13: Verify that there are 50 proposals listed
     cy.get('.list-section .thesis-overview').should('have.length', 50);
   });
 });
