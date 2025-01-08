@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 
 import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaInfoCircle } from 'react-icons/fa';
-import { FaAngleLeft, FaBookOpen, FaBriefcase, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
+import { FaAngleLeft, FaBookOpen, FaBriefcase, FaCircleInfo, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
 import { MdApps } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -21,7 +20,7 @@ const navLinks = [
   { to: '/carriera', icon: FaUserGraduate, textKey: 'sidebar.carriera' },
   { to: '/opportunita', icon: FaBriefcase, textKey: 'sidebar.opportunità' },
   { to: '/servizi', icon: MdApps, textKey: 'sidebar.servizi' },
-  { to: '/help', icon: FaInfoCircle, textKey: 'Help' },
+  { to: '/help', icon: FaCircleInfo, textKey: 'Help' },
 ];
 
 function Sidebar() {

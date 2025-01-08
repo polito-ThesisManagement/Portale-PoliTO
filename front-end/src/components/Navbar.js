@@ -8,8 +8,7 @@ import Image from 'react-bootstrap/Image';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
-import { FaSignOutAlt } from 'react-icons/fa';
-import { FaBell, FaEnvelope, FaKey, FaRegBell, FaRegEnvelope, FaUser } from 'react-icons/fa6';
+import { FaArrowRightFromBracket, FaBell, FaEnvelope, FaKey, FaRegBell, FaRegEnvelope, FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -213,7 +212,7 @@ export default function PoliNavbar(props) {
                         className="medium-weight"
                         style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
                       >
-                        <FaSignOutAlt size={17} style={{ marginLeft: '1px' }} /> Logout
+                        <FaArrowRightFromBracket size={17} style={{ marginLeft: '1px' }} /> Logout
                       </Dropdown.Item>
                     </>
                   )}

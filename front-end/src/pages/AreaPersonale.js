@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa6';
 
 import Title from '../components/Title';
 

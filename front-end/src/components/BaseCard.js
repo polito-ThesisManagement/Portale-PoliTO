@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Button, Col, Container } from 'react-bootstrap';
 import { Star, StarFill } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
 import { PiUserListFill } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
@@ -77,7 +76,7 @@ export default function BaseCard(props) {
             >
               {props.linkText}
             </Link>
-            <FaExternalLinkAlt className="mx-2 mt-1" />
+            <FaArrowUpRightFromSquare className="mx-2 mt-1" />
           </div>
         ) : null}
         <div
@@ -85,7 +84,7 @@ export default function BaseCard(props) {
             marginTop: 'auto',
             marginLeft: 'auto',
             marginBottom: '8px',
-            marginRight: '8px',
+            marginRight: '0px',
           }}
         >
           <Link to={props.servicePath} style={{ textDecoration: 'none' }}>
