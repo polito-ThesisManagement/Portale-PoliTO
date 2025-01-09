@@ -190,31 +190,118 @@ body {
   background-color: rgba(var(--medium-orange-rgb), 1) !important;
 }
 
+.badge.rounded-pill {
+  padding: 3px 7px;
+  border: none;
+  top: 0px;
+}
+
 .btn-light {
   font-family: var(--font-primary);
   font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
   border-color: var(--text-200) !important;
   background-color: var(--text-100) !important;
   color: var(--text-700) !important;
 }
-.btn-light:hover,
-.btn-light.active {
+
+.btn-light:hover {
   background-color: var(--text-200) !important;
   color: var(--text-800) !important;
+}
+
+.btn-light:active {
+  border-color: var(--primary-50) !important;
+  background-color: var(--primary-50) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-light.disabled {
+  border-color: var(--text-100) !important;
+  background-color: var(--text-100) !important;
+  color: var(--text-400) !important;
 }
 
 .btn-dark {
   font-family: var(--font-primary);
   font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
   border-color: var(--primary-800) !important;
   background-color: var(--primary-700) !important;
   color: var(--white) !important;
 }
 
-.btn-dark:hover,
-.btn-dark.active {
+.btn-dark:hover {
   border-color: var(--white) !important;
   color: var(--white) !important;
+}
+
+.btn-dark:active {
+  border-color: var(--primary-500) !important;
+  background-color: var(--primary-100) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-dark.disabled {
+  border-color: var(--text-100) !important;
+  background-color: var(--text-100) !important;
+  color: var(--text-400) !important;
+}
+
+.btn-outlined-light {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  border-color: var(--text-300) !important;
+  background-color: var(--surface) !important;
+  color: var(--text-600) !important;
+}
+
+.btn-outlined-light:hover {
+  background-color: var(--text-100) !important;
+}
+
+.btn-outlined-light.active,
+.btn-outlined-light:active {
+  border-color: var(--primary-200) !important;
+  background-color: var(--primary-50) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-outlined-light.disabled {
+  border-color: var(--text-300) !important;
+  background-color: var(--surface) !important;
+  color: var(--text-400) !important;
+}
+
+.btn-outlined-dark {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  background-color: var(--surface) !important;
+  border-color: var(--white) !important;
+  color: var(--white) !important;
+}
+
+.btn-outlined-dark:hover {
+  background-color: var(--primary-700) !important;
+}
+
+.btn-outlined-dark.active,
+.btn-outlined-dark:active {
+  border-color: var(--primary-500) !important;
+  background-color: var(--primary-100) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-outlined-dark.disabled {
+  border-color: var(--text-400) !important;
+  background-color: var(--surface) !important;
+  color: var(--text-400) !important;
 }
 
 /*scrollbar si vede solo se sopra brakpoint lg*/
@@ -229,6 +316,7 @@ body {
   height: 6px;
   width: 6px;
 }
+
 *::-webkit-scrollbar-track {
   border-radius: 5px;
   background-color: #f3f5f7;
