@@ -174,19 +174,21 @@ export default function PoliNavbar(props) {
                     right: 'auto',
                     left: props.allStudents && props.allStudents.length > 0 ? '-150px' : '-100px',
                     fontFamily: 'var(--font-primary)',
+                    fontSize: 'var(--font-size-md)',
+                    fontWeight: 'var(--font-weight-medium)',
                   }}
                 >
                   {loggedStudent && (
                     <>
                       <Dropdown.Item
                         className="medium-weight"
-                        style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                       >
                         <FaUser size={16} /> {t('navbar.profilo_utente')}
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="medium-weight"
-                        style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                       >
                         <FaKey size={16} /> {t('navbar.cambio_password')}
                       </Dropdown.Item>
@@ -197,7 +199,7 @@ export default function PoliNavbar(props) {
                             key={student.id}
                             className="medium-weight"
                             onClick={() => handleLoggedStudentChange(student)}
-                            style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
+                            style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'var(--primary)' }}
                           >
                             <Image
                               src={student.profilePictureUrl}
@@ -210,7 +212,7 @@ export default function PoliNavbar(props) {
                         ))}
                       <Dropdown.Item
                         className="medium-weight"
-                        style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'var(--primary)' }}
                       >
                         <FaArrowRightFromBracket size={17} style={{ marginLeft: '1px' }} /> Logout
                       </Dropdown.Item>
@@ -218,7 +220,7 @@ export default function PoliNavbar(props) {
                   )}
                   <Dropdown.Item
                     className="dropdown-submenu medium-weight"
-                    style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                     onMouseEnter={() => setShowSubmenu(true)}
                     onMouseLeave={() => setShowSubmenu(false)}
                   >
@@ -240,13 +242,15 @@ export default function PoliNavbar(props) {
                           left: '0',
                           marginTop: '30px',
                           fontFamily: 'var(--font-primary)',
+                          fontSize: 'var(--font-size-md)',
+                          fontWeight: 'var(--font-weight-medium)',
                         }}
                         className="submenu"
                       >
                         <Dropdown.Item
                           className="medium-weight"
                           as="div"
-                          style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                          style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                           onClick={() => updateLanguage('it')}
                         >
                           <span className="flag flag-it" /> Italiano
@@ -254,7 +258,7 @@ export default function PoliNavbar(props) {
                         <Dropdown.Item
                           className="medium-weight"
                           as="div"
-                          style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                          style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                           onClick={() => updateLanguage('en')}
                         >
                           <span className="flag flag-gb" /> English
