@@ -11,7 +11,7 @@
 
 .thesis-header {
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 0.5rem;
   margin-bottom: 0.625rem;
 }
@@ -55,6 +55,7 @@
   gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
+  padding-top: 1rem;
 }
 
 .thesis-dates {
@@ -83,6 +84,7 @@
     gap: 1rem;
     flex-direction: column;
     align-items: stretch;
+    padding-top: 0;
   }
 
   .thesis-dates {

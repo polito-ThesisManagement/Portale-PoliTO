@@ -1,15 +1,11 @@
 .proposals-container {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
   border-radius: 10px;
   background-color: var(--surface);
 }
 
 .filters-container {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
   padding: 1rem;
 }
 
@@ -25,7 +21,7 @@
 
 .filters-section {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
@@ -47,7 +43,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.25rem;
+  gap: 1rem;
   position: relative;
 }
 
@@ -75,7 +71,6 @@
   .applied-filters-container {
     align-items: stretch;
     flex-direction: column;
-    gap: 0.5rem;
   }
 }
 
@@ -130,4 +125,5 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--primary);
+  gap: 0.5rem;
 }
