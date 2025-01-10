@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
-import { Form, InputGroup, Pagination } from 'react-bootstrap';
+import { Dropdown, Pagination } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 
+import { ThemeContext } from '../App';
 import '../styles/Pagination.css';
+import { getSystemTheme } from '../utils/utils';
+import CustomMenu from './CustomMenu';
+import CustomToggle from './CustomToggle';
 
 export default function PaginationItem({
   count,
@@ -16,6 +21,17 @@ export default function PaginationItem({
   proposalsPerPage,
   totalPages,
 }) {
+  const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+
+  const options = [5, 10, 20, 50];
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = isOpen => {
+    setIsOpen(isOpen);
+  };
+
   let startIndex;
   if (totalPages === 0) {
     startIndex = 0;
@@ -24,33 +40,33 @@ export default function PaginationItem({
   } else {
     startIndex = (currentPage - 1) * proposalsPerPage + 1;
   }
-  const { t } = useTranslation();
+
   return (
     <div className="pagination-container">
       <div className="pagination-info">
-        <span style={{ color: 'var(--text)' }}> {t('carriera.proposte_di_tesi.per_page')} </span>
-        <Form className="d-flex ms-3 w-100" style={{ maxWidth: '70px' }}>
-          <InputGroup className="flex-nowrap w-100">
-            <Form.Select
-              label="page_elements"
-              style={{
-                color: 'var(--text)',
-                backgroundColor: 'var(--surface)',
-                borderRadius: 'var(--border-radius)',
-                lineHeight: '1rem',
-                fontFamily: 'var(--font-family)',
-              }}
-              value={proposalsPerPage}
-              onChange={handleProposalsPerPageChange}
-            >
-              <option value={5}>5</option>
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={50}>50</option>
-            </Form.Select>
-          </InputGroup>
-        </Form>
-        <span style={{ color: 'var(--text)' }} className="ms-3 me-3 pagination-text">
+        <span> {t('carriera.proposte_di_tesi.per_page')} </span>
+        <Dropdown autoClose="outside" className="ms-3" id="dropdown-pagination" onToggle={handleToggle}>
+          <Dropdown.Toggle as={CustomToggle} className={`btn-outlined-${appliedTheme}  custom-dropdown-toggle`}>
+            <span style={{ width: '1.5rem', fontSize: 'var(--font-size-sm)' }}> {proposalsPerPage} </span>
+            {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+          </Dropdown.Toggle>
+          <Dropdown.Menu
+            as={CustomMenu}
+            key={proposalsPerPage}
+            style={{
+              minWidth: '4rem',
+              fontSize: 'var(--font-size-sm)',
+              borderColor: 'var(--dropdown-outlined-border)',
+            }}
+          >
+            {options.map(option => (
+              <Dropdown.Item key={option} onClick={() => handleProposalsPerPageChange({ target: { value: option } })}>
+                {option}
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown>
+        <span className="ms-3 me-3 pagination-text">
           {t('carriera.proposte_di_tesi.showing')} {totalPages === 0 ? 0 : startIndex}{' '}
           {t('carriera.proposte_di_tesi.to')}{' '}
           {currentPage * proposalsPerPage > count ? count : currentPage * proposalsPerPage}{' '}
@@ -59,16 +75,49 @@ export default function PaginationItem({
       </div>
       <div className="pagination-controls">
         {totalPages > 0 && (
-          <Pagination onChange={handlePageChange} style={{ margin: '0' }} size="sm">
-            <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1} />
-            <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
-            {pageNumbers.map(number => (
-              <Pagination.Item key={number} active={number === currentPage} onClick={() => handlePageChange(number)}>
-                {number}
-              </Pagination.Item>
-            ))}
-            <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
-            <Pagination.Last onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} />
+          <Pagination
+            className="d-flex flex-wrap justify-content-center"
+            onChange={handlePageChange}
+            style={{ margin: '0', gap: '.25rem' }}
+            size="sm"
+          >
+            <Pagination.First
+              onClick={() => handlePageChange(1)}
+              linkClassName={`btn-outlined-${appliedTheme} ${currentPage === 1 ? 'disabled' : ''}`}
+              disabled={currentPage === 1}
+            />
+            <Pagination.Prev
+              onClick={() => handlePageChange(currentPage - 1)}
+              linkClassName={`btn-outlined-${appliedTheme} ${currentPage === 1 ? 'disabled' : ''}`}
+              disabled={currentPage === 1}
+            />
+            {pageNumbers.map((number, index) =>
+              number === '...' ? (
+                <Pagination.Ellipsis
+                  key={`ellipsis-${number}-${index}`}
+                  linkClassName={`btn-outlined-${appliedTheme}`}
+                />
+              ) : (
+                <Pagination.Item
+                  key={number}
+                  active={number === currentPage}
+                  linkClassName={`btn-outlined-${appliedTheme} ${number === currentPage ? 'active' : ''}`}
+                  onClick={() => handlePageChange(number)}
+                >
+                  {number}
+                </Pagination.Item>
+              ),
+            )}
+            <Pagination.Next
+              onClick={() => handlePageChange(currentPage + 1)}
+              linkClassName={`btn-outlined-${appliedTheme} ${currentPage === totalPages ? 'disabled' : ''}`}
+              disabled={currentPage === totalPages}
+            />
+            <Pagination.Last
+              onClick={() => handlePageChange(totalPages)}
+              linkClassName={`btn-outlined-${appliedTheme} ${currentPage === totalPages ? 'disabled' : ''}`}
+              disabled={currentPage === totalPages}
+            />
           </Pagination>
         )}
       </div>
