@@ -52,6 +52,12 @@ export default function ThesisProposals() {
     setCurrentPage(1); // Reset to first page when applying filters
   };
 
+  const applySorting = (newSorting, sorting) => {
+    if (newSorting !== sorting) {
+      setSorting(newSorting);
+    }
+  };
+
   const handlePageChange = pageNumber => {
     if (pageNumber !== currentPage) {
       setCurrentPage(pageNumber);
@@ -64,6 +70,22 @@ export default function ThesisProposals() {
     setProposalsPerPage(value);
     setCurrentPage(1); // Reset to first page when changing proposals per page
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSearchbarChange = event => {
+    const value = event.target.value;
+    setSearchQuery(value);
+
+    // Start the debounce only when the user stops typing
+    debounceSearch(value);
+  };
+
+  const handleTabChange = newTab => {
+    setIsAnimating(true);
+    setTab(newTab);
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
   };
 
   function useDebounceSearch(callback, delay) {
@@ -90,30 +112,6 @@ export default function ThesisProposals() {
   const debounceSearch = useDebounceSearch(() => {
     setSearching(true);
   }, 500); // 500ms of debounce
-
-  const handleSearchbarChange = event => {
-    const value = event.target.value;
-    setSearchQuery(value);
-
-    // Start the debounce only when the user stops typing
-    debounceSearch(value);
-  };
-
-  const handleTabChange = newTab => {
-    setIsAnimating(true);
-    setTab(newTab);
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 500);
-  };
-
-  const applySorting = (selectedItem, sorting) => {
-    setSorting(selectedItem !== sorting ? selectedItem : sorting);
-  };
-
-  const onResetSorting = () => {
-    setSorting({ sortBy: 'id', orderBy: 'ASC' });
-  };
 
   useEffect(() => {
     setCurrentPage(1);
@@ -159,16 +157,20 @@ export default function ThesisProposals() {
     setTotalPages(Math.ceil(count / proposalsPerPage));
     const generatePageNumbers = () => {
       const pages = [];
-      if (totalPages <= 5) {
+      if (totalPages <= 6) {
+        // Case 1: Less than 6 pages
         for (let i = 1; i <= totalPages; i++) {
           pages.push(i);
         }
-      } else if (currentPage <= 3) {
-        pages.push(1, 2, 3, 4);
-      } else if (currentPage > totalPages - 3) {
-        pages.push(totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else if (currentPage < 4) {
+        // Case 2: You are in the first pages
+        pages.push(1, 2, 3, 4, '...', totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        // Case 3: You are in the last pages
+        pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
       } else {
-        pages.push(currentPage - 2, currentPage - 1, currentPage, currentPage + 1);
+        // Case 4: You are in the middle
+        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
       }
       return pages;
     };
@@ -190,6 +192,7 @@ export default function ThesisProposals() {
               searchQuery,
               sorting,
             );
+            setCurrentPage(1);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
@@ -202,6 +205,7 @@ export default function ThesisProposals() {
               searchQuery,
               sorting,
             );
+            setCurrentPage(1);
             setPageProposals(data.thesisProposals);
             setCount(data.count);
             setTotalPages(data.totalPages);
@@ -256,12 +260,10 @@ export default function ThesisProposals() {
             accordionOpen={accordionOpen}
             setAccordionOpen={setAccordionOpen}
             filters={filters}
-            setFilters={setFilters}
             applyFilters={applyFilters}
             sortFields={sortFields}
             sorting={sorting}
             applySorting={applySorting}
-            onResetSorting={onResetSorting}
             appliedTheme={appliedTheme}
           />
         </div>
