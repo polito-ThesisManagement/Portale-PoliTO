@@ -330,18 +330,14 @@ describe('Thesis proposals overview page', () => {
     // Step 4: Filter proposals by keywords
     cy.get('#dropdown-keyword').click();
     cy.get('#208').click();
-    cy.get(
-      '#dropdown-keyword > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button#dropdown-button',
-    ).click();
+    cy.get('#dropdown-button').click();
 
     // Step 5: Verify that there are no proposals listed
     cy.get('.list-section .thesis-overview').should('have.length', 0);
 
     // Step 6: Reset the filters
     cy.get('#dropdown-keyword').click();
-    cy.get(
-      '#dropdown-keyword > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button.btn.btn-link.btn-sm',
-    ).click();
+    cy.get('button.btn.btn-link.btn-sm').click();
 
     // Step 7: Verify that the filters are reset
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -359,11 +355,9 @@ describe('Thesis proposals overview page', () => {
 
     // Step 4: Filter proposals by keywords
     cy.get('#dropdown-keyword').click();
-    cy.get('#dropdown-keyword > div > div:nth-child(1) > div > input').type('europeizzazione');
+    cy.get('#dropdown-keyword > div > div.input-group > input').type('europeizzazione');
     cy.get('#137').click();
-    cy.get(
-      '#dropdown-keyword > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button#dropdown-button',
-    ).click();
+    cy.get('#dropdown-button').click();
 
     // Step 5: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -435,11 +429,9 @@ describe('Thesis proposals overview page', () => {
 
     // Step 4: Filter proposals by teacher 'Rosario Ceravolo'
     cy.get('#dropdown-teacher').click();
-    cy.get('#dropdown-teacher > div > div:nth-child(1) > div > input').type('Rosario');
+    cy.get('#dropdown-teacher > div > div.input-group > input').type('Rosario');
     cy.get('#2389').click();
-    cy.get(
-      '#dropdown-teacher > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button#dropdown-button',
-    ).click();
+    cy.get('#dropdown-button').click();
 
     // Step 5: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -459,9 +451,7 @@ describe('Thesis proposals overview page', () => {
 
     // Step 8: Reset the filters
     cy.get('#dropdown-teacher').click();
-    cy.get(
-      '#dropdown-teacher > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button.btn.btn-link.btn-sm',
-    ).click();
+    cy.get('button.btn.btn-link.btn-sm').click();
   });
 
   it('should filter proposals by teacher (clicking on badge)', () => {
@@ -517,9 +507,9 @@ describe('Thesis proposals overview page', () => {
 
     // Step 4: Filter proposals by type 'Sperimentale'
     cy.get('#dropdown-type').click();
-    cy.get('#dropdown-type > div > div:nth-child(1) > div > input').type('sperimentale');
+    cy.get('#dropdown-type > div > div.input-group > input').type('sperimentale');
     cy.get('#9').click();
-    cy.get('#dropdown-type > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button#dropdown-button').click();
+    cy.get('#dropdown-button').click();
 
     // Step 5: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -539,9 +529,7 @@ describe('Thesis proposals overview page', () => {
 
     // Step 8: Reset the filters
     cy.get('#dropdown-type').click();
-    cy.get(
-      '#dropdown-type > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button.btn.btn-link.btn-sm',
-    ).click();
+    cy.get('button.btn.btn-link.btn-sm').click();
   });
 
   it('should filter proposals by type (clicking on badge)', () => {
@@ -594,25 +582,21 @@ describe('Thesis proposals overview page', () => {
 
     // Step 3: Filter proposals by keyword 'europeizzazione'
     cy.get('#dropdown-keyword').click();
-    cy.get('#dropdown-keyword > div > div:nth-child(1) > div > input').type('europeizzazione');
+    cy.get('#dropdown-keyword > div > div.input-group > input').type('europeizzazione');
     cy.get('#137').click();
-    cy.get(
-      '#dropdown-keyword > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button#dropdown-button',
-    ).click();
+    cy.get('#dropdown-keyword #dropdown-button').click();
 
     // Step 4: Filter proposals by teacher 'Rosario Ceravolo'
     cy.get('#dropdown-teacher').click();
-    cy.get('#dropdown-teacher > div > div:nth-child(1) > div > input').type('Rosario');
+    cy.get('#dropdown-teacher > div > div.input-group > input').type('Rosario');
     cy.get('#2389').click();
-    cy.get(
-      '#dropdown-teacher > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button#dropdown-button',
-    ).click();
+    cy.get('#dropdown-teacher #dropdown-button').click();
 
     // Step 5: Filter proposals by type 'Sperimentale'
     cy.get('#dropdown-type').click();
-    cy.get('#dropdown-type > div > div:nth-child(1) > div > input').type('sperimentale');
+    cy.get('#dropdown-type > div > div.input-group > input').type('sperimentale');
     cy.get('#9').click();
-    cy.get('#dropdown-type > div > div.d-flex.justify-content-between.ms-2.me-3.mt-2 > button#dropdown-button').click();
+    cy.get('#dropdown-type #dropdown-button').click();
 
     // Step 6: Verify that there are no proposals listed
     cy.get('.list-section .thesis-overview').should('have.length', 0);
@@ -937,7 +921,8 @@ describe('Thesis proposals overview page', () => {
     cy.get('.list-section .thesis-overview').should('have.length', 5);
 
     // Step 5: Change the number of proposals per page to 10
-    cy.get('select.form-select').select('10');
+    cy.get('#dropdown-pagination > button').click();
+    cy.get('a.dropdown-item').contains('10').click();
 
     // Step 6: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -946,7 +931,8 @@ describe('Thesis proposals overview page', () => {
     cy.get('.list-section .thesis-overview').should('have.length', 10);
 
     // Step 8: Change the number of proposals per page to 20
-    cy.get('select.form-select').select('20');
+    cy.get('#dropdown-pagination > button').click();
+    cy.get('a.dropdown-item').contains('20').click();
 
     // Step 9: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -955,7 +941,8 @@ describe('Thesis proposals overview page', () => {
     cy.get('.list-section .thesis-overview').should('have.length', 20);
 
     // Step 11: Change the number of proposals per page to 50
-    cy.get('select.form-select').select('50');
+    cy.get('#dropdown-pagination > button').click();
+    cy.get('a.dropdown-item').contains('50').click();
 
     // Step 12: Wait for the network request to complete
     cy.wait('@getThesisProposals');
