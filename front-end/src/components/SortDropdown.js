@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Button, Dropdown } from 'react-bootstrap';
+import { Badge as BadgeBootstrap, Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaArrowDownShortWide, FaArrowUpShortWide, FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
@@ -12,60 +12,55 @@ import { getSystemTheme } from '../utils/utils';
 import CustomMenu from './CustomMenu';
 import CustomToggle from './CustomToggle';
 
-export default function SortDropdown({ sortFields, sorting, onApplySorting, onResetSorting }) {
+export default function SortDropdown({ sortFields, sorting, applySorting }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(sorting || '');
-  const [selectedSort, setSelectedSort] = useState(sorting.sortBy || '');
-  const [selectedOrder, setSelectedOrder] = useState(sorting.orderBy || '');
+  const [selectedSorting, setSelectedSorting] = useState(sorting || '');
 
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   useEffect(() => {
     // Sync sorting with the parent component
-    setSelectedItem(sorting || '');
+    setSelectedSorting(sorting);
   }, [sorting]);
-
-  const handleToggle = isOpen => {
-    setIsOpen(isOpen);
-  };
-
-  const handleReset = () => {
-    setIsOpen(false);
-    onResetSorting();
-  };
 
   const handleApply = ({ sortBy: selectedSort, orderBy: selectedOrder }) => {
     setIsOpen(false);
     const newSorting = { sortBy: selectedSort, orderBy: selectedOrder };
-    setSelectedItem(newSorting);
-    onApplySorting(newSorting, sorting);
+    setSelectedSorting(newSorting);
+    applySorting(newSorting, sorting);
   };
 
   const handleChangeOrderExternal = order => {
-    setSelectedOrder(order);
-    if (selectedSort) {
-      handleApply({ sortBy: selectedSort, orderBy: order });
-    } else {
-      setSelectedSort(sorting.sortBy);
-      handleApply({ sortBy: sorting.sortBy, orderBy: order });
-    }
+    setSelectedSorting({ ...sorting, orderBy: order });
+    handleApply({ sortBy: sorting.sortBy, orderBy: order });
+  };
+
+  const handleReset = () => {
+    setIsOpen(false);
+    applySorting({ sortBy: 'id', orderBy: 'ASC' });
   };
 
   const handleSelect = sortBy => {
-    if (selectedSort === sortBy) {
-      setSelectedSort('id');
+    if (selectedSorting.sortBy === sortBy) {
+      setSelectedSorting({ ...selectedSorting, sortBy: 'id' });
     } else {
-      setSelectedSort(sortBy);
+      setSelectedSorting({ ...sorting, sortBy });
     }
   };
 
-  const { theme } = useContext(ThemeContext);
-  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+  const handleToggle = isOpen => {
+    setIsOpen(isOpen);
+    if (!isOpen) {
+      setSelectedSorting(sorting);
+    }
+  };
 
   return (
     <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id="dropdown-sort">
-      <Dropdown.Toggle as={CustomToggle} active={isOpen}>
-        {selectedOrder === 'ASC' ? (
+      <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme}  custom-dropdown-toggle`}>
+        {selectedSorting.orderBy === 'ASC' ? (
           <FaArrowUpShortWide
             onClick={e => {
               e.stopPropagation();
@@ -80,65 +75,37 @@ export default function SortDropdown({ sortFields, sorting, onApplySorting, onRe
             }}
           />
         )}
-        <span
-          style={{
-            margin: '0px 0.5rem',
-          }}
-        >
-          {t('carriera.proposte_di_tesi.order')}
-        </span>
+        {t('carriera.proposte_di_tesi.order')}
         {/* Display the count of applied sorting */}
         {sorting.sortBy !== 'id' && (
-          <span
-            style={{
-              backgroundColor: 'var(--secondary-600)',
-              color: 'var(--white)',
-              borderRadius: '50rem',
-              padding: '0px 0.5rem',
-              marginRight: '0.5rem',
-              fontSize: 'var(--font-size-sm)',
-            }}
-          >
+          <BadgeBootstrap pill bg="secondary">
             1
-          </span>
+          </BadgeBootstrap>
         )}
         {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
       </Dropdown.Toggle>
-      <Dropdown.Menu as={CustomMenu} key={selectedItem} className="custom-dropdown-menu">
+      <Dropdown.Menu as={CustomMenu} key={selectedSorting} className="custom-dropdown-menu">
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           {sortFields.map(sortBy => (
             <Dropdown.Item className="custom-dropdown-item" key={'sort' + sortBy} onClick={() => handleSelect(sortBy)}>
-              <div className="d-flex align-items-center" style={{ width: '100%' }}>
-                <div style={{ width: '1.5em' }}>
-                  {(selectedSort ? selectedSort === sortBy : sorting.sortBy === sortBy) && (
-                    <FaCheck style={{ color: 'var(--primary)' }} />
-                  )}
-                </div>
+              <div className="d-flex align-items-center w-100">
+                <div style={{ width: '1.5em' }}>{selectedSorting.sortBy === sortBy && <FaCheck />}</div>
                 {t(`carriera.proposte_di_tesi.${sortBy}`)}
               </div>
             </Dropdown.Item>
           ))}
         </div>
 
-        <Dropdown.Divider style={{ margin: '0' }} />
+        <Dropdown.Divider style={{ margin: '0' }} className={`hr-${appliedTheme}`} />
         {/* Buttons outside the scrollable area */}
-        <div className="d-flex justify-content-between ms-2 me-3 mt-2">
-          <Button
-            className={`link-${appliedTheme}-dropdown`}
-            onClick={() => {
-              setSelectedSort('');
-              setSelectedOrder('ASC');
-              handleReset();
-            }}
-            variant="link"
-            size="sm"
-          >
+        <div className="d-flex justify-content-between ms-2 me-3 mt-2 mb-1">
+          <Button className={`link-${appliedTheme}-dropdown`} onClick={() => handleReset()} variant="link" size="sm">
             Reset
           </Button>
           <Button
             className={`btn-${appliedTheme} btn-dropdown`}
             id="dropdown-button"
-            onClick={() => handleApply({ sortBy: selectedSort, orderBy: selectedOrder })}
+            onClick={() => handleApply(selectedSorting)}
             variant="outline-primary"
             size="sm"
           >
@@ -152,7 +119,6 @@ export default function SortDropdown({ sortFields, sorting, onApplySorting, onRe
 
 SortDropdown.propTypes = {
   sortFields: PropTypes.array.isRequired,
-  onApplySorting: PropTypes.func.isRequired,
+  applySorting: PropTypes.func.isRequired,
   sorting: PropTypes.object.isRequired,
-  onResetSorting: PropTypes.func.isRequired,
 };

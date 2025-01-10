@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Button, Dropdown, Form, InputGroup, Spinner } from 'react-bootstrap';
+import { Badge as BadgeBootstrap, Button, Dropdown, Form, InputGroup, Spinner } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
@@ -19,8 +19,7 @@ export default function FilterDropdown({
   filters,
   icon,
   itemType,
-  onApplyFilters,
-  onResetFilters,
+  applyFilters,
   selectedItems: parentSelectedItems,
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,39 +29,12 @@ export default function FilterDropdown({
   const [searchValue, setSearchValue] = useState('');
 
   const { t, i18n } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   useEffect(() => {
     setSelectedItems(parentSelectedItems || []);
   }, [parentSelectedItems]);
-
-  const handleToggle = isOpen => {
-    setIsOpen(isOpen);
-    if (!isOpen) {
-      setSearchValue('');
-    }
-  };
-
-  const handleItemSelect = item => {
-    setSelectedItems(prevSelected =>
-      prevSelected.includes(item.id)
-        ? prevSelected.filter(i => i.id !== item.id)
-        : [
-            ...prevSelected,
-            { id: item.id, content: itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType] },
-          ],
-    );
-  };
-
-  const handleReset = () => {
-    setIsOpen(false);
-    setSearchValue('');
-    onResetFilters(itemType);
-  };
-
-  const handleApply = () => {
-    setIsOpen(false);
-    onApplyFilters(itemType, selectedItems);
-  };
 
   useEffect(() => {
     setLoading(true);
@@ -80,6 +52,37 @@ export default function FilterDropdown({
     }
   }, [isOpen, i18n.language]);
 
+  const handleApply = () => {
+    setIsOpen(false);
+    setSearchValue('');
+    applyFilters(itemType, selectedItems);
+  };
+
+  const handleItemSelect = item => {
+    setSelectedItems(prevSelected =>
+      prevSelected.map(i => i.id).includes(item.id)
+        ? prevSelected.filter(i => i.id !== item.id)
+        : [
+            ...prevSelected,
+            { id: item.id, content: itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType] },
+          ],
+    );
+  };
+
+  const handleToggle = isOpen => {
+    setIsOpen(isOpen);
+    if (!isOpen) {
+      setSearchValue('');
+      setSelectedItems(parentSelectedItems || []);
+    }
+  };
+
+  const handleReset = () => {
+    setIsOpen(false);
+    setSearchValue('');
+    applyFilters(itemType, []);
+  };
+
   const filteredItems = items.filter(item => {
     if (itemType === 'keyword') {
       return item.keyword.toLowerCase().includes(searchValue.toLowerCase());
@@ -93,9 +96,6 @@ export default function FilterDropdown({
     }
   });
 
-  const { theme } = useContext(ThemeContext);
-  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
-
   let label;
   if (itemType === 'keyword') {
     label = t('carriera.proposte_di_tesi.keywords');
@@ -105,57 +105,33 @@ export default function FilterDropdown({
     label = t('carriera.proposte_di_tesi.types');
   }
 
-  const getEventKey = item => {
-    if (itemType === 'keyword') {
-      return item.keyword;
-    } else if (itemType === 'teacher') {
-      return item.firstName + ' ' + item.lastName;
-    } else {
-      return item.type;
-    }
-  };
-
   const dropdownItems =
     filteredItems && filteredItems.length > 0 ? (
       filteredItems.map(item => (
-        <Dropdown.Item
-          key={item.id}
-          eventKey={getEventKey(item)}
-          className="custom-dropdown-item"
-          onClick={() => handleItemSelect(item)}
-        >
-          <div className="d-flex justify-content-between align-items-center">
-            <Form.Check
-              type="checkbox"
-              id={item.id}
-              label={
-                <Badge
-                  variant={itemType}
-                  content={itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType]}
-                />
-              }
-              checked={selectedItems.map(i => i.id).includes(item.id)}
-              readOnly
-              style={{
-                whiteSpace: 'nowrap',
-                overflow: 'visible',
-                display: 'inline-block',
-                width: '100%',
-                fontSize: 'var(--font-size-sm)',
-              }}
-            />
-          </div>
+        <Dropdown.Item key={item.id} className="custom-dropdown-item" onClick={() => handleItemSelect(item)}>
+          <Form.Check
+            type="checkbox"
+            key={selectedItems.map(i => i.id).includes(item.id)}
+            id={item.id}
+            label={
+              <Badge
+                variant={itemType}
+                content={itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType]}
+              />
+            }
+            checked={selectedItems.map(i => i.id).includes(item.id)}
+            readOnly
+          />
         </Dropdown.Item>
       ))
     ) : (
       <Dropdown.Item
         disabled
+        className="mb-3 mt-2"
         style={{
           fontSize: 'var(--font-size-sm)',
           color: 'var(--primary)',
           textAlign: 'center',
-          marginBottom: '1rem',
-          marginTop: '.5rem',
         }}
       >
         {t('carriera.proposte_di_tesi.no_item_found')}
@@ -164,77 +140,48 @@ export default function FilterDropdown({
 
   return (
     <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id={`dropdown-${itemType}`}>
-      <Dropdown.Toggle as={CustomToggle} active={isOpen}>
+      <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme} custom-dropdown-toggle`}>
         {icon}
-        <span
-          style={{
-            margin: '0 0.5rem',
-          }}
-        >
-          {label}
-        </span>
+        {label}
         {/* Display the count of applied filters */}
         {filters.length > 0 && (
-          <span
-            style={{
-              backgroundColor: 'var(--secondary-600)',
-              color: 'var(--white)',
-              borderRadius: '50rem',
-              padding: '0px 0.5rem',
-              marginRight: '0.5rem',
-              fontSize: 'var(--font-size-sm)',
-            }}
-          >
+          <BadgeBootstrap pill bg="secondary">
             {filters.length}
-          </span>
+          </BadgeBootstrap>
         )}
         {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
       </Dropdown.Toggle>
 
-      <Dropdown.Menu
-        as={CustomMenu}
-        key={selectedItems.join(',')}
-        style={{ width: '300px' }}
-        className="custom-dropdown-menu"
-      >
-        <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-          <InputGroup className="flex-nowrap w-100">
-            <Form.Control
-              className="my-2 mx-2 truncated"
-              type="search"
-              aria-label="Search"
-              size="md"
-              placeholder={`Search in ${itemType}s...`}
-              onChange={e => setSearchValue(e.target.value)}
-              value={searchValue}
-              style={{
-                backgroundColor: 'var(--background)',
-                color: 'var(--primary)',
-                borderRadius: '10px',
-              }}
-            />
-            <Search
-              style={{
-                position: 'absolute',
-                zIndex: '3',
-                right: '21px',
-                top: '18px',
-                color: 'var(--primary)',
-              }}
-            />
-          </InputGroup>
-        </div>
+      <Dropdown.Menu as={CustomMenu} style={{ width: '300px' }} className="custom-dropdown-menu">
+        <InputGroup>
+          <Form.Control
+            className="my-2 mx-2 truncated"
+            type="search"
+            placeholder={`Search in ${itemType}s...`}
+            aria-label="Search"
+            size="md"
+            style={{
+              backgroundColor: 'var(--background)',
+              color: 'var(--primary)',
+              borderRadius: '10px',
+            }}
+            value={searchValue}
+            onChange={e => setSearchValue(e.target.value)}
+          />
+          <Search
+            style={{
+              position: 'absolute',
+              zIndex: '3',
+              right: '21px',
+              top: '18px',
+              color: 'var(--primary)',
+            }}
+          />
+        </InputGroup>
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           {loading ? (
-            <Dropdown.Item disabled style={{ textAlign: 'center' }} className="custom-dropdown-item">
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: '2rem',
-                }}
-              >
+            <Dropdown.Item disabled className="custom-dropdown-item text-center">
+              <div className="d-flex justify-content-center align-items-center" style={{ height: '2rem' }}>
                 <Spinner animation="border" size="sm" style={{ color: 'var(--primary)' }}>
                   <output className="visually-hidden">{t('carriera.proposte_di_tesi.loading')}</output>
                 </Spinner>
@@ -245,9 +192,9 @@ export default function FilterDropdown({
           )}
         </div>
 
-        <Dropdown.Divider style={{ margin: '0' }} />
+        <Dropdown.Divider style={{ margin: '0' }} className={`hr-${appliedTheme}`} />
         {/* Buttons outside the scrollable area */}
-        <div className="d-flex justify-content-between ms-2 me-3 mt-2">
+        <div className="d-flex justify-content-between ms-2 me-3 mt-2 mb-1">
           <Button className={`link-${appliedTheme}-dropdown`} onClick={handleReset} variant="link" size="sm">
             Reset
           </Button>
@@ -271,7 +218,6 @@ FilterDropdown.propTypes = {
   filters: PropTypes.array.isRequired,
   icon: PropTypes.node.isRequired,
   itemType: PropTypes.string.isRequired,
-  onApplyFilters: PropTypes.func.isRequired,
-  onResetFilters: PropTypes.func.isRequired,
+  applyFilters: PropTypes.func.isRequired,
   selectedItems: PropTypes.array.isRequired,
 };
