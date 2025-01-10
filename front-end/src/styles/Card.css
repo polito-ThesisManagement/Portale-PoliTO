@@ -26,6 +26,7 @@
   font-size: var(--font-size-md);
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .card-button:hover,

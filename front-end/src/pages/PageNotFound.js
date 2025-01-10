@@ -22,8 +22,11 @@ export default function PageNotFound() {
         <p> {t('page_not_found.message')} </p>
       </div>
       <div>
-        <Link to="/">
-          <Button className="card-button"> {t('page_not_found.back')} </Button>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Button className="card-button" size="sm">
+            {' '}
+            {t('page_not_found.back')}{' '}
+          </Button>
         </Link>
       </div>
     </Container>

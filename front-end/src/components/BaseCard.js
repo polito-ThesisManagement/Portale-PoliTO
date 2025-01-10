@@ -88,8 +88,8 @@ export default function BaseCard(props) {
           }}
         >
           <Link to={props.servicePath} style={{ textDecoration: 'none' }}>
-            <Button className="card-button">
-              <FaArrowUpRightFromSquare className="me-2" />
+            <Button className="card-button" size="sm">
+              <FaArrowUpRightFromSquare />
               {t('Accedi')}
             </Button>
           </Link>
