@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Badge as BadgeBootstrap } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaFilter, FaKey, FaTags, FaUser } from 'react-icons/fa6';
 
@@ -17,12 +17,10 @@ export default function FiltersAccordion({
   accordionOpen,
   setAccordionOpen,
   filters,
-  setFilters,
   applyFilters,
   sortFields,
   sorting,
   applySorting,
-  onResetSorting,
   appliedTheme,
 }) {
   const { t } = useTranslation();
@@ -31,30 +29,21 @@ export default function FiltersAccordion({
       <Accordion.Item eventKey="0">
         <Accordion.Header>
           <div className="accordion-title">
-            <FaFilter className="me-2" /> {t('carriera.proposte_di_tesi.filter')}
+            <FaFilter /> {t('carriera.proposte_di_tesi.filter')}
             {(filters.isInternal != 0 ||
               filters.isAbroad ||
               filters.keyword.length > 0 ||
               filters.type.length > 0 ||
-              filters.teacher.length > 0) && (
-              <span
-                style={{
-                  backgroundColor: 'var(--secondary-600)',
-                  color: 'var(--white)',
-                  borderRadius: '50rem',
-                  padding: '0.2rem 0.5rem',
-                  marginLeft: '0.5rem',
-                  marginRight: '0.5rem',
-                  fontSize: 'var(--font-size-sm)',
-                  fontWeight: 'var(--font-weight-regular)',
-                }}
-              >
+              filters.teacher.length > 0 ||
+              sorting.sortBy !== 'id') && (
+              <BadgeBootstrap pill bg="secondary">
                 {filters.keyword.length +
                   filters.type.length +
                   filters.teacher.length +
                   (filters.isInternal != 0 ? 1 : 0) +
-                  (filters.isAbroad ? 1 : 0)}
-              </span>
+                  (filters.isAbroad ? 1 : 0) +
+                  (sorting.sortBy !== 'id' ? 1 : 0)}
+              </BadgeBootstrap>
             )}
           </div>
         </Accordion.Header>
@@ -70,36 +59,28 @@ export default function FiltersAccordion({
             <FilterDropdown
               api={API.getThesisProposalsTypes}
               filters={filters.type}
-              icon={<FaTags style={{ width: '20px' }} />}
+              icon={<FaTags width={20} height={16} />}
               itemType={'type'}
-              onApplyFilters={applyFilters}
-              onResetFilters={() => applyFilters('type', [])}
+              applyFilters={applyFilters}
               selectedItems={filters.type}
             />
             <FilterDropdown
               api={API.getThesisProposalsKeywords}
               filters={filters.keyword}
-              icon={<FaKey style={{ width: '20px' }} />}
+              icon={<FaKey width={20} height={16} />}
               itemType={'keyword'}
-              onApplyFilters={applyFilters}
-              onResetFilters={() => applyFilters('keyword', [])}
+              applyFilters={applyFilters}
               selectedItems={filters.keyword}
             />
             <FilterDropdown
               api={API.getThesisProposalsTeachers}
               filters={filters.teacher}
-              icon={<FaUser style={{ width: '20px' }} />}
+              icon={<FaUser width={20} height={16} />}
               itemType={'teacher'}
-              onApplyFilters={applyFilters}
-              onResetFilters={() => applyFilters('teacher', [])}
+              applyFilters={applyFilters}
               selectedItems={filters.teacher}
             />
-            <SortDropdown
-              sortFields={sortFields}
-              sorting={sorting}
-              onApplySorting={applySorting}
-              onResetSorting={onResetSorting}
-            />
+            <SortDropdown sortFields={sortFields} sorting={sorting} applySorting={applySorting} />
           </div>
           <hr className={`hr-${appliedTheme}`} />
           <div className="applied-filters-container">
@@ -148,7 +129,12 @@ export default function FiltersAccordion({
             <div className="reset-button-container">
               <ResetButton
                 resetFilters={() => {
-                  setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
+                  applyFilters('isInternal', 0);
+                  applyFilters('isAbroad', false);
+                  applyFilters('keyword', []);
+                  applyFilters('type', []);
+                  applyFilters('teacher', []);
+                  applySorting({ sortBy: 'id', order: 'ASC' });
                 }}
               />
             </div>
@@ -163,11 +149,9 @@ FiltersAccordion.propTypes = {
   accordionOpen: PropTypes.bool.isRequired,
   setAccordionOpen: PropTypes.func.isRequired,
   filters: PropTypes.object.isRequired,
-  setFilters: PropTypes.func.isRequired,
   applyFilters: PropTypes.func.isRequired,
   sortFields: PropTypes.array.isRequired,
   sorting: PropTypes.object.isRequired,
   applySorting: PropTypes.func.isRequired,
-  onResetSorting: PropTypes.func.isRequired,
   appliedTheme: PropTypes.string.isRequired,
 };
