@@ -9,20 +9,17 @@ describe('Thesis proposals overview page', () => {
 
   it('should toggle between course proposals and all proposals', () => {
     // Step 1: Verify the initial state is course proposals
-    cy.get('.proposals-toggle input').eq(0).should('be.checked');
-    cy.get('.proposals-toggle input').eq(1).should('not.be.checked');
+    cy.get('#course').should('be.checked');
+    cy.get('#all').should('not.be.checked');
 
     // Step 2: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
-    cy.get('.proposals-toggle input').eq(1).should('be.checked');
-    cy.get('.proposals-toggle input').eq(0).should('not.be.checked');
+    cy.get('#all').click();
 
     // Step 3: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
 
     // Step 4: Toggle back to course proposals
-    cy.get('.proposals-toggle label').eq(0).click();
-    cy.get('.proposals-toggle input').eq(0).should('be.checked');
+    cy.get('#course').click();
 
     // Step 5: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -139,7 +136,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 3: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -213,7 +210,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 3: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -287,7 +284,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 3: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 4: Filter abroad proposals by clicking on the badge
     cy.get('.badge-container .clickable').contains("Tesi all'estero").first().click();
@@ -384,7 +381,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 3: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -462,7 +459,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 3: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -540,7 +537,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 3: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -618,7 +615,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 3: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -859,7 +856,7 @@ describe('Thesis proposals overview page', () => {
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
 
     // Step 2: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 3: Intercept the network request for the search
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
@@ -912,7 +909,7 @@ describe('Thesis proposals overview page', () => {
     cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
 
     // Step 2: Toggle to all proposals
-    cy.get('.proposals-toggle label').eq(1).click();
+    cy.get('#all').click();
 
     // Step 3: Wait for the network request to complete
     cy.wait('@getThesisProposals');
