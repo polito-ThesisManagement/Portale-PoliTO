@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
@@ -17,8 +17,8 @@ import FiltersAccordion from './FiltersAccordion';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
+import SegmentedControl from './SegmentedControl';
 import { ThesisItem } from './ThesisItem';
-import ThesisProposalsToggle from './ThesisProposalsToggle';
 import Title from './Title';
 
 export default function ThesisProposals() {
@@ -231,7 +231,23 @@ export default function ThesisProposals() {
       <div className="proposals-container">
         <div className="filters-container">
           <div className="simple-filters-container">
-            <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
+            <SegmentedControl
+              name="proposals-segmented-control"
+              callback={val => handleTabChange(val)}
+              controlRef={useRef()}
+              segments={[
+                {
+                  label: t('carriera.proposte_di_tesi.course_proposals'),
+                  value: 'course',
+                  ref: useRef(),
+                },
+                {
+                  label: t('carriera.proposte_di_tesi.all_proposals'),
+                  value: 'all',
+                  ref: useRef(),
+                },
+              ]}
+            />
             <Form
               className="d-flex w-100"
               style={{ maxWidth: '380px', zIndex: '1' }}

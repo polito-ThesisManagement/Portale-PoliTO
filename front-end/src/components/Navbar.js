@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 
 import { PersonCircle } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
@@ -8,13 +8,24 @@ import Image from 'react-bootstrap/Image';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
-import { FaArrowRightFromBracket, FaBell, FaEnvelope, FaKey, FaRegBell, FaRegEnvelope, FaUser } from 'react-icons/fa6';
+import {
+  FaArrowRightFromBracket,
+  FaBell,
+  FaCircleHalfStroke,
+  FaEnvelope,
+  FaKey,
+  FaMoon,
+  FaRegBell,
+  FaRegEnvelope,
+  FaSun,
+  FaUser,
+} from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
 import API from '../API';
-import { DesktopToggleContext, LoggedStudentContext } from '../App';
+import { DesktopToggleContext, LoggedStudentContext, ThemeContext } from '../App';
 import Logo from '../assets/logo_polito.svg';
 import Logo2 from '../assets/logo_polito_reduced.svg';
 import Logo2White from '../assets/logo_polito_reduced_white.svg';
@@ -24,12 +35,13 @@ import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import { useLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
+import SegmentedControl from './SegmentedControl';
 import SidebarModal from './SidebarModal';
-import ThemeToggle from './ThemeToggle';
 
 export default function PoliNavbar(props) {
   const { desktopToggle } = useContext(DesktopToggleContext);
   const { loggedStudent } = useContext(LoggedStudentContext);
+  const { setTheme } = useContext(ThemeContext);
 
   const { t, i18n } = useTranslation();
 
@@ -118,7 +130,30 @@ export default function PoliNavbar(props) {
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
           <Searchbar services={Services} mobile={false} />
           <Nav className="my-0 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-            <ThemeToggle />
+            <div className="d-flex align-items-center" style={{ marginRight: '10px' }}>
+              <SegmentedControl
+                name="theme-segmented-control"
+                callback={val => setTheme(val)}
+                controlRef={useRef()}
+                segments={[
+                  {
+                    label: <FaCircleHalfStroke size={24} color={'var(--primary)'} />,
+                    value: 'auto',
+                    ref: useRef(),
+                  },
+                  {
+                    label: <FaSun size={24} color={'var(--primary)'} />,
+                    value: 'light',
+                    ref: useRef(),
+                  },
+                  {
+                    label: <FaMoon size={24} color={'var(--primary)'} />,
+                    value: 'dark',
+                    ref: useRef(),
+                  },
+                ]}
+              />
+            </div>
             <Nav.Link
               as={Link}
               to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX"
