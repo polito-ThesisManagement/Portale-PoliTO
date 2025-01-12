@@ -37,7 +37,7 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
             }}
             style={{
               fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--font-size-md)',
+              fontSize: 'var(--font-size-sm)',
               fontWeight: 'var(--font-weight-medium)',
               gap: '.5rem',
             }}
@@ -64,7 +64,7 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
           size="sm"
           style={{
             fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-md)',
+            fontSize: 'var(--font-size-sm)',
             fontWeight: 'var(--font-weight-medium)',
             gap: '.5rem',
             height: 'fit-content',

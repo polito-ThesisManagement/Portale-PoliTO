@@ -11,7 +11,7 @@
   min-width: 4rem;
   gap: 0.5rem;
   font-family: var(--font-primary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
 }
 
