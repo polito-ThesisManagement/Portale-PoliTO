@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 import { PersonCircle } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
@@ -41,7 +41,7 @@ import SidebarModal from './SidebarModal';
 export default function PoliNavbar(props) {
   const { desktopToggle } = useContext(DesktopToggleContext);
   const { loggedStudent } = useContext(LoggedStudentContext);
-  const { setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const { t, i18n } = useTranslation();
 
@@ -60,6 +60,7 @@ export default function PoliNavbar(props) {
     setSelectedLanguage(lng);
     document.documentElement.setAttribute('lang', lng);
     document.querySelector('meta[name="description"]').setAttribute('content', t('descrizione'));
+    localStorage.setItem('language', lng);
   };
 
   const handleLoggedStudentChange = async newStudent => {
@@ -72,6 +73,23 @@ export default function PoliNavbar(props) {
       props.setRefresh(!props.refresh);
     }
   };
+
+  let themeDefaultIndex;
+  if (theme === 'auto') {
+    themeDefaultIndex = 0;
+  } else if (theme === 'light') {
+    themeDefaultIndex = 1;
+  } else {
+    themeDefaultIndex = 2;
+  }
+
+  // Set the preferred language if it is saved in localStorage
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && savedLanguage !== i18n.language) {
+      updateLanguage(savedLanguage);
+    }
+  }, []);
 
   return (
     <Navbar className="custom-navbar">
@@ -135,6 +153,7 @@ export default function PoliNavbar(props) {
                 name="theme-segmented-control"
                 callback={val => setTheme(val)}
                 controlRef={useRef()}
+                defaultIndex={themeDefaultIndex}
                 segments={[
                   {
                     label: <FaCircleHalfStroke size={24} color={'var(--primary)'} />,

@@ -30,7 +30,7 @@ export const LoggedStudentContext = createContext(null);
 export const BodyDataLoadingContext = createContext(null);
 
 function App() {
-  const [theme, setTheme] = useState('auto');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'auto');
   const [favorites, setFavorites] = useState([]);
   const [desktopToggle, setDesktopToggle] = useState(false);
   const [allStudents, setAllStudents] = useState([]);
@@ -39,20 +39,6 @@ function App() {
   const [bodyDataLoading, setBodyDataLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    scrollTop();
-  }, [location]);
-
-  useEffect(() => {
-    const initialTheme = 'auto';
-    setTheme(initialTheme);
-    updateTheme(initialTheme);
-  }, []);
-
-  useEffect(() => {
-    updateTheme(theme);
-  }, [theme]);
 
   const updateTheme = theme => {
     const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
@@ -66,6 +52,15 @@ function App() {
           : getComputedStyle(document.documentElement).getPropertyValue('--background-light'),
       );
   };
+
+  useEffect(() => {
+    scrollTop();
+  }, [location]);
+
+  useEffect(() => {
+    updateTheme(theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const fetchData = async () => {
