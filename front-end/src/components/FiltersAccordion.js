@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Accordion, Badge as BadgeBootstrap } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +7,8 @@ import { FaFilter, FaKey, FaTags, FaUser } from 'react-icons/fa6';
 import PropTypes from 'prop-types';
 
 import API from '../API';
+import { ThemeContext } from '../App';
+import { getSystemTheme } from '../utils/utils';
 import Badge from './Badge';
 import FilterDropdown from './FilterDropdown';
 import FilterGroup from './FilterGroup';
@@ -18,12 +20,15 @@ export default function FiltersAccordion({
   setAccordionOpen,
   filters,
   applyFilters,
+  resetFilters,
   sortFields,
   sorting,
   applySorting,
-  appliedTheme,
 }) {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+
   return (
     <Accordion activeKey={accordionOpen ? '0' : null} onSelect={() => setAccordionOpen(!accordionOpen)}>
       <Accordion.Item eventKey="0">
@@ -59,7 +64,7 @@ export default function FiltersAccordion({
             <FilterDropdown
               api={API.getThesisProposalsTypes}
               filters={filters.type}
-              icon={<FaTags width={20} height={16} />}
+              icon={<FaTags size={14} style={{ width: '15px' }} />}
               itemType={'type'}
               applyFilters={applyFilters}
               selectedItems={filters.type}
@@ -67,7 +72,7 @@ export default function FiltersAccordion({
             <FilterDropdown
               api={API.getThesisProposalsKeywords}
               filters={filters.keyword}
-              icon={<FaKey width={20} height={16} />}
+              icon={<FaKey size={14} style={{ width: '15px' }} />}
               itemType={'keyword'}
               applyFilters={applyFilters}
               selectedItems={filters.keyword}
@@ -75,7 +80,7 @@ export default function FiltersAccordion({
             <FilterDropdown
               api={API.getThesisProposalsTeachers}
               filters={filters.teacher}
-              icon={<FaUser width={20} height={16} />}
+              icon={<FaUser size={14} />}
               itemType={'teacher'}
               applyFilters={applyFilters}
               selectedItems={filters.teacher}
@@ -127,16 +132,7 @@ export default function FiltersAccordion({
               ))}
             </div>
             <div className="reset-button-container">
-              <ResetButton
-                resetFilters={() => {
-                  applyFilters('isInternal', 0);
-                  applyFilters('isAbroad', false);
-                  applyFilters('keyword', []);
-                  applyFilters('type', []);
-                  applyFilters('teacher', []);
-                  applySorting({ sortBy: 'id', order: 'ASC' });
-                }}
-              />
+              <ResetButton resetFilters={resetFilters} />
             </div>
           </div>
         </Accordion.Body>
@@ -150,8 +146,8 @@ FiltersAccordion.propTypes = {
   setAccordionOpen: PropTypes.func.isRequired,
   filters: PropTypes.object.isRequired,
   applyFilters: PropTypes.func.isRequired,
+  resetFilters: PropTypes.func.isRequired,
   sortFields: PropTypes.array.isRequired,
   sorting: PropTypes.object.isRequired,
   applySorting: PropTypes.func.isRequired,
-  appliedTheme: PropTypes.string.isRequired,
 };

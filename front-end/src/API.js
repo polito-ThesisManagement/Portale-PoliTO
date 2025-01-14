@@ -54,11 +54,12 @@ async function getTargetedThesisProposals(lang, page, limit, filters, search, so
   }
 }
 
-async function getThesisProposalsTypes(lang) {
+async function getThesisProposalsTypes(search, lang) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/types`, {
       params: {
         lang,
+        search,
       },
     });
     return response.data;
@@ -67,11 +68,12 @@ async function getThesisProposalsTypes(lang) {
   }
 }
 
-async function getThesisProposalsKeywords(lang) {
+async function getThesisProposalsKeywords(search, lang) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/keywords`, {
       params: {
         lang,
+        search,
       },
     });
     return response.data;
@@ -80,9 +82,13 @@ async function getThesisProposalsKeywords(lang) {
   }
 }
 
-async function getThesisProposalsTeachers() {
+async function getThesisProposalsTeachers(search) {
   try {
-    const response = await axios.get(`${URL}/thesis-proposals/teachers`);
+    const response = await axios.get(`${URL}/thesis-proposals/teachers`, {
+      params: {
+        search,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals teachers:', error);

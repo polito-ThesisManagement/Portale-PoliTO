@@ -26,11 +26,16 @@ export default function FilterDropdown({
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedItems, setSelectedItems] = useState(parentSelectedItems || []);
+  const [searching, setSearching] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
   const { t, i18n } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+
+  const debounceSearch = useDebounceSearch(() => {
+    setSearching(true);
+  }, 500); // 500ms of debounce
 
   useEffect(() => {
     setSelectedItems(parentSelectedItems || []);
@@ -38,8 +43,9 @@ export default function FilterDropdown({
 
   useEffect(() => {
     setLoading(true);
+    const startTime = Date.now();
     if (isOpen) {
-      api(i18n.language)
+      api(searchValue, i18n.language)
         .then(response => {
           setItems(response);
         })
@@ -47,15 +53,29 @@ export default function FilterDropdown({
           console.error('Error fetching items', error);
         })
         .finally(() => {
-          setLoading(false);
+          const elapsedTime = Date.now() - startTime;
+          const remainingTime = Math.max(500 - elapsedTime, 0);
+
+          setTimeout(() => {
+            setLoading(false);
+            setSearching(false);
+          }, remainingTime);
         });
     }
-  }, [isOpen, i18n.language]);
+  }, [isOpen, i18n.language, searching]);
 
   const handleApply = () => {
     setIsOpen(false);
     setSearchValue('');
     applyFilters(itemType, selectedItems);
+  };
+
+  const handleSearchbarChange = event => {
+    const value = event.target.value;
+    setSearchValue(value);
+
+    // Start the debounce only when the user stops typing
+    debounceSearch(value);
   };
 
   const handleItemSelect = item => {
@@ -83,18 +103,26 @@ export default function FilterDropdown({
     applyFilters(itemType, []);
   };
 
-  const filteredItems = items.filter(item => {
-    if (itemType === 'keyword') {
-      return item.keyword.toLowerCase().includes(searchValue.toLowerCase());
-    } else if (itemType === 'teacher') {
-      return (
-        item.firstName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.lastName.toLowerCase().includes(searchValue.toLowerCase())
-      );
-    } else {
-      return item.type.toLowerCase().includes(searchValue.toLowerCase());
-    }
-  });
+  function useDebounceSearch(callback, delay) {
+    const [timeoutId, setTimeoutId] = useState(null);
+
+    const debounce = (...args) => {
+      // Clear the timeout if it exists
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+
+      // Create a new timeout that invokes the callback after the specified delay
+      const newTimeoutId = setTimeout(() => {
+        callback(...args);
+      }, delay);
+
+      // Save the timeoutId for cleanup
+      setTimeoutId(newTimeoutId);
+    };
+
+    return debounce;
+  }
 
   let label;
   if (itemType === 'keyword') {
@@ -106,8 +134,8 @@ export default function FilterDropdown({
   }
 
   const dropdownItems =
-    filteredItems && filteredItems.length > 0 ? (
-      filteredItems.map(item => (
+    items && items.length > 0 ? (
+      items.map(item => (
         <Dropdown.Item key={item.id} className="custom-dropdown-item" onClick={() => handleItemSelect(item)}>
           <Form.Check
             type="checkbox"
@@ -166,7 +194,7 @@ export default function FilterDropdown({
               borderRadius: '10px',
             }}
             value={searchValue}
-            onChange={e => setSearchValue(e.target.value)}
+            onChange={handleSearchbarChange}
           />
           <Search
             style={{
