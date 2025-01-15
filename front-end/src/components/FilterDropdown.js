@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Badge as BadgeBootstrap, Button, Dropdown, Form, InputGroup, Spinner } from 'react-bootstrap';
+import { Badge, Button, Dropdown, Form, InputGroup, Spinner } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { ThemeContext } from '../App';
 import '../styles/CustomDropdown.css';
 import { getSystemTheme } from '../utils/utils';
-import Badge from './Badge';
+import CustomBadge from './CustomBadge';
 import CustomMenu from './CustomMenu';
 import CustomToggle from './CustomToggle';
 
@@ -142,7 +142,7 @@ export default function FilterDropdown({
             key={selectedItems.map(i => i.id).includes(item.id)}
             id={item.id}
             label={
-              <Badge
+              <CustomBadge
                 variant={itemType}
                 content={itemType === 'teacher' ? item.firstName + ' ' + item.lastName : item[itemType]}
               />
@@ -173,9 +173,9 @@ export default function FilterDropdown({
         {label}
         {/* Display the count of applied filters */}
         {filters.length > 0 && (
-          <BadgeBootstrap pill bg="secondary">
+          <Badge pill bg="secondary" className="top-0">
             {filters.length}
-          </BadgeBootstrap>
+          </Badge>
         )}
         {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
       </Dropdown.Toggle>

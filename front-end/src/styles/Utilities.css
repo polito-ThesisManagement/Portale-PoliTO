@@ -193,7 +193,7 @@ body {
 .badge.rounded-pill {
   padding: 3px 7px;
   border: none;
-  top: 0px;
+  position: relative;
 }
 
 .btn-light {

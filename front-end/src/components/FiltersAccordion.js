@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Accordion, Badge as BadgeBootstrap } from 'react-bootstrap';
+import { Accordion, Badge } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaFilter, FaKey, FaTags, FaUser } from 'react-icons/fa6';
 
@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import API from '../API';
 import { ThemeContext } from '../App';
 import { getSystemTheme } from '../utils/utils';
-import Badge from './Badge';
+import CustomBadge from './CustomBadge';
 import FilterDropdown from './FilterDropdown';
 import FilterGroup from './FilterGroup';
 import ResetButton from './ResetButton';
@@ -41,14 +41,14 @@ export default function FiltersAccordion({
               filters.type.length > 0 ||
               filters.teacher.length > 0 ||
               sorting.sortBy !== 'id') && (
-              <BadgeBootstrap pill bg="secondary">
+              <Badge pill bg="secondary" className="top-0">
                 {filters.keyword.length +
                   filters.type.length +
                   filters.teacher.length +
                   (filters.isInternal != 0 ? 1 : 0) +
                   (filters.isAbroad ? 1 : 0) +
                   (sorting.sortBy !== 'id' ? 1 : 0)}
-              </BadgeBootstrap>
+              </Badge>
             )}
           </div>
         </Accordion.Header>
@@ -97,11 +97,11 @@ export default function FiltersAccordion({
                 filters.type.length > 0) && (
                 <span className="applied-filters-label">{t('carriera.proposte_di_tesi.applied_filters')}</span>
               )}
-              {filters.isInternal === 1 && <Badge variant="internal" type="reset" applyFilters={applyFilters} />}
-              {filters.isInternal === 2 && <Badge variant="external" type="reset" applyFilters={applyFilters} />}
-              {filters.isAbroad && <Badge variant="abroad" type="reset" applyFilters={applyFilters} />}
+              {filters.isInternal === 1 && <CustomBadge variant="internal" type="reset" applyFilters={applyFilters} />}
+              {filters.isInternal === 2 && <CustomBadge variant="external" type="reset" applyFilters={applyFilters} />}
+              {filters.isAbroad && <CustomBadge variant="abroad" type="reset" applyFilters={applyFilters} />}
               {filters.type.map(type => (
-                <Badge
+                <CustomBadge
                   key={type.id}
                   variant="type"
                   content={type}
@@ -111,7 +111,7 @@ export default function FiltersAccordion({
                 />
               ))}
               {filters.keyword.map(keyword => (
-                <Badge
+                <CustomBadge
                   key={keyword.id}
                   variant="keyword"
                   content={keyword}
@@ -121,7 +121,7 @@ export default function FiltersAccordion({
                 />
               ))}
               {filters.teacher.map(teacher => (
-                <Badge
+                <CustomBadge
                   key={teacher.id}
                   variant="teacher"
                   content={teacher}

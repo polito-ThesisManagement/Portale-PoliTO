@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import API from '../../API';
 import { BodyDataLoadingContext } from '../../App';
-import Badge from '../../components/Badge';
+import CustomBadge from '../../components/CustomBadge';
 import MyBreadcrumb from '../../components/MyBreadcrumb';
 import ThesisProposalDetail from '../../components/ThesisProposalDetail';
 
@@ -36,7 +36,7 @@ function PropostaDiTesi() {
     } else if (thesisProposal) {
       return <ThesisProposalDetail thesisProposal={thesisProposal} />;
     } else {
-      return <Badge variant="error" content={t('carriera.proposta_di_tesi.errore_proposta_di_tesi')} />;
+      return <CustomBadge variant="error" content={t('carriera.proposta_di_tesi.errore_proposta_di_tesi')} />;
     }
   };
 

@@ -11,7 +11,7 @@ import '../styles/Theme.css';
 import '../styles/ThesisItem.css';
 import '../styles/Utilities.css';
 import { getSystemTheme } from '../utils/utils';
-import Badge from './Badge';
+import CustomBadge from './CustomBadge';
 
 function formatDate(date) {
   const dateObj = new Date(date);
@@ -32,7 +32,7 @@ function ThesisItem(props) {
       <p className="thesis-description">{props.description}</p>
       {props.keywords.length > 0 && (
         <div className="thesis-keyword-tags">
-          <Badge
+          <CustomBadge
             variant="keyword"
             content={props.keywords.map(keyword => ({ content: keyword.keyword, id: keyword.id }))}
             filters={props.filters}
@@ -41,7 +41,7 @@ function ThesisItem(props) {
         </div>
       )}
       <div className="thesis-professor-tags">
-        <Badge
+        <CustomBadge
           variant={'teacher'}
           content={teachers.map(teacher => ({ content: teacher.firstName + ' ' + teacher.lastName, id: teacher.id }))}
           filters={props.filters}
@@ -60,16 +60,16 @@ const ThesisHeader = ({ topic, types, isInternal, isAbroad, filters, applyFilter
         <h3 className="thesis-topic">{topic}</h3>
         <div className="thesis-position-tags">
           {isInternal ? (
-            <Badge variant={'internal'} applyFilters={applyFilters} />
+            <CustomBadge variant={'internal'} applyFilters={applyFilters} filters={filters} />
           ) : (
-            <Badge variant={'external'} applyFilters={applyFilters} />
+            <CustomBadge variant={'external'} applyFilters={applyFilters} filters={filters} />
           )}
-          {isAbroad && <Badge variant={'abroad'} applyFilters={applyFilters} />}
+          {isAbroad && <CustomBadge variant={'abroad'} applyFilters={applyFilters} filters={filters} />}
         </div>
       </div>
       {types.length > 0 && (
         <div className="thesis-type-tags">
-          <Badge
+          <CustomBadge
             variant="type"
             content={types.map(type => ({ content: type.type, id: type.id }))}
             filters={filters}
@@ -100,8 +100,14 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
     <div className="thesis-footer">
       <ShowMore id={id} />
       <div className="thesis-dates">
-        <Badge variant={'date'} content={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)} />
-        <Badge variant={'date'} content={t('carriera.proposte_di_tesi.expires') + ' ' + formatDate(expirationDate)} />
+        <CustomBadge
+          variant={'date'}
+          content={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
+        />
+        <CustomBadge
+          variant={'date'}
+          content={t('carriera.proposte_di_tesi.expires') + ' ' + formatDate(expirationDate)}
+        />
       </div>
     </div>
   );

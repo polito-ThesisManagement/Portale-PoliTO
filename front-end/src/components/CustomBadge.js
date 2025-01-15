@@ -29,11 +29,11 @@ import {
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
-import '../styles/Badge.css';
+import '../styles/CustomBadge.css';
 import { getSystemTheme } from '../utils/utils';
 
 /**
- * Badge component.
+ * Custom badge component.
  * @param {string} variant - The variant of the badge. Available options are:
  *  - "teacher": Renders a badge with a teacher icon. Requires a "content".
  *  - "keyword": Renders a badge with a keyword icon. Requires a "content".
@@ -106,7 +106,7 @@ const validTypeContent = [
   'numerical',
 ];
 
-export default function Badge({ variant, content, type, filters, applyFilters }) {
+export default function CustomBadge({ variant, content, type, filters, applyFilters }) {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
@@ -137,16 +137,16 @@ export default function Badge({ variant, content, type, filters, applyFilters })
         !applyFilters
       ) {
         elements.push(
-          <div key={`${item}-${index}`} className={`badge ${variant}_${appliedTheme}`}>
-            <div className="badge-icon">{renderIcon(item)}</div>
-            <div className="badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
+          <div key={`${item}-${index}`} className={`custom-badge badge ${variant}_${appliedTheme}`}>
+            <div className="custom-badge-icon">{renderIcon(item)}</div>
+            <div className="custom-badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
           </div>,
         );
       } else if (type === 'reset') {
         elements.push(
           <Button
             key={`${item.content}-${index}`}
-            className={`badge ${variant}_${appliedTheme} clickable`}
+            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
             onClick={() => {
               if (applyFilters) {
                 if (variant === 'type') {
@@ -159,9 +159,9 @@ export default function Badge({ variant, content, type, filters, applyFilters })
               }
             }}
           >
-            <div className="badge-icon">{renderIcon(item.content)}</div>
-            <span className="badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</span>
-            <div className="badge-icon">
+            <div className="custom-badge-icon">{renderIcon(item.content)}</div>
+            <span className="custom-badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</span>
+            <div className="custom-badge-icon">
               <FaCircleXmark size={14} className="ms-1" />
             </div>
           </Button>,
@@ -170,7 +170,7 @@ export default function Badge({ variant, content, type, filters, applyFilters })
         elements.push(
           <Button
             key={`${item.content}-${index}`}
-            className={`badge ${variant}_${appliedTheme} clickable`}
+            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
             onClick={() => {
               if (applyFilters) {
                 if (variant === 'type') {
@@ -183,8 +183,8 @@ export default function Badge({ variant, content, type, filters, applyFilters })
               }
             }}
           >
-            <div className="badge-icon">{renderIcon(item.content)}</div>
-            <div className="badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</div>
+            <div className="custom-badge-icon">{renderIcon(item.content)}</div>
+            <div className="custom-badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</div>
           </Button>,
         );
       }
@@ -305,12 +305,12 @@ export default function Badge({ variant, content, type, filters, applyFilters })
     (variant === 'type' && !isValidTypeContent(content))
   ) {
     return (
-      <div className="badge-container">
-        <div className={`badge error_${appliedTheme}`}>
-          <div className="badge-icon">
+      <div className="custom-badge-container">
+        <div className={`custom-badge badge error_${appliedTheme}`}>
+          <div className="custom-badge-icon">
             <FaCircleXmark size={14} />
           </div>
-          <div className="badge-text">{t('carriera.proposta_di_tesi.badge_errato')}</div>
+          <div className="custom-badge-text">{t('carriera.proposta_di_tesi.badge_errato')}</div>
         </div>
       </div>
     );
@@ -323,15 +323,21 @@ export default function Badge({ variant, content, type, filters, applyFilters })
       if (!type && applyFilters) {
         elements.push(
           <Button
-            key="badge-button"
-            className={`badge ${variant}_${appliedTheme} clickable`}
+            key="custom-badge-button"
+            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
             onClick={() => {
               if (variant === 'internal') {
-                applyFilters('isInternal', 1);
+                if (filters.isInternal !== 1) {
+                  applyFilters('isInternal', 1);
+                }
               } else if (variant === 'external') {
-                applyFilters('isInternal', 2);
-              } else {
-                applyFilters('isAbroad', true);
+                if (filters.isInternal !== 2) {
+                  applyFilters('isInternal', 2);
+                }
+              } else if (variant === 'abroad') {
+                if (!filters.isAbroad) {
+                  applyFilters('isAbroad', true);
+                }
               }
             }}
           >
@@ -342,8 +348,8 @@ export default function Badge({ variant, content, type, filters, applyFilters })
       } else if (type === 'reset' && applyFilters) {
         elements.push(
           <Button
-            key="badge-button"
-            className={`badge ${variant}_${appliedTheme} clickable`}
+            key="custom-badge-button"
+            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
             onClick={() => {
               if (variant === 'internal') {
                 applyFilters('isInternal', 0);
@@ -361,7 +367,7 @@ export default function Badge({ variant, content, type, filters, applyFilters })
         );
       } else {
         elements.push(
-          <div key="badge-div" className={`badge ${variant}_${appliedTheme}`}>
+          <div key="custom-badge-div" className={`custom-badge badge ${variant}_${appliedTheme}`}>
             {renderIcon(content)}
             {renderTranslatedContent()}
           </div>,
@@ -374,10 +380,10 @@ export default function Badge({ variant, content, type, filters, applyFilters })
     return elements;
   };
 
-  return <div className="badge-container">{renderBadge()}</div>;
+  return <div className="custom-badge-container">{renderBadge()}</div>;
 }
 
-Badge.propTypes = {
+CustomBadge.propTypes = {
   variant: PropTypes.string.isRequired,
   content: PropTypes.oneOfType([
     PropTypes.object,

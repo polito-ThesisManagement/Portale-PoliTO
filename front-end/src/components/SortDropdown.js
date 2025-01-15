@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Badge as BadgeBootstrap, Button, Dropdown } from 'react-bootstrap';
+import { Badge, Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaArrowDownShortWide, FaArrowUpShortWide, FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
@@ -78,9 +78,9 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
         {t('carriera.proposte_di_tesi.order')}
         {/* Display the count of applied sorting */}
         {sorting.sortBy !== 'id' && (
-          <BadgeBootstrap pill bg="secondary">
+          <Badge pill bg="secondary" className="top-0">
             1
-          </BadgeBootstrap>
+          </Badge>
         )}
         {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
       </Dropdown.Toggle>
