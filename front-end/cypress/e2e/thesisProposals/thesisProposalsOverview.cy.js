@@ -142,7 +142,7 @@ describe('Thesis proposals overview page', () => {
     cy.wait('@getThesisProposals');
 
     // Step 5: Filter internal proposals by clicking on the badge
-    cy.get('.badge-container .clickable').contains('Tesi interna').first().click();
+    cy.get('.custom-badge-container .clickable').contains('Tesi interna').first().click();
 
     // Step 6: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -219,7 +219,7 @@ describe('Thesis proposals overview page', () => {
     cy.get('a.page-link').contains('2').click();
 
     // Step 6: Filter external proposals by clicking on the badge
-    cy.get('.badge-container .clickable').contains('Tesi in azienda').first().click();
+    cy.get('.custom-badge-container .clickable').contains('Tesi in azienda').first().click();
 
     // Step 7: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -287,7 +287,7 @@ describe('Thesis proposals overview page', () => {
     cy.get('#all').click();
 
     // Step 4: Filter abroad proposals by clicking on the badge
-    cy.get('.badge-container .clickable').contains("Tesi all'estero").first().click();
+    cy.get('.custom-badge-container .clickable').contains("Tesi all'estero").first().click();
 
     // Step 5: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -365,7 +365,7 @@ describe('Thesis proposals overview page', () => {
     // Step 7: Check that each proposal contains the keyword 'europeizzazione'
     cy.get('.list-section .thesis-overview').each(article => {
       cy.wrap(article)
-        .find('.badge-container')
+        .find('.custom-badge-container')
         .then($keywordTags => {
           const keywordTags = $keywordTags.text().toLowerCase();
           expect(keywordTags.includes('europeizzazione')).to.be.true;
@@ -387,7 +387,7 @@ describe('Thesis proposals overview page', () => {
     cy.wait('@getThesisProposals');
 
     // Step 5: Filter proposals by keyword 'SMART CITY'
-    cy.get('.badge-container .clickable').contains('SMART CITY').first().click();
+    cy.get('.custom-badge-container .clickable').contains('SMART CITY').first().click();
 
     // Step 6: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -398,7 +398,7 @@ describe('Thesis proposals overview page', () => {
     // Step 8: Verify that the proposal contains the keyword 'SMART CITY'
     cy.get('.list-section .thesis-overview').each(article => {
       cy.wrap(article)
-        .find('.badge-container')
+        .find('.custom-badge-container')
         .then($tags => {
           const tags = $tags.text().toLowerCase();
           expect(tags.includes('smart city')).to.be.true;
@@ -465,7 +465,7 @@ describe('Thesis proposals overview page', () => {
     cy.wait('@getThesisProposals');
 
     // Step 5: Filter proposals by teacher 'Edoardo Patti'
-    cy.get('.badge-container .clickable').contains('Edoardo Patti').first().click();
+    cy.get('.custom-badge-container .clickable').contains('Edoardo Patti').first().click();
 
     // Step 6: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -543,7 +543,7 @@ describe('Thesis proposals overview page', () => {
     cy.wait('@getThesisProposals');
 
     // Step 5: Filter proposals by type 'Sperimentale'
-    cy.get('.badge-container .clickable').contains('SPERIMENTALE').first().click();
+    cy.get('.custom-badge-container .clickable').contains('SPERIMENTALE').first().click();
 
     // Step 6: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -621,19 +621,19 @@ describe('Thesis proposals overview page', () => {
     cy.wait('@getThesisProposals');
 
     // Step 5: Filter proposals by type 'Ricerca'
-    cy.get('.badge-container .clickable').contains('RICERCA').first().click();
+    cy.get('.custom-badge-container .clickable').contains('RICERCA').first().click();
 
     // Step 6: Wait for the network request to complete
     cy.wait('@getThesisProposals');
 
     // Step 7: Filter external proposals by clicking on the badge
-    cy.get('.badge-container .clickable').contains('Tesi in azienda').first().click();
+    cy.get('.custom-badge-container .clickable').contains('Tesi in azienda').first().click();
 
     // Step 8: Wait for the network request to complete
     cy.wait('@getThesisProposals');
 
     // Step 9: Filter proposals with 'Raffaello Camoriano' as teacher by clicking on the badge
-    cy.get('.badge-container .clickable').contains('Raffaello Camoriano').first().click();
+    cy.get('.custom-badge-container .clickable').contains('Raffaello Camoriano').first().click();
 
     // Step 10: Wait for the network request to complete
     cy.wait('@getThesisProposals');
@@ -668,8 +668,8 @@ describe('Thesis proposals overview page', () => {
 
     // Step 14: Open advanced filters accordion and check that each filter is present in the applied filters section
     cy.get('.accordion-button.collapsed').should('be.visible').click();
-    cy.get('.applied-filters-container .badge-group .badge-container').should('have.length', 3);
-    cy.get('.applied-filters-container .badge-group .badge-container').each($badge => {
+    cy.get('.applied-filters-container .badge-group .custom-badge-container').should('have.length', 3);
+    cy.get('.applied-filters-container .badge-group .custom-badge-container').each($badge => {
       const badge = $badge.text().toLowerCase();
       expect(badge.includes('ricerca') || badge.includes('tesi in azienda') || badge.includes('raffaello camoriano')).to
         .be.true;
