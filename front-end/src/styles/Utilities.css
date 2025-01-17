@@ -203,6 +203,9 @@ body {
   border-color: var(--text-200) !important;
   background-color: var(--text-100) !important;
   color: var(--text-700) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-light:hover {
@@ -230,6 +233,9 @@ body {
   border-color: var(--primary-800) !important;
   background-color: var(--primary-700) !important;
   color: var(--white) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-dark:hover {
@@ -257,6 +263,9 @@ body {
   border-color: var(--text-300) !important;
   background-color: var(--surface) !important;
   color: var(--text-600) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-outlined-light:hover {
@@ -284,6 +293,9 @@ body {
   background-color: var(--surface) !important;
   border-color: var(--white) !important;
   color: var(--white) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-outlined-dark:hover {
