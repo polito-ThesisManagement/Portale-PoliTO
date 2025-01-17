@@ -4,7 +4,6 @@ import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
-import { HiLightBulb } from 'react-icons/hi';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import queryString from 'query-string';
@@ -20,7 +19,6 @@ import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
 import SegmentedControl from './SegmentedControl';
 import { ThesisItem } from './ThesisItem';
-import Title from './Title';
 
 export default function ThesisProposals() {
   const [accordionOpen, setAccordionOpen] = useState(false);
@@ -329,93 +327,84 @@ export default function ThesisProposals() {
   }, [loading]);
 
   return (
-    <>
-      <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
-      <div className="proposals-container">
-        <div className="filters-container">
-          <div className="simple-filters-container" key={state.tab}>
-            <SegmentedControl
-              name="proposals-segmented-control"
-              callback={val => handleTabChange(val)}
-              controlRef={useRef()}
-              defaultIndex={state.tab === 'course' ? 0 : 1}
-              segments={[
-                {
-                  label: t('carriera.proposte_di_tesi.course_proposals'),
-                  value: 'course',
-                  ref: useRef(),
-                },
-                {
-                  label: t('carriera.proposte_di_tesi.all_proposals'),
-                  value: 'all',
-                  ref: useRef(),
-                },
-              ]}
-            />
-            <Form
-              className="d-flex w-100"
-              style={{ maxWidth: '380px', zIndex: '1' }}
-              onSubmit={e => e.preventDefault()}
-            >
-              <InputGroup className="flex-nowrap w-100">
-                <Form.Control
-                  className="truncated"
-                  type="search"
-                  placeholder={t('carriera.proposte_di_tesi.search')}
-                  aria-label="search_proposals"
-                  style={{
-                    height: '38px',
-                    backgroundColor: 'var(--background)',
-                    color: 'var(--primary)',
-                    borderRadius: '10px',
-                  }}
-                  value={state.searchQuery}
-                  onChange={handleSearchbarChange}
-                />
-                <Search className="search-icon" />
-              </InputGroup>
-            </Form>
-          </div>
-          <FiltersAccordion
-            accordionOpen={accordionOpen}
-            setAccordionOpen={setAccordionOpen}
-            filters={state.filters}
-            applyFilters={applyFilters}
-            resetFilters={resetFilters}
-            sortFields={sortFields}
-            sorting={state.sorting}
-            applySorting={applySorting}
+    <div className="proposals-container">
+      <div className="filters-container">
+        <div className="simple-filters-container" key={state.tab}>
+          <SegmentedControl
+            name="proposals-segmented-control"
+            callback={val => handleTabChange(val)}
+            controlRef={useRef()}
+            defaultIndex={state.tab === 'course' ? 0 : 1}
+            segments={[
+              {
+                label: t('carriera.proposte_di_tesi.course_proposals'),
+                value: 'course',
+                ref: useRef(),
+              },
+              {
+                label: t('carriera.proposte_di_tesi.all_proposals'),
+                value: 'all',
+                ref: useRef(),
+              },
+            ]}
           />
+          <Form className="d-flex w-100" style={{ maxWidth: '380px', zIndex: '1' }} onSubmit={e => e.preventDefault()}>
+            <InputGroup className="flex-nowrap w-100">
+              <Form.Control
+                className="truncated"
+                type="search"
+                placeholder={t('carriera.proposte_di_tesi.search')}
+                aria-label="search_proposals"
+                style={{
+                  height: '38px',
+                  backgroundColor: 'var(--background)',
+                  color: 'var(--primary)',
+                  borderRadius: '10px',
+                }}
+                value={state.searchQuery}
+                onChange={handleSearchbarChange}
+              />
+              <Search className="search-icon" />
+            </InputGroup>
+          </Form>
         </div>
-        {loading ? (
-          <LoadingModal show={loading} onHide={() => setLoading(false)} />
-        ) : (
-          <>
-            {pageProposals.length > 0 ? (
-              <>
-                <div className="list-section">
-                  {pageProposals.map(thesis => {
-                    return (
-                      <ThesisItem key={thesis.id} {...thesis} filters={state.filters} applyFilters={applyFilters} />
-                    );
-                  })}
-                </div>
-                <PaginationItem
-                  count={count}
-                  currentPage={state.currentPage}
-                  handleProposalsPerPageChange={handleProposalsPerPageChange}
-                  handlePageChange={handlePageChange}
-                  pageNumbers={pageNumbers}
-                  proposalsPerPage={state.proposalsPerPage}
-                  totalPages={totalPages}
-                />
-              </>
-            ) : (
-              <ProposalsNotFound resetFilters={resetFilters} />
-            )}
-          </>
-        )}
+        <FiltersAccordion
+          accordionOpen={accordionOpen}
+          setAccordionOpen={setAccordionOpen}
+          filters={state.filters}
+          applyFilters={applyFilters}
+          resetFilters={resetFilters}
+          sortFields={sortFields}
+          sorting={state.sorting}
+          applySorting={applySorting}
+        />
       </div>
-    </>
+      {loading ? (
+        <LoadingModal show={loading} onHide={() => setLoading(false)} />
+      ) : (
+        <>
+          {pageProposals.length > 0 ? (
+            <>
+              <div className="list-section">
+                {pageProposals.map(thesis => {
+                  return <ThesisItem key={thesis.id} {...thesis} filters={state.filters} applyFilters={applyFilters} />;
+                })}
+              </div>
+              <PaginationItem
+                count={count}
+                currentPage={state.currentPage}
+                handleProposalsPerPageChange={handleProposalsPerPageChange}
+                handlePageChange={handlePageChange}
+                pageNumbers={pageNumbers}
+                proposalsPerPage={state.proposalsPerPage}
+                totalPages={totalPages}
+              />
+            </>
+          ) : (
+            <ProposalsNotFound resetFilters={resetFilters} />
+          )}
+        </>
+      )}
+    </div>
   );
 }

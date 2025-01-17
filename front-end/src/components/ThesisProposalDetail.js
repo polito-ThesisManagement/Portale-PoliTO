@@ -1,24 +1,14 @@
 import React from 'react';
 
-import { Container, ProgressBar } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import {
-  FaFile,
-  FaFileExcel,
-  FaFileLines,
-  FaFilePdf,
-  FaFileWord,
-  FaFileZipper,
-  FaFlag,
-  FaLocationDot,
-} from 'react-icons/fa6';
+import { FaFile, FaFileExcel, FaFilePdf, FaFileWord, FaFileZipper, FaFlag, FaLocationDot } from 'react-icons/fa6';
 import Linkify from 'react-linkify';
 
 import moment from 'moment';
 import 'moment/locale/it';
 import PropTypes from 'prop-types';
 
-import Title from '../components/Title';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
 import CustomBadge from './CustomBadge';
@@ -26,7 +16,6 @@ import CustomBadge from './CustomBadge';
 moment.locale('it');
 
 function ThesisProposalDetail(props) {
-  const { t } = useTranslation();
   const {
     id,
     topic,
@@ -47,44 +36,35 @@ function ThesisProposalDetail(props) {
   } = props.thesisProposal;
 
   return (
-    <>
-      <Title
-        thesis
-        icon={<FaFileLines size={26} />}
-        sectionName={t('carriera.proposta_di_tesi.dettagli_proposta_di_tesi')}
-      />
-      <Container fluid className="custom-container">
-        {topic && (
-          <div className="subsection-proposal-title">
-            <p>{topic}</p>
-          </div>
+    <div className="custom-container">
+      {topic && (
+        <div className="subsection-proposal-title">
+          <p>{topic}</p>
+        </div>
+      )}
+      <div className="important-detail">
+        {keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
+        {types.length > 0 && <Types types={types} />}
+        {<Environment isInternal={isInternal} isAbroad={isAbroad} />}
+        <MainSupervisor supervisor={supervisor} />
+        {internalCoSupervisors.length > 0 && <SecondarySupervisors internalCoSupervisors={internalCoSupervisors} />}
+        {externalCoSupervisors && (
+          <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
         )}
-        <div className="important-detail">
-          {keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
-          {types.length > 0 && <Types types={types} />}
-          {<Environment isInternal={isInternal} isAbroad={isAbroad} />}
-          <MainSupervisor supervisor={supervisor} />
-          {internalCoSupervisors.length > 0 && <SecondarySupervisors internalCoSupervisors={internalCoSupervisors} />}
-          {externalCoSupervisors && (
-            <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
-          )}
-          {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
-          {requiredSkills && (
-            <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />
-          )}
-          {additionalNotes && <MyBlock title="carriera.proposta_di_tesi.note" content={additionalNotes} />}
-          {link && <MyBlock title="Link" content={link} />}
-          {attachmentUrl && <Attachment id={id} attachmentUrl={attachmentUrl} />}
-        </div>
-        <div style={{ paddingTop: '10px', paddingBottom: '20px' }}>
-          <div className="straight-line" />
-        </div>
-        <div className="important-detail">
-          {expirationDate && <Status expirationDate={expirationDate} />}
-          {creationDate && expirationDate && <TimeMap creationDate={creationDate} expirationDate={expirationDate} />}
-        </div>
-      </Container>
-    </>
+        {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
+        {requiredSkills && <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />}
+        {additionalNotes && <MyBlock title="carriera.proposta_di_tesi.note" content={additionalNotes} />}
+        {link && <MyBlock title="Link" content={link} />}
+        {attachmentUrl && <Attachment id={id} attachmentUrl={attachmentUrl} />}
+      </div>
+      <div style={{ paddingTop: '10px', paddingBottom: '20px' }}>
+        <div className="straight-line" />
+      </div>
+      <div className="important-detail">
+        {expirationDate && <Status expirationDate={expirationDate} />}
+        {creationDate && expirationDate && <TimeMap creationDate={creationDate} expirationDate={expirationDate} />}
+      </div>
+    </div>
   );
 }
 

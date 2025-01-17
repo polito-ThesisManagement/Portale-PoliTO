@@ -1,7 +1,8 @@
 .proposals-container {
-  margin-bottom: 4rem;
+  margin: 0rem 0.75rem 4rem 0.75rem;
   padding-bottom: 2rem;
   border-radius: 10px;
+  border: var(--border-default);
   background-color: var(--surface);
 }
 
