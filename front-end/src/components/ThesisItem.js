@@ -86,7 +86,7 @@ const ShowMore = ({ id }) => {
   const { theme } = useContext(ThemeContext);
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
   return (
-    <Link to={`${id}`} className="show-more-button">
+    <Link to={`${id}`} className="show-more-button" style={{ textDecoration: 'none' }}>
       <Button className={`btn-${appliedTheme}`} size="sm">
         {t('carriera.proposte_di_tesi.show_more')}
       </Button>
