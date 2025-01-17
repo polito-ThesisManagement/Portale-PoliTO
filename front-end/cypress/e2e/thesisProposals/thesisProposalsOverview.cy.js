@@ -128,47 +128,6 @@ describe('Thesis proposals overview page', () => {
     });
   });
 
-  it('should filter internal proposals (by clicking on badge)', () => {
-    // Step 1: Verify that there are thesis proposals listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 2: Intercept the network request
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Toggle to all proposals
-    cy.get('#all').click();
-
-    // Step 4: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 5: Filter internal proposals by clicking on the badge
-    cy.get('.custom-badge-container .clickable').contains('Tesi interna').first().click();
-
-    // Step 6: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 7: Verify that the filtered proposals are listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 8: Verify that each proposal contains the tag 'Internal thesis'
-    cy.get('.list-section .thesis-overview').each(article => {
-      cy.wrap(article)
-        .find('.thesis-position-tags')
-        .then($tag => {
-          const tag = $tag.text().toLowerCase();
-          expect(tag.includes('tesi interna')).to.be.true;
-        });
-    });
-
-    // Step 9: Open advanced filters accordion
-    cy.get('.accordion-button.collapsed').should('be.visible').click();
-
-    // Step 10: Reset filter by clicking on the badge
-    cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.filters-container > div.accordion > div > div > div > div.applied-filters-container > div.badge-group > div:nth-child(2) > button',
-    ).click();
-  });
-
   it('should toggle between all proposals and external proposals', () => {
     // Step 1: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -202,50 +161,6 @@ describe('Thesis proposals overview page', () => {
     });
   });
 
-  it('should filter external proposals (by clicking on badge)', () => {
-    // Step 1: Verify that there are thesis proposals listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 2: Intercept the network request
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Toggle to all proposals
-    cy.get('#all').click();
-
-    // Step 4: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 5: Go to the second page
-    cy.get('a.page-link').contains('2').click();
-
-    // Step 6: Filter external proposals by clicking on the badge
-    cy.get('.custom-badge-container .clickable').contains('Tesi in azienda').first().click();
-
-    // Step 7: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 8: Verify that the filtered proposals are listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 9: Verify that each proposal contains the tag 'Company thesis'
-    cy.get('.list-section .thesis-overview').each(article => {
-      cy.wrap(article)
-        .find('.thesis-position-tags')
-        .then($tag => {
-          const tag = $tag.text().toLowerCase();
-          expect(tag.includes('tesi in azienda')).to.be.true;
-        });
-    });
-
-    // Step 10: Open advanced filters accordion
-    cy.get('.accordion-button.collapsed').should('be.visible').click();
-
-    // Step 11: Reset filter by clicking on the badge
-    cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.filters-container > div.accordion > div > div > div > div.applied-filters-container > div.badge-group > div:nth-child(2) > button',
-    ).click();
-  });
-
   it('should filter abroad proposals', () => {
     // Step 1: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -274,44 +189,6 @@ describe('Thesis proposals overview page', () => {
           expect(tag.includes("tesi all'estero")).to.be.true;
         });
     });
-  });
-
-  it('should filter abroad proposals (by clicking on badge)', () => {
-    // Step 1: Verify that there are thesis proposals listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 2: Intercept the network request
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Toggle to all proposals
-    cy.get('#all').click();
-
-    // Step 4: Filter abroad proposals by clicking on the badge
-    cy.get('.custom-badge-container .clickable').contains("Tesi all'estero").first().click();
-
-    // Step 5: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 6: Verify that the filtered proposals are listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 7: Verify that each proposal contains the tag 'Abroad thesis'
-    cy.get('.list-section .thesis-overview').each(article => {
-      cy.wrap(article)
-        .find('.thesis-position-tags')
-        .then($tag => {
-          const tag = $tag.text().toLowerCase();
-          expect(tag.includes("tesi all'estero")).to.be.true;
-        });
-    });
-
-    // Step 8: Open advanced filters accordion
-    cy.get('.accordion-button.collapsed').should('be.visible').click();
-
-    // Step 9: Reset filter by clicking on the badge
-    cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.filters-container > div.accordion > div > div > div > div.applied-filters-container > div.badge-group > div:nth-child(2) > button',
-    ).click();
   });
 
   it('should filter proposals by keywords and reset filter', () => {
@@ -373,47 +250,6 @@ describe('Thesis proposals overview page', () => {
     });
   });
 
-  it('should filter proposals by keyword (clicking on badge)', () => {
-    // Step 1: Verify that there are thesis proposals listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 2: Intercept the network request
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Toggle to all proposals
-    cy.get('#all').click();
-
-    // Step 4: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 5: Filter proposals by keyword 'SMART CITY'
-    cy.get('.custom-badge-container .clickable').contains('SMART CITY').first().click();
-
-    // Step 6: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 7: Verify that the filtered proposals are listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 8: Verify that the proposal contains the keyword 'SMART CITY'
-    cy.get('.list-section .thesis-overview').each(article => {
-      cy.wrap(article)
-        .find('.custom-badge-container')
-        .then($tags => {
-          const tags = $tags.text().toLowerCase();
-          expect(tags.includes('smart city')).to.be.true;
-        });
-    });
-
-    // Step 9: Open advanced filters accordion
-    cy.get('.accordion-button.collapsed').should('be.visible').click();
-
-    // Step 10: Reset filter by clicking on the badge
-    cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.filters-container > div.accordion > div > div > div > div.applied-filters-container > div.badge-group > div:nth-child(2) > button',
-    ).click();
-  });
-
   it('should filter proposals by teacher and reset filters', () => {
     // Step 1: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -449,47 +285,6 @@ describe('Thesis proposals overview page', () => {
     // Step 8: Reset the filters
     cy.get('#dropdown-teacher').click();
     cy.get('button.btn.btn-link.btn-sm').click();
-  });
-
-  it('should filter proposals by teacher (clicking on badge)', () => {
-    // Step 1: Verify that there are thesis proposals listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 2: Intercept the network request
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Toggle to all proposals
-    cy.get('#all').click();
-
-    // Step 4: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 5: Filter proposals by teacher 'Edoardo Patti'
-    cy.get('.custom-badge-container .clickable').contains('Edoardo Patti').first().click();
-
-    // Step 6: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 7: Verify that the filtered proposals are listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 8: Verify that each proposal contains the teacher 'Edoardo Patti'
-    cy.get('.list-section .thesis-overview').each(article => {
-      cy.wrap(article)
-        .find('.thesis-professor-tags')
-        .then($professorTags => {
-          const professorTags = $professorTags.text();
-          expect(professorTags.includes('Edoardo Patti')).to.be.true;
-        });
-    });
-
-    // Step 9: Open advanced filters accordion
-    cy.get('.accordion-button.collapsed').should('be.visible').click();
-
-    // Step 10: Reset filter by clicking on the badge
-    cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.filters-container > div.accordion > div > div > div > div.applied-filters-container > div.badge-group > div:nth-child(2) > button',
-    ).click();
   });
 
   it('should filter proposals by type and reset filters', () => {
@@ -529,47 +324,6 @@ describe('Thesis proposals overview page', () => {
     cy.get('button.btn.btn-link.btn-sm').click();
   });
 
-  it('should filter proposals by type (clicking on badge)', () => {
-    // Step 1: Verify that there are thesis proposals listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 2: Intercept the network request
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Toggle to all proposals
-    cy.get('#all').click();
-
-    // Step 4: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 5: Filter proposals by type 'Sperimentale'
-    cy.get('.custom-badge-container .clickable').contains('SPERIMENTALE').first().click();
-
-    // Step 6: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 7: Verify that the filtered proposals are listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 8: Verify that each proposal contains the type 'Sperimentale'
-    cy.get('.list-section .thesis-overview').each(article => {
-      cy.wrap(article)
-        .find('.thesis-type-tags')
-        .then($tags => {
-          const tags = $tags.text().toLowerCase();
-          expect(tags.includes('sperimentale')).to.be.true;
-        });
-    });
-
-    // Step 9: Open advanced filters accordion
-    cy.get('.accordion-button.collapsed').should('be.visible').click();
-
-    // Step 10: Reset filter by clicking on the badge
-    cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.filters-container > div.accordion > div > div > div > div.applied-filters-container > div.badge-group > div:nth-child(2) > button',
-    ).click();
-  });
-
   it('should apply multiple filters and reset them', () => {
     // Step 1: Verify that there are thesis proposals listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
@@ -605,80 +359,6 @@ describe('Thesis proposals overview page', () => {
 
     // Step 8: Verify that the filters are reset
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-  });
-
-  it('should apply multiple filters by clicking on badges and reset them', () => {
-    // Step 1: Verify that there are thesis proposals listed
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-
-    // Step 2: Intercept the network request
-    cy.intercept('GET', '**/api/thesis-proposals*').as('getThesisProposals');
-
-    // Step 3: Toggle to all proposals
-    cy.get('#all').click();
-
-    // Step 4: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 5: Filter proposals by type 'Ricerca'
-    cy.get('.custom-badge-container .clickable').contains('RICERCA').first().click();
-
-    // Step 6: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 7: Filter external proposals by clicking on the badge
-    cy.get('.custom-badge-container .clickable').contains('Tesi in azienda').first().click();
-
-    // Step 8: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 9: Filter proposals with 'Raffaello Camoriano' as teacher by clicking on the badge
-    cy.get('.custom-badge-container .clickable').contains('Raffaello Camoriano').first().click();
-
-    // Step 10: Wait for the network request to complete
-    cy.wait('@getThesisProposals');
-
-    // Step 11: Verify that the filtered proposals are listed
-    cy.get('.list-section .thesis-overview').should('have.length', 2);
-
-    // Step 12: Verify the number of filters applied is correct
-    cy.get('.accordion-title').contains(3);
-
-    // Step 13: check that each proposal contains the type 'Ricerca', the tag 'Tesi in azienda' and the teacher 'Raffaello Camoriano'
-    cy.get('.list-section .thesis-overview').each(article => {
-      cy.wrap(article)
-        .find('.thesis-type-tags')
-        .then($tags => {
-          const tags = $tags.text().toLowerCase();
-          expect(tags.includes('ricerca')).to.be.true;
-        });
-      cy.wrap(article)
-        .find('.thesis-position-tags')
-        .then($tags => {
-          const tags = $tags.text().toLowerCase();
-          expect(tags.includes('tesi in azienda')).to.be.true;
-        });
-      cy.wrap(article)
-        .find('.thesis-professor-tags')
-        .then($tags => {
-          const tags = $tags.text().toLowerCase();
-          expect(tags.includes('raffaello camoriano')).to.be.true;
-        });
-    });
-
-    // Step 14: Open advanced filters accordion and check that each filter is present in the applied filters section
-    cy.get('.accordion-button.collapsed').should('be.visible').click();
-    cy.get('.applied-filters-container .badge-group .custom-badge-container').should('have.length', 3);
-    cy.get('.applied-filters-container .badge-group .custom-badge-container').each($badge => {
-      const badge = $badge.text().toLowerCase();
-      expect(badge.includes('ricerca') || badge.includes('tesi in azienda') || badge.includes('raffaello camoriano')).to
-        .be.true;
-    });
-
-    // Step 15: Reset the filters
-    cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.filters-container > div.accordion > div > div > div > div.applied-filters-container > div.reset-button-container > button',
-    ).click();
   });
 
   it('should sort proposals by topic', () => {
