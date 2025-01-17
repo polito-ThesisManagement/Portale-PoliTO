@@ -3,19 +3,19 @@ import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { BsCreditCard2BackFill } from 'react-icons/bs';
-import { FaGraduationCap, FaUserGraduate, FaUserPen } from 'react-icons/fa6';
+import { FaGraduationCap, FaUserPen } from 'react-icons/fa6';
 import { HiLightBulb } from 'react-icons/hi';
 import { IoIosListBox } from 'react-icons/io';
 import { MdEditDocument } from 'react-icons/md';
 
 import BaseCard from '../components/BaseCard';
-import Title from '../components/Title';
+import CustomBreadcrumb from '../components/CustomBreadcrumb';
 
 export default function Carriera() {
   const { t } = useTranslation();
   return (
     <>
-      <Title icon={<FaUserGraduate size={30} />} sectionName={t('sidebar.carriera')} />
+      <CustomBreadcrumb />
       <Container className="card-container">
         <Row>
           <BaseCard

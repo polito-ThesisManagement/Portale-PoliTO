@@ -1,11 +1,7 @@
 import React from 'react';
 
-import { useTranslation } from 'react-i18next';
-import { FaBookOpen } from 'react-icons/fa6';
-
-import Title from '../components/Title';
+import CustomBreadcrumb from '../components/CustomBreadcrumb';
 
 export default function Didattica() {
-  const { t } = useTranslation();
-  return <Title icon={<FaBookOpen size={30} />} sectionName={t('sidebar.didattica')} />;
+  return <CustomBreadcrumb />;
 }

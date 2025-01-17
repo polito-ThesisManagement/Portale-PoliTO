@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import API from '../../API';
 import { BodyDataLoadingContext } from '../../App';
 import CustomBadge from '../../components/CustomBadge';
-import MyBreadcrumb from '../../components/MyBreadcrumb';
+import CustomBreadcrumb from '../../components/CustomBreadcrumb';
 import ThesisProposalDetail from '../../components/ThesisProposalDetail';
 
 function PropostaDiTesi() {
@@ -42,7 +42,7 @@ function PropostaDiTesi() {
 
   return (
     <>
-      <MyBreadcrumb />
+      <CustomBreadcrumb />
       {renderContent()}
     </>
   );
