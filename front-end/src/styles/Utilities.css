@@ -9,8 +9,8 @@
 }
 
 .custom-content {
-  padding-right: 16px !important;
-  padding-left: 16px !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
   transition-duration: 0.5s;
   background-color: var(--background);
   height: 100%;
@@ -28,6 +28,11 @@
 @media (max-width: 1100px) {
   .main-space.reduced {
     margin-left: 80px;
+  }
+
+  .custom-content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
 
@@ -74,7 +79,8 @@ body {
 .custom-container {
   background-color: var(--surface);
   border-radius: 10px;
-  margin-bottom: 16px;
+  border: var(--border-default);
+  margin: 0rem 0.75rem 1rem 0.75rem;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 10px;
@@ -114,26 +120,6 @@ body {
   border-color: var(--primary);
   border-width: 2px;
   box-shadow: none;
-}
-
-.click-notifica {
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  background-color: var(--surface);
-  color: var(--text);
-  border: none;
-  text-align: left;
-  width: 100%;
-}
-
-.click-notifica:hover {
-  background-color: var(--primary-50);
-  color: var(--black);
-}
-
-.click-notifica:active {
-  background-color: var(--primary-500);
-  color: var(--white);
 }
 
 .custom-popover {
