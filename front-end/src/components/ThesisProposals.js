@@ -387,7 +387,7 @@ export default function ThesisProposals() {
             <>
               <div className="list-section">
                 {pageProposals.map(thesis => {
-                  return <ThesisItem key={thesis.id} {...thesis} filters={state.filters} applyFilters={applyFilters} />;
+                  return <ThesisItem key={thesis.id} {...thesis} />;
                 })}
               </div>
               <PaginationItem

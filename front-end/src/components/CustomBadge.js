@@ -115,12 +115,6 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     const contentArray = Array.isArray(content) ? content : [content];
     const elements = [];
 
-    const handleApplyFilters = (filterType, filterArray, item) => {
-      if (!filterArray.map(filter => filter.id).includes(item.id)) {
-        applyFilters(filterType, [...filterArray, { id: item.id, content: item.content }]);
-      }
-    };
-
     const handleRemoveFilter = (filterType, filterArray, item) => {
       applyFilters(
         filterType,
@@ -129,34 +123,13 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     };
 
     contentArray.forEach((item, index) => {
-      if (
-        variant === 'date' ||
-        variant === 'success' ||
-        variant === 'warning' ||
-        variant === 'error' ||
-        !applyFilters
-      ) {
-        elements.push(
-          <div key={`${item}-${index}`} className={`custom-badge badge ${variant}_${appliedTheme}`}>
-            <div className="custom-badge-icon">{renderIcon(item)}</div>
-            <div className="custom-badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
-          </div>,
-        );
-      } else if (type === 'reset') {
+      if (type === 'reset' && applyFilters) {
         elements.push(
           <Button
             key={`${item.content}-${index}`}
             className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
             onClick={() => {
-              if (applyFilters) {
-                if (variant === 'type') {
-                  handleRemoveFilter('type', filters.type, item);
-                } else if (variant === 'keyword') {
-                  handleRemoveFilter('keyword', filters.keyword, item);
-                } else if (variant === 'teacher') {
-                  handleRemoveFilter('teacher', filters.teacher, item);
-                }
-              }
+              handleRemoveFilter(variant, filters[variant], item);
             }}
           >
             <div className="custom-badge-icon">{renderIcon(item.content)}</div>
@@ -168,24 +141,10 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         );
       } else {
         elements.push(
-          <Button
-            key={`${item.content}-${index}`}
-            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
-            onClick={() => {
-              if (applyFilters) {
-                if (variant === 'type') {
-                  handleApplyFilters('type', filters.type, item);
-                } else if (variant === 'keyword') {
-                  handleApplyFilters('keyword', filters.keyword, item);
-                } else if (variant === 'teacher') {
-                  handleApplyFilters('teacher', filters.teacher, item);
-                }
-              }
-            }}
-          >
-            <div className="custom-badge-icon">{renderIcon(item.content)}</div>
-            <div className="custom-badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</div>
-          </Button>,
+          <div key={`${item}-${index}`} className={`custom-badge badge ${variant}_${appliedTheme}`}>
+            <div className="custom-badge-icon">{renderIcon(item)}</div>
+            <div className="custom-badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
+          </div>,
         );
       }
     });
@@ -320,32 +279,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     const elements = [];
 
     if (variant === 'internal' || variant === 'external' || variant === 'abroad') {
-      if (!type && applyFilters) {
-        elements.push(
-          <Button
-            key="custom-badge-button"
-            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
-            onClick={() => {
-              if (variant === 'internal') {
-                if (filters.isInternal !== 1) {
-                  applyFilters('isInternal', 1);
-                }
-              } else if (variant === 'external') {
-                if (filters.isInternal !== 2) {
-                  applyFilters('isInternal', 2);
-                }
-              } else if (variant === 'abroad') {
-                if (!filters.isAbroad) {
-                  applyFilters('isAbroad', true);
-                }
-              }
-            }}
-          >
-            {renderIcon(content)}
-            {renderTranslatedContent()}
-          </Button>,
-        );
-      } else if (type === 'reset' && applyFilters) {
+      if (type === 'reset' && applyFilters) {
         elements.push(
           <Button
             key="custom-badge-button"

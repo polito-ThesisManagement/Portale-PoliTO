@@ -21,31 +21,17 @@ function ThesisItem(props) {
   const teachers = [props.supervisor, ...props.internalCoSupervisors];
   return (
     <div className="thesis-overview">
-      <ThesisHeader
-        topic={props.topic}
-        types={props.types}
-        isInternal={props.isInternal}
-        isAbroad={props.isAbroad}
-        filters={props.filters}
-        applyFilters={props.applyFilters}
-      />
+      <ThesisHeader topic={props.topic} types={props.types} isInternal={props.isInternal} isAbroad={props.isAbroad} />
       <p className="thesis-description">{props.description}</p>
       {props.keywords.length > 0 && (
         <div className="thesis-keyword-tags">
-          <CustomBadge
-            variant="keyword"
-            content={props.keywords.map(keyword => ({ content: keyword.keyword, id: keyword.id }))}
-            filters={props.filters}
-            applyFilters={props.applyFilters}
-          />
+          <CustomBadge variant="keyword" content={props.keywords.map(keyword => keyword.keyword)} />
         </div>
       )}
       <div className="thesis-professor-tags">
         <CustomBadge
           variant={'teacher'}
-          content={teachers.map(teacher => ({ content: teacher.firstName + ' ' + teacher.lastName, id: teacher.id }))}
-          filters={props.filters}
-          applyFilters={props.applyFilters}
+          content={teachers.map(teacher => teacher.firstName + ' ' + teacher.lastName)}
         />
       </div>
       <ThesisFooter id={props.id} creationDate={props.creationDate} expirationDate={props.expirationDate} />
@@ -53,28 +39,19 @@ function ThesisItem(props) {
   );
 }
 
-const ThesisHeader = ({ topic, types, isInternal, isAbroad, filters, applyFilters }) => {
+const ThesisHeader = ({ topic, types, isInternal, isAbroad }) => {
   return (
     <>
       <div className="thesis-header">
         <h3 className="thesis-topic">{topic}</h3>
         <div className="thesis-position-tags">
-          {isInternal ? (
-            <CustomBadge variant={'internal'} applyFilters={applyFilters} filters={filters} />
-          ) : (
-            <CustomBadge variant={'external'} applyFilters={applyFilters} filters={filters} />
-          )}
-          {isAbroad && <CustomBadge variant={'abroad'} applyFilters={applyFilters} filters={filters} />}
+          {isInternal ? <CustomBadge variant={'internal'} /> : <CustomBadge variant={'external'} />}
+          {isAbroad && <CustomBadge variant={'abroad'} />}
         </div>
       </div>
       {types.length > 0 && (
         <div className="thesis-type-tags">
-          <CustomBadge
-            variant="type"
-            content={types.map(type => ({ content: type.type, id: type.id }))}
-            filters={filters}
-            applyFilters={applyFilters}
-          />
+          <CustomBadge variant="type" content={types.map(type => type.type)} />
         </div>
       )}
     </>
@@ -123,8 +100,6 @@ ThesisHeader.propTypes = {
       type: PropTypes.string.isRequired,
     }),
   ),
-  filters: PropTypes.object,
-  applyFilters: PropTypes.func,
 };
 
 ThesisFooter.propTypes = {
@@ -169,8 +144,6 @@ ThesisItem.propTypes = {
       keyword: PropTypes.string.isRequired,
     }),
   ),
-  filters: PropTypes.object,
-  applyFilters: PropTypes.func,
 };
 
 export { ThesisItem, ThesisHeader, ThesisFooter, ShowMore };
