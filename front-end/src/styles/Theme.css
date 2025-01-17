@@ -166,22 +166,25 @@
   --surface: var(--surface-light);
   --primary: var(--primary-700);
   --text: var(--black);
+  --title: var(--text-800);
   --placeholder: var(--text-700);
   --link: var(--primary-500);
-  --tag-border: var(--text-300);
-  --tag-bg: var(--white);
-  --tag-hover: var(--background);
-  --tag-shadow: var(--placeholder);
-  --type-tag-border: var(--primary-700);
-  --type-tag-bg: var(--background-light);
-  --type-tag-text: var(--primary-700);
-  --active-page: var(--primary-300);
-  --active-page-border: var(--primary-300);
+  --dropdown-border: var(--text-200);
+  --dropdown-outlined-border: var(--text-300);
+  --dropdown-color: var(--text-600);
+  --dropdown-hover: var(--text-200);
+  --custom-dropdown-border: var(--text-200);
+  --custom-dropdown-bg: var(--text-100);
+  --custom-dropdown-hover: var(--text-200);
+  --custom-dropdown-color: var(--text-700);
+
+  --bs-secondary-rgb: 239, 123, 0;
+
+  --accordion-arrow: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23002b49%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M2 5L8 11L14 5%27/%3e%3c/svg%3e');
+  --accordion-arrow-active: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23002b49%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M2 5L8 11L14 5%27/%3e%3c/svg%3e');
 
   /* Font Family */
   --font-primary: 'Montserrat', sans-serif;
-  --accordion-arrow: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23002b49%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M2 5L8 11L14 5%27/%3e%3c/svg%3e');
-  --accordion-arrow-active: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27none%27 stroke=%27%23002b49%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpath d=%27M2 5L8 11L14 5%27/%3e%3c/svg%3e');
 
   /* Font Weights */
   --font-weight-regular: 400;
@@ -212,32 +215,40 @@
   --border-radius-left: 0.5rem 0rem 0rem 0rem;
   --border-default: 1px solid var(--text-200);
   --border-default-hover: 1px solid var(--text-300);
+
+  .btn-primary,
+  .btn-outlined-primary,
+  .btn-group,
+  .btn-link {
+    box-shadow: none !important;
+  }
 }
 
 /* Dark Theme Colors */
 [data-theme='dark'] {
+  --sidebar-bg-active: var(--primary-50);
+  --sidebar-strip: var(--primary-500);
   --background: var(--background-dark);
   --background-inverted: var(--background-light);
   --background-inverted-rgb: var(--background-light-rgb);
   --surface: #143959;
   --primary: var(--white);
   --text: var(--white);
+  --title: var(--white);
   --placeholder: var(--text-400);
   --link: var(--primary-50);
-  --tag-border: var(--text);
-  --tag-bg: var(--background);
-  --tag-hover: var(--surface);
-  --tag-shadow: var(--background);
-  --type-tag-border: var(--text);
-  --type-tag-bg: var(--background);
-  --type-tag-text: var(--text);
-  --page-bg: var(--background);
-  --page-border: var(--text);
-  --active-page: var(--primary-200);
-  --sidebar-bg-active: var(--primary-50);
-  --sidebar-strip: var(--primary-500);
+  --dropdown-border: var(--primary-700);
+  --dropdown-outlined-border: var(--white);
+  --dropdown-color: var(--white);
+  --dropdown-hover: var(--primary-700);
+  --custom-dropdown-border: var(--primary-800);
+  --custom-dropdown-bg: var(--primary-700);
+  --custom-dropdown-hover: var(--surface);
+  --custom-dropdown-color: var(--white);
   --accordion-arrow: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 16 16'%3E%3Cpath d='M2 5L8 11L14 5'/%3E%3C/svg%3E");
   --accordion-arrow-active: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 16 16'%3E%3Cpath d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+
+  --border-default: 1px solid var(--primary-800);
 
   input[type='search']::-webkit-search-cancel-button {
     filter: invert(1) saturate(0);

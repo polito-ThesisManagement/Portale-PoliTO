@@ -74,10 +74,11 @@
             "no_item_found": "Nessun elemento trovato",
             "loading": "Caricamento...",
             "filter": "Filtri di ricerca avanzata",
+            "applied_filters": "Filtri applicati:",
             "type_filter": "Filtra per tipologia",
             "not_found": "È vuoto qui...",
             "message_not_found": "Nessuna proposta di tesi trovata",
-            "reset_filters": "Resetta filtri"
+            "reset_all": "Resetta tutto"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",

@@ -9,8 +9,8 @@
 }
 
 .custom-content {
-  padding-right: 16px !important;
-  padding-left: 16px !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
   transition-duration: 0.5s;
   background-color: var(--background);
   height: 100%;
@@ -28,6 +28,11 @@
 @media (max-width: 1100px) {
   .main-space.reduced {
     margin-left: 80px;
+  }
+
+  .custom-content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
 
@@ -74,7 +79,8 @@ body {
 .custom-container {
   background-color: var(--surface);
   border-radius: 10px;
-  margin-bottom: 16px;
+  border: var(--border-default);
+  margin: 0rem 0.75rem 1rem 0.75rem;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 10px;
@@ -116,26 +122,6 @@ body {
   box-shadow: none;
 }
 
-.click-notifica {
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  background-color: var(--surface);
-  color: var(--text);
-  border: none;
-  text-align: left;
-  width: 100%;
-}
-
-.click-notifica:hover {
-  background-color: var(--primary-50);
-  color: var(--black);
-}
-
-.click-notifica:active {
-  background-color: var(--primary-500);
-  color: var(--white);
-}
-
 .custom-popover {
   width: 1000px !important;
   background-color: var(--surface);
@@ -144,7 +130,7 @@ body {
 
 .card-container {
   margin-left: 0;
-  max-width: 1416px;
+  max-width: none;
 }
 
 .expire-section {
@@ -190,31 +176,130 @@ body {
   background-color: rgba(var(--medium-orange-rgb), 1) !important;
 }
 
+.badge.rounded-pill {
+  padding: 3px 7px;
+  border: none;
+  position: relative;
+}
+
 .btn-light {
   font-family: var(--font-primary);
   font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
   border-color: var(--text-200) !important;
   background-color: var(--text-100) !important;
   color: var(--text-700) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.btn-light:hover,
-.btn-light.active {
+
+.btn-light:hover {
   background-color: var(--text-200) !important;
   color: var(--text-800) !important;
+}
+
+.btn-light:active {
+  border-color: var(--primary-50) !important;
+  background-color: var(--primary-50) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-light.disabled {
+  border-color: var(--text-100) !important;
+  background-color: var(--text-100) !important;
+  color: var(--text-400) !important;
 }
 
 .btn-dark {
   font-family: var(--font-primary);
   font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
   border-color: var(--primary-800) !important;
   background-color: var(--primary-700) !important;
   color: var(--white) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.btn-dark:hover,
-.btn-dark.active {
+.btn-dark:hover {
   border-color: var(--white) !important;
   color: var(--white) !important;
+}
+
+.btn-dark:active {
+  border-color: var(--primary-500) !important;
+  background-color: var(--primary-100) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-dark.disabled {
+  border-color: var(--text-100) !important;
+  background-color: var(--text-100) !important;
+  color: var(--text-400) !important;
+}
+
+.btn-outlined-light {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  border-color: var(--text-300) !important;
+  background-color: var(--surface) !important;
+  color: var(--text-600) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-outlined-light:hover {
+  background-color: var(--text-100) !important;
+}
+
+.btn-outlined-light.active,
+.btn-outlined-light:active {
+  border-color: var(--primary-200) !important;
+  background-color: var(--primary-50) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-outlined-light.disabled {
+  border-color: var(--text-300) !important;
+  background-color: var(--surface) !important;
+  color: var(--text-400) !important;
+}
+
+.btn-outlined-dark {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  background-color: var(--surface) !important;
+  border-color: var(--white) !important;
+  color: var(--white) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-outlined-dark:hover {
+  background-color: var(--primary-700) !important;
+}
+
+.btn-outlined-dark.active,
+.btn-outlined-dark:active {
+  border-color: var(--primary-500) !important;
+  background-color: var(--primary-100) !important;
+  box-shadow: none !important;
+  color: var(--primary-700) !important;
+}
+
+.btn-outlined-dark.disabled {
+  border-color: var(--text-400) !important;
+  background-color: var(--surface) !important;
+  color: var(--text-400) !important;
 }
 
 /*scrollbar si vede solo se sopra brakpoint lg*/
@@ -229,6 +314,7 @@ body {
   height: 6px;
   width: 6px;
 }
+
 *::-webkit-scrollbar-track {
   border-radius: 5px;
   background-color: #f3f5f7;

@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 
 import API from '../../API';
 import { BodyDataLoadingContext } from '../../App';
-import Badge from '../../components/Badge';
-import MyBreadcrumb from '../../components/MyBreadcrumb';
+import CustomBadge from '../../components/CustomBadge';
+import CustomBreadcrumb from '../../components/CustomBreadcrumb';
 import ThesisProposalDetail from '../../components/ThesisProposalDetail';
 
 function PropostaDiTesi() {
@@ -36,13 +36,13 @@ function PropostaDiTesi() {
     } else if (thesisProposal) {
       return <ThesisProposalDetail thesisProposal={thesisProposal} />;
     } else {
-      return <Badge variant="error" content={t('carriera.proposta_di_tesi.errore_proposta_di_tesi')} />;
+      return <CustomBadge variant="error" content={t('carriera.proposta_di_tesi.errore_proposta_di_tesi')} />;
     }
   };
 
   return (
     <>
-      <MyBreadcrumb />
+      <CustomBreadcrumb />
       {renderContent()}
     </>
   );

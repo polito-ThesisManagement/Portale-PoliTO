@@ -54,11 +54,12 @@ async function getTargetedThesisProposals(lang, page, limit, filters, search, so
   }
 }
 
-async function getThesisProposalsTypes(lang) {
+async function getThesisProposalsTypes(search, lang) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/types`, {
       params: {
         lang,
+        search,
       },
     });
     return response.data;
@@ -67,11 +68,12 @@ async function getThesisProposalsTypes(lang) {
   }
 }
 
-async function getThesisProposalsKeywords(lang) {
+async function getThesisProposalsKeywords(search, lang) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/keywords`, {
       params: {
         lang,
+        search,
       },
     });
     return response.data;
@@ -80,9 +82,13 @@ async function getThesisProposalsKeywords(lang) {
   }
 }
 
-async function getThesisProposalsTeachers() {
+async function getThesisProposalsTeachers(search) {
   try {
-    const response = await axios.get(`${URL}/thesis-proposals/teachers`);
+    const response = await axios.get(`${URL}/thesis-proposals/teachers`, {
+      params: {
+        search,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error('Error fetching thesis proposals teachers:', error);
@@ -121,17 +127,17 @@ const buildParams = (lang, page, limit, filters, search, sorting) => {
   }
   if (filters.keyword.length > 0) {
     filters.keyword.forEach(keyword => {
-      params[`keywordId`] = params[`keywordId`] ? [...params[`keywordId`], keyword] : [keyword];
+      params[`keywordId`] = params[`keywordId`] ? [...params[`keywordId`], keyword.id] : [keyword.id];
     });
   }
   if (filters.teacher.length > 0) {
     filters.teacher.forEach(teacher => {
-      params[`teacherId`] = params[`teacherId`] ? [...params[`teacherId`], teacher] : [teacher];
+      params[`teacherId`] = params[`teacherId`] ? [...params[`teacherId`], teacher.id] : [teacher.id];
     });
   }
   if (filters.type.length > 0) {
     filters.type.forEach(type => {
-      params[`typeId`] = params[`typeId`] ? [...params[`typeId`], type] : [type];
+      params[`typeId`] = params[`typeId`] ? [...params[`typeId`], type.id] : [type.id];
     });
   }
   if (search) {

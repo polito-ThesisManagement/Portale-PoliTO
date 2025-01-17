@@ -1,26 +1,12 @@
 .proposals-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-bottom: 8.675rem;
-}
-
-.proposals-main {
+  margin: 0rem 0.75rem 4rem 0.75rem;
+  padding-bottom: 2rem;
   border-radius: 10px;
-  display: flex;
+  border: var(--border-default);
   background-color: var(--surface);
-  width: 100%;
-  flex-direction: column;
-  flex-grow: 1;
-  padding-bottom: 2%;
 }
 
 .filters-container {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
   padding: 1rem;
 }
 
@@ -36,7 +22,7 @@
 
 .filters-section {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
@@ -53,9 +39,40 @@
   background-color: var(--primary-900);
 }
 
-.reset-button-container {
+.applied-filters-container {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+
+.applied-filters-label {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  margin-right: 0.5rem;
+  color: var(--primary);
+}
+
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.reset-button-container {
+  margin-left: auto;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .applied-filters-container {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
 
 .search-icon {
@@ -109,4 +126,5 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--primary);
+  gap: 0.5rem;
 }

@@ -12,8 +12,8 @@ import '../styles/Utilities.css';
 import { getSystemTheme } from '../utils/utils';
 
 export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, handleRadioChange }) {
-  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   const radios = [
@@ -28,7 +28,7 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
         {radios.map(radio => (
           <ToggleButton
             checked={isInternal === radio.value}
-            className={`radio-${radio.value}-${appliedTheme} ${isInternal === radio.value ? 'checked' : ''}`}
+            className={`radio-${radio.value}-${appliedTheme} ${isInternal === radio.value ? 'checked' : ''} d-flex align-items-center`}
             id={`radio-${radio.value}`}
             key={radio.value}
             name="radio"
@@ -36,23 +36,16 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
               handleRadioChange(Number(e.currentTarget.value));
             }}
             style={{
-              display: 'flex',
-              alignItems: 'center',
               fontFamily: 'var(--font-primary)',
-              fontSize: 'var(--font-size-md)',
-              textAlign: 'left',
+              fontSize: 'var(--font-size-sm)',
+              fontWeight: 'var(--font-weight-medium)',
+              gap: '.5rem',
             }}
             type="radio"
             value={radio.value}
           >
             <>
-              {radio.icon && (
-                <radio.icon
-                  className="radio-icon"
-                  size={radio.icon === FaBuildingColumns ? 14 : 16}
-                  style={{ marginRight: '5px', alignItems: 'center' }}
-                />
-              )}
+              {radio.icon && <radio.icon className="radio-icon" size={radio.icon === FaBuildingColumns ? 14 : 16} />}
               {radio.name}
             </>
           </ToggleButton>
@@ -62,7 +55,7 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
         <ToggleButton
           id="toggle-check"
           checked={isAbroad}
-          className={`toggle-check-${appliedTheme} ${isAbroad ? 'checked' : ''}`}
+          className={`toggle-check-${appliedTheme} ${isAbroad ? 'checked' : ''} d-flex align-items-center`}
           type="checkbox"
           value="1"
           onChange={e => {
@@ -71,12 +64,13 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
           size="sm"
           style={{
             fontFamily: 'var(--font-primary)',
-            fontSize: 'var(--font-size-md)',
-            display: 'flex',
-            alignItems: 'center',
+            fontSize: 'var(--font-size-sm)',
+            fontWeight: 'var(--font-weight-medium)',
+            gap: '.5rem',
+            height: 'fit-content',
           }}
         >
-          <FaEarthAmericas size={16} style={{ marginRight: '5px' }} />
+          <FaEarthAmericas size={16} />
           {t('carriera.proposte_di_tesi.abroad_theses')}
         </ToggleButton>
       </ButtonGroup>

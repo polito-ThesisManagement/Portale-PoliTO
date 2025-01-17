@@ -1,26 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { Button } from 'react-bootstrap';
 
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from '../App';
-import { getSystemTheme } from '../utils/utils';
-
-const CustomToggle = React.forwardRef(({ active, children, onClick }, ref) => {
-  const { theme } = useContext(ThemeContext);
-  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+const CustomToggle = React.forwardRef(({ className, children, onClick }, ref) => {
   return (
     <Button
-      active={active}
-      className={`btn-${appliedTheme}`}
+      className={className}
       onClick={e => {
         e.preventDefault();
         onClick(e);
       }}
       ref={ref}
       size="sm"
-      style={{ display: 'flex', alignItems: 'center' }}
     >
       {children}
     </Button>
@@ -30,7 +23,7 @@ const CustomToggle = React.forwardRef(({ active, children, onClick }, ref) => {
 CustomToggle.displayName = 'CustomToggle';
 
 CustomToggle.propTypes = {
-  active: PropTypes.bool,
+  className: PropTypes.string,
   children: PropTypes.node,
   onClick: PropTypes.func,
 };

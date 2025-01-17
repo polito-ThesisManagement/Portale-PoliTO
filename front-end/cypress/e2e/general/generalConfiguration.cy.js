@@ -41,13 +41,13 @@ describe('Theme switching', () => {
 
   it('should toggle themes and correctly apply the system theme when auto is selected', () => {
     // Step 1: Change theme to dark
-    cy.get('label[for="theme-toggle-radio3"]').should('be.visible').click();
+    cy.get('#dark').click();
 
     // Verify theme is dark through the data-theme attribute
     cy.get('html').should('have.attr', 'data-theme', 'dark');
 
     // Step 2: Change theme to light
-    cy.get('label[for="theme-toggle-radio2"]').should('be.visible').click();
+    cy.get('#light').click();
 
     // Verify theme is light through the data-theme attribute
     cy.get('html').should('have.attr', 'data-theme', 'light');
@@ -70,7 +70,7 @@ describe('Theme switching', () => {
     cy.window().then(stubMatchMedia);
 
     // Step 3: Change theme to auto
-    cy.get('label[for="theme-toggle-radio1"]').click();
+    cy.get('#auto').click();
 
     // Verify theme is dark through the data-theme attribute
     cy.get('html').should('have.attr', 'data-theme', 'dark');

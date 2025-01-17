@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Button, Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { TbBrowserX } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
+import { ThemeContext } from '../App';
 import '../styles/Text.css';
+import { getSystemTheme } from '../utils/utils';
 
 export default function PageNotFound() {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
   return (
     <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5em' }}>
       <div
@@ -22,8 +26,11 @@ export default function PageNotFound() {
         <p> {t('page_not_found.message')} </p>
       </div>
       <div>
-        <Link to="/">
-          <Button className="card-button"> {t('page_not_found.back')} </Button>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Button className={`btn-outlined-${appliedTheme}`} size="sm">
+            {' '}
+            {t('page_not_found.back')}{' '}
+          </Button>
         </Link>
       </div>
     </Container>

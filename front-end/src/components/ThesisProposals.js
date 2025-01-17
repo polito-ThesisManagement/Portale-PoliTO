@@ -1,75 +1,208 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { Accordion } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
-import { FaKey, FaUser } from 'react-icons/fa';
-import { FaFilter, FaTags } from 'react-icons/fa6';
-import { HiLightBulb } from 'react-icons/hi';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import queryString from 'query-string';
 
 import API from '../API';
-import { ThemeContext } from '../App';
 import '../styles/Searchbar.css';
 import '../styles/Theme.css';
 import '../styles/ThesisProposals.css';
 import '../styles/Utilities.css';
-import { getSystemTheme } from '../utils/utils';
-import FilterDropdown from './FilterDropdown';
-import FilterGroup from './FilterGroup';
+import FiltersAccordion from './FiltersAccordion';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
-import ResetButton from './ResetButton';
-import SortDropdown from './SortDropdown';
+import SegmentedControl from './SegmentedControl';
 import { ThesisItem } from './ThesisItem';
-import ThesisProposalsToggle from './ThesisProposalsToggle';
-import Title from './Title';
 
 export default function ThesisProposals() {
   const [accordionOpen, setAccordionOpen] = useState(false);
-  const [filters, setFilters] = useState({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
+
   const [count, setCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [proposalsPerPage, setProposalsPerPage] = useState(5);
+  const [pageNumbers, setPageNumbers] = useState([]);
   const [pageProposals, setPageProposals] = useState([]);
-  const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [tab, setTab] = useState('course');
   const [totalPages, setTotalPages] = useState(0);
-  const [sorting, setSorting] = useState({ sortBy: 'id', orderBy: 'ASC' });
+
+  const [state, setState] = useState({
+    currentPage: 1,
+    filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
+    proposalsPerPage: 5,
+    searchQuery: '',
+    sorting: { sortBy: 'id', orderBy: 'ASC' },
+    tab: 'course',
+  });
+
+  const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(false);
 
   const sortFields = ['topic', 'description', 'creationDate', 'expirationDate'];
 
-  const { theme } = useContext(ThemeContext);
-  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
-
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const applyFilters = (itemType, selectedItems) => {
-    setFilters(prevFilters => ({
-      ...prevFilters,
-      [itemType]: selectedItems,
-    }));
-    setCurrentPage(1); // Reset to first page when applying filters
+    setState(prevState => {
+      const newState = {
+        ...prevState,
+        filters: {
+          ...prevState.filters,
+          [itemType]: selectedItems,
+        },
+        currentPage: 1, // Reset to first page when filters change
+      };
+      return newState;
+    });
+  };
+
+  const applySorting = (newSorting, sorting) => {
+    if (newSorting !== sorting) {
+      setState(prevState => ({
+        ...prevState,
+        sorting: newSorting,
+      }));
+    }
+  };
+
+  const debounceSearch = useDebounceSearch(() => {
+    setSearching(true);
+  }, 500); // 500ms of debounce
+
+  const generatePageNumbers = () => {
+    const pages = [];
+    if (totalPages <= 6) {
+      // Case 1: Less than 6 pages
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else if (state.currentPage < 4) {
+      // Case 2: You are in the first pages
+      pages.push(1, 2, 3, 4, '...', totalPages);
+    } else if (state.currentPage >= totalPages - 2) {
+      // Case 3: You are in the last pages
+      pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      // Case 4: You are in the middle
+      pages.push(1, '...', state.currentPage - 1, state.currentPage, state.currentPage + 1, '...', totalPages);
+    }
+    return pages;
   };
 
   const handlePageChange = pageNumber => {
-    if (pageNumber !== currentPage) {
-      setCurrentPage(pageNumber);
+    if (pageNumber !== state.currentPage) {
+      setState(prevState => {
+        const newState = {
+          ...prevState,
+          currentPage: pageNumber,
+        };
+        return newState;
+      });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handleProposalsPerPageChange = event => {
     const value = parseInt(event.target.value, 10);
-    setProposalsPerPage(value);
-    setCurrentPage(1); // Reset to first page when changing proposals per page
+    setState(prevState => {
+      const newState = {
+        ...prevState,
+        currentPage: 1,
+        proposalsPerPage: value,
+      };
+      return newState;
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSearchbarChange = event => {
+    const value = event.target.value;
+    setState(prevState => {
+      const newState = {
+        ...prevState,
+        searchQuery: value,
+        currentPage: 1,
+      };
+      return newState;
+    });
+
+    // Start the debounce only when the user stops typing
+    debounceSearch(value);
+  };
+
+  const handleTabChange = newTab => {
+    setState(prevState => {
+      const newState = {
+        ...prevState,
+        currentPage: 1,
+        tab: newTab,
+      };
+      return newState;
+    });
+  };
+
+  const updateQueryParams = newState => {
+    const defaultValues = {
+      currentPage: 1,
+      filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
+      proposalsPerPage: 5,
+      searchQuery: '',
+      sorting: { sortBy: 'id', orderBy: 'ASC' },
+      tab: 'course',
+    };
+
+    const processArray = arr => (Array.isArray(arr) ? arr.map(item => item.id + '-' + item.content).join(',') : arr);
+
+    const getQueryParam = (paramName, newValue, defaultValue) => {
+      return newValue !== defaultValue ? newValue : undefined;
+    };
+
+    const getFilterQueryParams = (filters, defaultFilters) => {
+      const filterQueryParams = {};
+
+      Object.keys(filters).forEach(key => {
+        const value = filters[key];
+        if (value && value !== defaultFilters[key]) {
+          filterQueryParams[key] = Array.isArray(value) && value.length ? processArray(value) : value;
+        }
+      });
+
+      return filterQueryParams;
+    };
+
+    // Construct the queryParams object
+    const queryParams = {};
+
+    // Handle filters
+    if (newState.filters) {
+      Object.assign(queryParams, getFilterQueryParams(newState.filters, defaultValues.filters));
+    }
+
+    // Handle sorting
+    if (newState.sorting) {
+      if (newState.sorting.sortBy !== defaultValues.sorting.sortBy) queryParams.sortBy = newState.sorting.sortBy;
+      if (newState.sorting.orderBy !== defaultValues.sorting.orderBy) queryParams.orderBy = newState.sorting.orderBy;
+    }
+
+    // Handle other fields (currentPage, searchQuery, etc.)
+    queryParams.currentPage = getQueryParam('currentPage', newState.currentPage, defaultValues.currentPage);
+    queryParams.searchQuery = getQueryParam('searchQuery', newState.searchQuery, defaultValues.searchQuery);
+    queryParams.proposalsPerPage = getQueryParam(
+      'proposalsPerPage',
+      newState.proposalsPerPage,
+      defaultValues.proposalsPerPage,
+    );
+    queryParams.tab = getQueryParam('tab', newState.tab, defaultValues.tab);
+
+    // Remove undefined values
+    const queryStringParams = queryString.stringify(queryParams, { skipNull: true, skipEmptyString: true });
+
+    // Navigate with the updated query string
+    navigate(`?${queryStringParams}`, { replace: true });
   };
 
   function useDebounceSearch(callback, delay) {
@@ -93,272 +226,185 @@ export default function ThesisProposals() {
     return debounce;
   }
 
-  const debounceSearch = useDebounceSearch(() => {
-    setSearching(true);
-  }, 500); // 500ms of debounce
+  const parseQueryParams = queryParams => {
+    const parseArray = param => {
+      return param
+        ? param.split(',').map(item => {
+            const id = parseInt(item.split('-')[0]);
+            const content = item.split('-')[1];
+            return { id, content };
+          })
+        : [];
+    };
 
-  const handleSearchbarChange = event => {
-    const value = event.target.value;
-    setSearchQuery(value);
-
-    // Start the debounce only when the user stops typing
-    debounceSearch(value);
+    return {
+      currentPage: queryParams.currentPage ? parseInt(queryParams.currentPage, 10) : 1,
+      filters: {
+        isAbroad: queryParams.isAbroad === 'true',
+        isInternal: queryParams.isInternal ? parseInt(queryParams.isInternal, 10) : 0,
+        keyword: parseArray(queryParams.keyword),
+        teacher: parseArray(queryParams.teacher),
+        type: parseArray(queryParams.type),
+      },
+      proposalsPerPage: queryParams.proposalsPerPage ? parseInt(queryParams.proposalsPerPage, 10) : 5,
+      searchQuery: queryParams.searchQuery || '',
+      sorting: {
+        sortBy: queryParams.sortBy || 'id',
+        orderBy: queryParams.orderBy || 'ASC',
+      },
+      tab: queryParams.tab || 'course',
+    };
   };
 
-  const handleTabChange = newTab => {
-    setIsAnimating(true);
-    setTab(newTab);
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 500);
-  };
-
-  const applySorting = (selectedItem, sorting) => {
-    setSorting(selectedItem !== sorting ? selectedItem : sorting);
-  };
-
-  const onResetSorting = () => {
-    setSorting({ sortBy: 'id', orderBy: 'ASC' });
+  const resetFilters = () => {
+    setState(prevState => ({
+      ...prevState,
+      currentPage: 1,
+      filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
+      searchQuery: '',
+      sorting: { sortBy: 'id', orderBy: 'ASC' },
+    }));
   };
 
   useEffect(() => {
-    setCurrentPage(1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [proposalsPerPage]);
+    updateQueryParams(state);
+  }, [state.currentPage, state.filters, state.proposalsPerPage, state.sorting, state.tab, searching]);
+
+  useEffect(() => {
+    const parsedQueryParams = queryString.parse(location.search);
+    if (Object.keys(parsedQueryParams).length > 0) {
+      setState(prevState => ({
+        ...prevState,
+        ...parseQueryParams(parsedQueryParams),
+      }));
+    }
+  }, [location.search]);
 
   useEffect(() => {
     setLoading(true);
     const startTime = Date.now();
-    if (tab === 'course') {
-      API.getTargetedThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, searchQuery, sorting)
-        .then(data => {
-          setPageProposals(data.thesisProposals);
-          setCount(data.count);
-          setTotalPages(data.totalPages);
-        })
-        .catch(error => console.error('Error fetching thesis proposals:', error))
-        .finally(() => {
-          setLoading(false);
-          setSearching(false);
-        });
-    } else {
-      API.getThesisProposals(i18n.language, currentPage, proposalsPerPage, filters, searchQuery, sorting)
-        .then(data => {
-          setPageProposals(data.thesisProposals);
-          setCount(data.count);
-          setTotalPages(data.totalPages);
-        })
-        .catch(error => console.error('Error fetching thesis proposals:', error))
-        .finally(() => {
-          const elapsedTime = Date.now() - startTime;
-          const remainingTime = Math.max(500 - elapsedTime, 0);
 
-          setTimeout(() => {
-            setLoading(false);
-            setSearching(false);
-          }, remainingTime);
-        });
-    }
-  }, [i18n.language, currentPage, proposalsPerPage, filters, sorting, searching]);
-
-  useEffect(() => {
-    setTotalPages(Math.ceil(count / proposalsPerPage));
-    const generatePageNumbers = () => {
-      const pages = [];
-      if (totalPages <= 5) {
-        for (let i = 1; i <= totalPages; i++) {
-          pages.push(i);
-        }
-      } else if (currentPage <= 3) {
-        pages.push(1, 2, 3, 4);
-      } else if (currentPage > totalPages - 3) {
-        pages.push(totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
-      } else {
-        pages.push(currentPage - 2, currentPage - 1, currentPage, currentPage + 1);
-      }
-      return pages;
+    const handleFetchCompletion = startTime => {
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(500 - elapsedTime, 0);
+      scheduleLoadingStateUpdate(remainingTime);
     };
-    setPageNumbers(generatePageNumbers());
-  }, [currentPage, totalPages, proposalsPerPage]);
+
+    const scheduleLoadingStateUpdate = remainingTime => {
+      setTimeout(() => {
+        setLoading(false);
+        setSearching(false);
+      }, remainingTime);
+    };
+
+    const fetchProposals = apiMethod => {
+      apiMethod(
+        i18n.language,
+        state.currentPage,
+        state.proposalsPerPage,
+        state.filters,
+        state.searchQuery,
+        state.sorting,
+      )
+        .then(data => {
+          setPageProposals(data.thesisProposals);
+          setCount(data.count);
+          setTotalPages(data.totalPages);
+        })
+        .catch(error => console.error('Error fetching thesis proposals:', error))
+        .finally(() => handleFetchCompletion(startTime));
+    };
+
+    if (state.tab === 'course') {
+      fetchProposals(API.getTargetedThesisProposals);
+    } else {
+      fetchProposals(API.getThesisProposals);
+    }
+  }, [i18n.language, state.currentPage, state.filters, state.proposalsPerPage, state.sorting, state.tab, searching]);
 
   useEffect(() => {
-    if (!isAnimating) {
-      setLoading(true);
-      const startTime = Date.now();
-      const fetchProposals = async () => {
-        try {
-          if (tab === 'course') {
-            const data = await API.getTargetedThesisProposals(
-              i18n.language,
-              currentPage,
-              proposalsPerPage,
-              filters,
-              searchQuery,
-              sorting,
-            );
-            setPageProposals(data.thesisProposals);
-            setCount(data.count);
-            setTotalPages(data.totalPages);
-          } else {
-            const data = await API.getThesisProposals(
-              i18n.language,
-              currentPage,
-              proposalsPerPage,
-              filters,
-              searchQuery,
-              sorting,
-            );
-            setPageProposals(data.thesisProposals);
-            setCount(data.count);
-            setTotalPages(data.totalPages);
-          }
-        } catch (error) {
-          console.error('Error fetching thesis proposals:', error);
-        } finally {
-          const elapsedTime = Date.now() - startTime;
-          const remainingTime = Math.max(500 - elapsedTime, 0);
-
-          setTimeout(() => {
-            setLoading(false);
-          }, remainingTime);
-        }
-      };
-      fetchProposals();
-    }
-  }, [tab, isAnimating]);
+    setPageNumbers(generatePageNumbers());
+  }, [loading]);
 
   return (
-    <>
-      <Title icon={<HiLightBulb size={28} />} sectionName={t('carriera.proposte_di_tesi.title')} />
-      <div className="proposals-container">
-        <main className="proposals-main">
-          <section>
-            <div className="filters-container">
-              <div className="simple-filters-container">
-                <ThesisProposalsToggle tab={tab} handleTabChange={handleTabChange} />
-                <Form
-                  className="d-flex w-100"
-                  style={{ maxWidth: '380px', zIndex: '1' }}
-                  onSubmit={e => e.preventDefault()}
-                >
-                  <InputGroup className="flex-nowrap w-100">
-                    <Form.Control
-                      className="truncated"
-                      type="search"
-                      placeholder={t('carriera.proposte_di_tesi.search')}
-                      aria-label="search_proposals"
-                      style={{
-                        height: '38px',
-                        backgroundColor: 'var(--background)',
-                        color: 'var(--primary)',
-                        borderRadius: '10px',
-                      }}
-                      value={searchQuery}
-                      onChange={handleSearchbarChange}
-                    />
-                    <Search className="search-icon" />
-                  </InputGroup>
-                </Form>
-              </div>
-              <Accordion activeKey={accordionOpen ? '0' : null} onSelect={() => setAccordionOpen(!accordionOpen)}>
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>
-                    <div className="accordion-title">
-                      <FaFilter className="me-2" /> {t('carriera.proposte_di_tesi.filter')}
-                    </div>
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <div className="filters-section">
-                      <FilterGroup
-                        key={`${filters.isInternal}-${filters.isAbroad}`}
-                        isAbroad={filters.isAbroad}
-                        isInternal={filters.isInternal}
-                        handleCheckChange={value => applyFilters('isAbroad', value)}
-                        handleRadioChange={value => applyFilters('isInternal', value)}
-                      />
-                      <FilterDropdown
-                        api={API.getThesisProposalsKeywords}
-                        filters={filters.keyword}
-                        icon={<FaKey style={{ width: '20px' }} />}
-                        itemType={'keyword'}
-                        onApplyFilters={applyFilters}
-                        onResetFilters={() => applyFilters('keyword', [])}
-                        selectedItems={filters.keyword}
-                      />
-                      <FilterDropdown
-                        api={API.getThesisProposalsTeachers}
-                        filters={filters.teacher}
-                        icon={<FaUser style={{ width: '20px' }} />}
-                        itemType={'teacher'}
-                        onApplyFilters={applyFilters}
-                        onResetFilters={() => applyFilters('teacher', [])}
-                        selectedItems={filters.teacher}
-                      />
-                      <FilterDropdown
-                        api={API.getThesisProposalsTypes}
-                        filters={filters.type}
-                        icon={<FaTags style={{ width: '20px' }} />}
-                        itemType={'type'}
-                        onApplyFilters={applyFilters}
-                        onResetFilters={() => applyFilters('type', [])}
-                        selectedItems={filters.type}
-                      />
-                      <SortDropdown
-                        sortFields={sortFields}
-                        sorting={sorting}
-                        onApplySorting={applySorting}
-                        onResetSorting={onResetSorting}
-                      />
-                    </div>
-                    <hr className={`hr-${appliedTheme}`} />
-                    <div className="reset-button-container">
-                      <ResetButton
-                        resetFilters={() => {
-                          setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
-                          setSearchQuery('');
-                        }}
-                      />
-                    </div>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-            </div>
-          </section>
-          {loading ? (
-            <LoadingModal show={loading} onHide={() => setLoading(false)} />
-          ) : (
-            <>
-              {pageProposals.length > 0 ? (
-                <>
-                  <section className="list-section">
-                    <div>
-                      {pageProposals.map(thesis => {
-                        return <ThesisItem key={thesis.id} {...thesis} />;
-                      })}
-                    </div>
-                  </section>
-                  <PaginationItem
-                    count={count}
-                    currentPage={currentPage}
-                    handleProposalsPerPageChange={handleProposalsPerPageChange}
-                    handlePageChange={handlePageChange}
-                    pageNumbers={pageNumbers}
-                    proposalsPerPage={proposalsPerPage}
-                    totalPages={totalPages}
-                  />
-                </>
-              ) : (
-                <ProposalsNotFound
-                  resetFilters={() => {
-                    setFilters({ isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] });
-                    setSearchQuery('');
-                  }}
-                />
-              )}
-            </>
-          )}
-        </main>
+    <div className="proposals-container">
+      <div className="filters-container">
+        <div className="simple-filters-container" key={state.tab}>
+          <SegmentedControl
+            name="proposals-segmented-control"
+            callback={val => handleTabChange(val)}
+            controlRef={useRef()}
+            defaultIndex={state.tab === 'course' ? 0 : 1}
+            segments={[
+              {
+                label: t('carriera.proposte_di_tesi.course_proposals'),
+                value: 'course',
+                ref: useRef(),
+              },
+              {
+                label: t('carriera.proposte_di_tesi.all_proposals'),
+                value: 'all',
+                ref: useRef(),
+              },
+            ]}
+          />
+          <Form className="d-flex w-100" style={{ maxWidth: '380px', zIndex: '1' }} onSubmit={e => e.preventDefault()}>
+            <InputGroup className="flex-nowrap w-100">
+              <Form.Control
+                className="truncated"
+                type="search"
+                placeholder={t('carriera.proposte_di_tesi.search')}
+                aria-label="search_proposals"
+                style={{
+                  height: '38px',
+                  backgroundColor: 'var(--background)',
+                  color: 'var(--primary)',
+                  borderRadius: '10px',
+                }}
+                value={state.searchQuery}
+                onChange={handleSearchbarChange}
+              />
+              <Search className="search-icon" />
+            </InputGroup>
+          </Form>
+        </div>
+        <FiltersAccordion
+          accordionOpen={accordionOpen}
+          setAccordionOpen={setAccordionOpen}
+          filters={state.filters}
+          applyFilters={applyFilters}
+          resetFilters={resetFilters}
+          sortFields={sortFields}
+          sorting={state.sorting}
+          applySorting={applySorting}
+        />
       </div>
-    </>
+      {loading ? (
+        <LoadingModal show={loading} onHide={() => setLoading(false)} />
+      ) : (
+        <>
+          {pageProposals.length > 0 ? (
+            <>
+              <div className="list-section">
+                {pageProposals.map(thesis => {
+                  return <ThesisItem key={thesis.id} {...thesis} />;
+                })}
+              </div>
+              <PaginationItem
+                count={count}
+                currentPage={state.currentPage}
+                handleProposalsPerPageChange={handleProposalsPerPageChange}
+                handlePageChange={handlePageChange}
+                pageNumbers={pageNumbers}
+                proposalsPerPage={state.proposalsPerPage}
+                totalPages={totalPages}
+              />
+            </>
+          ) : (
+            <ProposalsNotFound resetFilters={resetFilters} />
+          )}
+        </>
+      )}
+    </div>
   );
 }

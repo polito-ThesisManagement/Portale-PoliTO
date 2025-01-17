@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 import { PersonCircle } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
@@ -8,14 +8,24 @@ import Image from 'react-bootstrap/Image';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
-import { FaSignOutAlt } from 'react-icons/fa';
-import { FaBell, FaEnvelope, FaKey, FaRegBell, FaRegEnvelope, FaUser } from 'react-icons/fa6';
+import {
+  FaArrowRightFromBracket,
+  FaBell,
+  FaCircleHalfStroke,
+  FaEnvelope,
+  FaKey,
+  FaMoon,
+  FaRegBell,
+  FaRegEnvelope,
+  FaSun,
+  FaUser,
+} from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
 import API from '../API';
-import { DesktopToggleContext, LoggedStudentContext } from '../App';
+import { DesktopToggleContext, LoggedStudentContext, ThemeContext } from '../App';
 import Logo from '../assets/logo_polito.svg';
 import Logo2 from '../assets/logo_polito_reduced.svg';
 import Logo2White from '../assets/logo_polito_reduced_white.svg';
@@ -25,12 +35,13 @@ import '../styles/Navbar.css';
 import '../styles/Theme.css';
 import { useLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
+import SegmentedControl from './SegmentedControl';
 import SidebarModal from './SidebarModal';
-import ThemeToggle from './ThemeToggle';
 
 export default function PoliNavbar(props) {
   const { desktopToggle } = useContext(DesktopToggleContext);
   const { loggedStudent } = useContext(LoggedStudentContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const { t, i18n } = useTranslation();
 
@@ -49,6 +60,7 @@ export default function PoliNavbar(props) {
     setSelectedLanguage(lng);
     document.documentElement.setAttribute('lang', lng);
     document.querySelector('meta[name="description"]').setAttribute('content', t('descrizione'));
+    localStorage.setItem('language', lng);
   };
 
   const handleLoggedStudentChange = async newStudent => {
@@ -61,6 +73,23 @@ export default function PoliNavbar(props) {
       props.setRefresh(!props.refresh);
     }
   };
+
+  let themeDefaultIndex;
+  if (theme === 'auto') {
+    themeDefaultIndex = 0;
+  } else if (theme === 'light') {
+    themeDefaultIndex = 1;
+  } else {
+    themeDefaultIndex = 2;
+  }
+
+  // Set the preferred language if it is saved in localStorage
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && savedLanguage !== i18n.language) {
+      updateLanguage(savedLanguage);
+    }
+  }, []);
 
   return (
     <Navbar className="custom-navbar">
@@ -101,7 +130,7 @@ export default function PoliNavbar(props) {
               display: 'inline-block',
               fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-extrabold)',
-              fontSize: 'var(--font-size-2xl)',
+              fontSize: 'var(--font-size-xl)',
             }}
           >
             {t('navbar.portale_della_didattica')}
@@ -119,7 +148,31 @@ export default function PoliNavbar(props) {
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
           <Searchbar services={Services} mobile={false} />
           <Nav className="my-0 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-            <ThemeToggle />
+            <div className="d-flex align-items-center" style={{ marginRight: '10px' }}>
+              <SegmentedControl
+                name="theme-segmented-control"
+                callback={val => setTheme(val)}
+                controlRef={useRef()}
+                defaultIndex={themeDefaultIndex}
+                segments={[
+                  {
+                    label: <FaCircleHalfStroke size={24} color={'var(--primary)'} />,
+                    value: 'auto',
+                    ref: useRef(),
+                  },
+                  {
+                    label: <FaSun size={24} color={'var(--primary)'} />,
+                    value: 'light',
+                    ref: useRef(),
+                  },
+                  {
+                    label: <FaMoon size={24} color={'var(--primary)'} />,
+                    value: 'dark',
+                    ref: useRef(),
+                  },
+                ]}
+              />
+            </div>
             <Nav.Link
               as={Link}
               to="https://mail.studenti.polito.it/?_task=mail&_mbox=INBOX"
@@ -175,19 +228,21 @@ export default function PoliNavbar(props) {
                     right: 'auto',
                     left: props.allStudents && props.allStudents.length > 0 ? '-150px' : '-100px',
                     fontFamily: 'var(--font-primary)',
+                    fontSize: 'var(--font-size-md)',
+                    fontWeight: 'var(--font-weight-medium)',
                   }}
                 >
                   {loggedStudent && (
                     <>
                       <Dropdown.Item
                         className="medium-weight"
-                        style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                       >
                         <FaUser size={16} /> {t('navbar.profilo_utente')}
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="medium-weight"
-                        style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                       >
                         <FaKey size={16} /> {t('navbar.cambio_password')}
                       </Dropdown.Item>
@@ -198,7 +253,7 @@ export default function PoliNavbar(props) {
                             key={student.id}
                             className="medium-weight"
                             onClick={() => handleLoggedStudentChange(student)}
-                            style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
+                            style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'var(--primary)' }}
                           >
                             <Image
                               src={student.profilePictureUrl}
@@ -211,15 +266,15 @@ export default function PoliNavbar(props) {
                         ))}
                       <Dropdown.Item
                         className="medium-weight"
-                        style={{ display: 'flex', alignItems: 'center', gap: '9px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '9px', color: 'var(--primary)' }}
                       >
-                        <FaSignOutAlt size={17} style={{ marginLeft: '1px' }} /> Logout
+                        <FaArrowRightFromBracket size={17} style={{ marginLeft: '1px' }} /> Logout
                       </Dropdown.Item>
                     </>
                   )}
                   <Dropdown.Item
                     className="dropdown-submenu medium-weight"
-                    style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                     onMouseEnter={() => setShowSubmenu(true)}
                     onMouseLeave={() => setShowSubmenu(false)}
                   >
@@ -241,13 +296,15 @@ export default function PoliNavbar(props) {
                           left: '0',
                           marginTop: '30px',
                           fontFamily: 'var(--font-primary)',
+                          fontSize: 'var(--font-size-md)',
+                          fontWeight: 'var(--font-weight-medium)',
                         }}
                         className="submenu"
                       >
                         <Dropdown.Item
                           className="medium-weight"
                           as="div"
-                          style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                          style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                           onClick={() => updateLanguage('it')}
                         >
                           <span className="flag flag-it" /> Italiano
@@ -255,7 +312,7 @@ export default function PoliNavbar(props) {
                         <Dropdown.Item
                           className="medium-weight"
                           as="div"
-                          style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+                          style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)' }}
                           onClick={() => updateLanguage('en')}
                         >
                           <span className="flag flag-gb" /> English

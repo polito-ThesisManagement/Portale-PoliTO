@@ -2,11 +2,13 @@
   background-color: var(--surface);
   color: var(--primary);
   border-radius: var(--border-radius);
+  border: var(--border-default);
   margin-bottom: 6px;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 16px;
   padding-bottom: 12px;
+  max-width: none;
   min-height: 200px;
   height: auto;
   font-family: var(--font-primary);
@@ -16,25 +18,6 @@
   margin-right: 10px;
 }
 
-.card-button,
-.card-button:focus {
-  background-color: var(--surface);
-  color: var(--primary);
-  border-color: var(--primary);
-  font-family: var(--font-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-md);
-  display: flex;
-  align-items: center;
-}
-
-.card-button:hover,
-.card-button:active {
-  border-color: var(--primary) !important;
-  background-color: var(--primary) !important;
-  color: var(--background) !important;
-}
-
 .card-link {
   font-weight: var(--font-weight-regular);
   margin-top: 8px;
@@ -42,7 +25,6 @@
 
 .star,
 .star-fill {
-  margin-right: 16px;
   margin-bottom: 8px;
   cursor: pointer;
 }
@@ -53,7 +35,7 @@
 }
 
 .star {
-  color: var(--primary);
+  color: var(--title);
 }
 
 .star-fill {
