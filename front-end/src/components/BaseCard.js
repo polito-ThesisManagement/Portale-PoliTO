@@ -9,11 +9,14 @@ import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import { FavoritesContext } from '../App';
+import { FavoritesContext, ThemeContext } from '../App';
 import '../styles/Card.css';
+import { getSystemTheme } from '../utils/utils';
 
 export default function BaseCard(props) {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   const { favorites, setFavorites } = useContext(FavoritesContext);
 
@@ -40,7 +43,7 @@ export default function BaseCard(props) {
   };
 
   return (
-    <Col sm={6} md={6} lg={6} xl={4} className="px-3 pb-3">
+    <Col sm={6} md={6} lg={6} xl={4} className="mb-3">
       <Container className="custom-card" style={{ display: 'flex', flexDirection: 'column' }}>
         <div
           style={{
@@ -88,7 +91,7 @@ export default function BaseCard(props) {
           }}
         >
           <Link to={props.servicePath} style={{ textDecoration: 'none' }}>
-            <Button className="card-button" size="sm">
+            <Button className={`btn-${appliedTheme}`} size="sm">
               <FaArrowUpRightFromSquare />
               {t('Accedi')}
             </Button>
