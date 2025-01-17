@@ -106,7 +106,7 @@ function App() {
                 <Row>
                   <Sidebar />
                   <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
-                    <Col className={`custom-content reeduced`}>
+                    <Col className={`custom-content reduced`}>
                       <Routes>
                         <Route path="/" element={<Homepage />} />
                         <Route path="/area_personale" element={<AreaPersonale />} />
