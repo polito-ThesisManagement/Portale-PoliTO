@@ -964,8 +964,11 @@ describe('Thesis proposal overview page - responsiveness', () => {
     cy.get('.modal-menu a[href="/carriera"]').should('be.visible').click();
     cy.get('a[href="/carriera/proposte_di_tesi"]').click();
 
-    // Step 3: Verify the page title
-    cy.get('.section-title').should('contain', 'Proposte di Tesi');
+    // Step 3: Verify the page breadcrumb
+    cy.get('.breadcrumb').should('be.visible');
+    cy.get('.breadcrumb-item').should('have.length', 2);
+    cy.get('.breadcrumb-item').eq(0).contains('Carriera');
+    cy.get('.breadcrumb-item').eq(1).contains('Proposte di tesi');
 
     // Step 4: Verify the thesis proposals are listed
     cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
