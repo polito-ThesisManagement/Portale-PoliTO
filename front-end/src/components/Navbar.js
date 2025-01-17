@@ -130,7 +130,7 @@ export default function PoliNavbar(props) {
               display: 'inline-block',
               fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-extrabold)',
-              fontSize: 'var(--font-size-2xl)',
+              fontSize: 'var(--font-size-xl)',
             }}
           >
             {t('navbar.portale_della_didattica')}
