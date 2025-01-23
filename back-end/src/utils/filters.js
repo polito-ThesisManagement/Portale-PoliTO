@@ -26,12 +26,12 @@ const buildWhereConditions = async (query, lang) => {
   let thesisProposalIds = null;
 
   if (teacherId) {
-    const filteredProposalIds = await filterBySupervisor(teacherId);
+    const filteredProposalIds = await filterByThesisSupervisor(teacherId);
     thesisProposalIds = filteredProposalIds;
   }
 
   if (keywordId) {
-    const filteredProposalIds = await filterByKeyword(keywordId);
+    const filteredProposalIds = await filterByThesisKeyword(keywordId);
     thesisProposalIds = Array.isArray(thesisProposalIds)
       ? thesisProposalIds.filter(id => filteredProposalIds.includes(id))
       : filteredProposalIds;
@@ -53,7 +53,7 @@ const buildWhereConditions = async (query, lang) => {
   return where;
 };
 
-const filterBySupervisor = async supervisor => {
+const filterByThesisSupervisor = async supervisor => {
   const thesisIds = await ThesisProposalSupervisorCoSupervisor.findAll({
     attributes: ['thesis_proposal_id'],
     where: {
@@ -64,7 +64,7 @@ const filterBySupervisor = async supervisor => {
   return thesisIds.map(thesis => thesis.thesis_proposal_id);
 };
 
-const filterByKeyword = async keyword => {
+const filterByThesisKeyword = async keyword => {
   const keywordIds = await ThesisProposalKeyword.findAll({
     attributes: ['thesis_proposal_id'],
     where: {
@@ -88,7 +88,7 @@ const filterByThesisType = async thesis_type => {
 
 module.exports = {
   buildWhereConditions,
-  filterBySupervisor,
-  filterByKeyword,
+  filterByThesisSupervisor,
+  filterByThesisKeyword,
   filterByThesisType,
 };
