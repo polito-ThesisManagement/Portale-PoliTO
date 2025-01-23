@@ -3,7 +3,8 @@ const sequelize = require('../config/database');
 
 const Collegio = require('./collegio')(sequelize, Sequelize.DataTypes);
 const ThesisProposal = require('./thesis-proposal')(sequelize, Sequelize.DataTypes);
-const Degree = require('./degree')(sequelize, Sequelize.DataTypes);
+const DegreeProgramme = require('./degree-programme')(sequelize, Sequelize.DataTypes);
+const DegreeProgrammeContainer = require('./degree-programme-container')(sequelize, Sequelize.DataTypes);
 const ThesisProposalDegree = require('./thesis-proposal-degree')(sequelize, Sequelize.DataTypes);
 const Keyword = require('./keyword')(sequelize, Sequelize.DataTypes);
 const ThesisProposalKeyword = require('./thesis-proposal-keyword')(sequelize, Sequelize.DataTypes);
@@ -23,7 +24,8 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.Collegio = Collegio;
 db.ThesisProposal = ThesisProposal;
-db.Degree = Degree;
+db.DegreeProgramme = DegreeProgramme;
+db.DegreeProgrammeContainer = DegreeProgrammeContainer;
 db.ThesisProposalDegree = ThesisProposalDegree;
 db.Keyword = Keyword;
 db.ThesisProposalKeyword = ThesisProposalKeyword;
@@ -35,22 +37,40 @@ db.Student = Student;
 
 // Define relationships
 
-Degree.belongsTo(Collegio, {
+// DegreeProgramme and Collegio (one-to-many)
+DegreeProgramme.belongsTo(Collegio, {
   foreignKey: 'id_collegio',
 });
 
-ThesisProposal.belongsToMany(Degree, {
+Collegio.hasMany(DegreeProgramme, {
+  foreignKey: 'id_collegio',
+});
+
+// DegreeProgramme and DegreeProgrammeContainerMapping (one-to-many)
+DegreeProgramme.belongsTo(DegreeProgrammeContainer, {
+  foreignKey: 'degree_id',
+  otherKey: 'container_id',
+});
+
+DegreeProgrammeContainer.hasMany(DegreeProgramme, {
+  foreignKey: 'degree_id',
+  otherKey: 'container_id',
+});
+
+// ThesisProposal and DegreeProgramme (many-to-many)
+ThesisProposal.belongsToMany(DegreeProgramme, {
   through: ThesisProposalDegree,
   foreignKey: 'thesis_proposal_id',
   otherKey: 'degree_id',
 });
 
-Degree.belongsToMany(ThesisProposal, {
+DegreeProgramme.belongsToMany(ThesisProposal, {
   through: ThesisProposalDegree,
   foreignKey: 'degree_id',
   otherKey: 'thesis_proposal_id',
 });
 
+// ThesisProposal and Keyword (many-to-many)
 ThesisProposal.belongsToMany(Keyword, {
   through: ThesisProposalKeyword,
   foreignKey: 'thesis_proposal_id',
@@ -63,6 +83,7 @@ Keyword.belongsToMany(ThesisProposal, {
   otherKey: 'thesis_proposal_id',
 });
 
+// ThesisProposal and Type (many-to-many)
 ThesisProposal.belongsToMany(Type, {
   through: ThesisProposalType,
   foreignKey: 'thesis_proposal_id',
@@ -75,6 +96,7 @@ Type.belongsToMany(ThesisProposal, {
   otherKey: 'thesis_proposal_id',
 });
 
+// ThesisProposal and Teacher (many-to-many)
 ThesisProposal.belongsToMany(Teacher, {
   through: ThesisProposalSupervisorCoSupervisor,
   foreignKey: 'thesis_proposal_id',
@@ -87,19 +109,21 @@ Teacher.belongsToMany(ThesisProposal, {
   otherKey: 'thesis_proposal_id',
 });
 
-Student.hasOne(Degree, {
+// Student and DegreeProgramme (one-to-many)
+Student.belongsTo(DegreeProgramme, {
   foreignKey: 'degree_id',
 });
 
-Degree.hasMany(Student, {
+DegreeProgramme.hasMany(Student, {
   foreignKey: 'degree_id',
 });
 
+// Student and LoggedStudent (one-to-one)
 Student.hasOne(LoggedStudent, {
   foreignKey: 'student_id',
 });
 
-LoggedStudent.hasOne(Student, {
+LoggedStudent.belongsTo(Student, {
   foreignKey: 'student_id',
 });
 

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Degree = sequelize.define(
-    'degree',
+  const DegreeProgramme = sequelize.define(
+    'degree-programme',
     {
       id: {
         type: DataTypes.STRING(10),
@@ -28,9 +28,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      tableName: 'degree',
+      tableName: 'degree_programme',
       timestamps: false,
     },
   );
-  return Degree;
+  return DegreeProgramme;
 };
