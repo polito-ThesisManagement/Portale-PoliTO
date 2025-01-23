@@ -24,7 +24,8 @@ DROP TABLE IF EXISTS type;
 DROP TABLE IF EXISTS keyword;
 DROP TABLE IF EXISTS teacher;
 DROP TABLE IF EXISTS student;
-DROP TABLE IF EXISTS degree;
+DROP TABLE IF EXISTS degree_programme;
+DROP TABLE IF EXISTS degree_programme_container;
 DROP TABLE IF EXISTS collegio;
 
 -- Table for storing collegi data
@@ -33,14 +34,23 @@ CREATE TABLE IF NOT EXISTS collegio (
     name VARCHAR(100) NOT NULL
 );
 
--- Table for storing degrees' data
-CREATE TABLE IF NOT EXISTS degree (
+-- Table for storing degrees' containers data
+CREATE TABLE IF NOT EXISTS degree_programme_container (
+    id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    name_en VARCHAR(100) NOT NULL
+);
+
+-- Table for storing degree programmes' data
+CREATE TABLE IF NOT EXISTS degree_programme (
     id VARCHAR(10) PRIMARY KEY,
     description VARCHAR(255) NOT NULL,
     description_en VARCHAR(255) NOT NULL,
     level ENUM("1", "2") NOT NULL, -- 1 for Bachelor, 2 for Master
     id_collegio VARCHAR(10) NOT NULL,
-    FOREIGN KEY (id_collegio) REFERENCES collegio(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a collegio
+    container_id VARCHAR(10) NOT NULL,
+    FOREIGN KEY (id_collegio) REFERENCES collegio(id) ON DELETE RESTRICT, -- RESTRICT policy in order to pay attention to the deletion of a collegio
+    FOREIGN KEY (container_id) REFERENCES degree_programme_container(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree programme container
 );
 
 -- Table for storing students' data 
@@ -51,7 +61,7 @@ CREATE TABLE IF NOT EXISTS student (
     last_name VARCHAR(100) NOT NULL,
     profile_picture_url VARCHAR(100) DEFAULT NULL,
     degree_id VARCHAR(10) NOT NULL,
-    FOREIGN KEY (degree_id) REFERENCES degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
+    FOREIGN KEY (degree_id) REFERENCES degree_programme(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree programme
 );
 
 -- Table for storing teachers' data
@@ -104,13 +114,13 @@ CREATE TABLE IF NOT EXISTS thesis_proposal (
     FOREIGN KEY (id_collegio) REFERENCES collegio(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a collegio
 );
 
--- Table for linking thesis proposals with degrees
+-- Table for linking thesis proposals with degree programmes containers
 CREATE TABLE IF NOT EXISTS thesis_proposal_degree (
     thesis_proposal_id INT NOT NULL,
-    degree_id VARCHAR(10) NOT NULL,
-    PRIMARY KEY (thesis_proposal_id, degree_id),
+    container_id VARCHAR(10) NOT NULL,
+    PRIMARY KEY (thesis_proposal_id, container_id),
     FOREIGN KEY (thesis_proposal_id) REFERENCES thesis_proposal(id) ON DELETE CASCADE,
-    FOREIGN KEY (degree_id) REFERENCES degree(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree
+    FOREIGN KEY (container_id) REFERENCES degree_programme_container(id) ON DELETE RESTRICT -- RESTRICT policy in order to pay attention to the deletion of a degree programme
 );
 
 -- Table for linking thesis proposals with keywords
