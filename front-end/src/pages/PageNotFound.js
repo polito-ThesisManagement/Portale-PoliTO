@@ -15,10 +15,7 @@ export default function PageNotFound() {
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
   return (
     <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5em' }}>
-      <div
-        className="pol-headline pol-headline--with-bar"
-        style={{ fontFamily: 'var(--font-primary)', color: 'var(--primary)' }}
-      >
+      <div className="pol-headline pol-headline--with-bar" style={{ color: 'var(--primary)' }}>
         <h3 className="bold-weight">{t('page_not_found.title')}</h3>
       </div>
       <TbBrowserX size={100} style={{ color: 'var(--primary)' }} strokeWidth={1} />

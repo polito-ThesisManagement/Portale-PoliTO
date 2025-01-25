@@ -128,7 +128,6 @@ export default function PoliNavbar(props) {
             style={{
               color: 'var(--primary)',
               display: 'inline-block',
-              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-extrabold)',
               fontSize: 'var(--font-size-xl)',
             }}
@@ -226,8 +225,7 @@ export default function PoliNavbar(props) {
                 <Dropdown.Menu
                   style={{
                     right: 'auto',
-                    left: props.allStudents && props.allStudents.length > 0 ? '-150px' : '-100px',
-                    fontFamily: 'var(--font-primary)',
+                    left: props.allStudents && props.allStudents.length > 0 ? '-155px' : '-100px',
                     fontSize: 'var(--font-size-md)',
                     fontWeight: 'var(--font-weight-medium)',
                   }}
@@ -295,7 +293,6 @@ export default function PoliNavbar(props) {
                           right: 'auto',
                           left: '0',
                           marginTop: '30px',
-                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--font-size-md)',
                           fontWeight: 'var(--font-weight-medium)',
                         }}

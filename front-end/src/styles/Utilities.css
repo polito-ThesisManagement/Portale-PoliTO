@@ -183,7 +183,6 @@ body {
 }
 
 .btn-light {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   border-color: var(--text-200) !important;
@@ -213,7 +212,6 @@ body {
 }
 
 .btn-dark {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   border-color: var(--primary-800) !important;
@@ -243,7 +241,6 @@ body {
 }
 
 .btn-outlined-light {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   border-color: var(--text-300) !important;
@@ -273,7 +270,6 @@ body {
 }
 
 .btn-outlined-dark {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   background-color: var(--surface) !important;

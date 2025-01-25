@@ -21,10 +21,7 @@ export default function ProposalsNotFound({ resetFilters }) {
         paddingTop: '1em',
       }}
     >
-      <div
-        className="pol-headline pol-headline--with-bar"
-        style={{ fontFamily: 'var(--font-primary)', color: 'var(--primary)' }}
-      >
+      <div className="pol-headline pol-headline--with-bar" style={{ color: 'var(--primary)' }}>
         <h3 className="bold-weight">{t('carriera.proposte_di_tesi.not_found')}</h3>
       </div>
       <FaRectangleXmark size={100} style={{ color: 'var(--primary)' }} strokeWidth={1} />
