@@ -64,6 +64,7 @@ export default function Searchbar(props) {
           aria-label="Search"
           size="md"
           style={{
+            fontSize: 'var(--font-size-sm)',
             height: '40px',
             backgroundColor: 'var(--background)',
             color: 'var(--primary)',

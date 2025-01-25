@@ -356,6 +356,7 @@ export default function ThesisProposals() {
                 placeholder={t('carriera.proposte_di_tesi.search')}
                 aria-label="search_proposals"
                 style={{
+                  fontSize: 'var(--font-size-sm)',
                   height: '38px',
                   backgroundColor: 'var(--background)',
                   color: 'var(--primary)',
