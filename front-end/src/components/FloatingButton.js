@@ -1,13 +1,17 @@
-import { React, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 
 import { Button } from 'react-bootstrap';
-import { FaArrowUp } from 'react-icons/fa6';
+import { FaChevronUp } from 'react-icons/fa6';
 
+import { ThemeContext } from '../App';
 import '../styles/Utilities.css';
-import { scrollTop } from '../utils/utils';
+import { getSystemTheme, scrollTop } from '../utils/utils';
 
 function FloatingButton() {
   const [isVisible, setIsVisible] = useState(false);
+
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   const handleScroll = () => {
     if (window.scrollY > 100) setIsVisible(true);
@@ -22,8 +26,12 @@ function FloatingButton() {
   }, []);
 
   return (
-    <Button className="floating-button" onClick={scrollTop} style={{ display: isVisible ? 'flex' : 'none' }}>
-      <FaArrowUp size={16} />
+    <Button
+      className={`floating-button floating-button-${appliedTheme}`}
+      onClick={scrollTop}
+      style={{ display: isVisible ? 'flex' : 'none' }}
+    >
+      <FaChevronUp size={16} />
     </Button>
   );
 }
