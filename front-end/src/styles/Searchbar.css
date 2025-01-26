@@ -1,9 +1,3 @@
-@media (max-width: 600px) {
-  form.custom-searchbar {
-    display: none !important;
-  }
-}
-
 .custom-list-group {
   position: absolute;
   width: calc(100% - 15px) !important;
@@ -20,4 +14,13 @@
 .truncated::placeholder {
   color: var(--placeholder);
   opacity: 1;
+}
+
+.search-icon {
+  position: absolute;
+  z-index: 3;
+  right: 13px;
+  top: 10px;
+  color: var(--primary);
+  height: 1.1rem;
 }

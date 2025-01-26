@@ -30,7 +30,6 @@
 .custom-sidebar .nav-link {
   color: var(--primary);
   border-left: 3px solid transparent;
-  border-radius: var(--margin-default);
   margin-bottom: calc(var(--margin-default) * 2);
   margin-left: var(--margin-default);
   margin-right: var(--margin-default);
@@ -76,7 +75,6 @@
 
 .modal-menu .nav-link {
   color: var(--primary);
-  border-radius: var(--margin-default);
   padding-right: 0;
   margin-left: var(--margin-default);
   margin-bottom: var(--margin-default);

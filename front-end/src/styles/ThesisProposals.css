@@ -74,15 +74,6 @@
   }
 }
 
-.search-icon {
-  position: absolute;
-  z-index: 3;
-  right: 13px;
-  top: 10px;
-  color: var(--primary);
-  height: 1.1rem;
-}
-
 .list-section {
   padding-left: 1rem;
   padding-right: 1rem;

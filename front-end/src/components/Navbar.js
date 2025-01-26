@@ -95,7 +95,7 @@ export default function PoliNavbar(props) {
     <Navbar className="custom-navbar">
       <Container fluid>
         <Navbar.Brand
-          className={`nav-logo ${desktopToggle ? 'toggle' : ''}`}
+          className={`nav-logo ${desktopToggle ? 'toggle' : ''} d-none d-lg-block`}
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -103,22 +103,20 @@ export default function PoliNavbar(props) {
             width: 'auto',
             minWidth: '166.3px',
             height: '57px',
-            marginLeft: '-3px',
-            marginRight: '36px',
+            paddingRight: '28px',
           }}
         >
           <Image src={useLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
-          className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''}`}
+          className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''} d-none d-sm-block d-lg-none d-block`}
           as={Link}
           target="_blank"
           to="https://didattica.polito.it/"
           style={{
             width: 'auto',
             height: '57px',
-            marginLeft: '-3px',
-            marginRight: '12px',
+            paddingRight: '4px',
           }}
         >
           <Image src={useLogo(Logo2, Logo2White)} alt="Logo PoliTo" style={{ width: '51.44px', height: '100%' }} />
@@ -137,8 +135,8 @@ export default function PoliNavbar(props) {
         </Navbar.Brand>
         <Button
           onClick={() => setShowModal(true)}
-          className="sidebar-modal-toggler"
-          style={{ backgroundColor: 'var(--primary)', color: 'var(--background)' }}
+          className="sidebar-modal-toggler d-block d-sm-none"
+          style={{ backgroundColor: 'var(--primary)', borderColor: 'var(--background)', color: 'var(--background)' }}
         >
           ☰
         </Button>

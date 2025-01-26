@@ -1,7 +1,7 @@
 .section-title {
-  color: var(--primary);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-xl);
+  color: var(--title);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-md);
 }
 
 .subsection-title {

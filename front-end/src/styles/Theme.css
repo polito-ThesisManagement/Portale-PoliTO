@@ -167,6 +167,7 @@
   --primary: var(--primary-700);
   --text: var(--black);
   --title: var(--text-800);
+  --section-description: var(--text-600);
   --placeholder: var(--text-700);
   --link: var(--primary-500);
   --dropdown-border: var(--text-200);
@@ -216,6 +217,12 @@
   --border-default: 1px solid var(--text-200);
   --border-default-hover: 1px solid var(--text-300);
 
+  --margin-default: 0.5rem;
+  --no-margin-mobile: 0rem;
+
+  --sidebar-width: 14rem;
+  --sidebar-width-reduced: 5.25rem;
+
   .btn-primary,
   .btn-outlined-primary,
   .btn-group,
@@ -235,6 +242,7 @@
   --primary: var(--white);
   --text: var(--white);
   --title: var(--white);
+  --section-description: var(--white);
   --placeholder: var(--text-400);
   --link: var(--primary-50);
   --dropdown-border: var(--primary-700);
