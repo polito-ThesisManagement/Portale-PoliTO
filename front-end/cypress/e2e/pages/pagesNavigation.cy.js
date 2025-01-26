@@ -34,6 +34,6 @@ describe('Pages navigation', () => {
     // Step 7: Navigate to the 'NotFound' page and then back to the 'Homepage'
     cy.visit('http://localhost:3000/unknown');
     cy.get('h3.bold-weight').should('contain', 'Pagina non trovata');
-    cy.get('#root > div > div.main-space.reduced.col > div > div > div:nth-child(4) > a > button').click();
+    cy.get('#root > div > div.custom-content.reduced.col > div > div:nth-child(4) > a > button').click();
   });
 });

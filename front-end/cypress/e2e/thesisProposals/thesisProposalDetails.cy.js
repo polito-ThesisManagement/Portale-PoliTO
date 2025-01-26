@@ -22,7 +22,9 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
 
     // Step 4: Reduce sidebar
-    cy.get('.sidebar-toggle').click();
+    cy.get(
+      '#root > div > div.custom-sidebar.py-2.d-none.d-sm-block.reduced.col-lg-1.col-md-1 > div > div.d-none.d-lg-block.nav-item > a',
+    ).click();
 
     // Step 5: Check the thesis proposal details
     cy.get('.subsection-proposal-title').should('be.visible');
