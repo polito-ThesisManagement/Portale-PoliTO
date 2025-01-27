@@ -48,6 +48,7 @@ export default function SegmentedControl({ name, segments, callback, defaultInde
               id={item.value}
               name={name}
               onChange={() => onInputChange(item.value, i)}
+              onClick={() => onInputChange(item.value, i)}
               checked={i === activeIndex}
             />
             <label htmlFor={item.label}>{item.label}</label>

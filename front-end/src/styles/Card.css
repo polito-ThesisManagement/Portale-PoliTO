@@ -1,17 +1,25 @@
-.custom-card {
+.roundCard {
+  border-radius: var(--border-radius) !important;
+  border: var(--border-default) !important;
+  background: var(--surface) !important;
+}
+
+.roundCard .card-header,
+.roundCard .card-footer {
   background-color: var(--surface);
-  color: var(--primary);
-  border-radius: var(--border-radius);
-  border: var(--border-default);
-  margin-bottom: 6px;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 16px;
-  padding-bottom: 12px;
-  max-width: none;
-  min-height: 200px;
-  height: auto;
-  font-family: var(--font-primary);
+}
+
+.roundCard .card-body {
+  color: var(--section-description);
+  font-size: var(--font-size-xs);
+}
+
+.roundCard > .card-header {
+  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+.roundCard > .card-footer {
+  border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
 }
 
 .card-icon {

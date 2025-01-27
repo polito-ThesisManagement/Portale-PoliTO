@@ -1,38 +1,30 @@
-.main-space {
-  height: auto;
-  margin-top: 86px;
-  background-color: var(--surface);
-  margin-left: 220px;
-  display: flex;
-  padding-left: 0px !important;
-  transition-duration: 0.5s;
-}
-
 .custom-content {
-  padding-left: 1.25rem !important;
-  padding-right: 1.25rem !important;
   transition-duration: 0.5s;
   background-color: var(--background);
-  height: 100%;
-  border-top-left-radius: 12px;
+  border-radius: var(--border-radius-left);
+  border: var(--border-default);
+  margin-left: var(--sidebar-width);
+  margin-right: var(--margin-default);
+  margin-top: 5.5rem;
+  padding: 1.5rem 2rem 0 2rem;
+}
+
+.custom-content.minimized {
+  margin-left: var(--sidebar-width-reduced);
 }
 
 .detail-title {
   min-width: 200px;
 }
 
-.main-space.toggle {
-  margin-left: 80px;
-}
-
-@media (max-width: 1100px) {
-  .main-space.reduced {
-    margin-left: 80px;
+@media (max-width: 991px) {
+  .custom-content {
+    padding: 1rem 1rem 0 1rem;
   }
 
-  .custom-content {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+  .custom-content.reduced {
+    margin-left: var(--sidebar-width-reduced);
+    margin-right: 0px; /* scrollbar is not visible anymore */
   }
 }
 
@@ -47,22 +39,24 @@
   }
 }
 
-@media (max-width: 600px) {
-  .main-space.reduced {
-    margin-left: 12px;
+@media (max-width: 575px) {
+  .custom-content {
+    padding: 1rem 0 0 0;
   }
 
   .custom-content.reduced {
     border-top-left-radius: 0px;
+    margin-left: var(--no-margin-mobile);
+    margin-right: var(--no-margin-mobile);
   }
 }
 
 body {
-  overflow-x: hidden;
+  background-color: var(--surface);
+  font-size: var(--font-size-xs);
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
-  background-color: var(--background);
 }
 
 .title {
@@ -153,27 +147,62 @@ body {
 
 .floating-button {
   position: fixed;
-  z-index: 100;
-  right: 3%;
-  bottom: 4%;
-  height: 50px;
-  width: 50px;
-  border-radius: 30px;
-  background-color: rgba(var(--medium-orange-rgb), 0.7);
-  color: var(--background-light);
+  z-index: 1000;
+  right: 1rem;
+  bottom: 1rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 0.25rem;
   border-width: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition:
+    background-color 0.3s,
+    opacity 0.5s,
+    visibility 0.5s;
+  padding: 0;
 }
 
-.floating-button:hover {
-  background-color: rgba(var(--medium-orange-rgb), 0.85);
-  box-shadow: 0 4px 10px rgba(var(--medium-orange-rgb), 0.25);
+.floating-button-light {
+  background-color: var(--primary-700);
+  border-color: var(--primary-700);
+  color: var(--white);
 }
 
-.floating-button:active {
-  background-color: rgba(var(--medium-orange-rgb), 1) !important;
+.floating-button-light:hover {
+  background-color: var(--text-700);
+}
+
+.floating-button-light:active {
+  background-color: var(--text-400) !important;
+}
+
+.floating-button-dark {
+  background-color: var(--white);
+  border: 1px solid var(--primary-700);
+  color: var(--primary-700);
+}
+
+.floating-button-dark:hover {
+  background-color: var(--text-300);
+  border: 1px solid var(--primary-700);
+  color: var(--primary-700);
+}
+
+.floating-button-dark:active {
+  background-color: var(--text-500) !important;
+  border: 1px solid var(--primary-700) !important;
+  color: var(--primary-700) !important;
+}
+
+@media (max-width: 1200px) {
+  .floating-button {
+    bottom: 0.625rem;
+    right: 0.625rem;
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .badge.rounded-pill {
@@ -183,7 +212,6 @@ body {
 }
 
 .btn-light {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   border-color: var(--text-200) !important;
@@ -213,7 +241,6 @@ body {
 }
 
 .btn-dark {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   border-color: var(--primary-800) !important;
@@ -243,7 +270,6 @@ body {
 }
 
 .btn-outlined-light {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   border-color: var(--text-300) !important;
@@ -273,7 +299,6 @@ body {
 }
 
 .btn-outlined-dark {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   background-color: var(--surface) !important;

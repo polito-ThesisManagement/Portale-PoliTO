@@ -7,13 +7,11 @@
 
 .custom-dropdown-toggle {
   min-width: 4rem;
-  font-family: var(--font-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
 }
 
 .btn-dropdown {
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
 }
@@ -37,7 +35,6 @@
 }
 
 .custom-dropdown-item {
-  font-family: var(--font-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   background-color: var(--custom-dropdown-bg) !important;

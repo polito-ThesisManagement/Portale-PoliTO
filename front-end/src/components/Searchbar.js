@@ -49,7 +49,7 @@ export default function Searchbar(props) {
 
   return (
     <Form
-      className={props.mobile ? 'd-flex mt-2 mb-4' : 'custom-searchbar d-flex w-100'}
+      className={props.mobile ? 'd-flex mt-2 mb-4' : 'custom-searchbar me-3 d-flex w-100 d-none d-sm-block d-block'}
       style={
         props.mobile
           ? { maxWidth: 'none', position: 'relative', marginLeft: '6px' }
@@ -62,8 +62,8 @@ export default function Searchbar(props) {
           type="search"
           placeholder={t('navbar.ricerca_nel_portale')}
           aria-label="Search"
-          size="md"
           style={{
+            fontSize: 'var(--font-size-sm)',
             height: '40px',
             backgroundColor: 'var(--background)',
             color: 'var(--primary)',
@@ -72,15 +72,7 @@ export default function Searchbar(props) {
           value={searchWord}
           onChange={handleChange}
         />
-        <Search
-          style={{
-            position: 'absolute',
-            zIndex: '3',
-            right: '13px',
-            top: '11px',
-            color: 'var(--primary)',
-          }}
-        />
+        <Search className="search-icon" style={{ height: '1.2rem' }} />
       </InputGroup>
       {searchWord !== '' && (
         <ListGroup className="custom-list-group w-100" style={{ zIndex: '3' }}>

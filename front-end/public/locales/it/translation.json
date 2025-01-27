@@ -19,7 +19,8 @@
         "area_personale": "Area personale",
         "carriera": "Carriera",
         "opportunità": "Opportunità",
-        "servizi": "Servizi"
+        "servizi": "Servizi",
+        "riduci_menu": "Riduci menu"
     },
     "carriera": {
         "tasse_e_agevolazioni": {

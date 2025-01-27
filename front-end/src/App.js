@@ -103,26 +103,24 @@ function App() {
                   refresh={refresh}
                   setRefresh={setRefresh}
                 />
-                <Row>
+                <Row className="p-0 m-0" style={{ width: '100vw', height: '100vh' }}>
                   <Sidebar />
-                  <Col className={`main-space reduced ${desktopToggle ? 'toggle' : ''}`}>
-                    <Col className={`custom-content reduced`}>
-                      <Routes>
-                        <Route path="/" element={<Homepage />} />
-                        <Route path="/area_personale" element={<AreaPersonale />} />
-                        <Route path="/home" element={<Homepage />} />
-                        <Route path="/didattica" element={<Didattica />} />
-                        <Route path="/carriera" element={<Carriera />} />
-                        <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
-                        <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
-                        <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
-                        <Route path="/opportunita" element={<Opportunita />} />
-                        <Route path="/servizi" element={<Servizi />} />
-                        <Route path="/help" element={<Help />} />
-                        <Route path="*" element={<PageNotFound />} />
-                      </Routes>
-                      <FloatingButton />
-                    </Col>
+                  <Col className={`custom-content reduced ${desktopToggle ? 'minimized' : ''}`}>
+                    <Routes>
+                      <Route path="/" element={<Homepage />} />
+                      <Route path="/area_personale" element={<AreaPersonale />} />
+                      <Route path="/home" element={<Homepage />} />
+                      <Route path="/didattica" element={<Didattica />} />
+                      <Route path="/carriera" element={<Carriera />} />
+                      <Route path="/carriera/proposte_di_tesi" element={<ProposteDiTesi />} />
+                      <Route path="/carriera/proposte_di_tesi/:id" element={<PropostaDiTesi />} />
+                      <Route path="/carriera/laurea_ed_esame_finale" element={<LaureaEdEsameFinale />} />
+                      <Route path="/opportunita" element={<Opportunita />} />
+                      <Route path="/servizi" element={<Servizi />} />
+                      <Route path="/help" element={<Help />} />
+                      <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+                    <FloatingButton />
                   </Col>
                 </Row>
               </BodyDataLoadingContext.Provider>

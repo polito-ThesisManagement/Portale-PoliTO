@@ -2,7 +2,6 @@
   border: 0.125rem solid var(--background);
   border-radius: 0.625rem;
   color: var(--text);
-  font-family: var(--font-primary);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   margin-bottom: 0.5rem;

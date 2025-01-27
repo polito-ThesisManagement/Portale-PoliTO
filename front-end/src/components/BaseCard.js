@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Button, Col, Container } from 'react-bootstrap';
-import { Star, StarFill } from 'react-bootstrap-icons';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
-import { PiUserListFill } from 'react-icons/pi';
+import { FaArrowUpRightFromSquare, FaRegStar, FaStar } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -44,60 +42,53 @@ export default function BaseCard(props) {
 
   return (
     <Col sm={6} md={6} lg={6} xl={4} className="mb-3">
-      <Container className="custom-card" style={{ display: 'flex', flexDirection: 'column' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <span className="subsection-title col-10">
-            {props.icon ? props.icon : <PiUserListFill size="48" className="card-icon" />}
-            <span className="subsection-title position-relative" style={{ maxWidth: '170px' }}>
-              {props.service}
-            </span>
-          </span>
-          <div className="col d-flex justify-content-end">
-            {starClicked ? (
-              <StarFill size="24px" className="star-fill" onClick={handleStarClick} />
-            ) : (
-              <Star size="24px" className="star" onClick={handleStarClick} />
-            )}
+      <Card className="h-100 roundCard">
+        <Card.Header className="border-0">
+          <div className="d-flex pt-2 justify-content-between">
+            <Col sm={7} md={8} className="d-flex align-items-center">
+              <span className="section-title">{props.icon}</span>
+              <span className="section-title position-relative">{props.service}</span>
+            </Col>
+            <Col sm={5} md={4} className="d-flex justify-content-end">
+              {starClicked ? (
+                <FaStar size="24px" className="star-fill" onClick={handleStarClick} />
+              ) : (
+                <FaRegStar size="24px" className="star" onClick={handleStarClick} />
+              )}
+            </Col>
           </div>
-        </div>
-        <div style={{ color: 'var(--text)', marginTop: '12px', fontSize: 'var(--font-size-xs)' }}>
+        </Card.Header>
+        <Card.Body>
           {props.description}
-        </div>
-        {props.link && props.linkText ? (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Link
-              className="card-link custom-link truncated"
-              target="_blank"
-              to={props.link}
-              style={{ whiteSpace: 'normal' }}
-            >
-              {props.linkText}
-            </Link>
-            <FaArrowUpRightFromSquare className="mx-2 mt-1" />
-          </div>
-        ) : null}
-        <div
-          style={{
-            marginTop: 'auto',
-            marginLeft: 'auto',
-            marginBottom: '8px',
-            marginRight: '0px',
-          }}
-        >
-          <Link to={props.servicePath} style={{ textDecoration: 'none' }}>
-            <Button className={`btn-${appliedTheme}`} size="sm">
-              <FaArrowUpRightFromSquare />
-              {t('Accedi')}
-            </Button>
-          </Link>
-        </div>
-      </Container>
+          {props.link && props.linkText ? (
+            <div className="d-flex align-items-center">
+              <Link
+                className="card-link custom-link truncated"
+                target="_blank"
+                to={props.link}
+                style={{ whiteSpace: 'normal' }}
+              >
+                {props.linkText}
+              </Link>
+              <FaArrowUpRightFromSquare className="mx-2 mt-1" />
+            </div>
+          ) : null}
+        </Card.Body>
+        <Card.Footer className="border-0">
+          <Row>
+            <Col sm={12} className="pb-2">
+              <div className="d-flex justify-content-end">
+                <Link to={props.servicePath} style={{ textDecoration: 'none' }}>
+                  <Button className={`btn-${appliedTheme}`} size="sm">
+                    <FaArrowUpRightFromSquare />
+                    {t('Accedi')}
+                  </Button>
+                </Link>
+              </div>
+            </Col>
+          </Row>
+        </Card.Footer>
+      </Card>
     </Col>
   );
 }

@@ -354,7 +354,7 @@ describe('Thesis proposals overview page', () => {
 
     // Step 7: Reset the filters
     cy.get(
-      '#root > div > div.main-space.reduced.col > div > div.proposals-container > div.container > div:nth-child(4) > button',
+      '#root > div > div.custom-content.reduced.col > div.proposals-container > div.container > div:nth-child(4) > button',
     ).click();
 
     // Step 8: Verify that the filters are reset

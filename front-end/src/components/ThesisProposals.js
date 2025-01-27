@@ -356,6 +356,7 @@ export default function ThesisProposals() {
                 placeholder={t('carriera.proposte_di_tesi.search')}
                 aria-label="search_proposals"
                 style={{
+                  fontSize: 'var(--font-size-sm)',
                   height: '38px',
                   backgroundColor: 'var(--background)',
                   color: 'var(--primary)',
@@ -364,7 +365,7 @@ export default function ThesisProposals() {
                 value={state.searchQuery}
                 onChange={handleSearchbarChange}
               />
-              <Search className="search-icon" />
+              <Search className="search-icon" style={{ height: '1.1rem' }} />
             </InputGroup>
           </Form>
         </div>

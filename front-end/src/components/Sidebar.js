@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 
 import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaAngleLeft, FaBookOpen, FaBriefcase, FaCircleInfo, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
+import { FaBookOpen, FaBriefcase, FaCircleInfo, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
+import { LuArrowLeftToLine, LuArrowRightToLine } from 'react-icons/lu';
 import { MdApps } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -24,36 +25,39 @@ const navLinks = [
 ];
 
 function Sidebar() {
+  const { desktopToggle } = useContext(DesktopToggleContext);
+  return (
+    <Col md={1} lg={1} className={`custom-sidebar py-2 d-none d-sm-block reduced ${desktopToggle ? 'minimized' : ''}`}>
+      <Nav defaultActiveKey="/home" className="flex-column">
+        <NavItems />
+      </Nav>
+    </Col>
+  );
+}
+function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
   const { desktopToggle, setDesktopToggle } = useContext(DesktopToggleContext);
+  const baseClassName = mobile ? 'modal-sidebar-text' : 'sidebar-text reduced';
+  const spanClassName = desktopToggle && !mobile ? `${baseClassName} toggle` : baseClassName;
+  const { t } = useTranslation();
 
   const handleToggle = () => {
     setDesktopToggle(!desktopToggle);
   };
 
-  return (
-    <>
-      <div className={`custom-sidebar-wrapper reduced ${desktopToggle ? 'toggle' : ''}`}>
-        <button className={`sidebar-toggle ${desktopToggle ? 'rotated' : ''}`} onClick={handleToggle}>
-          <FaAngleLeft size={20} />
-        </button>
-      </div>
-      <Nav defaultActiveKey="/home" className="flex-column">
-        <Col className={`col-md-1 custom-sidebar py-2 reduced ${desktopToggle ? 'toggle' : ''}`}>
-          <NavItems />
-        </Col>
-      </Nav>
-    </>
-  );
-}
-function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
-  const { desktopToggle } = useContext(DesktopToggleContext);
-  const baseClassName = mobile ? 'modal-sidebar-text' : 'sidebar-text reduced';
-  const spanClassName = desktopToggle && !mobile ? `${baseClassName} toggle` : baseClassName;
-  const { t } = useTranslation();
-
+  if (to == '#') {
+    return (
+      <Nav.Item className="d-none d-lg-block">
+        <hr />
+        <Link to="#" className="nav-link" onClick={handleToggle}>
+          {desktopToggle ? <LuArrowRightToLine size={22} /> : <LuArrowLeftToLine size={22} />}
+          <span className={spanClassName}>{t('sidebar.riduci_menu')}</span>
+        </Link>
+      </Nav.Item>
+    );
+  }
   return (
     <Nav.Item>
-      <Link to={to} className={`nav-link text-style ${isActive ? 'active' : ''}`} onClick={handleClose}>
+      <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
         <Icon size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
         <span className={spanClassName}>{t(textKey)}</span>
       </Link>
@@ -83,17 +87,18 @@ function NavItems({ mobile, handleClose }) {
           isActive={activeLink && activeLink.to === to}
         />
       ))}
+      <NavItem to="#" />
     </>
   );
 }
 
 NavItem.propTypes = {
   to: PropTypes.string.isRequired,
-  icon: PropTypes.elementType.isRequired,
-  textKey: PropTypes.string.isRequired,
+  icon: PropTypes.elementType,
+  textKey: PropTypes.string,
   mobile: PropTypes.bool,
   handleClose: PropTypes.func,
-  isActive: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool,
 };
 
 NavItems.propTypes = {

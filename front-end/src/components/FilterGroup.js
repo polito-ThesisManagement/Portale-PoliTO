@@ -36,7 +36,6 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
               handleRadioChange(Number(e.currentTarget.value));
             }}
             style={{
-              fontFamily: 'var(--font-primary)',
               fontSize: 'var(--font-size-sm)',
               fontWeight: 'var(--font-weight-medium)',
               gap: '.5rem',
@@ -63,7 +62,6 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
           }}
           size="sm"
           style={{
-            fontFamily: 'var(--font-primary)',
             fontSize: 'var(--font-size-sm)',
             fontWeight: 'var(--font-weight-medium)',
             gap: '.5rem',

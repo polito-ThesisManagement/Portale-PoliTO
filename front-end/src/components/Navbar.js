@@ -83,6 +83,25 @@ export default function PoliNavbar(props) {
     themeDefaultIndex = 2;
   }
 
+  let themeIcon;
+  if (theme === 'auto') {
+    themeIcon = <FaCircleHalfStroke size={24} color={'var(--primary)'} />;
+  } else if (theme === 'light') {
+    themeIcon = <FaSun size={24} color={'var(--primary)'} />;
+  } else {
+    themeIcon = <FaMoon size={24} color={'var(--primary)'} />;
+  }
+
+  const toggleTheme = () => {
+    if (theme === 'auto') {
+      setTheme('light');
+    } else if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('auto');
+    }
+  };
+
   // Set the preferred language if it is saved in localStorage
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
@@ -95,7 +114,7 @@ export default function PoliNavbar(props) {
     <Navbar className="custom-navbar">
       <Container fluid>
         <Navbar.Brand
-          className={`nav-logo ${desktopToggle ? 'toggle' : ''}`}
+          className={`nav-logo ${desktopToggle ? 'toggle' : ''} d-none d-lg-block`}
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -103,22 +122,20 @@ export default function PoliNavbar(props) {
             width: 'auto',
             minWidth: '166.3px',
             height: '57px',
-            marginLeft: '-3px',
-            marginRight: '36px',
+            paddingRight: '28px',
           }}
         >
           <Image src={useLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
-          className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''}`}
+          className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''} d-none d-sm-block d-lg-none d-block`}
           as={Link}
           target="_blank"
           to="https://didattica.polito.it/"
           style={{
             width: 'auto',
             height: '57px',
-            marginLeft: '-3px',
-            marginRight: '12px',
+            paddingRight: '4px',
           }}
         >
           <Image src={useLogo(Logo2, Logo2White)} alt="Logo PoliTo" style={{ width: '51.44px', height: '100%' }} />
@@ -128,7 +145,6 @@ export default function PoliNavbar(props) {
             style={{
               color: 'var(--primary)',
               display: 'inline-block',
-              fontFamily: 'var(--font-primary)',
               fontWeight: 'var(--font-weight-extrabold)',
               fontSize: 'var(--font-size-xl)',
             }}
@@ -138,8 +154,8 @@ export default function PoliNavbar(props) {
         </Navbar.Brand>
         <Button
           onClick={() => setShowModal(true)}
-          className="sidebar-modal-toggler"
-          style={{ backgroundColor: 'var(--primary)', color: 'var(--background)' }}
+          className="sidebar-modal-toggler d-block d-sm-none me-3"
+          style={{ backgroundColor: 'var(--primary)', borderColor: 'var(--background)', color: 'var(--background)' }}
         >
           ☰
         </Button>
@@ -149,29 +165,45 @@ export default function PoliNavbar(props) {
           <Searchbar services={Services} mobile={false} />
           <Nav className="my-0 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
             <div className="d-flex align-items-center" style={{ marginRight: '10px' }}>
-              <SegmentedControl
-                name="theme-segmented-control"
-                callback={val => setTheme(val)}
-                controlRef={useRef()}
-                defaultIndex={themeDefaultIndex}
-                segments={[
-                  {
-                    label: <FaCircleHalfStroke size={24} color={'var(--primary)'} />,
-                    value: 'auto',
-                    ref: useRef(),
-                  },
-                  {
-                    label: <FaSun size={24} color={'var(--primary)'} />,
-                    value: 'light',
-                    ref: useRef(),
-                  },
-                  {
-                    label: <FaMoon size={24} color={'var(--primary)'} />,
-                    value: 'dark',
-                    ref: useRef(),
-                  },
-                ]}
-              />
+              <div className="d-none d-sm-flex">
+                <SegmentedControl
+                  name="theme-segmented-control"
+                  callback={val => setTheme(val)}
+                  controlRef={useRef()}
+                  defaultIndex={themeDefaultIndex}
+                  segments={[
+                    {
+                      label: <FaCircleHalfStroke size={24} color={'var(--primary)'} />,
+                      value: 'auto',
+                      ref: useRef(),
+                    },
+                    {
+                      label: <FaSun size={24} color={'var(--primary)'} />,
+                      value: 'light',
+                      ref: useRef(),
+                    },
+                    {
+                      label: <FaMoon size={24} color={'var(--primary)'} />,
+                      value: 'dark',
+                      ref: useRef(),
+                    },
+                  ]}
+                />
+              </div>
+              <div className="d-flex d-sm-none">
+                <SegmentedControl
+                  name="theme-segmented-control-reduced"
+                  callback={() => toggleTheme()}
+                  controlRef={useRef()}
+                  segments={[
+                    {
+                      label: themeIcon,
+                      value: theme,
+                      ref: useRef(),
+                    },
+                  ]}
+                />
+              </div>
             </div>
             <Nav.Link
               as={Link}
@@ -226,8 +258,7 @@ export default function PoliNavbar(props) {
                 <Dropdown.Menu
                   style={{
                     right: 'auto',
-                    left: props.allStudents && props.allStudents.length > 0 ? '-150px' : '-100px',
-                    fontFamily: 'var(--font-primary)',
+                    left: props.allStudents && props.allStudents.length > 0 ? '-155px' : '-100px',
                     fontSize: 'var(--font-size-md)',
                     fontWeight: 'var(--font-weight-medium)',
                   }}
@@ -295,7 +326,6 @@ export default function PoliNavbar(props) {
                           right: 'auto',
                           left: '0',
                           marginTop: '30px',
-                          fontFamily: 'var(--font-primary)',
                           fontSize: 'var(--font-size-md)',
                           fontWeight: 'var(--font-weight-medium)',
                         }}
