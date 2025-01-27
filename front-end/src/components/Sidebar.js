@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaBookOpen, FaBriefcase, FaCircleInfo, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
+import { IoApps } from 'react-icons/io5';
 import { LuArrowLeftToLine, LuArrowRightToLine } from 'react-icons/lu';
-import { MdApps } from 'react-icons/md';
 import { Link, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -20,7 +20,7 @@ const navLinks = [
   { to: '/area_personale', icon: FaUser, textKey: 'sidebar.area_personale' },
   { to: '/carriera', icon: FaUserGraduate, textKey: 'sidebar.carriera' },
   { to: '/opportunita', icon: FaBriefcase, textKey: 'sidebar.opportunità' },
-  { to: '/servizi', icon: MdApps, textKey: 'sidebar.servizi' },
+  { to: '/servizi', icon: IoApps, textKey: 'sidebar.servizi' },
   { to: '/help', icon: FaCircleInfo, textKey: 'Help' },
 ];
 

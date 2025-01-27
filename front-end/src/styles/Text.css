@@ -28,6 +28,7 @@
 .important-detail {
   color: var(--primary);
   font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-md);
 }
 
 .course-detail {
