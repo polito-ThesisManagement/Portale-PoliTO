@@ -365,7 +365,7 @@ export default function ThesisProposals() {
                 value={state.searchQuery}
                 onChange={handleSearchbarChange}
               />
-              <Search className="search-icon" />
+              <Search className="search-icon" style={{ height: '1.1rem' }} />
             </InputGroup>
           </Form>
         </div>

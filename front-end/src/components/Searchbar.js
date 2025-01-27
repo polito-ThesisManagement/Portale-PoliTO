@@ -72,7 +72,7 @@ export default function Searchbar(props) {
           value={searchWord}
           onChange={handleChange}
         />
-        <Search className="search-icon" />
+        <Search className="search-icon" style={{ height: '1.2rem' }} />
       </InputGroup>
       {searchWord !== '' && (
         <ListGroup className="custom-list-group w-100" style={{ zIndex: '3' }}>
