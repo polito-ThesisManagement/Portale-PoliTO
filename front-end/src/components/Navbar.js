@@ -83,6 +83,25 @@ export default function PoliNavbar(props) {
     themeDefaultIndex = 2;
   }
 
+  let themeIcon;
+  if (theme === 'auto') {
+    themeIcon = <FaCircleHalfStroke size={24} color={'var(--primary)'} />;
+  } else if (theme === 'light') {
+    themeIcon = <FaSun size={24} color={'var(--primary)'} />;
+  } else {
+    themeIcon = <FaMoon size={24} color={'var(--primary)'} />;
+  }
+
+  const toggleTheme = () => {
+    if (theme === 'auto') {
+      setTheme('light');
+    } else if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('auto');
+    }
+  };
+
   // Set the preferred language if it is saved in localStorage
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
@@ -135,7 +154,7 @@ export default function PoliNavbar(props) {
         </Navbar.Brand>
         <Button
           onClick={() => setShowModal(true)}
-          className="sidebar-modal-toggler d-block d-sm-none"
+          className="sidebar-modal-toggler d-block d-sm-none me-3"
           style={{ backgroundColor: 'var(--primary)', borderColor: 'var(--background)', color: 'var(--background)' }}
         >
           ☰
@@ -146,29 +165,45 @@ export default function PoliNavbar(props) {
           <Searchbar services={Services} mobile={false} />
           <Nav className="my-0 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
             <div className="d-flex align-items-center" style={{ marginRight: '10px' }}>
-              <SegmentedControl
-                name="theme-segmented-control"
-                callback={val => setTheme(val)}
-                controlRef={useRef()}
-                defaultIndex={themeDefaultIndex}
-                segments={[
-                  {
-                    label: <FaCircleHalfStroke size={24} color={'var(--primary)'} />,
-                    value: 'auto',
-                    ref: useRef(),
-                  },
-                  {
-                    label: <FaSun size={24} color={'var(--primary)'} />,
-                    value: 'light',
-                    ref: useRef(),
-                  },
-                  {
-                    label: <FaMoon size={24} color={'var(--primary)'} />,
-                    value: 'dark',
-                    ref: useRef(),
-                  },
-                ]}
-              />
+              <div className="d-none d-sm-flex">
+                <SegmentedControl
+                  name="theme-segmented-control"
+                  callback={val => setTheme(val)}
+                  controlRef={useRef()}
+                  defaultIndex={themeDefaultIndex}
+                  segments={[
+                    {
+                      label: <FaCircleHalfStroke size={24} color={'var(--primary)'} />,
+                      value: 'auto',
+                      ref: useRef(),
+                    },
+                    {
+                      label: <FaSun size={24} color={'var(--primary)'} />,
+                      value: 'light',
+                      ref: useRef(),
+                    },
+                    {
+                      label: <FaMoon size={24} color={'var(--primary)'} />,
+                      value: 'dark',
+                      ref: useRef(),
+                    },
+                  ]}
+                />
+              </div>
+              <div className="d-flex d-sm-none">
+                <SegmentedControl
+                  name="theme-segmented-control-reduced"
+                  callback={() => toggleTheme()}
+                  controlRef={useRef()}
+                  segments={[
+                    {
+                      label: themeIcon,
+                      value: theme,
+                      ref: useRef(),
+                    },
+                  ]}
+                />
+              </div>
             </div>
             <Nav.Link
               as={Link}
