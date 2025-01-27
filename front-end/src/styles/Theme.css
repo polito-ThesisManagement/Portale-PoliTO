@@ -157,7 +157,9 @@
   --surface-dark: #143959;
   --surface-dark-rgb: 20, 57, 89;
   --sidebar-bg-active: rgba(183, 225, 255, 0.5);
-  --sidebar-link: var(--primary-700);
+  --sidebar-link: var(--text-700);
+  --sidebar-link-hover: var(--text-700);
+  --sidebar-link-active: var(--primary-700);
   --sidebar-strip: var(--primary-700);
 
   --background: var(--background-light);
@@ -234,6 +236,9 @@
 /* Dark Theme Colors */
 [data-theme='dark'] {
   --sidebar-bg-active: var(--primary-50);
+  --sidebar-link: var(--text-400);
+  --sidebar-link-hover: var(--primary-700);
+  --sidebar-link-active: var(--primary-700);
   --sidebar-strip: var(--primary-500);
   --background: var(--background-dark);
   --background-inverted: var(--background-light);

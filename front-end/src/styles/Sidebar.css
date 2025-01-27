@@ -28,7 +28,7 @@
 }
 
 .custom-sidebar .nav-link {
-  color: var(--primary);
+  color: var(--sidebar-link);
   border-left: 3px solid transparent;
   margin-bottom: calc(var(--margin-default) * 2);
   margin-left: var(--margin-default);
@@ -43,20 +43,25 @@
 .custom-sidebar .nav-link:hover {
   background-color: var(--sidebar-bg-active);
   border-radius: 0.1875rem;
-  color: var(--sidebar-link);
+  color: var(--sidebar-link-hover);
 }
 
 .custom-sidebar .nav-link.active {
   background-color: var(--sidebar-bg-active);
   border-left: 3px solid var(--sidebar-strip);
   border-radius: 0.1875rem;
-  color: var(--sidebar-link);
+  color: var(--sidebar-link-active);
 }
 
 .sidebar-text {
   padding-left: 10px;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
+}
+
+.nav-link:hover .sidebar-text,
+.nav-link.active .sidebar-text {
+  font-weight: var(--font-weight-semibold);
 }
 
 .sidebar-text.toggle {
@@ -74,7 +79,7 @@
 }
 
 .modal-menu .nav-link {
-  color: var(--primary);
+  color: var(--sidebar-link);
   padding-right: 0;
   margin-left: var(--margin-default);
   margin-bottom: var(--margin-default);
@@ -88,13 +93,13 @@
 .modal-menu .nav-link:hover {
   background-color: var(--sidebar-bg-active);
   border-radius: 0.1875rem;
-  color: var(--sidebar-link);
+  color: var(--sidebar-link-hover);
 }
 
 .modal-menu .nav-link.active {
   position: relative;
   background-color: var(--sidebar-bg-active);
-  color: var(--sidebar-link);
+  color: var(--sidebar-link-active);
   border-left: 3px solid var(--sidebar-strip);
   border-radius: 0.1875rem;
 }
@@ -103,4 +108,9 @@
   padding-left: 10px;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
+}
+
+.nav-link:hover .modal-sidebar-text,
+.nav-link.active .modal-sidebar-text {
+  font-weight: var(--font-weight-semibold);
 }
