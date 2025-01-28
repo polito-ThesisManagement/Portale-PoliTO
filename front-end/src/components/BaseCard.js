@@ -44,16 +44,16 @@ export default function BaseCard(props) {
     <Col sm={6} md={6} lg={6} xl={4} className="mb-3">
       <Card className="h-100 roundCard">
         <Card.Header className="border-0">
-          <div className="d-flex pt-2 justify-content-between">
+          <div className="d-flex pt-2 justify-content-between align-items-center">
             <Col sm={7} md={8} className="d-flex align-items-center">
               <span className="section-title">{props.icon}</span>
               <span className="section-title position-relative">{props.service}</span>
             </Col>
             <Col sm={5} md={4} className="d-flex justify-content-end">
               {starClicked ? (
-                <FaStar size="24px" className="star-fill" onClick={handleStarClick} />
+                <FaStar size={24} className="star-fill" onClick={handleStarClick} />
               ) : (
-                <FaRegStar size="24px" className="star" onClick={handleStarClick} />
+                <FaRegStar size={24} className="star" onClick={handleStarClick} />
               )}
             </Col>
           </div>
