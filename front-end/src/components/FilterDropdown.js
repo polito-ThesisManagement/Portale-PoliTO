@@ -3,8 +3,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Badge, Button, Dropdown, Form, InputGroup, Spinner } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
@@ -177,7 +178,7 @@ export default function FilterDropdown({
             {filters.length}
           </Badge>
         )}
-        {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+        {isOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
       </Dropdown.Toggle>
 
       <Dropdown.Menu as={CustomMenu} style={{ width: '300px' }} className="custom-dropdown-menu">
@@ -192,6 +193,7 @@ export default function FilterDropdown({
               backgroundColor: 'var(--background)',
               color: 'var(--primary)',
               borderRadius: '10px',
+              fontSize: 'var(--font-size-sm)',
             }}
             value={searchValue}
             onChange={handleSearchbarChange}

@@ -2,8 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { Badge, Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaArrowDownShortWide, FaArrowUpShortWide, FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
+import {
+  faArrowDownShortWide,
+  faArrowUpShortWide,
+  faCheck,
+  faChevronDown,
+  faChevronUp,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
@@ -61,14 +68,16 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
     <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id="dropdown-sort">
       <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme}  custom-dropdown-toggle`}>
         {selectedSorting.orderBy === 'ASC' ? (
-          <FaArrowUpShortWide
+          <FontAwesomeIcon
+            icon={faArrowUpShortWide}
             onClick={e => {
               e.stopPropagation();
               handleChangeOrderExternal('DESC');
             }}
           />
         ) : (
-          <FaArrowDownShortWide
+          <FontAwesomeIcon
+            icon={faArrowDownShortWide}
             onClick={e => {
               e.stopPropagation();
               handleChangeOrderExternal('ASC');
@@ -82,14 +91,16 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
             1
           </Badge>
         )}
-        {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+        {isOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
       </Dropdown.Toggle>
       <Dropdown.Menu as={CustomMenu} key={selectedSorting} className="custom-dropdown-menu">
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           {sortFields.map(sortBy => (
             <Dropdown.Item className="custom-dropdown-item" key={'sort' + sortBy} onClick={() => handleSelect(sortBy)}>
               <div className="d-flex align-items-center w-100">
-                <div style={{ width: '1.5em' }}>{selectedSorting.sortBy === sortBy && <FaCheck />}</div>
+                <div style={{ width: '1.5em' }}>
+                  {selectedSorting.sortBy === sortBy && <FontAwesomeIcon icon={faCheck} />}
+                </div>
                 {t(`carriera.proposte_di_tesi.${sortBy}`)}
               </div>
             </Dropdown.Item>

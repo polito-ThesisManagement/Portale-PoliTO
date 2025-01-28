@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 
 import { ButtonGroup, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaBuildingCircleArrowRight, FaBuildingColumns, FaEarthAmericas } from 'react-icons/fa6';
 
+import { faBuildingCircleArrowRight, faBuildingColumns, faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
@@ -18,8 +19,8 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
 
   const radios = [
     { name: t('carriera.proposte_di_tesi.all_theses'), value: 0 },
-    { name: t('carriera.proposte_di_tesi.internal_theses'), value: 1, icon: FaBuildingColumns },
-    { name: t('carriera.proposte_di_tesi.external_theses'), value: 2, icon: FaBuildingCircleArrowRight },
+    { name: t('carriera.proposte_di_tesi.internal_theses'), value: 1, icon: faBuildingColumns },
+    { name: t('carriera.proposte_di_tesi.external_theses'), value: 2, icon: faBuildingCircleArrowRight },
   ];
 
   return (
@@ -44,7 +45,7 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
             value={radio.value}
           >
             <>
-              {radio.icon && <radio.icon className="radio-icon" size={radio.icon === FaBuildingColumns ? 14 : 16} />}
+              {radio.icon && <FontAwesomeIcon icon={radio.icon} />}
               {radio.name}
             </>
           </ToggleButton>
@@ -68,7 +69,7 @@ export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, h
             height: 'fit-content',
           }}
         >
-          <FaEarthAmericas size={16} />
+          <FontAwesomeIcon icon={faEarthAmericas} />
           {t('carriera.proposte_di_tesi.abroad_theses')}
         </ToggleButton>
       </ButtonGroup>

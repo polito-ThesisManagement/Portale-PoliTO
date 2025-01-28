@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 
 import { Accordion, Badge } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaFilter, FaKey, FaTags, FaUser } from 'react-icons/fa6';
 
+import { faFilter, faKey, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import API from '../API';
@@ -34,7 +35,7 @@ export default function FiltersAccordion({
       <Accordion.Item eventKey="0">
         <Accordion.Header>
           <div className="accordion-title">
-            <FaFilter /> {t('carriera.proposte_di_tesi.filter')}
+            <FontAwesomeIcon icon={faFilter} /> {t('carriera.proposte_di_tesi.filter')}
             {(filters.isInternal != 0 ||
               filters.isAbroad ||
               filters.keyword.length > 0 ||
@@ -64,7 +65,7 @@ export default function FiltersAccordion({
             <FilterDropdown
               api={API.getThesisProposalsTypes}
               filters={filters.type}
-              icon={<FaTags size={14} style={{ width: '15px' }} />}
+              icon={<FontAwesomeIcon icon={faTags} />}
               itemType={'type'}
               applyFilters={applyFilters}
               selectedItems={filters.type}
@@ -72,7 +73,7 @@ export default function FiltersAccordion({
             <FilterDropdown
               api={API.getThesisProposalsKeywords}
               filters={filters.keyword}
-              icon={<FaKey size={14} style={{ width: '15px' }} />}
+              icon={<FontAwesomeIcon icon={faKey} />}
               itemType={'keyword'}
               applyFilters={applyFilters}
               selectedItems={filters.keyword}
@@ -80,7 +81,7 @@ export default function FiltersAccordion({
             <FilterDropdown
               api={API.getThesisProposalsTeachers}
               filters={filters.teacher}
-              icon={<FaUser size={14} />}
+              icon={<FontAwesomeIcon icon={faUser} />}
               itemType={'teacher'}
               applyFilters={applyFilters}
               selectedItems={filters.teacher}
