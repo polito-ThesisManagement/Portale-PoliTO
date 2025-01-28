@@ -1,11 +1,12 @@
 .custom-badge {
-  align-items: center;
   display: flex;
-  padding: 0.25rem;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
   border: 0.0625rem solid;
-  border-radius: 0.25rem;
+  border-radius: 1.25rem;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
+  gap: 0.25rem;
 }
 
 .custom-badge-container {
@@ -17,7 +18,6 @@
 .custom-badge-icon {
   display: flex;
   flex-shrink: 0;
-  width: 1rem;
 }
 
 .custom-badge-text {

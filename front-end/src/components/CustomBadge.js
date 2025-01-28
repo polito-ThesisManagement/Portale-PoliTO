@@ -2,30 +2,20 @@ import React, { useContext } from 'react';
 
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import {
-  FaBook,
-  FaBrain,
-  FaBuildingCircleArrowRight,
-  FaBuildingColumns,
-  FaCalculator,
-  FaCalendar,
-  FaChartBar,
-  FaChartColumn,
-  FaChartPie,
-  FaCircleCheck,
-  FaCircleExclamation,
-  FaCircleXmark,
-  FaCode,
-  FaEarthAmericas,
-  FaFlask,
-  FaKey,
-  FaMagnifyingGlassChart,
-  FaPenToSquare,
-  FaUncharted,
-  FaUser,
-  FaWhmcs,
-} from 'react-icons/fa6';
 
+import {
+  faBuildingCircleArrowRight,
+  faBuildingColumns,
+  faCalendar,
+  faCircleCheck,
+  faCircleExclamation,
+  faCircleXmark,
+  faEarthAmericas,
+  faKey,
+  faTags,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
@@ -132,17 +122,17 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
               handleRemoveFilter(variant, filters[variant], item);
             }}
           >
-            <div className="custom-badge-icon">{renderIcon(item.content)}</div>
+            <div className="custom-badge-icon">{renderIcon()}</div>
             <span className="custom-badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</span>
             <div className="custom-badge-icon">
-              <FaCircleXmark size={14} className="ms-1" />
+              <FontAwesomeIcon icon={faCircleXmark} />
             </div>
           </Button>,
         );
       } else {
         elements.push(
           <div key={`${item}-${index}`} className={`custom-badge badge ${variant}_${appliedTheme}`}>
-            <div className="custom-badge-icon">{renderIcon(item)}</div>
+            <div className="custom-badge-icon">{renderIcon()}</div>
             <div className="custom-badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
           </div>,
         );
@@ -152,81 +142,30 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     return elements;
   };
 
-  const renderIcon = contentItem => {
+  const renderIcon = () => {
     switch (variant) {
       case 'teacher':
-        return <FaUser size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faUser} />;
       case 'keyword':
-        return <FaKey size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faKey} />;
       case 'internal':
-        return <FaBuildingColumns size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faBuildingColumns} />;
       case 'external':
-        return <FaBuildingCircleArrowRight size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faBuildingCircleArrowRight} />;
       case 'abroad':
-        return <FaEarthAmericas size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faEarthAmericas} />;
       case 'date':
-        return <FaCalendar size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faCalendar} />;
       case 'success':
-        return <FaCircleCheck size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faCircleCheck} />;
       case 'warning':
-        return <FaCircleExclamation size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faCircleExclamation} />;
       case 'error':
-        return <FaCircleXmark size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faCircleXmark} />;
       case 'type':
-        switch (contentItem.toLowerCase()) {
-          // analisi dati
-          case 'analisi dati':
-          case 'data analysis':
-            return <FaChartColumn size={14} className="me-1" />;
-          // analitica
-          case 'analitica':
-          case 'analytical':
-            return <FaChartBar size={14} className="me-1" />;
-          // applicativa
-          case 'applicativa':
-          case 'applied':
-            return <FaWhmcs size={14} className="me-1" />;
-          // compilativa
-          case 'compilativa':
-          case 'bibliographic':
-            return <FaPenToSquare size={14} className="me-1" />;
-          // computazionale
-          case 'computazionale':
-          case 'computational':
-            return <FaBrain size={14} className="me-1" />;
-          // progettuale
-          case 'progettuale':
-          case 'design':
-            return <FaUncharted size={14} className="me-1" />;
-          // ricerca
-          case 'ricerca':
-          case 'research':
-            return <FaMagnifyingGlassChart size={14} className="me-1" />;
-          // simulativa
-          case 'simulativa':
-          case 'simulation':
-            return <FaChartPie size={14} className="me-1" />;
-          // sperimentale
-          case 'sperimentale':
-          case 'experimental':
-            return <FaFlask size={14} className="me-1" />;
-          // sviluppo
-          case 'sviluppo':
-          case 'development':
-            return <FaCode size={14} className="me-1" />;
-          // teorica
-          case 'teorica':
-          case 'theoretical':
-            return <FaBook size={14} className="me-1" />;
-          // numerica
-          case 'numerica':
-          case 'numerical':
-            return <FaCalculator size={14} className="me-1" />;
-          default:
-            return <FaCircleXmark size={14} className="me-1" />;
-        }
+        return <FontAwesomeIcon icon={faTags} />;
       default:
-        return <FaCircleXmark size={14} className="me-1" />;
+        return <FontAwesomeIcon icon={faCircleXmark} />;
     }
   };
 
@@ -267,7 +206,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
       <div className="custom-badge-container">
         <div className={`custom-badge badge error_${appliedTheme}`}>
           <div className="custom-badge-icon">
-            <FaCircleXmark size={14} />
+            <FontAwesomeIcon icon={faCircleXmark} />
           </div>
           <div className="custom-badge-text">{t('carriera.proposta_di_tesi.badge_errato')}</div>
         </div>
@@ -294,15 +233,17 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
               }
             }}
           >
-            {renderIcon(content)}
+            <div className="custom-badge-icon">{renderIcon()}</div>
             {renderTranslatedContent()}
-            <FaCircleXmark size={14} className="ms-1" />
+            <div className="custom-badge-icon">
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </div>
           </Button>,
         );
       } else {
         elements.push(
           <div key="custom-badge-div" className={`custom-badge badge ${variant}_${appliedTheme}`}>
-            {renderIcon(content)}
+            <div className="custom-badge-icon">{renderIcon()}</div>
             {renderTranslatedContent()}
           </div>,
         );
