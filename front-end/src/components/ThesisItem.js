@@ -29,10 +29,7 @@ function ThesisItem(props) {
         </div>
       )}
       <div className="thesis-professor-tags">
-        <CustomBadge
-          variant={'teacher'}
-          content={teachers.map(teacher => teacher.firstName + ' ' + teacher.lastName)}
-        />
+        <CustomBadge variant="teacher" content={teachers.map(teacher => teacher.firstName + ' ' + teacher.lastName)} />
       </div>
       <ThesisFooter id={props.id} creationDate={props.creationDate} expirationDate={props.expirationDate} />
     </div>
@@ -45,8 +42,8 @@ const ThesisHeader = ({ topic, types, isInternal, isAbroad }) => {
       <div className="thesis-header">
         <h3 className="thesis-topic">{topic}</h3>
         <div className="thesis-position-tags">
-          {isInternal ? <CustomBadge variant={'internal'} /> : <CustomBadge variant={'external'} />}
-          {isAbroad && <CustomBadge variant={'abroad'} />}
+          {isInternal ? <CustomBadge variant="internal" /> : <CustomBadge variant="external" />}
+          {isAbroad && <CustomBadge variant="abroad" />}
         </div>
       </div>
       {types.length > 0 && (
@@ -77,12 +74,9 @@ const ThesisFooter = ({ id, creationDate, expirationDate }) => {
     <div className="thesis-footer">
       <ShowMore id={id} />
       <div className="thesis-dates">
+        <CustomBadge variant="date" content={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)} />
         <CustomBadge
-          variant={'date'}
-          content={t('carriera.proposte_di_tesi.created') + ' ' + formatDate(creationDate)}
-        />
-        <CustomBadge
-          variant={'date'}
+          variant="date"
           content={t('carriera.proposte_di_tesi.expires') + ' ' + formatDate(expirationDate)}
         />
       </div>
