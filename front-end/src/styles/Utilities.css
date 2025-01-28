@@ -213,7 +213,7 @@ body {
 
 .btn-light {
   font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   border-color: var(--text-200) !important;
   background-color: var(--text-100) !important;
   color: var(--text-700) !important;
@@ -242,7 +242,7 @@ body {
 
 .btn-dark {
   font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   border-color: var(--primary-800) !important;
   background-color: var(--primary-700) !important;
   color: var(--white) !important;
@@ -271,7 +271,7 @@ body {
 
 .btn-outlined-light {
   font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   border-color: var(--text-300) !important;
   background-color: var(--surface) !important;
   color: var(--text-600) !important;
@@ -300,7 +300,7 @@ body {
 
 .btn-outlined-dark {
   font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   background-color: var(--surface) !important;
   border-color: var(--white) !important;
   color: var(--white) !important;

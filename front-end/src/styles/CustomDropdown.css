@@ -8,12 +8,10 @@
 .custom-dropdown-toggle {
   min-width: 4rem;
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
 }
 
 .btn-dropdown {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
+  background-color: var(--white) !important;
 }
 
 .btn-dark.btn-dropdown {
@@ -21,10 +19,14 @@
 }
 
 .link-light-dropdown {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
   color: var(--text-700) !important;
 }
 
 .link-dark-dropdown {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
   color: var(--white) !important;
 }
 
