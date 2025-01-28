@@ -36,8 +36,8 @@ function Sidebar() {
 }
 function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
   const { desktopToggle, setDesktopToggle } = useContext(DesktopToggleContext);
-  const baseClassName = mobile ? 'modal-sidebar-text' : 'sidebar-text reduced';
-  const spanClassName = desktopToggle && !mobile ? `${baseClassName} toggle` : baseClassName;
+  const baseClassName = mobile ? 'modal-sidebar-text' : 'sidebar-text';
+  const spanClassName = desktopToggle && !mobile ? `${baseClassName} minimized` : baseClassName;
   const { t } = useTranslation();
 
   const handleToggle = () => {
@@ -48,7 +48,14 @@ function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
     return (
       <Nav.Item className="d-none d-lg-block">
         <hr />
-        <Link to="#" className="nav-link" onClick={handleToggle}>
+        <Link
+          to="#"
+          className="nav-link"
+          onClick={e => {
+            e.preventDefault();
+            handleToggle();
+          }}
+        >
           {desktopToggle ? <LuArrowRightToLine size={22} /> : <LuArrowLeftToLine size={22} />}
           <span className={spanClassName}>{t('sidebar.riduci_menu')}</span>
         </Link>

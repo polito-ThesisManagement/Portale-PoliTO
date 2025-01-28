@@ -114,7 +114,7 @@ export default function PoliNavbar(props) {
     <Navbar className="custom-navbar">
       <Container fluid>
         <Navbar.Brand
-          className={`nav-logo ${desktopToggle ? 'toggle' : ''} d-none d-lg-block`}
+          className={`nav-logo ${desktopToggle ? 'd-none' : 'd-none d-lg-block'}`}
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -128,7 +128,7 @@ export default function PoliNavbar(props) {
           <Image src={useLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
-          className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''} d-none d-sm-block d-lg-none d-block`}
+          className={`nav-logo-reduced ${desktopToggle ? 'd-none d-sm-block' : 'd-none d-sm-block d-lg-none'}`}
           as={Link}
           target="_blank"
           to="https://didattica.polito.it/"
