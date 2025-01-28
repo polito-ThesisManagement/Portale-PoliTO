@@ -59,7 +59,9 @@
 }
 
 .breadcrumb-item a {
+  align-items: center;
   color: var(--placeholder);
+  display: flex;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   text-decoration: none;
@@ -67,6 +69,7 @@
 
 .breadcrumb-item + .breadcrumb-item::before {
   color: var(--placeholder);
+  font-size: var(--font-size-sm);
 }
 
 .pol-headline.pol-headline--with-bar > h3:before {

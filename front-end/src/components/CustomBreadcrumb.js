@@ -16,7 +16,7 @@ const breadcrumbConfig = {
   },
   carriera: { icon: <FaUserGraduate size={14} className="me-2" />, label: 'sidebar.carriera', path: '/carriera' },
   proposte_di_tesi: {
-    icon: <HiLightBulb size={17} className="me-2" />,
+    icon: <HiLightBulb size={14} className="me-2" />,
     label: 'carriera.proposte_di_tesi.title_half_lowercase',
     path: '/carriera/proposte_di_tesi',
   },
