@@ -252,35 +252,9 @@ function Status({ expirationDate }) {
   return (
     <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
       <span className="detail-title">{t('carriera.proposta_di_tesi.stato')}:</span>
-      <TimeLeft expirationDate={expirationDate} />
+      <CustomBadge variant="status" content={expirationDate} />
     </div>
   );
-}
-
-function TimeLeft({ expirationDate }) {
-  const { t } = useTranslation();
-  const start = moment();
-  const end = moment(expirationDate);
-  const remainingDays = end.diff(start, 'days');
-  const remainingHours = end.diff(start, 'hours');
-
-  if (remainingDays >= 7) {
-    return (
-      <CustomBadge
-        variant="success"
-        content={`${t('carriera.proposta_di_tesi.disponibile_ancora_per_piu_di')} ${remainingDays} ${remainingDays === 1 ? t('carriera.proposta_di_tesi.giorno') : t('carriera.proposta_di_tesi.giorni')}`}
-      />
-    );
-  } else if (remainingHours >= 0) {
-    return (
-      <CustomBadge
-        variant="warning"
-        content={`${t('carriera.proposta_di_tesi.scadra_tra_meno_di')} ${remainingHours + 1} ${remainingHours + 1 === 1 ? t('carriera.proposta_di_tesi.ora') : t('carriera.proposta_di_tesi.ore')}`}
-      />
-    );
-  } else {
-    return <CustomBadge variant="error" content={t('carriera.proposta_di_tesi.risulta_scaduta')} />;
-  }
 }
 
 ThesisProposalDetail.propTypes = {
@@ -357,10 +331,6 @@ Environment.propTypes = {
 };
 
 Status.propTypes = {
-  expirationDate: PropTypes.string.isRequired,
-};
-
-TimeLeft.propTypes = {
   expirationDate: PropTypes.string.isRequired,
 };
 

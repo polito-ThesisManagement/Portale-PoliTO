@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import {
   faBuildingCircleArrowRight,
   faBuildingColumns,
-  faCalendar,
   faCircleCheck,
   faCircleExclamation,
   faCircleXmark,
@@ -16,12 +15,14 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
 import '../styles/CustomBadge.css';
 import { getSystemTheme } from '../utils/utils';
 
+moment.locale('it');
 /**
  * Custom badge component.
  * @param {string} variant - The variant of the badge. Available options are:
@@ -30,7 +31,7 @@ import { getSystemTheme } from '../utils/utils';
  *  - "internal": Renders a badge with an internal thesis icon.
  *  - "external": Renders a badge with an external thesis icon.
  *  - "abroad": Renders a badge with an abroad thesis icon.
- *  - "date": Renders a badge with a calendar icon. Requires a "content".
+ *  - "status": Renders a badge with a success, warning or error icon. Requires a "content" (the expiration date).
  *  - "success": Renders a badge with a success icon. Requires a "content".
  *  - "warning": Renders a badge with a warning icon. Requires a "content".
  *  - "error": Renders a badge with an error icon. Requires a "content".
@@ -63,12 +64,13 @@ const validVariants = [
   'internal',
   'external',
   'abroad',
-  'date',
   'type',
+  'status',
   'warning',
   'success',
   'error',
 ];
+const validTypes = ['reset', 'truncated'];
 const validTypeContent = [
   'analisi dati',
   'data analysis',
@@ -112,6 +114,19 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
       );
     };
 
+    const getStatusBadgeType = remainingDays => {
+      if (remainingDays > 14) return 'success';
+      if (remainingDays <= 14 && remainingDays > 0) return 'warning';
+      return 'error';
+    };
+
+    if (type === 'truncated') {
+      if (contentArray.length > 3) {
+        contentArray.splice(3, contentArray.length - 3);
+        contentArray.push('...');
+      }
+    }
+
     contentArray.forEach((item, index) => {
       if (type === 'reset' && applyFilters) {
         elements.push(
@@ -129,6 +144,19 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
             </div>
           </Button>,
         );
+      } else if (variant === 'status') {
+        const start = moment();
+        const end = moment(item);
+        const remainingDays = end.diff(start, 'days');
+
+        const badgeType = getStatusBadgeType(remainingDays);
+
+        elements.push(
+          <div key={`${item}-${index}`} className={`custom-badge badge ${badgeType}_${appliedTheme}`}>
+            <div className="custom-badge-icon">{renderIcon(badgeType)}</div>
+            {renderTranslatedContent(badgeType)}
+          </div>,
+        );
       } else {
         elements.push(
           <div key={`${item}-${index}`} className={`custom-badge badge ${variant}_${appliedTheme}`}>
@@ -142,7 +170,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     return elements;
   };
 
-  const renderIcon = () => {
+  const renderIcon = type => {
     switch (variant) {
       case 'teacher':
         return <FontAwesomeIcon icon={faUser} />;
@@ -154,14 +182,17 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         return <FontAwesomeIcon icon={faBuildingCircleArrowRight} />;
       case 'abroad':
         return <FontAwesomeIcon icon={faEarthAmericas} />;
-      case 'date':
-        return <FontAwesomeIcon icon={faCalendar} />;
-      case 'success':
-        return <FontAwesomeIcon icon={faCircleCheck} />;
-      case 'warning':
-        return <FontAwesomeIcon icon={faCircleExclamation} />;
-      case 'error':
-        return <FontAwesomeIcon icon={faCircleXmark} />;
+      case 'status':
+        switch (type) {
+          case 'success':
+            return <FontAwesomeIcon icon={faCircleCheck} />;
+          case 'warning':
+            return <FontAwesomeIcon icon={faCircleExclamation} />;
+          case 'error':
+            return <FontAwesomeIcon icon={faCircleXmark} />;
+          default:
+            return <FontAwesomeIcon icon={faCircleXmark} />;
+        }
       case 'type':
         return <FontAwesomeIcon icon={faTags} />;
       default:
@@ -169,7 +200,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     }
   };
 
-  const renderTranslatedContent = () => {
+  const renderTranslatedContent = type => {
     switch (variant) {
       case 'internal':
         return t('carriera.proposte_di_tesi.internal_thesis');
@@ -177,6 +208,17 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         return t('carriera.proposte_di_tesi.external_thesis');
       case 'abroad':
         return t('carriera.proposte_di_tesi.abroad_thesis');
+      case 'status':
+        switch (type) {
+          case 'success':
+            return t('carriera.proposta_di_tesi.disponibile');
+          case 'warning':
+            return t('carriera.proposta_di_tesi.in_scadenza');
+          case 'error':
+            return t('carriera.proposta_di_tesi.scaduta');
+          default:
+            return t('carriera.proposta_di_tesi.badge_errato');
+        }
       default:
         return t('carriera.proposta_di_tesi.badge_errato');
     }
@@ -199,7 +241,8 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
 
   if (
     !validVariants.includes(variant) ||
-    (['teacher', 'keyword', 'type', 'success', 'warning', 'error'].includes(variant) && !content) ||
+    (type && !validTypes.includes(type)) ||
+    (['teacher', 'keyword', 'type', 'status', 'success', 'warning', 'error'].includes(variant) && !content) ||
     (variant === 'type' && !isValidTypeContent(content))
   ) {
     return (

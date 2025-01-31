@@ -1,13 +1,9 @@
 .proposals-container {
-  margin: 0rem 0.75rem 4rem 0.75rem;
   padding-bottom: 2rem;
-  border-radius: 10px;
-  border: var(--border-default);
-  background-color: var(--surface);
 }
 
 .filters-container {
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .simple-filters-container {
@@ -16,7 +12,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -100,13 +95,13 @@
 .accordion {
   --bs-accordion-color: var(--surface);
   --bs-accordion-bg: var(--surface);
-  --bs-accordion-border-width: 2px;
-  --bs-accordion-border-color: var(--background);
-  --bs-accordion-border-radius: 10px;
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-color: var(--border-color);
+  --bs-accordion-border-radius: var(--border-radius);
   --bs-accordion-btn-bg: var(--surface);
   --bs-accordion-btn-focus-box-shadow: none;
   --bs-accordion-active-bg: var(--background);
-  --bs-accordion-inner-border-radius: var(--border-radius);
+  --bs-accordion-inner-border-radius: calc(var(--border-radius) - (1px));
 }
 
 .accordion-title {

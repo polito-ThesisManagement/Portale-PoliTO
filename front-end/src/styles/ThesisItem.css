@@ -1,97 +1,32 @@
-.thesis-overview {
-  border: 0.125rem solid var(--background);
-  border-radius: 0.625rem;
-  color: var(--text);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-regular);
-  margin-bottom: 0.5rem;
-  padding: 1.75rem 1rem;
-}
-
-.thesis-header {
-  display: flex;
-  align-items: start;
-  gap: 0.5rem;
-  margin-bottom: 0.625rem;
-}
-
 .thesis-topic {
   color: var(--primary);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
-  flex: 1 1 auto;
   word-wrap: break-word;
   margin-bottom: 0rem;
 }
 
-.thesis-position-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  justify-content: flex-end;
-}
-
-.thesis-type-tags,
-.thesis-keyword-tags,
-.thesis-professor-tags {
-  margin-bottom: 0.625rem;
-}
-
 .thesis-description {
   display: -webkit-box;
-  font-size: var(--font-size-md);
-  -webkit-line-clamp: 2;
+  font-size: var(--font-size-sm);
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
-  line-clamp: 2;
+  line-clamp: 5;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 0.625rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem !important;
 }
 
-.thesis-footer {
-  display: flex;
-  flex-wrap: wrap;
+.thesis-info-title {
+  color: var(--section-description);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: auto;
+}
+
+.info {
   gap: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1rem;
-}
-
-.thesis-dates {
-  margin-left: auto;
-  max-width: fit-content;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-}
-
-@media (max-width: 768px) {
-  .thesis-header {
-    display: block;
-    margin-bottom: 0.625rem;
-  }
-
-  .thesis-topic {
-    margin-bottom: 0.625rem;
-  }
-
-  .thesis-position-tags {
-    justify-content: flex-start;
-  }
-
-  .thesis-footer {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: stretch;
-    padding-top: 0;
-  }
-
-  .thesis-dates {
-    order: -1;
-    margin-left: 0;
-  }
-
-  .show-more-button {
-    text-align: right;
-  }
+  align-items: center;
 }
