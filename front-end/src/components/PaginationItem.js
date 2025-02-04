@@ -7,7 +7,7 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
-import '../styles/Pagination.css';
+import '../styles/pagination.css';
 import { getSystemTheme } from '../utils/utils';
 import CustomMenu from './CustomMenu';
 import CustomToggle from './CustomToggle';

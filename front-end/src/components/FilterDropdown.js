@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
-import '../styles/CustomDropdown.css';
+import '../styles/custom-dropdown.css';
 import { getSystemTheme } from '../utils/utils';
 import CustomBadge from './CustomBadge';
 import CustomMenu from './CustomMenu';

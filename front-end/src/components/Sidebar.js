@@ -7,9 +7,9 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { DesktopToggleContext, ThemeContext } from '../App';
-import '../styles/Sidebar.css';
-import '../styles/Text.css';
-import '../styles/Utilities.css';
+import '../styles/sidebar.css';
+import '../styles/text.css';
+import '../styles/utilities.css';
 import { getSystemTheme } from '../utils/utils';
 
 const navLinks = [

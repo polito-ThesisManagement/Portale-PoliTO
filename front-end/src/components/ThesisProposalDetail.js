@@ -9,8 +9,8 @@ import moment from 'moment';
 import 'moment/locale/it';
 import PropTypes from 'prop-types';
 
-import '../styles/Text.css';
-import '../styles/Utilities.css';
+import '../styles/text.css';
+import '../styles/utilities.css';
 import CustomBadge from './CustomBadge';
 
 moment.locale('it');

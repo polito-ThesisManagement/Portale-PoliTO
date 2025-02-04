@@ -9,10 +9,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 
 import API from '../API';
-import '../styles/Searchbar.css';
-import '../styles/Theme.css';
-import '../styles/ThesisProposals.css';
-import '../styles/Utilities.css';
+import '../styles/searchbar.css';
+import '../styles/thesis-proposals.css';
+import '../styles/utilities.css';
 import FiltersAccordion from './FiltersAccordion';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';

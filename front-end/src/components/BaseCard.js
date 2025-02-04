@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { FavoritesContext, ThemeContext } from '../App';
-import '../styles/Card.css';
+import '../styles/card.css';
 import { getSystemTheme } from '../utils/utils';
 
 export default function BaseCard(props) {

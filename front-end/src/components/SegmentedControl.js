@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import './../styles/SegmentedControl.css';
+import './../styles/segmented-control.css';
 
 export default function SegmentedControl({ name, segments, callback, defaultIndex = 0, controlRef }) {
   const [activeIndex, setActiveIndex] = useState(defaultIndex);

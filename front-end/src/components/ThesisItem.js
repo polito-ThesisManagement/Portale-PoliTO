@@ -7,9 +7,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
-import '../styles/Theme.css';
-import '../styles/ThesisItem.css';
-import '../styles/Utilities.css';
+import '../styles/thesis-item.css';
+import '../styles/utilities.css';
 import { getSystemTheme } from '../utils/utils';
 import CustomBadge from './CustomBadge';
 

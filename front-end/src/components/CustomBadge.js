@@ -7,7 +7,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
-import '../styles/CustomBadge.css';
+import '../styles/custom-badge.css';
 import { getSystemTheme } from '../utils/utils';
 
 moment.locale('it');

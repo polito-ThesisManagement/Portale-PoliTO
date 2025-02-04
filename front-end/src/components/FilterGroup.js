@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
-import '../styles/FilterGroup.css';
-import '../styles/Utilities.css';
+import '../styles/filter-group.css';
+import '../styles/utilities.css';
 import { getSystemTheme } from '../utils/utils';
 
 export default function FilterGroup({ isAbroad, isInternal, handleCheckChange, handleRadioChange }) {

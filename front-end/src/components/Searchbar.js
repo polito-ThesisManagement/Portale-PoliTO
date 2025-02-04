@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import '../styles/Searchbar.css';
+import '../styles/searchbar.css';
 
 export default function Searchbar(props) {
   const [filteredData, setFilteredData] = useState([]);
