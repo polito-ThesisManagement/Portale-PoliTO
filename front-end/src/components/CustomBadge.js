@@ -1,20 +1,8 @@
 import React, { useContext } from 'react';
 
-import { Button } from 'react-bootstrap';
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-import {
-  faBuildingCircleArrowRight,
-  faBuildingColumns,
-  faCircleCheck,
-  faCircleExclamation,
-  faCircleXmark,
-  faEarthAmericas,
-  faKey,
-  faTags,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
@@ -106,6 +94,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
   const renderContent = () => {
     const contentArray = Array.isArray(content) ? content : [content];
     const elements = [];
+    let truncatedContentArray = [];
 
     const handleRemoveFilter = (filterType, filterArray, item) => {
       applyFilters(
@@ -114,54 +103,49 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
       );
     };
 
-    const getStatusBadgeType = remainingDays => {
-      if (remainingDays > 14) return 'success';
-      if (remainingDays <= 14 && remainingDays > 0) return 'warning';
-      return 'error';
-    };
+    let displayedContent = [...contentArray];
 
-    if (type === 'truncated') {
-      if (contentArray.length > 3) {
-        contentArray.splice(3, contentArray.length - 3);
-        contentArray.push('...');
-      }
+    if (type === 'truncated' && contentArray.length > 2) {
+      truncatedContentArray = contentArray.slice(2); // Store hidden items
+      displayedContent = [...contentArray.slice(0, 2), t('carriera.proposte_di_tesi.others') + '...']; // Only show first 2 + "Others..."
     }
 
-    contentArray.forEach((item, index) => {
+    displayedContent.forEach((item, index) => {
       if (type === 'reset' && applyFilters) {
         elements.push(
           <Button
             key={`${item.content}-${index}`}
             className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
-            onClick={() => {
-              handleRemoveFilter(variant, filters[variant], item);
-            }}
+            onClick={() => handleRemoveFilter(variant, filters[variant], item)}
           >
-            <div className="custom-badge-icon">{renderIcon()}</div>
-            <span className="custom-badge-text">{variant === 'type' ? item.content.toUpperCase() : item.content}</span>
+            <div className="custom-badge-icon">{renderIcon(item.content)}</div>
+            <span className="custom-badge-text">{item.content}</span>
             <div className="custom-badge-icon">
-              <FontAwesomeIcon icon={faCircleXmark} />
+              <i className="fa-regular fa-circle-xmark fa-lg" />
             </div>
           </Button>,
         );
-      } else if (variant === 'status') {
-        const start = moment();
-        const end = moment(item);
-        const remainingDays = end.diff(start, 'days');
-
-        const badgeType = getStatusBadgeType(remainingDays);
-
+      } else if (type === 'truncated' && item === 'Altri...') {
         elements.push(
-          <div key={`${item}-${index}`} className={`custom-badge badge ${badgeType}_${appliedTheme}`}>
-            <div className="custom-badge-icon">{renderIcon(badgeType)}</div>
-            {renderTranslatedContent(badgeType)}
-          </div>,
+          <OverlayTrigger
+            key={`${item}-${index}`}
+            delay={{ show: 250, hide: 400 }}
+            overlay={<Tooltip id={`tooltip-${truncatedContentArray}`}>{truncatedContentArray.join(', ')}</Tooltip>}
+            placement="top"
+          >
+            <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2 clickable`}>
+              <span className="custom-badge-text">{item}</span>
+            </div>
+          </OverlayTrigger>,
         );
       } else {
         elements.push(
-          <div key={`${item}-${index}`} className={`custom-badge badge ${variant}_${appliedTheme}`}>
-            <div className="custom-badge-icon">{renderIcon()}</div>
-            <div className="custom-badge-text">{variant === 'type' ? item.toUpperCase() : item}</div>
+          <div
+            key={`${item}-${index}`}
+            className={`custom-badge badge ${variant}_${appliedTheme} ${variant === 'type' ? 'pe-2' : ''}`}
+          >
+            {variant === 'type' && <div className="custom-badge-icon">{renderIcon(item)}</div>}
+            <div className="custom-badge-text">{item}</div>
           </div>,
         );
       }
@@ -170,33 +154,84 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     return elements;
   };
 
-  const renderIcon = type => {
+  const renderIcon = content => {
     switch (variant) {
       case 'teacher':
-        return <FontAwesomeIcon icon={faUser} />;
+        return <i className="fa-regular fa-user fa-lg" />;
       case 'keyword':
-        return <FontAwesomeIcon icon={faKey} />;
+        return <i className="fa-regular fa-key fa-lg" />;
       case 'internal':
-        return <FontAwesomeIcon icon={faBuildingColumns} />;
+        return <i className="fa-regular fa-building-columns fa-lg" />;
       case 'external':
-        return <FontAwesomeIcon icon={faBuildingCircleArrowRight} />;
+        return <i className="fa-regular fa-building-circle-arrow-right fa-lg" />;
       case 'abroad':
-        return <FontAwesomeIcon icon={faEarthAmericas} />;
+        return <i className="fa-solid fa-earth-americas fa-lg" />;
       case 'status':
-        switch (type) {
+        switch (content) {
           case 'success':
-            return <FontAwesomeIcon icon={faCircleCheck} />;
+            return <i className="fa-regular fa-circle-check fa-lg" />;
           case 'warning':
-            return <FontAwesomeIcon icon={faCircleExclamation} />;
+            return <i className="fa-regular fa-circle-exclamation fa-lg" />;
           case 'error':
-            return <FontAwesomeIcon icon={faCircleXmark} />;
+            return <i className="fa-regular fa-circle-xmark fa-lg" />;
           default:
-            return <FontAwesomeIcon icon={faCircleXmark} />;
+            return <i className="fa-regular fa-circle-xmark fa-lg" />;
         }
       case 'type':
-        return <FontAwesomeIcon icon={faTags} />;
+        switch (content.toLowerCase()) {
+          // analisi dati
+          case 'analisi dati':
+          case 'data analysis':
+            return <i className="fa-solid fa-chart-column fa-lg" />;
+          // analitica
+          case 'analitica':
+          case 'analytical':
+            return <i className="fa-solid fa-chart-line fa-lg" />;
+          // applicativa
+          case 'applicativa':
+          case 'applied':
+            return <i className="fa-brands fa-whmcs fa-lg" />;
+          // compilativa
+          case 'compilativa':
+          case 'bibliographic':
+            return <i className="fa-solid fa-pen-to-square fa-lg" />;
+          // computazionale
+          case 'computazionale':
+          case 'computational':
+            return <i className="fa-solid fa-brain fa-lg" />;
+          // progettuale
+          case 'progettuale':
+          case 'design':
+            return <i className="fa-brands fa-uncharted fa-lg" />;
+          // ricerca
+          case 'ricerca':
+          case 'research':
+            return <i className="fa-regular fa-book-atlas fa-lg" />;
+          // simulativa
+          case 'simulativa':
+          case 'simulation':
+            return <i className="fa-solid fa-chart-pie fa-lg" />;
+          // sperimentale
+          case 'sperimentale':
+          case 'experimental':
+            return <i className="fa-solid fa-flask fa-lg" />;
+          // sviluppo
+          case 'sviluppo':
+          case 'development':
+            return <i className="fa-solid fa-code fa-lg" />;
+          // teorica
+          case 'teorica':
+          case 'theoretical':
+            return <i className="fa-solid fa-book fa-lg" />;
+          // numerica
+          case 'numerica':
+          case 'numerical':
+            return <i className="fa-solid fa-calculator fa-lg" />;
+          default:
+            return <i className="fa-solid fa-circle-xmark fa-lg" />;
+        }
       default:
-        return <FontAwesomeIcon icon={faCircleXmark} />;
+        return <i className="fa-regular fa-circle-xmark fa-lg" />;
     }
   };
 
@@ -249,7 +284,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
       <div className="custom-badge-container">
         <div className={`custom-badge badge error_${appliedTheme}`}>
           <div className="custom-badge-icon">
-            <FontAwesomeIcon icon={faCircleXmark} />
+            <i className="fa-regular fa-circle-xmark fa-lg" />
           </div>
           <div className="custom-badge-text">{t('carriera.proposta_di_tesi.badge_errato')}</div>
         </div>
@@ -259,6 +294,12 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
 
   const renderBadge = () => {
     const elements = [];
+
+    const getStatusBadgeType = remainingTime => {
+      if (remainingTime > 14) return 'success';
+      if (remainingTime <= 14 && remainingTime > 0) return 'warning';
+      return 'error';
+    };
 
     if (variant === 'internal' || variant === 'external' || variant === 'abroad') {
       if (type === 'reset' && applyFilters) {
@@ -279,18 +320,30 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
             <div className="custom-badge-icon">{renderIcon()}</div>
             {renderTranslatedContent()}
             <div className="custom-badge-icon">
-              <FontAwesomeIcon icon={faCircleXmark} />
+              <i className="fa-regular fa-circle-xmark fa-lg" />
             </div>
           </Button>,
         );
       } else {
         elements.push(
-          <div key="custom-badge-div" className={`custom-badge badge ${variant}_${appliedTheme}`}>
+          <div key="custom-badge-div" className={`custom-badge badge ${variant}_${appliedTheme} pe-2`}>
             <div className="custom-badge-icon">{renderIcon()}</div>
             {renderTranslatedContent()}
           </div>,
         );
       }
+    } else if (variant === 'status') {
+      const start = moment();
+      const end = moment(content);
+      const remainingTime = end.diff(start, 'seconds') / 86400;
+      const statusVariant = getStatusBadgeType(remainingTime);
+
+      elements.push(
+        <div key="custom-badge-div" className={`custom-badge badge ${statusVariant}_${appliedTheme} pe-2`}>
+          <div className="custom-badge-icon">{renderIcon(statusVariant)}</div>
+          {renderTranslatedContent(statusVariant)}
+        </div>,
+      );
     } else {
       elements.push(renderContent());
     }
