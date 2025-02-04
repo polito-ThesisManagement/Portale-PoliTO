@@ -22,10 +22,6 @@
   border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
 }
 
-.card-icon {
-  margin-right: 10px;
-}
-
 .card-link {
   font-weight: var(--font-weight-regular);
   margin-top: 8px;
@@ -42,7 +38,7 @@
 }
 
 .star {
-  color: var(--title);
+  color: var(--section-title);
 }
 
 .star-fill {

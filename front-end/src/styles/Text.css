@@ -1,11 +1,11 @@
 .section-title {
-  color: var(--title);
+  color: var(--section-title);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-md);
 }
 
 .subsection-title {
-  color: var(--title);
+  color: var(--section-title);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-md);
 }

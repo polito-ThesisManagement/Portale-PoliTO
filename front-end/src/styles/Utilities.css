@@ -82,6 +82,20 @@ body {
   position: relative;
 }
 
+.hr-light {
+  border: 0;
+  height: 1px;
+  background-color: var(--gray-300);
+  opacity: 1;
+}
+
+.hr-dark {
+  border: 0;
+  height: 1px;
+  background-color: var(--primary-800);
+  opacity: 1;
+}
+
 .straight-line {
   box-sizing: border-box;
   position: absolute;
@@ -123,21 +137,7 @@ body {
 }
 
 .card-container {
-  margin-left: 0;
   max-width: none;
-}
-
-.expire-section {
-  background-color: rgba(var(--surface-dark-rgb), 0.85);
-  color: var(--white);
-  padding-top: 2px;
-  padding-bottom: 1px;
-  padding-left: 6px;
-  padding-right: 6px;
-  border-radius: 6px;
-  border: 2px solid rgba(var(--surface-dark-rgb), 1);
-  font-size: var(--font-size-sm);
-  vertical-align: baseline;
 }
 
 .no-break {
@@ -214,8 +214,10 @@ body {
 .btn-light {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
-  border-color: var(--text-200) !important;
-  background-color: var(--text-100) !important;
+  border: var(--border-default);
+  border-color: var(--gray-200) !important;
+  border-radius: 3px !important;
+  background-color: var(--gray-100) !important;
   color: var(--text-700) !important;
   display: flex;
   align-items: center;
@@ -223,8 +225,7 @@ body {
 }
 
 .btn-light:hover {
-  background-color: var(--text-200) !important;
-  color: var(--text-800) !important;
+  background-color: var(--gray-200) !important;
 }
 
 .btn-light:active {
@@ -235,15 +236,17 @@ body {
 }
 
 .btn-light.disabled {
-  border-color: var(--text-100) !important;
-  background-color: var(--text-100) !important;
+  border-color: var(--gray-100) !important;
+  background-color: var(--gray-100) !important;
   color: var(--text-400) !important;
 }
 
 .btn-dark {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
+  border: var(--border-default);
   border-color: var(--primary-800) !important;
+  border-radius: 3px !important;
   background-color: var(--primary-700) !important;
   color: var(--white) !important;
   display: flex;
@@ -272,7 +275,9 @@ body {
 .btn-outlined-light {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
-  border-color: var(--text-300) !important;
+  border: var(--border-default);
+  border-color: var(--gray-300) !important;
+  border-radius: 3px !important;
   background-color: var(--surface) !important;
   color: var(--text-600) !important;
   display: flex;
@@ -281,7 +286,7 @@ body {
 }
 
 .btn-outlined-light:hover {
-  background-color: var(--text-100) !important;
+  background-color: var(--gray-100) !important;
 }
 
 .btn-outlined-light.active,
@@ -293,7 +298,7 @@ body {
 }
 
 .btn-outlined-light.disabled {
-  border-color: var(--text-300) !important;
+  border-color: var(--gray-300) !important;
   background-color: var(--surface) !important;
   color: var(--text-400) !important;
 }
@@ -302,7 +307,9 @@ body {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
   background-color: var(--surface) !important;
+  border: var(--border-default);
   border-color: var(--white) !important;
+  border-radius: 3px !important;
   color: var(--white) !important;
   display: flex;
   align-items: center;

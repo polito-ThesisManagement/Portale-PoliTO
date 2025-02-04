@@ -12,7 +12,7 @@
   justify-content: space-between;
   background: var(--background);
   border-radius: 10px;
-  box-shadow: 0 0 4px 0 rgba(var(--background-inverted-rgb), 0.25);
+  border: var(--border-default);
   min-height: 38px;
   max-width: 500px;
   padding: 8px 2px;
@@ -45,7 +45,7 @@
   cursor: pointer;
   display: block;
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   padding: 0 8px;
   transition: color 0.5s ease;
 }

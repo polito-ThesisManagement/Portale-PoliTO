@@ -145,7 +145,7 @@ export default function PoliNavbar(props) {
             style={{
               color: 'var(--primary)',
               display: 'inline-block',
-              fontWeight: 'var(--font-weight-extrabold)',
+              fontWeight: 'var(--font-weight-semibold)',
               fontSize: 'var(--font-size-xl)',
             }}
           >
