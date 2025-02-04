@@ -3376,7 +3376,7 @@ VALUES
     (214, "Kardashev", "Kardashev"),
     (215, "Sistema solare anulare (SA-X)", "Solar anular (SA-X) system"),
     (216, "Isolamento sismico", "Seismic isolation"),
-    (217, "Muratuta", "Masonry"),
+    (217, "Muratura", "Masonry"),
     (218, "Sismica, resilienza, compartimentazione", "Seismic, resilience, compatmentation"),
     (219, "Sismica, terremoto, fabbricati", "Seismic, earthquake, buildings"),
     (220, "Legno", "Wood"),
