@@ -2,26 +2,24 @@ import React, { useContext } from 'react';
 
 import { Col, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaBookOpen, FaBriefcase, FaCircleInfo, FaHouse, FaUser, FaUserGraduate } from 'react-icons/fa6';
-import { IoApps } from 'react-icons/io5';
-import { LuArrowLeftToLine, LuArrowRightToLine } from 'react-icons/lu';
 import { Link, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import { DesktopToggleContext } from '../App';
+import { DesktopToggleContext, ThemeContext } from '../App';
 import '../styles/Sidebar.css';
 import '../styles/Text.css';
 import '../styles/Utilities.css';
+import { getSystemTheme } from '../utils/utils';
 
 const navLinks = [
-  { to: '/', icon: FaHouse, textKey: 'Homepage', exact: true },
-  { to: '/didattica', icon: FaBookOpen, textKey: 'sidebar.didattica' },
-  { to: '/area_personale', icon: FaUser, textKey: 'sidebar.area_personale' },
-  { to: '/carriera', icon: FaUserGraduate, textKey: 'sidebar.carriera' },
-  { to: '/opportunita', icon: FaBriefcase, textKey: 'sidebar.opportunità' },
-  { to: '/servizi', icon: IoApps, textKey: 'sidebar.servizi' },
-  { to: '/help', icon: FaCircleInfo, textKey: 'Help' },
+  { to: '/', icon: 'fa-house', textKey: 'Homepage', exact: true },
+  { to: '/didattica', icon: 'fa-book-open', textKey: 'sidebar.didattica' },
+  { to: '/area_personale', icon: 'fa-user', textKey: 'sidebar.area_personale' },
+  { to: '/carriera', icon: 'fa-user-graduate', textKey: 'sidebar.carriera' },
+  { to: '/opportunita', icon: 'fa-briefcase', textKey: 'sidebar.opportunità' },
+  { to: '/servizi', icon: 'fa-grid', textKey: 'sidebar.servizi' },
+  { to: '/help', icon: 'fa-circle-info', textKey: 'Help' },
 ];
 
 function Sidebar() {
@@ -34,11 +32,16 @@ function Sidebar() {
     </Col>
   );
 }
-function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
+function NavItem({ to, icon, textKey, mobile, handleClose, isActive }) {
   const { desktopToggle, setDesktopToggle } = useContext(DesktopToggleContext);
+  const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+
   const baseClassName = mobile ? 'modal-sidebar-text' : 'sidebar-text';
   const spanClassName = desktopToggle && !mobile ? `${baseClassName} minimized` : baseClassName;
-  const { t } = useTranslation();
+
+  const iconClass = isActive ? 'fa-solid' : 'fa-regular';
 
   const handleToggle = () => {
     setDesktopToggle(!desktopToggle);
@@ -47,7 +50,7 @@ function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
   if (to == '#') {
     return (
       <Nav.Item className="d-none d-lg-block">
-        <hr />
+        <hr className={`hr-${appliedTheme}`} />
         <Link
           to="#"
           className="nav-link"
@@ -56,7 +59,11 @@ function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
             handleToggle();
           }}
         >
-          {desktopToggle ? <LuArrowRightToLine size={22} /> : <LuArrowLeftToLine size={22} />}
+          {desktopToggle ? (
+            <i className={`${iconClass} fa-right-from-line fa-xl`}></i>
+          ) : (
+            <i className={`${iconClass} fa-left-to-line fa-xl`}></i>
+          )}
           <span className={spanClassName}>{t('sidebar.riduci_menu')}</span>
         </Link>
       </Nav.Item>
@@ -65,7 +72,7 @@ function NavItem({ to, icon: Icon, textKey, mobile, handleClose, isActive }) {
   return (
     <Nav.Item>
       <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
-        <Icon size={22} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }} />
+        <i className={`${iconClass} ${icon} fa-xl`} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }}></i>
         <span className={spanClassName}>{t(textKey)}</span>
       </Link>
     </Nav.Item>
@@ -101,7 +108,7 @@ function NavItems({ mobile, handleClose }) {
 
 NavItem.propTypes = {
   to: PropTypes.string.isRequired,
-  icon: PropTypes.elementType,
+  icon: PropTypes.string,
   textKey: PropTypes.string,
   mobile: PropTypes.bool,
   handleClose: PropTypes.func,
