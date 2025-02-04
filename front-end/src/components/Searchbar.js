@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { InputGroup } from 'react-bootstrap';
-import { Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useTranslation } from 'react-i18next';
@@ -64,15 +63,17 @@ export default function Searchbar(props) {
           aria-label="Search"
           style={{
             fontSize: 'var(--font-size-sm)',
+            fontWeight: 'var(--font-weight-medium)',
             height: '40px',
             backgroundColor: 'var(--background)',
             color: 'var(--primary)',
-            borderRadius: '10px',
+            borderRadius: 'var(--border-radius)',
+            borderColor: 'var(--border-color)',
           }}
           value={searchWord}
           onChange={handleChange}
         />
-        <Search className="search-icon" style={{ height: '1.2rem' }} />
+        <i className="fa-solid fa-magnifying-glass search-icon" />
       </InputGroup>
       {searchWord !== '' && (
         <ListGroup className="custom-list-group w-100" style={{ zIndex: '3' }}>

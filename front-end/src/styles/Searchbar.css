@@ -20,6 +20,6 @@
   position: absolute;
   z-index: 3;
   right: 13px;
-  top: 10px;
-  color: var(--primary);
+  top: 13px;
+  color: var(--gray-500);
 }
