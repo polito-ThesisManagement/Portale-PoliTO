@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Search } from 'react-bootstrap-icons';
+import { Card, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
@@ -31,7 +31,7 @@ export default function ThesisProposals() {
   const [state, setState] = useState({
     currentPage: 1,
     filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
-    proposalsPerPage: 5,
+    proposalsPerPage: 10,
     searchQuery: '',
     sorting: { sortBy: 'id', orderBy: 'ASC' },
     tab: 'course',
@@ -149,7 +149,7 @@ export default function ThesisProposals() {
     const defaultValues = {
       currentPage: 1,
       filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
-      proposalsPerPage: 5,
+      proposalsPerPage: 10,
       searchQuery: '',
       sorting: { sortBy: 'id', orderBy: 'ASC' },
       tab: 'course',
@@ -246,7 +246,7 @@ export default function ThesisProposals() {
         teacher: parseArray(queryParams.teacher),
         type: parseArray(queryParams.type),
       },
-      proposalsPerPage: queryParams.proposalsPerPage ? parseInt(queryParams.proposalsPerPage, 10) : 5,
+      proposalsPerPage: queryParams.proposalsPerPage ? parseInt(queryParams.proposalsPerPage, 10) : 10,
       searchQuery: queryParams.searchQuery || '',
       sorting: {
         sortBy: queryParams.sortBy || 'id',
@@ -329,56 +329,66 @@ export default function ThesisProposals() {
   return (
     <div className="proposals-container">
       <div className="filters-container">
-        <div className="simple-filters-container" key={state.tab}>
-          <SegmentedControl
-            name="proposals-segmented-control"
-            callback={val => handleTabChange(val)}
-            controlRef={useRef()}
-            defaultIndex={state.tab === 'course' ? 0 : 1}
-            segments={[
-              {
-                label: t('carriera.proposte_di_tesi.course_proposals'),
-                value: 'course',
-                ref: useRef(),
-              },
-              {
-                label: t('carriera.proposte_di_tesi.all_proposals'),
-                value: 'all',
-                ref: useRef(),
-              },
-            ]}
-          />
-          <Form className="d-flex w-100" style={{ maxWidth: '380px', zIndex: '1' }} onSubmit={e => e.preventDefault()}>
-            <InputGroup className="flex-nowrap w-100">
-              <Form.Control
-                className="truncated"
-                type="search"
-                placeholder={t('carriera.proposte_di_tesi.search')}
-                aria-label="search_proposals"
-                style={{
-                  fontSize: 'var(--font-size-sm)',
-                  height: '38px',
-                  backgroundColor: 'var(--background)',
-                  color: 'var(--primary)',
-                  borderRadius: '10px',
-                }}
-                value={state.searchQuery}
-                onChange={handleSearchbarChange}
+        <Card className="roundCard">
+          <Card.Body>
+            <div className="simple-filters-container" key={state.tab}>
+              <SegmentedControl
+                name="proposals-segmented-control"
+                callback={val => handleTabChange(val)}
+                controlRef={useRef()}
+                defaultIndex={state.tab === 'course' ? 0 : 1}
+                segments={[
+                  {
+                    label: t('carriera.proposte_di_tesi.course_proposals'),
+                    value: 'course',
+                    ref: useRef(),
+                  },
+                  {
+                    label: t('carriera.proposte_di_tesi.all_proposals'),
+                    value: 'all',
+                    ref: useRef(),
+                  },
+                ]}
               />
-              <Search className="search-icon" style={{ height: '1.1rem' }} />
-            </InputGroup>
-          </Form>
-        </div>
-        <FiltersAccordion
-          accordionOpen={accordionOpen}
-          setAccordionOpen={setAccordionOpen}
-          filters={state.filters}
-          applyFilters={applyFilters}
-          resetFilters={resetFilters}
-          sortFields={sortFields}
-          sorting={state.sorting}
-          applySorting={applySorting}
-        />
+              <Form
+                className="d-flex w-100"
+                style={{ maxWidth: '380px', zIndex: '1' }}
+                onSubmit={e => e.preventDefault()}
+              >
+                <InputGroup className="flex-nowrap w-100">
+                  <Form.Control
+                    className="truncated"
+                    type="search"
+                    placeholder={t('carriera.proposte_di_tesi.search')}
+                    aria-label="search_proposals"
+                    style={{
+                      fontSize: 'var(--font-size-sm)',
+                      fontWeight: 'var(--font-weight-medium)',
+                      height: '38px',
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--primary)',
+                      borderColor: 'var(--border-color)',
+                      borderRadius: 'var(--border-radius)',
+                    }}
+                    value={state.searchQuery}
+                    onChange={handleSearchbarChange}
+                  />
+                  <i className="fa-solid fa-magnifying-glass search-icon" />
+                </InputGroup>
+              </Form>
+            </div>
+            <FiltersAccordion
+              accordionOpen={accordionOpen}
+              setAccordionOpen={setAccordionOpen}
+              filters={state.filters}
+              applyFilters={applyFilters}
+              resetFilters={resetFilters}
+              sortFields={sortFields}
+              sorting={state.sorting}
+              applySorting={applySorting}
+            />
+          </Card.Body>
+        </Card>
       </div>
       {loading ? (
         <LoadingModal show={loading} onHide={() => setLoading(false)} />
@@ -386,20 +396,26 @@ export default function ThesisProposals() {
         <>
           {pageProposals.length > 0 ? (
             <>
-              <div className="list-section">
-                {pageProposals.map(thesis => {
-                  return <ThesisItem key={thesis.id} {...thesis} />;
-                })}
-              </div>
-              <PaginationItem
-                count={count}
-                currentPage={state.currentPage}
-                handleProposalsPerPageChange={handleProposalsPerPageChange}
-                handlePageChange={handlePageChange}
-                pageNumbers={pageNumbers}
-                proposalsPerPage={state.proposalsPerPage}
-                totalPages={totalPages}
-              />
+              <Container className="card-container mx-0 mt-3 mb-0 p-0">
+                <Row>
+                  {pageProposals.map(thesis => {
+                    return <ThesisItem key={thesis.id} {...thesis} />;
+                  })}
+                </Row>
+              </Container>
+              <Card className="roundCard">
+                <Card.Body>
+                  <PaginationItem
+                    count={count}
+                    currentPage={state.currentPage}
+                    handleProposalsPerPageChange={handleProposalsPerPageChange}
+                    handlePageChange={handlePageChange}
+                    pageNumbers={pageNumbers}
+                    proposalsPerPage={state.proposalsPerPage}
+                    totalPages={totalPages}
+                  />
+                </Card.Body>
+              </Card>
             </>
           ) : (
             <ProposalsNotFound resetFilters={resetFilters} />

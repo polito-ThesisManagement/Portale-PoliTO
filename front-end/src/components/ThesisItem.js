@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -15,83 +15,88 @@ import CustomBadge from './CustomBadge';
 
 function ThesisItem(props) {
   const teachers = [props.supervisor, ...props.internalCoSupervisors];
-  const theme = useContext(ThemeContext);
-  const appliedTheme = getSystemTheme(theme);
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+
   const { t } = useTranslation();
   return (
-    <Card className="mb-3 h-100 roundCard p-2">
-      <Card.Header className="border-0">
-        <Row>
-          <Col lg={7}>
-            <h3 className="thesis-topic">{props.topic}</h3>
-          </Col>
-        </Row>
-      </Card.Header>
-      <Card.Body className="pt-2">
-        <Row>
-          <Col lg={7}>
-            <div className="info">
-              <p className="thesis-info-title">{t('carriera.proposte_di_tesi.relatori')}:</p>
+    <Col xs={12} sm={12} md={12} lg={6} xl={6} className="mb-3">
+      <Card className="mb-3 roundCard h-100 py-2">
+        <Card.Header className="border-0">
+          <Row>
+            <Col xs={10} sm={10} md={10} lg={10} xl={10}>
+              <h3 className="thesis-topic">{props.topic}</h3>
+            </Col>
+            <Col xs={2} sm={2} md={2} lg={2} xl={2} className="thesis-topic text-end">
+              <OverlayTrigger
+                key={`${props.isAbroad}`}
+                delay={{ show: 250, hide: 400 }}
+                overlay={
+                  <Tooltip id={`tooltip-${props.isAbroad}`}>
+                    {props.isAbroad
+                      ? t('carriera.proposte_di_tesi.tesi_estero')
+                      : t('carriera.proposte_di_tesi.tesi_italia')}
+                  </Tooltip>
+                }
+                placement="bottom"
+              >
+                {props.isAbroad ? (
+                  <i
+                    className="fa-sharp-duotone fa-solid fa-earth-americas fa-xl"
+                    style={{
+                      '--fa-primary-color': 'var(--green-500)',
+                      '--fa-secondary-color': 'var(--lightBlue-600)',
+                      '--fa-secondary-opacity': '1',
+                      height: '12px',
+                    }}
+                  />
+                ) : (
+                  <span className="fi fi-it" style={{ borderRadius: '3px' }} />
+                )}
+              </OverlayTrigger>
+            </Col>
+          </Row>
+        </Card.Header>
+        <Card.Body className="pt-2">
+          <div className="custom-badge-container mb-2">
+            <CustomBadge variant="status" content={props.expirationDate} />
+            {props.isInternal ? <CustomBadge variant="internal" /> : <CustomBadge variant="external" />}
+            <CustomBadge variant="type" content={props.types.map(type => type.type)} />
+          </div>
+          <div className="info-container mb-2">
+            <div className="title-container">
+              <i className="fa-regular fa-user fa-fw" />
+              {t('carriera.proposte_di_tesi.relatori')}:
+            </div>
+            <CustomBadge
+              variant="teacher"
+              content={teachers.map(teacher => teacher.firstName + ' ' + teacher.lastName)}
+            />
+          </div>
+          {props.keywords.length > 0 && (
+            <div className="info-container mb-2">
+              <div className="title-container">
+                <i className="fa-regular fa-key fa-fw" />
+                {t('carriera.proposte_di_tesi.keywords')}:
+              </div>
               <CustomBadge
-                variant="teacher"
-                content={teachers.map(teacher => teacher.firstName + ' ' + teacher.lastName)}
+                variant="keyword"
+                content={props.keywords.map(keyword => keyword.keyword)}
+                type="truncated"
               />
             </div>
-            <Card.Text className="thesis-description">{props.description}</Card.Text>
-          </Col>
-          <Col lg={5} className="d-flex flex-column" style={{ gap: '.5rem' }}>
-            <div className="info">
-              <p className="thesis-info-title" style={{ minWidth: '7rem' }}>
-                {t('carriera.proposta_di_tesi.ambiente')}:
-              </p>
-              <div className="custom-badge-container">
-                {props.isInternal ? <CustomBadge variant="internal" /> : <CustomBadge variant="external" />}
-                {props.isAbroad && <CustomBadge variant="abroad" />}
-              </div>
-            </div>
-            {props.types.length > 0 && (
-              <div className="info">
-                <p className="thesis-info-title" style={{ minWidth: '7rem' }}>
-                  {t('carriera.proposta_di_tesi.tipo')}:
-                </p>
-                <CustomBadge variant="type" content={props.types.map(type => type.type)} type="truncated" />
-              </div>
-            )}
-            {props.keywords.length > 0 && (
-              <div className="info">
-                <p className="thesis-info-title" style={{ minWidth: '7rem' }}>
-                  {t('carriera.proposte_di_tesi.keywords')}:
-                </p>
-                <CustomBadge
-                  variant="keyword"
-                  content={props.keywords.map(keyword => keyword.keyword)}
-                  type="truncated"
-                />
-              </div>
-            )}
-          </Col>
-        </Row>
-      </Card.Body>
-      <Card.Footer className="pt-3 mx-2 px-2">
-        <Row className="d-flex align-items-center justify-content-between" style={{ gap: '1rem' }}>
-          <Col lg={'auto'} md={'auto'} sm={'auto'} xs={'auto'}>
-            <div className="info">
-              <p className="thesis-info-title" style={{ minWidth: '7rem' }}>
-                {t('carriera.proposta_di_tesi.stato')}:
-              </p>
-              <CustomBadge variant="status" content={props.expirationDate} />
-            </div>
-          </Col>
-          <Col lg={'auto'} md={'auto'} sm={'auto'} xs={'auto'} className="ms-auto text-end">
-            <Link to={`${props.id}`} style={{ textDecoration: 'none' }}>
-              <Button className={`btn-${appliedTheme}`} size="sm" style={{ fontSize: 'var(--font-size-sm)' }}>
-                {t('carriera.proposte_di_tesi.show_more')}
-              </Button>
-            </Link>
-          </Col>
-        </Row>
-      </Card.Footer>
-    </Card>
+          )}
+          <Card.Text className="thesis-description">{props.description}</Card.Text>
+        </Card.Body>
+        <Card.Footer className="mx-2 px-2 d-flex justify-content-end border-0">
+          <Link to={`${props.id}`} style={{ textDecoration: 'none' }}>
+            <Button className={`btn-${appliedTheme}`} size="md">
+              {t('carriera.proposte_di_tesi.show_more')}
+            </Button>
+          </Link>
+        </Card.Footer>
+      </Card>
+    </Col>
   );
 }
 

@@ -25,7 +25,7 @@ export default function PaginationItem({
   const { theme } = useContext(ThemeContext);
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
-  const options = [5, 10, 20, 50];
+  const options = [10, 20, 50, 100];
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = isOpen => {

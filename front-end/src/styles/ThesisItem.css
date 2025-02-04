@@ -1,5 +1,5 @@
 .thesis-topic {
-  color: var(--primary);
+  color: var(--section-title);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
   word-wrap: break-word;
@@ -9,24 +9,27 @@
 .thesis-description {
   display: -webkit-box;
   font-size: var(--font-size-sm);
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
-  line-clamp: 5;
+  line-clamp: 6;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 0.5rem !important;
 }
 
-.thesis-info-title {
-  color: var(--section-description);
+.title-container {
+  align-items: center;
+  color: var(--section-title);
+  display: flex;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  margin-bottom: auto;
+  gap: 0.5rem;
+  white-space: nowrap;
 }
 
-.info {
-  gap: 0.5rem;
+.info-container {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 0.5rem;
 }
