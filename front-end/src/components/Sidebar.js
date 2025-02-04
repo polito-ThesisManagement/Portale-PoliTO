@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Col, Nav } from 'react-bootstrap';
+import { Col, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -71,10 +71,19 @@ function NavItem({ to, icon, textKey, mobile, handleClose, isActive }) {
   }
   return (
     <Nav.Item>
-      <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
-        <i className={`${iconClass} ${icon} fa-xl`} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }}></i>
-        <span className={spanClassName}>{t(textKey)}</span>
-      </Link>
+      {desktopToggle ? (
+        <OverlayTrigger placement="right" overlay={<Tooltip>{t(textKey)}</Tooltip>}>
+          <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
+            <i className={`${iconClass} ${icon} fa-xl`} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }}></i>
+            <span className={spanClassName}>{t(textKey)}</span>
+          </Link>
+        </OverlayTrigger>
+      ) : (
+        <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
+          <i className={`${iconClass} ${icon} fa-xl`} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }}></i>
+          <span className={spanClassName}>{t(textKey)}</span>
+        </Link>
+      )}
     </Nav.Item>
   );
 }
