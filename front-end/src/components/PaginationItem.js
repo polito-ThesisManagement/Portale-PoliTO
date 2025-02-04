@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 
 import { Dropdown, Pagination } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
 import PropTypes from 'prop-types';
 
@@ -42,20 +41,19 @@ export default function PaginationItem({
   }
 
   return (
-    <div className="pagination-container">
-      <div className="pagination-info">
+    <div className="d-flex align-items-center justify-content-between gap-3 pagination-container">
+      <div className="d-flex align-items-center gap-3 pagination-info">
         <span> {t('carriera.proposte_di_tesi.per_page')} </span>
-        <Dropdown autoClose="outside" className="ms-3" id="dropdown-pagination" onToggle={handleToggle}>
+        <Dropdown autoClose="outside" id="dropdown-pagination" onToggle={handleToggle}>
           <Dropdown.Toggle as={CustomToggle} className={`btn-outlined-${appliedTheme}  custom-dropdown-toggle`}>
-            <span style={{ width: '1.5rem', fontSize: 'var(--font-size-sm)' }}> {proposalsPerPage} </span>
-            {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+            <span style={{ width: '1.5rem' }}> {proposalsPerPage} </span>
+            {isOpen ? <i className="fa-regular fa-chevron-up" /> : <i className="fa-regular fa-chevron-down" />}
           </Dropdown.Toggle>
           <Dropdown.Menu
             as={CustomMenu}
             key={proposalsPerPage}
             style={{
               minWidth: '4rem',
-              fontSize: 'var(--font-size-sm)',
               borderColor: 'var(--dropdown-outlined-border)',
             }}
           >
@@ -66,7 +64,7 @@ export default function PaginationItem({
             ))}
           </Dropdown.Menu>
         </Dropdown>
-        <span className="ms-3 me-3 pagination-text">
+        <span className="pagination-text">
           {t('carriera.proposte_di_tesi.showing')} {totalPages === 0 ? 0 : startIndex}{' '}
           {t('carriera.proposte_di_tesi.to')}{' '}
           {currentPage * proposalsPerPage > count ? count : currentPage * proposalsPerPage}{' '}
