@@ -1,7 +1,7 @@
 .pagination-container {
-  font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-sm);
-  color: var(--text);
+  font-weight: var(--font-weight-regular) !important;
+  font-size: var(--font-size-sm) !important;
+  color: var(--text) !important;
 }
 
 @media (max-width: 850px) {

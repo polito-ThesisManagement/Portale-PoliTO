@@ -67,7 +67,7 @@ export default function Searchbar(props) {
             height: '40px',
             backgroundColor: 'var(--background)',
             color: 'var(--primary)',
-            borderRadius: 'var(--border-radius)',
+            borderRadius: 'var(--border-radius-button)',
             borderColor: 'var(--border-color)',
           }}
           value={searchWord}
