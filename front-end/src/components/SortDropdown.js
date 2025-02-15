@@ -86,11 +86,7 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
         )}
         {t('carriera.proposte_di_tesi.order')}
         {/* Display the count of applied sorting */}
-        {sorting.sortBy !== 'id' && (
-          <Badge pill bg="secondary" className="top-0">
-            1
-          </Badge>
-        )}
+        {sorting.sortBy !== 'id' && <Badge className={`top-0 squared-badge-${appliedTheme}`}>1</Badge>}
         {isOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
       </Dropdown.Toggle>
       <Dropdown.Menu as={CustomMenu} key={selectedSorting} className="custom-dropdown-menu">
@@ -109,18 +105,17 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
 
         <Dropdown.Divider style={{ margin: '0' }} className={`hr-${appliedTheme}`} />
         {/* Buttons outside the scrollable area */}
-        <div className="d-flex justify-content-between ms-2 me-3 mt-2 mb-1">
-          <Button className={`link-${appliedTheme}-dropdown`} onClick={() => handleReset()} variant="link" size="sm">
-            Reset
+        <div className="d-flex justify-content-between ms-2 me-2 mt-2 mb-1 gap-4">
+          <Button className={`btn-outlined-${appliedTheme}`} onClick={() => handleReset()} size="sm">
+            {t('carriera.proposte_di_tesi.reset')}
           </Button>
           <Button
-            className={`btn-${appliedTheme} btn-dropdown`}
+            className={`btn-primary-${appliedTheme}`}
             id="dropdown-button"
             onClick={() => handleApply(selectedSorting)}
-            variant="outline-primary"
             size="sm"
           >
-            OK
+            {t('carriera.proposte_di_tesi.apply')}
           </Button>
         </div>
       </Dropdown.Menu>

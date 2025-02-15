@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
 .filters-section {
@@ -16,6 +15,22 @@
   gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: flex-start;
+  padding: 0.5rem;
+}
+
+.filters-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--section-title);
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filters-title .reset {
+  color: var(--primary-500);
 }
 
 .applied-filters-container {
@@ -24,6 +39,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-top: 1rem;
   position: relative;
 }
 
@@ -74,25 +90,4 @@
   margin-right: 1rem;
   flex-wrap: wrap;
   padding-bottom: 1.5rem;
-}
-
-.accordion {
-  --bs-accordion-color: var(--surface);
-  --bs-accordion-bg: var(--surface);
-  --bs-accordion-border-width: 1px;
-  --bs-accordion-border-color: var(--border-color);
-  --bs-accordion-border-radius: var(--border-radius);
-  --bs-accordion-btn-bg: var(--surface);
-  --bs-accordion-btn-focus-box-shadow: none;
-  --bs-accordion-active-bg: var(--background);
-  --bs-accordion-inner-border-radius: calc(var(--border-radius) - (1px));
-}
-
-.accordion-title {
-  display: flex;
-  align-items: center;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--primary);
-  gap: 0.5rem;
 }

@@ -33,8 +33,8 @@ function ThesisItem(props) {
                 overlay={
                   <Tooltip id={`tooltip-${props.isAbroad}`}>
                     {props.isAbroad
-                      ? t('carriera.proposte_di_tesi.tesi_estero')
-                      : t('carriera.proposte_di_tesi.tesi_italia')}
+                      ? t('carriera.proposte_di_tesi.abroad_thesis')
+                      : t('carriera.proposte_di_tesi.italy_thesis')}
                   </Tooltip>
                 }
                 placement="bottom"
@@ -60,12 +60,14 @@ function ThesisItem(props) {
           <div className="custom-badge-container mb-2">
             <CustomBadge variant="status" content={props.expirationDate} />
             {props.isInternal ? <CustomBadge variant="internal" /> : <CustomBadge variant="external" />}
-            <CustomBadge variant="type" content={props.types.map(type => type.type)} />
+            {props.types.map(type => (
+              <CustomBadge key={type.id} variant="type" content={type.type} />
+            ))}
           </div>
           <div className="info-container mb-2">
             <div className="title-container">
               <i className="fa-regular fa-user fa-fw" />
-              {t('carriera.proposte_di_tesi.relatori')}:
+              {t('carriera.proposte_di_tesi.supervisors')}:
             </div>
             <CustomBadge
               variant="teacher"

@@ -18,7 +18,8 @@ moment.locale('it');
  *  - "keyword": Renders a badge with a keyword icon. Requires a "content".
  *  - "internal": Renders a badge with an internal thesis icon.
  *  - "external": Renders a badge with an external thesis icon.
- *  - "abroad": Renders a badge with an abroad thesis icon.
+ *  - "italy": Renders a badge with the Italy flag icon.
+ *  - "abroad": Renders a badge with an abroad icon.
  *  - "status": Renders a badge with a success, warning or error icon. Requires a "content" (the expiration date).
  *  - "success": Renders a badge with a success icon. Requires a "content".
  *  - "warning": Renders a badge with a warning icon. Requires a "content".
@@ -51,6 +52,7 @@ const validVariants = [
   'keyword',
   'internal',
   'external',
+  'italy',
   'abroad',
   'type',
   'status',
@@ -115,7 +117,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         elements.push(
           <Button
             key={`${item.content}-${index}`}
-            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
+            className={`custom-badge badge ${variant}_${appliedTheme} reset clickable`}
             onClick={() => handleRemoveFilter(variant, filters[variant], item)}
           >
             <div className="custom-badge-icon">{renderIcon(item.content)}</div>
@@ -164,8 +166,19 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         return <i className="fa-regular fa-building-columns fa-lg" />;
       case 'external':
         return <i className="fa-regular fa-building-circle-arrow-right fa-lg" />;
+      case 'italy':
+        return <span className="fi fi-it" style={{ borderRadius: '3px' }} />;
       case 'abroad':
-        return <i className="fa-solid fa-earth-americas fa-lg" />;
+        return (
+          <i
+            className="fa-sharp-duotone fa-solid fa-earth-americas fa-lg"
+            style={{
+              '--fa-primary-color': 'var(--green-500)',
+              '--fa-secondary-color': 'var(--lightBlue-600)',
+              '--fa-secondary-opacity': '1',
+            }}
+          />
+        );
       case 'status':
         switch (content) {
           case 'success':
@@ -182,23 +195,23 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
           // analisi dati
           case 'analisi dati':
           case 'data analysis':
-            return <i className="fa-solid fa-chart-column fa-lg" />;
+            return <i className="fa-regular fa-chart-column fa-lg" />;
           // analitica
           case 'analitica':
           case 'analytical':
-            return <i className="fa-solid fa-chart-line fa-lg" />;
+            return <i className="fa-regular fa-chart-line fa-lg" />;
           // applicativa
           case 'applicativa':
           case 'applied':
-            return <i className="fa-brands fa-whmcs fa-lg" />;
+            return <i className="fa-regular fa-gear fa-lg" />;
           // compilativa
           case 'compilativa':
           case 'bibliographic':
-            return <i className="fa-solid fa-pen-to-square fa-lg" />;
+            return <i className="fa-regular fa-pen-to-square fa-lg" />;
           // computazionale
           case 'computazionale':
           case 'computational':
-            return <i className="fa-solid fa-brain fa-lg" />;
+            return <i className="fa-regular fa-brain fa-lg" />;
           // progettuale
           case 'progettuale':
           case 'design':
@@ -210,11 +223,11 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
           // simulativa
           case 'simulativa':
           case 'simulation':
-            return <i className="fa-solid fa-chart-pie fa-lg" />;
+            return <i className="fa-regular fa-chart-pie fa-lg" />;
           // sperimentale
           case 'sperimentale':
           case 'experimental':
-            return <i className="fa-solid fa-flask fa-lg" />;
+            return <i className="fa-regular fa-flask fa-lg" />;
           // sviluppo
           case 'sviluppo':
           case 'development':
@@ -222,13 +235,13 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
           // teorica
           case 'teorica':
           case 'theoretical':
-            return <i className="fa-solid fa-book fa-lg" />;
+            return <i className="fa-regular fa-book fa-lg" />;
           // numerica
           case 'numerica':
           case 'numerical':
-            return <i className="fa-solid fa-calculator fa-lg" />;
+            return <i className="fa-regular fa-calculator fa-lg" />;
           default:
-            return <i className="fa-solid fa-circle-xmark fa-lg" />;
+            return <i className="fa-regular fa-circle-xmark fa-lg" />;
         }
       default:
         return <i className="fa-regular fa-circle-xmark fa-lg" />;
@@ -241,6 +254,8 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         return t('carriera.proposte_di_tesi.internal_thesis');
       case 'external':
         return t('carriera.proposte_di_tesi.external_thesis');
+      case 'italy':
+        return t('carriera.proposte_di_tesi.italy_thesis');
       case 'abroad':
         return t('carriera.proposte_di_tesi.abroad_thesis');
       case 'status':
@@ -301,24 +316,24 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
       return 'error';
     };
 
-    if (variant === 'internal' || variant === 'external' || variant === 'abroad') {
+    if (variant === 'internal' || variant === 'external' || variant === 'italy' || variant === 'abroad') {
       if (type === 'reset' && applyFilters) {
         elements.push(
           <Button
             key="custom-badge-button"
-            className={`custom-badge badge ${variant}_${appliedTheme} clickable`}
+            className={`custom-badge badge ${variant}_${appliedTheme} reset clickable`}
             onClick={() => {
               if (variant === 'internal') {
                 applyFilters('isInternal', 0);
               } else if (variant === 'external') {
                 applyFilters('isInternal', 0);
               } else {
-                applyFilters('isAbroad', false);
+                applyFilters('isAbroad', 0);
               }
             }}
           >
             <div className="custom-badge-icon">{renderIcon()}</div>
-            {renderTranslatedContent()}
+            <div className="custom-badge-text">{renderTranslatedContent()}</div>
             <div className="custom-badge-icon">
               <i className="fa-regular fa-circle-xmark fa-lg" />
             </div>
@@ -328,7 +343,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         elements.push(
           <div key="custom-badge-div" className={`custom-badge badge ${variant}_${appliedTheme} pe-2`}>
             <div className="custom-badge-icon">{renderIcon()}</div>
-            {renderTranslatedContent()}
+            <div className="custom-badge-text">{renderTranslatedContent()}</div>
           </div>,
         );
       }
@@ -341,7 +356,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
       elements.push(
         <div key="custom-badge-div" className={`custom-badge badge ${statusVariant}_${appliedTheme} pe-2`}>
           <div className="custom-badge-icon">{renderIcon(statusVariant)}</div>
-          {renderTranslatedContent(statusVariant)}
+          <div className="custom-badge-text">{renderTranslatedContent(statusVariant)}</div>
         </div>,
       );
     } else {

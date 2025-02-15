@@ -204,15 +204,23 @@ body {
     height: 2rem;
   }
 }
-
-.badge.rounded-pill {
+.badge.squared-badge-light {
+  background-color: var(--white) !important;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
   padding: 3px 7px;
-  border: none;
-  position: relative;
+}
+
+.badge.squared-badge-dark {
+  background-color: var(--surface) !important;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 3px 7px;
 }
 
 .btn-light {
-  font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
   border: var(--border-default);
   border-color: var(--gray-200) !important;
@@ -242,7 +250,6 @@ body {
 }
 
 .btn-dark {
-  font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
   border: var(--border-default);
   border-color: var(--primary-800) !important;
@@ -255,12 +262,12 @@ body {
 }
 
 .btn-dark:hover {
-  border-color: var(--white) !important;
+  background-color: var(--primary-800) !important;
   color: var(--white) !important;
 }
 
 .btn-dark:active {
-  border-color: var(--primary-500) !important;
+  border-color: var(--primary-100) !important;
   background-color: var(--primary-100) !important;
   box-shadow: none !important;
   color: var(--primary-700) !important;
@@ -273,12 +280,11 @@ body {
 }
 
 .btn-outlined-light {
-  font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
   border: var(--border-default);
   border-color: var(--gray-300) !important;
   border-radius: 3px !important;
-  background-color: var(--surface) !important;
+  background-color: transparent !important;
   color: var(--text-600) !important;
   display: flex;
   align-items: center;
@@ -299,14 +305,13 @@ body {
 
 .btn-outlined-light.disabled {
   border-color: var(--gray-300) !important;
-  background-color: var(--surface) !important;
+  background-color: transparent !important;
   color: var(--text-400) !important;
 }
 
 .btn-outlined-dark {
-  font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
-  background-color: var(--surface) !important;
+  background-color: transparent !important;
   border: var(--border-default);
   border-color: var(--white) !important;
   border-radius: 3px !important;
@@ -330,7 +335,67 @@ body {
 
 .btn-outlined-dark.disabled {
   border-color: var(--text-400) !important;
-  background-color: var(--surface) !important;
+  background-color: transparent !important;
+  color: var(--text-400) !important;
+}
+
+.btn-primary-light {
+  font-weight: var(--font-weight-medium);
+  border: var(--border-default);
+  border-color: var(--primary-500) !important;
+  border-radius: 3px !important;
+  background-color: var(--primary-500) !important;
+  color: var(--text-50) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary-light:hover {
+  background-color: var(--primary-600) !important;
+  border-color: var(--primary-600) !important;
+}
+
+.btn-primary-light.active,
+.btn-primary-light:active {
+  border-color: var(--primary-700) !important;
+  background-color: var(--primary-600) !important;
+  box-shadow: none !important;
+}
+
+.btn-primary-light.disabled {
+  border-color: var(--gray-100) !important;
+  background-color: var(--gray-100) !important;
+  color: var(--text-400) !important;
+}
+
+.btn-primary-dark {
+  font-weight: var(--font-weight-medium);
+  border: var(--border-default);
+  border-color: var(--primary-500) !important;
+  border-radius: 3px !important;
+  background-color: var(--primary-500) !important;
+  color: var(--text-50) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary-dark:hover {
+  background-color: var(--primary-600) !important;
+  border-color: var(--primary-600) !important;
+}
+
+.btn-primary-dark.active,
+.btn-primary-dark:active {
+  border-color: var(--primary-700) !important;
+  background-color: var(--primary-600) !important;
+  box-shadow: none !important;
+}
+
+.btn-primary-dark.disabled {
+  border-color: var(--gray-100) !important;
+  background-color: var(--gray-100) !important;
   color: var(--text-400) !important;
 }
 

@@ -8,7 +8,6 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   gap: 0.375rem;
-  line-height: 1.367;
 }
 
 .custom-badge-container {
@@ -18,8 +17,7 @@
 }
 
 .custom-badge-icon {
-  display: flex;
-  flex-shrink: 0;
+  line-height: normal;
 }
 
 .custom-badge-text {
@@ -27,6 +25,11 @@
   overflow-wrap: break-word;
   word-break: break-word;
   text-align: left;
+  line-height: 1.5;
+}
+
+.reset {
+  border-radius: 0.25rem;
 }
 
 .teacher_light,
@@ -91,91 +94,99 @@
 
 .internal_light,
 .internal_light:focus {
-  color: var(--orange-700);
-  background-color: var(--orange-50);
-  border-color: var(--orange-600);
+  color: var(--amber-700);
+  background-color: var(--amber-50);
+  border-color: var(--amber-600);
 }
 
 .internal_light.clickable:hover,
 .internal_light.clickable.active {
-  color: var(--orange-700) !important;
-  background-color: var(--orange-100) !important;
-  border-color: var(--orange-600) !important;
+  color: var(--amber-700) !important;
+  background-color: var(--amber-100) !important;
+  border-color: var(--amber-600) !important;
   cursor: pointer;
 }
 
 .internal_dark,
 .internal_dark:focus {
-  color: var(--orange-800);
-  background-color: var(--orange-200);
+  color: var(--amber-800);
+  background-color: var(--amber-100);
   border-color: var(--orange-600);
 }
 
 .internal_dark.clickable:hover,
 .internal_dark.clickable.active {
-  color: var(--orange-800) !important;
-  background-color: var(--orange-300) !important;
-  border-color: var(--orange-600) !important;
+  color: var(--amber-800) !important;
+  background-color: var(--amber-200) !important;
+  border-color: var(--amber-600) !important;
   cursor: pointer;
 }
 
 .external_light,
 .external_light:focus {
-  color: var(--orange-700);
-  background-color: var(--orange-50);
-  border-color: var(--orange-600);
+  color: var(--amber-700);
+  background-color: var(--amber-50);
+  border-color: var(--amber-600);
 }
 
 .external_light.clickable:hover,
 .external_light.clickable.active {
-  color: var(--orange-700) !important;
-  background-color: var(--orange-100) !important;
-  border-color: var(--orange-600) !important;
+  color: var(--amber-700) !important;
+  background-color: var(--amber-100) !important;
+  border-color: var(--amber-600) !important;
   cursor: pointer;
 }
 
 .external_dark,
 .external_dark:focus {
-  color: var(--orange-800);
-  background-color: var(--orange-200);
-  border-color: var(--orange-600);
+  color: var(--amber-800);
+  background-color: var(--amber-100);
+  border-color: var(--amber-600);
 }
 
 .external_dark.clickable:hover,
 .external_dark.clickable.active {
-  color: var(--orange-800) !important;
-  background-color: var(--orange-300) !important;
-  border-color: var(--orange-600) !important;
+  color: var(--amber-800) !important;
+  background-color: var(--amber-200) !important;
+  border-color: var(--amber-600) !important;
   cursor: pointer;
 }
 
+.italy_light,
+.italy_light:focus,
 .abroad_light,
 .abroad_light:focus {
-  color: var(--purple-700);
-  background-color: var(--purple-50);
-  border-color: var(--purple-600);
+  color: var(--trueGray-600);
+  background-color: var(--trueGray-50);
+  border-color: var(--trueGray-500);
 }
 
+.italy_light.clickable:hover,
+.italy_light.clickable.active,
 .abroad_light.clickable:hover,
 .abroad_light.clickable.active {
-  color: var(--purple-700) !important;
-  background-color: var(--purple-100) !important;
-  border-color: var(--purple-600) !important;
+  color: var(--trueGray-600) !important;
+  background-color: var(--trueGray-200) !important;
+  border-color: var(--trueGray-500) !important;
   cursor: pointer;
 }
 
+.italy_dark,
+.italy_dark:focus,
 .abroad_dark,
 .abroad_dark:focus {
-  color: var(--purple-800);
-  background-color: var(--purple-100);
-  border-color: var(--purple-600);
+  color: var(--trueGray-700);
+  background-color: var(--trueGray-200);
+  border-color: var(--trueGray-600);
 }
 
+.italy_dark.clickable:hover,
+.italy_dark.clickable.active,
 .abroad_dark.clickable:hover,
 .abroad_dark.clickable.active {
-  color: var(--purple-800) !important;
-  background-color: var(--purple-200) !important;
-  border-color: var(--purple-600) !important;
+  color: var(--trueGray-700) !important;
+  background-color: var(--trueGray-300) !important;
+  border-color: var(--trueGray-600) !important;
   cursor: pointer;
 }
 
@@ -216,8 +227,8 @@
 }
 
 .success_dark {
-  color: var(--success-800);
-  background-color: var(--success-200);
+  color: var(--success-700);
+  background-color: var(--success-100);
   border-color: var(--success-600);
 }
 
@@ -228,8 +239,8 @@
 }
 
 .warning_dark {
-  color: var(--warning-800);
-  background-color: var(--warning-200);
+  color: var(--warning-700);
+  background-color: var(--warning-100);
   border-color: var(--warning-600);
 }
 
@@ -240,7 +251,7 @@
 }
 
 .error_dark {
-  color: var(--error-800);
-  background-color: var(--error-200);
+  color: var(--error-700);
+  background-color: var(--error-100);
   border-color: var(--error-600);
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
-import { Card, Container, Row } from 'react-bootstrap';
+import { Badge, Card, Container, Dropdown, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
@@ -9,27 +9,35 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 
 import API from '../API';
+import { ThemeContext } from '../App';
 import '../styles/searchbar.css';
 import '../styles/thesis-proposals.css';
 import '../styles/utilities.css';
-import FiltersAccordion from './FiltersAccordion';
+import { getSystemTheme } from '../utils/utils';
+import CustomBadge from './CustomBadge';
+import CustomToggle from './CustomToggle';
+import FiltersPanel from './FiltersPanel';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
 import SegmentedControl from './SegmentedControl';
+import SortDropdown from './SortDropdown';
 import { ThesisItem } from './ThesisItem';
 
 export default function ThesisProposals() {
-  const [accordionOpen, setAccordionOpen] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const [count, setCount] = useState(0);
   const [pageNumbers, setPageNumbers] = useState([]);
   const [pageProposals, setPageProposals] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
 
+  const { theme } = useContext(ThemeContext);
+  const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+
   const [state, setState] = useState({
     currentPage: 1,
-    filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
+    filters: { isAbroad: 0, isInternal: 0, keyword: [], teacher: [], type: [] },
     proposalsPerPage: 10,
     searchQuery: '',
     sorting: { sortBy: 'id', orderBy: 'ASC' },
@@ -144,10 +152,14 @@ export default function ThesisProposals() {
     });
   };
 
+  const handleToggle = isOpen => {
+    setFiltersOpen(isOpen);
+  };
+
   const updateQueryParams = newState => {
     const defaultValues = {
       currentPage: 1,
-      filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
+      filters: { isAbroad: 0, isInternal: 0, keyword: [], teacher: [], type: [] },
       proposalsPerPage: 10,
       searchQuery: '',
       sorting: { sortBy: 'id', orderBy: 'ASC' },
@@ -239,7 +251,7 @@ export default function ThesisProposals() {
     return {
       currentPage: queryParams.currentPage ? parseInt(queryParams.currentPage, 10) : 1,
       filters: {
-        isAbroad: queryParams.isAbroad === 'true',
+        isAbroad: queryParams.isAbroad ? parseInt(queryParams.isAbroad, 10) : 0,
         isInternal: queryParams.isInternal ? parseInt(queryParams.isInternal, 10) : 0,
         keyword: parseArray(queryParams.keyword),
         teacher: parseArray(queryParams.teacher),
@@ -259,7 +271,7 @@ export default function ThesisProposals() {
     setState(prevState => ({
       ...prevState,
       currentPage: 1,
-      filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
+      filters: { isAbroad: 0, isInternal: 0, keyword: [], teacher: [], type: [] },
       searchQuery: '',
       sorting: { sortBy: 'id', orderBy: 'ASC' },
     }));
@@ -349,43 +361,120 @@ export default function ThesisProposals() {
                   },
                 ]}
               />
-              <Form
-                className="d-flex w-100"
-                style={{ maxWidth: '380px', zIndex: '1' }}
-                onSubmit={e => e.preventDefault()}
-              >
-                <InputGroup className="flex-nowrap w-100">
-                  <Form.Control
-                    className="truncated"
-                    type="search"
-                    placeholder={t('carriera.proposte_di_tesi.search')}
-                    aria-label="search_proposals"
-                    style={{
-                      fontSize: 'var(--font-size-sm)',
-                      fontWeight: 'var(--font-weight-medium)',
-                      height: '38px',
-                      backgroundColor: 'var(--background)',
-                      color: 'var(--primary)',
-                      borderColor: 'var(--border-color)',
-                      borderRadius: 'var(--border-radius)',
-                    }}
-                    value={state.searchQuery}
-                    onChange={handleSearchbarChange}
-                  />
-                  <i className="fa-solid fa-magnifying-glass search-icon" />
-                </InputGroup>
-              </Form>
+              <div className="d-flex align-items-center gap-3 flex-wrap">
+                <Dropdown onToggle={handleToggle} show={filtersOpen} autoClose="outside" id={`dropdown-filters`}>
+                  <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme} custom-dropdown-toggle`}>
+                    {<i className="fa-regular fa-filter" />}
+                    {t('carriera.proposte_di_tesi.filtri')}
+                    {/* Display the count of applied filters */}
+                    {(state.filters.isInternal != 0 ||
+                      state.filters.isAbroad != 0 ||
+                      state.filters.keyword.length > 0 ||
+                      state.filters.type.length > 0 ||
+                      state.filters.teacher.length > 0) && (
+                      <Badge className={`top-0 squared-badge-${appliedTheme}`}>
+                        {state.filters.keyword.length +
+                          state.filters.type.length +
+                          state.filters.teacher.length +
+                          (state.filters.isInternal != 0 ? 1 : 0) +
+                          (state.filters.isAbroad != 0 ? 1 : 0)}
+                      </Badge>
+                    )}
+                    {filtersOpen ? (
+                      <i className="fa-solid fa-chevron-up" />
+                    ) : (
+                      <i className="fa-solid fa-chevron-down" />
+                    )}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="custom-dropdown-menu">
+                    <FiltersPanel
+                      filters={state.filters}
+                      applyFilters={applyFilters}
+                      resetFilters={resetFilters}
+                      setFiltersOpen={setFiltersOpen}
+                    />
+                  </Dropdown.Menu>
+                </Dropdown>
+                <SortDropdown sortFields={sortFields} sorting={state.sorting} applySorting={applySorting} />
+                <Form
+                  className="d-flex flex-grow-1"
+                  style={{ minWidth: '220px', zIndex: '1' }}
+                  onSubmit={e => e.preventDefault()}
+                >
+                  <InputGroup className="flex-nowrap w-100">
+                    <Form.Control
+                      className="truncated"
+                      type="search"
+                      placeholder={t('carriera.proposte_di_tesi.search')}
+                      aria-label="search_proposals"
+                      style={{
+                        fontSize: 'var(--font-size-sm)',
+                        fontWeight: 'var(--font-weight-medium)',
+                        backgroundColor: 'var(--background)',
+                        color: 'var(--primary)',
+                        borderColor: 'var(--border-color)',
+                        borderRadius: 'var(--border-radius-button)',
+                      }}
+                      value={state.searchQuery}
+                      onChange={handleSearchbarChange}
+                    />
+                    <i className="fa-solid fa-magnifying-glass search-icon" style={{ top: '11px' }} />
+                  </InputGroup>
+                </Form>
+              </div>
             </div>
-            <FiltersAccordion
-              accordionOpen={accordionOpen}
-              setAccordionOpen={setAccordionOpen}
-              filters={state.filters}
-              applyFilters={applyFilters}
-              resetFilters={resetFilters}
-              sortFields={sortFields}
-              sorting={state.sorting}
-              applySorting={applySorting}
-            />
+            {(state.filters.isAbroad != 0 ||
+              state.filters.isInternal != 0 ||
+              state.filters.type.length > 0 ||
+              state.filters.teacher.length > 0 ||
+              state.filters.keyword.length > 0) && (
+              <div className="applied-filters-container">
+                <div className="badge-group">
+                  {state.filters.isAbroad === 1 && (
+                    <CustomBadge variant="italy" type="reset" applyFilters={applyFilters} />
+                  )}
+                  {state.filters.isAbroad === 2 && (
+                    <CustomBadge variant="abroad" type="reset" applyFilters={applyFilters} />
+                  )}
+                  {state.filters.isInternal === 1 && (
+                    <CustomBadge variant="internal" type="reset" applyFilters={applyFilters} />
+                  )}
+                  {state.filters.isInternal === 2 && (
+                    <CustomBadge variant="external" type="reset" applyFilters={applyFilters} />
+                  )}
+                  {state.filters.type.map(type => (
+                    <CustomBadge
+                      key={type.id}
+                      variant="type"
+                      content={type}
+                      type="reset"
+                      filters={state.filters}
+                      applyFilters={applyFilters}
+                    />
+                  ))}
+                  {state.filters.teacher.map(teacher => (
+                    <CustomBadge
+                      key={teacher.id}
+                      variant="teacher"
+                      content={teacher}
+                      type="reset"
+                      filters={state.filters}
+                      applyFilters={applyFilters}
+                    />
+                  ))}
+                  {state.filters.keyword.map(keyword => (
+                    <CustomBadge
+                      key={keyword.id}
+                      variant="keyword"
+                      content={keyword}
+                      type="reset"
+                      filters={state.filters}
+                      applyFilters={applyFilters}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </Card.Body>
         </Card>
       </div>

@@ -19,26 +19,26 @@
 }
 
 .link-light-dropdown {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--text-700) !important;
+  color: var(--primary-500) !important;
 }
 
 .link-dark-dropdown {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--white) !important;
+  color: var(--primary-400) !important;
 }
 
 .custom-dropdown-menu {
+  font-size: var(--font-size-sm) !important;
+  font-weight: var(--font-weight-regular) !important;
   background-color: var(--custom-dropdown-bg) !important;
   border-color: var(--custom-dropdown-border) !important;
   padding: 0.25rem;
 }
 
 .custom-dropdown-item {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
   background-color: var(--custom-dropdown-bg) !important;
   color: var(--custom-dropdown-color) !important;
   border-radius: 0.25rem !important;
