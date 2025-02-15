@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './../styles/segmented-control.css';
 
-export default function SegmentedControl({ name, segments, callback, defaultIndex = 0, controlRef }) {
+export default function SegmentedControl({ name, segments, callback, defaultIndex = 0, controlRef, style }) {
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
   const componentReady = useRef();
 
@@ -39,7 +39,7 @@ export default function SegmentedControl({ name, segments, callback, defaultInde
 
   return (
     <div className="controls-container" ref={controlRef}>
-      <div className={`controls ${componentReady.current ? 'ready' : 'idle'}`}>
+      <div className={`controls ${componentReady.current ? 'ready' : 'idle'}`} style={style}>
         {segments?.map((item, i) => (
           <div key={item.value} className={`segment ${i === activeIndex ? 'active' : 'inactive'}`} ref={item.ref}>
             <input
@@ -71,4 +71,5 @@ SegmentedControl.propTypes = {
   callback: PropTypes.func.isRequired,
   defaultIndex: PropTypes.number,
   controlRef: PropTypes.object.isRequired,
+  style: PropTypes.object,
 };

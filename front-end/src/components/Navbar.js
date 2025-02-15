@@ -187,6 +187,7 @@ export default function PoliNavbar(props) {
                       ref: useRef(),
                     },
                   ]}
+                  style={{ height: '40px' }}
                 />
               </div>
               <div className="d-flex d-sm-none">

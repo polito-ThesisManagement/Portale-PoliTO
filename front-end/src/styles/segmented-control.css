@@ -11,11 +11,11 @@
   display: inline-flex;
   justify-content: space-between;
   background: var(--background);
-  border-radius: 10px;
+  border-radius: var(--border-radius-button);
   border: var(--border-default);
-  min-height: 38px;
+  min-height: 34px;
   max-width: 500px;
-  padding: 8px 2px;
+  padding: 6px 2px;
   margin: auto;
   overflow: hidden;
   position: relative;
@@ -35,6 +35,8 @@
 }
 
 .segment {
+  display: flex;
+  align-items: center;
   position: relative;
   text-align: center;
   z-index: 1;
@@ -54,12 +56,12 @@
   content: '';
   background: var(--surface);
   border: var(--background) solid 1px;
-  border-radius: 9px;
+  border-radius: 2px;
   width: var(--highlight-width);
   transform: translateX(var(--highlight-x-pos));
   position: absolute;
-  top: 2px;
-  bottom: 2px;
+  top: 1.5px;
+  bottom: 1.5px;
   left: 0px;
   z-index: 0;
 }
