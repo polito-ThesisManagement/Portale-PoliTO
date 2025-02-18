@@ -43,8 +43,6 @@ moment.locale('it');
  * @param {object} filters - The filters object. It's required only if the badge is a filter.
  * @param {function} applyFilters - The function to apply filters. It's required only if the badge is a filter (e.g. a teacher or a keyword filter).
  * @returns {JSX.Element} - The badge component.
- * @note The content of variant="type" badges can be provided in UPPERCASE or lowercase or a mix of them.
- * Regardless, they'll be always showed in UPPERCASE format. Beware that you must maintain spaces between words!
  */
 
 const validVariants = [
@@ -88,7 +86,7 @@ const validTypeContent = [
   'numerical',
 ];
 
-export default function CustomBadge({ variant, content, type, filters, applyFilters }) {
+export default function CustomBadge({ variant, content, type, filters, applyFilters, removeProps }) {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
@@ -113,12 +111,15 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     }
 
     displayedContent.forEach((item, index) => {
-      if (type === 'reset' && applyFilters) {
+      if (type === 'reset') {
         elements.push(
           <Button
             key={`${item.content}-${index}`}
             className={`custom-badge badge ${variant}_${appliedTheme} reset clickable`}
-            onClick={() => handleRemoveFilter(variant, filters[variant], item)}
+            onClick={() => {
+              if (applyFilters) handleRemoveFilter(variant, filters[variant], item);
+            }}
+            {...removeProps}
           >
             <div className="custom-badge-icon">{renderIcon(item.content)}</div>
             <span className="custom-badge-text">{item.content}</span>
@@ -127,7 +128,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
             </div>
           </Button>,
         );
-      } else if (type === 'truncated' && item === 'Altri...') {
+      } else if (type === 'truncated' && item === t('carriera.proposte_di_tesi.others') + '...') {
         elements.push(
           <OverlayTrigger
             key={`${item}-${index}`}
@@ -135,7 +136,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
             overlay={<Tooltip id={`tooltip-${truncatedContentArray}`}>{truncatedContentArray.join(', ')}</Tooltip>}
             placement="top"
           >
-            <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2 clickable`}>
+            <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2 clickable truncated`}>
               <span className="custom-badge-text">{item}</span>
             </div>
           </OverlayTrigger>,
@@ -282,7 +283,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         return content.every(item => validTypeContent.includes(item.toLowerCase()));
       }
     }
-    if (applyFilters) {
+    if (type === 'reset') {
       return validTypeContent.includes(content.content.toLowerCase());
     } else {
       return validTypeContent.includes(content.toLowerCase());
@@ -310,27 +311,33 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
   const renderBadge = () => {
     const elements = [];
 
-    const getStatusBadgeType = remainingTime => {
+    const getStatusBadgeType = content => {
+      const start = moment();
+      const end = moment(content);
+      const remainingTime = end.diff(start, 'seconds') / 86400;
       if (remainingTime > 14) return 'success';
       if (remainingTime <= 14 && remainingTime > 0) return 'warning';
       return 'error';
     };
 
     if (variant === 'internal' || variant === 'external' || variant === 'italy' || variant === 'abroad') {
-      if (type === 'reset' && applyFilters) {
+      if (type === 'reset') {
         elements.push(
           <Button
             key="custom-badge-button"
             className={`custom-badge badge ${variant}_${appliedTheme} reset clickable`}
             onClick={() => {
-              if (variant === 'internal') {
-                applyFilters('isInternal', 0);
-              } else if (variant === 'external') {
-                applyFilters('isInternal', 0);
-              } else {
-                applyFilters('isAbroad', 0);
+              if (applyFilters) {
+                if (variant === 'internal') {
+                  applyFilters('isInternal', 0);
+                } else if (variant === 'external') {
+                  applyFilters('isInternal', 0);
+                } else {
+                  applyFilters('isAbroad', 0);
+                }
               }
             }}
+            {...removeProps}
           >
             <div className="custom-badge-icon">{renderIcon()}</div>
             <div className="custom-badge-text">{renderTranslatedContent()}</div>
@@ -348,11 +355,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         );
       }
     } else if (variant === 'status') {
-      const start = moment();
-      const end = moment(content);
-      const remainingTime = end.diff(start, 'seconds') / 86400;
-      const statusVariant = getStatusBadgeType(remainingTime);
-
+      const statusVariant = getStatusBadgeType(content);
       elements.push(
         <div key="custom-badge-div" className={`custom-badge badge ${statusVariant}_${appliedTheme} pe-2`}>
           <div className="custom-badge-icon">{renderIcon(statusVariant)}</div>
@@ -380,4 +383,5 @@ CustomBadge.propTypes = {
   type: PropTypes.string,
   filters: PropTypes.object,
   applyFilters: PropTypes.func,
+  removeProps: PropTypes.object,
 };

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import Select from 'react-select';
 
 import { t } from 'i18next';
@@ -15,6 +16,7 @@ import CustomBadge from './CustomBadge';
 export default function FiltersPanel({ filters, applyFilters, resetFilters, setFiltersOpen }) {
   const { theme } = useContext(ThemeContext);
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
+  const { i18n } = useTranslation();
 
   const filterOptions = {
     keywords: { api: API.getThesisProposalsKeywords, label: 'keyword' },
@@ -53,11 +55,11 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
 
   useEffect(() => {
     Object.entries(filterOptions).forEach(([key, { api, label }]) => {
-      api().then(data => {
+      api(key !== 'supervisors' ? i18n.language : null).then(data => {
         loadOptions(key, data, label);
       });
     });
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     setSelected({
@@ -102,6 +104,8 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
   }
 
   function renderSelect(name, isMulti = true) {
+    const customSingleValue = props => <CustomSingleValue {...props} setSelected={setSelected} />;
+
     return (
       <>
         <div className="filters-title">
@@ -119,7 +123,7 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
           <Select
             isMulti={isMulti}
             isClearable={false}
-            components={{ MultiValue: customMultiValue, IndicatorSeparator: () => null }}
+            components={{ MultiValue: CustomMultiValue, IndicatorSeparator: () => null }}
             closeMenuOnSelect={false}
             name={name}
             defaultValue={selected[name]}
@@ -141,7 +145,10 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
           <Select
             isMulti={isMulti}
             isClearable={false}
-            components={{ SingleValue: customSingleValue, IndicatorSeparator: () => null }}
+            components={{
+              SingleValue: customSingleValue,
+              IndicatorSeparator: () => null,
+            }}
             name={name}
             key={'name ' + selected[name]}
             defaultValue={selected[name]}
@@ -164,29 +171,6 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
     );
   }
 
-  const customMultiValue = ({ data, removeProps }) => (
-    <CustomBadge
-      variant={data.variant}
-      type="reset"
-      content={{ id: data.value, content: data.label }}
-      applyFilters={removeProps.onClick}
-      filters={filters}
-    />
-  );
-
-  const customSingleValue = ({ data }) => (
-    <CustomBadge
-      variant={data.variant}
-      type="reset"
-      applyFilters={() =>
-        data.type === 'location'
-          ? setSelected(prev => ({ ...prev, location: 0 }))
-          : setSelected(prev => ({ ...prev, mode: 0 }))
-      }
-      filters={filters}
-    />
-  );
-
   return (
     <div className="filters-section">
       {renderSelect('location', false)}
@@ -206,6 +190,51 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
     </div>
   );
 }
+
+const CustomSingleValue = ({ data, setSelected }) => {
+  const handleRemove = () => {
+    setSelected(prev => ({
+      ...prev,
+      [data.type === 'location' ? 'location' : 'mode']: 0,
+    }));
+  };
+
+  const removeProps = {
+    onClick: handleRemove,
+    onMouseDown: e => e.stopPropagation(),
+    onTouchEnd: handleRemove,
+  };
+
+  return <CustomBadge variant={data.variant} type="reset" removeProps={removeProps} />;
+};
+
+const CustomMultiValue = ({ data, removeProps }) => {
+  return (
+    <CustomBadge
+      variant={data.variant}
+      type="reset"
+      content={{ id: data.value, content: data.label }}
+      removeProps={removeProps}
+    />
+  );
+};
+
+CustomSingleValue.propTypes = {
+  data: PropTypes.shape({
+    variant: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  }).isRequired,
+  setSelected: PropTypes.func.isRequired,
+};
+
+CustomMultiValue.propTypes = {
+  data: PropTypes.shape({
+    variant: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
+    label: PropTypes.string.isRequired,
+  }).isRequired,
+  removeProps: PropTypes.object.isRequired,
+};
 
 FiltersPanel.propTypes = {
   filters: PropTypes.object.isRequired,
