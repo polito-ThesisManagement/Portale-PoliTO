@@ -81,7 +81,7 @@ export default function BaseCard(props) {
             <Col sm={12} className="pb-2">
               <div className="d-flex justify-content-end">
                 <Link to={props.servicePath} style={{ textDecoration: 'none' }}>
-                  <Button className={`btn-${appliedTheme}`} size="sm">
+                  <Button className={`btn-${appliedTheme}`} size="md">
                     <i className="fa fa-arrow-up-right-from-square" />
                     {t('Accedi')}
                   </Button>
