@@ -32,6 +32,7 @@ function Sidebar() {
     </Col>
   );
 }
+
 function NavItem({ to, icon, textKey, mobile, handleClose, isActive }) {
   const { desktopToggle, setDesktopToggle } = useContext(DesktopToggleContext);
   const { t } = useTranslation();
@@ -40,14 +41,18 @@ function NavItem({ to, icon, textKey, mobile, handleClose, isActive }) {
 
   const baseClassName = mobile ? 'modal-sidebar-text' : 'sidebar-text';
   const spanClassName = desktopToggle && !mobile ? `${baseClassName} minimized` : baseClassName;
-
   const iconClass = isActive ? 'fa-solid' : 'fa-regular';
 
-  const handleToggle = () => {
-    setDesktopToggle(!desktopToggle);
-  };
+  const handleToggle = () => setDesktopToggle(!desktopToggle);
 
-  if (to == '#') {
+  const renderNavLink = () => (
+    <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
+      <i className={`${iconClass} ${icon} fa-xl`} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }}></i>
+      <span className={spanClassName}>{t(textKey)}</span>
+    </Link>
+  );
+
+  if (to === '#') {
     return (
       <Nav.Item className="d-none d-lg-block">
         <hr className={`hr-${appliedTheme}`} />
@@ -59,30 +64,21 @@ function NavItem({ to, icon, textKey, mobile, handleClose, isActive }) {
             handleToggle();
           }}
         >
-          {desktopToggle ? (
-            <i className={`${iconClass} fa-right-from-line fa-xl`}></i>
-          ) : (
-            <i className={`${iconClass} fa-left-to-line fa-xl`}></i>
-          )}
+          <i className={`${iconClass} fa-${desktopToggle ? 'right-from-line' : 'left-to-line'} fa-xl`}></i>
           <span className={spanClassName}>{t('sidebar.riduci_menu')}</span>
         </Link>
       </Nav.Item>
     );
   }
+
   return (
     <Nav.Item>
       {desktopToggle ? (
         <OverlayTrigger placement="right" overlay={<Tooltip>{t(textKey)}</Tooltip>}>
-          <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
-            <i className={`${iconClass} ${icon} fa-xl`} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }}></i>
-            <span className={spanClassName}>{t(textKey)}</span>
-          </Link>
+          {renderNavLink()}
         </OverlayTrigger>
       ) : (
-        <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`} onClick={handleClose}>
-          <i className={`${iconClass} ${icon} fa-xl`} style={mobile ? { marginLeft: '12px' } : { flexShrink: 0 }}></i>
-          <span className={spanClassName}>{t(textKey)}</span>
-        </Link>
+        renderNavLink()
       )}
     </Nav.Item>
   );
