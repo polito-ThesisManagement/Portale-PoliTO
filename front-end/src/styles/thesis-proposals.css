@@ -2,7 +2,7 @@
   padding: 0rem 0.75rem 2rem 0.75rem;
 }
 
-.simple-filters-container {
+.filters-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -43,13 +43,6 @@
   position: relative;
 }
 
-.applied-filters-label {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
-  margin-right: 0.5rem;
-  color: var(--primary);
-}
-
 .badge-group {
   display: flex;
   flex-wrap: wrap;
@@ -67,27 +60,4 @@
     align-items: stretch;
     flex-direction: column;
   }
-}
-
-.list-section {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.list-proposals {
-  background-color: var(--surface);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.list-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  flex-wrap: wrap;
-  padding-bottom: 1.5rem;
 }

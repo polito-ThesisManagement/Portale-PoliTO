@@ -339,145 +339,139 @@ export default function ThesisProposals() {
 
   return (
     <div className="proposals-container">
-      <div className="filters-container">
-        <Card className="roundCard">
-          <Card.Body>
-            <div className="simple-filters-container" key={state.tab}>
-              <SegmentedControl
-                name="proposals-segmented-control"
-                callback={val => handleTabChange(val)}
-                controlRef={useRef()}
-                defaultIndex={state.tab === 'course' ? 0 : 1}
-                segments={[
-                  {
-                    label: t('carriera.proposte_di_tesi.course_proposals'),
-                    value: 'course',
-                    ref: useRef(),
-                  },
-                  {
-                    label: t('carriera.proposte_di_tesi.all_proposals'),
-                    value: 'all',
-                    ref: useRef(),
-                  },
-                ]}
-              />
-              <div className="d-flex align-items-center gap-3 flex-wrap">
-                <Dropdown onToggle={handleToggle} show={filtersOpen} autoClose="outside" id={`dropdown-filters`}>
-                  <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme} custom-dropdown-toggle`}>
-                    {<i className="fa-regular fa-filter" />}
-                    {t('carriera.proposte_di_tesi.filtri')}
-                    {/* Display the count of applied filters */}
-                    {(state.filters.isInternal != 0 ||
-                      state.filters.isAbroad != 0 ||
-                      state.filters.keyword.length > 0 ||
-                      state.filters.type.length > 0 ||
-                      state.filters.teacher.length > 0) && (
-                      <Badge className={`top-0 squared-badge-${appliedTheme}`}>
-                        {state.filters.keyword.length +
-                          state.filters.type.length +
-                          state.filters.teacher.length +
-                          (state.filters.isInternal != 0 ? 1 : 0) +
-                          (state.filters.isAbroad != 0 ? 1 : 0)}
-                      </Badge>
-                    )}
-                    {filtersOpen ? (
-                      <i className="fa-solid fa-chevron-up" />
-                    ) : (
-                      <i className="fa-solid fa-chevron-down" />
-                    )}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className="custom-dropdown-menu">
-                    <FiltersPanel
-                      filters={state.filters}
-                      applyFilters={applyFilters}
-                      resetFilters={resetFilters}
-                      setFiltersOpen={setFiltersOpen}
-                    />
-                  </Dropdown.Menu>
-                </Dropdown>
-                <SortDropdown sortFields={sortFields} sorting={state.sorting} applySorting={applySorting} />
-                <Form
-                  className="d-flex flex-grow-1"
-                  style={{ minWidth: '220px', zIndex: '1' }}
-                  onSubmit={e => e.preventDefault()}
-                >
-                  <InputGroup className="flex-nowrap w-100">
-                    <Form.Control
-                      className="truncated"
-                      type="search"
-                      placeholder={t('carriera.proposte_di_tesi.search')}
-                      aria-label="search_proposals"
-                      style={{
-                        fontSize: 'var(--font-size-sm)',
-                        fontWeight: 'var(--font-weight-medium)',
-                        backgroundColor: 'var(--background)',
-                        color: 'var(--primary)',
-                        borderColor: 'var(--border-color)',
-                        borderRadius: 'var(--border-radius-button)',
-                      }}
-                      value={state.searchQuery}
-                      onChange={handleSearchbarChange}
-                    />
-                    <i className="fa-solid fa-magnifying-glass search-icon" style={{ top: '11px' }} />
-                  </InputGroup>
-                </Form>
+      <Card className="roundCard">
+        <Card.Body>
+          <div className="filters-container" key={state.tab}>
+            <SegmentedControl
+              name="proposals-segmented-control"
+              callback={val => handleTabChange(val)}
+              controlRef={useRef()}
+              defaultIndex={state.tab === 'course' ? 0 : 1}
+              segments={[
+                {
+                  label: t('carriera.proposte_di_tesi.course_proposals'),
+                  value: 'course',
+                  ref: useRef(),
+                },
+                {
+                  label: t('carriera.proposte_di_tesi.all_proposals'),
+                  value: 'all',
+                  ref: useRef(),
+                },
+              ]}
+            />
+            <div className="d-flex align-items-center gap-3 flex-wrap">
+              <Dropdown onToggle={handleToggle} show={filtersOpen} autoClose="outside" id={`dropdown-filters`}>
+                <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme} custom-dropdown-toggle`}>
+                  {<i className="fa-regular fa-filter" />}
+                  {t('carriera.proposte_di_tesi.filtri')}
+                  {/* Display the count of applied filters */}
+                  {(state.filters.isInternal != 0 ||
+                    state.filters.isAbroad != 0 ||
+                    state.filters.keyword.length > 0 ||
+                    state.filters.type.length > 0 ||
+                    state.filters.teacher.length > 0) && (
+                    <Badge className={`top-0 squared-badge-${appliedTheme}`}>
+                      {state.filters.keyword.length +
+                        state.filters.type.length +
+                        state.filters.teacher.length +
+                        (state.filters.isInternal != 0 ? 1 : 0) +
+                        (state.filters.isAbroad != 0 ? 1 : 0)}
+                    </Badge>
+                  )}
+                  {filtersOpen ? <i className="fa-solid fa-chevron-up" /> : <i className="fa-solid fa-chevron-down" />}
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="custom-dropdown-menu" style={{ zIndex: '2' }}>
+                  <FiltersPanel
+                    filters={state.filters}
+                    applyFilters={applyFilters}
+                    resetFilters={resetFilters}
+                    setFiltersOpen={setFiltersOpen}
+                  />
+                </Dropdown.Menu>
+              </Dropdown>
+              <SortDropdown sortFields={sortFields} sorting={state.sorting} applySorting={applySorting} />
+              <Form
+                className="d-flex flex-grow-1"
+                style={{ minWidth: '220px', zIndex: '1' }}
+                onSubmit={e => e.preventDefault()}
+              >
+                <InputGroup className="flex-nowrap w-100">
+                  <Form.Control
+                    className="truncated"
+                    type="search"
+                    placeholder={t('carriera.proposte_di_tesi.search')}
+                    aria-label="search_proposals"
+                    style={{
+                      fontSize: 'var(--font-size-sm)',
+                      fontWeight: 'var(--font-weight-medium)',
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--primary)',
+                      borderColor: 'var(--border-color)',
+                      borderRadius: 'var(--border-radius-button)',
+                    }}
+                    value={state.searchQuery}
+                    onChange={handleSearchbarChange}
+                  />
+                  <i className="fa-solid fa-magnifying-glass search-icon" style={{ top: '11px' }} />
+                </InputGroup>
+              </Form>
+            </div>
+          </div>
+          {(state.filters.isAbroad != 0 ||
+            state.filters.isInternal != 0 ||
+            state.filters.type.length > 0 ||
+            state.filters.teacher.length > 0 ||
+            state.filters.keyword.length > 0) && (
+            <div className="applied-filters-container">
+              <div className="badge-group">
+                {state.filters.isAbroad === 1 && (
+                  <CustomBadge variant="italy" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.isAbroad === 2 && (
+                  <CustomBadge variant="abroad" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.isInternal === 1 && (
+                  <CustomBadge variant="internal" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.isInternal === 2 && (
+                  <CustomBadge variant="external" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.type.map(type => (
+                  <CustomBadge
+                    key={type.id}
+                    variant="type"
+                    content={type}
+                    type="reset"
+                    filters={state.filters}
+                    applyFilters={applyFilters}
+                  />
+                ))}
+                {state.filters.teacher.map(teacher => (
+                  <CustomBadge
+                    key={teacher.id}
+                    variant="teacher"
+                    content={teacher}
+                    type="reset"
+                    filters={state.filters}
+                    applyFilters={applyFilters}
+                  />
+                ))}
+                {state.filters.keyword.map(keyword => (
+                  <CustomBadge
+                    key={keyword.id}
+                    variant="keyword"
+                    content={keyword}
+                    type="reset"
+                    filters={state.filters}
+                    applyFilters={applyFilters}
+                  />
+                ))}
               </div>
             </div>
-            {(state.filters.isAbroad != 0 ||
-              state.filters.isInternal != 0 ||
-              state.filters.type.length > 0 ||
-              state.filters.teacher.length > 0 ||
-              state.filters.keyword.length > 0) && (
-              <div className="applied-filters-container">
-                <div className="badge-group">
-                  {state.filters.isAbroad === 1 && (
-                    <CustomBadge variant="italy" type="reset" applyFilters={applyFilters} />
-                  )}
-                  {state.filters.isAbroad === 2 && (
-                    <CustomBadge variant="abroad" type="reset" applyFilters={applyFilters} />
-                  )}
-                  {state.filters.isInternal === 1 && (
-                    <CustomBadge variant="internal" type="reset" applyFilters={applyFilters} />
-                  )}
-                  {state.filters.isInternal === 2 && (
-                    <CustomBadge variant="external" type="reset" applyFilters={applyFilters} />
-                  )}
-                  {state.filters.type.map(type => (
-                    <CustomBadge
-                      key={type.id}
-                      variant="type"
-                      content={type}
-                      type="reset"
-                      filters={state.filters}
-                      applyFilters={applyFilters}
-                    />
-                  ))}
-                  {state.filters.teacher.map(teacher => (
-                    <CustomBadge
-                      key={teacher.id}
-                      variant="teacher"
-                      content={teacher}
-                      type="reset"
-                      filters={state.filters}
-                      applyFilters={applyFilters}
-                    />
-                  ))}
-                  {state.filters.keyword.map(keyword => (
-                    <CustomBadge
-                      key={keyword.id}
-                      variant="keyword"
-                      content={keyword}
-                      type="reset"
-                      filters={state.filters}
-                      applyFilters={applyFilters}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </Card.Body>
-        </Card>
-      </div>
+          )}
+        </Card.Body>
+      </Card>
       {loading ? (
         <LoadingModal show={loading} onHide={() => setLoading(false)} />
       ) : (
