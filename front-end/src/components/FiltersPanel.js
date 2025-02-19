@@ -32,9 +32,9 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
       { value: 1, label: t('carriera.proposte_di_tesi.italy_thesis'), variant: 'italy', type: 'location' },
       { value: 2, label: t('carriera.proposte_di_tesi.abroad_thesis'), variant: 'abroad', type: 'location' },
     ],
-    mode: [
-      { value: 1, label: t('carriera.proposte_di_tesi.internal_thesis'), variant: 'internal', type: 'mode' },
-      { value: 2, label: t('carriera.proposte_di_tesi.external_thesis'), variant: 'external', type: 'mode' },
+    environment: [
+      { value: 1, label: t('carriera.proposte_di_tesi.internal_thesis'), variant: 'internal', type: 'environment' },
+      { value: 2, label: t('carriera.proposte_di_tesi.external_thesis'), variant: 'external', type: 'environment' },
     ],
   });
 
@@ -43,7 +43,7 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
     supervisors: filters.teacher.map(t => formatFilter(t, 'teacher')),
     types: filters.type.map(t => formatFilter(t, 'type')),
     location: getStaticOption('location', filters.isAbroad),
-    mode: getStaticOption('mode', filters.isInternal),
+    environment: getStaticOption('environment', filters.isInternal),
   });
 
   const loadOptions = (key, data, label) => {
@@ -68,7 +68,7 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
       supervisors: filters.teacher.map(t => ({ value: t.id, label: t.content, variant: 'teacher' })),
       types: filters.type.map(t => ({ value: t.id, label: t.content, variant: 'type' })),
       location: getStaticOption('location', filters.isAbroad),
-      mode: getStaticOption('mode', filters.isInternal),
+      environment: getStaticOption('environment', filters.isInternal),
     });
   }, [filters]);
 
@@ -94,7 +94,7 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
       selected.types.map(t => ({ id: t.value, content: t.label })),
     );
     applyFilters('isAbroad', selected.location?.value ? selected.location.value : 0);
-    applyFilters('isInternal', selected.mode?.value ? selected.mode.value : 0);
+    applyFilters('isInternal', selected.environment?.value ? selected.environment.value : 0);
     setFiltersOpen(false);
   }
 
@@ -174,7 +174,7 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
   return (
     <div className="filters-section">
       {renderSelect('location', false)}
-      {renderSelect('mode', false)}
+      {renderSelect('environment', false)}
       {renderSelect('types')}
       {renderSelect('supervisors')}
       {renderSelect('keywords')}
@@ -195,7 +195,7 @@ const CustomSingleValue = ({ data, setSelected }) => {
   const handleRemove = () => {
     setSelected(prev => ({
       ...prev,
-      [data.type === 'location' ? 'location' : 'mode']: 0,
+      [data.type === 'location' ? 'location' : 'environment']: 0,
     }));
   };
 
