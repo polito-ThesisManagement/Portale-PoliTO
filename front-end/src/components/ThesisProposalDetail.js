@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { ProgressBar } from 'react-bootstrap';
+import { Card, ProgressBar } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaFile, FaFileExcel, FaFilePdf, FaFileWord, FaFileZipper, FaFlag, FaLocationDot } from 'react-icons/fa6';
 import Linkify from 'react-linkify';
 
 import moment from 'moment';
@@ -36,34 +35,37 @@ function ThesisProposalDetail(props) {
   } = props.thesisProposal;
 
   return (
-    <div className="custom-container">
-      {topic && (
-        <div className="subsection-proposal-title">
-          <p>{topic}</p>
-        </div>
-      )}
-      <div className="important-detail">
-        {keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
-        {types.length > 0 && <Types types={types} />}
-        {<Environment isInternal={isInternal} isAbroad={isAbroad} />}
-        <MainSupervisor supervisor={supervisor} />
-        {internalCoSupervisors.length > 0 && <SecondarySupervisors internalCoSupervisors={internalCoSupervisors} />}
-        {externalCoSupervisors && (
-          <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
+    <div className="proposals-container">
+      <Card className="mb-3 roundCard py-2">
+        {topic && (
+          <Card.Header className="border-0">
+            <h3 className="thesis-topic">{topic}</h3>
+          </Card.Header>
         )}
-        {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
-        {requiredSkills && <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />}
-        {additionalNotes && <MyBlock title="carriera.proposta_di_tesi.note" content={additionalNotes} />}
-        {link && <MyBlock title="Link" content={link} />}
-        {attachmentUrl && <Attachment id={id} attachmentUrl={attachmentUrl} />}
-      </div>
-      <div style={{ paddingTop: '10px', paddingBottom: '20px' }}>
-        <div className="straight-line" />
-      </div>
-      <div className="important-detail">
-        {expirationDate && <Status expirationDate={expirationDate} />}
-        {creationDate && expirationDate && <TimeMap creationDate={creationDate} expirationDate={expirationDate} />}
-      </div>
+        <Card.Body className="important-detail pt-2">
+          {<Environment isInternal={isInternal} isAbroad={isAbroad} />}
+          {types.length > 0 && <Types types={types} />}
+          <Supervisors supervisors={[supervisor, ...internalCoSupervisors]} />
+          {externalCoSupervisors && (
+            <MyBlock title="carriera.proposta_di_tesi.relatori_esterni" content={externalCoSupervisors} />
+          )}
+          {description && <MyBlock title="carriera.proposta_di_tesi.descrizione" content={description} />}
+          {requiredSkills && (
+            <MyBlock title="carriera.proposta_di_tesi.conoscenze_richieste" content={requiredSkills} />
+          )}
+          {additionalNotes && <MyBlock title="carriera.proposta_di_tesi.note" content={additionalNotes} />}
+          {link && <MyBlock title="Link" content={link} />}
+          {attachmentUrl && <Attachment id={id} attachmentUrl={attachmentUrl} />}
+          {keywords.length > 0 ? <Keywords keywords={keywords} /> : <div className="mb-2" />}
+        </Card.Body>
+        <div className="mb-3">
+          <div className="straight-line" />
+        </div>
+        <Card.Footer className="border-0 important-detail">
+          {expirationDate && <Status expirationDate={expirationDate} />}
+          {creationDate && expirationDate && <TimeMap creationDate={creationDate} expirationDate={expirationDate} />}
+        </Card.Footer>
+      </Card>
     </div>
   );
 }
@@ -75,29 +77,28 @@ function Attachment({ id, attachmentUrl }) {
     const extension = attachmentUrl?.split('.').pop().toLowerCase().trim();
     switch (extension) {
       case 'pdf':
-        return <FaFilePdf size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+        return <i className="fa-solid fa-file-pdf fa-xl" style={{ flexShrink: '0' }} />;
       case 'xls':
       case 'xlsx':
-        return <FaFileExcel size={25} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+        return <i className="fa-solid fa-file-excel fa-xl" style={{ flexShrink: '0' }} />;
       case 'doc':
       case 'docx':
-        return <FaFileWord size={25} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+        return <i className="fa-solid fa-file-word fa-xl" style={{ flexShrink: '0' }} />;
       case 'zip':
       case 'rar':
       case '7z':
-        return <FaFileZipper size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+        return <i className="fa-solid fa-file-zipper fa-xl" style={{ flexShrink: '0' }} />;
       default:
-        return <FaFile size={26} style={{ color: 'var(--primary)', flexShrink: '0' }} />;
+        return <i className="fa-solid fa-file fa-xl" style={{ flexShrink: '0' }} />;
     }
   };
 
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+    <div className="detail-row d-flex align-items-center mb-2">
       <span className="detail-title">{t('carriera.proposta_di_tesi.allegato')}:</span>
       <a
         href={`https://didattica.polito.it/pls/portal30/sviluppo.tesi_proposte.download_alleg?idts=${id}&lang=IT`}
-        className="course-detail"
-        style={{ display: 'flex', alignItems: 'center' }}
+        className="course-detail d-flex align-items-center text-decoration-none"
       >
         {switchIcon(attachmentUrl)}
         <div style={{ marginLeft: '4px' }}>{attachmentUrl}</div>
@@ -120,7 +121,7 @@ function TimeMap({ creationDate, expirationDate }) {
   const formattedExpDate = end.format('DD/MM/YYYY');
 
   let progressBarColor;
-  if (remainingDuration >= 168) {
+  if (remainingDuration >= 336) {
     progressBarColor = 'var(--success-600)';
   } else if (remainingDuration >= 0) {
     progressBarColor = 'var(--warning-500)';
@@ -130,30 +131,39 @@ function TimeMap({ creationDate, expirationDate }) {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-          <FaLocationDot size={20} style={{ color: 'var(--primary)', flexShrink: '0' }} />
+      <div className="d-flex justify-content-between">
+        <div className="d-flex align-items-center">
+          <i
+            className="fa-solid fa-location-dot"
+            style={{ fontSize: '20px', flexShrink: '0', color: 'var(--section-description)' }}
+          />
           <span
-            className="course-detail"
+            className="detail-title"
             style={{ marginLeft: '4px', textAlign: 'left', fontWeight: 'var(--font-weight-medium)' }}
           >
             {t('carriera.proposte_di_tesi.created')} <span className="no-break">{formattedCreationDate}</span>
           </span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <div className="d-flex align-items-center">
           <span
-            className="course-detail"
+            className="detail-title"
             style={{ marginRight: '8px', textAlign: 'right', fontWeight: 'var(--font-weight-medium)' }}
           >
             {t('carriera.proposte_di_tesi.expires')} <span className="no-break">{formattedExpDate}</span>
           </span>
-          <FaFlag
-            size={20}
-            style={{ color: 'var(--primary)', flexShrink: '0', transform: 'ScaleX(-1)', marginRight: '6px' }}
+          <i
+            className="fa-solid fa-flag"
+            style={{
+              fontSize: '20px',
+              flexShrink: '0',
+              color: 'var(--section-description)',
+              transform: 'ScaleX(-1)',
+              marginRight: '6px',
+            }}
           />
         </div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+      <div className="d-flex w-100 align-items-center">
         <ProgressBar
           animated
           now={progress}
@@ -181,7 +191,7 @@ function TimeMap({ creationDate, expirationDate }) {
 function MyBlock({ title, content }) {
   const { t } = useTranslation();
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
+    <div className="detail-row d-flex align-items-baseline mb-2">
       <span className="detail-title">{t(title)}:</span>
       <span className="course-detail">
         <Linkify>{content}</Linkify>
@@ -191,32 +201,21 @@ function MyBlock({ title, content }) {
 }
 
 function Keywords({ keywords }) {
+  const { t } = useTranslation();
   return (
-    <div className="mb-3">
+    <div className="detail-row d-flex align-items-baseline mb-2">
+      <span className="detail-title">{t('carriera.proposte_di_tesi.keywords')}:</span>
       <CustomBadge variant="keyword" content={keywords.map(item => item.keyword)} />
     </div>
   );
 }
 
-function MainSupervisor({ supervisor }) {
+function Supervisors({ supervisors }) {
   const { t } = useTranslation();
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
-      <span className="detail-title">{t('carriera.proposta_di_tesi.relatore_principale')}:</span>
-      <CustomBadge variant="teacher" content={supervisor.firstName + ' ' + supervisor.lastName} />
-    </div>
-  );
-}
-
-function SecondarySupervisors({ internalCoSupervisors }) {
-  const { t } = useTranslation();
-  return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
-      <span className="detail-title">{t('carriera.proposta_di_tesi.relatori_secondari')}:</span>
-      <CustomBadge
-        variant="teacher"
-        content={internalCoSupervisors.map(supervisor => supervisor.firstName + ' ' + supervisor.lastName)}
-      />
+    <div className="detail-row d-flex align-items-baseline mb-2">
+      <span className="detail-title">{t('carriera.proposte_di_tesi.supervisors')}:</span>
+      <CustomBadge variant="teacher" content={supervisors.map(s => s.firstName + ' ' + s.lastName)} />
     </div>
   );
 }
@@ -224,8 +223,8 @@ function SecondarySupervisors({ internalCoSupervisors }) {
 function Types({ types }) {
   const { t } = useTranslation();
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
-      <span className="detail-title">{t('carriera.proposta_di_tesi.tipo')}:</span>
+    <div className="detail-row d-flex align-items-baseline mb-2">
+      <span className="detail-title">{t('carriera.proposte_di_tesi.types')}:</span>
       <CustomBadge variant="type" content={types.map(item => item.type)} />
     </div>
   );
@@ -234,15 +233,16 @@ function Types({ types }) {
 function Environment({ isInternal, isAbroad }) {
   const { t } = useTranslation();
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '8px' }}>
-      <span className="detail-title">{t('carriera.proposta_di_tesi.ambiente')}:</span>
-      {isInternal ? <CustomBadge variant="internal" /> : <CustomBadge variant="external" />}
-      {isAbroad && (
-        <div style={{ marginLeft: '4px' }}>
-          <CustomBadge variant="abroad" />
-        </div>
-      )}
-    </div>
+    <>
+      <div className="detail-row d-flex align-items-baseline mb-2">
+        <span className="detail-title">{t('carriera.proposte_di_tesi.location')}:</span>
+        <CustomBadge variant={isAbroad ? 'abroad' : 'italy'} />
+      </div>
+      <div className="detail-row d-flex align-items-baseline mb-2">
+        <span className="detail-title">{t('carriera.proposte_di_tesi.environment')}:</span>
+        {isInternal ? <CustomBadge variant="internal" /> : <CustomBadge variant="external" />}
+      </div>
+    </>
   );
 }
 
@@ -250,7 +250,7 @@ function Status({ expirationDate }) {
   const { t } = useTranslation();
 
   return (
-    <div className="detail-row" style={{ display: 'flex', alignItems: 'first baseline', marginBottom: '10px' }}>
+    <div className="detail-row d-flex align-items-baseline mb-2">
       <span className="detail-title">{t('carriera.proposta_di_tesi.stato')}:</span>
       <CustomBadge variant="status" content={expirationDate} />
     </div>
@@ -301,15 +301,8 @@ Keywords.propTypes = {
   ).isRequired,
 };
 
-MainSupervisor.propTypes = {
-  supervisor: PropTypes.shape({
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-SecondarySupervisors.propTypes = {
-  internalCoSupervisors: PropTypes.arrayOf(
+Supervisors.propTypes = {
+  supervisors: PropTypes.arrayOf(
     PropTypes.shape({
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,
