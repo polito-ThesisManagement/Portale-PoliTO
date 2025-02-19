@@ -39,6 +39,20 @@ describe('Theme switching', () => {
     cy.visit('http://localhost:3000');
   });
 
+  // Function to create a fake matchMedia object
+  function createFakeMatchMedia(query) {
+    return {
+      matches: query === '(prefers-color-scheme: dark)',
+      addListener: () => {},
+      removeListener: () => {},
+    };
+  }
+
+  // Function to stub matchMedia on the window object
+  function stubMatchMedia(win) {
+    cy.stub(win, 'matchMedia').callsFake(createFakeMatchMedia);
+  }
+
   it('should toggle themes and correctly apply the system theme when auto is selected', () => {
     // Step 1: Change theme to dark
     cy.get('#dark').click();
@@ -52,25 +66,37 @@ describe('Theme switching', () => {
     // Verify theme is light through the data-theme attribute
     cy.get('html').should('have.attr', 'data-theme', 'light');
 
-    // Function to create a fake matchMedia object
-    function createFakeMatchMedia(query) {
-      return {
-        matches: query === '(prefers-color-scheme: dark)',
-        addListener: () => {},
-        removeListener: () => {},
-      };
-    }
-
-    // Function to stub matchMedia on the window object
-    function stubMatchMedia(win) {
-      cy.stub(win, 'matchMedia').callsFake(createFakeMatchMedia);
-    }
-
     // Cypress test to stub matchMedia for dark mode simulation
     cy.window().then(stubMatchMedia);
 
     // Step 3: Change theme to auto
     cy.get('#auto').click();
+
+    // Verify theme is dark through the data-theme attribute
+    cy.get('html').should('have.attr', 'data-theme', 'dark');
+  });
+
+  it('should toggle themes and correctly apply the system theme when auto is selected (mobile view)', () => {
+    // Reduce the viewport to mobile sizes
+    cy.viewport('iphone-x');
+
+    // Step 1: Change theme to light
+    cy.get('input[name="theme-segmented-control-reduced"]').click();
+
+    // Verify theme is light through the data-theme attribute
+    cy.get('html').should('have.attr', 'data-theme', 'light');
+
+    // Step 2: Change theme to dark
+    cy.get('input[name="theme-segmented-control-reduced"]').click();
+
+    // Verify theme is dark through the data-theme attribute
+    cy.get('html').should('have.attr', 'data-theme', 'dark');
+
+    // Cypress test to stub matchMedia for dark mode simulation
+    cy.window().then(stubMatchMedia);
+
+    // Step 3: Change theme to auto
+    cy.get('input[name="theme-segmented-control-reduced"]').click();
 
     // Verify theme is dark through the data-theme attribute
     cy.get('html').should('have.attr', 'data-theme', 'dark');

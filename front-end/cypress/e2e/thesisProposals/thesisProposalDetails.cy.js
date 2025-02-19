@@ -6,14 +6,41 @@ describe('Thesis proposal details page', () => {
     cy.viewport(1920, 1080);
   });
 
+  it('should navigate from the thesis proposals page to the thesis proposal details page', () => {
+    // Step 1: Navigate to the thesis proposals page
+    cy.get('a[href="/carriera"]').should('be.visible').click();
+
+    // Step 2: Click on the first thesis proposal
+    cy.get('a[href="/carriera/proposte_di_tesi"]').should('be.visible').click();
+    cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
+    cy.get('.roundCard .card-footer .btn').first().click();
+
+    // Step 3: Check the page breadcrumb
+    cy.get('.breadcrumb-item').should('have.length', 3);
+    cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
+    cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+
+    // Step 4 Click on the breadcrumb of the thesis proposals details page
+    cy.get('.breadcrumb-item').contains('Dettagli proposta di tesi').click();
+
+    // Step 5: Click on the breadcrumb of the thesis proposals page
+    cy.get('.breadcrumb-item').contains('Proposte di tesi').click();
+
+    // Step 6: Check the page breadcrumb
+    cy.get('.breadcrumb-item').should('have.length', 2);
+    cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
+    cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
+  });
+
   it('should see thesis proposal details page (not abroad)', () => {
     // Step 1: Navigate to the thesis proposals page
     cy.get('a[href="/carriera"]').should('be.visible').click();
     cy.get('a[href="/carriera/proposte_di_tesi"]').should('be.visible').click();
 
     // Step 2: Click on the first thesis proposal
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-    cy.get('.list-section .thesis-overview .show-more-button').first().click();
+    cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
+    cy.get('.roundCard .card-footer .btn').first().click();
 
     // Step 3: Check the page breadcrumb
     cy.get('.breadcrumb-item').should('have.length', 3);
@@ -27,7 +54,7 @@ describe('Thesis proposal details page', () => {
     ).click();
 
     // Step 5: Check the thesis proposal details
-    cy.get('.subsection-proposal-title').should('be.visible');
+    cy.get('h3.thesis-topic').should('be.visible');
     cy.get('.course-detail').should('be.visible');
     cy.get('.badge.teacher_light').should('be.visible');
   });
@@ -42,7 +69,7 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
 
     // Step 2: Check the thesis proposal details
-    cy.get('.subsection-proposal-title').should('be.visible');
+    cy.get('h3.thesis-topic').should('be.visible');
     cy.get('.course-detail').should('be.visible');
     cy.get('.badge.teacher_light').should('be.visible');
     cy.get('.badge.abroad_light').contains("Tesi all'estero").should('be.visible');
@@ -58,14 +85,14 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
 
     // Step 2: Check the thesis proposal details
-    cy.get('.subsection-proposal-title').should('be.visible');
+    cy.get('h3.thesis-topic').should('be.visible');
     cy.get('.course-detail').should('be.visible');
     cy.get('.badge.teacher_light').should('be.visible');
     cy.get('.detail-title').contains('Allegato').should('be.visible');
   });
 
   it('should see expired thesis proposal details page', () => {
-    cy.visit('http://localhost:3000/carriera/proposte_di_tesi/10410');
+    cy.visit('http://localhost:3000/carriera/proposte_di_tesi/13356');
 
     // Step 1: Check the page breadcrumb
     cy.get('.breadcrumb-item').should('have.length', 3);
@@ -74,12 +101,12 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
 
     // Step 2: Check the thesis proposal details
-    cy.get('.subsection-proposal-title').should('be.visible');
+    cy.get('h3.thesis-topic').should('be.visible');
     cy.get('.course-detail').should('be.visible');
     cy.get('.badge.teacher_light').should('be.visible');
 
     // Step 3: Check the expired badge
-    cy.get('.badge.error_light').contains('La proposta di tesi risulta scaduta').should('be.visible');
+    cy.get('.badge.error_light').contains('Scaduta').should('be.visible');
   });
 });
 
@@ -99,8 +126,8 @@ describe('Thesis proposal details page - responsiveness', () => {
     cy.get('a[href="/carriera/proposte_di_tesi"]').click();
 
     // Step 3: Click on the first thesis proposal
-    cy.get('.list-section .thesis-overview').should('have.length.greaterThan', 0);
-    cy.get('.list-section .thesis-overview .show-more-button').first().click();
+    cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
+    cy.get('.roundCard .card-footer .btn').first().click();
 
     // Step 4: Check the page breadcrumb
     cy.get('.breadcrumb-item').should('have.length', 3);
@@ -109,7 +136,7 @@ describe('Thesis proposal details page - responsiveness', () => {
     cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
 
     // Step 5: Check the thesis proposal details
-    cy.get('.subsection-proposal-title').should('be.visible');
+    cy.get('h3.thesis-topic').should('be.visible');
     cy.get('.course-detail').should('be.visible');
     cy.get('.badge.teacher_light').should('be.visible');
 
@@ -119,7 +146,7 @@ describe('Thesis proposal details page - responsiveness', () => {
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
     cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
-    cy.get('.subsection-proposal-title').should('be.visible');
+    cy.get('h3.thesis-topic').should('be.visible');
     cy.get('.course-detail').should('be.visible');
     cy.get('.badge.teacher_light').should('be.visible');
   });
