@@ -33,3 +33,13 @@
   align-items: baseline;
   gap: 0.5rem;
 }
+
+@media (max-width: 576px) {
+  .info-container {
+    display: block;
+  }
+
+  .title-container {
+    padding: 0.25rem 0;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Button } from 'react-bootstrap';
+import { Badge, Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import Select from 'react-select';
 
@@ -12,11 +12,14 @@ import { ThemeContext } from '../App';
 import '../styles/custom-select.css';
 import { getSystemTheme } from '../utils/utils';
 import CustomBadge from './CustomBadge';
+import CustomToggle from './CustomToggle';
 
-export default function FiltersPanel({ filters, applyFilters, resetFilters, setFiltersOpen }) {
+export default function FiltersDropdown({ filters, applyFilters, resetFilters }) {
   const { theme } = useContext(ThemeContext);
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
   const { i18n } = useTranslation();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const filterOptions = {
     keywords: { api: API.getThesisProposalsKeywords, label: 'keyword' },
@@ -45,6 +48,10 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
     location: getStaticOption('location', filters.isAbroad),
     environment: getStaticOption('environment', filters.isInternal),
   });
+
+  const handleToggle = isOpen => {
+    setIsOpen(isOpen);
+  };
 
   const loadOptions = (key, data, label) => {
     setOptions(prev => ({
@@ -95,12 +102,12 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
     );
     applyFilters('isAbroad', selected.location?.value ? selected.location.value : 0);
     applyFilters('isInternal', selected.environment?.value ? selected.environment.value : 0);
-    setFiltersOpen(false);
+    setIsOpen(false);
   }
 
   function handleResetFilters() {
     resetFilters();
-    setFiltersOpen(false);
+    setIsOpen(false);
   }
 
   function renderSelect(name, isMulti = true) {
@@ -172,22 +179,45 @@ export default function FiltersPanel({ filters, applyFilters, resetFilters, setF
   }
 
   return (
-    <div className="filters-section">
-      {renderSelect('location', false)}
-      {renderSelect('environment', false)}
-      {renderSelect('types')}
-      {renderSelect('supervisors')}
-      {renderSelect('keywords')}
-      <hr className={`hr-${appliedTheme} w-100 my-2`} />
-      <div className="d-flex w-100 justify-content-between">
-        <Button className={`btn-outlined-${appliedTheme}`} onClick={handleResetFilters} size="sm">
-          {t('carriera.proposte_di_tesi.reset')}
-        </Button>
-        <Button className={`btn-primary-${appliedTheme}`} onClick={handleApplyFilters} size="sm">
-          {t('carriera.proposte_di_tesi.apply')}
-        </Button>
-      </div>
-    </div>
+    <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id={`dropdown-filters`}>
+      <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme} custom-dropdown-toggle`}>
+        <i className="fa-regular fa-filter" />
+        {t('carriera.proposte_di_tesi.filtri')}
+        {(filters.isInternal != 0 ||
+          filters.isAbroad != 0 ||
+          filters.keyword.length > 0 ||
+          filters.type.length > 0 ||
+          filters.teacher.length > 0) && (
+          <Badge className={`squared-badge-${appliedTheme} badge-inline`}>
+            {filters.keyword.length +
+              filters.type.length +
+              filters.teacher.length +
+              (filters.isInternal != 0 ? 1 : 0) +
+              (filters.isAbroad != 0 ? 1 : 0)}
+          </Badge>
+        )}
+        {isOpen ? <i className="fa-solid fa-chevron-up" /> : <i className="fa-solid fa-chevron-down" />}
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu className="custom-dropdown-menu" style={{ zIndex: '2' }}>
+        <div className="filters-section">
+          {renderSelect('location', false)}
+          {renderSelect('environment', false)}
+          {renderSelect('types')}
+          {renderSelect('supervisors')}
+          {renderSelect('keywords')}
+          <hr className={`hr-${appliedTheme} w-100 my-2`} />
+          <div className="d-flex w-100 justify-content-between">
+            <Button className={`btn-outlined-${appliedTheme}`} onClick={handleResetFilters} size="sm">
+              {t('carriera.proposte_di_tesi.reset')}
+            </Button>
+            <Button className={`btn-primary-${appliedTheme}`} onClick={handleApplyFilters} size="sm">
+              {t('carriera.proposte_di_tesi.apply')}
+            </Button>
+          </div>
+        </div>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }
 
@@ -236,9 +266,8 @@ CustomMultiValue.propTypes = {
   removeProps: PropTypes.object.isRequired,
 };
 
-FiltersPanel.propTypes = {
+FiltersDropdown.propTypes = {
   filters: PropTypes.object.isRequired,
   applyFilters: PropTypes.func.isRequired,
   resetFilters: PropTypes.func.isRequired,
-  setFiltersOpen: PropTypes.func.isRequired,
 };

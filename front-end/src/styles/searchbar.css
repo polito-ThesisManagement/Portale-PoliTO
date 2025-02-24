@@ -19,7 +19,8 @@
 .search-icon {
   position: absolute;
   z-index: 3;
-  right: 13px;
-  top: 13px;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--gray-500);
 }
