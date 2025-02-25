@@ -31,7 +31,11 @@
 .info-container {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: 1rem;
+}
+
+.text-container {
+  display: block;
 }
 
 @media (max-width: 576px) {
@@ -40,6 +44,6 @@
   }
 
   .title-container {
-    padding: 0.25rem 0;
+    padding-bottom: 0.5rem !important;
   }
 }

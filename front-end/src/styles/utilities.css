@@ -14,10 +14,6 @@
   margin-left: var(--sidebar-width-reduced);
 }
 
-.detail-title {
-  min-width: 200px;
-}
-
 @media (max-width: 991px) {
   .custom-content {
     padding: 1rem 1rem 0 1rem;

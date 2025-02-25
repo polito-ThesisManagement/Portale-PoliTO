@@ -12,17 +12,15 @@
   display: block;
 }
 
-.important-detail {
-  color: var(--section-title) !important;
-  font-weight: var(--font-weight-medium) !important;
-  font-size: var(--font-size-sm) !important;
-}
-
-.course-detail {
+.info-detail {
   color: var(--section-description);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-sm);
   white-space: pre-wrap;
+}
+
+.info-detail.aligned {
+  margin-left: 25.5px;
 }
 
 .custom-link {
@@ -68,4 +66,10 @@
   display: block;
   margin-bottom: 15px;
   margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+  .info-detail.aligned {
+    margin-left: 0;
+  }
 }
