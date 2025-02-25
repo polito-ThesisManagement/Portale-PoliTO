@@ -138,7 +138,7 @@ function TimeMap({ creationDate, expirationDate }) {
             style={{ fontSize: '20px', flexShrink: '0', color: 'var(--section-description)' }}
           />
           <span
-            className="detail-title"
+            className="course-detail"
             style={{ marginLeft: '4px', textAlign: 'left', fontWeight: 'var(--font-weight-medium)' }}
           >
             {t('carriera.proposte_di_tesi.created')} <span className="no-break">{formattedCreationDate}</span>
@@ -146,7 +146,7 @@ function TimeMap({ creationDate, expirationDate }) {
         </div>
         <div className="d-flex align-items-center">
           <span
-            className="detail-title"
+            className="course-detail"
             style={{ marginRight: '8px', textAlign: 'right', fontWeight: 'var(--font-weight-medium)' }}
           >
             {t('carriera.proposte_di_tesi.expires')} <span className="no-break">{formattedExpDate}</span>
@@ -158,7 +158,7 @@ function TimeMap({ creationDate, expirationDate }) {
               flexShrink: '0',
               color: 'var(--section-description)',
               transform: 'ScaleX(-1)',
-              marginRight: '6px',
+              marginRight: '2px',
             }}
           />
         </div>
