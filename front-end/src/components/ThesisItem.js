@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -23,36 +23,11 @@ function ThesisItem(props) {
       <Card className="mb-3 roundCard h-100 py-2">
         <Card.Header className="border-0">
           <Row>
-            <Col xs={10} sm={10} md={10} lg={10} xl={10}>
+            <Col xs={10} sm={10} md={11} lg={10} xl={10}>
               <h3 className="thesis-topic">{props.topic}</h3>
             </Col>
-            <Col xs={2} sm={2} md={2} lg={2} xl={2} className="thesis-topic text-end">
-              <OverlayTrigger
-                key={`${props.isAbroad}`}
-                delay={{ show: 250, hide: 400 }}
-                overlay={
-                  <Tooltip id={`tooltip-${props.isAbroad}`}>
-                    {props.isAbroad
-                      ? t('carriera.proposte_di_tesi.abroad_thesis')
-                      : t('carriera.proposte_di_tesi.italy_thesis')}
-                  </Tooltip>
-                }
-                placement="bottom"
-              >
-                {props.isAbroad ? (
-                  <i
-                    className="fa-sharp-duotone fa-solid fa-earth-americas fa-xl"
-                    style={{
-                      '--fa-primary-color': 'var(--green-500)',
-                      '--fa-secondary-color': 'var(--lightBlue-600)',
-                      '--fa-secondary-opacity': '1',
-                      height: '12px',
-                    }}
-                  />
-                ) : (
-                  <span className="fi fi-it" style={{ borderRadius: '3px' }} />
-                )}
-              </OverlayTrigger>
+            <Col xs={2} sm={2} md={1} lg={2} xl={2} className="thesis-topic text-end">
+              <CustomBadge variant={props.isAbroad ? 'abroad' : 'italy'} />
             </Col>
           </Row>
         </Card.Header>
