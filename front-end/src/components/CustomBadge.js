@@ -39,8 +39,8 @@ moment.locale('it');
  *    - "NUMERICA" or "NUMERICAL"
  * @param {object|array<object>!string|array<string>} content - If available, populate the content of the badge. It could be a single object (with 'content' and 'id' attributes) or an array of objects, a single string or an array of strings.
  * If you provide an array, the component will automatically render a tag for every item.
- * @param {type} - Optional. It is used to specify if the badge is a 'reset' badge. If it is, the badge will be rendered as a button with a 'delete' icon at the end and will reset the filters when clicked.
- * @param {object} filters - The filters object. It's required only if the badge is a filter.
+ * @param {type} - Optional. It is used to specify if the badge is a 'reset' badge. If it is, the badge will be rendered as a button with a 'delete' icon at the end and will reset the filter when clicked.
+ * @param {object} filters - The filters object. It's required only if the badge is a 'reset' badge.
  * @param {function} applyFilters - The function to apply filters. It's required only if the badge is a filter (e.g. a teacher or a keyword filter).
  * @returns {JSX.Element} - The badge component.
  */
@@ -91,70 +91,112 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
   const { t } = useTranslation();
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
-  const renderContent = () => {
-    const contentArray = Array.isArray(content) ? content : [content];
-    const elements = [];
-    let truncatedContentArray = [];
-
-    const handleRemoveFilter = (filterType, filterArray, item) => {
-      applyFilters(
-        filterType,
-        filterArray.filter(filter => filter.id !== item.id),
-      );
-    };
-
-    let displayedContent = [...contentArray];
-
-    if (type === 'truncated' && contentArray.length > 2) {
-      truncatedContentArray = contentArray.slice(2); // Store hidden items
-      displayedContent = [...contentArray.slice(0, 2), t('carriera.proposte_di_tesi.others') + '...']; // Only show first 2 + "Others..."
-    }
-
-    displayedContent.forEach((item, index) => {
-      if (type === 'reset') {
-        elements.push(
-          <Button
-            key={`${item.content}-${index}`}
-            className={`custom-badge badge ${variant}_${appliedTheme} reset clickable`}
-            onClick={() => {
-              if (applyFilters) handleRemoveFilter(variant, filters[variant], item);
-            }}
-            {...removeProps}
-          >
-            <div className="custom-badge-icon">{renderIcon(item.content)}</div>
-            <span className="custom-badge-text">{item.content}</span>
-            <div className="custom-badge-icon">
-              <i className="fa-regular fa-circle-xmark fa-lg" />
-            </div>
-          </Button>,
-        );
-      } else if (type === 'truncated' && item === t('carriera.proposte_di_tesi.others') + '...') {
-        elements.push(
-          <OverlayTrigger
-            key={`${item}-${index}`}
-            delay={{ show: 250, hide: 400 }}
-            overlay={<Tooltip id={`tooltip-${truncatedContentArray}`}>{truncatedContentArray.join(', ')}</Tooltip>}
-            placement="top"
-          >
-            <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2 clickable truncated`}>
-              <span className="custom-badge-text">{item}</span>
-            </div>
-          </OverlayTrigger>,
-        );
+  const handleRemoveFilter = () => {
+    if (applyFilters) {
+      if (variant === 'internal' || variant === 'external') {
+        applyFilters('isInternal', 0);
+      } else if (variant === 'italy' || variant === 'abroad') {
+        applyFilters('isAbroad', 0);
       } else {
-        elements.push(
-          <div
-            key={`${item}-${index}`}
-            className={`custom-badge badge ${variant}_${appliedTheme} ${variant === 'type' ? 'pe-2' : ''}`}
-          >
-            {variant === 'type' && <div className="custom-badge-icon">{renderIcon(item)}</div>}
-            <div className="custom-badge-text">{item}</div>
-          </div>,
+        applyFilters(
+          variant,
+          filters[variant].filter(filter => filter.id !== content.id),
         );
       }
-    });
+    }
+  };
 
-    return elements;
+  const renderSimpleBadge = () => {
+    const contentArray = Array.isArray(content) ? content : [content];
+    return contentArray.map((item, index) => (
+      <div
+        key={`${item}-${index}`}
+        className={`custom-badge badge ${variant}_${appliedTheme} ${variant === 'type' ? 'pe-2' : ''}`}
+      >
+        {variant === 'type' && <div className="custom-badge-icon">{renderIcon(item)}</div>}
+        <div className="custom-badge-text">{item}</div>
+      </div>
+    ));
+  };
+
+  const renderStaticBadge = () => {
+    return (
+      <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2`}>
+        <div className="custom-badge-icon">{renderIcon()}</div>
+        {renderTranslatedContent()}
+      </div>
+    );
+  };
+
+  const renderTruncatedBadge = () => {
+    const contentArray = Array.isArray(content) ? content : [content];
+    const truncatedContentArray = contentArray.slice(2);
+    content = [...contentArray.slice(0, 2)];
+    return (
+      <>
+        {renderSimpleBadge()}
+        <OverlayTrigger
+          delay={{ show: 250, hide: 400 }}
+          overlay={<Tooltip id={`tooltip-${truncatedContentArray}`}>{truncatedContentArray.join(', ')}</Tooltip>}
+          placement="top"
+        >
+          <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2 clickable truncated`}>
+            <span className="custom-badge-text">{t('carriera.proposte_di_tesi.others') + '...'}</span>
+          </div>
+        </OverlayTrigger>
+      </>
+    );
+  };
+
+  const renderResetBadge = () => {
+    const contentText = content?.content || null;
+    return (
+      <Button
+        key="custom-badge-button"
+        className={`custom-badge badge ${variant}_${appliedTheme} reset clickable`}
+        onClick={() => {
+          handleRemoveFilter();
+        }}
+        {...removeProps}
+      >
+        <div className="custom-badge-icon">{renderIcon(contentText)}</div>
+        {contentText ? <span className="custom-badge-text">{contentText}</span> : renderTranslatedContent()}
+        <div className="custom-badge-icon">
+          <i className="fa-regular fa-circle-xmark fa-lg" />
+        </div>
+      </Button>
+    );
+  };
+
+  const renderPositionBadge = () => {
+    return (
+      <OverlayTrigger
+        key={`${variant}`}
+        delay={{ show: 250, hide: 400 }}
+        overlay={
+          <Tooltip id={`tooltip-${variant}`}>
+            {variant === 'abroad'
+              ? t('carriera.proposte_di_tesi.abroad_thesis')
+              : t('carriera.proposte_di_tesi.italy_thesis')}
+          </Tooltip>
+        }
+        placement="bottom"
+      >
+        {variant === 'abroad' ? (
+          <i
+            className="fa-sharp-duotone fa-solid fa-earth-americas fa-xl"
+            style={{
+              '--fa-primary-color': 'var(--green-500)',
+              '--fa-secondary-color': 'var(--lightBlue-600)',
+              '--fa-secondary-opacity': '1',
+              height: '12px',
+            }}
+          />
+        ) : (
+          <span className="fi fi-it" style={{ borderRadius: '3px' }} />
+        )}
+      </OverlayTrigger>
+    );
   };
 
   const renderIcon = content => {
@@ -180,17 +222,12 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
             }}
           />
         );
-      case 'status':
-        switch (content) {
-          case 'success':
-            return <i className="fa-regular fa-circle-check fa-lg" />;
-          case 'warning':
-            return <i className="fa-regular fa-circle-exclamation fa-lg" />;
-          case 'error':
-            return <i className="fa-regular fa-circle-xmark fa-lg" />;
-          default:
-            return <i className="fa-regular fa-circle-xmark fa-lg" />;
-        }
+      case 'success':
+        return <i className="fa-regular fa-circle-check fa-lg" />;
+      case 'warning':
+        return <i className="fa-regular fa-circle-exclamation fa-lg" />;
+      case 'error':
+        return <i className="fa-regular fa-circle-xmark fa-lg" />;
       case 'type':
         switch (content.toLowerCase()) {
           // analisi dati
@@ -249,7 +286,7 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     }
   };
 
-  const renderTranslatedContent = type => {
+  const renderTranslatedContent = () => {
     switch (variant) {
       case 'internal':
         return t('carriera.proposte_di_tesi.internal_thesis');
@@ -259,17 +296,12 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
         return t('carriera.proposte_di_tesi.italy_thesis');
       case 'abroad':
         return t('carriera.proposte_di_tesi.abroad_thesis');
-      case 'status':
-        switch (type) {
-          case 'success':
-            return t('carriera.proposta_di_tesi.disponibile');
-          case 'warning':
-            return t('carriera.proposta_di_tesi.in_scadenza');
-          case 'error':
-            return t('carriera.proposta_di_tesi.scaduta');
-          default:
-            return t('carriera.proposta_di_tesi.badge_errato');
-        }
+      case 'success':
+        return t('carriera.proposta_di_tesi.disponibile');
+      case 'warning':
+        return t('carriera.proposta_di_tesi.in_scadenza');
+      case 'error':
+        return t('carriera.proposta_di_tesi.scaduta');
       default:
         return t('carriera.proposta_di_tesi.badge_errato');
     }
@@ -309,78 +341,51 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
   }
 
   const renderBadge = () => {
-    const elements = [];
-
-    const getStatusBadgeType = content => {
-      const start = moment();
-      const end = moment(content);
-      const remainingTime = end.diff(start, 'seconds') / 86400;
-      if (remainingTime > 14) return 'success';
-      if (remainingTime <= 14 && remainingTime > 0) return 'warning';
-      return 'error';
-    };
-
-    if (variant === 'internal' || variant === 'external' || variant === 'italy' || variant === 'abroad') {
-      if (type === 'reset') {
-        elements.push(
-          <Button
-            key="custom-badge-button"
-            className={`custom-badge badge ${variant}_${appliedTheme} reset clickable`}
-            onClick={() => {
-              if (applyFilters) {
-                if (variant === 'internal') {
-                  applyFilters('isInternal', 0);
-                } else if (variant === 'external') {
-                  applyFilters('isInternal', 0);
-                } else {
-                  applyFilters('isAbroad', 0);
-                }
-              }
-            }}
-            {...removeProps}
-          >
-            <div className="custom-badge-icon">{renderIcon()}</div>
-            <div className="custom-badge-text">{renderTranslatedContent()}</div>
-            <div className="custom-badge-icon">
-              <i className="fa-regular fa-circle-xmark fa-lg" />
-            </div>
-          </Button>,
-        );
-      } else {
-        elements.push(
-          <div key="custom-badge-div" className={`custom-badge badge ${variant}_${appliedTheme} pe-2`}>
-            <div className="custom-badge-icon">{renderIcon()}</div>
-            <div className="custom-badge-text">{renderTranslatedContent()}</div>
-          </div>,
-        );
-      }
-    } else if (variant === 'status') {
-      const statusVariant = getStatusBadgeType(content);
-      elements.push(
-        <div key="custom-badge-div" className={`custom-badge badge ${statusVariant}_${appliedTheme} pe-2`}>
-          <div className="custom-badge-icon">{renderIcon(statusVariant)}</div>
-          <div className="custom-badge-text">{renderTranslatedContent(statusVariant)}</div>
-        </div>,
-      );
-    } else {
-      elements.push(renderContent());
+    switch (type) {
+      case 'reset':
+        return <div className="custom-badge-container">{renderResetBadge()}</div>;
+      case 'truncated':
+        return <div className="custom-badge-container">{renderTruncatedBadge()}</div>;
+      default:
+        switch (variant) {
+          case 'italy':
+          case 'abroad':
+            return renderPositionBadge();
+          case 'internal':
+          case 'external':
+            return <div className="custom-badge-container">{renderStaticBadge()}</div>;
+          case 'status': {
+            variant = getStatusBadgeType(content);
+            return <div className="custom-badge-container">{renderStaticBadge()}</div>;
+          }
+          default:
+            return <div className="custom-badge-container">{renderSimpleBadge()}</div>;
+        }
     }
-
-    return elements;
   };
 
-  return <div className="custom-badge-container">{renderBadge()}</div>;
+  return <>{renderBadge()}</>;
 }
+
+const getStatusBadgeType = content => {
+  const start = moment();
+  const end = moment(content);
+  const remainingTime = end.diff(start, 'seconds') / 86400;
+  if (remainingTime > 14) return 'success';
+  if (remainingTime <= 14 && remainingTime > 0) return 'warning';
+  return 'error';
+};
 
 CustomBadge.propTypes = {
   variant: PropTypes.string.isRequired,
   content: PropTypes.oneOfType([
-    PropTypes.object,
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.object),
-    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.shape({ content: PropTypes.string, id: PropTypes.number }),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.shape({ content: PropTypes.string, id: PropTypes.number })]),
+    ),
   ]),
-  type: PropTypes.string,
+  type: PropTypes.oneOf(validTypes),
   filters: PropTypes.object,
   applyFilters: PropTypes.func,
   removeProps: PropTypes.object,
