@@ -76,7 +76,10 @@ export default function Searchbar(props) {
         <i className="fa-solid fa-magnifying-glass search-icon" />
       </InputGroup>
       {searchWord !== '' && (
-        <ListGroup className="custom-list-group w-100" style={{ zIndex: '3' }}>
+        <ListGroup
+          className="custom-list-group"
+          style={props.mobile ? { width: 'calc(100% - 15px)', marginTop: '40px' } : { width: '100%' }}
+        >
           {filteredData.slice(0, 3).map(service => (
             <ListGroup.Item
               className="medium-weight custom-list-group-item"
