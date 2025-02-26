@@ -2,12 +2,19 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { Badge, Button, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaArrowDownShortWide, FaArrowUpShortWide, FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa6';
 
+import {
+  faArrowDownShortWide,
+  faArrowUpShortWide,
+  faCheck,
+  faChevronDown,
+  faChevronUp,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../App';
-import '../styles/CustomDropdown.css';
+import '../styles/custom-dropdown.css';
 import { getSystemTheme } from '../utils/utils';
 import CustomMenu from './CustomMenu';
 import CustomToggle from './CustomToggle';
@@ -61,14 +68,16 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
     <Dropdown onToggle={handleToggle} show={isOpen} autoClose="outside" id="dropdown-sort">
       <Dropdown.Toggle as={CustomToggle} className={`btn-${appliedTheme}  custom-dropdown-toggle`}>
         {selectedSorting.orderBy === 'ASC' ? (
-          <FaArrowUpShortWide
+          <FontAwesomeIcon
+            icon={faArrowUpShortWide}
             onClick={e => {
               e.stopPropagation();
               handleChangeOrderExternal('DESC');
             }}
           />
         ) : (
-          <FaArrowDownShortWide
+          <FontAwesomeIcon
+            icon={faArrowDownShortWide}
             onClick={e => {
               e.stopPropagation();
               handleChangeOrderExternal('ASC');
@@ -77,19 +86,17 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
         )}
         {t('carriera.proposte_di_tesi.order')}
         {/* Display the count of applied sorting */}
-        {sorting.sortBy !== 'id' && (
-          <Badge pill bg="secondary" className="top-0">
-            1
-          </Badge>
-        )}
-        {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+        {sorting.sortBy !== 'id' && <Badge className={`top-0 squared-badge-${appliedTheme}`}>1</Badge>}
+        {isOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
       </Dropdown.Toggle>
       <Dropdown.Menu as={CustomMenu} key={selectedSorting} className="custom-dropdown-menu">
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           {sortFields.map(sortBy => (
             <Dropdown.Item className="custom-dropdown-item" key={'sort' + sortBy} onClick={() => handleSelect(sortBy)}>
               <div className="d-flex align-items-center w-100">
-                <div style={{ width: '1.5em' }}>{selectedSorting.sortBy === sortBy && <FaCheck />}</div>
+                <div style={{ width: '1.5em' }}>
+                  {selectedSorting.sortBy === sortBy && <FontAwesomeIcon icon={faCheck} />}
+                </div>
                 {t(`carriera.proposte_di_tesi.${sortBy}`)}
               </div>
             </Dropdown.Item>
@@ -98,18 +105,17 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
 
         <Dropdown.Divider style={{ margin: '0' }} className={`hr-${appliedTheme}`} />
         {/* Buttons outside the scrollable area */}
-        <div className="d-flex justify-content-between ms-2 me-3 mt-2 mb-1">
-          <Button className={`link-${appliedTheme}-dropdown`} onClick={() => handleReset()} variant="link" size="sm">
-            Reset
+        <div className="d-flex justify-content-between ms-2 me-2 mt-2 mb-1 gap-4">
+          <Button className={`btn-outlined-${appliedTheme}`} onClick={() => handleReset()} size="sm">
+            {t('carriera.proposte_di_tesi.reset')}
           </Button>
           <Button
-            className={`btn-${appliedTheme} btn-dropdown`}
+            className={`btn-primary-${appliedTheme}`}
             id="dropdown-button"
             onClick={() => handleApply(selectedSorting)}
-            variant="outline-primary"
             size="sm"
           >
-            OK
+            {t('carriera.proposte_di_tesi.apply')}
           </Button>
         </div>
       </Dropdown.Menu>

@@ -54,7 +54,7 @@ async function getTargetedThesisProposals(lang, page, limit, filters, search, so
   }
 }
 
-async function getThesisProposalsTypes(search, lang) {
+async function getThesisProposalsTypes(lang, search) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/types`, {
       params: {
@@ -68,7 +68,7 @@ async function getThesisProposalsTypes(search, lang) {
   }
 }
 
-async function getThesisProposalsKeywords(search, lang) {
+async function getThesisProposalsKeywords(lang, search) {
   try {
     const response = await axios.get(`${URL}/thesis-proposals/keywords`, {
       params: {
@@ -116,7 +116,11 @@ const buildParams = (lang, page, limit, filters, search, sorting) => {
   };
 
   if (filters.isAbroad) {
-    params.isAbroad = filters.isAbroad;
+    if (filters.isAbroad === 1) {
+      params.isAbroad = false;
+    } else if (filters.isAbroad === 2) {
+      params.isAbroad = true;
+    }
   }
   if (filters.isInternal) {
     if (filters.isInternal === 1) {

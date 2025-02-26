@@ -1,20 +1,7 @@
 .section-title {
-  color: var(--title);
+  color: var(--section-title);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-md);
-}
-
-.subsection-title {
-  color: var(--title);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-md);
-}
-
-.subsection-proposal-title {
-  color: var(--primary);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-lg);
-  margin-bottom: 8px;
 }
 
 .truncated {
@@ -25,16 +12,15 @@
   display: block;
 }
 
-.important-detail {
-  color: var(--primary);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-md);
+.info-detail {
+  color: var(--section-description);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-sm);
+  white-space: pre-wrap;
 }
 
-.course-detail {
-  font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-md);
-  white-space: pre-wrap;
+.info-detail.aligned {
+  margin-left: 25.5px;
 }
 
 .custom-link {
@@ -59,7 +45,9 @@
 }
 
 .breadcrumb-item a {
+  align-items: center;
   color: var(--placeholder);
+  display: flex;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   text-decoration: none;
@@ -67,6 +55,7 @@
 
 .breadcrumb-item + .breadcrumb-item::before {
   color: var(--placeholder);
+  font-size: var(--font-size-sm);
 }
 
 .pol-headline.pol-headline--with-bar > h3:before {
@@ -77,4 +66,10 @@
   display: block;
   margin-bottom: 15px;
   margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+  .info-detail.aligned {
+    margin-left: 0;
+  }
 }

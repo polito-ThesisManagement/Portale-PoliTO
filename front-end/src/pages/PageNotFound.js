@@ -6,7 +6,7 @@ import { TbBrowserX } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../App';
-import '../styles/Text.css';
+import '../styles/text.css';
 import { getSystemTheme } from '../utils/utils';
 
 export default function PageNotFound() {

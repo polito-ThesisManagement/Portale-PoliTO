@@ -6,14 +6,6 @@
   position: fixed;
 }
 
-.nav-logo.toggle {
-  display: none;
-}
-
-.nav-logo-reduced.toggle {
-  display: block;
-}
-
 .sidebar-modal-toggler:focus:not(:focus-visible) {
   box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5) !important;
 }

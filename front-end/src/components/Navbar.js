@@ -31,8 +31,7 @@ import Logo2 from '../assets/logo_polito_reduced.svg';
 import Logo2White from '../assets/logo_polito_reduced_white.svg';
 import LogoWhite from '../assets/logo_polito_white.svg';
 import Services from '../data/Data.json';
-import '../styles/Navbar.css';
-import '../styles/Theme.css';
+import '../styles/navbar.css';
 import { useLogo } from '../utils/utils';
 import Searchbar from './Searchbar';
 import SegmentedControl from './SegmentedControl';
@@ -114,7 +113,7 @@ export default function PoliNavbar(props) {
     <Navbar className="custom-navbar">
       <Container fluid>
         <Navbar.Brand
-          className={`nav-logo ${desktopToggle ? 'toggle' : ''} d-none d-lg-block`}
+          className={`nav-logo ${desktopToggle ? 'd-none' : 'd-none d-lg-block'}`}
           as={Link}
           target="_blank"
           to="https://www.polito.it/"
@@ -128,7 +127,7 @@ export default function PoliNavbar(props) {
           <Image src={useLogo(Logo, LogoWhite)} alt="Logo PoliTo" style={{ width: '100%', height: '100%' }} />
         </Navbar.Brand>
         <Navbar.Brand
-          className={`nav-logo-reduced ${desktopToggle ? 'toggle' : ''} d-none d-sm-block d-lg-none d-block`}
+          className={`nav-logo-reduced ${desktopToggle ? 'd-none d-sm-block' : 'd-none d-sm-block d-lg-none'}`}
           as={Link}
           target="_blank"
           to="https://didattica.polito.it/"
@@ -145,7 +144,7 @@ export default function PoliNavbar(props) {
             style={{
               color: 'var(--primary)',
               display: 'inline-block',
-              fontWeight: 'var(--font-weight-extrabold)',
+              fontWeight: 'var(--font-weight-semibold)',
               fontSize: 'var(--font-size-xl)',
             }}
           >
@@ -188,6 +187,7 @@ export default function PoliNavbar(props) {
                       ref: useRef(),
                     },
                   ]}
+                  style={{ height: '40px' }}
                 />
               </div>
               <div className="d-flex d-sm-none">

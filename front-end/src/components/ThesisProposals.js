@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Search } from 'react-bootstrap-icons';
+import { Card, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useTranslation } from 'react-i18next';
@@ -9,20 +9,19 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 
 import API from '../API';
-import '../styles/Searchbar.css';
-import '../styles/Theme.css';
-import '../styles/ThesisProposals.css';
-import '../styles/Utilities.css';
-import FiltersAccordion from './FiltersAccordion';
+import '../styles/searchbar.css';
+import '../styles/thesis-proposals.css';
+import '../styles/utilities.css';
+import CustomBadge from './CustomBadge';
+import FiltersDropdown from './FiltersDropdown';
 import LoadingModal from './LoadingModal';
 import PaginationItem from './PaginationItem';
 import ProposalsNotFound from './ProposalsNotFound';
 import SegmentedControl from './SegmentedControl';
+import SortDropdown from './SortDropdown';
 import { ThesisItem } from './ThesisItem';
 
 export default function ThesisProposals() {
-  const [accordionOpen, setAccordionOpen] = useState(false);
-
   const [count, setCount] = useState(0);
   const [pageNumbers, setPageNumbers] = useState([]);
   const [pageProposals, setPageProposals] = useState([]);
@@ -30,8 +29,8 @@ export default function ThesisProposals() {
 
   const [state, setState] = useState({
     currentPage: 1,
-    filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
-    proposalsPerPage: 5,
+    filters: { isAbroad: 0, isInternal: 0, keyword: [], teacher: [], type: [] },
+    proposalsPerPage: 10,
     searchQuery: '',
     sorting: { sortBy: 'id', orderBy: 'ASC' },
     tab: 'course',
@@ -148,8 +147,8 @@ export default function ThesisProposals() {
   const updateQueryParams = newState => {
     const defaultValues = {
       currentPage: 1,
-      filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
-      proposalsPerPage: 5,
+      filters: { isAbroad: 0, isInternal: 0, keyword: [], teacher: [], type: [] },
+      proposalsPerPage: 10,
       searchQuery: '',
       sorting: { sortBy: 'id', orderBy: 'ASC' },
       tab: 'course',
@@ -240,13 +239,13 @@ export default function ThesisProposals() {
     return {
       currentPage: queryParams.currentPage ? parseInt(queryParams.currentPage, 10) : 1,
       filters: {
-        isAbroad: queryParams.isAbroad === 'true',
+        isAbroad: queryParams.isAbroad ? parseInt(queryParams.isAbroad, 10) : 0,
         isInternal: queryParams.isInternal ? parseInt(queryParams.isInternal, 10) : 0,
         keyword: parseArray(queryParams.keyword),
         teacher: parseArray(queryParams.teacher),
         type: parseArray(queryParams.type),
       },
-      proposalsPerPage: queryParams.proposalsPerPage ? parseInt(queryParams.proposalsPerPage, 10) : 5,
+      proposalsPerPage: queryParams.proposalsPerPage ? parseInt(queryParams.proposalsPerPage, 10) : 10,
       searchQuery: queryParams.searchQuery || '',
       sorting: {
         sortBy: queryParams.sortBy || 'id',
@@ -260,7 +259,7 @@ export default function ThesisProposals() {
     setState(prevState => ({
       ...prevState,
       currentPage: 1,
-      filters: { isAbroad: false, isInternal: 0, keyword: [], teacher: [], type: [] },
+      filters: { isAbroad: 0, isInternal: 0, keyword: [], teacher: [], type: [] },
       searchQuery: '',
       sorting: { sortBy: 'id', orderBy: 'ASC' },
     }));
@@ -328,78 +327,125 @@ export default function ThesisProposals() {
 
   return (
     <div className="proposals-container">
-      <div className="filters-container">
-        <div className="simple-filters-container" key={state.tab}>
-          <SegmentedControl
-            name="proposals-segmented-control"
-            callback={val => handleTabChange(val)}
-            controlRef={useRef()}
-            defaultIndex={state.tab === 'course' ? 0 : 1}
-            segments={[
-              {
-                label: t('carriera.proposte_di_tesi.course_proposals'),
-                value: 'course',
-                ref: useRef(),
-              },
-              {
-                label: t('carriera.proposte_di_tesi.all_proposals'),
-                value: 'all',
-                ref: useRef(),
-              },
-            ]}
-          />
-          <Form className="d-flex w-100" style={{ maxWidth: '380px', zIndex: '1' }} onSubmit={e => e.preventDefault()}>
-            <InputGroup className="flex-nowrap w-100">
-              <Form.Control
-                className="truncated"
-                type="search"
-                placeholder={t('carriera.proposte_di_tesi.search')}
-                aria-label="search_proposals"
-                style={{
-                  fontSize: 'var(--font-size-sm)',
-                  height: '38px',
-                  backgroundColor: 'var(--background)',
-                  color: 'var(--primary)',
-                  borderRadius: '10px',
-                }}
-                value={state.searchQuery}
-                onChange={handleSearchbarChange}
-              />
-              <Search className="search-icon" style={{ height: '1.1rem' }} />
-            </InputGroup>
-          </Form>
-        </div>
-        <FiltersAccordion
-          accordionOpen={accordionOpen}
-          setAccordionOpen={setAccordionOpen}
-          filters={state.filters}
-          applyFilters={applyFilters}
-          resetFilters={resetFilters}
-          sortFields={sortFields}
-          sorting={state.sorting}
-          applySorting={applySorting}
-        />
-      </div>
+      <Card className="roundCard">
+        <Card.Body>
+          <div className="filters-container" key={state.tab}>
+            <SegmentedControl
+              name="proposals-segmented-control"
+              callback={handleTabChange}
+              controlRef={useRef()}
+              defaultIndex={state.tab === 'course' ? 0 : 1}
+              segments={[
+                { label: t('carriera.proposte_di_tesi.course_proposals'), value: 'course', ref: useRef() },
+                { label: t('carriera.proposte_di_tesi.all_proposals'), value: 'all', ref: useRef() },
+              ]}
+            />
+            <div className="d-flex gap-3 flex-wrap">
+              <FiltersDropdown filters={state.filters} applyFilters={applyFilters} resetFilters={resetFilters} />
+              <SortDropdown sortFields={sortFields} sorting={state.sorting} applySorting={applySorting} />
+              <Form style={{ minWidth: '220px', zIndex: '1' }} onSubmit={e => e.preventDefault()}>
+                <InputGroup className="flex-nowrap w-100">
+                  <Form.Control
+                    className="truncated"
+                    type="search"
+                    placeholder={t('carriera.proposte_di_tesi.search')}
+                    aria-label="search_proposals"
+                    style={{
+                      fontSize: 'var(--font-size-sm)',
+                      fontWeight: 'var(--font-weight-medium)',
+                      backgroundColor: 'var(--background)',
+                      color: 'var(--primary)',
+                      borderColor: 'var(--border-color)',
+                      borderRadius: 'var(--border-radius-button)',
+                    }}
+                    value={state.searchQuery}
+                    onChange={handleSearchbarChange}
+                  />
+                  <i className="fa-solid fa-magnifying-glass search-icon" />
+                </InputGroup>
+              </Form>
+            </div>
+          </div>
+          {(state.filters.isAbroad != 0 ||
+            state.filters.isInternal != 0 ||
+            state.filters.type.length > 0 ||
+            state.filters.teacher.length > 0 ||
+            state.filters.keyword.length > 0) && (
+            <div className="applied-filters-container">
+              <div className="badge-group">
+                {state.filters.isAbroad === 1 && (
+                  <CustomBadge variant="italy" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.isAbroad === 2 && (
+                  <CustomBadge variant="abroad" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.isInternal === 1 && (
+                  <CustomBadge variant="internal" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.isInternal === 2 && (
+                  <CustomBadge variant="external" type="reset" applyFilters={applyFilters} />
+                )}
+                {state.filters.type.map(type => (
+                  <CustomBadge
+                    key={type.id}
+                    variant="type"
+                    content={type}
+                    type="reset"
+                    filters={state.filters}
+                    applyFilters={applyFilters}
+                  />
+                ))}
+                {state.filters.teacher.map(teacher => (
+                  <CustomBadge
+                    key={teacher.id}
+                    variant="teacher"
+                    content={teacher}
+                    type="reset"
+                    filters={state.filters}
+                    applyFilters={applyFilters}
+                  />
+                ))}
+                {state.filters.keyword.map(keyword => (
+                  <CustomBadge
+                    key={keyword.id}
+                    variant="keyword"
+                    content={keyword}
+                    type="reset"
+                    filters={state.filters}
+                    applyFilters={applyFilters}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </Card.Body>
+      </Card>
       {loading ? (
         <LoadingModal show={loading} onHide={() => setLoading(false)} />
       ) : (
         <>
           {pageProposals.length > 0 ? (
             <>
-              <div className="list-section">
-                {pageProposals.map(thesis => {
-                  return <ThesisItem key={thesis.id} {...thesis} />;
-                })}
-              </div>
-              <PaginationItem
-                count={count}
-                currentPage={state.currentPage}
-                handleProposalsPerPageChange={handleProposalsPerPageChange}
-                handlePageChange={handlePageChange}
-                pageNumbers={pageNumbers}
-                proposalsPerPage={state.proposalsPerPage}
-                totalPages={totalPages}
-              />
+              <Container className="card-container mx-0 mt-3 mb-0 p-0">
+                <Row>
+                  {pageProposals.map(thesis => {
+                    return <ThesisItem key={thesis.id} {...thesis} />;
+                  })}
+                </Row>
+              </Container>
+              <Card className="roundCard">
+                <Card.Body>
+                  <PaginationItem
+                    count={count}
+                    currentPage={state.currentPage}
+                    handleProposalsPerPageChange={handleProposalsPerPageChange}
+                    handlePageChange={handlePageChange}
+                    pageNumbers={pageNumbers}
+                    proposalsPerPage={state.proposalsPerPage}
+                    totalPages={totalPages}
+                  />
+                </Card.Body>
+              </Card>
             </>
           ) : (
             <ProposalsNotFound resetFilters={resetFilters} />

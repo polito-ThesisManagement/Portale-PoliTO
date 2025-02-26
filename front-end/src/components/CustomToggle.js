@@ -13,7 +13,6 @@ const CustomToggle = React.forwardRef(({ className, children, onClick }, ref) =>
         onClick(e);
       }}
       ref={ref}
-      size="sm"
     >
       {children}
     </Button>

@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { FaChevronUp } from 'react-icons/fa6';
 
 import { ThemeContext } from '../App';
-import '../styles/Utilities.css';
+import '../styles/utilities.css';
 import { getSystemTheme, scrollTop } from '../utils/utils';
 
 function FloatingButton() {

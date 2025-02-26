@@ -1,0 +1,23 @@
+.pagination-container {
+  font-weight: var(--font-weight-regular) !important;
+  font-size: var(--font-size-sm) !important;
+  color: var(--text) !important;
+}
+
+@media (max-width: 850px) {
+  .pagination-container {
+    flex-direction: column;
+  }
+
+  .pagination-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.page-item .page-link {
+  border-radius: 0.375rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}

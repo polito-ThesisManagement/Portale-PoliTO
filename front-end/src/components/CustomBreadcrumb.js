@@ -2,40 +2,45 @@ import React from 'react';
 
 import { Breadcrumb } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaBookOpen, FaBriefcase, FaCircleInfo, FaFileLines, FaUser, FaUserGraduate } from 'react-icons/fa6';
-import { HiLightBulb } from 'react-icons/hi';
-import { MdApps } from 'react-icons/md';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const breadcrumbConfig = {
-  didattica: { icon: <FaBookOpen size={14} className="me-2" />, label: 'sidebar.didattica', path: '/didattica' },
+  didattica: {
+    icon: <i className="fa-solid fa-book-open fa-fw me-2" />,
+    label: 'sidebar.didattica',
+    path: '/didattica',
+  },
   area_personale: {
-    icon: <FaUser size={14} className="me-2" />,
+    icon: <i className="fa-solid fa-user me-2" />,
     label: 'sidebar.area_personale',
     path: '/area_personale',
   },
-  carriera: { icon: <FaUserGraduate size={14} className="me-2" />, label: 'sidebar.carriera', path: '/carriera' },
+  carriera: {
+    icon: <i className="fa-solid fa-user-graduate me-2" />,
+    label: 'sidebar.carriera',
+    path: '/carriera',
+  },
   proposte_di_tesi: {
-    icon: <HiLightBulb size={17} className="me-2" />,
+    icon: <i className="fa-solid fa-lightbulb-exclamation-on me-2" />,
     label: 'carriera.proposte_di_tesi.title_half_lowercase',
     path: '/carriera/proposte_di_tesi',
   },
   proposta_di_tesi: {
-    icon: <FaFileLines size={14} className="me-2" />,
+    icon: <i className="fa-solid fa-file-lines me-2" />,
     label: 'carriera.proposta_di_tesi.dettagli_proposta_di_tesi',
   },
   opportunita: {
-    icon: <FaBriefcase size={14} className="me-2" />,
+    icon: <i className="fa-solid fa-briefcase me-2" />,
     label: 'sidebar.opportunità',
     path: '/opportunita',
   },
   servizi: {
-    icon: <MdApps size={14} className="me-2" />,
+    icon: <i className="fa-solid fa-grid me-2" />,
     label: 'sidebar.servizi',
     path: '/servizi',
   },
   help: {
-    icon: <FaCircleInfo size={14} className="me-2" />,
+    icon: <i className="fa-solid fa-circle-info me-2" />,
     label: 'Help',
     path: '/help',
   },

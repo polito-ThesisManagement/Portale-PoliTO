@@ -4,27 +4,26 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
-    - [Test (directory)](#test-directory)
-    - [Source code (directory)](#source-code-directory)
+    - [How to run the tests](#how-to-run-the-tests)
 - [APIs](#apis)
     - [Students APIs](#students-apis)
     - [Thesis Proposals APIs](#thesis-proposals-apis)
 
 ## Description
-This is the back end of the project. It is a REST API that provides the data for the front end. It is written in Node.js using the Express framework.
+This is the **back-end** of the project, a REST API built with **Node.js** and **Express**. It manages authentication, thesis applications, user data, and other core functionalities.
 
 ## Installation
-1. Install [Node.js](https://nodejs.org/en/download/)
-2. Install [MySQL Server](https://dev.mysql.com/downloads/mysql/)
-3. Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
-4. Clone the repository
-5. Import the database into MySQL and load data
-    - Open MySQL Workbench
-    - Connect to the MySQL Server -> Create a new connection
-    - Open the `database/schema.sql` file and execute the script
-    - Open the `database/data.sql` file and execute the script
-6. Create a `.env` file in the back-end directory with the following content:
-    
+To set up and run the back-end, follow these steps:
+
+1. Navigate to the back-end directory:
+    ```bash
+    cd back-end
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Create a .env file in the back-end directory with the following content:
     ```env
     DB_NAME=polito
     DB_NAME_TEST=polito_test
@@ -33,29 +32,37 @@ This is the back end of the project. It is a REST API that provides the data for
     DB_HOST=localhost
     DB_PORT=your_port
     ```
-7. Run `npm install` in the back-end directory
-8. Run `npm start` to start the server (the server will be running on port defined in the `.env` file or 3001 by default)
+4. Start the back-end server:
+    ```bash
+    npm start
+    ```
+    The server will be running at http://localhost:3001 (or the port specified in .env). 
+
+> **Note:** This guide explains how to run the back-end API. The back-end relies on the MySQL database. Ensure the database is set up and running before starting the back-end server. To set up the database, please refer to the database documentation.
 
 ## Project Structure
-The backend project is divided into 3 parts :
-- `src` => source code of the API
-- `test` => all unit/integration tests of the project
-- `.` => all the configuration (package.json, .env, etc...)
+The back-end project is organized into the following directories:
+```
+📂 back-end
+ ├── 📂 src
+ │   ├── 📂 config        # Database configuration (Sequelize)
+ │   ├── 📂 controllers   # Request handlers
+ │   ├── 📂 models        # Database models
+ │   ├── 📂 routers       # Express route handlers
+ │   ├── 📂 schemas       # Input validation with Zod
+ │   ├── 📂 utils         # Utility functions
+ │   ├── index.js         # Main entry point
+ ├── 📂 test              # Unit and integration tests
+ ├── .env.example         # Environment variables template
+ ├── package.json         # Dependencies
+ ```
 
-### Test (directory)
-The test directory contains integration and unit testing of the backend. To simplify readability tests are divided 
-into 2 folders:
-- unit
-- integration
-
-#### How to run the tests
+### How to run the tests
 1. **Import the test database into MySQL and load data:**
-    - Open MySQL Workbench
-    - Connect to the MySQL Server -> Create a new connection
+    - Open **MySQL Workbench** and connect to your MySQL server.
     - Open the `database/test/schema_test.sql` file and execute the script
     - Open the `database/test/data_test.sql` file and execute the script
 2. **Verify that the `.env` file contains the following content:**
-
     ```env
     DB_NAME=polito
     DB_NAME_TEST=polito_test
@@ -70,17 +77,6 @@ into 2 folders:
     fields.
 3. **Run the tests:**
     - Run `npm test` in the back-end directory
-
-### Source code (directory)
-The source directory has been divided into different folder to simplify the readability of the code:
-- `config` => contains the file to configure and initialize the database connection using Sequelize.
-- `controllers` => each file contains one or more functions used in routers ONLY to handle the request and response.
-- `models` => each file contains a class representing a model of an entity.
-- `routers` => each file contains one router exported as default. The router contains all API endpoint related to his domain. They are used in the `server.js` file to register the router to the express application.
-- `schemas` => each file contains one or more "zod" schemas object used to validate user input.
-- `utils` => contains utility functions used in the project
-
-The `index.js` file is the entry point where the HTTP server is created/set up.
 
 ## APIs
 ### Students APIs

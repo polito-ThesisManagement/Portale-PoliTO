@@ -64,7 +64,7 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.sidebar-text.toggle {
+.sidebar-text.minimized {
   display: none;
 }
 

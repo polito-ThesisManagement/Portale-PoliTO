@@ -1,0 +1,49 @@
+.thesis-topic {
+  color: var(--section-title);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  word-wrap: break-word;
+  margin-bottom: 0rem;
+}
+
+.thesis-description {
+  display: -webkit-box;
+  font-size: var(--font-size-sm);
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  line-clamp: 6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem !important;
+}
+
+.title-container {
+  align-items: center;
+  color: var(--section-title);
+  display: flex;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.info-container {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.text-container {
+  display: block;
+}
+
+@media (max-width: 576px) {
+  .info-container {
+    display: block;
+  }
+
+  .title-container {
+    padding-bottom: 0.5rem !important;
+  }
+}
