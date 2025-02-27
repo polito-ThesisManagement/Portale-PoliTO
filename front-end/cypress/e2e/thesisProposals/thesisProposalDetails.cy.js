@@ -19,10 +19,10 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').should('have.length', 3);
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
-    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta');
 
     // Step 4 Click on the breadcrumb of the thesis proposals details page
-    cy.get('.breadcrumb-item').contains('Dettagli proposta di tesi').click();
+    cy.get('.breadcrumb-item').contains('Dettagli proposta').click();
 
     // Step 5: Click on the breadcrumb of the thesis proposals page
     cy.get('.breadcrumb-item').contains('Proposte di tesi').click();
@@ -50,7 +50,7 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').should('have.length', 3);
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
-    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta');
 
     // Step 4: Reduce sidebar
     cy.get(
@@ -71,7 +71,7 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').should('have.length', 3);
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
-    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta');
 
     // Step 2: Check the thesis proposal details
     cy.get('h3.thesis-topic').should('be.visible');
@@ -87,7 +87,7 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').should('have.length', 3);
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
-    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta');
 
     // Step 2: Check the thesis proposal details
     cy.get('h3.thesis-topic').should('be.visible');
@@ -103,7 +103,7 @@ describe('Thesis proposal details page', () => {
     cy.get('.breadcrumb-item').should('have.length', 3);
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
-    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta');
 
     // Step 2: Check the thesis proposal details
     cy.get('h3.thesis-topic').should('be.visible');
@@ -138,7 +138,7 @@ describe('Thesis proposal details page - responsiveness', () => {
     cy.get('.breadcrumb-item').should('have.length', 3);
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
-    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta');
 
     // Step 5: Check the thesis proposal details
     cy.get('h3.thesis-topic').should('be.visible');
@@ -150,9 +150,17 @@ describe('Thesis proposal details page - responsiveness', () => {
     cy.get('.breadcrumb-item').should('have.length', 3);
     cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
     cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
-    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta di tesi');
+    cy.get('.breadcrumb-item').eq(2).should('contain', 'Dettagli proposta');
     cy.get('h3.thesis-topic').should('be.visible');
     cy.get('.info-detail').should('be.visible');
     cy.get('.badge.teacher_light').should('be.visible');
+
+    // Step 7: Go back to thesis proposals list
+    cy.get('.breadcrumb-back-link').click();
+
+    // Step 8: Check the page breadcrumb
+    cy.get('.breadcrumb-item').should('have.length', 2);
+    cy.get('.breadcrumb-item').eq(0).should('contain', 'Carriera');
+    cy.get('.breadcrumb-item').eq(1).should('contain', 'Proposte di tesi');
   });
 });
