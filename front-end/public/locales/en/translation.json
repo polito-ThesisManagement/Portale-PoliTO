@@ -84,7 +84,7 @@
             "reset_filters": "Reset filters"
         },
         "proposta_di_tesi": {
-            "dettagli_proposta_di_tesi": "Thesis proposal details",
+            "dettagli_proposta_di_tesi": "Proposal details",
             "descrizione": "Description",
             "conoscenze_richieste": "Required knowledge",
             "note": "Notes",
@@ -103,5 +103,9 @@
         "title": "Page not found",
         "message": "The requested page does not exist or is not available.",
         "back": "Back to the Homepage"
+    },
+    "breadcrumb": {
+        "back": "Back",
+        "back_to": "Back to"
     }
 }

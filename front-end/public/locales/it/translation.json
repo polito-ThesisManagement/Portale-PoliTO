@@ -84,7 +84,7 @@
             "reset_filters": "Resetta i filtri"
         },
         "proposta_di_tesi": {
-            "dettagli_proposta_di_tesi": "Dettagli proposta di tesi",
+            "dettagli_proposta_di_tesi": "Dettagli proposta",
             "descrizione": "Descrizione",
             "conoscenze_richieste": "Conoscenze richieste",
             "note": "Note",
@@ -103,5 +103,9 @@
         "title": "Pagina non trovata",
         "message": "La pagina che stai cercando non esiste o è stata spostata.",
         "back": "Torna alla Homepage"
+    },
+    "breadcrumb": {
+        "back": "Indietro",
+        "back_to": "Torna a"
     }
 }
