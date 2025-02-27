@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Breadcrumb } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const breadcrumbConfig = {
   didattica: {
@@ -57,7 +57,7 @@ export default function CustomBreadcrumb() {
 
     if (config) {
       return (
-        <Breadcrumb.Item key={index} onClick={() => navigate(config.path)}>
+        <Breadcrumb.Item key={index} onClick={() => navigate(config.path)} active={index === pathnames.length - 1}>
           {config.icon}
           {t(config.label)}
         </Breadcrumb.Item>
@@ -67,7 +67,11 @@ export default function CustomBreadcrumb() {
     // Check if the value is an integer and follows "proposte_di_tesi"
     if (index > 0 && pathnames[index - 1] === 'proposte_di_tesi' && !isNaN(value)) {
       return (
-        <Breadcrumb.Item key={index} onClick={() => navigate(`/carriera/proposte_di_tesi/${value}`)}>
+        <Breadcrumb.Item
+          key={index}
+          onClick={() => navigate(`/carriera/proposte_di_tesi/${value}`)}
+          active={index === pathnames.length - 1}
+        >
           {breadcrumbConfig.proposta_di_tesi.icon}
           {t(breadcrumbConfig.proposta_di_tesi.label)}
         </Breadcrumb.Item>
@@ -77,7 +81,28 @@ export default function CustomBreadcrumb() {
 
   return (
     <div className="breadcrumbs_container">
-      <Breadcrumb>{pathnames.map((value, index) => renderBreadcrumbElement(value, index))}</Breadcrumb>
+      {pathnames.length >= 3 && (
+        <>
+          <Link onClick={() => navigate(-1)} className={`breadcrumb-back-link me-3`} size="sm">
+            <i className="fa-solid fa-arrow-left fa-fw me-1" />
+            <span className="d-none d-sm-inline-block">{t('breadcrumb.back')}</span>
+            <span className="d-sm-none">
+              {t('breadcrumb.back_to')} {t(breadcrumbConfig[pathnames[pathnames.length - 2]].label)}
+            </span>
+          </Link>
+          <span
+            style={{
+              borderLeft: '1px solid var(--placeholder)',
+              height: '15px',
+              marginBottom: '1rem',
+            }}
+            className="me-3 separator"
+          />
+        </>
+      )}
+      <Breadcrumb className={pathnames.length >= 3 ? 'breadcrumb-long' : 'breadcrumb-short'}>
+        {pathnames.map((value, index) => renderBreadcrumbElement(value, index))}
+      </Breadcrumb>
     </div>
   );
 }

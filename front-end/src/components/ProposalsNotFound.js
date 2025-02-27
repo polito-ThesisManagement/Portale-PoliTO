@@ -20,15 +20,13 @@ export default function ProposalsNotFound({ resetFilters }) {
           <h3 className="bold-weight">{t('carriera.proposte_di_tesi.not_found')}</h3>
         </div>
         <FaRectangleXmark size={100} style={{ color: 'var(--primary)' }} strokeWidth={1} />
-        <div className="mb-3 mt-2" style={{ color: 'var(--text)' }}>
+        <div className="mb-3 mt-2 text-center" style={{ color: 'var(--text)' }}>
           <p> {t('carriera.proposte_di_tesi.message_not_found')} </p>
         </div>
-        <div>
-          <Button className={`btn-${appliedTheme}`} size="sm" onClick={resetFilters}>
-            <FaRegTrashCan size={16} />
-            {t('carriera.proposte_di_tesi.reset_filters')}{' '}
-          </Button>
-        </div>
+        <Button className={`btn-${appliedTheme}`} size="sm" onClick={resetFilters}>
+          <FaRegTrashCan size={16} />
+          {t('carriera.proposte_di_tesi.reset_filters')}{' '}
+        </Button>
       </Card.Body>
     </Card>
   );

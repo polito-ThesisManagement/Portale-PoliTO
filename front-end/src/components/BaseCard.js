@@ -63,7 +63,7 @@ export default function BaseCard(props) {
         <Card.Body>
           {props.description}
           {props.link && props.linkText ? (
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center mt-2">
               <Link
                 className="card-link custom-link truncated"
                 target="_blank"
@@ -71,8 +71,8 @@ export default function BaseCard(props) {
                 style={{ whiteSpace: 'normal' }}
               >
                 {props.linkText}
+                <i className="fa fa-arrow-up-right-from-square mx-2" />
               </Link>
-              <i className="fa fa-arrow-up-right-from-square mx-2 mt-1" />
             </div>
           ) : null}
         </Card.Body>

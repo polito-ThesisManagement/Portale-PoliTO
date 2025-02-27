@@ -541,9 +541,7 @@ describe('Thesis proposals overview page', () => {
     cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
     cy.get('.thesis-description').then($descriptions => {
       const descriptions = $descriptions.map((index, el) => Cypress.$(el).text().toLowerCase()).get();
-      console.log('descriptions ' + descriptions);
       const sortedDescriptions = [...descriptions].sort((a, b) => a.localeCompare(b));
-      console.log('sortedDescriptions ' + sortedDescriptions);
       expect(descriptions).to.deep.equal(sortedDescriptions);
     });
 

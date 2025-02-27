@@ -19,9 +19,10 @@ import { getSystemTheme } from '../utils/utils';
 import CustomMenu from './CustomMenu';
 import CustomToggle from './CustomToggle';
 
-export default function SortDropdown({ sortFields, sorting, applySorting }) {
+export default function SortDropdown({ sorting, applySorting }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSorting, setSelectedSorting] = useState(sorting || '');
+  const sortFields = ['topic', 'description', 'creationDate', 'expirationDate'];
 
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
@@ -124,7 +125,6 @@ export default function SortDropdown({ sortFields, sorting, applySorting }) {
 }
 
 SortDropdown.propTypes = {
-  sortFields: PropTypes.array.isRequired,
   applySorting: PropTypes.func.isRequired,
   sorting: PropTypes.object.isRequired,
 };
