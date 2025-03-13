@@ -44,7 +44,8 @@
 }
 
 .select__option--is-selected {
-  background-color: var(--dropdown-hover) !important;
+  background-color: var(--custom-dropdown-bg) !important;
   border: var(--border-default) !important;
+  border-color: var(--custom-dropdown-border) !important;
   color: var(--custom-dropdown-color) !important;
 }

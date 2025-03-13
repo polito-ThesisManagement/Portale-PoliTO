@@ -131,7 +131,6 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
             isMulti={isMulti}
             isClearable={false}
             components={{ MultiValue: CustomMultiValue, IndicatorSeparator: () => null }}
-            closeMenuOnSelect={false}
             name={name}
             defaultValue={selected[name]}
             options={options[name]}
@@ -143,7 +142,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
             styles={{
               option: (basicStyles, state) => ({
                 ...basicStyles,
-                backgroundColor: state.isFocused ? 'transparent' : basicStyles.backgroundColor,
+                backgroundColor: state.isFocused ? 'var(--dropdown-hover)' : basicStyles.backgroundColor,
               }),
               placeholder: basicStyles => ({ ...basicStyles, color: 'var(--section-description)' }),
             }}
@@ -168,7 +167,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
             styles={{
               option: (basicStyles, state) => ({
                 ...basicStyles,
-                backgroundColor: state.isFocused ? 'transparent' : basicStyles.backgroundColor,
+                backgroundColor: state.isFocused ? 'var(--dropdown-hover)' : basicStyles.backgroundColor,
               }),
               placeholder: basicStyles => ({ ...basicStyles, color: 'var(--section-description)' }),
             }}
