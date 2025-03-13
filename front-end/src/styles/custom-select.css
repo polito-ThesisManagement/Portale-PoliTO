@@ -15,7 +15,7 @@
   color: var(--section-title) !important;
 }
 
-.select__value-container {
+.select__value-container--has-value {
   display: flex !important;
   gap: 0.25rem !important;
   padding: 8px 8px !important;
@@ -44,7 +44,8 @@
 }
 
 .select__option--is-selected {
-  background-color: var(--dropdown-hover) !important;
+  background-color: var(--custom-dropdown-bg) !important;
   border: var(--border-default) !important;
+  border-color: var(--custom-dropdown-border) !important;
   color: var(--custom-dropdown-color) !important;
 }
