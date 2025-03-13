@@ -135,15 +135,17 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
     return (
       <>
         {renderSimpleBadge()}
-        <OverlayTrigger
-          delay={{ show: 250, hide: 400 }}
-          overlay={<Tooltip id={`tooltip-${truncatedContentArray}`}>{truncatedContentArray.join(', ')}</Tooltip>}
-          placement="top"
-        >
-          <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2 clickable truncated`}>
-            <span className="custom-badge-text">{t('carriera.proposte_di_tesi.others') + '...'}</span>
-          </div>
-        </OverlayTrigger>
+        {truncatedContentArray.length > 0 && (
+          <OverlayTrigger
+            delay={{ show: 250, hide: 400 }}
+            overlay={<Tooltip id={`tooltip-${truncatedContentArray}`}>{truncatedContentArray.join(', ')}</Tooltip>}
+            placement="top"
+          >
+            <div className={`custom-badge badge ${variant}_${appliedTheme} pe-2 clickable truncated`}>
+              <span className="custom-badge-text">{t('carriera.proposte_di_tesi.others') + '...'}</span>
+            </div>
+          </OverlayTrigger>
+        )}
       </>
     );
   };
