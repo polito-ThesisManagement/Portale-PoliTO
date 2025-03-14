@@ -81,7 +81,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
   }, [filters]);
 
   function formatFilter(item, variant) {
-    return { value: item.id, label: item.type || item.keyword || `${item.firstName} ${item.lastName}`, variant };
+    return { value: item.id, label: item.type || item.keyword || `${item.lastName} ${item.firstName}`, variant };
   }
 
   function getStaticOption(type, value) {
