@@ -20,7 +20,10 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
   const { i18n } = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [isTypesMenuOpen, setIsTypesMenuOpen] = useState(false);
+  const [isSupervisorsMenuOpen, setIsSupervisorsMenuOpen] = useState(false);
+  const [isKeywordsMenuOpen, setIsKeywordsMenuOpen] = useState(false);
 
   const filterOptions = {
     keywords: { api: API.getThesisProposalsKeywords, label: 'keyword' },
@@ -113,6 +116,27 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
 
   function renderSelect(name, isMulti = true) {
     const customSingleValue = props => <CustomSingleValue {...props} setSelected={setSelected} />;
+
+    let isMenuOpen;
+    let setIsMenuOpen;
+
+    switch (name) {
+      case 'types':
+        isMenuOpen = isTypesMenuOpen;
+        setIsMenuOpen = setIsTypesMenuOpen;
+        break;
+      case 'supervisors':
+        isMenuOpen = isSupervisorsMenuOpen;
+        setIsMenuOpen = setIsSupervisorsMenuOpen;
+        break;
+      case 'keywords':
+        isMenuOpen = isKeywordsMenuOpen;
+        setIsMenuOpen = setIsKeywordsMenuOpen;
+        break;
+      default:
+        isMenuOpen = false;
+        setIsMenuOpen = () => {};
+    }
 
     return (
       <>
