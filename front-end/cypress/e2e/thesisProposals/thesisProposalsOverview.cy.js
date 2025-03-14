@@ -472,7 +472,6 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown, select topic and apply the sort
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Argomento').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 3: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -507,7 +506,7 @@ describe('Thesis proposals overview page', () => {
 
     // Step 10: Open the sort dropdown and reset the sort
     cy.get('#dropdown-sort').click();
-    cy.get('.btn').contains('Resetta').click();
+    cy.get('a.dropdown-item').contains('Argomento').click();
   });
 
   it('should sort proposals by description', () => {
@@ -517,7 +516,6 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown and select description
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Descrizione').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 3: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -543,6 +541,11 @@ describe('Thesis proposals overview page', () => {
       const sortedDescriptions = [...descriptions].sort((a, b) => b.localeCompare(a));
       expect(descriptions).to.deep.equal(sortedDescriptions);
     });
+
+    // Step 8: Reset sorting through reset badge
+    cy.get('.applied-filters-container .badge-group .custom-badge-container')
+      .contains('Ordina per: Descrizione')
+      .click();
   });
 
   it('should sort proposals by creation date', () => {
@@ -552,7 +555,6 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown and select creation date
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Data di creazione').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -571,13 +573,17 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown and select expiration date
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Data di scadenza').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 3: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
     // Step 4: Change the order to descending
     cy.get('#dropdown-sort > button > svg:nth-child(1)').click();
+
+    // Step 5: Reset sorting through reset badge
+    cy.get('.applied-filters-container .badge-group .custom-badge-container')
+      .contains('Ordina per: Data di scadenza')
+      .click();
   });
 
   it('should move across the pages of the thesis proposals list', () => {
