@@ -81,7 +81,8 @@
             "message_not_found": "No thesis proposal found",
             "apply": "Apply",
             "reset": "Reset",
-            "reset_filters": "Reset filters"
+            "reset_filters": "Reset filters",
+            "sort_by": "Sort by"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Proposal details",

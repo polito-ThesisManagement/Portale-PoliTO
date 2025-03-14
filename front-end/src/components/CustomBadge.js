@@ -37,11 +37,14 @@ moment.locale('it');
  *    - "SVILUPPO" or "DEVELOPMENT"
  *    - "TEORICA" or "THEORETICAL"
  *    - "NUMERICA" or "NUMERICAL"
+ * - "sorting-ASC" or "sorting-DESC": Renders a badge with an ascending or descending sorting icon (only reset badge available).
  * @param {object|array<object>!string|array<string>} content - If available, populate the content of the badge. It could be a single object (with 'content' and 'id' attributes) or an array of objects, a single string or an array of strings.
  * If you provide an array, the component will automatically render a tag for every item.
  * @param {type} - Optional. It is used to specify if the badge is a 'reset' badge. If it is, the badge will be rendered as a button with a 'delete' icon at the end and will reset the filter when clicked.
  * @param {object} filters - The filters object. It's required only if the badge is a 'reset' badge.
  * @param {function} applyFilters - The function to apply filters. It's required only if the badge is a filter (e.g. a teacher or a keyword filter).
+ * @param {object} removeProps - The props to pass to the reset badge button.
+ * @param {function} resetSorting - The function to reset the sorting. It's required only if the badge is a sorting reset badge.
  * @returns {JSX.Element} - The badge component.
  */
 
@@ -53,6 +56,8 @@ const validVariants = [
   'italy',
   'abroad',
   'type',
+  'sorting-ASC',
+  'sorting-DESC',
   'status',
   'warning',
   'success',
@@ -86,12 +91,15 @@ const validTypeContent = [
   'numerical',
 ];
 
-export default function CustomBadge({ variant, content, type, filters, applyFilters, removeProps }) {
+export default function CustomBadge({ variant, content, type, filters, applyFilters, removeProps, resetSorting }) {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const appliedTheme = theme === 'auto' ? getSystemTheme() : theme;
 
   const handleRemoveFilter = () => {
+    if (resetSorting) {
+      resetSorting();
+    }
     if (applyFilters) {
       if (variant === 'internal' || variant === 'external') {
         applyFilters('isInternal', 0);
@@ -283,6 +291,10 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
           default:
             return <i className="fa-regular fa-circle-xmark fa-lg" />;
         }
+      case 'sorting-ASC':
+        return <i className="fa-solid fa-arrow-up-short-wide fa-lg" />;
+      case 'sorting-DESC':
+        return <i className="fa-solid fa-arrow-down-short-wide fa-lg" />;
       default:
         return <i className="fa-regular fa-circle-xmark fa-lg" />;
     }
@@ -327,7 +339,10 @@ export default function CustomBadge({ variant, content, type, filters, applyFilt
   if (
     !validVariants.includes(variant) ||
     (type && !validTypes.includes(type)) ||
-    (['teacher', 'keyword', 'type', 'status', 'success', 'warning', 'error'].includes(variant) && !content) ||
+    (['teacher', 'keyword', 'type', 'sorting-ASC', 'sorting-DESC', 'status', 'success', 'warning', 'error'].includes(
+      variant,
+    ) &&
+      !content) ||
     (variant === 'type' && !isValidTypeContent(content))
   ) {
     return (
@@ -391,4 +406,5 @@ CustomBadge.propTypes = {
   filters: PropTypes.object,
   applyFilters: PropTypes.func,
   removeProps: PropTypes.object,
+  resetSorting: PropTypes.func,
 };
