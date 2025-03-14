@@ -349,8 +349,8 @@ describe('Thesis proposals overview page', () => {
     // Step 4: Click on 'Select supervisors' select
     cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Seleziona i relatori...').click();
 
-    // Step 5: Select 'Rosario Ceravolo' from the dropdown
-    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Rosario Ceravolo').click();
+    // Step 5: Select 'Ceravolo Rosario' from the dropdown
+    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Ceravolo Rosario').click();
 
     // Step 6: Click on the apply button
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
@@ -363,18 +363,18 @@ describe('Thesis proposals overview page', () => {
     // Step 8: Verify that the filtered proposals are listed
     cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
 
-    // Step 9: Check that each proposal contains the teacher 'Rosario Ceravolo'
+    // Step 9: Check that each proposal contains the teacher 'Ceravolo Rosario '
     cy.get('.proposals-container .card-container .roundCard').each(article => {
       cy.wrap(article)
         .find('.custom-badge-container')
         .then($professorTags => {
           const professorTags = $professorTags.text();
-          expect(professorTags.includes('Rosario Ceravolo')).to.be.true;
+          expect(professorTags.includes('Ceravolo Rosario')).to.be.true;
         });
     });
 
     // Step 10: Reset the filters by clicking on the badge
-    cy.get('.applied-filters-container .badge-group .custom-badge-container').contains('Rosario Ceravolo').click();
+    cy.get('.applied-filters-container .badge-group .custom-badge-container').contains('Ceravolo Rosario').click();
   });
 
   it('should filter proposals by type and reset filters', () => {
@@ -439,9 +439,9 @@ describe('Thesis proposals overview page', () => {
       .type('europeizzazione');
     cy.get('#dropdown-filters > div > div > div:nth-child(10)').contains('Europeizzazione').click();
 
-    // Step 5: Filter proposals by teacher 'Rosario Ceravolo'
+    // Step 5: Filter proposals by teacher 'Ceravolo Rosario'
     cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Seleziona i relatori...').click();
-    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Rosario Ceravolo').click();
+    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Ceravolo Rosario').click();
 
     // Step 6: Filter proposals by type 'Sperimentale'
     cy.get('#dropdown-filters > div > div > div:nth-child(6)').contains('Seleziona le tipologie...').click();
