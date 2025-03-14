@@ -275,27 +275,24 @@ describe('Thesis proposals overview page', () => {
     // Step 5: Select 'aerospace' from the dropdown
     cy.get('#dropdown-filters > div > div > div:nth-child(10)').contains('Aerospace').click();
 
-    // Step 6: Close the keywords dropdown
-    cy.get('#dropdown-filters > div > div > div:nth-child(10)').click();
-
-    // Step 7: Click on the apply button
+    // Step 6: Click on the apply button
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
       .contains('Applica')
       .click();
 
-    // Step 8: Wait for the network request to complete
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 9: Verify that there are no proposals listed
+    // Step 8: Verify that there are no proposals listed
     cy.get('.proposals-container .card-container .roundCard').should('have.length', 0);
 
-    // Step 10: Reset the filters
+    // Step 9: Reset the filters
     cy.get('#dropdown-filters').should('be.visible').click();
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
       .contains('Resetta')
       .click();
 
-    // Step 11: Verify that the filters are reset
+    // Step 10: Verify that the filters are reset
     cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
   });
 
@@ -317,21 +314,18 @@ describe('Thesis proposals overview page', () => {
     // Step 5: Select 'europeizzazione' from the dropdown
     cy.get('#dropdown-filters > div > div > div:nth-child(10)').contains('Europeizzazione').click();
 
-    // Step 6: Close the keywords dropdown
-    cy.get('#dropdown-filters > div > div > div:nth-child(10) > div.select__control > div.select__indicators').click();
-
-    // Step 7: Click on the apply button
+    // Step 6: Click on the apply button
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
       .contains('Applica')
       .click();
 
-    // Step 8: Wait for the network request to complete
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 6: Verify that the filtered proposals are listed
+    // Step 8: Verify that the filtered proposals are listed
     cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
 
-    // Step 7: Check that each proposal contains the keyword 'europeizzazione'
+    // Step 9: Check that each proposal contains the keyword 'europeizzazione'
     cy.get('.proposals-container .card-container .roundCard').each(article => {
       cy.wrap(article)
         .find('.custom-badge-container')
@@ -355,35 +349,32 @@ describe('Thesis proposals overview page', () => {
     // Step 4: Click on 'Select supervisors' select
     cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Seleziona i relatori...').click();
 
-    // Step 5: Select 'Rosario Ceravolo' from the dropdown
-    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Rosario Ceravolo').click();
+    // Step 5: Select 'Ceravolo Rosario' from the dropdown
+    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Ceravolo Rosario').click();
 
-    // Step 6: Close the supervisors dropdown
-    cy.get('#dropdown-filters > div > div > div:nth-child(8) > div.select__control > div.select__indicators').click();
-
-    // Step 7: Click on the apply button
+    // Step 6: Click on the apply button
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
       .contains('Applica')
       .click();
 
-    // Step 8: Wait for the network request to complete
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 9: Verify that the filtered proposals are listed
+    // Step 8: Verify that the filtered proposals are listed
     cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
 
-    // Step 10: Check that each proposal contains the teacher 'Rosario Ceravolo'
+    // Step 9: Check that each proposal contains the teacher 'Ceravolo Rosario '
     cy.get('.proposals-container .card-container .roundCard').each(article => {
       cy.wrap(article)
         .find('.custom-badge-container')
         .then($professorTags => {
           const professorTags = $professorTags.text();
-          expect(professorTags.includes('Rosario Ceravolo')).to.be.true;
+          expect(professorTags.includes('Ceravolo Rosario')).to.be.true;
         });
     });
 
-    // Step 11: Reset the filters by clicking on the badge
-    cy.get('.applied-filters-container .badge-group .custom-badge-container').contains('Rosario Ceravolo').click();
+    // Step 10: Reset the filters by clicking on the badge
+    cy.get('.applied-filters-container .badge-group .custom-badge-container').contains('Ceravolo Rosario').click();
   });
 
   it('should filter proposals by type and reset filters', () => {
@@ -402,21 +393,18 @@ describe('Thesis proposals overview page', () => {
     // Step 5: Select 'Sperimentale' from the dropdown
     cy.get('#dropdown-filters > div > div > div:nth-child(6)').contains('Sperimentale').click();
 
-    // Step 6: Close the types dropdown
-    cy.get('#dropdown-filters > div > div > div:nth-child(6) > div.select__control > div.select__indicators').click();
-
-    // Step 7: Click on the apply button
+    // Step 6: Click on the apply button
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
       .contains('Applica')
       .click();
 
-    // Step 8: Wait for the network request to complete
+    // Step 7: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
-    // Step 9: Verify that the filtered proposals are listed
+    // Step 8: Verify that the filtered proposals are listed
     cy.get('.proposals-container .card-container .roundCard').should('have.length.greaterThan', 0);
 
-    // Step 10: Check that each proposal contains the type 'Sperimentale'
+    // Step 9: Check that each proposal contains the type 'Sperimentale'
     cy.get('.proposals-container .card-container .roundCard').each(article => {
       cy.wrap(article)
         .find('.custom-badge-container')
@@ -426,7 +414,7 @@ describe('Thesis proposals overview page', () => {
         });
     });
 
-    // Step 8: Reset the filters
+    // Step 10: Reset the filters
     cy.get('#dropdown-filters').should('be.visible').click();
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
       .contains('Resetta')
@@ -450,17 +438,14 @@ describe('Thesis proposals overview page', () => {
       .contains('Seleziona le parole chiave...')
       .type('europeizzazione');
     cy.get('#dropdown-filters > div > div > div:nth-child(10)').contains('Europeizzazione').click();
-    cy.get('#dropdown-filters > div > div > div:nth-child(10) > div.select__control > div.select__indicators').click();
 
-    // Step 5: Filter proposals by teacher 'Rosario Ceravolo'
+    // Step 5: Filter proposals by teacher 'Ceravolo Rosario'
     cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Seleziona i relatori...').click();
-    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Rosario Ceravolo').click();
-    cy.get('#dropdown-filters > div > div > div:nth-child(8) > div.select__control > div.select__indicators').click();
+    cy.get('#dropdown-filters > div > div > div:nth-child(8)').contains('Ceravolo Rosario').click();
 
     // Step 6: Filter proposals by type 'Sperimentale'
     cy.get('#dropdown-filters > div > div > div:nth-child(6)').contains('Seleziona le tipologie...').click();
     cy.get('#dropdown-filters > div > div > div:nth-child(6)').contains('Sperimentale').click();
-    cy.get('#dropdown-filters > div > div > div:nth-child(6) > div.select__control > div.select__indicators').click();
 
     // Step 7: Apply filters
     cy.get('#dropdown-filters div > div > div.d-flex.w-100.justify-content-between > button')
@@ -487,7 +472,6 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown, select topic and apply the sort
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Argomento').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 3: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -522,7 +506,7 @@ describe('Thesis proposals overview page', () => {
 
     // Step 10: Open the sort dropdown and reset the sort
     cy.get('#dropdown-sort').click();
-    cy.get('.btn').contains('Resetta').click();
+    cy.get('a.dropdown-item').contains('Argomento').click();
   });
 
   it('should sort proposals by description', () => {
@@ -532,7 +516,6 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown and select description
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Descrizione').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 3: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -558,6 +541,11 @@ describe('Thesis proposals overview page', () => {
       const sortedDescriptions = [...descriptions].sort((a, b) => b.localeCompare(a));
       expect(descriptions).to.deep.equal(sortedDescriptions);
     });
+
+    // Step 8: Reset sorting through reset badge
+    cy.get('.applied-filters-container .badge-group .custom-badge-container')
+      .contains('Ordina per: Descrizione')
+      .click();
   });
 
   it('should sort proposals by creation date', () => {
@@ -567,7 +555,6 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown and select creation date
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Data di creazione').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 4: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
@@ -586,13 +573,17 @@ describe('Thesis proposals overview page', () => {
     // Step 2: Open the sort dropdown and select expiration date
     cy.get('#dropdown-sort').click();
     cy.get('a.dropdown-item').contains('Data di scadenza').click();
-    cy.get('#dropdown-button').contains('Applica').click();
 
     // Step 3: Wait for the network request to complete
     cy.wait('@getTargetedThesisProposals');
 
     // Step 4: Change the order to descending
     cy.get('#dropdown-sort > button > svg:nth-child(1)').click();
+
+    // Step 5: Reset sorting through reset badge
+    cy.get('.applied-filters-container .badge-group .custom-badge-container')
+      .contains('Ordina per: Data di scadenza')
+      .click();
   });
 
   it('should move across the pages of the thesis proposals list', () => {

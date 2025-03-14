@@ -21,6 +21,10 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isTypesMenuOpen, setIsTypesMenuOpen] = useState(false);
+  const [isSupervisorsMenuOpen, setIsSupervisorsMenuOpen] = useState(false);
+  const [isKeywordsMenuOpen, setIsKeywordsMenuOpen] = useState(false);
+
   const filterOptions = {
     keywords: { api: API.getThesisProposalsKeywords, label: 'keyword' },
     supervisors: { api: API.getThesisProposalsTeachers, label: 'teacher' },
@@ -80,7 +84,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
   }, [filters]);
 
   function formatFilter(item, variant) {
-    return { value: item.id, label: item.type || item.keyword || `${item.firstName} ${item.lastName}`, variant };
+    return { value: item.id, label: item.type || item.keyword || `${item.lastName} ${item.firstName}`, variant };
   }
 
   function getStaticOption(type, value) {
@@ -113,6 +117,27 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
   function renderSelect(name, isMulti = true) {
     const customSingleValue = props => <CustomSingleValue {...props} setSelected={setSelected} />;
 
+    let isMenuOpen;
+    let setIsMenuOpen;
+
+    switch (name) {
+      case 'types':
+        isMenuOpen = isTypesMenuOpen;
+        setIsMenuOpen = setIsTypesMenuOpen;
+        break;
+      case 'supervisors':
+        isMenuOpen = isSupervisorsMenuOpen;
+        setIsMenuOpen = setIsSupervisorsMenuOpen;
+        break;
+      case 'keywords':
+        isMenuOpen = isKeywordsMenuOpen;
+        setIsMenuOpen = setIsKeywordsMenuOpen;
+        break;
+      default:
+        isMenuOpen = false;
+        setIsMenuOpen = () => {};
+    }
+
     return (
       <>
         <div className="filters-title">
@@ -131,19 +156,20 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
             isMulti={isMulti}
             isClearable={false}
             components={{ MultiValue: CustomMultiValue, IndicatorSeparator: () => null }}
-            closeMenuOnSelect={false}
             name={name}
             defaultValue={selected[name]}
             options={options[name]}
-            placeholder={t(`carriera.proposte_di_tesi.select_${name}`) + '...'}
+            placeholder={isMenuOpen ? '' : t(`carriera.proposte_di_tesi.select_${name}`) + '...'}
             value={selected[name]}
             onChange={selected => setSelected(prev => ({ ...prev, [name]: selected }))}
+            onMenuOpen={() => setIsMenuOpen(true)}
+            onMenuClose={() => setIsMenuOpen(false)}
             className="multi-select"
             classNamePrefix="select"
             styles={{
               option: (basicStyles, state) => ({
                 ...basicStyles,
-                backgroundColor: state.isFocused ? 'transparent' : basicStyles.backgroundColor,
+                backgroundColor: state.isFocused ? 'var(--dropdown-hover)' : basicStyles.backgroundColor,
               }),
               placeholder: basicStyles => ({ ...basicStyles, color: 'var(--section-description)' }),
             }}
@@ -152,6 +178,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
           <Select
             isMulti={isMulti}
             isClearable={false}
+            isSearchable={false}
             components={{
               SingleValue: customSingleValue,
               IndicatorSeparator: () => null,
@@ -168,7 +195,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
             styles={{
               option: (basicStyles, state) => ({
                 ...basicStyles,
-                backgroundColor: state.isFocused ? 'transparent' : basicStyles.backgroundColor,
+                backgroundColor: state.isFocused ? 'var(--dropdown-hover)' : basicStyles.backgroundColor,
               }),
               placeholder: basicStyles => ({ ...basicStyles, color: 'var(--section-description)' }),
             }}

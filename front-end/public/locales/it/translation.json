@@ -81,7 +81,8 @@
             "message_not_found": "Nessuna proposta di tesi trovata",
             "apply": "Applica",
             "reset": "Resetta",
-            "reset_filters": "Resetta i filtri"
+            "reset_filters": "Resetta i filtri",
+            "sort_by": "Ordina per"
         },
         "proposta_di_tesi": {
             "dettagli_proposta_di_tesi": "Dettagli proposta",

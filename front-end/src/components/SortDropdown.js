@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Badge, Button, Dropdown } from 'react-bootstrap';
+import { Badge, Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -33,29 +33,20 @@ export default function SortDropdown({ sorting, applySorting }) {
     setSelectedSorting(sorting);
   }, [sorting]);
 
-  const handleApply = ({ sortBy: selectedSort, orderBy: selectedOrder }) => {
-    setIsOpen(false);
-    const newSorting = { sortBy: selectedSort, orderBy: selectedOrder };
+  const handleApply = sortBy => {
+    const newSorting = { sortBy, orderBy: selectedSorting.orderBy };
+    if (newSorting.sortBy === selectedSorting.sortBy) {
+      // Remove sorting if it's already applied
+      newSorting.sortBy = 'id';
+    }
     setSelectedSorting(newSorting);
+    setIsOpen(false);
     applySorting(newSorting, sorting);
   };
 
   const handleChangeOrderExternal = order => {
     setSelectedSorting({ ...sorting, orderBy: order });
-    handleApply({ sortBy: sorting.sortBy, orderBy: order });
-  };
-
-  const handleReset = () => {
-    setIsOpen(false);
-    applySorting({ sortBy: 'id', orderBy: 'ASC' });
-  };
-
-  const handleSelect = sortBy => {
-    if (selectedSorting.sortBy === sortBy) {
-      setSelectedSorting({ ...selectedSorting, sortBy: 'id' });
-    } else {
-      setSelectedSorting({ ...sorting, sortBy });
-    }
+    applySorting({ ...sorting, orderBy: order }, sorting);
   };
 
   const handleToggle = isOpen => {
@@ -93,7 +84,7 @@ export default function SortDropdown({ sorting, applySorting }) {
       <Dropdown.Menu as={CustomMenu} key={selectedSorting} className="custom-dropdown-menu">
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           {sortFields.map(sortBy => (
-            <Dropdown.Item className="custom-dropdown-item" key={'sort' + sortBy} onClick={() => handleSelect(sortBy)}>
+            <Dropdown.Item className="custom-dropdown-item" key={'sort' + sortBy} onClick={() => handleApply(sortBy)}>
               <div className="d-flex align-items-center w-100">
                 <div style={{ width: '1.5em' }}>
                   {selectedSorting.sortBy === sortBy && <FontAwesomeIcon icon={faCheck} />}
@@ -102,22 +93,6 @@ export default function SortDropdown({ sorting, applySorting }) {
               </div>
             </Dropdown.Item>
           ))}
-        </div>
-
-        <Dropdown.Divider style={{ margin: '0' }} className={`hr-${appliedTheme}`} />
-        {/* Buttons outside the scrollable area */}
-        <div className="d-flex justify-content-between ms-2 me-2 mt-2 mb-1 gap-4">
-          <Button className={`btn-outlined-${appliedTheme}`} onClick={() => handleReset()} size="sm">
-            {t('carriera.proposte_di_tesi.reset')}
-          </Button>
-          <Button
-            className={`btn-primary-${appliedTheme}`}
-            id="dropdown-button"
-            onClick={() => handleApply(selectedSorting)}
-            size="sm"
-          >
-            {t('carriera.proposte_di_tesi.apply')}
-          </Button>
         </div>
       </Dropdown.Menu>
     </Dropdown>

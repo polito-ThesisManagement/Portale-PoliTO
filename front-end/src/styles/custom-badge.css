@@ -220,6 +220,44 @@
   cursor: pointer;
 }
 
+.sorting-ASC_light,
+.sorting-ASC_light:focus,
+.sorting-DESC_light,
+.sorting-DESC_light:focus {
+  color: var(--trueGray-600);
+  background-color: var(--trueGray-50);
+  border-color: var(--trueGray-500);
+}
+
+.sorting-ASC_light.clickable:hover,
+.sorting-ASC_light.clickable.active,
+.sorting-DESC_light.clickable:hover,
+.sorting-DESC_light.clickable.active {
+  color: var(--trueGray-600) !important;
+  background-color: var(--trueGray-200) !important;
+  border-color: var(--trueGray-500) !important;
+  cursor: pointer;
+}
+
+.sorting-ASC_dark,
+.sorting-ASC_dark:focus,
+.sorting-DESC_dark,
+.sorting-DESC_dark:focus {
+  color: var(--trueGray-700);
+  background-color: var(--trueGray-200);
+  border-color: var(--trueGray-600);
+}
+
+.sorting-ASC_dark.clickable:hover,
+.sorting-ASC_dark.clickable.active,
+.sorting-DESC_dark.clickable:hover,
+.sorting-DESC_dark.clickable.active {
+  color: var(--trueGray-700) !important;
+  background-color: var(--trueGray-300) !important;
+  border-color: var(--trueGray-600) !important;
+  cursor: pointer;
+}
+
 .success_light {
   color: var(--success-700);
   background-color: var(--success-50);

@@ -58,7 +58,7 @@ function ThesisProposalDetail(props) {
             ))}
           </div>
           <MyBlock icon="user" title="carriera.proposte_di_tesi.supervisors" ignoreMoreLines>
-            <CustomBadge variant="teacher" content={supervisors.map(s => s.firstName + ' ' + s.lastName)} />
+            <CustomBadge variant="teacher" content={supervisors.map(s => s.lastName + ' ' + s.firstName)} />
           </MyBlock>
           {keywords.length > 0 ? (
             <MyBlock icon="key" title="carriera.proposte_di_tesi.keywords" ignoreMoreLines>

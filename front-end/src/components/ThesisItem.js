@@ -46,7 +46,7 @@ function ThesisItem(props) {
             </div>
             <CustomBadge
               variant="teacher"
-              content={teachers.map(teacher => teacher.firstName + ' ' + teacher.lastName)}
+              content={teachers.map(teacher => teacher.lastName + ' ' + teacher.firstName)}
             />
           </div>
           {props.keywords.length > 0 && (

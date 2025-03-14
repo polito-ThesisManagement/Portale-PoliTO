@@ -77,6 +77,17 @@ export default function ThesisProposals() {
         {mapArrayToBadges(state.filters.type, 'type')}
         {mapArrayToBadges(state.filters.teacher, 'teacher')}
         {mapArrayToBadges(state.filters.keyword, 'keyword')}
+        {state.sorting.sortBy !== 'id' && (
+          <CustomBadge
+            variant={'sorting-' + state.sorting.orderBy}
+            content={{
+              content:
+                t('carriera.proposte_di_tesi.sort_by') + ': ' + t('carriera.proposte_di_tesi.' + state.sorting.sortBy),
+            }}
+            type="reset"
+            resetSorting={() => applySorting({ sortBy: 'id', orderBy: 'ASC' })}
+          />
+        )}
       </>
     );
   };
@@ -123,7 +134,8 @@ export default function ThesisProposals() {
             state.filters.isInternal != 0 ||
             state.filters.type.length > 0 ||
             state.filters.teacher.length > 0 ||
-            state.filters.keyword.length > 0) && (
+            state.filters.keyword.length > 0 ||
+            state.sorting.sortBy !== 'id') && (
             <div className="applied-filters-container">
               <div className="badge-group">{getFilterBadges()}</div>
             </div>
