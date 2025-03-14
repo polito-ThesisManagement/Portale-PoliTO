@@ -20,6 +20,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
   const { i18n } = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const filterOptions = {
     keywords: { api: API.getThesisProposalsKeywords, label: 'keyword' },
@@ -134,9 +135,11 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
             name={name}
             defaultValue={selected[name]}
             options={options[name]}
-            placeholder={t(`carriera.proposte_di_tesi.select_${name}`) + '...'}
+            placeholder={isMenuOpen ? '' : t(`carriera.proposte_di_tesi.select_${name}`) + '...'}
             value={selected[name]}
             onChange={selected => setSelected(prev => ({ ...prev, [name]: selected }))}
+            onMenuOpen={() => setIsMenuOpen(true)}
+            onMenuClose={() => setIsMenuOpen(false)}
             className="multi-select"
             classNamePrefix="select"
             styles={{
@@ -151,6 +154,7 @@ export default function FiltersDropdown({ filters, applyFilters, resetFilters })
           <Select
             isMulti={isMulti}
             isClearable={false}
+            isSearchable={false}
             components={{
               SingleValue: customSingleValue,
               IndicatorSeparator: () => null,
